@@ -81,15 +81,13 @@ Plex has the really nice Plex Home Theater app for OS X and many other platforms
 ### Are there mobile apps?
 
 
-{% img left http://dump.jemu.name/x1QZR.png 150px title:'Plex for Android' %}
-{% img left http://dump.jemu.name/e24wG.png 150px title:'Plex for Android – Episode view' %}
+{% img left http://dump.jemu.name/x1QZR.png 150px title:'Plex for Android' %} {% img left http://dump.jemu.name/e24wG.png 150px title:'Plex for Android – Episode view' %}
 
 
 Plex has a really nice looking Android app which just adds to the overall polished look of Plex. Emby also has an Android app that, in my opinion, does not look as nice but still works well enough, even though I'm a beta tester and often experience hiccups, but I can't really blame beta software for being beta. It should be noted that Emby's Android app is more powerful as far as server control is concerned, like plugins configuration and an overview of the auto-organization queue. The Emby app feels like an androidified version of the regular Emby webinterface, while the Plex app feels like a separate entity.
 
 
-{% img right http://dump.jemu.name/1cDYg.png 150px title:'Emby for Android' %}
-{% img right http://dump.jemu.name/BAJXP.png 150px title:'Emby for Android – Episode view' %}
+{% img right http://dump.jemu.name/1cDYg.png 150px title:'Emby for Android' %} {% img right http://dump.jemu.name/BAJXP.png 150px title:'Emby for Android – Episode view' %}
 
 
 As for iOS: Yeah, but I don't have any iOS devices.
