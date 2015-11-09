@@ -1,0 +1,24 @@
+feed_count: 20               # Maximum number of posts in a feed
+posts_link_out: true         # Linkposts should direct visitors to the linked site
+feed_excerpts: false         # Use post excerpts in feeds
+category_feeds: true         # Add a feed for post categories
+tag_feeds: false              # Add a feed for post tags
+categories: [rstats, minecraft]    # Only add feeds for these categories. (empty adds feeds for all categories)
+tags: []                     # Only add feeds for these tags. (empty adds feeds for all tags)
+
+read_more_label:  "Continue reading →"
+permalink_label:  "Permalink"
+
+titles:
+  main_feed:      Main feed
+  links_feed:     Links - :site_name
+  articles_feed:  Articles - :site_name
+  category_feed:  :category feed
+  tag_feed:       Posts tagged with :tag - :site_name
+
+permalinks: 
+  main_feed:      /feed/
+  links_feed:     /feed/links/
+  articles_feed:  /feed/articles/
+  category_feed:  /feed/:category/
+  tag_feed:       /feed/:tag/

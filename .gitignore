@@ -1,0 +1,13 @@
+# Temp & dotfiles
+.jekyll-metadata
+.sass-cache
+.code-highlighter-cache
+.ink-cache
+*.lock
+
+# Folders
+_site
+_drafts
+_posts
+images
+_knitr

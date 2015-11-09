@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: $spacing-unit;
+}
+
+td, th {
+    font-size: 1em;
+/*  border: 1px solid $grey-color-dark; */
+    padding: 3px 7px 2px 7px;
+}
+
+th {
+    font-size: 1.1em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: $grey-color-light;
+    color: $text-color;
+}
+
+tr.alt td {
+    color: #000000;
+    background-color: $grey-color-dark;
+}

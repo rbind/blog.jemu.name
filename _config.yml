@@ -1,0 +1,116 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: blog.jemu.name
+subtitle: Wherever blogs go
+email: lukas@quantenbrot.de
+xmpp: jemus42@kuchen.io
+description: > # this means to ignore newlines until "baseurl:"
+  Wherever blogs go.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: http://blog.jemu.name # the base hostname & protocol for your site
+
+permalink: /:categories/:year/:month/:title/
+
+include: [images]
+keep_files: [images]
+
+read_more_label: "Continue Reading →"
+excerpt_separator: <!--more-->
+
+github_username:      jemus42
+#twitter_username:     jemus42
+#google_plus_username: jemus42
+facebook_username:    undauchsonst
+
+# Build settings
+
+#markdown: kramdown
+markdown: kramdown
+redcarpet:
+  extensions:
+    - no_intra_emphasis
+    - fenced_code_blocks
+    - autolink
+    - tables
+    - strikethrough
+    - superscript
+    - with_to_data
+
+kramdown:
+  input:          GFM
+  auto_ids:       true
+  footnote_nr:    1
+  entity_output:  as_char
+  toc_levels:     1..6
+  smart_quotes:   lsquo,rsquo,ldquo,rdquo
+  enable_coderay: true
+
+  coderay:
+    coderay_wrap:              div
+    coderay_line_numbers:      inline
+    coderay_line_number_start: 1
+    coderay_tab_width:         4
+    coderay_bold_every:        10
+    coderay_css:               style
+
+gems:
+  - octopress-codefence
+  - octopress-solarized
+  - octopress-social
+  - octopress-littlefoot
+  - octopress-feeds
+  - jekyll-archives
+  - octopress-image-tag
+# - octopress-genesis-theme
+
+jekyll-archives:
+  enabled:
+    - categories
+#    - tags
+    - year
+  layouts:
+    year: archive-year
+    category: archive-category
+#    tag: tag-archive-layout
+  permalinks:
+    year: '/:year/'
+#    tag: '/:name/'
+    category: '/:name/'
+
+octopress_social: 
+  twitter:
+    username:                               # Add your Twitter handle
+    tweet_count:         false              # Show number of shares on Twitter
+    size:                normal             # Or large
+    embedded_link_color:                    # Set link color for embedded tweets
+
+    follow_count:        false              # Show number of followers
+    tweet_message:       ":title by :username :hashtags - :url" # With Tweet button Twitter add the URL last
+    tweet_link_text:     Twitter            # Configure the link text
+    tweet_link_title:    Share on Twitter   # Share link title
+    profile_link_text:   Follow :username
+    profile_link_title:  Follow :username on Twitter  # Profile link title text
+  facebook:
+    app_id:                            # For a nicer (no js) sharing experience
+    profile_id:                        # For follow button or profile link
+    action:              like          # Or recommend
+    share:               false         # Also add a share button
+    layout:              button        # Choices: standard, box_count, button_count, button
+    show_faces:          false
+    colorscheme:         light         # Or dark
+    kid_directed_site:   false         # Is your site directed at kids under 13?
+
+    share_link_text:     Facebook            # Text for plain-old link
+    share_link_title:    Share on Facebook   # Share link title text
+    profile_link_text:   Friend on Facebook
+    profile_link_title:  Friend on Facebook  # Profile link title text
+
+    comment_count:       5             # Number of facebook comments to show by default
+    comments_link_text:     Comments
+    disabled_comments_text: Comments disabled  # Set to '' to output nothing when comments are disabled

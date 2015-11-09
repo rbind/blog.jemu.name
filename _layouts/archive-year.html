@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<h1>Posts in {{ page.date | date: "%Y" }}
+    <a href="{{ "/feed/" | prepend: site.baseurl | append: "/index.xml" }}">
+        <i class="fa fa-rss fa-fw"></i>
+    </a>
+</h1>
+
+<ul class="posts">
+{% for post in page.posts %}
+  <li>
+    <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+        {% for cat in post.categories %}
+            <a href='{{ cat | prepend: "/" | prepend: site.url }}'> • {{ cat }}</a>
+        {% endfor %}
+    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+  </li>
+{% endfor %}
+</ul>

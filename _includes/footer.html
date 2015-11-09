@@ -1,0 +1,37 @@
+<footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 align = "center", class="footer-heading">
+      {{ site.title }} <a href="{{ "/feed/index.xml" | prepend: site.baseurl }}"><i class="fa fa-rss fa-fw"></i></a>
+    </h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            <a href="mailto:{{ site.email }}">
+              <i class="fa fa-envelope"></i> {{ site.email }}
+            </a>
+          </li>
+          <li>
+            <a href="xmpp:{{ site.xmpp }}"> 
+              <i class="fa fa-comment-o"></i> {{ site.xmpp }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          {% include social_links.html %}
+        </ul>
+      </div>
+     <div class="footer-col footer-col-3">
+        <p>{{ site.description }}</p>
+     </div>
+    </div>
+
+  </div>
+
+</footer>
