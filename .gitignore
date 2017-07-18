@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+static/images
+static/post
+blogdown/post
+content/post
+public
+themes

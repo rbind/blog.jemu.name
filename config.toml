@@ -1,0 +1,93 @@
+baseurl = "https://blog.jemu.name/"
+relativeurls = false
+languageCode = "en-us"
+title = "Blog Jemu"
+theme = "hugo-redlounge-jemsu"
+#theme = "hugo-lithium-theme-jms"
+disqusShortname = "blogjemuname"
+ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
+googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusion
+
+[permalinks]
+    post = "/:year/:month/:slug/"
+
+[[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 1
+[[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 2
+[[menu.social]]
+    name = "twitter"
+    pre = "<i class='fa fa-github'></i>"
+    url = "https://github.com/jemus42/"
+    weight = 1
+[[menu.social]]
+    name = "github"
+    pre = "<i class='fa fa-twitter'></i>"
+    url = "https://twitter.com/jemus42"
+    weight = 2
+[[menu.social]]
+    name = "telegram"
+    pre = "<i class='fa fa-telegram'></i>"
+    url = "https://t.me/jemus42"
+    weight = 3
+[[menu.social]]
+    name = "trakt"
+    pre = "<i class='fa fa-tv'></i>"
+    url = "https://trakt.tv/users/jemus42"
+    weight = 4
+[[menu.social]]
+    name = "researchgate"
+    pre = "<i class='fa fa-university'></i>"
+    url = "https://www.researchgate.net/profile/Lukas_Burk"
+    weight = 5
+[[menu.social]]
+    name = "mail"
+    pre = "<i class='fa fa-envelope'></i>"
+    url = "mailto:jemus42@quantenbrot.de"
+    weight = 6
+[[menu.social]]
+    name = "rss"
+    pre = "<i class='fa fa-rss'></i>"
+    url = "https://blog.jemu.name/index.xml"
+    weight = 9
+
+[params]
+    # A few options in case of redlounge theme
+    sidebartitle = "Blog Jemu"
+    sidebartagline = "Whereever Blogs Go"
+    sidebarphoto = "/images/Jemus42.jpg"
+    author = "jemus42"
+    totop = true
+
+    # Options for lithium
+    description = "The Blog Jemu"
+
+    # options for highlight.js (version, additional languages, and theme)
+    highlightjsVersion = "9.11.0"
+    highlightjsCDN = "//cdn.bootcss.com"
+    highlightjsLang = ["r", "yaml"]
+    highlightjsTheme = "github"
+
+    MathJaxCDN = "//cdn.bootcss.com"
+    MathJaxVersion = "2.7.1"
+
+    piwikID = "12"
+    piwikURL = "https://analytics.tadaa-data.de/"
+
+    [params.customCSS]
+    tweaks = "css/tweaks.css"
+    bigfoot = "css/bigfoot-number.css"
+
+    [params.logo]
+    url = "Jemus42.jpg"
+    width = 50
+    height = 50
+    alt = "jms"
+
+[taxonomies]
+  category = "categories"
+
