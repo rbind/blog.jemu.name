@@ -1,0 +1,37 @@
+---
+title: Youtube
+type: page
+date: '2017-07-23'
+slug: youtube
+categories: []
+tags: []
+nodate: true
+nopaging: true
+nocomment: true
+nosocialsharing: true
+notoc: false
+noread: true
+---
+
+Here's my Youtube subscriptions with RSS and web links for your convenience.
+
+```{r, warning=F, message=F}
+library(rvest)
+library(xml2)
+library(purrr)
+library(stringr)
+library(dplyr)
+
+read_xml("~/Downloads/subscription_manager.xml") %>%
+  xml_node("outline") %>%
+  xml_contents() %>%
+  map_df(function(x) {
+           tibble::tibble(title = xml_attr(x, "title"),
+                          url_rss = xml_attr(x, "xmlUrl"),
+                          url_web = str_replace(url_rss, "feeds\\/videos\\.xml\\?channel_id=", "channel\\/"))
+         }) %>%
+  mutate(url_rss = paste0("[xml/rss](", url_rss, ")"),
+         url_web = paste0("[web](", url_web, ")")) %>%
+  knitr::kable()
+```
+
