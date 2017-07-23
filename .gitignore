@@ -3,6 +3,9 @@
 .RData
 .Ruserdata
 
+scratchpad.R
+
+content/*.html
 static/images
 static/post
 blogdown/post
