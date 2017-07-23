@@ -1,5 +1,5 @@
-baseurl = "https://blog.jemu.name/"
-relativeurls = false
+baseURL = "https://blog.jemu.name/"
+relativeURLs = true
 languageCode = "en-us"
 title = "Blog Jemu"
 theme = "hugo-redlounge-jemsu"
@@ -19,10 +19,11 @@ googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusio
     name = "Projects"
     url = "/projects/"
     weight = 2
+
 [[menu.social]]
     name = "twitter"
     pre = "<i class='fa fa-github'></i>"
-    url = "https://github.com/jemus42/"
+    url = "https://github.com/jemus42"
     weight = 1
 [[menu.social]]
     name = "github"
@@ -61,7 +62,6 @@ googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusio
     sidebartagline = "Whereever Blogs Go"
     sidebarphoto = "/images/Jemus42.jpg"
     author = "jemus42"
-    totop = true
 
     # Options for lithium
     description = "The Blog Jemu"
@@ -78,11 +78,11 @@ googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusio
     piwikID = "12"
     piwikURL = "https://analytics.tadaa-data.de/"
 
-    [params.customCSS]
+[params.customCSS]
     tweaks = "css/tweaks.css"
     bigfoot = "css/bigfoot-number.css"
 
-    [params.logo]
+[params.logo]
     url = "Jemus42.jpg"
     width = 50
     height = 50
@@ -90,4 +90,5 @@ googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusio
 
 [taxonomies]
   category = "categories"
+  #tag = "tags"
 
