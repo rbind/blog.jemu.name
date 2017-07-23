@@ -6,6 +6,7 @@ nopaging: true
 nocomment: true
 nosocialsharing: true
 notoc: true
+noread: true
 ---
 
 {{< tweet 572953179215810561 >}}

@@ -6,6 +6,7 @@ nopaging: true
 nocomment: true
 nosocialsharing: true
 notoc: true
+noread: true
 ---
 
 Here's a list of stuff I work(ed) on to remind myself to get to them again sooner or later.
