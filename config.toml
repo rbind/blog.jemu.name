@@ -22,39 +22,34 @@ googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusio
 
 [[menu.social]]
     name = "twitter"
-    pre = "<i class='fa fa-github'></i>"
+    pre = "<i class='fa fa-github fa-lg'></i>"
     url = "https://github.com/jemus42"
     weight = 1
 [[menu.social]]
     name = "github"
-    pre = "<i class='fa fa-twitter'></i>"
+    pre = "<i class='fa fa-twitter fa-lg'></i>"
     url = "https://twitter.com/jemus42"
     weight = 2
 [[menu.social]]
     name = "telegram"
-    pre = "<i class='fa fa-telegram'></i>"
+    pre = "<i class='fa fa-telegram fa-lg'></i>"
     url = "https://t.me/jemus42"
     weight = 3
 [[menu.social]]
-    name = "trakt"
-    pre = "<i class='fa fa-tv'></i>"
+    name = "trakt.tv"
+    pre = "<i class='fa fa-tv fa-lg'></i>"
     url = "https://trakt.tv/users/jemus42"
     weight = 4
 [[menu.social]]
     name = "researchgate"
-    pre = "<i class='fa fa-university'></i>"
+    pre = "<i class='fa fa-university fa-lg'></i>"
     url = "https://www.researchgate.net/profile/Lukas_Burk"
     weight = 5
 [[menu.social]]
     name = "mail"
-    pre = "<i class='fa fa-envelope'></i>"
+    pre = "<i class='fa fa-envelope fa-lg'></i>"
     url = "mailto:jemus42@quantenbrot.de"
     weight = 6
-[[menu.social]]
-    name = "rss"
-    pre = "<i class='fa fa-rss'></i>"
-    url = "https://blog.jemu.name/index.xml"
-    weight = 9
 
 [params]
     # A few options in case of redlounge theme

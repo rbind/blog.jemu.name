@@ -1,7 +1,7 @@
 ---
 title: Youtube
 type: page
-date: '2017-07-23'
+date: ''
 slug: youtube
 categories: []
 tags: []
@@ -11,11 +11,13 @@ nocomment: true
 nosocialsharing: true
 notoc: false
 noread: true
+editor_options: 
+  chunk_output_type: console
 ---
 
 Here's my Youtube subscriptions with RSS and web links for your convenience.
 
-```{r, warning=F, message=F}
+```{r, echo=F, warning=F, message=F}
 library(rvest)
 library(xml2)
 library(purrr)
@@ -30,8 +32,9 @@ read_xml("~/Downloads/subscription_manager.xml") %>%
                           url_rss = xml_attr(x, "xmlUrl"),
                           url_web = str_replace(url_rss, "feeds\\/videos\\.xml\\?channel_id=", "channel\\/"))
          }) %>%
-  mutate(url_rss = paste0("[xml/rss](", url_rss, ")"),
-         url_web = paste0("[web](", url_web, ")")) %>%
-  knitr::kable()
+  transmute(`#` = seq_along(title),
+            Channel = paste0("[", title, "](", url_web, ")"),
+            RSS = paste0("[<i class='fa fa-rss'></i>](", url_rss, ")")) %>%
+  knitr::kable(escape = F)
 ```
 

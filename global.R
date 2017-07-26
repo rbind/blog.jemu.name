@@ -1,5 +1,10 @@
 # Global things sourced in each blogpost
 
+library(ggplot2)
+library(dplyr)
+library(knitr)
+library(tadaatoolbox)
+
 # Global chunk options
 knitr::opts_chunk$set(out.width = "90%",
                       fig.retina = 2,
