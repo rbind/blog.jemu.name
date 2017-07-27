@@ -57,6 +57,7 @@ googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusio
     sidebartagline = "Whereever Blogs Go"
     sidebarphoto = "/images/Jemus42.jpg"
     author = "jemus42"
+    lightbox = true
 
     # Options for lithium
     description = "The Blog Jemu"
