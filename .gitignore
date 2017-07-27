@@ -9,6 +9,6 @@ content/*.html
 static/images
 static/post
 blogdown/post
-content/post
+content/post/*.html
 public
 themes
