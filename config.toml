@@ -46,6 +46,7 @@ googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusio
     sidebartitle = "Blog Jemu"
     sidebartagline = "Whereever Blogs Go"
     sidebarphoto = "/images/Jemus42.jpg"
+    sidebarphoto_webp = "/images/Jemus42.webp"
     author = "jemus42"
 
     # options for highlight.js (version, additional languages, and theme)

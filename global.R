@@ -6,7 +6,7 @@ library(knitr)
 library(tadaatoolbox)
 
 # Hugo config
-config_toml <- RcppTOML::parseTOML("config.toml")
+config_toml <- RcppTOML::parseTOML(rprojroot::find_rstudio_root_file("config.toml"))
 
 # Global chunk options
 knitr::opts_chunk$set(out.width = "100%",
@@ -38,7 +38,7 @@ hook <- function(x, options) {
 
   img     <- paste0("<img src='", filename, "'", width, height, "alt='' />")
   imglink <- paste0("<a href='", filename, "' ",
-                     "class = 'swipebox fresco' ",
+                     "class = 'fresco' ",
                      "data-lightbox='", id, "' ",
                      "data-title='", caption, "' ",
                      "data-fresco-caption='", caption, "' ",
