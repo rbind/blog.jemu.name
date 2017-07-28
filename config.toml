@@ -36,16 +36,6 @@ googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusio
     url = "https://t.me/jemus42"
     weight = 3
 [[menu.social]]
-    name = "trakt.tv"
-    pre = "<i class='fa fa-tv fa-lg'></i>"
-    url = "https://trakt.tv/users/jemus42"
-    weight = 4
-[[menu.social]]
-    name = "researchgate"
-    pre = "<i class='fa fa-university fa-lg'></i>"
-    url = "https://www.researchgate.net/profile/Lukas_Burk"
-    weight = 5
-[[menu.social]]
     name = "mail"
     pre = "<i class='fa fa-envelope fa-lg'></i>"
     url = "mailto:jemus42@quantenbrot.de"
@@ -57,16 +47,13 @@ googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusio
     sidebartagline = "Whereever Blogs Go"
     sidebarphoto = "/images/Jemus42.jpg"
     author = "jemus42"
-    lightbox = true
-
-    # Options for lithium
-    description = "The Blog Jemu"
 
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.11.0"
     highlightjsCDN = "//cdn.bootcss.com"
     highlightjsLang = ["r", "yaml"]
     highlightjsTheme = "github"
+    disable_highlight_theme = true
 
     MathJaxCDN = "//cdn.bootcss.com"
     MathJaxVersion = "2.7.1"
@@ -74,9 +61,12 @@ googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusio
     piwikID = "12"
     piwikURL = "https://analytics.tadaa-data.de/"
 
+    bigfoot = true
+    gallery = "fresco"
+
 [params.customCSS]
-    tweaks = "css/tweaks.css"
-    bigfoot = "css/bigfoot-number.css"
+    tweaks = "css/tweaks.min.css"
+    bigfoot = "css/bigfoot-number.min.css"
 
 [params.logo]
     url = "Jemus42.jpg"
@@ -86,5 +76,6 @@ googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusio
 
 [taxonomies]
   category = "categories"
-  #tag = "tags"
+  tag = "tags"
+  show = "shows"
 
