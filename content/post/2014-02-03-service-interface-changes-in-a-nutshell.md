@@ -1,9 +1,9 @@
 ---
-title: Service Interface Changes in a nutshell
 author: jemus42
-date: '2014-02-03'
 categories:
-  - lolz
+- lolz
+date: 2014-02-03
+title: Service Interface Changes in a nutshell
 ---
 
 Am Beispiel der jüngsten Twitter webinterface Deisgnänderungen.  

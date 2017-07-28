@@ -2,19 +2,22 @@
 title: Prepping for Winter, kind of
 author: jemus42
 date: '2017-07-17'
-slug: prepping-for-winter-kind-of
 categories:
   - rstats
   - tvshows
-tags: []
-notoc: false
-editor_options: 
+tags:
+  - trakt.tv
+  - IMDb
+  - Rmd
+shows:
+  - Game of Thrones
+slug: prepping-for-winter-kind-of
+editor_options:
   chunk_output_type: console
-output: 
-  html_document: 
-    highlight: null
-    theme: null
-    toc: true
+output:
+  blogdown::html_page:
+    toc: no
+gallery: "fresco"
 ---
 
 ```{r init, include = F}
@@ -22,7 +25,7 @@ source(rprojroot::find_rstudio_root_file("global.R"))
 ```
 
 
-So with the new season of *Game of Thrones* dropping as I write this, I wanted to take another peek at any data I could find. This time, I'll combine [trakt.tv](https://trakt.tv), [IMDb](http://www.imdb.com/title/tt0944947/epdate) and [Wikipedia](https://en.wikipedia.org/wiki/List_of_Game_of_Thrones_episodes).  
+So with the new season of *Game of Thrones* dropping as I write this, I wanted to take another peek at any data I could find. This time, I'll combine [trakt.tv](https://trakt.tv), [IMDb](http://www.imdb.com/title/tt0944947/epdate) and [Wikipedia](https://en.wikipedia.org/wiki/List_of_Game_of_Thrones_episodes).
 
 <!--more-->
 
@@ -41,7 +44,7 @@ library(tadaatoolbox)
 
 ### Getting data
 
-Now we're good to go. And since my `tRakt` package already handles the trakt.tv data, that step should be the easiest.
+Now we're good to go. And since my [`tRakt` package](https://github.com/jemus42/tRakt) already handles the trakt.tv data, that step should be the easiest.
 
 ```{r trakt, cache=TRUE}
 got <- trakt.get_all_episodes("game-of-thrones") %>%

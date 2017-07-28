@@ -1,9 +1,9 @@
 ---
-title: Assortment of Minecraft Youtube stuff
 author: Jemus42
-date: '2013-12-01'
 categories:
-  - Minecraft
+- Minecraft
+date: 2013-12-01
+title: Assortment of Minecraft Youtube stuff
 ---
 
 <sup><small>Yadda yadda still not shutting up about Minecraft shit</small></sup>  

@@ -1,10 +1,10 @@
 ---
-title: Overanalyzing TV Shows
 author: jemus42
-date: '2015-02-20'
 categories:
-  - rstats
-  - tvshows
+- rstats
+- tvshows
+date: 2015-02-20
+title: Overanalyzing TV Shows
 ---
 
 Overanalyzing tv shows has kind of become my jam. So why not totally overdo it.  

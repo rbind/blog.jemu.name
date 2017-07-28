@@ -1,11 +1,10 @@
 ---
-title: Oh Great, Another Blogging Engine
 author: Jemus42
-date: '2016-10-01'
 categories:
-  - meta
+- meta
+date: 2016-10-01
+title: Oh Great, Another Blogging Engine
 ---
-
 
 Es ist noch nichtmal [ein Jahr her, dass ich zuletzt alles wegwarf und neu machte](/2015/11/oh-its-octopress.-again./), demnach ist es höchste Zeit, dass ich mal wieder alles wegwerfe und neu mache.
 

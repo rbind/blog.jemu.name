@@ -1,10 +1,10 @@
 ---
-title: Ich wollte doch nur Minecraft spielen
 author: jemus42
-date: '2013-11-08'
 categories:
-  - Minecraft
-tags: ~
+- Minecraft
+date: 2013-11-08
+tags: null
+title: Ich wollte doch nur Minecraft spielen
 ---
 
 <small>This post exists primarily because I couldn't sleep and I accidentally ironblogging</small>   

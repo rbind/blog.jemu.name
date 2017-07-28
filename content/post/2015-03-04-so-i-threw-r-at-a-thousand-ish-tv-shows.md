@@ -1,10 +1,10 @@
 ---
-title: So I threw R at a thousand(ish) TV shows
 author: jemus42
-date: '2015-03-04'
 categories:
-  - rstats
-  - tvshows
+- rstats
+- tvshows
+date: 2015-03-04
+title: So I threw R at a thousand(ish) TV shows
 ---
 
 Analyzing TV shows seems to be what I do these days.  

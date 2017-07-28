@@ -1,9 +1,9 @@
 ---
-title: My Summer Spring Cleaning, Part 1
 author: Jemus42
-date: '2016-10-12'
 categories:
-  - tech
+- tech
+date: 2016-10-12
+title: My Summer Spring Cleaning, Part 1
 type: post
 ---
 

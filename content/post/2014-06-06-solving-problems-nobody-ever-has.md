@@ -1,9 +1,9 @@
 ---
-title: Solving problems nobody ever has
 author: Jemus42
-date: '2014-06-06'
 categories:
-  - rstats
+- rstats
+date: 2014-06-06
+title: Solving problems nobody ever has
 ---
 
 <small>Remember that last post?  

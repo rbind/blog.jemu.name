@@ -1,10 +1,11 @@
 ---
-title: Blogging still sucks, but now I can tolerate it
 author: Jemus42
-date: '2017-07-18'
+categories:
+- meta
+date: 2017-07-18
 slug: blogging-still-sucks-but-now-i-can-tolerate-it
-categories: ["meta"]
 tags: []
+title: Blogging still sucks, but now I can tolerate it
 ---
 
 I've [talked about it here and there](/categories/meta/), and it's still true:  

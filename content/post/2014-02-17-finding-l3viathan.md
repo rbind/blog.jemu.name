@@ -1,19 +1,19 @@
 ---
-title: Finding L3viathan
 author: Jemus42
-date: '2014-02-17'
 categories:
-  - rstats
+- rstats
+date: 2014-02-17
+title: Finding L3viathan
 ---
 
 Neulich hatte [L3viathan](https://twitter.com/l3viathan2142) seine [openpaths](http://openpaths.cc)-Locationdaten ver[gist](https://gist.github.com/L3viathan/24a49504c75ef92625a2)ed, und da ich Spaß an R habe und neulich ja schon Dinge zu ebenjenem Anwendungsfall schrob, warf ich dann mal ein paar Dinge drauf. Hier so das Ergebnis.
 
 <!-- more -->
-# L3vipaths
+## L3vipaths
 
 This uses l3vi's location data. For ~~science~~ shits 'n giggles.  
 
-## Importing the data in R
+### Importing the data in R
 
 ```r load it read it rename it convert it factor it sort it attach it
 library(rjson)
@@ -51,13 +51,13 @@ head(paths, 3L)
 ## 3     1.0
 ```
 
-## First up: A summary.
+### First up: A summary.
 
-```r Summarizzle
+```r
 summary(paths)
 ```
 
-```r Summarizzled
+```r
 ##       lon             lat            alt       
 ##  Min.   : 6.99   Min.   :48.0   Min.   : 94.6  
 ##  1st Qu.: 7.02   1st Qu.:49.2   1st Qu.:251.7  
@@ -97,20 +97,22 @@ circleFun <- function(center = c(0, 0), diameter = 1, npoints = 100) {
 …Which is quite handy, because now we can draw a makeshift "circle" around the mean location with the standard deviations of lon / lat as radius.  
 The fancy way to do this would be to draw confidence ellipsis, but that would involve either math or actual knowledge of what the fuck I'm doing.
 
-```r Always store your circles as a list of points, ma daddy used to say
+```r
 circ <- circleFun(c(mean(paths$lon), mean(paths$lat)), mean(c(sd(paths$lon), 
     sd(paths$lat))), npoints = 100)
 ```
 
-## Look, a map
+<small>Always store your circles as a list of points, ma daddy used to say</small>
 
-```r Getting the map from Google Maps
+### Look, a map
+
+```r
 map <- get_map(location = "Germany", zoom = 6, scale = "2", maptype = "hybrid", 
     messaging = FALSE)
 ```
 
 
-```r ggplot all the things
+```r
 ## Brew custom color scale
 monthColors <- brewer.pal(5,"Set1")
 names(monthColors) <- levels(paths$month)
@@ -132,7 +134,8 @@ ggmap(map) +
 ![Locationplot](/images/locationplot.png) 
 
 This is nice 'nall, but now…
-## ENHANCE
+
+### ENHANCE
 
 ```r
 # Getting the map from Google
@@ -145,7 +148,7 @@ ggmap(map.closeup) + geom_point(data = paths, aes_string(y = "lat", x = "lon",
 
 ![closeup](/images/closeup.png) 
 
-## MOAR METADATA
+### MOAR METADATA
 
 ```r
 # OKAY OKAY
@@ -166,7 +169,7 @@ ggmap(map.days) +
 
 ![closeup.days](http://dump.quantenbrot.de/byDay.png) 
 
-## MOAAAAAAR!
+### MOAAAAAAR!
 
 ```r
 # Jeez… Calm down.
@@ -180,28 +183,29 @@ ggmap(map.closeup2) + geom_point(data = paths, aes_string(y = "lat", x = "lon",
 
 <small>This graph includes connection lines not produced by the code above, there's a bunch of `geom_path()` missing and I was to lazy to fix that. See the plot above for a code reference</small>
 
-## Getting some arbitrary statisticy-looking values
-### Some means 
+### Getting some arbitrary statisticy-looking values
+
+#### Some means 
 
 * Mean latitude: **49.3317**
 * Mean longitude: **7.2546**
 * Mean altitude: **267.69**
 
-### Some standard deviations
+#### Some standard deviations
 
 * Latitude: **0.5955**
 * Longitude: **1.02**
 * Altitude: **34.7839**
 
-### Minimum & maximum values:
+#### Minimum & maximum values:
 
 * Latitude: From **47.9771** to **52.547** (range: **4.5699**)
 * Longitude: From **6.9864** to **13.3907** (range: **6.4043**)
 * Altitude: From **94.6** to **344.3** (range: **249.7**)
 
-### Points at the edges
+#### Points at the edges
 
-```r So this
+```r
 paths[lon == max(lon), c("lon", "lat", "date")]
 ```
 
@@ -219,7 +223,7 @@ paths[lat == max(lat), c("lon", "lat", "date")]
 ## 355 13.13 52.55 2013-12-01 13:58:05
 ```
 
-```r we test 
+```r 
 paths[lon == min(lon), c("lon", "lat", "date")]
 ```
 
@@ -228,7 +232,7 @@ paths[lon == min(lon), c("lon", "lat", "date")]
 ## 29 6.986 49.23 2013-11-14 15:29:13
 ```
 
-```r for boundaries
+```r
 paths[lat == min(lat), c("lon", "lat", "date")]
 ```
 
@@ -237,10 +241,11 @@ paths[lat == min(lat), c("lon", "lat", "date")]
 ## 562 7.819 47.98 2013-12-07 11:34:49
 ```
 
-## Do you even distances?
+### Do you even distances?
+
 Looking at the points at the edges from the previous section, I wanted to calcualte the distances between the `max(lon)` and `min(lon)` point, so I did this: 
 
-```r Do you even euclidian
+```r
 sqrt(sum((c(lon[342], lat[342]) - c(lon[29], lat[29]))^2))
 ```
 
@@ -251,7 +256,7 @@ sqrt(sum((c(lon[342], lat[342]) - c(lon[29], lat[29]))^2))
 …Which turned out to be pretty dumb, since, you know, geo-stuff.
 So then I used [this](http://www.r-bloggers.com/great-circle-distance-calculations-in-r/) to define this function:
 
-```r All fancy up in this shit
+```r 
 # Calculate the geodesic distance between two points specified by radian
 # latitude/longitude using the Haversine formula (hf)
 gcd.hf <- function(long1, lat1, long2, lat2) {
@@ -271,7 +276,7 @@ gcd.hf <- function(long1, lat1, long2, lat2) {
 
 And now we can do theoretical, non-practical calculations to determine that L3vis longitudinal movement spans…
 
-```r HOW
+```r
 gcd.hf(lon[342], lat[342], lon[29], lat[29])
 ```
 
@@ -283,7 +288,7 @@ gcd.hf(lon[342], lat[342], lon[29], lat[29])
 Which is nice, I guess?  
 So now we do the same for the latitudal min/max points:
 
-```r FAR
+```r
 gcd.hf(lon[355], lat[355], lon[562], lat[562])
 ```
 
@@ -295,7 +300,7 @@ Wheee.
 
 Now let's sum up the distances between *every* point. Because I just figured out how.
 
-```r So this is a thing
+```r
 dist = numeric(length = length(paths$lon))
 
 for (i in 1:(length(dist) - 1)) {
@@ -319,8 +324,9 @@ Here's some more stuff about the distances, which is… not really meaningful, b
 
 Now we look at monthly distance summaries.
 
-### November
-```r This is a titlebar
+#### November
+
+```r
 dist.november = numeric(length = length(paths[paths$month == "November", c(1, 
     2)][, 1]))
 
@@ -337,7 +343,7 @@ sum(dist.november)
 ```
 ## [1] 852.4
 ```
-### December
+#### December
 ```r Do you like titlebars?
 dist.december = numeric(length = length(paths[paths$month == "December", c(1, 
     2)][, 1]))
@@ -355,7 +361,7 @@ sum(dist.december)
 ```
 ## [1] 1448
 ```
-### January
+#### January
 ```r I do. I really do.
 dist.january = numeric(length = length(paths[paths$month == "January", c(1, 
     2)][, 1]))
@@ -378,7 +384,3 @@ ____
 Und das war's auch schon. Es ist nicht wirklich erkenntnisfördernd, ich weiß. Und ja, bestenfalls funky math an manchen Stellen, aber… Ja, DM;HD.  
 
 Das dazugehörige repository liegt jedenfalls [hier rum](https://github.com/jemus42/L3vipaths).
-
-
-
-

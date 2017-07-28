@@ -1,10 +1,11 @@
 ---
-title: Serien sind die neue Musik
 author: jemus42
-date: '2013-10-01'
 categories:
-  - rambling
+- rambling
+date: 2013-10-01
+title: Serien sind die neue Musik
 ---
+
 *(Anm. d. Autors: Ich fing diesen Blogpost mit einer vagen Idee an und beendete ihn mit einer Mischung aus Verwirrung, Scham und Abscheu. Das passiert mir öfters. Ich mach das hier noch nicht so lange, bitte haut mich nicht .__.)*
 
 Und, nach welchen arbiträren Standards evaluiert ihr so eure Gemeinsamkeiten mit beliebigen Mitmenschen?  

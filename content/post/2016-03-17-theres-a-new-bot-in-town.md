@@ -1,10 +1,10 @@
 ---
-title: There's a New Bot in Town
 author: jemus42
-date: '2016-03-17'
 categories:
-  - lolz
-tags: ~
+- lolz
+date: 2016-03-17
+tags: null
+title: There's a New Bot in Town
 ---
 
 Well hello there.

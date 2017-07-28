@@ -5,7 +5,12 @@ date: '2017-07-20'
 categories:
   - rstats
   - tvshows
-editor_options: 
+tags:
+  - trakt.tv
+  - IMDb
+  - Rmd
+  - snippet
+editor_options:
   chunk_output_type: console
 ---
 
@@ -17,7 +22,7 @@ I've posted this little snippet a while ago, but I thought it would be nice to u
 
 <!--more-->
 
-```{r code, message=FALSE, cache=TRUE}
+```{r trakt-vs-me, message=FALSE, cache=TRUE}
 library(tRakt) # devtools::install_github("jemus42/tRakt")
 library(dplyr)
 library(tidyr)

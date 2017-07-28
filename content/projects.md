@@ -1,12 +1,12 @@
 ---
-type: page
-title: Projects
+nocomment: true
 nodate: true
 nopaging: true
-nocomment: true
+noread: true
 nosocialsharing: true
 notoc: true
-noread: true
+title: Projects
+type: page
 ---
 
 Here's a list of stuff I work(ed) on to remind myself to get to them again sooner or later.

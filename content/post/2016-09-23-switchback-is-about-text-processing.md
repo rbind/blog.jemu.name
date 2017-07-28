@@ -1,9 +1,9 @@
 ---
-title: “Switchback” Is About Text Processing
 author: jemus42
-date: '2016-09-23'
 categories:
-  - lolz
+- lolz
+date: 2016-09-23
+title: “Switchback” Is About Text Processing
 ---
 
 If you were into PC gaming in the early 2000s, there's a good chance you've seen at least one video of Counter Strike gameplay with [this song as the soundtrack](https://www.youtube.com/watch?v=gjIbgUyJISY)[^1].

@@ -1,9 +1,9 @@
 ---
-title: How do I even Minecraft?
 author: Jemus42
-date: '2013-11-12'
 categories:
-  - Minecraft
+- Minecraft
+date: 2013-11-12
+title: How do I even Minecraft?
 ---
 
 <small>[You ever heard of Minecraft?](http://mindcrack.altervista.org/wiki/Phrases#Y)</small>

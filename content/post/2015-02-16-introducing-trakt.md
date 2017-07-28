@@ -1,10 +1,11 @@
 ---
-title: Introducing tRakt
 author: Jemus42
-date: '2015-02-16'
 categories:
-  - rstats
+- rstats
+date: 2015-02-16
+title: Introducing tRakt
 ---
+
 It's been a while since I started working on a set of functions to pull data from [trakt.tv](http://trakt.tv). I documented part of the early process in [an earlier blogpost](http://blog.quantenbrot.de/2014/06/05/i-just-wanted-to-rewatch-stargate/), and since then I started aggregating my work into a proper package.
 
 Since trakt launched their new APIv2, I started to rewrite and ehance the package a little, also solidifying the whole authentication business. I have not implemented any OAuth2 methods, but since the purpose of this package is to pull a bunch of data and not to perform actions like checkins, I don't think it's a big deal.  

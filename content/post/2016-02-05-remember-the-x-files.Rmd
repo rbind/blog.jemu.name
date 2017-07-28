@@ -5,6 +5,11 @@ date: '2016-02-05'
 categories:
   - rstats
   - tvshows
+tags:
+  - trakt.tv
+  - Rmd
+shows:
+  - X-Files
 enable_mathjax: true
 notoc: false
 ---

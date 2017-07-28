@@ -1,9 +1,9 @@
 ---
-title: Yay! tRakt is now on CRAN
 author: jemus42
-date: '2015-02-23'
 categories:
-  - rstats
+- rstats
+date: 2015-02-23
+title: Yay! tRakt is now on CRAN
 ---
 
 As of today, I have my [first package published on CRAN](http://cran.r-project.org/web/packages/tRakt/index.html).  

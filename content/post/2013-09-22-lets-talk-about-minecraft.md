@@ -1,11 +1,12 @@
 ---
-title: Let's talk about Minecraft
 author: jemus42
-date: '2013-09-23'
 categories:
-  - Minecraft
-tags: ~
+- Minecraft
+date: 2013-09-23
+tags: null
+title: Let's talk about Minecraft
 ---
+
 …Because nobody does that anymore, right? …Right?
 
 Nah, it's still popular, and with good reason.  

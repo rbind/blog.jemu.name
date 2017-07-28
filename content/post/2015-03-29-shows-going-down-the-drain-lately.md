@@ -1,11 +1,12 @@
 ---
-title: Shows going down the drain lately
 author: jemus42
-date: '2015-03-29'
 categories:
-  - rstats
-  - tvshows
+- rstats
+- tvshows
+date: 2015-03-29
+title: Shows going down the drain lately
 ---
+
 I don't know if you've noticed, but lately I've done a lot of stuff with tv shows.  
 Along the way, I noticed some trends with a few shows which seemed quite interesting to me, namely some shows were going straight down the drain, at least as far as their recent ratings are concerned.
 

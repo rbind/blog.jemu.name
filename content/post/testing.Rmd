@@ -18,47 +18,45 @@ lightbox: true
 source(rprojroot::find_rstudio_root_file("global.R"))
 ```
 
+## Plot output hook
+
 This is a test of knitr plot output customization. 
 
 ```{r, cache=F}
 library(knitr)
+knit_hooks$get("plot")
 
-# knit_hooks$set(plot = knitr:::hook_plot_html)
-# 
-# hook <- function(x, options) {
-#   width <- height <- ''
-#     if (!is.null(options$out.width))
-#       width <- sprintf(' width = "%s" ', options$out.width)
-#     if (!is.null(options$out.height))
-#       height <- sprintf(' height = "%s" ', options$out.height)
-#     
-#     filename <- paste0("../../../post/", knitr::opts_knit$get('base.url'), paste(x, collapse = '.'))
-#     
-#     if (!is.null(options$fig.cap)) {
-#       caption <- paste0("<figcaption>", options$fig.cap, "</figcaption>")
-#     } else {
-#       caption <- NULL
-#     }
-#     plot_id <- paste0(paste0(sample(c(letters, LETTERS), 
-#                                     size = 5, replace = T), collapse = ""), 
-#                       caption)
-#     
-#     img <- paste0("<img src='", filename, "' ", width, height, " alt='' />")
-#     lightbox <- paste0("<a href='", filename, "' ", 
-#                        "data-lightbox='", plot_id, "' data-title='", plot_id, "'>", 
-#                        img, "</a>")
-# 
-#     figure <- paste0("<figure>", lightbox, caption, "</figure>")
-#     
-#     return(figure)
-# 
-# }
-# 
-# knitr::knit_hooks$set(plot = hook)
 
 library(ggplot2)
 
 ggplot(data = mtcars, aes(x = wt, y = mpg)) +
          geom_point()
+```
+
+## Option Overview
+
+### opts_knit
+
+```{r knit-opts}
+opts_knit$get()
+```
+
+### opts_current
+
+```{r knit-opts-current}
+opts_current$get()
+```
+
+### opts_chunk
+
+```{r knit-opts-chunk}
+opts_chunk$get()
+```
+
+
+## hooks
+
+```{r hooks}
+knitr::knit_hooks$get()
 ```
 

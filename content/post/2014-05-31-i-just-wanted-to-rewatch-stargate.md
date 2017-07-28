@@ -5,6 +5,10 @@ date: '2014-06-05'
 categories:
   - rstats
   - tvshows
+tags:
+  - trakt.tv
+shows: 
+  - Stargate SG-1
 ---
 
 ![](https://stats.jemu.name/tvshows/trakt/plots/stargate-sg-1.png)

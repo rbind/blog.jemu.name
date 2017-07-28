@@ -1,15 +1,16 @@
 ---
-title: I analyzed some world penis data - because why not
 author: jemus42
-date: '2015-08-05'
 categories:
-  - rstats
-tags: ~
+- rstats
+date: 2015-08-05
+tags: null
+title: I analyzed some world penis data - because why not
 ---
 
-![](https://dump.jemu.name/72CqH.png)
+![](https://worldpenis.tadaa-data.de/assets/plots/length_method_state-1.png)
 
-## Edit: 2016-12-18 02:13:19
+
+**Edit: 2016-12-18 02:13:19**
 
 > Please note that this analysis is out of date and the code to acquire the data no longer works, since the source website has restructured and I have not found a way to reproduce the old behavior. Also, the current analysis is located at https://worldpenis.tadaa-data.de, so please go there for up to date code and analysis. It's prettier. And better.
 
@@ -222,6 +223,6 @@ penis %>% mutate(growth = length_erect / length_flaccid) %>%
 
 Well, I certainly didn't expect that amount of vertical grouping and ambivalent trend lines. If anyone as an idea how that can be explained, let me know.
 
-### Edit 2015-08-06 00:47
+**Edit 2015-08-06 00:47**
 
 [Here's a bonus plot with a world ranking](http://dump.jemu.name/3bolP.png)

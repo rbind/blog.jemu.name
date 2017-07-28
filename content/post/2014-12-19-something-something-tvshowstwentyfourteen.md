@@ -1,9 +1,9 @@
 ---
-title: Something something tvshowstwentyfourteen
 author: Jemus42
-date: '2014-12-20'
 categories:
-  - tvshows
+- tvshows
+date: 2014-12-20
+title: Something something tvshowstwentyfourteen
 ---
 
 Yet another year has <sup>*oh screw this bullshit you know what's up.*</sup>

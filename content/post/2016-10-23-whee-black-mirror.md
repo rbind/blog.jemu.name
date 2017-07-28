@@ -1,8 +1,11 @@
 ---
-categories: ["tvshows"]
-tags: []
+categories:
+- tvshows
 date: 2016-10-23T19:04:17+02:00
-title: "Whee, more Black Mirror!"
+shows:
+- Black Mirror
+tags: []
+title: Whee, more Black Mirror!
 ---
 
 Black Mirror is back and the internet is collectively splurging all over the place like some sort of weird masturbatory analogy I can't seem to find my way out of.  

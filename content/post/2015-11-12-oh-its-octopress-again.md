@@ -1,9 +1,9 @@
 ---
-title: Oh, It's Octopress. Again.
 author: Jemus42
-date: '2015-11-12'
 categories:
-  - meta
+- meta
+date: 2015-11-12
+title: Oh, It's Octopress. Again.
 ---
 
 Blogging-Systeme auszuprobieren ist über die Jahre wohl zu meinem Sekundärhobby geworden. Diverse Versionen von Blogger/Blogspot, Wordpress (.com und self-hosted), und natürlich jekyll/octopress.  

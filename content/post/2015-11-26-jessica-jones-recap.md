@@ -1,11 +1,11 @@
 ---
-title: Jessica Jones recap
 author: jemus42
-date: '2015-11-26'
 categories:
-  - rstats
-  - tvshows
-tags: ~
+- rstats
+- tvshows
+date: 2015-11-26
+tags: null
+title: Jessica Jones recap
 ---
 
 So I've been watching Marvel's Jessica Jones over the past couple days, as one does, and I have opinions and stuff about it. However, since I believe that a plot is worth more than word stuff, I present to you my viewing expierence in data.

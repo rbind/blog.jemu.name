@@ -1,0 +1,51 @@
+---
+title: So Cougar Town ended
+author: jemus42
+date: '2015-04-14'
+categories:
+  - tvshows
+tags:
+  - trakt.tv
+  - Rmd
+shows: 
+  - Cougar Town
+editor_options:
+  chunk_output_type: console
+---
+
+```{r init, include = F}
+source(rprojroot::find_rstudio_root_file("global.R"))
+```
+
+So Cougar Town ended, and I don't know how I feel about that.
+
+Well, trakt knows hout they feel about it.
+
+```{r cougar-town}
+library(tRakt)
+library(ggplot2)
+
+cougars <- trakt.get_all_episodes("cougar-town")
+
+ggplot(data = cougars, aes(x = epnum, y = rating, fill = season, color = season)) +
+  geom_smooth(method = lm, se = F) +
+  geom_point(shape = 21, color = "black", size = 2) +
+  scale_x_continuous(breaks = seq(0, 150, 10), minor_breaks = seq(0, 150, 5)) +
+  scale_y_continuous(breaks = seq(0, 10, .5), minor_breaks = seq(0, 10, .1),
+                     limits = c(7, 8.5)) +
+  scale_color_brewer(palette = "Blues", guide = F) +
+  scale_fill_brewer(palette = "Blues") +
+  labs(title = "Cougar Town Episode Overview",
+       subtitle = "Episode Ratings on trakt.tv",
+       x = "Absolute Episode #", y = "Rating (1-10)",
+       fill = "Season",
+       caption = paste("Data as of", format(Sys.Date()))) +
+  theme(legend.position = "bottom")
+```
+
+
+Six seasons can be a very long time, and not every shows handles the aging process well. Cougar Town was not one of those shows in my opinion, which is largely due to the show's self awareness and continued jokes about exactly that.  
+The last season was a rough decline, with Bobby leaving and all, but at least we got a few more bromance jokes out of that, soo… yay?  
+
+Anyway, while I can't even remember the early seasons, I enjoyed the show while it lasted. Not that I was totally excited about every new episode, but it was always nice coming back to it. 
+

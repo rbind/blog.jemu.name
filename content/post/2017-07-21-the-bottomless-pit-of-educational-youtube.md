@@ -1,14 +1,14 @@
 ---
-title: The Bottomless Pit of Educational Youtube
 author: Jemus42
-draft: false
-date: '2017-07-25'
-slug: the-bottomless-pit-of-educational-youtube
 categories:
-  - media
+- media
+date: 2017-07-25
+draft: false
+enable_katex: false
+enable_mathjax: false
+slug: the-bottomless-pit-of-educational-youtube
 tags: ""
-enable_mathjax: no
-enable_katex: no
+title: The Bottomless Pit of Educational Youtube
 ---
 
 Youtube is great.  
