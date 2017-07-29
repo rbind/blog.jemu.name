@@ -1,3 +1,3 @@
 # Blogdown options
-options(servr.daemon = TRUE, blogdown.author = "Jemus42")
+options(servr.daemon = FALSE, blogdown.author = "Jemus42")
 
