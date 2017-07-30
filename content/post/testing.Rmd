@@ -24,13 +24,13 @@ This is a test of knitr plot output customization.
 
 ```{r, cache=F}
 library(knitr)
-knit_hooks$get("plot")
 
+knit_hooks$get("plot")
 
 library(ggplot2)
 
 ggplot(data = mtcars, aes(x = wt, y = mpg)) +
-         geom_point()
+  geom_point(alpha = .9)
 ```
 
 ## Option Overview
@@ -43,13 +43,13 @@ opts_knit$get()
 
 ### opts_current
 
-```{r knit-opts-current}
+```{r knit-opts-current, eval = FALSE}
 opts_current$get()
 ```
 
 ### opts_chunk
 
-```{r knit-opts-chunk}
+```{r knit-opts-chunk, eval = FALSE}
 opts_chunk$get()
 ```
 
