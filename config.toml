@@ -6,7 +6,8 @@ theme = "hugo-redlounge-jemsu"
 #theme = "hugo-lithium-theme-jms"
 disqusShortname = "blogjemuname"
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
-googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusion
+googleAnalytics = "UA-52990941-5"
+Paginate = 10
 
 [permalinks]
     post = "/:year/:month/:slug/"
@@ -79,4 +80,4 @@ googleAnalytics = "UA-52990941-5" # Disabled in lithium by template non-inclusio
   category = "categories"
   tag = "tags"
   show = "shows"
-
+  package = "packages"
