@@ -6,6 +6,7 @@ slug: "post-testing"
 categories:
   - debug
 nocomment: yes
+debug: true
 nosocialsharing: yes
 notoc: yes
 noread: yes
@@ -16,18 +17,24 @@ lightbox: true
 
 ```{r init, include = F}
 source(rprojroot::find_rstudio_root_file("global.R"))
+library(svglite)
+library(knitr)
+library(ggplot2)
+
+# knitr::opts_chunk$set(dev = "svglite",
+#                       fig.ext = "svg")
 ```
 
 ## Plot output hook
 
 This is a test of knitr plot output customization. 
 
-```{r, cache=F}
-library(knitr)
+```{r svgout, dev="svglite", fig.ext='svg', cache=F, eval=F}
+ggplot(data = mtcars, aes(x = wt, y = mpg)) +
+  geom_point(alpha = .9)
+```
 
-knit_hooks$get("plot")
-
-library(ggplot2)
+```{r pngout, dev='png', fig.ext="png", cache=F}
 
 ggplot(data = mtcars, aes(x = wt, y = mpg)) +
   geom_point(alpha = .9)

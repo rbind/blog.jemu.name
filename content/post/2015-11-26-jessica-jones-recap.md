@@ -4,7 +4,11 @@ categories:
 - rstats
 - tvshows
 date: 2015-11-26
-tags: null
+tags:
+- Marvel
+- Netflix
+shows:
+- Jessica Jones
 title: Jessica Jones recap
 ---
 

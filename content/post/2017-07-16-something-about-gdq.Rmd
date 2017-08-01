@@ -10,6 +10,10 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r init, include = F}
+source(rprojroot::find_rstudio_root_file("global.R"))
+```
+
 ```{r setup, include = FALSE}
 library(rvest)
 library(dplyr)

@@ -1,6 +1,8 @@
 ---
 author: Jemus42
 categories:
+- media
+tags:
 - Minecraft
 date: 2013-12-01
 title: Assortment of Minecraft Youtube stuff

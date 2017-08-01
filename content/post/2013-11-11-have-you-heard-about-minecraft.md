@@ -1,6 +1,8 @@
 ---
 author: Jemus42
 categories:
+- rambling
+tags:
 - Minecraft
 date: 2013-11-12
 title: How do I even Minecraft?

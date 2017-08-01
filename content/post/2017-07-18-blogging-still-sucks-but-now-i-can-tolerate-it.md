@@ -4,7 +4,10 @@ categories:
 - meta
 date: 2017-07-18
 slug: blogging-still-sucks-but-now-i-can-tolerate-it
-tags: []
+tags:
+- Hugo
+packages:
+- blogdown
 title: Blogging still sucks, but now I can tolerate it
 ---
 

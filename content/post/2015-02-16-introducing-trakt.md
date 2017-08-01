@@ -2,6 +2,10 @@
 author: Jemus42
 categories:
 - rstats
+tags:
+- r-pkgs
+packages:
+- tRakt
 date: 2015-02-16
 title: Introducing tRakt
 ---

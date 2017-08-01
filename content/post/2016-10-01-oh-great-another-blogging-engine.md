@@ -2,6 +2,10 @@
 author: Jemus42
 categories:
 - meta
+tags:
+- Hugo
+- Jekyll
+- octopress
 date: 2016-10-01
 title: Oh Great, Another Blogging Engine
 ---

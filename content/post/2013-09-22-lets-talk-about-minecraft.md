@@ -1,9 +1,10 @@
 ---
 author: jemus42
 categories:
-- Minecraft
+- rambling
 date: 2013-09-23
-tags: null
+tags: 
+- Minecraft
 title: Let's talk about Minecraft
 ---
 

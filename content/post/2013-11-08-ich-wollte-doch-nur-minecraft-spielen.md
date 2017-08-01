@@ -1,9 +1,10 @@
 ---
 author: jemus42
 categories:
-- Minecraft
+- rambling
 date: 2013-11-08
-tags: null
+tags:
+- Minecraft
 title: Ich wollte doch nur Minecraft spielen
 ---
 

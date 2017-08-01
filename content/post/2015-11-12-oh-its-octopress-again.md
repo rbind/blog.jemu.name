@@ -2,6 +2,8 @@
 author: Jemus42
 categories:
 - meta
+tags:
+- octopress
 date: 2015-11-12
 title: Oh, It's Octopress. Again.
 ---

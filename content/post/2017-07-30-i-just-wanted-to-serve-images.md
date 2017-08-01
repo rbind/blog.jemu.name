@@ -10,6 +10,10 @@ tags:
   - knitr
   - snippet
   - html
+  - Hugo
+packages:
+- blogdown
+- knitr
 enable_mathjax: no
 enable_katex: no
 ---
@@ -17,7 +21,7 @@ enable_katex: no
 Ever since my blog has been migrated to [blogdown], blogging is kind of fun again.  
 Not only do I slowly feel like I've understood the basics of [Hugo], but now tweaking my blog feels like an extended R project -- which I'm quite fond of.
 
-To recap: My blog is built using [blogdown], which borrows ideas from [bookdown], to prepare things for [Hugo] to built the site, all while [bookdown] (and in turn [blogdown]) harness the power of [RMarkdown], which in turn uses [knitr] for basically all its glory. Also, pandoc.  
+To recap: My blog is built using [blogdown], which borrows ideas from [bookdown], to prepare things for [Hugo] to built the site, all while [bookdown], (and in turn [blogdown]) harness the power of [RMarkdown], which in turn uses [knitr] for basically all its glory. Also, pandoc.  
 
 So… yeah. It's not as bad as it seems, trust me.  
 That might also be what the Ruby people will tell you about Jekyll and the likes, but don't trust them -- they're all wrong and I'm the only one who's right.  

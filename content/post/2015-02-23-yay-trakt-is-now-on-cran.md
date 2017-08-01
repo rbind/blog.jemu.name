@@ -2,6 +2,10 @@
 author: jemus42
 categories:
 - rstats
+tags:
+- r-pkgs
+packages:
+- tRakt
 date: 2015-02-23
 title: Yay! tRakt is now on CRAN
 ---
