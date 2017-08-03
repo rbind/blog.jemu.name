@@ -10,6 +10,8 @@ tags:
   - IMDb
   - Rmd
   - snippet
+shows:
+  - Game of Thrones
 editor_options:
   chunk_output_type: console
 ---

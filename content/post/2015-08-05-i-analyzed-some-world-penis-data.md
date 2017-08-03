@@ -3,7 +3,13 @@ author: jemus42
 categories:
 - rstats
 date: 2015-08-05
-tags: null
+tags: 
+  - Penis Data
+packages:
+  - rvest
+  - dplyr
+  - ggplot2
+  - pixiedust
 title: I analyzed some world penis data - because why not
 ---
 

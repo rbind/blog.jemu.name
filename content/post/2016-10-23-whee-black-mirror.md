@@ -6,6 +6,7 @@ shows:
 - Black Mirror
 tags:
 - Netflix
+- Show-Recap
 title: Whee, more Black Mirror!
 ---
 

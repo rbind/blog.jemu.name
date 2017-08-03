@@ -6,18 +6,22 @@ categories:
   - rstats
   - tvshows
 tags:
-  - trakt.tv
   - IMDb
   - Rmd
+  - trakt.tv
 shows:
   - Game of Thrones
+packages:
+  - tRakt
+  - ggplot2
+  - rvest
 slug: prepping-for-winter-kind-of
 editor_options:
   chunk_output_type: console
 output:
   blogdown::html_page:
-    toc: no
-gallery: "fresco"
+    toc: yes
+gallery: fresco
 ---
 
 ```{r init, include = F}

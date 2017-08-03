@@ -7,6 +7,7 @@ date: 2015-11-26
 tags:
 - Marvel
 - Netflix
+- Show-Recap
 shows:
 - Jessica Jones
 title: Jessica Jones recap
