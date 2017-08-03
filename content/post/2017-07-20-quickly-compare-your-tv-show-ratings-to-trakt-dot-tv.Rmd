@@ -6,12 +6,17 @@ categories:
   - rstats
   - tvshows
 tags:
-  - trakt.tv
   - IMDb
   - Rmd
   - snippet
+  - trakt.tv
 shows:
   - Game of Thrones
+packages:
+  - tRakt
+  - dplyr
+  - ggplot2
+  - tidyr
 editor_options:
   chunk_output_type: console
 ---

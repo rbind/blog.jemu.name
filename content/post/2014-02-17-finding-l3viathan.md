@@ -1,9 +1,15 @@
 ---
-author: Jemus42
-categories:
-- rstats
-date: 2014-02-17
 title: Finding L3viathan
+author: Jemus42
+date: '2014-02-17'
+categories:
+  - rstats
+tags:
+  - location data
+  - needs revisit
+packages:
+  - ggplot2
+  - maps
 ---
 
 Neulich hatte [L3viathan](https://twitter.com/l3viathan2142) seine [openpaths](http://openpaths.cc)-Locationdaten ver[gist](https://gist.github.com/L3viathan/24a49504c75ef92625a2)ed, und da ich Spaß an R habe und neulich ja schon Dinge zu ebenjenem Anwendungsfall schrob, warf ich dann mal ein paar Dinge drauf. Hier so das Ergebnis.

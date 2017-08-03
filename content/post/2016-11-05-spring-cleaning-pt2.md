@@ -1,9 +1,14 @@
 ---
-author: Jemus42
-categories:
-- tech
-date: 2016-11-05
 title: My Summer Spring Cleaning, Part 2
+author: Jemus42
+date: '2016-11-05'
+categories:
+  - tech
+tags:
+  - NAS
+  - FreeNAS
+  - plex
+  - nginx
 type: post
 ---
 

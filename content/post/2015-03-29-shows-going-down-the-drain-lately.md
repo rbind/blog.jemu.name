@@ -1,10 +1,11 @@
 ---
-author: jemus42
-categories:
-- rstats
-- tvshows
-date: 2015-03-29
 title: Shows going down the drain lately
+author: jemus42
+date: '2015-03-29'
+categories:
+  - tvshows
+tags:
+  - needs revisit
 ---
 
 I don't know if you've noticed, but lately I've done a lot of stuff with tv shows.  

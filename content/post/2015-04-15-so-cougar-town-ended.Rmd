@@ -5,9 +5,14 @@ date: '2015-04-14'
 categories:
   - tvshows
 tags:
-  - trakt.tv
   - Rmd
-shows: 
+  - Show-Recap
+  - snippet
+  - trakt.tv
+packages:
+  - tRakt
+  - ggplot2
+shows:
   - Cougar Town
 editor_options:
   chunk_output_type: console

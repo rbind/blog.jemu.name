@@ -1,10 +1,17 @@
 ---
-author: jemus42
-categories:
-- rstats
-- tvshows
-date: 2015-03-04
 title: So I threw R at a thousand(ish) TV shows
+author: jemus42
+date: '2015-03-04'
+categories:
+  - rstats
+  - tvshows
+tags:
+  - needs revisit
+  - trakt.tv
+packages:
+  - tRakt
+  - plyr
+  - ggplot2
 ---
 
 Analyzing TV shows seems to be what I do these days.  

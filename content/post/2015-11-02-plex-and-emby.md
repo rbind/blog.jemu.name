@@ -1,9 +1,12 @@
 ---
-author: jemus42
-categories:
-- tech
-date: 2015-11-02
 title: Plex and Emby
+author: jemus42
+date: '2015-11-02'
+categories:
+  - tech
+tags:
+  - plex
+  - emby
 ---
 
 Having a media center and appropriate infrastructure in your own home is a nice thing. Besides questions about hardware specifications, there's also the the matter of software to use.  

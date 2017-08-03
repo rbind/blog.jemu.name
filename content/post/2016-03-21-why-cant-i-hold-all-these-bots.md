@@ -1,9 +1,12 @@
 ---
-author: jemus42
-categories:
-- lolz
-date: 2016-03-21
 title: Why Can't I Hold All These Bots
+author: jemus42
+date: '2016-03-21'
+categories:
+  - lolz
+tags:
+  - twitter
+  - bot
 ---
 
 [Last time I mentioned](http://blog.jemu.name/lolz/2016/03/theres-a-new-bot-in-town/) how I set up [@whatever_ebooks](https://twitter.com/whatever_ebooks), a bot that's basically an amalgamation of a part of my twitter social circle.  

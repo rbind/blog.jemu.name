@@ -1,10 +1,12 @@
 ---
-author: jemus42
-categories:
-- lolz
-date: 2016-03-17
-tags: null
 title: There's a New Bot in Town
+author: jemus42
+date: '2016-03-17'
+categories:
+  - lolz
+tags:
+  - twitter
+  - bot
 ---
 
 Well hello there.

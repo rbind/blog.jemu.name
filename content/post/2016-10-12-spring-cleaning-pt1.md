@@ -1,9 +1,14 @@
 ---
-author: Jemus42
-categories:
-- tech
-date: 2016-10-12
 title: My Summer Spring Cleaning, Part 1
+author: Jemus42
+date: '2016-10-12'
+categories:
+  - tech
+tags:
+  - Ubuntu
+  - VPS
+  - nginx
+  - rstats
 type: post
 ---
 
