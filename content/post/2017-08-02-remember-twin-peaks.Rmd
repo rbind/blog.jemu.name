@@ -1,0 +1,120 @@
+---
+title: Remember Twin Peaks?
+author: Jemus42
+date: '2017-08-02'
+categories:
+  - rstats
+  - tvshows
+tags:
+  - Rmd
+  - trakt.tv
+slug: remember-twin-peaks
+shows:
+  - Twin Peaks
+packages:
+  - tRakt
+  - ggplot2
+draft: no
+---
+
+```{r init, include = F}
+source(rprojroot::find_rstudio_root_file("global.R"))
+```
+
+Twin Peaks came, Twin Peaks got weird, Twin Peaks went away and recently it came back.  
+That's the short story.  
+Like many people who thought the original series was extraordinarily weird, yet somehow intrigueing, I of course watch the current season. It's still very weird, and reasonably intrigueing.
+
+So obviously I gotta do my usual thing of exploring the [trakt.tv](https://trakt.tv) user ratings.
+
+```{r setup}
+library(tRakt) # devtools::install_github("jemus42/tRakt")
+library(ggplot2)
+library(scales)
+library(dplyr)
+
+twinpeaks <- trakt.get_all_episodes("twin-peaks")
+
+caption <- paste0("Data as of ", format(Sys.Date()), "\n@jemus42")
+```
+
+First up, as basic overview based on original airdates:
+
+```{r airdate-order}
+ggplot(data = twinpeaks, aes(x = first_aired, y = rating, fill = season)) +
+  geom_point(shape = 21, color = "black", size = 2) +
+  scale_x_datetime(date_breaks = "3 years", minor_breaks = date_breaks("1 year"),
+                   labels = date_format("%Y")) +
+  scale_y_continuous(breaks = seq(0, 10, .5), minor_breaks = seq(0, 10, .1),
+                     limits = c(6.99, 8.51)) +
+  scale_color_brewer(palette = "Set1", guide = F) +
+  scale_fill_brewer(palette = "Set1") +
+  labs(title = "Twin Peaks",
+       subtitle = "User Ratings on trakt.tv",
+       x = "Original Air Date", y = "User Rating (1-10)",
+       fill = "Season", caption = caption) +
+  theme(legend.position = "top")
+```
+
+Well that's about 25 years of nothing between seasons 2 and 3.  
+Some might consider the recent season a separate entitiy due to that gap, but oh well, I don't really have a horse in that race and will just consider it one long series.  
+To remove the gap, we'll just look at the absolute episode numbers:
+
+```{r absolute-episodes}
+ggplot(data = twinpeaks, aes(x = epnum, y = rating, fill = season)) +
+  geom_smooth(aes(color = season), method = lm, se = F, alpha = .1) +
+  geom_point(shape = 21, color = "black", size = 2) +
+  scale_x_continuous(breaks = seq(0, 50, 5), minor_breaks = seq(0, 50, 1)) +
+  scale_y_continuous(breaks = seq(0, 10, .5), minor_breaks = seq(0, 10, .1),
+                     limits = c(6.99, 8.51)) +
+  scale_color_brewer(palette = "Set1", guide = F) +
+  scale_fill_brewer(palette = "Set1") +
+  labs(title = "Twin Peaks",
+       subtitle = "User Ratings on trakt.tv",
+       x = "Absolute Episode #", y = "User Rating (1-10)",
+       fill = "Season", caption = caption) +
+  theme(legend.position = "top")
+```
+
+Let's compare the seasons directly.
+
+```{r season-comparison}
+ggplot(data = twinpeaks, aes(x = season, y = rating, fill = season)) +
+  geom_boxplot(width = .5, alpha = .5, outlier.alpha = 0) +
+  geom_jitter(aes(color = season), width = .2, height = 0, alpha = .7) +
+  scale_y_continuous(breaks = seq(0, 10, .5), minor_breaks = seq(0, 10, .1),
+                     limits = c(6.99, 8.51)) +
+  scale_color_brewer(palette = "Set1", guide = F) +
+  scale_fill_brewer(palette = "Set1", guide = F) +
+  labs(title = "Twin Peaks",
+       subtitle = "User Ratings on trakt.tv",
+       x = "Season", y = "User Rating (1-10)",
+       fill = "Season", caption = caption) +
+  theme(legend.position = "top")
+```
+
+It should probably also be noted that episode runtimes haven't been exactly constant throughout the seasons. There are some >90min episodes which should probably considered two-parters, so I'll just halve those runtimes for a better overview.
+
+```{r season-comparison-runtimes}
+twinpeaks %>%
+  mutate(runtime = ifelse(runtime > 90, runtime/2, runtime)) %>%
+  ggplot(data = ., aes(x = season, y = runtime, fill = season)) +
+  geom_boxplot(width = .5, alpha = .5, outlier.alpha = 0) +
+  geom_jitter(aes(color = season), width = .2, height = 0, alpha = .7) +
+  #scale_y_continuous(breaks = seq(0, 10, .5), minor_breaks = seq(0, 10, .1),
+   #                  limits = c(6.99, 8.51)) +
+  scale_color_brewer(palette = "Set1", guide = F) +
+  scale_fill_brewer(palette = "Set1", guide  = F) +
+  labs(title = "Twin Peaks",
+       subtitle = "Episode Runtimes",
+       x = "Season", y = "Runtime (mins)",
+       fill = "Season", caption = caption) +
+  theme(legend.position = "top")
+```
+So yeah, there's a lot more episode per episode this season.  
+Most of the extra time might be filled with people sweeping the floor of a bar or obnoxious honking, but you get the idea.
+
+At the time of this writing, the season is still airing, however the code will re-execute on future updates on my blog, so the data will eventually be newer than the stuff I wrote around it.  
+I might add to this post over the next weeks, idunno.  
+Consider this an early-access blogpost.
+Because that's how I roll in 2017.
