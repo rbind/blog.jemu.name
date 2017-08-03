@@ -67,7 +67,6 @@ Paginate = 10
     gallery = "fresco"
 
 [params.customCSS]
-    tweaks = "css/tweaks.min.css"
     bigfoot = "css/bigfoot-number.min.css"
 
 [params.logo]
