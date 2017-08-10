@@ -12,7 +12,7 @@ tags:
 type: post
 ---
 
-Over the past few weeks I've been upgrading large parts of my personal server infrastructure, including new hardware in my home and different hosts in the ~~butt~~ cloud^TM.  
+Over the past few weeks I've been upgrading large parts of my personal server infrastructure, including new hardware in my home and different hosts in the ~~butt~~ cloud<sup>TM</sup>.  
 Since I spent half the time of the setup reading through blogposts/tutorials/documentation to get everything going, I thought it'd be a nice idea to summarize the stuff I set up in one blogpost, also giving me the excuse to brag about the stuff I did, to my surprise, without any lasting damages.
 
 

@@ -7,7 +7,9 @@ draft: false
 enable_katex: false
 enable_mathjax: false
 slug: the-bottomless-pit-of-educational-youtube
-tags: ""
+tags:
+- Youtube
+- Recommendations
 title: The Bottomless Pit of Educational Youtube
 ---
 

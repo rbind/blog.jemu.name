@@ -5,7 +5,13 @@ date: '2017-07-16'
 slug: something-about-gdq
 categories:
   - rstats
-tags: []
+tags: 
+  - Rmd
+  - GDQ
+packages:
+  - dplyr
+  - ggplot2
+  - rvest
 editor_options: 
   chunk_output_type: console
 ---

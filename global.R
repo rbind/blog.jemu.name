@@ -8,7 +8,7 @@ library(tadaatoolbox)
 source(rprojroot::find_rstudio_root_file("helpers.R"))
 
 # Hugo config
-config_toml <- RcppTOML::parseTOML(rprojroot::find_rstudio_root_file("config.toml"))
+# config_toml <- RcppTOML::parseTOML(rprojroot::find_rstudio_root_file("config.toml"))
 
 # Global chunk options
 knitr::opts_chunk$set(out.width = "100%",

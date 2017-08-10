@@ -2,6 +2,7 @@
 title: I Just Wanted to Serve Images
 author: Jemus42
 date: '2017-07-30'
+edit_date: '2017-08-07'
 slug: i-just-wanted-to-serve-images
 categories:
   - meta
@@ -31,7 +32,7 @@ Now that we've established what we all knew beforehand, let's talk about the par
 ## Plots for the people
 
 At the core of blogdown, it's still knitr that actually executes the R code in RMarkdown documents, so the assembled Markdown including code output can be converted to HTML, so any limitation knitr may have will trickle down into the finished output. There's also the topic of [pandoc's handling of Markdown](https://pandoc.org/MANUAL.html#pandocs-markdown) (did I mention pandoc is involved? Yeah, RMarkdown uses that for the Markdown to HTML conversion), and how it differs from Hugo's Markdown library ([blackfriday](https://github.com/russross/blackfriday)).  
-That topic will come up in the next section, but for now we're only concerned with knitr chunk output. 
+That topic will come up in the next section^[I ended up leaving that one out for a blogpost to come. I have things to say about pandoc HTML templates and TOCs and stuff.], but for now we're only concerned with knitr chunk output. 
 
 Knitr is great. You can write a chunk of R code that produces text or image output, and knitr will take that output and stitch it below the code chunk in the resulting output file.  
 The thing is, by default plots are rendered using the `png` graphics device, while the file path to the image is encapsulated by a standard HTML `<img>` tag.  
@@ -39,15 +40,15 @@ An `<img>` is all we need, right? So where's the problem?
 Well have you heard about [lightbox](http://lokeshdhakar.com/projects/lightbox2/)? There are dozens of JavaScript libraries like this (or rather jQuery plugins, but you get the idea) -- they're nice little additions to any post with multiple images, because they allow you to easily view, zoom and browse multiple images. If you're used to data analysis projects like mine, you'll see your fair share of plot after plot blog posts, so it seemed only natural for me to use something like this for my blog.  
 After a little trial and error with lightbox2, I ended up using [fresco] for some minor usability reasons.  
 
-The way most these plugins seem to work is by either writing custom JavaScript (which I can't be bothered to do), or attach secondary attributes to the image via an encloding `<a href=…` to trigger the JS code to fire up the box. Now I could have probably used JS to attach these attributes to the plot after the page has loaded, but that seemed clunky and potentially slow, or at least slower than just baking the stuff into the plot output.  
+The way most these plugins seem to work is by either writing custom JavaScript (which I can't be bothered to do), or attach secondary attributes to the image via an encloding `<a href=…>` to trigger the JS code to fire up the box. Now I could have probably used JS to attach these attributes to the plot after the page has loaded, but that seemed clunky and potentially slow, or at least slower than just baking the stuff into the plot output.  
 
 And that's how I learned about [knitr's hooks](https://yihui.name/knitr/hooks/#output-hooks). You see, to customize the way knitr writes out the `<img>` for the plot, you can't simply set a chunk option or something[^2], you have to substitute the appropriate hook with a function of your own that outputs the HTML you need.  
-So once I figured that out, it was fairly easy to get it to work just fine. My plot output was nicely wrapped in a hyperlink to the plot with the right attributes to make use of fresco, and everything was fine and dandy. 
+So once I figured that out, it was fairly easy to get it to work just fine. My plot output was nicely wrapped in a hyperlink to the plot with the right attributes to make use of fresco.js, and everything was fine and dandy. 
 
 ## Images for the web
 
 *But blog guy*, you might say, *that's nice for people, but what about semantic HTML?*.  
-Well I've thought of that as well, my dear hypothetical asshat. You see, by default knitr doesn't render plots with captions unless you specifically render directly to HTML instead of Markdown, so I thought I might as well make use of the `<figure>` and `<figcaption>` tags, so now my `<img>`s are wrapped in `<figure>`s with a `<figcaption>` that defaults to the `fig.cap` chunk option… which I'm not used to using, because I usually don't have much use for them. Usually. Uhuh? That's why I use the chunk `label` as a fallback for the caption, so all my plots are captioned nice(ish)ly.
+Well I've thought of that as well, my dear hypothetical commenter. You see, by default knitr doesn't render plots with captions unless you specifically render directly to HTML instead of Markdown, so I thought I might as well make use of the `<figure>` and `<figcaption>` tags, so now my `<img>`s are wrapped in `<figure>`s with a `<figcaption>` that defaults to the `fig.cap` chunk option… which I'm not used to using, because I usually don't have much use for them. Usually. Uhuh? That's why I use the chunk `label` as a fallback for the caption, so all my plots are captioned nice(ish)ly.
 
 *But that's not what I was talking about*, you might continue, and I know, I also learned about the [`<picture>` tag][picturetag]. It's a neat little HTML addition that lets you define different images for different screen sizes and even offer alternative image formats for browsers that know how to handle them.  
 The thing with the different sizes [has already been brought up on the blogdown repo](https://github.com/rstudio/blogdown/issues/46) and intrigued me a bit. I'm not very concerned with responsiveness in that regard because my plots are set to a width relative to the container size anyway, but a smaller filesize image format might be neat.  
@@ -58,24 +59,46 @@ Kind of.
 ## So what do?
 
 So what's going on in the end?  
-Basically, it all boils down to this part of my custom `hook` function that produces the plot's HTML:
+Basically, it all boils down to this custom `hook` function that produces the plot's HTML:
 
 ```r
-# Some assembly happening beforehand
+hook <- function(x, options) {
+  require(glue)
 
-glue("<figure><picture>",
-     "<source type='image/webp' srcset='{filename_webp}'>",
-     "<a href='{filename}' class='fresco' data-fresco-caption='{caption}'
-     data-fresco-group='{id}' data-lightbox='{id}' data-title='{caption}'>",
-     "<img src='{filename}' {width} {height} alt='{caption}' />",
-     "</a></picture>",
-     "<figcaption>{caption}</figcaption>",
-     "</figure>")
+  width <- height <- ''
+  if (!is.null(options$out.width))
+    width <- sprintf(' width = "%s" ', options$out.width)
+  if (!is.null(options$out.height))
+    height <- sprintf(' height = "%s" ', options$out.height)
+
+  basename <- paste0(knitr::opts_knit$get('base.url'), paste(x, collapse = '.'))
+  filename <- paste0("../../../post/", basename)
+  filename_webp <- stringr::str_replace(filename, "\\.png$", "\\.webp")
+  id       <- stringr::str_extract(x, "^[^\\/]*")
+
+  if (!is.null(options$fig.cap)) {
+    caption <- options$fig.cap
+  } else {
+    caption <- opts_current$get("label")
+  }
+
+  convert_plots(basename) # Calls magick functions for conversion
+
+  glue("<figure><picture>",
+       "<source type='image/webp' srcset='{filename_webp}'>",
+       "<a href='{filename}' class='fresco' data-fresco-caption='{caption}'
+       data-fresco-group='{id}' data-lightbox='{id}' data-title='{caption}'>",
+       "<img src='{filename}' {width} {height} alt='{caption}' />",
+       "</a></picture>",
+       "<figcaption>{caption}</figcaption>",
+       "</figure>")
+
+}
 ```
 
 <small>Full code [here](https://github.com/jemus42/blog.jemu.name/blob/master/helpers.R)</small>
 
-So the structure is basically like this:
+So the structure of the output is like this:
 
 ```html
 <figure>

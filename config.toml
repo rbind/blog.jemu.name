@@ -8,6 +8,7 @@ disqusShortname = "blogjemuname"
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 googleAnalytics = "UA-52990941-5"
 Paginate = 10
+preserveTaxonomyNames = true
 
 [permalinks]
     post = "/:year/:month/:slug/"
@@ -20,6 +21,23 @@ Paginate = 10
     name = "Projects"
     url = "/projects/"
     weight = 2
+
+[[menu.taxonomies]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 4
+[[menu.taxonomies]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 1
+[[menu.taxonomies]]
+    name = "Shows"
+    url = "/shows/"
+    weight = 2
+[[menu.taxonomies]]
+    name = "Packages"
+    url = "/packages/"
+    weight = 3
 
 [[menu.social]]
     name = "twitter"
