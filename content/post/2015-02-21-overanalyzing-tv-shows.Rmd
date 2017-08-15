@@ -1,0 +1,502 @@
+---
+title: Overanalyzing TV Shows
+author: jemus42
+date: "2015-02-20"
+edit_date: "2017-08-14"
+categories:
+  - rstats
+  - tvshows
+tags:
+  - Rmd
+  - trakt.tv
+packages:
+  - ggplot2
+  - tRakt
+shows:
+  - Game of Thrones
+  - Scrubs
+  - Star Trek Enterprise
+  - The Simpsons
+  - Daria
+  - Lost
+  - Sleepy Hollow
+  - Family Guy
+  - Parks & Recreation
+  - Futurama
+  - Person of Interest
+  - Castle
+enable_mathjax: true
+editor_options: 
+  chunk_output_type: console
+---
+
+**EDIT 2017-08-14**: I've fixed all the code so it works and is up to date. Side effects include the text not necessarily matching the data. Whoopsie.
+
+Overanalyzing tv shows has kind of become my jam. So why not totally overdo it.  
+Note that everything I describe in this blogpost is purely for the lulz, and I don't 
+pretend there's any scientific merit to it. I just like throwing maths at data.
+
+After I more or less succesfully [plotted all the things](http://trakt.jemu.name), I wanted to 
+go full blown statisticy on the subject. While my knowledge of statistics isn't nearly as extensive as I'd like it to, I at least know a little about comparing groups. So, that's pretty much the plan.
+
+## Methodology(ish)
+
+The basic idea is simple: I pull the episode data from [trakt.tv](https://trakt.tv) and receive a nice `data.frame` with episode numbers, season number, ratings (0-10) and much more. Assuming that seasons are a decent way of dividing a tv show into groups, I'll be using them exactly as such. The variable we're interested in comparing is the rating, provied by the trakt.tv userbase.  
+Using that information we can perform an analysis of variance (ANOVA), with the `aov()` function. If it yields any signicificant results, we then perform the `TukeyHSD` test for post-hoc analysis to find the season comparison with the significant results (i.e. lowest p-value). And yes, I know the p-value in itself is at least a little controversial, and the whole plan might sound completely rubbish to you, but please keep in mind that I'm only doing this for fun.
+
+## Acquiring the Data
+
+This step is pretty simple thanks to the work I did with my [tRakt package](https://github.com/jemus42/tRakt) which allows us to pull the data we want in a few simple steps. I'll also start by loading some packages I intend on using throughout this blogpost. The idea is that you can aggregate all the code in this post and thereby reliably reproduce my results. Because that's how I like to science.
+
+
+```{r setup, message=FALSE, warning=FALSE}
+library(tRakt)   # To get the data. Get it via devtools::install_github("jemus42/tRakt")
+library(dplyr)   # Because convenience
+library(ggplot2) # In case of plot
+library(grid)    # For some ggplot2 theme specs
+library(scales)  # Primarily for pretty_breaks() in plots
+library(broom)   # To pretty up output of tests & models
+library(knitr)   # For simple tables via knitr::kable
+library(tadaatoolbox) # For prettier test output
+
+if (is.null(getOption('trakt.client.id'))){
+  get_trakt_credentials(client.id = "12fc1de7671c7f2fb4a8ac08ba7c9f45b447f4d5bad5e11e3490823d629afdf2")
+}
+
+theme_set(theme_tadaa())
+```
+
+Now we're all set. At this point, we can pull the episode data via `trakt.get_all_episodes(slug, season_nums)`, so if we were to look at Game of Thrones (and we will), we'd call `trakt.get_all_episodes("game-of-thrones", 1:4)`.  
+
+So, why not get started on that.
+
+## Analyzing all the things
+
+### Game of Thrones. 
+
+
+```{r got}
+got <- trakt.get_all_episodes("game-of-thrones", 1:6)
+
+# Glance at the data
+got %>% select(season, episode, rating) %>% head %>% kable
+```
+
+
+Now that we have the data, we can pump it through `aov()` and look at the `broom::tidy`'d data.  
+Note that I pump the output through `knitr::kable`, which converts the output to a markdown table suitable for imbedding in this blogpost.
+
+
+```{r got_model}
+tadaa_aov(rating ~ season, data = got, print = "markdown") 
+```
+
+
+Well, that's anticlimactic. Anyways, I assume it's safe to say that Game of Thrones is pretty consistent with it's ratings across all seasons. I hope it can keep this up for the following one to five seasons.
+
+A neat way to look at the distributions across multiple groups is via density plots. If you're unfamiliar with them, just imagine a standard histograms (values on the x, frequencies on the y axis), but with interpolation/smoothing to produce curves. I know that's probably not the right way to think of it, but should give you an idea of what's up.
+
+
+```{r got-plot}
+ggplot(data = got, aes(x = rating, fill = season)) +
+  geom_density(alpha = .6) +
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title = "Game of Thrones Episode Ratings per Season",
+       y = "Density", x = "Rating", fill = "Season")
+```
+
+
+What I like about this plot is how season 2 seems so neatly grouped around ~8.6 with a bump near the top of the scale, which I assume to be s02e09/s02e10. Especially season 4 on the other hand is pretty spread out, meaning there's a broader range of ratings, or at least a more even spread of ratings.
+
+### The Simpsons 
+
+
+```{r simpsons, cache=TRUE}
+simpsons <- trakt.get_all_episodes("the-simpsons")
+
+tadaa_aov(rating ~ season, data = simpsons, print = "markdown") 
+```
+
+Oh, look, a significant value. Nice. Let's throw `TukeyHSD` at it to see what sticks.
+
+
+```{r simpsons-tukey}
+aov(rating ~ season, data = simpsons) %>%
+  TukeyHSD() %>%
+  tidy() %>%
+  filter(adj.p.value < 0.05) %>%
+  nrow()
+```
+
+Welp, that's quite a bunch of significant values. Let's look at everything with a `p < 0.00000001`, because I tried *normal* significance levels and there were still too many hits.
+
+```{r simpsons-tukey-plot}
+aov(rating ~ season, data = simpsons) %>%
+  TukeyHSD() %>%
+  tidy() %>%
+  filter(adj.p.value < 0.00000001) %>%
+  tadaa_plot_tukey()
+```
+
+I think the result is quite convincing. Season ~~19~~ 28 is, statistically speaking, the worst of The Simpsons.
+
+I don't think a density plot would make much sense here, since there are *so many seasons*, so I'll just give you a scatterplot.
+
+
+```{r simpsons-scatter}
+ggplot(data = simpsons, aes(x = epnum, y = rating, colour = season)) +
+  geom_point(size = 4, colour = "black") +
+  geom_point(size = 3) +
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title = "The Simpsons Episode Ratings per Season",
+       y = "Rating", x = "Episode (absolute)", colour = "Season") +
+  theme(legend.position   = "top") +
+  theme(legend.key.size   = unit(.3, "cm")) +
+  theme(legend.text  = element_text(size = 8))
+```
+
+
+If you want to take a closer look, try looking it up on [tRakt-shiny](http://trakt.jemu.name)
+        
+### Star Trek: Enterprise
+
+As per [request](https://twitter.com/mxey), let's look how that one's doing.
+
+
+```{r STE}
+ste  <- trakt.get_all_episodes("star-trek-enterprise")
+
+tadaa_aov(rating ~ season, data = ste, print = "markdown") 
+```
+
+
+Once again a significant result. From what I've been told, s04 is said to be better than the other seasons, so I guess that's what we'll be looking for here.
+
+
+```{r STE-tukey}
+aov(rating ~ season, data = ste) %>%
+  TukeyHSD() %>% 
+  tidy() %>%
+  tadaa_plot_tukey()
+```
+
+Now let's look at the ratings in density-plot form. 
+
+```{r STE-density}
+ggplot(data = ste, aes(x = rating, fill = season)) +
+  geom_density(alpha = .6) +
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title = "Star Trek: Enterprise Episode Ratings per Season",
+       y = "Density", x = "Rating", fill = "Season")
+```
+
+
+Welp, it really looks like s04 was (significantly) more well-received than the other seasons.
+
+### Futurama
+
+A long standing favorite of mine and also a [request](https://twitter.com/l3viathan2142).
+I wonder if the many many cancellations had any effect on season reception.
+
+
+```{r futurama}
+futurama  <- trakt.get_all_episodes("futurama")
+
+tadaa_aov(rating ~ season, data = futurama, print = "markdown") 
+```
+
+Assuming we're working with a $\alpha = 0.05$ (which I'll just say we do), that's a significant result.
+
+
+```{r futurama-tukey}
+aov(rating ~ season, data = futurama) %>%
+  TukeyHSD() %>%
+  tidy() %>%
+  tadaa_plot_tukey()
+```
+
+Welp, at least the first line yields a significant result with the `.05` cutoff, so I guess you could make an argument that s05 was better than s07, but besides that it seems like Futurama was pretty consistent.  
+Let's look at a plot to get a feel for that.
+
+
+```{r futurama-density}
+ggplot(data = futurama, aes(x = rating, fill = season)) +
+  geom_density(alpha = .6) +
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title = "Futurama Episode Ratings per Season",
+       y = "Density", x = "Rating", fill = "Season")
+```
+
+
+Yip. Seems pretty consistent to me.
+
+### Lost
+
+Oh screw me. Well, let's do this.
+
+
+```{r}
+lost  <- trakt.get_all_episodes("lost-2004")
+
+tadaa_aov(rating ~ season, data = lost) 
+```
+
+Huh. So I guess we'll have to take a closer look.
+
+
+```{r lost-tukey}
+aov(rating ~ season, data = lost) %>%
+  TukeyHSD() %>%
+  tidy() %>%
+  tadaa_plot_tukey()
+```
+
+
+I haven't watched Lost and I don't really care for it, so make of this what you will.
+
+```{r lost-density}
+ggplot(data = lost, aes(x = rating, fill = season)) +
+  geom_density(alpha = .6) +
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title = "Lost Episode Ratings per Season",
+       y = "Density", x = "Rating", fill = "Season")
+```
+
+
+### Daria
+
+Everybody loves Daria, so don't pretend you don't know what's up.
+
+
+```{r daria}
+daria <- trakt.get_all_episodes("daria")
+
+tadaa_aov(rating ~ season, data = daria, print = "markdown") 
+```
+
+Oh, well. 
+
+```{r daria-tukey}
+aov(rating ~ season, data = daria) %>%
+  TukeyHSD() %>%
+  tidy() %>%
+  tadaa_plot_tukey()
+```
+
+It's been a while since I watched Daria, but season 4 seems… oh wait, nevermind. There are several missing values in the dataset, I don't feel comfortable making assumptions based on insufficient data. I mean, look at this plot of the rating distribution:
+
+
+```{r daria-plot}
+ggplot(data = daria, aes(x = rating, fill = season)) +
+  geom_density(alpha = .6) +
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title = "Daria Episode Ratings per Season",
+       y = "Density", x = "Rating", fill = "Season")
+```
+
+
+And then look at the vote distribution:
+
+
+```{r daria-plot2}
+ggplot(data = daria, aes(x = votes)) +
+  geom_histogram(alpha = .6, binwidth = 1) +
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title = "Daria Episode Votes",
+       y = "Density", x = "Vote", fill = "Season")
+```
+
+
+The peak at $x = 0$ means exactly what you think it means: A large number of episodes with no votes at all.  
+So, that's a bummer.
+
+### Person of Interest
+
+
+```{r poi}
+poi  <- trakt.get_all_episodes("person-of-interest")
+
+tadaa_aov(rating ~ season, data = poi, print = "markdown") 
+```
+
+No post-hoc necessary. 
+Courtesy plot:
+
+
+```{r poi-density}
+ggplot(data = poi, aes(x = rating, fill = season)) +
+  geom_density(alpha = .6) +
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title = "Person of Interest Episode Ratings per Season",
+       y = "Density", x = "Rating", fill = "Season")
+```
+
+
+### Castle
+
+
+```{r castle}
+castle <- trakt.get_all_episodes("castle")
+
+tadaa_aov(rating ~ season, data = castle, print = "markdown") 
+```
+
+Huh.
+
+```{r castle-tukey}
+aov(rating ~ season, data = castle) %>%
+  TukeyHSD() %>%
+  tidy() %>%
+  tadaa_plot_tukey()
+```
+
+There seems to be quite some disturbance in the force with this one.
+
+
+```{r castel-density}
+ggplot(data = castle, aes(x = rating, fill = season)) +
+  geom_density(alpha = .6) +
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title = "Castle Episode Ratings per Season",
+       y = "Density", x = "Rating", fill = "Season")
+```
+
+
+### Parks & Recreation
+
+
+```{r prec}
+prec <- trakt.get_all_episodes("parks-and-recreation")
+
+tadaa_aov(rating ~ season, data = prec, print = "markdown") 
+```
+
+Again? Whow, we're on a roll.
+
+```{r prec-tukey}
+aov(rating ~ season, data = prec) %>%
+  TukeyHSD() %>%
+  tidy() %>%
+  tadaa_plot_tukey()
+```
+
+What. It looks like almost every season is rated significantly different than every other.
+
+```{r prec-density}
+ggplot(data = prec, aes(x = rating, fill = season)) +
+  geom_density(alpha = .6) +
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title = "Parks & Recreation Episode Ratings per Season",
+       y = "Density", x = "Rating", fill = "Season")
+```
+
+
+Oh yeah. That show is a mess, consistency-wise.  
+Interesting how bad s01 seems to be doing.
+
+### Sleepy Hollow
+
+Haven't seen it, not sure if I will.
+
+
+```{r shollow}
+shollow <- trakt.get_all_episodes("sleepy-hollow")
+
+tadaa_aov(rating ~ season, data = shollow) 
+```
+
+Well.
+
+```{r}
+aov(rating ~ season, data = shollow) %>%
+  TukeyHSD() %>%
+  tidy() %>%
+  tadaa_plot_tukey()
+```
+
+Okay, with only two seasons there's not much fun in doing an ANOVA in the first place, a simple t-test would probably have done the trick.
+
+```{r shollow-density}
+ggplot(data = shollow, aes(x = rating, fill = season)) +
+  geom_density(alpha = .6) +
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title = "Sleepy Hollow Episode Ratings per Season",
+       y = "Density", x = "Rating", fill = "Season")
+```
+
+
+The point being: It doesn't seem to get better. 
+
+### Family Guy
+
+To end this, here comes a favorite of mine.
+
+
+```{r famguy}
+fguy <- trakt.get_all_episodes("family-guy")
+tadaa_aov(rating ~ season, data = fguy, print = "markdown") 
+```
+
+Oh well, I'll take it.
+
+```{r}
+aov(rating ~ season, data = fguy) %>%
+  TukeyHSD() %>%
+  tidy() %>%
+  tadaa_plot_tukey()
+```
+
+Hm.
+
+```{r famguy_plot}
+fguy$rating[fguy$rating == 0] <- NA
+ggplot(data = fguy, aes(x = rating, fill = season)) +
+  geom_density(alpha = .6) +
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title = "Family Guy Episode Ratings per Season",
+       y = "Density", x = "Rating", fill = "Season")
+```
+
+
+
+### Scrubs
+
+As an afterthought, let's look at the one that got this whole thing started.
+
+
+```{r scrubs}
+scrubs <- trakt.get_all_episodes("scrubs")
+tadaa_aov(rating ~ season, data = scrubs, print = "markdown") 
+```
+
+That's… convincing.
+
+```{r scrubs-tukey}
+aov(rating ~ season, data = scrubs) %>%
+  TukeyHSD() %>%
+  tidy() %>%
+  tadaa_plot_tukey()
+```
+
+Once again, pretty convincing. Nobody likes s09.
+
+```{r scrubs-density}
+ggplot(data = scrubs, aes(x = rating, fill = season)) +
+  geom_density(alpha = .6) +
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title = "Scrubs Episode Ratings per Season",
+       y = "Density", x = "Rating", fill = "Season")
+```
+
+
+…yip.
+
+## Limitations
+
+Probably the most important thing to note about all of this is that trakt.tv doesn't nearly have the userbase of other, well established sites like [IMDb](http://www.imdb.com/), so, well, I guess the sample size might be too small, or maybe there are some biases or confounders at work which I can't really adjust for.  
+A way around this would probably be to use the `votes` variable in the episode dataset to normalize the ratings across a show, but I don't really know a decent way to do that, since the per-episode ratings already represent the average of all the user votes for that episode.  
+ 
+The other problem is that I never once checked for normality within the ratings, which should be given if you want to perform an ANOVA. If the variable you're looking at is not distributed normally, you should be doing a Kruskal-Wallis, but I'm a lazy man.
+
+Well, there's that and my whole point about how this is all fun and games, and no serious points shall be made.
+
