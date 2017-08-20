@@ -98,9 +98,8 @@ ggplot(data = episodes,
   scale_fill_ipsum(guide = FALSE) +
   labs(title = show$title,
        subtitle = "User Ratings on trakt.tv",
-       x = "Original Air Date",
+       x = "Season",
        y = "User Rating (1-10)",
-       fill = "Season",
        caption = paste("Data as of", format(Sys.Date(), "%F"))) +
   theme_ipsum() +
   theme(legend.position = "top")
