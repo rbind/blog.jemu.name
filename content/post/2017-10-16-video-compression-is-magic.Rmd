@@ -1,0 +1,328 @@
+---
+title: Video Compression is Magic
+author: jemus42
+date: '2017-10-16'
+slug: video-compression-is-magic
+categories:
+  - tech
+tags:
+  - Rmd
+  - x265
+  - x264
+  - ffmpeg
+shows: []
+packages:
+  - ggplot2
+draft: no
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r init, include = F}
+source(rprojroot::find_rstudio_root_file("global.R"))
+knitr::opts_chunk$set(echo = FALSE)
+
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(viridis)
+library(hrbrthemes)
+library(sjPlot)
+library(DT)
+
+theme_set(hrbrthemes::theme_ipsum() +
+          theme(legend.position = "top"))
+
+samples <- read_rds("~/repos/medialibrary/samples.rds")
+```
+
+If you're like me, you probably have a serious issue with digital hoarding, refuse to delete anything and methodically collect and categorize _all the things_.  
+We need help, yes.  
+In the meantime, there's the option of substituting your carefully hand-encoded AVC video files and give them the ol' modernization treatment with our new best friend, HEVC.  
+If you're confused at this point, here's a short glossary:
+
+- **AVC**: *Advanced Video Codec* or *x264*: The video codec used in pretty much all modern video.
+- **HEVC**: *High Efficiency Video Codec* or *x265*: The new kid on the block and successor to AVC.
+
+Your standard run-of-the-mill video file that obviously fell from a truck will usually come in either an *mp4* or *mkv* **container** with *AVC* video and some kind of audio.  
+If you want to reduce the file size of the video and keep the quality reasonably high, re-encoding the file into HEVC seems to be a valid plan. Obviously it would be technically better to rip the source medium again into HEVC directly instead of transcoding an existing lossily-encoded file, but… yeah, that would be more work and less bashscriptable.  
+On a side note, if you want a little primer on video compression, I heartily recommend [Tom Scott's video on a related issue](https://www.youtube.com/watch?v=r6Rp-uo6HmI).
+
+Anyway, long story short:  
+so I took the first episode of [Farscape](https://en.wikipedia.org/wiki/Farscape), which I had conveniently lying around in a neat little matroska-packaged AVC+DTS combo, cut out15 minutes, and then re-encoded this 15 minute in a bunch of ways.  
+Why? Well, initially I wanted to figure out how best to transcode my existing Farscape rips to save the most space while maintaining a reasonable amount of quality, so I did the scientific(ish) thing and created a bunch of samples.  
+And yes, HEVC encoding without proper hardware support is a *pain* and I spent way too much CPU time on this little project, but soon™ we will have reached the point were HEVC is the new de-facto standard and when that point comes *I will be ready*.
+
+## Methodology <small>i.e. "stuff I did"</small>
+
+Look, I'm not an expert on video encoding, I'm not familiar with the internals of the encoders, which means I know shit about the standards _and_ the software implementations. I'm just some guy who wanted to save disk space and decided to do some testing in the process.  
+
+I re-encoded the aforementioned video clip using the following settings:
+
+- **Encoders**: x264 and x265
+- **CRF**: 1, 17, 18, 20, 21, 25, 26, 51
+- **Presets**: placebo, slower, medium, veryfast, ultrafast
+
+The result is 80 files of varying quality and size.  
+Judging file size is pretty straight-forward: Just compare the file sizes. Magic.  
+As for quality, that's a difficult one, and since I lack a proper testing setup and about three dozen people to judge the subjective quality of each clip, I'll just be using the [SSIM](https://en.wikipedia.org/wiki/Structural_similarity) as calculated by comparing each clip with the original clip, and see how far that gets me.
+
+So to start, here are the first five rows:
+
+```{r setup, warning=FALSE, error=FALSE}
+samples %>%
+  select(file, codec, preset, CRF, size, ssim) %>%
+  head() %>%
+  knitr::kable()
+```
+
+## File Size
+
+To start of, here's some tables:
+
+```{r sizes_x264}
+s_x264 <- samples %>% filter(codec == "x264")
+
+sjPlot::sjt.xtab(s_x264$CRF, s_x264$preset, weight.by = s_x264$size,
+                 title = "File Size (MiB) of x264 re-encode", show.summary = F,
+                 string.total = "Sum")
+```
+
+```{r sizes_x265}
+s_x265 <- samples %>% filter(codec == "x265")
+
+sjPlot::sjt.xtab(s_x265$CRF, s_x265$preset, weight.by = s_x265$size,
+                 title = "File Size (MiB) of x265 re-encode", show.summary = F,
+                 string.total = "Sum")
+```
+
+That's… accurate, yet not very visually stimulating.  
+Needs more plot.
+
+```{r sizes_by_codec}
+ggplot(data = samples, aes(x = CRF, y = size, color = preset)) +
+  geom_point() +
+  geom_path() +
+  facet_wrap(~codec) +
+  scale_color_viridis(discrete = TRUE) +
+  labs(title = "Codec, CRF, Preset & File Size",
+       subtitle = "Re-encoding with all other parameters being equal",
+       x = "CRF", y = "File Size (MiB)",
+       color = "Preset")
+```
+
+Okay, let's zoom in a little by ignoring CRF 51 and CRF 01, as they're silly anyway.
+
+```{r sizes_by_codec_subset}
+samples %>%
+  filter(CRF < 51, CRF > 1) %>%
+  ggplot(data = ., aes(x = CRF, y = size, color = preset)) +
+  geom_point() +
+  geom_path() +
+  facet_wrap(~codec) +
+  scale_color_viridis(discrete = TRUE) +
+  labs(title = "CRF, Preset & File Size",
+       subtitle = "Re-encoding with all other parameters being equal",
+       x = "CRF", y = "File Size (MiB)",
+       color = "Preset")
+```
+
+Hm, yes, quite.  
+Now a breakdown to compare codecs across presets:
+
+```{r sizes_by_preset, fig.height=8}
+ggplot(data = samples, aes(x = CRF, y = size, color = codec)) +
+  geom_point() +
+  geom_path() +
+  facet_wrap(~preset, ncol = 1, scales = "free_y") +
+  scale_color_brewer(palette = "Set1") +
+  labs(title = "Codec, CRF, Preset & File Size",
+       subtitle = "Re-encoding with all other parameters being equal",
+       x = "CRF", y = "File Size (MiB)",
+       color = "Codec")
+
+samples %>%
+  filter(CRF < 51, CRF > 1) %>%
+  ggplot(data = ., aes(x = CRF, y = size, color = codec)) +
+  geom_point() +
+  geom_path() +
+  facet_wrap(~preset, ncol = 1, scales = "free_y") +
+  scale_color_brewer(palette = "Set1") +
+  labs(title = "Codec, CRF, Preset & File Size",
+       subtitle = "Ignoring CRF 51 and 01",
+       x = "CRF", y = "File Size (MiB)",
+       color = "Codec")
+```
+
+As you might have noticed, absolute file sizes might not be as interesting and/or generalizable as relative size changes, so here we go:
+
+```{r sizes_relative, fig.height=7, fig.width=10}
+samples %>%
+  select(CRF, preset, size, codec) %>%
+  group_by(CRF, preset) %>%
+  spread(codec, size) %>%
+  ungroup() %>%
+  mutate(x265 = x265/x264,
+         x264 = 1) %>%
+  gather(codec, size, x264, x265) %>%
+  ggplot(data = ., aes(x = codec, y = size, fill = codec)) +
+  facet_grid(preset ~ CRF, labeller = labeller(.rows = label_value, .cols = label_both)) +
+  geom_col() +
+  scale_y_percent() +
+  scale_fill_brewer(palette = "Set1") +
+  labs(title = "Codec, CRF, Preset & File Size",
+       subtitle = "Re-encoding with all other parameters being equal",
+       x = "Codec", y = "Relative Size",
+       fill = "Codec",
+       caption = "Using x264 encode as reference size")
+```
+
+
+## SSIM (Approximate Quality)
+
+To start, let's do the raw data table thing again:
+
+```{r ssim_x264}
+sjPlot::sjt.xtab(s_x264$CRF, s_x264$preset, weight.by = 100 * s_x264$ssim,
+                 title = "SSIM (times 100) of x264 re-encode", show.summary = F,
+                 string.total = "Sum")
+```
+
+```{r ssim_x265}
+sjPlot::sjt.xtab(s_x265$CRF, s_x265$preset, weight.by = 100 * s_x265$ssim,
+                 title = "SSIM (times 100) of x265 re-encode", show.summary = F,
+                 string.total = "Sum")
+```
+
+Please note that I had to multiply the SSIM values by 100 to get them to display as something other than a flat *1* because rounding is hard, apparently.  
+Also, *yes* I know the "sum" column/row doesn't make sense, but it's the default and I couldn't be bothered to try to remove it.
+
+And now, the plotty thing.
+
+```{r ssim_by_codec}
+ggplot(data = samples, aes(x = CRF, y = ssim, color = preset)) +
+  geom_point() +
+  geom_path() +
+  facet_wrap(~codec) +
+  scale_color_viridis(discrete = T) +
+  labs(title = "Codec, CRF, Preset & SSIM",
+       subtitle = "Re-encoding with all other parameters being equal",
+       x = "CRF", y = "SSIM",
+       color = "Preset")
+
+samples %>%
+  filter(CRF > 1, CRF < 51) %>%
+  ggplot(data = ., aes(x = CRF, y = ssim, color = preset)) +
+  geom_point() +
+  geom_path() +
+  facet_wrap(~codec) +
+  scale_color_viridis(discrete = T) +
+  labs(title = "Codec, CRF, Preset & SSIM",
+       subtitle = "Ignoring CRF 51 and 01",
+       x = "CRF", y = "SSIM",
+       color = "Preset")
+```
+
+
+
+```{r ssim_by_preset, fig.height=8}
+ggplot(data = samples, aes(x = CRF, y = ssim, color = codec)) +
+  geom_point() +
+  geom_path() +
+  facet_wrap(~preset, ncol = 1) +
+  scale_color_brewer(palette = "Set1") +
+  labs(title = "Codec, CRF, Preset & SSIM",
+       subtitle = "Re-encoding with all other parameters being equal",
+       x = "CRF", y = "SSIM",
+       color = "Codec")
+
+samples %>%
+  filter(CRF > 1, CRF < 51) %>%
+  ggplot(data = ., aes(x = CRF, y = ssim, color = codec)) +
+  geom_point() +
+  geom_path() +
+  facet_wrap(~preset, ncol = 1, scales = "free_y") +
+  scale_color_brewer(palette = "Set1") +
+  labs(title = "Codec, CRF, Preset & SSIM",
+       subtitle = "Ignoring CRF 51 and 01",
+       x = "CRF", y = "SSIM",
+       color = "Codec")
+```
+
+Now let's do that thing again where we compare all the *CRF* by *preset* cells in a grid, but now using SSIM as a metric:
+
+```{r SSIM_relative, fig.height=7, fig.width=10}
+samples %>%
+  ggplot(data = ., aes(x = codec, y = ssim, fill = codec)) +
+  facet_grid(preset ~ CRF, labeller = labeller(.rows = label_value, .cols = label_both)) +
+  geom_col() +
+  scale_fill_brewer(palette = "Set1") +
+  labs(title = "Codec, CRF, Preset & SSIM",
+       subtitle = "Re-encoding with all other parameters being equal",
+       x = "Codec", y = "Relative SSIM",
+       fill = "Codec")
+```
+
+Well that's not very enlightening, is it?  
+Bummer.
+
+## Quality(ish) versus Size
+
+```{r ssim_by_size}
+ggplot(data = samples, aes(x = size, y = ssim, color = codec)) +
+  geom_point() +
+  scale_color_brewer(palette = "Set1") +
+  labs(title = "Size & SSIM",
+       subtitle = "Re-encoding with all other parameters being equal",
+       x = "File Size (MiB)", y = "SSIM", color = "Codec")
+```
+
+I've tried log scales on this one, but it didn't really help.  
+Let's look at the subset of reasonable CRFs:
+
+```{r ssim_by_size_subset}
+samples %>%
+  filter(CRF < 51, CRF > 1) %>%
+  ggplot(data = ., aes(x = size, y = ssim, color = preset)) +
+  geom_point() +
+  geom_path() +
+  facet_wrap(~codec) +
+  scale_color_viridis(discrete = T) +
+  labs(title = "Size & SSIM",
+       subtitle = "Ignoring CRF 51 and 01",
+       x = "File Size (MiB)", y = "SSIM",
+       color = "Preset")
+```
+
+Well if there's a lesson here, it seems that *ultrafast* is probably not the way to go.  
+Let's take another look, ignoring the *ultrafast* data.
+
+```{r ssim_by_size_subset2}
+samples %>%
+  filter(CRF < 51, CRF > 1, preset != "ultrafast") %>%
+  ggplot(data = ., aes(x = size, y = ssim, color = preset)) +
+  geom_point() +
+  geom_path() +
+  facet_wrap(~codec) +
+  scale_color_viridis(discrete = T) +
+  labs(title = "Size & SSIM",
+       subtitle = "Ignoring CRF 51 and 01 and 'ultrafast' preset",
+       x = "File Size (MiB)", y = "SSIM",
+       color = "Preset")
+```
+
+## Conclusion
+
+Keep in mind that this is not a scientific study.  
+The results might be limited to my version of HandBrake (`1.0.7 (2017040900)`), or it might be limited to re-encoding a lossily-encoded file, or it might be limited to encoding SD content and behave slightly differently with 4k content. My point is: I don't know. I have *no* idea how generalizable these results are, but with the limited amount of certainty I can muster, I'll give you this:
+
+- Don't use *ultrafast*. *veryfast* is fast as well, and apparently better(ish)
+- Also, don't use *placebo*. Why would you even do that to yourself[^1].
+- Keep your CRF around the 20's. Seems reasonable.
+
+¯\\\_(ツ)_/¯
+
+Note: If you have anything else you want to try with the data, you can grab it [here](https://blog.jemu.name/post/2017-10-16-video-compression-is-magic_files/samples.csv).
+
+[^1]: If I do this again, I will track the encoding time. Seriously, don't to *placebo*.

@@ -1,0 +1,79 @@
+---
+title: So Winter Came, huh?
+author: Jemus42
+date: '2017-08-29'
+categories:
+  - rstats
+  - tvshows
+tags:
+  - Rmd
+  - trakt.tv
+packages:
+  - tRakt
+shows:
+  - Game of Thrones
+slug: so-winter-came-huh
+---
+
+```{r init, include = F}
+source(rprojroot::find_rstudio_root_file("global.R"))
+```
+
+```{r setup}
+library(tRakt) # devtools::install_github("jemus42/tRakt")
+library(ggplot2)
+library(dplyr)
+
+gameofthrones <- trakt.get_all_episodes("game-of-thrones") %>%
+    mutate(season_type = if_else(season != "7", "Seasons 1-6", "Season 7"),
+           season_type = factor(season_type, 
+                                levels = c("Seasons 1-6", "Season 7"), ordered = TRUE))
+
+caption <- paste0("Data as of ", format(Sys.Date()), "\n@jemus42")
+```
+
+WInter came, yadda yadda, Game of Thrones s07 finished, you all know that.  
+There have been things said about the season and it looks like people aren't too happy with it, while also really enjoying it or something like that.  
+Personally, I think it was an entertaining show, but a crappy ASoIaF adaptation, given the lack of source material and implausibly convenient timing and plot points that basically screamed "let's get in place for the showdown", but at leats it looked really good doing so.
+
+```{r episodes}
+ggplot(data = gameofthrones, aes(x = episode_abs, y = rating, fill = season_type)) +
+  geom_point(shape = 21, size = 3, color = "black") +
+  scale_x_continuous(breaks = seq(0, 70, 10), minor_breaks = seq(0, 70, 1)) +
+  scale_y_continuous(limits = c(7.4, 9.1),
+                     breaks = seq(0, 10, .5), minor_breaks = seq(0, 10, .1)) +
+  scale_fill_brewer(palette = "Set1", direction = -1) +
+  labs(title = "Game of Thrones", subtitle = "Ratings on trakt.tv",
+       x = "Absolute Episode #", y = "User Rating (1-10)", fill = "",
+       caption = caption) +
+  theme(legend.position = "top")
+```
+
+Now let's take a look how the past season compares to the show overall.
+
+```{r old-vs-new-boxplot}
+gameofthrones %>%
+  ggplot(data = ., aes(x = season_type, y = rating, fill = season_type)) +
+  geom_boxplot(alpha = .7, width = .5) +
+  geom_jitter(shape = 21, stroke = 0, size = 2, alpha = .7, height = 0, width = .2) +
+  scale_y_continuous(limits = c(7.4, 9.1), 
+                     breaks = seq(0, 10, .5), minor_breaks = seq(0, 10, .1)) +
+  scale_fill_brewer(palette = "Set1", direction = -1, guide = F) +
+  labs(title = "Game of Thrones", subtitle = "Ratings on trakt.tv",
+       x = "", y = "User Rating (1-10)",
+       caption = caption)
+```
+
+```{r old-vs-new-histogram}
+gameofthrones %>%
+  ggplot(data = ., aes(x = rating, fill = season_type)) +
+  #geom_density(aes(y = ..count..), alpha = .7) +
+  geom_histogram(position = "dodge", binwidth = .1) +
+  scale_x_continuous(limits = c(7.4, 9.1), 
+                     breaks = seq(0, 10, .5), minor_breaks = seq(0, 10, .1)) +
+  scale_fill_brewer(palette = "Set1", direction = -1) +
+  labs(title = "Game of Thrones", subtitle = "Ratings on trakt.tv",
+       x = "", y = "User Rating (1-10)", fill = "",
+       caption = caption) +
+  theme(legend.position = "top")
+```

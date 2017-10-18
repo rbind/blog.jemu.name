@@ -40,7 +40,7 @@ hook <- function(x, options) {
     caption <- opts_current$get("label")
   }
 
-  convert_plots(basename)
+  #convert_plots(basename)
 
   #paste0("<figure>", imglink, "<figcaption>", caption, "</figcaption></figure>")
 
