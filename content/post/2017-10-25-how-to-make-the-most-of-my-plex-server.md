@@ -17,7 +17,7 @@ enable_katex: no
 If you're reading this, chances are I redirected you here because I share my Plex server with you.  
 If you don't know me and don't care about my Plex experience, move along now and watch something good on YouTube.
 
-For a decent Plex experience, we first have to cover some of the basics of how this stuff actually works, so bare with me.  
+For a decent Plex experience, we first have to cover some of the basics of how this stuff actually works, so bear with me.  
 At the beginning of it all is a file on my NAS. Usually a lovingly encoded Matroska (`.mkv`) file filled with minutes of joy organized in neat little streams of audio and video.  
 When you play something from my Plex server, it will look at your device, let's say a Kindle Fire TV whateverthefuck stick with a cherry on top, and then it looks at the file. Plex keeps a list of possible client (that's you) devices where it looks up what each device is capable of. So let's say the file in question is a standard run of the mill AVC (h264) video with AAC audio, and let's say the configuration file says your device can play that back natively.  
 That's nice, because that means youre device can either **Direct Play** or **Direct Stream** the file to your device and the only limit on your experience is my upstream and your downstream bandwidth.  

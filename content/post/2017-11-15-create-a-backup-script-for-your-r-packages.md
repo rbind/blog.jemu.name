@@ -9,6 +9,8 @@ tags:
   - packages
   - maintenance
   - backup
+packages:
+  - glue
 enable_mathjax: no
 enable_katex: no
 ---
@@ -17,7 +19,7 @@ So today I was playing around with the `installed.packages()` function, and I th
 Boy wouldn't it be a jolly good time to make some kind of backup script from this?
 
 The idea is simple: R has a minor version update, possibly breaking your previously installed packages. 
-You could just copy the old packages over, or use a custom library location that's version-indepent (this is what I do), but sooner or later you might find that thinks have crashed so hard it's better to burn it all down than try to pick up the pieces.  
+You could just copy the old packages over, or use a custom library location that's version-indepent (this is what I do), but sooner or later you might find that things have crashed so hard it's better to burn it all down than try to pick up the pieces.  
 This is where the aptly named [*clean slate protocol*](https://rud.is/b/2017/06/10/engaging-the-tidyverse-clean-slate-protocol/) comes in.  
 
 To do this, you throw away your current R installation or at least your current library and reinstall *all the things again*. You might want to reinstall everything step by step as needed, but that would be silly.  
@@ -50,6 +52,9 @@ if (!('stringr' %in% installed.packages())) install.packages('stringr')
 You get the idea.  
 
 Note how I make use of `installed.packaged()` again to make sure to not repeatedly install and re-install packages that might have already been installed as a dependency of a previous package.  
+And yes, this will only work for CRAN packages. If you rely on GitHub or local packages in production, I'll just assume you're aware of that and act accordingly, but that's out of the scope of this little thing. If you want *proper* package reproducibility and whatnot, you're probably better of using a *proper package management thing* like… `packrat`? Microsoft's MRAN? I don't know.  
+I just did this little thing.  
+Don't email me.
 
 Sooo… that's what I did this evening.  
 Just wanted to share that.
