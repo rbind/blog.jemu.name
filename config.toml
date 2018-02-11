@@ -7,7 +7,7 @@ theme = "hugo-redlounge-jemsu"
 disqusShortname = "blogjemuname"
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 googleAnalytics = "UA-52990941-5"
-Paginate = 10
+Paginate = 20
 preserveTaxonomyNames = true
 
 [permalinks]
