@@ -97,7 +97,7 @@ Hank and John Green might be what you could consider a native Youtubian. They've
 
 Probably my favorite of their projects. A channel with series about various topics, in *crash course* format, meaning you'll probably get the gist of what a discipline is about or what the important concepts in said discipline are. If you're already an expert in, let's say, chemistry, then you might not get a lot out of their series, but for the regular viewer it's definitely worth a go.
 
-### [SchiShow][scishow]
+### [SciShow][scishow]
 
 This is where I get a lot of my regular science news. Besides explainers about various scientific topics, there are also regular updates about current events and new research in the science world. 
 If that's too general for you, there are also the spin-offs [SciShow Space][scispace] and [SciShow Psych][scipsych] for space and psychology respectively, and oh boy do I enjoy them.

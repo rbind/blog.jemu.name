@@ -532,4 +532,3 @@ Interestingly, it's the other way around fpr *TAS*, where the average episode ra
 On the other hand, *Discovery* is very consistent with its mean episiode rating CI enclosing the current show rating over all.  
 That's neat.  
 If you disagree, don't email me.
-
