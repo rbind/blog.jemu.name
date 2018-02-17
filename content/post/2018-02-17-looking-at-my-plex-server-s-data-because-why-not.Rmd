@@ -1,0 +1,127 @@
+---
+title: Looking at my Plex Server's Data, Because Why Not
+author: Jemus42
+date: '2018-02-17'
+slug: looking-at-my-plex-server-s-data-because-why-not
+categories:
+  - media
+  - rstats
+tags:
+  - plex
+  - Rmd
+draft: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r init, include = F}
+source(rprojroot::find_rstudio_root_file("global.R"))
+```
+
+```{r setup, message=FALSE}
+library(tauturri) # remotes::install_github("jemus42/tauturri")
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(hms)
+library(lubridate)
+library(stringr)
+library(knitr)
+library(hrbrthemes)
+
+theme_set(theme_ipsum())
+```
+
+## User Obfuscation
+
+```{r user_obfus}
+my_users <- get_user_names(add_pseudonym = TRUE)
+
+obfuscate_user <- function(friendly_name = NULL, user_id = NULL, my_users) {
+  if (is.null(friendly_name) & !(is.null(user_id))) {
+    my_users$pseudonym[my_users$user_id == user_id]
+  } else if (is.null(user_id) & !(is.null(friendly_name))) {
+    my_users$pseudonym[my_users$friendly_name == friendly_name]
+  } else {
+    stop(":(")
+  }
+}
+
+obfuscate_user(friendly_name = "jemus42", my_users = my_users)
+obfuscate_user(user_id = "1352909", my_users = my_users)
+```
+
+
+## Full History
+
+Getting the full history takes a moment, so I'll manually cache the results and use the stored version. I might update the data every once in a while, but especially while I'm still experimenting it's probably easier this way.
+
+```{r history_setup}
+# history  <- get_history(length = 8000)
+# 
+# datapath <- rprojroot::find_rstudio_root_file("data")
+# saveRDS(history, file.path(datapath, "plex_history.rds"))
+
+history <- readRDS(file.path(datapath, "plex_history.rds"))
+
+history$totals %>%
+  select(total_duration, recordsTotal) %>%
+  kable()
+
+# Obfuscate users, get hour column from datetime column
+history <- history$history %>%
+  mutate(user_p = map_chr(user_id, 
+                          ~obfuscate_user(user_id = .x, 
+                                          my_users = my_users)),
+         hour = date %>% as.hms %>% round_hms(60^2))
+```
+
+## Plays by Type
+
+```{r play_by_media_type}
+history %>%
+  count(media_type) %>%
+  ggplot(aes(x = media_type, y = n, fill = media_type)) +
+  geom_col() +
+  scale_fill_brewer(palette = "Set1", guide = FALSE) +
+  labs(title = "Plays by Media Type",
+       x = "", y = "# of Plays")
+```
+
+```{r play_by_stream_type}
+history %>%
+  count(transcode_decision) %>%
+  ggplot(aes(x = transcode_decision, y = n, fill = transcode_decision)) +
+  geom_col() +
+  scale_fill_brewer(palette = "Set2", guide = FALSE) +
+  labs(title = "Plays by Stream Type",
+       x = "", y = "# of Plays")
+```
+
+## Plays by Time
+
+```{r plays_by_hour}
+history %>%
+  ggplot(aes(x = hour, fill = media_type)) +
+  geom_bar() +
+  scale_fill_brewer(palette = "Set1") +
+  labs(title = "Plays by Time of Day",
+       subtitle = "by Type of Media",
+       x = "Hour of Day", y = "# of Plays",
+       fill = "Media Type") +
+  theme(legend.position = "top")
+```
+
+```{r plays_by_hour}
+history %>%
+  mutate(day = wday(date, label = TRUE, abbr = FALSE, week_start = 1)) %>%
+  ggplot(aes(x = day, fill = media_type)) +
+  geom_bar() +
+  scale_fill_brewer(palette = "Set1") +
+  labs(title = "Plays by Day of Week",
+       subtitle = "by Type of Media",
+       x = "Day of Week", y = "# of Plays",
+       fill = "Media Type") +
+  theme(legend.position = "top")
+```

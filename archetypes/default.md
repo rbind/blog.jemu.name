@@ -1,12 +1,13 @@
 ---
 title: ""
+description: ""
 date: ""
-nodate: true
-nopaging: true
-nocomment: true
-nosocialsharing: true
-notoc: true
-noread: true
+nodate: false
+nopaging: false
+nocomment: false
+nosocialsharing: false
+notoc: false
+noread: false
 enable_mathjax: false
 enable_katex: false
 ---
