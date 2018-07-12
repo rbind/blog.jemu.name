@@ -41,22 +41,17 @@ preserveTaxonomyNames = true
     name = "twitter"
     pre = "<i class='fa fa-github fa-lg'></i>"
     url = "https://github.com/jemus42"
-    weight = 1
+    weight = 2
 [[menu.social]]
     name = "github"
     pre = "<i class='fa fa-twitter fa-lg'></i>"
     url = "https://twitter.com/jemus42"
-    weight = 2
-[[menu.social]]
-    name = "telegram"
-    pre = "<i class='fa fa-telegram fa-lg'></i>"
-    url = "https://t.me/jemus42"
-    weight = 3
+    weight = 1
 [[menu.social]]
     name = "mail"
     pre = "<i class='fa fa-envelope fa-lg'></i>"
     url = "mailto:jemus42@quantenbrot.de"
-    weight = 6
+    weight = 3
 
 [params]
     # A few options in case of redlounge theme
