@@ -23,8 +23,8 @@ Here's a list of stuff I work(ed) on to remind myself to get to them again soone
 
 - [tRakt](https://github.com/jemus42/tRakt)
 - [tadaatoolbox](https://github.com/tadaadata/tadaatoolbox)
-- [tauturri (Tautulli API wrapper)](https://github.com/jemus42/tauturri)
-- [speedrunr (speedrun.com API wrapper)]((https://github.com/jemus42/speedrunr)
+- [tauturri](https://github.com/jemus42/tauturri) (Tautulli API wrapper)
+- [speedrunr](https://github.com/jemus42/speedrunr) (speedrun.com API wrapper)
 
 ## Tadaa, Data!-Projects
 
