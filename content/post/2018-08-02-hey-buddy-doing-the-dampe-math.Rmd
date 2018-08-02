@@ -24,13 +24,13 @@ If you've ever watched an [*Ocarina of Time* 100% speedrun][oot100], or played t
 The latter is obviously part of the 100% definition of the game, so hundo speedruns sooner or later have to face dampe and gamble on the 10% chance of him digging up the heartpiece.
 
 As one of the few major rng-depdenent[^rng], he's kind of notorius, especially when he kills multiple runs in a row by needing more than 10 attempts to finally get the heart piece.  
-The math itself is pretty straight forward: In a speedrun, runners use a method to reset Dampe to a specific plot, allowing them to dig on the same grave spot over and over again, theoretically ad infinitum. While this method is not as "safe" as the intended method, which is capped at 15 tries maximum, it's significantly faster unless you get "bad Dampe rng". Each time Dampe digs, there's a 10% chance to get the heartpiece, which means in mathy terms we can define $p = .1$ and $k = $ number of tries until success, giving us:
+The math itself is pretty straight forward: In a speedrun, runners use a method to reset Dampe to a specific plot, allowing them to dig on the same grave spot over and over again, theoretically ad infinitum. While this method is not as "safe" as the intended method, which is capped at 15 tries maximum, it's significantly faster unless you get "bad Dampe rng". Each time Dampe digs, there's a 10% chance to get the heartpiece, which means in mathy terms we can define $p = 0.1$ and $k = $ number of tries until success, giving us:
 
 \[P(k = 1) = p = 0.1\]
 
 Second try Dampe would be the probability of "failing" the first attempt and *then* succed afterwards, or:
 
-\[P(k = 2) = (1-p) \times p\]
+\[P(k = 2) = (1-p) \times p = 0.9 \times 0.1\]
 
 And in general terms:
 
@@ -46,7 +46,6 @@ Here's what's included:
 - **Probability**, **%**: The probability for $k$, as a singular outcome
 - **Probability (Total)**, **% (Total)**: Probability of $1$ *through* $k$ tries, i.e. the probability for getting $k$ *or lower* tries
 - **Odds (Singular)**: $\frac{1}{\text{Probability}}$, the probability for that outcome in human readable terms
-- **Odds (Total)**: The same, but cumulative again, e.g. there's roughly a 1 in 2 chance for getting 7th try or lower, which isn't even *that* bad
 
 ```{r, echo=FALSE}
 library(tibble)
@@ -58,12 +57,11 @@ dampe <- tibble(
   prob_perc = scales::percent(prob),
   P = round(exp(pgeom(attempts - 1, 1/10, log.p = TRUE)), 10),
   P_perc = scales::percent(P),
-  chance = paste0("1 in ", scales::comma(ceiling(1/dgeom(attempts - 1, 1/10)))),
-  chance_total = paste0("1 in ", scales::comma(ceiling(1/exp(pgeom(attempts - 1, 1/10, log.p = TRUE))))),
+  chance = paste0("1 in ", scales::comma(ceiling(1/dgeom(attempts - 1, 1/10))))
 )
 
 kable(dampe, 
-      col.names = c("Attempt", "Probability", "%", "Probability (Total)", "% (Total)", "Odds (Singular)", "Odds (Total)"))
+      col.names = c("Attempt", "Probability", "%", "Probability (Total)", "% (Total)", "Odds (Singular)"))
 ```
 
 
