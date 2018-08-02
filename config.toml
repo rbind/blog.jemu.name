@@ -1,5 +1,5 @@
 baseURL = "https://blog.jemu.name/"
-relativeURLs = true
+relativeURLs = false
 languageCode = "en-us"
 title = "Blog Jemu"
 theme = "hugo-redlounge-jemsu"

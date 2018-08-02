@@ -6,7 +6,7 @@
 scratchpad.R
 
 content/*.html
-static/images
+#static/images
 static/post
 blogdown/post
 content/post/*.html
