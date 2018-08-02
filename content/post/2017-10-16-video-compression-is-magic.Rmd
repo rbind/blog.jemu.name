@@ -34,7 +34,7 @@ library(DT)
 theme_set(hrbrthemes::theme_ipsum() +
           theme(legend.position = "top"))
 
-samples <- read_rds("~/repos/medialibrary/samples.rds")
+samples <- read_rds(rprojroot::find_rstudio_root_file("datasets/samples.rds"))
 ```
 
 If you're like me, you probably have a serious issue with digital hoarding, refuse to delete anything and methodically collect and categorize _all the things_.  
