@@ -39,12 +39,17 @@ preserveTaxonomyNames = true
 
 [[menu.social]]
     name = "twitter"
-    pre = "<i class='fa fa-github fa-lg'></i>"
+    pre = "<i class='fab fa-github fa-lg'></i>"
     url = "https://github.com/jemus42"
     weight = 2
 [[menu.social]]
+    name = "mastodon"
+    pre = "<i class='fab fa-mastodon fa-lg'></i>"
+    url = "https://cybre.space/@jemus42"
+    weight = 2
+[[menu.social]]
     name = "github"
-    pre = "<i class='fa fa-twitter fa-lg'></i>"
+    pre = "<i class='fab fa-twitter fa-lg'></i>"
     url = "https://twitter.com/jemus42"
     weight = 1
 [[menu.social]]
