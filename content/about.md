@@ -27,14 +27,16 @@ The blog itself has a [repo here](https://github.com/jemus42/blog.jemu.name).
 
 ## Other Places
 
-* <i class='fa fa-tv fa-lg'></i> [trakt.tv](https://trakt.tv/users/jemus42)
-* <i class='fa fa-university fa-lg'></i> [ResearchGate](https://www.researchgate.net/profile/Lukas_Burk)
+You can find me on Twitter or Mastodon (preferred) via the links on the left sidebar.
+
+* <i class='fa fa-tv'></i> [trakt.tv](https://trakt.tv/users/jemus42)
+* <i class='fa fa-university'></i> [ResearchGate](https://www.researchgate.net/profile/Lukas_Burk)
 
 ## Support
 
 If, for whatever reason, you feel like you would like to support me financially, here are your options:
 
-- <i class='fa fa-paypal fa-lg'></i> [PayPal.me](https://www.paypal.me/jemus42) (one-time)
+- <i class='fab fa-paypal'></i> [PayPal.me](https://www.paypal.me/jemus42) (one-time)
 - [Patreon](https://www.patreon.com/jemus42) (monthly)
 
 I don't really have any reason to ask for support, but sometimes it comes up, so I'd just like to give you options.
