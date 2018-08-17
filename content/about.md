@@ -9,15 +9,12 @@ title: About
 type: page
 ---
 
-{{< tweet 572953179215810561 >}}
-
-## About me
-
-I'm Lukas, or jemus42, or jemsu, or whatever.  
-My home on the internet is either my [twitter account](https://twitter.com/jemus42) and [Mastodon account](https://cybre.space/@jemus42) respectively, or this [tumblr I still have for some reason](https://quantenbrot.de).  
+I'm Lukas, or jemus[42], or jemsu, or whatever.  
+It depends on when you got to know me. Or where.  
+My home on the internet is either my [twitter account](https://twitter.com/jemus42), which I've abandoned in August '18, or my [Mastodon account](https://cybre.space/@jemus42) respectively, or this [tumblr I still have for some reason, which doesn't really count.](https://quantenbrot.de).  
 
 I'm primarily interested in tv shows, data analysis and being socially awkward.  
-If you want to contact me, I really wouldn't know why, but you can try `jemus42@quantenbrot.de`
+If you want to contact me, I really wouldn't know why, but you can try `jemus42@quantenbrot.de`.
 
 ## This Site
 
@@ -26,8 +23,6 @@ It's not really in a state where I could publish it, but it's on GitHub for thos
 The blog itself has a [repo here](https://github.com/jemus42/blog.jemu.name).
 
 ## Other Places
-
-You can find me on Twitter or Mastodon (preferred) via the links on the left sidebar.
 
 * <i class='fa fa-tv'></i> [trakt.tv](https://trakt.tv/users/jemus42)
 * <i class='fa fa-university'></i> [ResearchGate](https://www.researchgate.net/profile/Lukas_Burk)
