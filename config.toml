@@ -3,6 +3,7 @@ relativeURLs = false
 languageCode = "en-us"
 title = "Blog Jemu"
 theme = "hugo-redlounge-jemsu"
+enableEmoji = true
 #theme = "hugo-lithium-theme-jms"
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 Paginate = 5
