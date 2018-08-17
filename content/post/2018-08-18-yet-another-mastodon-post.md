@@ -8,7 +8,7 @@ categories:
 tags:
   - twitter
   - mastodon
-description: "Rambling about Mastodon and how it's not Twitter, in many ways."
+description: 'Rambling about Mastodon and how it’s not Twitter, in many ways.'
 enable_mathjax: no
 enable_katex: no
 ---
