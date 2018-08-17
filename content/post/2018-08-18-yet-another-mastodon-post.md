@@ -1,6 +1,6 @@
 ---
 title: Yet Another Mastodon Post
-author: Jemus42
+author: jemus42
 date: '2018-08-18'
 slug: yet-another-mastodon-post
 categories:
@@ -9,12 +9,6 @@ tags:
   - twitter
   - mastodon
 description: "Rambling about Mastodon and how it's not Twitter, in many ways."
-nodate: no
-nopaging: no
-nocomment: no
-nosocialsharing: no
-notoc: no
-noread: no
 enable_mathjax: no
 enable_katex: no
 ---
