@@ -15,7 +15,8 @@ knitr::opts_chunk$set(out.width = "100%",
                       fig.retina = 2,
                       warning = F,
                       message = F,
-                      comment = "")
+                      comment = "",
+                      cache = TRUE)
 
 ggplot2::theme_set(tadaatoolbox::theme_tadaa())
 

@@ -11,10 +11,7 @@ type: page
 
 I'm Lukas, or jemus[42], or jemsu, or whatever.  
 It depends on when you got to know me. Or where.  
-My home on the internet is either my [twitter account](https://twitter.com/jemus42), which I've abandoned in August '18, or my [Mastodon account](https://cybre.space/@jemus42) respectively, or this [tumblr I still have for some reason, which doesn't really count.](https://quantenbrot.de).  
-
-I'm primarily interested in tv shows, data analysis and being socially awkward.  
-If you want to contact me, I really wouldn't know why, but you can try `jemus42@quantenbrot.de`.
+My home on the internet used to be my [twitter account](https://twitter.com/jemus42), which I've abandoned in August '18 (and Twitter suspended it for no apparent reason at some point since then, so screw that), or my [Mastodon account](https://cybre.space/@jemus42) respectively, or this [tumblr I still have for some reason, which doesn't really count.](https://quantenbrot.de).  
 
 ## This Site
 
