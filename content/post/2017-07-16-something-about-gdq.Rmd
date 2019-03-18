@@ -60,7 +60,7 @@ Well, now we got the data from Wikipedia. Let's take a look.
 ```{r looking_at_data}
 ggplot(data = gdq, aes(x = year, y = amount, fill = event)) +
   geom_col(position = "dodge") +
-  scale_y_continuous(labels = dollar_format()) +
+  scale_y_continuous(labels = scales::dollar_format()) +
   scale_fill_brewer(palette = "Set1") +
   labs(title = "Games Done Quick Donation Totals",
        subtitle = "Amounts Raised at Each Event",
@@ -83,7 +83,7 @@ gdq %>%
   {
     ggplot(data = ., aes(x = year, y = cum_amount, fill = charity)) +
       geom_col(position = "dodge") +
-      scale_y_continuous(labels = dollar_format()) +
+      scale_y_continuous(labels = scales::dollar_format()) +
       scale_fill_brewer(palette = "Set1") +
       labs(title = "Games Done Quick Donation Totals",
            subtitle = "Cumulative Amount Raised for Each Charity",
@@ -101,9 +101,9 @@ gdq %>%
   {
     ggplot(data = ., aes(x = reorder(charity, cum_amount), y = cum_amount)) +
       geom_col(position = "dodge", alpha = .7) +
-      geom_label(aes(label = dollar(cum_amount), y = 2e6)) +
+      geom_label(aes(label = scales::dollar(cum_amount), y = 2e6)) +
       coord_flip() +
-      scale_y_continuous(labels = dollar_format()) +
+      scale_y_continuous(labels = scales::dollar_format()) +
       scale_fill_brewer(palette = "Set2") +
       labs(title = "Games Done Quick Donation Totals",
            subtitle = "Cumulative Amount Raised for Each Charity",
@@ -112,5 +112,5 @@ gdq %>%
   }
 ```
 
-And as a grand total, *Games Done Quick* has raised **`r dollar(sum(gdq$amount))`** for charity.  
+And as a grand total, *Games Done Quick* has raised **`r scales::dollar(sum(gdq$amount))`** for charity.  
 Neat.
