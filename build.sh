@@ -2,7 +2,7 @@
 
 # rm -r public
 
-Rscript -e 'blogdown::build_site(run_hugo = FALSE); $(which hugo)'
+Rscript -e 'blogdown::build_site()'
 
 echo "----------------"
 echo "Syncing public/ to server..."
