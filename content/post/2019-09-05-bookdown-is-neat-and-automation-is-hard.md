@@ -58,7 +58,7 @@ Now, to have travis build your project and push to a `gh-pages` branch, you'll f
 
 You'll also need a dummy `DESCRIPTION` file at the root of your project, just because that's the key component of an R package which travis needs to figure out which R packages need to be installed before anything else can happen. It should look something like this:
 
-```
+```yaml
 Type: Book
 Package: mybook
 Title: Placeholder file for travis
@@ -79,7 +79,7 @@ Maintaining such a file for your bookdown project is also a good way to keep tra
 
 Your `.travis.yml` might look something like this (for the first 3 lines, refer to [the travis docs](https://docs.travis-ci.com/user/languages/r) for R projects):
 
-```  
+```yaml  
 sudo: false 
 language: r
 dist: bionic
@@ -115,7 +115,7 @@ deploy:
 The steps are executen in order of appearance. As there's only 3, and they're named `before_script`, `script` and `deploy`, they're probably pretty self-explanatory.  
 You might stumble over this part though:
 
-```
+```yaml
   # Install phantomjs (needed for htmlwidgets => images in PDF)
   before_script:
     - "[ -x \"$HOME/bin/phantomjs\" ] || Rscript -e \"webshot::install_phantomjs()\""
@@ -135,7 +135,7 @@ For me, things start breaking around the topic of fonts a lot. Maybe because I l
 
 After diving into the old google rabbit hole of terrible font things, I ended up with this:
 
-```
+```yaml
 before_install:
   - |
     # Install TinyTex manually
@@ -181,14 +181,14 @@ I might change my mind later.
 
 Regarding the Fira fonts, I should mention that I had to install the `firasans` manually from GitHub as it's not on CRAN, and for some reason the `Remotes:` filed in `DESCRIPTION` wasn't enough to convince travis to install it for me:
 
-```
+```yaml
 before_script:
   - "Rscript -e \"remotes::install_github('hrbrmstr/firasans')\""
 ```
 
 I also use Asana Math as `mathfont`, but to get this one, you can just get it s a regular ol' apt package.
 
-```
+```yaml
 apt_packages:
   - fonts-oflb-asana-math
 ```
@@ -200,7 +200,7 @@ Nice.
 
 One thing that annoyed be about this setup was the sequential rendering of the different output formats:
 
-```
+```yaml
 # Render the actual book on at a time
 script:
   - "Rscript -e \"bookdown::render_book('index.Rmd', 'bookdown::gitbook')\""
@@ -212,7 +212,7 @@ Building multiple formats in parallel on your local machine might not be feasibl
 
 So what I tried was this:
 
-```
+```yaml
 env:
   - BOOKDOWN_FORMAT="bookdown::gitbook"
   - BOOKDOWN_FORMAT="bookdown::epub_book"
@@ -242,7 +242,7 @@ On the server side, I created a dedicated `travis` user, added the public key to
 
 The config bits are as follows:
 
-```
+```yaml
 # Target server hostname + port if non-standard
 addons:
   ssh_known_hosts: pearson.tadaa-data.de:54321
