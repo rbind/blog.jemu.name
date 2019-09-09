@@ -119,3 +119,43 @@
     margin-top: 10px;
   }
 }
+
+/* taxonomy list pages */
+
+.intro-header .tags-heading h1 {
+    font-size: 80px;
+}
+
+.intro-header .tags-heading h1 {
+  margin-top: 0;
+  font-size: 50px;
+}
+
+.intro-header .tags-heading {
+  text-align: center;
+}
+
+.intro-header .shows-heading h1 {
+    font-size: 80px;
+}
+
+.intro-header .shows-heading h1 {
+  margin-top: 0;
+  font-size: 50px;
+}
+
+.intro-header .shows-heading {
+  text-align: center;
+}
+.intro-header .packages-heading h1 {
+    font-size: 80px;
+}
+
+.intro-header .packages-heading h1 {
+  margin-top: 0;
+  font-size: 50px;
+}
+
+.intro-header .packages-heading {
+  text-align: center;
+}

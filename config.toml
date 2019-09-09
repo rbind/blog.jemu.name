@@ -82,7 +82,7 @@ preserveTaxonomyNames = true
 
 [Params.piwik]
   id = "12"
-  server = "https://analytics.tadaa-data.de/"
+  server = "analytics.tadaa-data.de/"
 
 [Author]
   name = "Lukas"
@@ -103,3 +103,17 @@ preserveTaxonomyNames = true
   bandcamp = "jemus42"
   paypal = "jemus42"
 
+[[menu.main]]
+    name = "Packages"
+    url = "packages"
+    weight = 3
+
+[[menu.main]]
+    name = "Tags"
+    url = "tags"
+    weight = 3
+
+[[menu.main]]
+    name = "Shows"
+    url = "shows"
+    weight = 3
