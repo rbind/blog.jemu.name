@@ -1,9 +1,4 @@
 ---
-nocomment: true
-nodate: true
-nopaging: true
-noread: true
-notoc: true
 title: Projects
 type: page
 ---
@@ -12,19 +7,16 @@ Here's a list of stuff I work(ed) on to remind myself to get to them again soone
 
 ## General R projects
 
-- Podcasts: [podcasts.jemu.name](https://podcasts.jemu.name)
-- Auto-updating [trakt.tv](https://trakt.tv) lists: 
-    - [Popular shows](https://stats.jemu.name/tvshows/trakt/trakt-popular.html)
-    - [Trending shows](https://stats.jemu.name/tvshows/trakt/trakt-trending.html)
+- Podcast stats: [podcasts.jemu.name](https://podcasts.jemu.name) (The Incomparable, relay.fm, ATP)
 - [trakt.jemu.name](https://trakt.jemu.name) (to be rewritten)
-- [Mastodon instance data](https://metadon.jemu.name) (dormant)
+- [Mastodon instance data](https://metadon.jemu.name) (retired)
 
 ### R Packages
 
-- [tRakt](https://github.com/jemus42/tRakt)
-- [tadaatoolbox](https://github.com/tadaadata/tadaatoolbox)
-- [tauturri](https://github.com/jemus42/tauturri) (Tautulli API wrapper)
-- [speedrunr](https://github.com/jemus42/speedrunr) (speedrun.com API wrapper)
+- [tRakt](https://github.com/jemus42/tRakt) ([trakt.tv](http://trakt.tv/) API wrapper)
+- [tauturri](https://github.com/jemus42/tauturri) ([Tautulli (formerly PlexPy)](https://tautulli.com/) API wrapper)
+- [speedrunr](https://github.com/jemus42/speedrunr) ([speedrun.com](https://www.speedrun.com/) API wrapper)
+- [tadaatoolbox](https://github.com/tadaadata/tadaatoolbox) (used for teaching psychology undergrads)
 
 ## Tadaa, Data!-Projects
 

@@ -1,10 +1,4 @@
 ---
-nocomment: true
-nodate: true
-nopaging: true
-noread: true
-nosocialsharing: true
-notoc: true
 title: About
 type: page
 ---
