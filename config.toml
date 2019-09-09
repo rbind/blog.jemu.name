@@ -78,6 +78,9 @@ preserveTaxonomyNames = true
   useHLJS = true
   socialShare = false
   showRelatedPosts = true
+  # Custom additions
+  piwikID = "12"
+  piwikURL = "https://analytics.tadaa-data.de/"
 
 [Author]
   name = "Lukas"
