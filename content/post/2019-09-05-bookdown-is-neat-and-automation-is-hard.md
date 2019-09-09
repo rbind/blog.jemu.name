@@ -6,18 +6,11 @@ slug: bookdown-is-neat-and-automation-is-hard
 categories:
   - rstats
 tags:
-  - bookdown
   - travis-ci
+packages:
+  - bookdown
 draft: no
 description: ''
-nodate: no
-nopaging: no
-nocomment: no
-nosocialsharing: no
-notoc: no
-noread: no
-enable_mathjax: no
-enable_katex: no
 editor_options:
   chunk_output_type: console
 ---
