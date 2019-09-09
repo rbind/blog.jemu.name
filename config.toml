@@ -4,9 +4,9 @@ languageCode = "en-us"
 title = "Blog Jemu"
 #theme = "hugo-redlounge-jemsu"
 theme = "beautifulhugo"
-
+metaDataFormat = "yaml"
 enableEmoji = true
-#theme = "hugo-lithium-theme-jms"
+
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 Paginate = 5
 preserveTaxonomyNames = true
@@ -39,30 +39,6 @@ preserveTaxonomyNames = true
     url = "/packages/"
     weight = 3
 
-[[menu.social]]
-    name = "mastodon"
-    pre = "<i class='fab fa-mastodon fa-lg'></i>"
-    url = "https://cybre.space/@jemus42"
-    weight = 1
-[[menu.social]]
-    name = "github"
-    pre = "<i class='fab fa-github fa-lg'></i>"
-    url = "https://github.com/jemus42"
-    weight = 2
-[[menu.social]]
-    name = "mail"
-    pre = "<i class='fa fa-envelope fa-lg'></i>"
-    url = "mailto:jemus42@quantenbrot.de"
-    weight = 3
-
-#[Params]
-#    # A few options in case of redlounge theme
-#    sidebartitle = "Blog Jemu"
-#    sidebartagline = "Whereever Blogs Go"
-#    sidebarphoto = "/images/Jemus42.jpg"
-#    sidebarphoto_webp = "/images/Jemus42.webp"
-#    author = "jemus42"
-
 #    # options for highlight.js (version, additional languages, and theme)
 #    highlightjsVersion = "9.15.10"
 #    highlightjsCDN = "//cdn.bootcss.com"
@@ -76,17 +52,8 @@ preserveTaxonomyNames = true
 #    piwikID = "12"
 #    piwikURL = "https://analytics.tadaa-data.de/"
 
-#    bigfoot = true
-#    gallery = "fresco"
-
 #[params.customCSS]
 #    bigfoot = "css/bigfoot-number.min.css"
-
-#[params.logo]
-#    url = "Jemus42.jpg"
-#    width = 50
-#    height = 50
-#    alt = "jms"
 
 [taxonomies]
   category = "categories"
@@ -96,7 +63,7 @@ preserveTaxonomyNames = true
 
 # beautifulhugo
 [Params]
-#  homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page
+  homeTitle = "The Blog Jemu" # Set a different text for the header on the home page
   subtitle = "This still exists"
   mainSections = ["post","posts"]
   logo = "images/Jemus42.jpg" # Expecting square dimensions
@@ -109,7 +76,6 @@ preserveTaxonomyNames = true
   wordCount = true
   useHLJS = true
   socialShare = false
-  delayDisqus = false
   showRelatedPosts = true
 
 [Author]
@@ -119,15 +85,15 @@ preserveTaxonomyNames = true
   github = "jemus42"
 #  gitlab = "username"
 #  bitbucket = "username"
-#  twitter = "username"
+  twitter = "jemus42"
 #  reddit = "username"
 #  linkedin = "username"
-#  xing = "username"
-#  stackoverflow = "users/XXXXXXX/username"
-#  instagram = "username"
+#  xing = "Lukas_Burk2"
+  stackoverflow = "users/409362/jemus42"
+  instagram = "jemus42"
 #  youtube = "user/username" # or channel/channelname
 #  soundcloud = "username"
 #  spotify = "username"
-#  bandcamp = "username"
-#  paypal = "username"
+  bandcamp = "jemus42"
+  paypal = "jemus42"
 
