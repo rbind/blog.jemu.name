@@ -1,4 +1,5 @@
 baseURL = "https://blog.jemu.name/"
+DefaultContentLanguage = "en"
 relativeURLs = false
 languageCode = "en-us"
 title = "Blog Jemu"
