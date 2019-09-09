@@ -36,5 +36,4 @@ Here's a list of stuff I work(ed) on to remind myself to get to them again soone
 ### Teaching
 
 - [R-Intro (German)](https://r-intro.tadaa-data.de)
-- [QM Resources](https://qm.tadaa-data.de) (to be incorporated into R-Intro)
 - [Participation](https://qmparticipation.tadaa-data.de)

@@ -55,44 +55,79 @@ preserveTaxonomyNames = true
     url = "mailto:jemus42@quantenbrot.de"
     weight = 3
 
-[Params]
-    useHLJS = true
-    mainSections = ["post"]
+#[Params]
+#    # A few options in case of redlounge theme
+#    sidebartitle = "Blog Jemu"
+#    sidebartagline = "Whereever Blogs Go"
+#    sidebarphoto = "/images/Jemus42.jpg"
+#    sidebarphoto_webp = "/images/Jemus42.webp"
+#    author = "jemus42"
 
-    # A few options in case of redlounge theme
-    sidebartitle = "Blog Jemu"
-    sidebartagline = "Whereever Blogs Go"
-    sidebarphoto = "/images/Jemus42.jpg"
-    sidebarphoto_webp = "/images/Jemus42.webp"
-    author = "jemus42"
+#    # options for highlight.js (version, additional languages, and theme)
+#    highlightjsVersion = "9.15.10"
+#    highlightjsCDN = "//cdn.bootcss.com"
+#    highlightjsLang = ["r", "yaml"]
+#    highlightjsTheme = "monokai-sublime"
+#    disable_highlight_theme = false
 
-    # options for highlight.js (version, additional languages, and theme)
-    highlightjsVersion = "9.15.10"
-    highlightjsCDN = "//cdn.bootcss.com"
-    highlightjsLang = ["r", "yaml"]
-    highlightjsTheme = "monokai-sublime"
-    disable_highlight_theme = false
+#    MathJaxCDN = "//cdn.bootcss.com"
+#    MathJaxVersion = "3.0.0" # "2.7.1"
 
-    MathJaxCDN = "//cdn.bootcss.com"
-    MathJaxVersion = "3.0.0" # "2.7.1"
+#    piwikID = "12"
+#    piwikURL = "https://analytics.tadaa-data.de/"
 
-    piwikID = "12"
-    piwikURL = "https://analytics.tadaa-data.de/"
+#    bigfoot = true
+#    gallery = "fresco"
 
-    bigfoot = true
-    gallery = "fresco"
+#[params.customCSS]
+#    bigfoot = "css/bigfoot-number.min.css"
 
-[params.customCSS]
-    bigfoot = "css/bigfoot-number.min.css"
-
-[params.logo]
-    url = "Jemus42.jpg"
-    width = 50
-    height = 50
-    alt = "jms"
+#[params.logo]
+#    url = "Jemus42.jpg"
+#    width = 50
+#    height = 50
+#    alt = "jms"
 
 [taxonomies]
   category = "categories"
   tag = "tags"
   show = "shows"
   package = "packages"
+
+# beautifulhugo
+[Params]
+#  homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page
+  subtitle = "This still exists"
+  mainSections = ["post","posts"]
+  logo = "images/Jemus42.jpg" # Expecting square dimensions
+  favicon = "favicon.ico"
+  dateFormat = "January 2, 2006"
+  commit = false
+  rss = true
+  comments = false
+  readingTime = true
+  wordCount = true
+  useHLJS = true
+  socialShare = false
+  delayDisqus = false
+  showRelatedPosts = true
+
+[Author]
+  name = "Lukas"
+  website = "https://jemu.name"
+  email = "dontspamme@jemu.name"
+  github = "jemus42"
+#  gitlab = "username"
+#  bitbucket = "username"
+#  twitter = "username"
+#  reddit = "username"
+#  linkedin = "username"
+#  xing = "username"
+#  stackoverflow = "users/XXXXXXX/username"
+#  instagram = "username"
+#  youtube = "user/username" # or channel/channelname
+#  soundcloud = "username"
+#  spotify = "username"
+#  bandcamp = "username"
+#  paypal = "username"
+
