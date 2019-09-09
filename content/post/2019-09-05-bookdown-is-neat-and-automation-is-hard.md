@@ -8,7 +8,7 @@ categories:
 tags:
   - bookdown
   - travis-ci
-draft: yes
+draft: no
 description: ''
 nodate: no
 nopaging: no
