@@ -4,22 +4,3 @@
 <script type="application/javascript">
    littlefoot.default()
 </script>
-
-
-<!-- Matomo -->
-<script type="text/javascript">
-  if (window.location.hostname != "127.0.0.1") {
-    var _paq = window._paq || [];
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-      var u="{{ .Site.Params.piwikURL }}";
-      _paq.push(['setTrackerUrl', u+'matomo.php']);
-      _paq.push(['setSiteId', {{ .Site.Params.piwikID }}]);
-      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-    })();
-  }
-</script>
-<noscript><p><img src="{{ .Site.Params.piwikURL }}piwik.php?idsite={{ .Site.Params.piwikID }}&rec=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Matomo Code -->

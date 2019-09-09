@@ -79,9 +79,10 @@ preserveTaxonomyNames = true
   socialShare = false
   showRelatedPosts = true
   hideAuthor = true
-  # Custom additions
-  piwikID = "12"
-  piwikURL = "https://analytics.tadaa-data.de/"
+
+[Params.piwik]
+  id = "12"
+  server = "https://analytics.tadaa-data.de/"
 
 [Author]
   name = "Lukas"
