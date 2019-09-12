@@ -229,9 +229,9 @@ And this is what brings us to server-deployment.
 Servers are relatively cheap, at least the "just webhosting"-level VPS. Ours is hosted on [Scaleway](https://www.scaleway.com) and does the job. It already hosts all of our sites, and I never really intended for our R-Intro to be hosted on GitHub anyway, so it was inevitable to go the ssh-deployment-route anyway.
 
 To get started, I followed (and suggest following) [this blogpost](https://oncletom.io/2016/travis-ssh-deploy/).  
-At the end of the day, it was easier to set up than I anticipated. Creating a keybair is simple, and encrypting the private key via the `travis` command line tool isn't exactly rocket science either. 
+At the end of the day, it was easier to set up than I anticipated. Creating a keypair is simple, and encrypting the private key via the `travis` command line tool isn't exactly rocket science either. 
 
-On the server side, I created a dedicated `travis` user, added the public key to its `authorized_keys` ^[if you're doing this manually, make sure the file as `0600` permissions because you won't be able to login if the file is readable by other users for security reasons], and made sure the server directory where the output should go is writable by the `travis` user. 
+On the server side, I created a dedicated `travis` user, added the public key to its `authorized_keys` ^[if you're doing this manually, make sure the file has `0600` permissions because you won't be able to login if the file is readable by other users], and made sure the server directory where the output should go is writable by the `travis` user. 
 
 The config bits are as follows:
 
