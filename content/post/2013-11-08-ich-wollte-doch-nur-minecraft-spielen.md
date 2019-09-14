@@ -6,6 +6,7 @@ date: 2013-11-08
 tags:
 - Minecraft
 title: Ich wollte doch nur Minecraft spielen
+draft: true
 ---
 
 <small>This post exists primarily because I couldn't sleep and I accidentally ironblogging</small>   

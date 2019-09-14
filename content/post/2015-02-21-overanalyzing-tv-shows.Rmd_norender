@@ -3,6 +3,7 @@ title: Overanalyzing TV Shows
 author: jemus42
 date: "2015-02-20"
 edit_date: "2017-08-14"
+draft: true
 categories:
   - rstats
   - tvshows
@@ -26,22 +27,22 @@ shows:
   - Person of Interest
   - Castle
 enable_mathjax: true
-editor_options: 
+editor_options:
   chunk_output_type: console
 ---
 
 **EDIT 2017-08-14**: I've fixed all the code so it works and is up to date. Side effects include the text not necessarily matching the data. Whoopsie.
 
-Overanalyzing tv shows has kind of become my jam. So why not totally overdo it.  
-Note that everything I describe in this blogpost is purely for the lulz, and I don't 
+Overanalyzing tv shows has kind of become my jam. So why not totally overdo it.
+Note that everything I describe in this blogpost is purely for the lulz, and I don't
 pretend there's any scientific merit to it. I just like throwing maths at data.
 
-After I more or less succesfully [plotted all the things](http://trakt.jemu.name), I wanted to 
+After I more or less succesfully [plotted all the things](http://trakt.jemu.name), I wanted to
 go full blown statisticy on the subject. While my knowledge of statistics isn't nearly as extensive as I'd like it to, I at least know a little about comparing groups. So, that's pretty much the plan.
 
 ## Methodology(ish)
 
-The basic idea is simple: I pull the episode data from [trakt.tv](https://trakt.tv) and receive a nice `data.frame` with episode numbers, season number, ratings (0-10) and much more. Assuming that seasons are a decent way of dividing a tv show into groups, I'll be using them exactly as such. The variable we're interested in comparing is the rating, provied by the trakt.tv userbase.  
+The basic idea is simple: I pull the episode data from [trakt.tv](https://trakt.tv) and receive a nice `data.frame` with episode numbers, season number, ratings (0-10) and much more. Assuming that seasons are a decent way of dividing a tv show into groups, I'll be using them exactly as such. The variable we're interested in comparing is the rating, provied by the trakt.tv userbase.
 Using that information we can perform an analysis of variance (ANOVA), with the `aov()` function. If it yields any signicificant results, we then perform the `TukeyHSD` test for post-hoc analysis to find the season comparison with the significant results (i.e. lowest p-value). And yes, I know the p-value in itself is at least a little controversial, and the whole plan might sound completely rubbish to you, but please keep in mind that I'm only doing this for fun.
 
 ## Acquiring the Data
@@ -66,13 +67,13 @@ if (is.null(getOption('trakt.client.id'))){
 theme_set(theme_tadaa())
 ```
 
-Now we're all set. At this point, we can pull the episode data via `trakt.get_all_episodes(slug, season_nums)`, so if we were to look at Game of Thrones (and we will), we'd call `trakt.get_all_episodes("game-of-thrones", 1:4)`.  
+Now we're all set. At this point, we can pull the episode data via `trakt.get_all_episodes(slug, season_nums)`, so if we were to look at Game of Thrones (and we will), we'd call `trakt.get_all_episodes("game-of-thrones", 1:4)`.
 
 So, why not get started on that.
 
 ## Analyzing all the things
 
-### Game of Thrones. 
+### Game of Thrones.
 
 
 ```{r got}
@@ -83,12 +84,12 @@ got %>% select(season, episode, rating) %>% head %>% kable
 ```
 
 
-Now that we have the data, we can pump it through `aov()` and look at the `broom::tidy`'d data.  
+Now that we have the data, we can pump it through `aov()` and look at the `broom::tidy`'d data.
 Note that I pump the output through `knitr::kable`, which converts the output to a markdown table suitable for imbedding in this blogpost.
 
 
 ```{r got_model}
-tadaa_aov(rating ~ season, data = got, print = "markdown") 
+tadaa_aov(rating ~ season, data = got, print = "markdown")
 ```
 
 
@@ -108,13 +109,13 @@ ggplot(data = got, aes(x = rating, fill = season)) +
 
 What I like about this plot is how season 2 seems so neatly grouped around ~8.6 with a bump near the top of the scale, which I assume to be s02e09/s02e10. Especially season 4 on the other hand is pretty spread out, meaning there's a broader range of ratings, or at least a more even spread of ratings.
 
-### The Simpsons 
+### The Simpsons
 
 
 ```{r simpsons, cache=TRUE}
 simpsons <- trakt.get_all_episodes("the-simpsons")
 
-tadaa_aov(rating ~ season, data = simpsons, print = "markdown") 
+tadaa_aov(rating ~ season, data = simpsons, print = "markdown")
 ```
 
 Oh, look, a significant value. Nice. Let's throw `TukeyHSD` at it to see what sticks.
@@ -157,7 +158,7 @@ ggplot(data = simpsons, aes(x = epnum, y = rating, colour = season)) +
 
 
 If you want to take a closer look, try looking it up on [tRakt-shiny](http://trakt.jemu.name)
-        
+
 ### Star Trek: Enterprise
 
 As per [request](https://twitter.com/mxey), let's look how that one's doing.
@@ -166,7 +167,7 @@ As per [request](https://twitter.com/mxey), let's look how that one's doing.
 ```{r STE}
 ste  <- trakt.get_all_episodes("star-trek-enterprise")
 
-tadaa_aov(rating ~ season, data = ste, print = "markdown") 
+tadaa_aov(rating ~ season, data = ste, print = "markdown")
 ```
 
 
@@ -175,12 +176,12 @@ Once again a significant result. From what I've been told, s04 is said to be bet
 
 ```{r STE-tukey}
 aov(rating ~ season, data = ste) %>%
-  TukeyHSD() %>% 
+  TukeyHSD() %>%
   tidy() %>%
   tadaa_plot_tukey()
 ```
 
-Now let's look at the ratings in density-plot form. 
+Now let's look at the ratings in density-plot form.
 
 ```{r STE-density}
 ggplot(data = ste, aes(x = rating, fill = season)) +
@@ -202,7 +203,7 @@ I wonder if the many many cancellations had any effect on season reception.
 ```{r futurama}
 futurama  <- trakt.get_all_episodes("futurama")
 
-tadaa_aov(rating ~ season, data = futurama, print = "markdown") 
+tadaa_aov(rating ~ season, data = futurama, print = "markdown")
 ```
 
 Assuming we're working with a $\alpha = 0.05$ (which I'll just say we do), that's a significant result.
@@ -215,7 +216,7 @@ aov(rating ~ season, data = futurama) %>%
   tadaa_plot_tukey()
 ```
 
-Welp, at least the first line yields a significant result with the `.05` cutoff, so I guess you could make an argument that s05 was better than s07, but besides that it seems like Futurama was pretty consistent.  
+Welp, at least the first line yields a significant result with the `.05` cutoff, so I guess you could make an argument that s05 was better than s07, but besides that it seems like Futurama was pretty consistent.
 Let's look at a plot to get a feel for that.
 
 
@@ -238,7 +239,7 @@ Oh screw me. Well, let's do this.
 ```{r}
 lost  <- trakt.get_all_episodes("lost-2004")
 
-tadaa_aov(rating ~ season, data = lost) 
+tadaa_aov(rating ~ season, data = lost)
 ```
 
 Huh. So I guess we'll have to take a closer look.
@@ -271,10 +272,10 @@ Everybody loves Daria, so don't pretend you don't know what's up.
 ```{r daria}
 daria <- trakt.get_all_episodes("daria")
 
-tadaa_aov(rating ~ season, data = daria, print = "markdown") 
+tadaa_aov(rating ~ season, data = daria, print = "markdown")
 ```
 
-Oh, well. 
+Oh, well.
 
 ```{r daria-tukey}
 aov(rating ~ season, data = daria) %>%
@@ -307,7 +308,7 @@ ggplot(data = daria, aes(x = votes)) +
 ```
 
 
-The peak at $x = 0$ means exactly what you think it means: A large number of episodes with no votes at all.  
+The peak at $x = 0$ means exactly what you think it means: A large number of episodes with no votes at all.
 So, that's a bummer.
 
 ### Person of Interest
@@ -316,10 +317,10 @@ So, that's a bummer.
 ```{r poi}
 poi  <- trakt.get_all_episodes("person-of-interest")
 
-tadaa_aov(rating ~ season, data = poi, print = "markdown") 
+tadaa_aov(rating ~ season, data = poi, print = "markdown")
 ```
 
-No post-hoc necessary. 
+No post-hoc necessary.
 Courtesy plot:
 
 
@@ -338,7 +339,7 @@ ggplot(data = poi, aes(x = rating, fill = season)) +
 ```{r castle}
 castle <- trakt.get_all_episodes("castle")
 
-tadaa_aov(rating ~ season, data = castle, print = "markdown") 
+tadaa_aov(rating ~ season, data = castle, print = "markdown")
 ```
 
 Huh.
@@ -368,7 +369,7 @@ ggplot(data = castle, aes(x = rating, fill = season)) +
 ```{r prec}
 prec <- trakt.get_all_episodes("parks-and-recreation")
 
-tadaa_aov(rating ~ season, data = prec, print = "markdown") 
+tadaa_aov(rating ~ season, data = prec, print = "markdown")
 ```
 
 Again? Whow, we're on a roll.
@@ -391,7 +392,7 @@ ggplot(data = prec, aes(x = rating, fill = season)) +
 ```
 
 
-Oh yeah. That show is a mess, consistency-wise.  
+Oh yeah. That show is a mess, consistency-wise.
 Interesting how bad s01 seems to be doing.
 
 ### Sleepy Hollow
@@ -402,7 +403,7 @@ Haven't seen it, not sure if I will.
 ```{r shollow}
 shollow <- trakt.get_all_episodes("sleepy-hollow")
 
-tadaa_aov(rating ~ season, data = shollow) 
+tadaa_aov(rating ~ season, data = shollow)
 ```
 
 Well.
@@ -425,7 +426,7 @@ ggplot(data = shollow, aes(x = rating, fill = season)) +
 ```
 
 
-The point being: It doesn't seem to get better. 
+The point being: It doesn't seem to get better.
 
 ### Family Guy
 
@@ -434,7 +435,7 @@ To end this, here comes a favorite of mine.
 
 ```{r famguy}
 fguy <- trakt.get_all_episodes("family-guy")
-tadaa_aov(rating ~ season, data = fguy, print = "markdown") 
+tadaa_aov(rating ~ season, data = fguy, print = "markdown")
 ```
 
 Oh well, I'll take it.
@@ -466,7 +467,7 @@ As an afterthought, let's look at the one that got this whole thing started.
 
 ```{r scrubs}
 scrubs <- trakt.get_all_episodes("scrubs")
-tadaa_aov(rating ~ season, data = scrubs, print = "markdown") 
+tadaa_aov(rating ~ season, data = scrubs, print = "markdown")
 ```
 
 That's… convincing.
@@ -493,9 +494,9 @@ ggplot(data = scrubs, aes(x = rating, fill = season)) +
 
 ## Limitations
 
-Probably the most important thing to note about all of this is that trakt.tv doesn't nearly have the userbase of other, well established sites like [IMDb](http://www.imdb.com/), so, well, I guess the sample size might be too small, or maybe there are some biases or confounders at work which I can't really adjust for.  
-A way around this would probably be to use the `votes` variable in the episode dataset to normalize the ratings across a show, but I don't really know a decent way to do that, since the per-episode ratings already represent the average of all the user votes for that episode.  
- 
+Probably the most important thing to note about all of this is that trakt.tv doesn't nearly have the userbase of other, well established sites like [IMDb](http://www.imdb.com/), so, well, I guess the sample size might be too small, or maybe there are some biases or confounders at work which I can't really adjust for.
+A way around this would probably be to use the `votes` variable in the episode dataset to normalize the ratings across a show, but I don't really know a decent way to do that, since the per-episode ratings already represent the average of all the user votes for that episode.
+
 The other problem is that I never once checked for normality within the ratings, which should be given if you want to perform an ANOVA. If the variable you're looking at is not distributed normally, you should be doing a Kruskal-Wallis, but I'm a lazy man.
 
 Well, there's that and my whole point about how this is all fun and games, and no serious points shall be made.

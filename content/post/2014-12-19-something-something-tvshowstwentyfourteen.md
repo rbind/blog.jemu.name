@@ -68,12 +68,12 @@ If you hated the ending: Don't tell me about it.
 If you loved it: Okay kewl.
 
 ## In the Flesh
-The usualy zombie story done different.  
+The usual zombie story done different.  
 We've all seen the usualy zombie outbreak armageddon survival shit often enough, but what happens if after the outbreak, a *cure* is found and former zombies are re-introduced in society?  
 Nice thought experiment featuring a gay protagonist, which is also nice. 
 
 ## Gravity Falls
-Because everybody loved cartoons that are only theoretically suitable for kids.
+Because everybody loves cartoons that are only theoretically suitable for kids.
 
 ## Fullmetal Alchemist: Brotherhood
 I watched Fullmetal Alchemist minus the Brotherhood before I watched FMA:B, and even though the plots (and endings) diverge greatly, I still think I preferred the character development and backstories of minor characters in FMA. However, watching FMA:B felt like a tearduct-teasing summary through the first half of the show, which was nice, and followed it up with a, in my opinion, more satisfying conclusion to the story.  
@@ -82,14 +82,14 @@ I recommend both Fullmetal Alchemist and Fullmetal Alchemist: Brotherhood, but d
 ## RideBack
 Some people love it to death.  
 I liked it.  
-But no, seriously, it's a thouroughly enjoyable story of a girl discovering her affinity to futuristic motorcycle-robot-thingies and kicking some serious ass.   
+But no, seriously, it's a thouroughly enjoyable story of a girl discovering her affinity for futuristic motorcycle-robot-thingies and kicking some serious ass.   
 What's not to like.
 
 ## The Future Diary
 It started out like any other japanese Anime: At a school. It ended with a lot of brainfucky shit going down. I think I'm still a little confused by what exactly happened, but let's just say I'm now much less keen on being able to predict the future.
 
 ## Another
-A fairly dark, partially violent and very atmospheric anime. I loved every second of it.  
+A fairly dark, violent and very atmospheric anime. I loved every second of it.  
 It combines many things I love about anime, and if you know similar ones I'd appreciate some recommendations.
 
 ## Claymore

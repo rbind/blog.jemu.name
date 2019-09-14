@@ -6,6 +6,7 @@ tags:
 - octopress
 date: 2015-11-12
 title: Oh, It's Octopress. Again.
+draft: true
 ---
 
 Blogging-Systeme auszuprobieren ist über die Jahre wohl zu meinem Sekundärhobby geworden. Diverse Versionen von Blogger/Blogspot, Wordpress (.com und self-hosted), und natürlich jekyll/octopress.  
