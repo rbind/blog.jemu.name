@@ -1,7 +1,7 @@
 ---
 author: jemus42
 categories:
-- lolz
+  - lolz
 date: 2016-09-23
 title: “Switchback” Is About Text Processing
 ---
@@ -26,7 +26,7 @@ Right at the beginning, our fictitious protagonist (from here on out referred to
 > Now, what I see is what I get
 
 Ah, now we're getting somewhere. Our previous suspicion about the protagonist's desire to revert a previous choice is confirmed, and with the second line we can also infer the context of said choice. Apparently they are not happy about a current state in which they *get* what they *see*, quite possibly referring to [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG), the common approach to text processing found in popular text processing software[^4].  
-We can infer that the protagonist is not happy about this newfangled WYSIWYG paradigm and preferred his old way of processing text, which in this context might very well have been [LaTeX](https://en.wikipedia.org/wiki/LaTeX) – a text processing system widely used in Wikipedia articles about basic mathematic concepts to utterly confuse high school students who really could have used an explanation of matrix multiplication without first having to derive group theory from first principles. 
+We can infer that the protagonist is not happy about this newfangled WYSIWYG paradigm and preferred their old way of processing text, which in this context might very well have been [LaTeX](https://en.wikipedia.org/wiki/LaTeX) – a text processing system widely used in Wikipedia articles about basic mathematical concepts to utterly confuse high school students who really could have used an explanation of matrix multiplication without having to derive group theory from first principles. 
 
 > (It's too late to look back)  
 > (I've got no way to switch back)  
@@ -36,7 +36,7 @@ We can infer that the protagonist is not happy about this newfangled WYSIWYG par
 > (Switch back)  
 > (Switch back)  
 
-Once again our protagonist mourns his inability to revert his decision, allowing us to make the assumption that his choice might have been made for him, presumably against his own desires. This could refer to a higher power of sorts, maybe their direct superior or their thesis supervisor expecting his submission in a specific format. Since we already established a high probability of this situation referring to the protagonist's choice in text processing software, we can infer that their supervisor only accepts submissions in Micrsoft Word format, while the protagonist would have preferred writing their thesis in LaTeX so they can submit a properly formatted and portable PDF document.
+Once again our protagonist mourns their inability to revert his decision, allowing us to make the assumption that their choice might have been made for them, presumably against their own desires. This could refer to a higher power of sorts, maybe their direct superior or their thesis supervisor expecting his submission in a specific format. Since we already established a high probability of this situation referring to the protagonist's choice in text processing software, we can infer that their supervisor only accepts submissions in Micrsoft Word format, while the protagonist would have preferred writing their thesis in LaTeX so they can submit a properly formatted and portable PDF document.
 
 > Wait, how can it be too  
 > Late? 'Cause I don't want to  
