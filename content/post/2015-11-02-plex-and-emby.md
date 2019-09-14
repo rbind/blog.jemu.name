@@ -2,11 +2,15 @@
 title: Plex and Emby
 author: jemus42
 date: '2015-11-02'
-categories:
-  - tech
 tags:
   - plex
   - emby
+---
+
+---
+
+**EDIT 2019-09-14**: Please note that this post is pretty old. If you're trying to make a decision between the two systems, this might not be the best place to start.
+
 ---
 
 Having a media center and appropriate infrastructure in your own home is a nice thing. Besides questions about hardware specifications, there's also the the matter of software to use.  

@@ -3,9 +3,8 @@ title: Determine Your Packages Minumum R Dependency
 author: jemus42
 date: '2018-01-11'
 slug: determine-your-packages-minumum-r-dependency
-categories:
-  - rstats
 tags:
+  - rstats
   - packages
 draft: no
 ---

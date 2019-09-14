@@ -4,10 +4,8 @@ author: jemus42
 date: "2015-02-20"
 edit_date: "2017-08-14"
 draft: true
-categories:
-  - rstats
-  - tvshows
 tags:
+  - rstats
   - Rmd
   - trakt.tv
 packages:
