@@ -1,5 +1,12 @@
 /* Tweaks to beautifulhugo */
 
+figcaption {
+  text-align: center;
+  font-size: 75%;
+  font-style: italic;
+  margin-bottom: 10px
+}
+
 /* --- Tags --- */
 
 .blog-tags {
