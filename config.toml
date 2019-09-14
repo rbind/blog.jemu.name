@@ -68,7 +68,7 @@ preserveTaxonomyNames = true
   subtitle = "This still exists"
   mainSections = ["post","posts"]
   logo = "images/Jemus42.jpg" # Expecting square dimensions
-  favicon = "favicon.ico"
+  favicon = "icons/favicon.ico"
   dateFormat = "January 2, 2006"
   commit = false
   rss = true
@@ -85,7 +85,7 @@ preserveTaxonomyNames = true
   server = "analytics.tadaa-data.de/"
 
 [Author]
-  name = "Lukas"
+  name = "jemus42"
   website = "https://jemu.name"
   email = "dontspamme@jemu.name"
   github = "jemus42"
@@ -96,12 +96,12 @@ preserveTaxonomyNames = true
 #  linkedin = "username"
 #  xing = "Lukas_Burk2"
   stackoverflow = "users/409362/jemus42"
-  instagram = "jemus42"
+#  instagram = "jemus42"
 #  youtube = "user/username" # or channel/channelname
 #  soundcloud = "username"
 #  spotify = "username"
   bandcamp = "jemus42"
-  paypal = "jemus42"
+#  paypal = "jemus42"
 
 [[menu.main]]
     name = "Packages"
@@ -111,7 +111,7 @@ preserveTaxonomyNames = true
 [[menu.main]]
     name = "Tags"
     url = "tags"
-    weight = 3
+    weight = 2
 
 [[menu.main]]
     name = "Shows"
