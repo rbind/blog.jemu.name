@@ -11,14 +11,18 @@ figcaption {
   margin-bottom: 10px
 }
 
+.navbar-custom {
+  background-color: #F2F2F2
+}
+
 .blog-post table {
   margin-left: auto;
 	margin-right: auto;
 }
 
 .blog-post th {
-  background-color: rgb(142, 142, 142);
-  color: rgb(244, 244, 244)
+  background-color: #353535;
+  color: #FCFCFC
 }
 
 .blog-post td {
@@ -27,6 +31,10 @@ figcaption {
 
 pre > code {
   font-family: "Fira Mono", "Sans Mono", "Consolas", "Courier", monospace;
+}
+
+.blog-tags-extended {
+  margin-top: 1em
 }
 
 /* --- Tags --- */
