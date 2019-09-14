@@ -5,27 +5,7 @@
       <article role="main" class="blog-post">
         {{ .Content }}
 
-        {{ if .Params.tags }}
-          <div class="blog-tags">
-            {{ range .Params.tags }}
-              <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-            {{ end }}
-          </div>
-        {{ end }}
-        {{ if .Params.packages }}
-          <div class="blog-packages">
-            {{ range .Params.packages }}
-              <a href="{{ $.Site.LanguagePrefix | absURL }}/packages/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-            {{ end }}
-          </div>
-        {{ end }}
-        {{ if .Params.shows }}
-          <div class="blog-shows">
-            {{ range .Params.shows }}
-              <a href="{{ $.Site.LanguagePrefix | absURL }}/shows/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-            {{ end }}
-          </div>
-        {{ end }}
+        {{ partial "post_tags_extended.html" . }}
 
         {{ if $.Param "socialShare" }}
             <hr/>

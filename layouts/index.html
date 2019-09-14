@@ -40,13 +40,8 @@
                 {{ end }}
               </div>
 
-              {{ if .Params.tags }}
-                <div class="blog-tags">
-                  {{ range .Params.tags }}
-                    <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-                  {{ end }}
-                </div>
-              {{ end }}
+              {{ partial "post_tags_extended.html" . }}
+              
             </article>
           {{ end }}
         </div>

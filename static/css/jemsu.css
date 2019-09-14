@@ -1,5 +1,9 @@
 /* Tweaks to beautifulhugo */
 
+body {
+  background-color: #FCFCFC
+}
+
 figcaption {
   text-align: center;
   font-size: 75%;
@@ -13,8 +17,13 @@ figcaption {
 }
 
 .blog-post th {
-  background-color: rgb(208, 29, 29);
+  background-color: rgb(142, 142, 142);
   color: rgb(244, 244, 244)
+}
+
+.blog-post td {
+  font-family: monospace
+  /* font-family: 'Fira Mono', Fira Mono, monospace */
 }
 
 /* --- Tags --- */
@@ -77,7 +86,11 @@ figcaption {
 }
 
 .blog-packages a:before {
-  content: "#";
+  content: "{";
+}
+
+.blog-packages a:after {
+  content: "}";
 }
 
 .blog-packages a:hover {
@@ -116,9 +129,11 @@ figcaption {
   padding: 0px 5px;
 }
 
+/*
 .blog-shows a:before {
   content: "#";
 }
+*/
 
 .blog-shows a:hover {
   border-radius: 2px;
