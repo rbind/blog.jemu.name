@@ -7,6 +7,16 @@ figcaption {
   margin-bottom: 10px
 }
 
+.blog-post table {
+  margin-left: auto;
+	margin-right: auto;
+}
+
+.blog-post th {
+  background-color: rgb(208, 29, 29);
+  color: rgb(244, 244, 244)
+}
+
 /* --- Tags --- */
 
 .blog-tags {
@@ -57,7 +67,7 @@ figcaption {
 }
 
 .blog-packages:before {
-  content: "Packages: ";
+  content: "R Packages: ";
 }
 
 .blog-packages a {
@@ -140,6 +150,19 @@ figcaption {
 
 .intro-header .tags-heading {
   text-align: center;
+}
+
+.intro-header .categories-heading h1 {
+  font-size: 80px;
+}
+
+.intro-header .categories-heading h1 {
+margin-top: 0;
+font-size: 50px;
+}
+
+.intro-header .categories-heading {
+text-align: center;
 }
 
 .intro-header .shows-heading h1 {

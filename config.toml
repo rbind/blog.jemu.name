@@ -99,21 +99,39 @@ preserveTaxonomyNames = true
 #  instagram = "jemus42"
 #  youtube = "user/username" # or channel/channelname
 #  soundcloud = "username"
-#  spotify = "username"
+  spotify = "jemus42"
+  git-selfhosted = "git.tadaa-data.de/lukas"
   bandcamp = "jemus42"
 #  paypal = "jemus42"
+  mastodon = "cybre.space/@jemus42"
 
 [[menu.main]]
-    name = "Packages"
-    url = "packages"
+    name = "Posts"
+    url = "post"
+    identifier = "posts"
     weight = 3
+
+[[menu.main]]
+    name = "categories"
+    url = "categories"
+    parent = "posts"
+    weight = 1
+
 
 [[menu.main]]
     name = "Tags"
     url = "tags"
+    parent = "posts"
     weight = 2
 
 [[menu.main]]
     name = "Shows"
     url = "shows"
+    parent = "posts"
     weight = 3
+
+[[menu.main]]
+    name = "R Packages"
+    url = "packages"
+    parent = "posts"
+    weight = 4

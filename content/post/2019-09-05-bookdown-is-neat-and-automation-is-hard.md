@@ -45,7 +45,7 @@ The workflow `make changes -> git commit -> git push to GitHub -> travis -> depl
 Probably the easiest solution as you only need a GitHub account and token.  
 The GH pages deplyoment is documented [here](https://docs.travis-ci.com/user/deployment/pages/), and you'll at least need to get a personal access token from GitHub (in R, you can let `usethis::browse_github_token()` take you where you need to go) and add it to your project on travis as an environment variable (perferrably named `GITHUB_PAT`), and make sure it is available to all branches and won't display in the build log.
 
-![Kind of what it should look like on travis](https://dump.jemu.name/2019-09-uv5tqwkabimfnik.png)
+{{< figure src="https://dump.jemu.name/2019-09-uv5tqwkabimfnik.png" caption="Kind of what it should look like on travis" >}}
 
 Now, to have travis build your project and push to a `gh-pages` branch, you'll first have to create that branch. These bits are explained [in the bookdown book](https://bookdown.org/yihui/bookdown/github.html) already.
 
@@ -217,7 +217,7 @@ script:
 
 Travis will start the parallel jobs for each value of the environment variable `$BOOKDOWN_FORMAT`, and we can access the value of that variable in other sections of the config, like the `script` bit where the fun happens. Here we're throwing `render_book` at whatever format is defined in `$BOOKDOWN_FORMAT`. I suggest looking up bash / shell environment variables if you're not familiar with the concept.
 
-![Three parallel build jobs](https://dump.jemu.name/2019-09-d95sg7fpou9u9yp.png)
+{{< figure src="https://dump.jemu.name/2019-09-d95sg7fpou9u9yp.png" caption="Three parallel build jobs" >}}
 
 The problem with this is, well, kind of a biggie: Each of the three jobs deploys to GH Pages. Each of these jobs overwrites the output of the other job. At the end of the build, your `gh-pages` branch will only contain one of the three formats.  
 That's kind of a bummer.
