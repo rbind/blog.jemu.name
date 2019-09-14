@@ -1,6 +1,6 @@
 ---
 title: New Phone Smell
-author: Jemus42
+author: jemus42
 date: '2017-08-29'
 slug: new-phone-smell
 categories:
@@ -12,7 +12,7 @@ enable_mathjax: no
 enable_katex: no
 ---
 
-As of my most recent impulse-buy, I'm now a mildly unashamed owener of a [OnePlus 5](https://www.youtube.com/watch?v=2w5B1Ne-fy4&t=1s), and I thought I'd jot down some thoughts about that.  
+As of my most recent impulse-buy, I'm now a mildly unashamed owner of a [OnePlus 5](https://www.youtube.com/watch?v=2w5B1Ne-fy4&t=1s), and I thought I'd jot down some thoughts about that.  
 The OP5 is a farily sizeable upgrade for me, coming from a OnePlus One I quite enjoyed.  
 I didn't really *need* to upgrade, as my OP1 is still intact, unstolen and unscratched, but you know what they say about buying things you really want and how that's a perfectly fine thing to do if you have the ability to do so. It's a really concise saying, I swear.
 
@@ -31,7 +31,7 @@ Thankfully it didn't take me *that* long to upgrade.
 ### 2012: Nexus 4 (LG)
 
 Oh boy did I like that phone. After the Desire, this was the prettiest and smoothest thing ever. It was also slippery as fuck all, but oh well.  
-As a Nexus, I could count on reasonably fast updates, a vibrant custom ROM ecosystem and better specs that made the whole thing fun in a way the Desire never was. By the time I had gotten accustomed to CyanogenMOD, so after I grew bored of stock Android I switched to CM relatively quickly, and never regretted it. For the first time I was actually one of those bleeding-edge people, with daily CM nightlies and whatnot. As a student, stability was not that big of a deal so even if I encountered random reboots or app crashes, they didn't really bother me that much. I even used a fork of the standard custom recovery at the time only because it supported EXT4 formatting, and I never even cared about any benefits I of that, I just did it because it was new and kewl.  
+As a Nexus, I could count on reasonably fast updates, a vibrant custom ROM ecosystem and better specs that made the whole thing fun in a way the Desire never was. By the time I had gotten accustomed to CyanogenMOD, so after I grew bored of stock Android I switched to CM relatively quickly, and never regretted it. For the first time I was actually one of those bleeding-edge people, with daily CM nightlies and whatnot. As a student, stability was not that big of a deal so even if I encountered random reboots or app crashes, they didn't really bother me that much. I even used a fork of the standard custom recovery at the time only because it supported EXT4 formatting, and I never even cared about any benefits of that, I just did it because it was new and kewl.  
 Sadly, the phone got stolen in 2014, which is a real shame because I wanted my mom to inherit it, who was by then using my old HTC Desire and also ran into storage issues.  
 At least that paved the way for a even upgradier upgrade.
 
@@ -61,7 +61,7 @@ There are other things the OP5 lacks, luckily none of which I particularly care 
 
 ## Fingerprint and AMOLED :)
 
-As a happy user of 1password, the best thing about the upgrade was finally having a fingerprint reader to quickly unlock 1password, as my master password is obviously fairly long and hard to mistype on a phone keyboard.  
+As a happy user of 1password, the best thing about the upgrade was finally having a fingerprint reader to quickly unlock 1password, as my master password is obviously fairly long and hard to type on a phone keyboard.  
 It's also *really really fast**, which surprised me for some reason, given how fingerprint readers are pretty much standard components since a few generations ago.  
 I'm also a fan of the camera, but maybe that's just the novelty of having a really damn fast camera app again for a change. The dual camera thing is neat, and the pro mode where you can manually tweak all the settings is also kewl, but I haven't had a chance to really test it.  
 
@@ -76,7 +76,7 @@ Now if only that car charger was currently shipping in Germany, that would be ra
 
 As I mentioned, I've been running CyanogenMOD (or more recently, its successor LineageOS) for pretty much most of my Android days, and I've gotten used to various customizability features like editable quick draw tiles and the likes before they way standard parts.  
 I've also used Nova Launcher as a homescreen replacement for stock launcher for so long, I was basically unable to switch back to stock because I was _so_ used to various little things I didn't want to compromise on.  
-However, now I'm on the latest OxygenOS, the OP stock ROM, and I don't really miss anything. The shelf to the left side of the homescreen is a nice play for lots of widgets I would usually need to spread out over multiple screens, and the rest is pretty decent, too. The only thing that I really miss from Nova is the customizable app drawer where you can create tabbed sections for apps, which I used to group them by category (games, social, media stuff, tools), but oh well, I'll get used to it. Now that I have more screen space available because all the widgets can live on the shelf, I don't have to primarily rely on the app drawer anyway.  
+However, now I'm on the latest OxygenOS, the OP stock ROM, and I don't really miss anything. The shelf to the left side of the homescreen is a nice place for lots of widgets I would usually need to spread out over multiple screens, and the rest is pretty decent, too. The only thing that I really miss from Nova is the customizable app drawer where you can create tabbed sections for apps, which I used to group them by category (games, social, media stuff, tools), but oh well, I'll get used to it. Now that I have more screen space available because all the widgets can live on the shelf, I don't have to primarily rely on the app drawer anyway.  
 
 The only customization I made was rooting it, which is a thing I also do almost out of habit and not for any particular feature I really need. Except host-file based ad-block, because VPN ad-blocking is annoying and also fuck you and everyone you know if you force ads into your apps without giving me the option to pay for an ad-free experience (which I gladly do very often, but some devs seem to just hate people).
 

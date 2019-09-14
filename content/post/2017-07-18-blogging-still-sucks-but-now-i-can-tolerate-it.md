@@ -1,5 +1,5 @@
 ---
-author: Jemus42
+author: jemus42
 categories:
 - meta
 date: 2017-07-18

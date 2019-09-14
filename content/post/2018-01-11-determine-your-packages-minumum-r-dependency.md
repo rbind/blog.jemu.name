@@ -1,6 +1,6 @@
 ---
 title: Determine Your Packages Minumum R Dependency
-author: Jemus42
+author: jemus42
 date: '2018-01-11'
 slug: determine-your-packages-minumum-r-dependency
 categories:

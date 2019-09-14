@@ -1,6 +1,6 @@
 ---
 title: Finding L3viathan
-author: Jemus42
+author: jemus42
 date: '2014-02-17'
 categories:
   - rstats

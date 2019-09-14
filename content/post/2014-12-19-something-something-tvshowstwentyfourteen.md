@@ -1,5 +1,5 @@
 ---
-author: Jemus42
+author: jemus42
 categories:
 - tvshows
 date: 2014-12-20

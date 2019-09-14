@@ -1,5 +1,5 @@
 ---
-author: Jemus42
+author: jemus42
 categories:
 - rstats
 date: 2014-06-06

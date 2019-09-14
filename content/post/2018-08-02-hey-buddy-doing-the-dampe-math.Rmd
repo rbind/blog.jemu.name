@@ -1,6 +1,6 @@
 ---
 title: Hey Buddy! Doing the Dampe Math
-author: Jemus42
+author: jemus42
 date: '2018-08-02'
 slug: hey-buddy-doing-the-dampe-math
 categories:

@@ -15,6 +15,6 @@ For no particular reason whatsoever, I set up a new [twitter bot](https://twitte
 
 If you think that's a shitty idea [^1], you can message me in any way you care and tell me to GTFO.
 
-If you're looking for more backstory, I don't know what the fuck is wrong with you, but maybe [somewhere here](https://twitter.com/Jemus42/status/710368111367745537) is the place to look.
+If you're looking for more backstory, I don't know what the fuck is wrong with you, but maybe [somewhere here](https://twitter.com/jemus42/status/710368111367745537) is the place to look.
 
 [^1]: Let's face it, you're right.

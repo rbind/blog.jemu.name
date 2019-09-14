@@ -1,6 +1,6 @@
 ---
 title: My Summer Spring Cleaning, Part 1
-author: Jemus42
+author: jemus42
 date: '2016-10-12'
 categories:
   - tech

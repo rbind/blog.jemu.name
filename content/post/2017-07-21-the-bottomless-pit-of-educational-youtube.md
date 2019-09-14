@@ -1,15 +1,12 @@
 ---
-author: Jemus42
+author: jemus42
 categories:
 - media
 date: 2017-07-25
 draft: false
-enable_katex: false
-enable_mathjax: false
 slug: the-bottomless-pit-of-educational-youtube
 tags:
-- Youtube
-- Recommendations
+    - Youtube
 title: The Bottomless Pit of Educational Youtube
 ---
 
@@ -17,8 +14,7 @@ Youtube is great.
 Not only is it a great source of entertainment, it's also a great way to drown out the ever growing numbness accompanying the vague, yet menacing vo[i](http://www.welcometonightvale.com/)d slowly encompassing everything that is and ever will be.  
 Also, it can be extraordinarily educational if you stumble upon the right channels.
 
-I want to give you some recommendations on where to start your dive into the endless pit of stuff to watch, but as I prepare a mental list, I realize that I have *no* idea how to group or organize that list. And that's why I'll just start somehwere and see how it goes, so there's that.  
-Alternatively, if you just want a list of stuff, [here's my subscription list](/youtube/).
+I want to give you some recommendations on where to start your dive into the endless pit of stuff to watch, but as I prepare a mental list, I realize that I have *no* idea how to group or organize that list. And that's why I'll just start somehwere and see how it goes, so there's that. 
 
 ## The Bradyverse
 
@@ -55,7 +51,7 @@ Channels I know of but don't frequently watch, even though they're also great:
 
 ### [standupmaths][standupmaths] <small>(Matt Parker)</small>
 
-Avid [Numberhile viewers will know Matt Parker already](https://www.youtube.com/playlist?list=PLt5AfwLFPxWKuRpivZd_ivR2EvEzKrDUu), I mean he *is* the inventor of the famous [Parker Square][parkersquare]. Besides his Numberphile fame, he's also an incredibly funny performer, combining stand-up comedy and maths -- something that's really hard to deduce from his channel name. 
+Avid [Numberphile viewers will know Matt Parker already](https://www.youtube.com/playlist?list=PLt5AfwLFPxWKuRpivZd_ivR2EvEzKrDUu), I mean he *is* the inventor of the famous [Parker Square][parkersquare]. Besides his Numberphile fame, he's also an incredibly funny performer, combining stand-up comedy and maths -- something that's really hard to deduce from his channel name. 
 He's also part of the [Festival of the Spoken Nerd](https://shop.festivalofthespokennerd.com), and I can only recommend watching the *Full Frontal Nerdity* show while I'm waiting for a digital release of their current show. He also [writes stuff](https://makeanddo4d.com/) which is arguably as funny and interesting as his performances.  
 Overall, 10/10 math person.  
 
@@ -102,7 +98,7 @@ Probably my favorite of their projects. A channel with series about various topi
 This is where I get a lot of my regular science news. Besides explainers about various scientific topics, there are also regular updates about current events and new research in the science world. 
 If that's too general for you, there are also the spin-offs [SciShow Space][scispace] and [SciShow Psych][scipsych] for space and psychology respectively, and oh boy do I enjoy them.
 
-## Things, and how they are
+## Things, and how they are, and why that's interesting
 
 I don't even know where to start, so here's bulleted list of stuff:
 

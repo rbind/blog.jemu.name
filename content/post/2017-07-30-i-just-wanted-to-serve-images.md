@@ -1,6 +1,6 @@
 ---
 title: I Just Wanted to Serve Images
-author: Jemus42
+author: jemus42
 date: '2017-07-30'
 edit_date: '2017-08-07'
 slug: i-just-wanted-to-serve-images

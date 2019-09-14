@@ -1,7 +1,7 @@
 ---
 author: jemus42
-categories:
-- lolz
+tags:
+  - twitter
 date: 2014-02-03
 title: Service Interface Changes in a nutshell
 ---
@@ -17,7 +17,7 @@ Auch anwendbar auf Facebook webinterface Designänderungen, mobile clients, etc.
 4. People are offended by people from previous point
 5. Arguments about quality of clients
 6. Arguments about annoying topics repeating themselves over and over
-7. Meta-comments about the nature of such arguments
+7. Meta-comments about the nature of such arguments (this post)
 8. You realize why muting and filtering are really good options to have
 9. You are also reminded of how you hate everyone on the internet all the time
 10. Go to 1.
