@@ -22,8 +22,11 @@ figcaption {
 }
 
 .blog-post td {
-  font-family: monospace
-  /* font-family: 'Fira Mono', Fira Mono, monospace */
+  font-family: "Fira Mono", "Sans Mono", "Consolas", "Courier", monospace;
+}
+
+pre > code {
+  font-family: "Fira Mono", "Sans Mono", "Consolas", "Courier", monospace;
 }
 
 /* --- Tags --- */
