@@ -1,5 +1,5 @@
+      <div class="blog-tags-extended">
         {{ if .Params.tags }}
-        <div class="blog-tags-extended">
           <div class="blog-tags">
             {{ range .Params.tags }}
               <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
@@ -19,5 +19,5 @@
               <a href="{{ $.Site.LanguagePrefix | absURL }}/shows/{{ . | urlize }}/">{{ . | urlize }}</a>&nbsp;
             {{ end }}
           </div>
-        </div>
         {{ end }}
+      </div>

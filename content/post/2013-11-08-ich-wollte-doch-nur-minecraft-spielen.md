@@ -1,12 +1,12 @@
 ---
 author: jemus42
 categories:
-- rambling
+  - rambling
 date: 2013-11-08
 tags:
-- Minecraft
+  - Minecraft
 title: Ich wollte doch nur Minecraft spielen
-draft: true
+draft: false
 ---
 
 <small>This post exists primarily because I couldn't sleep and I accidentally ironblogging</small>   

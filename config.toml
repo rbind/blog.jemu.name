@@ -1,3 +1,7 @@
+#################################
+## Hugo settings               ##
+#################################
+
 baseURL = "https://blog.jemu.name/"
 DefaultContentLanguage = "en"
 relativeURLs = false
@@ -9,52 +13,11 @@ metaDataFormat = "yaml"
 enableEmoji = true
 
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
-Paginate = 5
-preserveTaxonomyNames = true
+Paginate = 7
+preserveTaxonomyNames = false
 
 [permalinks]
-    post = "/:year/:month/:slug/"
-[[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 1
-[[menu.main]]
-    name = "Projects"
-    url = "/projects/"
-    weight = 2
-
-[[menu.taxonomies]]
-    name = "Categories"
-    url = "/categories/"
-    weight = 4
-[[menu.taxonomies]]
-    name = "Tags"
-    url = "/tags/"
-    weight = 1
-[[menu.taxonomies]]
-    name = "Shows"
-    url = "/shows/"
-    weight = 2
-[[menu.taxonomies]]
-    name = "Packages"
-    url = "/packages/"
-    weight = 3
-
-#    # options for highlight.js (version, additional languages, and theme)
-#    highlightjsVersion = "9.15.10"
-#    highlightjsCDN = "//cdn.bootcss.com"
-#    highlightjsLang = ["r", "yaml"]
-#    highlightjsTheme = "monokai-sublime"
-#    disable_highlight_theme = false
-
-#    MathJaxCDN = "//cdn.bootcss.com"
-#    MathJaxVersion = "3.0.0" # "2.7.1"
-
-#    piwikID = "12"
-#    piwikURL = "https://analytics.tadaa-data.de/"
-
-#[params.customCSS]
-#    bigfoot = "css/bigfoot-number.min.css"
+  post = "/:year/:month/:slug/"
 
 [taxonomies]
   category = "categories"
@@ -62,7 +25,28 @@ preserveTaxonomyNames = true
   show = "shows"
   package = "packages"
 
-# beautifulhugo
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.googleAnalytics]
+    disable = true
+  [privacy.instagram]
+    disable = true
+  [privacy.twitter]
+    disable = true
+  [privacy.vimeo]
+    disable = true
+  [privacy.youtube]
+    disable = true
+
+#################################
+## Theme-specific settings     ##
+#################################
+
+#################
+# beautifulhugo #
+#################
+
 [Params]
   homeTitle = "The Blog Jemu" # Set a different text for the header on the home page
   subtitle = "This still exists"
@@ -70,7 +54,7 @@ preserveTaxonomyNames = true
   logo = "images/Jemus42.jpg" # Expecting square dimensions
   favicon = "icons/favicon.ico"
   dateFormat = "January 2, 2006"
-  commit = false
+  commit = true
   rss = true
   comments = false
   readingTime = true
@@ -90,7 +74,6 @@ preserveTaxonomyNames = true
   email = "dontspamme@jemu.name"
   github = "jemus42"
 #  gitlab = "username"
-#  bitbucket = "username"
   twitter = "jemus42"
 #  reddit = "username"
 #  linkedin = "username"
@@ -106,6 +89,18 @@ preserveTaxonomyNames = true
   mastodon = "cybre.space/@jemus42"
 
 [[menu.main]]
+    name = "About"
+    url = "about"
+    identifier = "about"
+    weight = 1
+
+[[menu.main]]
+    name = "Projects"
+    url = "projects"
+    identifier = "projects"
+    weight = 2
+
+[[menu.main]]
     name = "Posts"
     url = "post"
     identifier = "posts"
@@ -116,7 +111,6 @@ preserveTaxonomyNames = true
     url = "categories"
     parent = "posts"
     weight = 1
-
 
 [[menu.main]]
     name = "Tags"
