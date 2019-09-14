@@ -39,7 +39,7 @@
             {{ if .Site.Params.since }}
               {{ .Site.Params.since }} - {{ .Site.LastChange.Format "2006" }}
             {{ else }}
-              {{ now.Format "02 Jan 2006 15:04" }}
+              {{ now.Format "02 Jan 2006 15:04 MST" }}
             {{ end }}
   
             {{ if .Site.Title }}
