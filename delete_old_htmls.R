@@ -1,6 +1,8 @@
 #! /usr/bin/env Rscript
 
 library(tibble)
+library(dplyr)
+
 # Delete HTMLs of posts that have no source Rmd anymore (i.e. are deleted on purpose)
 Rmds <- tibble(
   rmd = fs::dir_ls("content/post/", type = "file", glob = "*.Rmd*"),
