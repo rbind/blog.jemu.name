@@ -1,4 +1,5 @@
 /* Tweaks to beautifulhugo */
+/* THis is a collection of shitty hacks, don't @ me */
 
 body {
   background-color: #FCFCFC
@@ -20,9 +21,16 @@ figcaption {
   margin-right: auto
 }
 
-.blog-post th {
-  background-color: #353535;
-  color: #FCFCFC
+.blog-post table, .blog-post th, .blog-post td {
+  border-collapse: collapse;
+  border-left: none;
+  border-right: none;
+  border-style: none
+}
+
+table tr {
+  background-color: #FCFCFC;
+  border-top: none
 }
 
 .blog-post td {
