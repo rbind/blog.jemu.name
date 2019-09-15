@@ -10,13 +10,15 @@ tags:
   - Rmd
   - stats
 description: ''
+editor_options: 
+  chunk_output_type: console
 ---
 
 If you've ever watched an [*Ocarina of Time* 100% speedrun][oot100], or played the game yourself, you'll probably know about Dampe. As a gravedigger in Kakariko graveyard, he'll offer to dig up graves for you when you go to him as child Link to get a random treasure. If you're mildly lucky, you'll get enough rupees to try again. If you're really lucky, you'll get the heart piece.  
 The latter is obviously part of the 100% definition of the game, so hundo speedruns sooner or later have to face dampe and gamble on the 10% chance of him digging up the heartpiece.
 
 As one of the few major rng-dependent[^rng] events in the run he's kind of notorius, especially when he kills multiple runs in a row by needing more than 10 attempts to finally get the heart piece.  
-The math itself is pretty straight forward: In a speedrun, runners use a method to reset Dampe to a specific plot, allowing them to dig on the same grave spot over and over again, theoretically ad infinitum. While this method is not as "safe" as the intended method, which is capped at 15 tries maximum, it's significantly faster unless you get "bad Dampe rng". Each time Dampe digs, there's a 10% chance to get the heartpiece, which means in mathy terms we can define $p = 0.1$ and $k = $ number of tries until success, giving us:
+The math itself is pretty straight forward: In a speedrun, runners use a method to reset Dampe to a specific plot, allowing them to dig on the same grave spot over and over again, theoretically ad infinitum. While this method is not as "safe" as the intended method, which is capped at 15 tries maximum, it's significantly faster unless you get "bad Dampe rng". Each time Dampe digs, there's a 10% chance to get the heartpiece, which means in mathy terms we can define $p = 0.1$ and $k$ as the number of tries until success, giving us:
 
 \[P(k = 1) = p = 0.1\]
 
@@ -35,25 +37,20 @@ So, with a lot of talk about odds and chances and whatnot every time Dampe is mi
 Here's what's included:
 
 - **Attempt**: How often you had to let Dampe dig until the heart piece, $k$
-- **Probability**, **%**: The probability for $k$, as a singular outcome
-- **Probability (Total)**, **% (Total)**: Probability of $1$ *through* $k$ tries, i.e. the probability for getting $k$ *or lower* tries
+- **Probability**: The probability for $k$, as a singular outcome
 - **Odds (Singular)**: $\frac{1}{\text{Probability}}$, the probability for that outcome in human readable terms
+- **Probability (Total)**: Probability of $1$ *through* $k$ tries, i.e. the probability for getting $k$ *or lower* tries
 
 ```{r, echo=FALSE}
-library(tibble)
-library(knitr)
-
-dampe <- tibble(
+dampe <- tibble::tibble(
   attempts = seq_len(105),
   prob = round(dgeom(attempts - 1, 1/10), 10),
-  prob_perc = scales::percent(prob),
-  P = round(exp(pgeom(attempts - 1, 1/10, log.p = TRUE)), 10),
-  P_perc = scales::percent(P),
-  chance = paste0("1 in ", scales::comma(ceiling(1/dgeom(attempts - 1, 1/10))))
+  chance = paste0("1 in ", scales::comma(ceiling(1/dgeom(attempts - 1, 1/10)))),
+  P = round(exp(pgeom(attempts - 1, 1/10, log.p = TRUE)), 10)
 )
 
-kable(dampe, 
-      col.names = c("Attempt", "Probability", "%", "Probability (Total)", "% (Total)", "Odds (Singular)"))
+knitr::kable(dampe, 
+      col.names = c("Attempt", "Probability", "Odds", "Probability (cumulative)"))
 ```
 
 
