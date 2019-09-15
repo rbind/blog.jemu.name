@@ -1,5 +1,10 @@
 # Global things sourced in each blogpost
 
+# First up: dependency checking ----
+if (!("devtools" %in% installed.packages())) install.packages("devtools")
+devtools::install_deps(".")
+
+# GLobal stuff ----
 library(ggplot2)
 library(dplyr)
 library(knitr)
@@ -26,8 +31,10 @@ ggplot2::theme_set(
     theme(
       panel.spacing.y = unit(2.5, "mm"),
       panel.spacing.x = unit(2, "mm"),
-      plot.margin = margin(3, 3, 3, 3),
-      legend.position = "bottom"
+      plot.margin = margin(t = 5, r = 3, b = 5, l = 3),
+      legend.position = "bottom",
+      plot.background = element_rect(fill = "#FCFCFC"),
+      panel.background = element_rect(fill = "#FCFCFC")
     )
 )
 
