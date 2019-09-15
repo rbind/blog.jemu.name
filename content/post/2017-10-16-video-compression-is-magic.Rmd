@@ -13,7 +13,7 @@ tags:
 shows: []
 packages:
   - ggplot2
-  - sjPlot
+  - kableExtra
   - dplyr
   - tidyr 
 draft: no
@@ -29,9 +29,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(ggplot2)
 library(dplyr)
 library(tidyr)
-library(viridis)
-library(hrbrthemes)
-library(sjPlot)
+library(kableExtra)
 
 theme_update(legend.position = "top")
 
@@ -61,7 +59,7 @@ Look, I'm not an expert on video encoding, I'm not familiar with the internals o
 
 I re-encoded the aforementioned video clip using the following settings:
 
-- **Encoders**: x264 and x265
+- **Codecs**: x264 and x265
 - **CRF**: 1, 17, 18, 20, 21, 25, 26, 51
 - **Presets**: placebo, slower, medium, veryfast, ultrafast
 
@@ -75,27 +73,29 @@ So to start, here are the first five rows:
 samples %>%
   select(file, codec, preset, CRF, size, ssim) %>%
   head() %>%
-  knitr::kable()
+  kable(caption = "Sample data") %>%
+  kable_styling()
 ```
 
 ## File Size
 
 To start of, here's some tables:
 
-```{r sizes_x264}
-s_x264 <- samples %>% filter(codec == "x264")
-
-sjPlot::sjt.xtab(s_x264$CRF, s_x264$preset, weight.by = s_x264$size,
-                 title = "File Size (MiB) of x264 re-encode", show.summary = F,
-                 string.total = "Sum")
-```
-
-```{r sizes_x265}
-s_x265 <- samples %>% filter(codec == "x265")
-
-sjPlot::sjt.xtab(s_x265$CRF, s_x265$preset, weight.by = s_x265$size,
-                 title = "File Size (MiB) of x265 re-encode", show.summary = F,
-                 string.total = "Sum")
+```{r sizes_table}
+samples %>%
+  select(CRF, size, codec, preset) %>%
+  spread(preset, size) %>%
+  arrange(CRF, codec) %>%
+  mutate_at(vars(placebo:ultrafast), ~{
+    cell_spec(.x, color = spec_color(.x, end = .8, direction = -1))
+  }) %>%
+  kable(
+    escape = FALSE,
+    caption = "File size (MiB) by CRF and codec used"
+  ) %>%
+  kable_styling(bootstrap_options = "condensed") %>%
+  collapse_rows(1) %>%
+  add_header_above(c(" " = 2, "Preset" = 5))
 ```
 
 That's… accurate, yet not very visually stimulating.  
@@ -122,7 +122,7 @@ samples %>%
   geom_point() +
   geom_path() +
   facet_wrap(~codec) +
-  scale_color_viridis(discrete = TRUE) +
+  scale_color_viridis_d() +
   labs(title = "CRF, Preset & File Size",
        subtitle = "Re-encoding with all other parameters being equal",
        x = "CRF", y = "File Size (MiB)",
@@ -184,16 +184,22 @@ samples %>%
 
 To start, let's do the raw data table thing again:
 
-```{r ssim_x264}
-sjPlot::sjt.xtab(s_x264$CRF, s_x264$preset, weight.by = 100 * s_x264$ssim,
-                 title = "SSIM (times 100) of x264 re-encode", show.summary = F,
-                 string.total = "Sum")
-```
-
-```{r ssim_x265}
-sjPlot::sjt.xtab(s_x265$CRF, s_x265$preset, weight.by = 100 * s_x265$ssim,
-                 title = "SSIM (times 100) of x265 re-encode", show.summary = F,
-                 string.total = "Sum")
+```{r ssim_table}
+samples %>%
+  select(CRF, ssim, codec, preset) %>%
+  mutate(ssim = round(ssim * 100, 1)) %>%
+  spread(preset, ssim) %>%
+  arrange(CRF, codec) %>%
+  mutate_at(vars(placebo:ultrafast), ~{
+    cell_spec(.x, color = spec_color(.x, end = .9, direction = -1))
+  }) %>%
+  kable(
+    escape = FALSE,
+    caption = "SSIM (x 100) by CRF and codec used"
+  ) %>%
+  kable_styling(bootstrap_options = c("condensed")) %>%
+  collapse_rows(1) %>%
+  add_header_above(c(" " = 2, "Preset" = 5))
 ```
 
 Please note that I had to multiply the SSIM values by 100 to get them to display as something other than a flat *1* because rounding is hard, apparently.  
@@ -206,7 +212,7 @@ ggplot(data = samples, aes(x = CRF, y = ssim, color = preset)) +
   geom_point() +
   geom_path() +
   facet_wrap(~codec) +
-  scale_color_viridis(discrete = T) +
+  scale_color_viridis_d() +
   labs(title = "Codec, CRF, Preset & SSIM",
        subtitle = "Re-encoding with all other parameters being equal",
        x = "CRF", y = "SSIM",
@@ -218,7 +224,7 @@ samples %>%
   geom_point() +
   geom_path() +
   facet_wrap(~codec) +
-  scale_color_viridis(discrete = T) +
+  scale_color_viridis_d() +
   labs(title = "Codec, CRF, Preset & SSIM",
        subtitle = "Ignoring CRF 51 and 01",
        x = "CRF", y = "SSIM",
@@ -289,7 +295,7 @@ samples %>%
   geom_point() +
   geom_path() +
   facet_wrap(~codec) +
-  scale_color_viridis(discrete = T) +
+  scale_color_viridis_d() +
   labs(title = "Size & SSIM",
        subtitle = "Ignoring CRF 51 and 01",
        x = "File Size (MiB)", y = "SSIM",
@@ -306,7 +312,7 @@ samples %>%
   geom_point() +
   geom_path() +
   facet_wrap(~codec) +
-  scale_color_viridis(discrete = T) +
+  scale_color_viridis_d() +
   labs(title = "Size & SSIM",
        subtitle = "Ignoring CRF 51 and 01 and 'ultrafast' preset",
        x = "File Size (MiB)", y = "SSIM",
