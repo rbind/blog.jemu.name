@@ -91,7 +91,7 @@ samples %>%
   }) %>%
   kable(
     escape = FALSE,
-    caption = "File size (MiB) by CRF and codec used"
+    caption = " File size (MiB) by CRF and codec used"
   ) %>%
   kable_styling(bootstrap_options = "condensed") %>%
   collapse_rows(1) %>%
@@ -195,7 +195,7 @@ samples %>%
   }) %>%
   kable(
     escape = FALSE,
-    caption = "SSIM (x 100) by CRF and codec used"
+    caption = " SSIM (x 100) by CRF and codec used"
   ) %>%
   kable_styling(bootstrap_options = c("condensed")) %>%
   collapse_rows(1) %>%
