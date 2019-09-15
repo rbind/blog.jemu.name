@@ -1,5 +1,6 @@
 ---
 title: So Cougar Town Ended
+slug: so-cougar-town-ended
 author: jemus42
 date: '2015-04-14'
 categories:
@@ -7,7 +8,6 @@ categories:
 tags:
   - Rmd
   - recap
-  - snippet
   - trakt.tv
 packages:
   - tRakt
@@ -21,7 +21,7 @@ editor_options:
 ```{r init, include = FALSE}
 source(here::here("global.R"))
 
-cache_path <- make_cache_path("so-cougar-town-ended")
+cache_path <- make_cache_path(rmarkdown::metadata$slug)
 ```
 
 So Cougar Town ended, and I don't know how I feel about that.
@@ -77,7 +77,7 @@ ggplot(cougars, aes(x = season, y = rating, fill = season, color = season)) +
 
 ```
 
-Six seasons can be a very long time, and not every shows handles the aging process well. Cougar Town was not one of those shows in my opinion, which is largely due to the show's self awareness and continued jokes about exactly that.
+Six seasons can be a very long time, and not every shows handles the ageing process well. Cougar Town was not one of those shows in my opinion, which is largely due to the show's self awareness and continued jokes about exactly that.
 The last season was a rough decline, with Bobby leaving and all, but at least we got a few more bromance jokes out of that, soo… yay?
 
 Anyway, while I can't even remember the early seasons, I enjoyed the show while it lasted. Not that I was totally excited about every new episode, but it was always nice coming back to it.

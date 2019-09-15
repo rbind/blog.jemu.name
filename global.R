@@ -48,7 +48,8 @@ ggplot2::theme_set(
 
 # Set post-specific cache directiory, create if needed
 
-make_cache_path <- function(post_slug = "misc-stuff") {
+make_cache_path <- function(post_slug = "misc") {
+
   cache_path <- here::here(file.path("datasets", post_slug))
 
   if (!file.exists(cache_path)) dir.create(cache_path)
