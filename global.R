@@ -5,20 +5,31 @@ library(dplyr)
 library(knitr)
 library(tadaatoolbox)
 
-source(rprojroot::find_rstudio_root_file("helpers.R"))
+source(here::here("helpers.R"))
 
 # Hugo config
-# config_toml <- RcppTOML::parseTOML(rprojroot::find_rstudio_root_file("config.toml"))
+# config_toml <- RcppTOML::parseTOML(here::here("config.toml"))
 
 # Global chunk options
-knitr::opts_chunk$set(out.width = "100%",
-                      fig.retina = 2,
-                      warning = F,
-                      message = F,
-                      comment = "",
-                      cache = TRUE)
+knitr::opts_chunk$set(
+  out.width = "90%",
+  fig.retina = 2,
+  error = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  comment = "",
+  cache = TRUE
+)
 
-ggplot2::theme_set(tadaatoolbox::theme_tadaa())
+ggplot2::theme_set(
+  firasans::theme_ipsum_fsc() +
+    theme(
+      panel.spacing.y = unit(2.5, "mm"),
+      panel.spacing.x = unit(2, "mm"),
+      plot.margin = margin(3, 3, 3, 3),
+      legend.position = "bottom"
+    )
+)
 
 #### Plot output ####
 

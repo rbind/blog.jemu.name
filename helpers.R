@@ -44,13 +44,16 @@ hook <- function(x, options) {
 
   #paste0("<figure>", imglink, "<figcaption>", caption, "</figcaption></figure>")
 
-  glue("<figure><picture>",
-       "<source type='image/webp' srcset='{filename_webp}'>",
-       "<a href='{filename}' class='fresco' data-fresco-caption='{caption}'
-       data-fresco-group='{id}' data-lightbox='{id}' data-title='{caption}'>",
-       "<img src='{filename}' {width} {height} alt='{caption}' />",
-       "</a></picture>",
-       "<figcaption>{caption}</figcaption>",
-       "</figure>")
+
+  glue(
+    "<figure>
+      <picture>
+        <source type='image/webp' srcset='{filename_webp}'>
+        <a href='{filename}' data-title='{caption}'>
+          <img src='{filename}' {width} {height} alt='{caption}' />
+        </a></picture>
+      <figcaption>{caption}</figcaption>
+    </figure>"
+  )
 
 }
