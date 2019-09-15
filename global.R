@@ -31,10 +31,10 @@ ggplot2::theme_set(
     theme(
       panel.spacing.y = unit(2.5, "mm"),
       panel.spacing.x = unit(2, "mm"),
-      plot.margin = margin(t = 5, r = 3, b = 5, l = 3),
+      plot.margin = margin(t = 7, r = 5, b = 7, l = 5),
       legend.position = "bottom",
-      plot.background = element_rect(fill = "#FCFCFC"),
-      panel.background = element_rect(fill = "#FCFCFC")
+      plot.background = element_rect(fill = "#FCFCFC", color = "#FCFCFC"),
+      panel.background = element_rect(fill = "#FCFCFC", color = "#FCFCFC")
     )
 )
 
