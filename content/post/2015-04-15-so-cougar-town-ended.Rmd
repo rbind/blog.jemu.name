@@ -20,6 +20,13 @@ editor_options:
 
 ```{r init, include = FALSE}
 source(here::here("global.R"))
+
+cache_path <- here::here("datasets/so-cougar-town-ended")
+if (!file.exists(cache_path)) dir.create(cache_path)
+
+cache_date <- function(cached_file, cache_path) {
+  format(file.mtime(file.path(cache_path, cached_file)), "%F")
+}
 ```
 
 So Cougar Town ended, and I don't know how I feel about that.
@@ -30,13 +37,20 @@ Well, trakt knows hout they feel about it.
 library(tRakt)
 library(ggplot2)
 
-cougars <- trakt.seasons.summary("cougar-town", extended = "full", episodes = TRUE) %>%
+# Get data only if not already in cache
+if (!(file.exists(file.path(cache_path, "cougars.rds")))) {
+  cougars <- trakt.seasons.summary("cougar-town", extended = "full", episodes = TRUE) %>%
   pull(episodes) %>%
   bind_rows() %>%
   mutate(
     season = as.character(season),
     episode_abs = seq_along(first_aired)
   )
+  
+  saveRDS(cougars, file.path(cache_path, "cougars.rds"))
+}
+
+cougars <- readRDS(file.path(cache_path, "cougars.rds"))
 
 ggplot(data = cougars, aes(x = episode_abs, y = rating, fill = season, color = season)) +
   geom_smooth(method = lm, se = F) +
@@ -50,7 +64,7 @@ ggplot(data = cougars, aes(x = episode_abs, y = rating, fill = season, color = s
        subtitle = "Episode Ratings on trakt.tv",
        x = "Absolute Episode #", y = "Rating (1-10)",
        fill = "Season",
-       caption = paste("Data as of", format(Sys.Date()))) +
+       caption = paste("Data as of", cache_date("cougars.rds", cache_path))) +
   theme(legend.position = "bottom")
 ```
 
