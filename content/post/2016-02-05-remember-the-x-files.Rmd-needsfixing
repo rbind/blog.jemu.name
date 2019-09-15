@@ -15,7 +15,7 @@ notoc: false
 ---
 
 ```{r init, include = F}
-source(rprojroot::find_rstudio_root_file("global.R"))
+source(here::here("global.R"))
 ```
 
 With the return of the X-Files in form of a miniseries, I was tempted to catch up on the original run of the show, since I had only seen the occasional episode in the late 90's or early 00's (my mom was a big fan).
@@ -45,7 +45,6 @@ library(waffle)       # devtools::install_github("hrbrmstr/waffle")
 
 theme_set(theme_tadaa())
 options(digits = 3)
-knitr::opts_chunk$set(cache = TRUE)
 ```
 
 And here is the heart of that whole project. Probably my biggest and most complex `%>%`-chain to date.
