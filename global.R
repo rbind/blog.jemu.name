@@ -4,7 +4,7 @@
 if (!("devtools" %in% installed.packages())) install.packages("devtools")
 devtools::install_deps(".")
 
-# GLobal stuff ----
+# Global stuff ----
 library(ggplot2)
 library(dplyr)
 library(knitr)
@@ -15,7 +15,7 @@ source(here::here("helpers.R"))
 # Hugo config
 # config_toml <- RcppTOML::parseTOML(here::here("config.toml"))
 
-# Global chunk options
+# knitr: Global chunk options
 knitr::opts_chunk$set(
   out.width = "90%",
   fig.retina = 2,
@@ -26,6 +26,12 @@ knitr::opts_chunk$set(
   cache = TRUE
 )
 
+# Set hook defined in helpers.R
+knitr::knit_hooks$set(plot = hook)
+
+# Plot output ----
+
+# ggplot2 theme
 ggplot2::theme_set(
   firasans::theme_ipsum_fsc() +
     theme(
@@ -38,8 +44,34 @@ ggplot2::theme_set(
     )
 )
 
-#### Plot output ####
+# Caching datasets ----
 
-# Set hook defined in helpers.R
-knitr::knit_hooks$set(plot = hook)
+# Set post-specific cache directiory, create if needed
 
+make_cache_path <- function(post_slug = "misc-stuff") {
+  cache_path <- here::here(file.path("datasets", post_slug))
+
+  if (!file.exists(cache_path)) dir.create(cache_path)
+
+  return(cache_path)
+}
+
+file_not_cached <- function(cache_path, cache_file) {
+  !(file.exists(file.path(cache_path, cache_file)))
+}
+
+cache_file <- function(cache_path, cache_data) {
+  filename <- paste0(deparse(substitute(cache_data)), ".rds")
+  saveRDS(cache_data, file.path(cache_path, filename))
+}
+
+read_cache_file <- function(cache_path, cache_data) {
+  filename <- paste0(deparse(substitute(cache_data)), ".rds")
+
+  readRDS(file.path(cache_path, filename))
+}
+
+# Get date from cached file
+cache_date <- function(cached_file, cache_path) {
+  format(file.mtime(file.path(cache_path, cached_file)), "%F")
+}
