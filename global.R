@@ -43,4 +43,3 @@ ggplot2::theme_set(
 # Set hook defined in helpers.R
 knitr::knit_hooks$set(plot = hook)
 
-
