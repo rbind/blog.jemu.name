@@ -47,6 +47,8 @@ preserveTaxonomyNames = false
 # beautifulhugo #
 #################
 
+enableGitInfo = true
+
 [Params]
   homeTitle = "The Blog Jemu" # Set a different text for the header on the home page
   subtitle = "This still exists"
@@ -54,7 +56,7 @@ preserveTaxonomyNames = false
   logo = "images/Jemus42.jpg" # Expecting square dimensions
   favicon = "icons/favicon.ico"
   dateFormat = "January 2, 2006"
-  commit = true
+  commit = "https://github.com/rbind/blog.jemu.name/tree"
   rss = true
   comments = false
   readingTime = true
