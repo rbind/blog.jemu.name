@@ -81,7 +81,7 @@ samples %>%
 
 To start of, here's some tables:
 
-```{r sizes_table}
+```{r sizes-table}
 samples %>%
   select(CRF, size, codec, preset) %>%
   spread(preset, size) %>%
@@ -184,7 +184,7 @@ samples %>%
 
 To start, let's do the raw data table thing again:
 
-```{r ssim_table}
+```{r ssim-table}
 samples %>%
   select(CRF, ssim, codec, preset) %>%
   mutate(ssim = round(ssim * 100, 1)) %>%
