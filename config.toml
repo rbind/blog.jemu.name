@@ -106,6 +106,7 @@ preserveTaxonomyNames = false
     identifier = "posts"
     weight = 3
 
+# Submenu for post taxonomies
 [[menu.main]]
     name = "categories"
     url = "categories"
@@ -129,3 +130,9 @@ preserveTaxonomyNames = false
     url = "packages"
     parent = "posts"
     weight = 4
+# End submenu for taxonomies
+
+[[menu.main]]
+    name = "Source"
+    url = "https://github.com/rbind/blog.jemu.name"
+    weight = "4"

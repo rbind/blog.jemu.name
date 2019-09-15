@@ -47,7 +47,8 @@ ggplot2::theme_set(
 # Caching datasets ----
 
 # Set post-specific cache directiory, create if needed
-
+# Use at beginning of post
+# Might take rmarkdown::metadata$slug as input dynamically
 make_cache_path <- function(post_slug = "misc") {
 
   cache_path <- here::here(file.path("datasets", post_slug))
@@ -57,15 +58,21 @@ make_cache_path <- function(post_slug = "misc") {
   return(cache_path)
 }
 
+# Check if file is not cached
+# if (file_note_cache(cache_path, bigdata)) {
+#   { do expensive stuff }
+# }
 file_not_cached <- function(cache_path, cache_file) {
   !(file.exists(file.path(cache_path, cache_file)))
 }
 
+# Cache a file, just a wrapper for saveRDS
 cache_file <- function(cache_path, cache_data) {
   filename <- paste0(deparse(substitute(cache_data)), ".rds")
   saveRDS(cache_data, file.path(cache_path, filename))
 }
 
+# Read a cached file, just a wrapper for readRDS
 read_cache_file <- function(cache_path, cache_data) {
   filename <- paste0(deparse(substitute(cache_data)), ".rds")
 
