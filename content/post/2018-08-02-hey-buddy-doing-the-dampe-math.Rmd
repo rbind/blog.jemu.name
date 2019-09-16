@@ -41,6 +41,8 @@ Here's what's included:
 - **Odds (Singular)**: $\frac{1}{\text{Probability}}$, the probability for that outcome in human readable terms
 - **Probability (cumulative)**: Probability of $1$ *through* $k$ tries, i.e. the probability for getting $k$ *or lower* tries
 
+(So, in statsy terms, I'm basically just printing the *pmf* and *cdf* for $k = 1$ through $k = 105$ in a table. Yip.)
+
 ```{r, echo=FALSE}
 library(kableExtra)
 
