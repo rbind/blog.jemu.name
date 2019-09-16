@@ -20,7 +20,7 @@ shows:
   - True Detective
   - In the Flesh
   - Gravity Falls
-  - Fullmetal Alchemist: Brotherhood
+  - Fullmetal Alchemist Brotherhood
   - RideBack
   - The Future Diary
   - Another
