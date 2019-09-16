@@ -21,7 +21,6 @@ editor_options:
 ```{r init, include = FALSE}
 source(here::here("global.R"))
 
-
 cache_path <- make_cache_path(rmarkdown::metadata$slug)
 ```
 
@@ -34,7 +33,7 @@ library(tRakt)
 library(ggplot2)
 
 # Get data only if not already in cache
-if (file_not_cached(cache_path, "cougars.rds")) {
+if (file_not_cached(cache_path, cougars)) {
   cougars <- trakt.seasons.summary(
     "cougar-town", extended = "full", episodes = TRUE
   ) %>%

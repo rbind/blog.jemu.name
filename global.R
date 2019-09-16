@@ -63,12 +63,16 @@ make_cache_path <- function(post_slug = "misc") {
   return(cache_path)
 }
 
-# Check if file is not cached
-# if (file_note_cache(cache_path, bigdata)) {
-#   { do expensive stuff }
-# }
-file_not_cached <- function(cache_path, cache_file) {
-  !(file.exists(file.path(cache_path, cache_file)))
+#' Check if file is not cached
+#' @param cache_path As returned by make_cache_path
+#' @param cache_data Bare name of data to cache
+#' @example
+#' if (file_note_cache(cache_path, bigdata)) {
+#'   { do expensive stuff }
+#' }
+file_not_cached <- function(cache_path, cache_data) {
+  filename <- paste0(deparse(substitute(cache_data)), ".rds")
+  !(file.exists(file.path(cache_path, filename)))
 }
 
 # Cache a file, just a wrapper for saveRDS
