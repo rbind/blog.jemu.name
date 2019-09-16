@@ -2,21 +2,21 @@
         {{ if .Params.tags }}
           <div class="blog-tags">
             {{ range .Params.tags }}
-              <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+              <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>
             {{ end }}
           </div>
         {{ end }}
         {{ if .Params.packages }}
           <div class="blog-packages">
             {{ range .Params.packages }}
-              <a href="{{ $.Site.LanguagePrefix | absURL }}/packages/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+              <a href="{{ $.Site.LanguagePrefix | absURL }}/packages/{{ . | urlize }}/">{{ . }}</a>
             {{ end }}
           </div>
         {{ end }}
         {{ if .Params.shows }}
           <div class="blog-shows">
             {{ range .Params.shows }}
-              <a href="{{ $.Site.LanguagePrefix | absURL }}/shows/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+              <a href="{{ $.Site.LanguagePrefix | absURL }}/shows/{{ . | urlize }}/">{{ . }}</a>
             {{ end }}
           </div>
         {{ end }}
