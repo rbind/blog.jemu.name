@@ -1,7 +1,34 @@
 ---
 author: jemus42
 categories:
-- tvshows
+  - tvshows
+tags:
+  - recap
+shows:
+  - A Young Doctor's Notebook
+  - The Americans
+  - How to Get Away with Murder
+  - Vikings
+  - Black Mirror
+  - Halt and Catch Fire
+  - Fargo
+  - Whitechapel
+  - The Knick
+  - Hellfjord
+  - Veronica Mars
+  - Utopia
+  - True Detective
+  - In the Flesh
+  - Gravity Falls
+  - Fullmetal Alchemist: Brotherhood
+  - RideBack
+  - The Future Diary
+  - Another
+  - Claymore
+  - Tokyo Ghoul
+  - Black Books
+  - The Leftovers
+  - Dead Set
 date: 2014-12-20
 title: Something something tvshowstwentyfourteen
 ---
@@ -101,6 +128,8 @@ It's basically the first Anime next to Attack on Titan which made me plow throug
 
 Yes, I still and obviously love Game of Thrones, Orphan Black, Orange is the new Black, House of Cards and what have you, but I've seen them all before 2014 and I wanted to focus on shows that I watched *recently*, i.e. have never seen before the current year.
 
+*Note from the future (2019-09-16): Oh boy, that last paragraph sure aged like milk. At this point, I'm still angry about Game of Thrones, haven't cared about OITNB in years, and I think I don't have to mention House of Cards. Orphan Black is still kewl though.*
+
 # Shows I totally didn't forget the first time around
 
 ## Tokyo Ghoul
@@ -111,11 +140,11 @@ Hilarious british comedy.
 Just that.  
 Also, much too short.  
 
-![](http://i.imgur.com/95w6Env.gif)
+![](https://i.imgur.com/95w6Env.gif)
 
 ## The Leftovers
 Imagine a small percentage of humanity just randomly disappears without any warning, any reason or any explanation.  
-Imagine how the remaining people would feel of, for example, half their family is just gone in an instant.  
+Imagine how the remaining people would feel if, for example, half their family is just gone in an instant.  
 Yeah.  
 And that's The Leftovers.
 
