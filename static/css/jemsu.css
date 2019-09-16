@@ -45,6 +45,12 @@ pre > code {
   margin-top: 1em
 }
 
+/* prims.js overrides */
+code[class*="language-"], pre[class*="language-"] {
+  font-size: 90%;
+  font-family: "Fira Mono", "Sans Mono", "Consolas", "Courier", monospace;
+}
+
 /* --- Tags --- */
 
 .blog-tags {

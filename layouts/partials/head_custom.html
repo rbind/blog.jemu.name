@@ -1,9 +1,16 @@
-<link rel="stylesheet" href="{{ "css/jemsu.css" | absURL }}" />
+<!-- unpkg cdn is often pretty slow, so a local version it is
 <link rel="stylesheet" href="https://unpkg.com/littlefoot/dist/littlefoot.css" integrity="sha384-9mck96jPfpKNA04g+TQcUEF9YzOh5NBAmw+JFsXoKiHnRFYVGd4MIL1qR9s5SpCc" crossorigin="anonymous">
-
+-->
+<link href="{{ "css/littlefoot.css" | absURL }}" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Fira+Mono&display=swap" rel="stylesheet">
 
-<!--
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/monokai-sublime.min.css" crossorigin="anonymous">
--->
+<!-- prims.js
+    from: https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+bash+docker+markdown+json+latex+makefile+nginx+sql+r+sas+yaml+toml&plugins=line-highlight+line-numbers+custom-class+toolbar+highlight-keywords+show-language
 
+    minify with
+    minify --outout prism.min.css prism.css
+-->
+<link href="{{ "css/prism.min.css" | absURL }}" rel="stylesheet">
+
+<!-- Load at the end: custom CSS -->
+<link href="{{ "css/jemsu.css" | absURL }}" rel="stylesheet">
