@@ -26,6 +26,11 @@ knitr::opts_chunk$set(
   cache = TRUE
 )
 
+# Code highlighting via prims.js requires manually set class
+knitr::opts_chunk$set(
+  class.source = c("language-r")
+)
+
 # Set hook defined in helpers.R
 knitr::knit_hooks$set(plot = hook)
 
