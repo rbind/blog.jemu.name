@@ -30,7 +30,7 @@ And in general terms:
 
 \[P(k) = (1-p)^{k-1} \times p\]
 
-Which, conveniently, is known as the [*geometric distribution*](https://en.wikipedia.org/wiki/Geometric_distribution). In R, we can calculate individual probabilities (densities) using `dgeom(x, prob = .1)` to get the probability for "failing `x` times before success", meaning we need to use `k = x - 1` to get the number of attempts it took to get the heartpiece, include the last dig.  
+Which, conveniently, is known as the [*geometric distribution*](https://en.wikipedia.org/wiki/Geometric_distribution). In R, we can calculate individual probabilities using `dgeom(x, prob = .1)` to get the probability for "failing `x` times before success", meaning we need to use `k = x - 1` to get the number of attempts it took to get the heartpiece, include the last dig.  
 
 So, with a lot of talk about odds and chances and whatnot every time Dampe is misbehaving again, I thought I'd take the opportunity to make a little lookup table to see just *how* unlikely your latest 61st try Dampe really was.
 
@@ -39,9 +39,11 @@ Here's what's included:
 - **Attempt**: How often you had to let Dampe dig until the heart piece, $k$
 - **Probability**: The probability for $k$, as a singular outcome
 - **Odds (Singular)**: $\frac{1}{\text{Probability}}$, the probability for that outcome in human readable terms
-- **Probability (Total)**: Probability of $1$ *through* $k$ tries, i.e. the probability for getting $k$ *or lower* tries
+- **Probability (cumulative)**: Probability of $1$ *through* $k$ tries, i.e. the probability for getting $k$ *or lower* tries
 
 ```{r, echo=FALSE}
+library(kableExtra)
+
 dampe <- tibble::tibble(
   attempts = seq_len(105),
   prob = round(dgeom(attempts - 1, 1/10), 10),
@@ -49,11 +51,15 @@ dampe <- tibble::tibble(
   P = round(exp(pgeom(attempts - 1, 1/10, log.p = TRUE)), 10)
 )
 
-knitr::kable(dampe, 
-      col.names = c("Attempt", "Probability", "Odds", "Probability (cumulative)"))
+kable(
+  dampe, 
+  col.names = c("Attempt", "Probability", "Odds", "Probability (cumulative)"),
+  align = "c"
+) %>%
+  kable_styling()
 ```
 
 
-[^rng]: Random number generator; in speedrunning terms it's become synonymous with 'random event' and 'specific outcome of an event determined by [pseudo] random number generation'. I know it's kind of weird to use "rng" as an adjective or catch-all noun, but oh well. Context and such.
+[^rng]: **R**andom **n**umber **g**enerator; in speedrunning terms it's become synonymous with 'random event' or 'specific outcome of an event determined by [pseudo] random number generation'. I know it's kind of weird to use "rng" as an adjective or catch-all term, but oh well. Context and such.
 
 [oot100]: https://www.speedrun.com/oot#100
