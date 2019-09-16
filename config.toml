@@ -10,11 +10,13 @@ title = "Blog Jemu"
 #theme = "hugo-redlounge-jemsu"
 theme = "beautifulhugo"
 metaDataFormat = "yaml"
-enableEmoji = true
-
-ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 Paginate = 7
-preserveTaxonomyNames = false
+
+# Enable fwatures
+enableEmoji = true
+enableGitInfo = true
+# Rmarkdown special handling
+ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 
 [permalinks]
   post = "/:year/:month/:slug/"
@@ -47,8 +49,6 @@ preserveTaxonomyNames = false
 # beautifulhugo #
 #################
 
-enableGitInfo = true
-
 [Params]
   homeTitle = "The Blog Jemu" # Set a different text for the header on the home page
   subtitle = "This still exists"
@@ -56,7 +56,7 @@ enableGitInfo = true
   logo = "images/Jemus42.jpg" # Expecting square dimensions
   favicon = "icons/favicon.ico"
   dateFormat = "January 2, 2006"
-  commit = "https://github.com/rbind/blog.jemu.name/tree"
+  commit = "https://github.com/rbind/blog.jemu.name/tree/"
   rss = true
   comments = false
   readingTime = true
@@ -134,7 +134,7 @@ enableGitInfo = true
     weight = 4
 # End submenu for taxonomies
 
-[[menu.main]]
-    name = "Source"
-    url = "https://github.com/rbind/blog.jemu.name"
-    weight = "4"
+#[[menu.main]]
+#    name = "Source"
+#    url = "https://github.com/rbind/blog.jemu.name"
+#    weight = "4"
