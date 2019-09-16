@@ -25,7 +25,6 @@ editor_options:
 source(here::here("global.R"))
 knitr::opts_chunk$set(echo = FALSE)
 
-# library(readr)
 library(ggplot2)
 library(dplyr)
 library(tidyr)
@@ -33,7 +32,8 @@ library(kableExtra)
 
 theme_update(legend.position = "top")
 
-samples <- readRDS(here::here("datasets/samples.rds"))
+cache_path <- make_cache_path("video-compression-is-magic")
+samples <- read_cache_file(cache_path, samples)
 ```
 
 If you're like me, you probably have a serious issue with digital hoarding, refuse to delete anything and methodically collect and categorize _all the things_.  
@@ -69,12 +69,13 @@ As for quality, that's a difficult one, and since I lack a proper testing setup 
 
 So to start, here are the first five rows:
 
-```{r setup, warning=FALSE, error=FALSE}
+```{r samples-table}
 samples %>%
   select(file, codec, preset, CRF, size, ssim) %>%
-  head() %>%
+  head(5) %>%
   kable(caption = "Sample data") %>%
-  kable_styling()
+  kable_styling() %>%
+  scroll_box(width = "100%")
 ```
 
 ## File Size
