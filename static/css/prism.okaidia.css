@@ -53,6 +53,7 @@ pre[class*="language-"] {
 	opacity: .7;
 }
 .token.property,
+.token.infix,
 .token.tag {
 	color: #f92672;
 }

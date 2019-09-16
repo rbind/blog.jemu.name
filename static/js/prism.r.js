@@ -18,12 +18,16 @@ Prism.languages.r = {
 	// However a comment with an odd number of " in it will not highlight.
 	//'comment': /#(?=(?:[^"\\\r\n]*(\\.|"(?:[^"\\\r\n]*\\.)*[^"\\\r\n]*"))*[^"\r\n]*$).*$/gm,
     'string': /("|')(?:\\.|(?!\\|\1)[\s\S])*\1/g,
+    // by jemus42: Detect some infix operators like %>%, %||%, %--% and %in%
+    // match _before_ the > character is tagged as an operator
+    // Also, remove %in% match from operators
+    'infix': /%(>|\|\||in|--)%/g,
     'keyword': /\b(?:if|else|repeat|while|function|for|in|next|break)\b/g,
     // NULL etc are not really booleans but I just group them tohere to be marked up
     'boolean': /\b(?:TRUE|FALSE|T|F|NA(?:_(?:integer|real|complex|character)_)?|NULL|\!)\b/g,
     'function': /(?:(?:[a-zA-Z]|\.(?![0-9]))[.\w]*|`[^`\s]*`)[ \t]*(?=\()/g,
     'number': /\b[-+]?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee]-?\d+)?i?|Inf|NaN)\b/g,
-    'operator': /(?:<|&lt;)-|[-+\/!\^]|={1,2}|(?:&[lg]t;|[><])=?|(&amp;|&){1,2}|\|\|?|\*\*?|\%(\/|in)?\%/g,
+    'operator': /(?:<|&lt;)-|[-+\/!\^]|={1,2}|(?:&[lg]t;|[><])=?|(&amp;|&){1,2}|\|\|?|\*\*?/g,
     'property': {
         pattern: /([$@])[\w._]+/g,
         lookbehind: true
