@@ -16,7 +16,7 @@
         {{ if .Params.shows }}
           <div class="blog-shows">
             {{ range .Params.shows }}
-              <a href="{{ $.Site.LanguagePrefix | absURL }}/shows/{{ . | urlize }}/">{{ . | urlize }}</a>&nbsp;
+              <a href="{{ $.Site.LanguagePrefix | absURL }}/shows/{{ . | urlize }}/">{{ . }}</a>&nbsp;
             {{ end }}
           </div>
         {{ end }}

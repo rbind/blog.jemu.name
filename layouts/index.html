@@ -30,8 +30,9 @@
               {{ partial "post_meta.html" . }}
               <div class="post-entry">
                 {{ if .Truncated }}
-                  {{ if .Params.description }}{{ .Params.description }}
-                    {{ else }}
+                  {{ if .Params.description }}
+                    {{ .Params.description }}
+                  {{ else }}
                     {{ .Content | safeHTML | truncate 250 }}
                   {{ end }}
                   <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
