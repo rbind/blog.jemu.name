@@ -1,0 +1,22 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Site (blogdown::build_site)",
+            "type": "shell",
+            "command": "Rscript -e 'blogdown::build_site()'"
+        },
+        {
+            "label": "Hugo Server",
+            "type": "shell",
+            "command": "hugo server"
+        },
+        {
+            "label": "Blogdown Server (blogdown::serve_site)",
+            "type": "shell",
+            "command": "Rscript -e 'blogdown::serve_site()'"
+        }
+    ]
+}
