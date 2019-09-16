@@ -2,11 +2,14 @@
   <div class="container" role="main">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        {{ with .Content }}
-          <div class="well">
-            {{.}}
+        {{ with .Content}} 
+          <div class="post-preview">
+            <div class="post-entry">
+              {{ . }}
+            </div>
           </div>
         {{ end }}
+
         <div class="posts-list">
           {{ range .Paginator.Pages }}
             <article class="post-preview">
@@ -23,10 +26,15 @@
               <p class="post-meta">
                 {{ partial "post_meta.html" . }}
               </p>
+
               <div class="post-entry">
                 {{ if .Truncated }}
                   <!-- {{ .Summary }} -->
-                  {{ .Content | safeHTML | truncate 100 }}
+                  {{ if .Params.description }}
+                    {{ .Params.description }}
+                  {{ else }}
+                    {{ .Content | safeHTML | truncate 200 }}
+                  {{ end }}
                   <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
                 {{ else }}
                   {{ .Content }}
