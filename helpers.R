@@ -1,24 +1,8 @@
 #### Helper functions ####
 
-# Convert a plot to multiple formats
-
-convert_plots <- function(filename) {
-  library(magick)
-  library(stringr)
-
-  plot_orig <- image_read(filename)
-  plot_webp <- image_convert(plot_orig, "webp")
-  #plot_png  <- image_convert(plot_orig,  "png")
-
-  file_noext <- str_replace(filename, "[a-z]{2,3}$", "")
-
-  #
-  image_write(plot_webp, path = paste0(file_noext, ".webp"))
-  #image_write(plot_png,  path = paste0(file_noext, ".png"), flatten = F)
-
-}
-
-# A modified plot hook
+# A modified plot hook ----
+# Needed to wrap knitr plot output in semantic html tags
+# which in turn is required for photoswipe.js in beautifulhugo
 
 hook <- function(x, options) {
   require(glue)
@@ -40,11 +24,6 @@ hook <- function(x, options) {
     caption <- opts_current$get("label")
   }
 
-  #convert_plots(basename)
-
-  #paste0("<figure>", imglink, "<figcaption>", caption, "</figcaption></figure>")
-
-
   glue(
     "<figure>
       <picture>
@@ -56,4 +35,48 @@ hook <- function(x, options) {
     </figure>"
   )
 
+}
+
+# Caching datasets ----
+
+# Set post-specific cache directiory, create if needed
+# Use at beginning of post
+# Might take rmarkdown::metadata$slug as input dynamically
+make_cache_path <- function(post_slug = "misc") {
+
+  cache_path <- here::here(file.path("datasets", post_slug))
+
+  if (!file.exists(cache_path)) dir.create(cache_path)
+
+  return(cache_path)
+}
+
+#' Check if file is not cached
+#' @param cache_path As returned by make_cache_path
+#' @param cache_data Bare name of data to cache
+#' @example
+#' if (file_note_cache(cache_path, bigdata)) {
+#'   { do expensive stuff }
+#' }
+file_not_cached <- function(cache_path, cache_data) {
+  filename <- paste0(deparse(substitute(cache_data)), ".rds")
+  !(file.exists(file.path(cache_path, filename)))
+}
+
+# Cache a file, just a wrapper for saveRDS
+cache_file <- function(cache_path, cache_data) {
+  filename <- paste0(deparse(substitute(cache_data)), ".rds")
+  saveRDS(cache_data, file.path(cache_path, filename))
+}
+
+# Read a cached file, just a wrapper for readRDS
+read_cache_file <- function(cache_path, cache_data) {
+  filename <- paste0(deparse(substitute(cache_data)), ".rds")
+
+  readRDS(file.path(cache_path, filename))
+}
+
+# Get date from cached file
+cache_date <- function(cached_file, cache_path) {
+  format(file.mtime(file.path(cache_path, cached_file)), "%F")
 }

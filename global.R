@@ -32,7 +32,9 @@ knitr::opts_chunk$set(
 )
 
 # Set hook defined in helpers.R
-knitr::knit_hooks$set(plot = hook)
+knitr::knit_hooks$set(
+  plot = hook
+)
 
 # Plot output ----
 
@@ -48,47 +50,3 @@ ggplot2::theme_set(
       panel.background = element_rect(fill = "#FCFCFC", color = "#FCFCFC")
     )
 )
-
-# Caching datasets ----
-
-# Set post-specific cache directiory, create if needed
-# Use at beginning of post
-# Might take rmarkdown::metadata$slug as input dynamically
-make_cache_path <- function(post_slug = "misc") {
-
-  cache_path <- here::here(file.path("datasets", post_slug))
-
-  if (!file.exists(cache_path)) dir.create(cache_path)
-
-  return(cache_path)
-}
-
-#' Check if file is not cached
-#' @param cache_path As returned by make_cache_path
-#' @param cache_data Bare name of data to cache
-#' @example
-#' if (file_note_cache(cache_path, bigdata)) {
-#'   { do expensive stuff }
-#' }
-file_not_cached <- function(cache_path, cache_data) {
-  filename <- paste0(deparse(substitute(cache_data)), ".rds")
-  !(file.exists(file.path(cache_path, filename)))
-}
-
-# Cache a file, just a wrapper for saveRDS
-cache_file <- function(cache_path, cache_data) {
-  filename <- paste0(deparse(substitute(cache_data)), ".rds")
-  saveRDS(cache_data, file.path(cache_path, filename))
-}
-
-# Read a cached file, just a wrapper for readRDS
-read_cache_file <- function(cache_path, cache_data) {
-  filename <- paste0(deparse(substitute(cache_data)), ".rds")
-
-  readRDS(file.path(cache_path, filename))
-}
-
-# Get date from cached file
-cache_date <- function(cached_file, cache_path) {
-  format(file.mtime(file.path(cache_path, cached_file)), "%F")
-}
