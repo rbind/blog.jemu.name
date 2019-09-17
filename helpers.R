@@ -77,6 +77,7 @@ read_cache_file <- function(cache_path, cache_data) {
 }
 
 # Get date from cached file
-cache_date <- function(cached_file, cache_path) {
-  format(file.mtime(file.path(cache_path, cached_file)), "%F")
+cache_date <- function(cache_data, cache_path) {
+  filename <- paste0(deparse(substitute(cache_data)), ".rds")
+  format(file.mtime(file.path(cache_path, filename)), "%F")
 }
