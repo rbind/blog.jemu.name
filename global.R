@@ -36,6 +36,19 @@ knitr::knit_hooks$set(
   plot = hook
 )
 
+# Enable the code-hiding-via-summary-tags thing
+# Shamelessly stolen from
+# https://github.com/cpsievert/plotly_book/blob/a95fb991fdbfdab209f5f86ce1e1c181e78f801e/index.Rmd#L52-L60
+knit_hooks$set(summary = function(before, options, envir) {
+  if (length(options$summary)) {
+    if (before) {
+      return(sprintf("<details><summary>%s</summary>\n", options$summary))
+    } else {
+      return("\n</details>")
+    }
+  }
+})
+
 # Plot output ----
 
 # ggplot2 theme
