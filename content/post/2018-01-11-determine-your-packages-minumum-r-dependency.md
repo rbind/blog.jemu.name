@@ -22,17 +22,14 @@ deps <- tools::package_dependencies("tadaatoolbox")[[1]]
 # Remove base packages
 deps <- deps[!(deps %in% getOption("defaultPackages"))]
 
-deptbl <- map_df(deps, function(x) {
+deptbl <- map_df(deps, ~{
   # Parse package DESCRIPTION file
-  descr   <- system.file("DESCRIPTION", package = x)
+  descr   <- system.file("DESCRIPTION", package = .x)
   # Get the "Depends" field
   depends <- desc_get("Depends", descr)[[1]]
 
-  # Return a data.drame
-  data.frame(package = x,
-             depends = depends,
-             stringsAsFactors = FALSE
-  )
+  # Pack together
+  tibble(package = .x, depends = depends)
 })
 
 # Extract R version number, sort, print
