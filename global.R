@@ -2,7 +2,7 @@
 
 # First up: dependency checking ----
 if (!("devtools" %in% installed.packages())) install.packages("devtools")
-devtools::install_deps(".")
+devtools::install_deps(".", upgrade = "never")
 
 # Global stuff ----
 library(ggplot2)
