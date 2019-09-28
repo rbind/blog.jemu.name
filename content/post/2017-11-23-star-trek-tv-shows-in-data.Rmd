@@ -536,7 +536,7 @@ stshows %>%
            y = "Rating (1-10)",
            fill = "Show",
            caption = plot_caption) +
-      theme(legend.position = "bottom")
+    theme(legend.position = "bottom")
 ```
 
 Neat. These little tie-fighters (wrong franchise, I know) represent the mean episode rating with its confidence interval. What we can learn from that plot is how *TNG* has a high show rating, but individual episodes tend to be rated lower on average when compared to the over-all show rating.

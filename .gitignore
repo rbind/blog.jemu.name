@@ -5,12 +5,9 @@
 
 scratchpad.R
 
-content/*.html
-static/images
+# content/*.html
 static/post
 blogdown/post
-content/post/*.html
-content/post/*\_files
-content/post/*\_cache
+# content/post/*.html
 public
 

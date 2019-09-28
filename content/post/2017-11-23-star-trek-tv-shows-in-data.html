@@ -1,0 +1,858 @@
+---
+title: Star Trek TV Shows – In Data
+author: jemus42
+date: '2017-11-23'
+slug: star-trek-tv-shows-in-data
+categories:
+  - rstats
+  - tvshows
+tags:
+  - trakt.tv
+  - analysis
+shows:
+  - "Star Trek"
+  - "Star Trek: The Animated Series"
+  - "Star Trek: The Next Generation"
+  - "Star Trek: Deep Space Nine"
+  - "Star Trek: Voyager"
+  - "Star Trek: Enterprise"
+  - "Star Trek: Discovery"
+packages:
+  - ggplot2
+  - tRakt
+  - purrr
+  - scales
+  - dplyr
+  - ggrepel
+  - tadaatoolbox
+draft: no
+enable_mathjax: true
+editor_options:
+  chunk_output_type: console
+---
+
+---
+title: Star Trek TV Shows – In Data
+author: jemus42
+date: '2017-11-23'
+slug: star-trek-tv-shows-in-data
+categories:
+  - rstats
+  - tvshows
+tags:
+  - trakt.tv
+  - analysis
+shows:
+  - "Star Trek"
+  - "Star Trek: The Animated Series"
+  - "Star Trek: The Next Generation"
+  - "Star Trek: Deep Space Nine"
+  - "Star Trek: Voyager"
+  - "Star Trek: Enterprise"
+  - "Star Trek: Discovery"
+packages:
+  - ggplot2
+  - tRakt
+  - purrr
+  - scales
+  - dplyr
+  - ggrepel
+  - tadaatoolbox
+draft: no
+enable_mathjax: true
+editor_options:
+  chunk_output_type: console
+---
+
+---
+title: Star Trek TV Shows – In Data
+author: jemus42
+date: '2017-11-23'
+slug: star-trek-tv-shows-in-data
+categories:
+  - rstats
+  - tvshows
+tags:
+  - star-trek
+  - trakt.tv
+  - Rmd
+shows: 
+  - "Star Trek"
+  - "Star Trek: The Animated Series"
+  - "Star Trek: The Next Generation"
+  - "Star Trek: Deep Space Nine"
+  - "Star Trek: Voyager"
+  - "Star Trek: Enterprise"
+  - "Star Trek: Discovery"
+packages:
+  - ggplot2
+  - tRakt
+  - purrr
+  - scales
+  - dplyr
+  - ggrepel
+  - tadaatoolbox
+draft: no
+enable_mathjax: true
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+<p><strong>Star Trek</strong>. It’s a thing.<br />
+Not only is it a thing, it’s also a big franchise. You might have heard of it.<br />
+If you happen to fall into my sociodemographic bracket, you might not have particularly strong feelings about it, but you’re probably aware that many people do.<br />
+I for one do not really care. I didn’t grow up with Star Trek like many people did, I grew up watching <em>Stargate SG-1</em>.<br />
+You might think of that however you wish, but fact of the matter is that the new <em>Star Trek: Discovery</em> is the first Star Trek <strong>TV Show</strong> I watch as it airs.<br />
+Yes, I’ve seen the rebooted JJ Abrams movies, and yes they kind of helped to make the franchise more accessible to people like me by basically starting fresh, but in this blogpost I’ll only focus on the shows.<br />
+Shows I know little about.<br />
+Shows I have not seen.<br />
+Basically, I’m the perfect person to talk about these shows due to my lack of emotional investment, knowledge and <em>oh wait I have no business talking about them</em>.<br />
+So, with <em>Discovery</em> having made it’s first impression, I thought it would be nice to put it into context a little, with all the other Star Trek stuff we had in the past.<br />
+As someone who’s not <em>that</em> familiar with the franchise, I was a little surprised by the length of the <em>wilderness</em> years between the original series and the second live-action installment, as well as the relatively larg gap between the latest series and the new <em>Dicscovery</em>. I also didn’t realize how big the overlap between <em>Deep Space Nine</em>, <em>Voyager</em> and <em>The Next Generation</em> was, I always assumed they were more sequential.<br />
+Anyway, I did my usual “pull data from &lt;trakt.tv&gt; and look at it”-thing, and here it goes.</p>
+<div id="preparation" class="section level2">
+<h2>Preparation</h2>
+<p>We start by loading our favorite R packages for setup purposes:</p>
+<pre class="r"><code>library(tRakt) # devtools::install_github(&quot;jemus42/tRakt&quot;)
+library(dplyr)
+library(ggplot2)
+library(scales)
+library(purrr)
+library(tadaatoolbox)
+library(ggrepel)
+
+theme_set(theme_tadaa())
+
+plot_caption &lt;- paste0(&quot;@jemus42 – blog.jemu.name @ &quot;, Sys.Date())</code></pre>
+<p>Next up, we’ll gather the data. Since these shows have ridiculously long titles in a world of single-word-shows, we’ll keep track of both titles and commonly used abbreviations.<br />
+Please note that the data collection step is a little clunky, code-wise, but oh well, it get’s the job done.</p>
+<pre class="r"><code>stshows &lt;- c(&quot;star-trek&quot;, 
+             &quot;star-trek-the-animated-series&quot;,
+             &quot;star-trek-the-next-generation&quot;,
+             &quot;star-trek-deep-space-nine&quot;, 
+             &quot;star-trek-voyager&quot;, 
+             &quot;star-trek-enterprise&quot;,
+             &quot;star-trek-discovery&quot;)
+
+abbrv &lt;- c(&quot;TOS&quot;, &quot;TAS&quot;, &quot;TNG&quot;, &quot;DS9&quot;, &quot;VOY&quot;, &quot;ENT&quot;, &quot;DSC&quot;)
+
+# Assemble tibble of names
+stshows_titles &lt;- tibble(
+  slug  = stshows,
+  abbrv = abbrv,
+  title = map_chr(slug, function(x) {trakt.show.summary(x)$title})
+)
+
+# Gather data using the slug, appending title and abbreviated title
+startrek &lt;- map_df(stshows, function(stshow) {
+    episodes          &lt;- trakt.get_all_episodes(stshow)
+    episodes$show     &lt;- trakt.show.summary(stshow)$title
+    episodes$show_abr &lt;- stshows_titles$abbrv[stshows_titles$slug == stshow]
+    
+    as_tibble(episodes)
+  }) %&gt;%
+  arrange(first_aired) %&gt;%
+  mutate(show =     factor(show, levels = stshows_titles$title, ordered = TRUE),
+         show_abr = factor(show_abr, levels = stshows_titles$abbrv, ordered = TRUE)) %&gt;%
+  arrange(first_aired) %&gt;%
+  mutate(ep_abs = seq_along(episode))</code></pre>
+</div>
+<div id="the-data" class="section level2">
+<h2>The Data</h2>
+<p>Here’s a randomly chosen sample of two episodes of each show to give you a rough idea of the data I’m working with.<br />
+The dataset contains a few more variables, but I won’t be using them or they’re just variations on the variables below.</p>
+<pre class="r"><code>startrek %&gt;% 
+  select(show, epid, first_aired, rating, votes) %&gt;%
+  group_by(show) %&gt;%
+  sample_n(2) %&gt;%
+  ungroup() %&gt;%
+  arrange(first_aired) %&gt;%
+  knitr::kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">show</th>
+<th align="left">epid</th>
+<th align="left">first_aired</th>
+<th align="right">rating</th>
+<th align="right">votes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Star Trek</td>
+<td align="left">s03e02</td>
+<td align="left">1968-09-28 00:30:00</td>
+<td align="right">8.18800</td>
+<td align="right">250</td>
+</tr>
+<tr class="even">
+<td align="left">Star Trek</td>
+<td align="left">s03e19</td>
+<td align="left">1969-02-15 01:30:00</td>
+<td align="right">7.50549</td>
+<td align="right">182</td>
+</tr>
+<tr class="odd">
+<td align="left">Star Trek: The Animated Series</td>
+<td align="left">s01e12</td>
+<td align="left">1973-11-24 05:00:00</td>
+<td align="right">7.14706</td>
+<td align="right">68</td>
+</tr>
+<tr class="even">
+<td align="left">Star Trek: The Animated Series</td>
+<td align="left">s02e05</td>
+<td align="left">1974-10-05 04:00:00</td>
+<td align="right">6.74576</td>
+<td align="right">59</td>
+</tr>
+<tr class="odd">
+<td align="left">Star Trek: The Next Generation</td>
+<td align="left">s02e02</td>
+<td align="left">1988-11-29 02:00:00</td>
+<td align="right">7.49431</td>
+<td align="right">439</td>
+</tr>
+<tr class="even">
+<td align="left">Star Trek: The Next Generation</td>
+<td align="left">s03e15</td>
+<td align="left">1990-02-20 02:00:00</td>
+<td align="right">8.37937</td>
+<td align="right">543</td>
+</tr>
+<tr class="odd">
+<td align="left">Star Trek: Deep Space Nine</td>
+<td align="left">s03e08</td>
+<td align="left">1994-11-14 05:00:00</td>
+<td align="right">7.08252</td>
+<td align="right">206</td>
+</tr>
+<tr class="even">
+<td align="left">Star Trek: Deep Space Nine</td>
+<td align="left">s03e17</td>
+<td align="left">1995-02-27 05:00:00</td>
+<td align="right">7.87045</td>
+<td align="right">247</td>
+</tr>
+<tr class="odd">
+<td align="left">Star Trek: Voyager</td>
+<td align="left">s01e14</td>
+<td align="left">1995-05-08 04:00:00</td>
+<td align="right">7.65097</td>
+<td align="right">361</td>
+</tr>
+<tr class="even">
+<td align="left">Star Trek: Voyager</td>
+<td align="left">s01e16</td>
+<td align="left">1995-05-22 04:00:00</td>
+<td align="right">7.68598</td>
+<td align="right">328</td>
+</tr>
+<tr class="odd">
+<td align="left">Star Trek: Enterprise</td>
+<td align="left">s03e01</td>
+<td align="left">2003-09-11 00:00:00</td>
+<td align="right">7.68146</td>
+<td align="right">383</td>
+</tr>
+<tr class="even">
+<td align="left">Star Trek: Enterprise</td>
+<td align="left">s04e08</td>
+<td align="left">2004-11-27 01:00:00</td>
+<td align="right">7.88393</td>
+<td align="right">336</td>
+</tr>
+<tr class="odd">
+<td align="left">Star Trek: Discovery</td>
+<td align="left">s01e10</td>
+<td align="left">2018-01-08 01:30:00</td>
+<td align="right">7.85906</td>
+<td align="right">4328</td>
+</tr>
+<tr class="even">
+<td align="left">Star Trek: Discovery</td>
+<td align="left">s01e12</td>
+<td align="left">2018-01-22 01:30:00</td>
+<td align="right">8.03663</td>
+<td align="right">3931</td>
+</tr>
+</tbody>
+</table>
+<p>You might notice a few things.<br />
+First up, the vote count. While <em>trakt.tv</em> is pretty neat, it doesn’t have nearly the userbase of bigger sites like IMDb, nor has it been around for as long. Additionally, how many people do you know who not only rewatch older tv shows, but also take the time to rate each episode individually on sites like trakt?<br />
+Exactly.
+That’s the biggest flaw I see in the data, as with all my trakt-data-shenanigans. The data is easy to retrieve, but unfortunately there’s not <em>that</em> much of it.</p>
+<p>But oh well, who cares, I’m just here to put <em>Discovery</em> into a little perspective, so on we go.<br />
+Throughout this post I’ll be shortening the show names to a more plot-friendly size, using these commonly used abbreviations for reference:</p>
+<pre class="r"><code>stshows_titles %&gt;%
+  select(title, abbrv) %&gt;%
+  magrittr::set_names(c(&quot;Title&quot;, &quot;Abbreviation&quot;)) %&gt;%
+  knitr::kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Title</th>
+<th align="left">Abbreviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Star Trek</td>
+<td align="left">TOS</td>
+</tr>
+<tr class="even">
+<td align="left">Star Trek: The Animated Series</td>
+<td align="left">TAS</td>
+</tr>
+<tr class="odd">
+<td align="left">Star Trek: The Next Generation</td>
+<td align="left">TNG</td>
+</tr>
+<tr class="even">
+<td align="left">Star Trek: Deep Space Nine</td>
+<td align="left">DS9</td>
+</tr>
+<tr class="odd">
+<td align="left">Star Trek: Voyager</td>
+<td align="left">VOY</td>
+</tr>
+<tr class="even">
+<td align="left">Star Trek: Enterprise</td>
+<td align="left">ENT</td>
+</tr>
+<tr class="odd">
+<td align="left">Star Trek: Discovery</td>
+<td align="left">DSC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="the-timeline" class="section level2">
+<h2>The Timeline</h2>
+<pre class="r"><code>startrek %&gt;%
+  group_by(show_abr) %&gt;%
+  summarize(e_first = min(first_aired),
+            e_last  = max(first_aired)) %&gt;%
+  mutate(show_abr = factor(show_abr, levels = rev(stshows_titles$abbrv))) %&gt;%
+  ggplot(aes(x = show_abr, color = show_abr)) +
+  geom_errorbar(aes(ymin = e_first, ymax = e_last),
+                width = 0, size = 4.5, color = &quot;black&quot;) +
+  geom_errorbar(aes(ymin = e_first, ymax = e_last),
+                width = 0, size = 4) +
+  scale_y_datetime(date_breaks = &quot;5 years&quot;,
+                   date_minor_breaks = &quot;1 year&quot;,
+                   date_labels = &quot;%Y&quot;, 
+                   limits = c(as.POSIXct(&quot;1963-01-01&quot;), NA)) +
+  scale_color_brewer(palette = &quot;Set2&quot;, direction = -1, guide = F) +
+  coord_flip() +
+  labs(title = &quot;Star Trek TV Shows&quot;,
+       subtitle = &quot;Show Timeline&quot;,
+       x = &quot;&quot;,
+       y = &quot;Show Timespan&quot;,
+       caption = plot_caption)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/timeline_bars-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/timeline_bars-1.png' class='fresco' data-fresco-caption='Airtimes of Star Trek TV Shows'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='Airtimes of Star Trek TV Shows'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/timeline_bars-1.png'  width = "100%"   alt='Airtimes of Star Trek TV Shows' /></a></picture>
+<figcaption>
+Airtimes of Star Trek TV Shows
+</figcaption>
+</figure>
+<pre class="r"><code>ggplot(data = startrek, aes(x = first_aired, y = rating, fill = show)) +
+  geom_point(shape = 21, color = &quot;black&quot;, size = 3) +
+  scale_x_datetime(date_breaks = &quot;5 years&quot;,
+                   date_minor_breaks = &quot;1 year&quot;,
+                   date_labels = &quot;%Y&quot;,
+                   limits = c(as.POSIXct(&quot;1963-01-01&quot;), NA)) +
+  scale_y_continuous(breaks = seq(0, 10, .5), minor_breaks = seq(0, 10, .25)) +
+  scale_fill_brewer(palette = &quot;Set2&quot;) + 
+  labs(title = &quot;Star Trek TV Shows&quot;,
+       subtitle = &quot;Ratings on trakt.tv&quot;,
+       x = &quot;Original Airdate&quot;,
+       y = &quot;Rating (1-10)&quot;,
+       fill = &quot;Show&quot;,
+       caption = plot_caption) +
+  theme(legend.position = &quot;bottom&quot;)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/timeline-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/timeline-1.png' class='fresco' data-fresco-caption='Episode ratings of Star Trek TV shows'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='Episode ratings of Star Trek TV shows'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/timeline-1.png'  width = "100%"   alt='Episode ratings of Star Trek TV shows' /></a></picture>
+<figcaption>
+Episode ratings of Star Trek TV shows
+</figcaption>
+</figure>
+<pre class="r"><code>ggplot(data = startrek, aes(x = ep_abs, y = rating, fill = show_abr)) +
+  geom_point(shape = 21, color = &quot;black&quot;, size = 3) +
+  scale_x_continuous(breaks = seq(0, 1e3, 50), 
+                     minor_breaks = seq(0, 1e3, 25)) +
+  scale_y_continuous(breaks = seq(0, 10, .5), 
+                     minor_breaks = seq(0, 10, .25)) +
+  scale_fill_brewer(palette = &quot;Set2&quot;) + 
+  labs(title = &quot;Star Trek TV Shows&quot;,
+       subtitle = &quot;Ratings on trakt.tv&quot;,
+       x = &quot;Sequential Episode Number&quot;,
+       y = &quot;Rating (1-10)&quot;,
+       fill = &quot;Show&quot;,
+       caption = plot_caption) +
+  theme(legend.position = &quot;bottom&quot;)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/unnamed-chunk-3-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/unnamed-chunk-3-1.png' class='fresco' data-fresco-caption='Episode ratings, sequentially numbered by airdate'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='Episode ratings, sequentially numbered by airdate'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/unnamed-chunk-3-1.png'  width = "100%"   alt='Episode ratings, sequentially numbered by airdate' /></a></picture>
+<figcaption>
+Episode ratings, sequentially numbered by airdate
+</figcaption>
+</figure>
+<p><em>But random internet guy</em>, people will now exclaim, <em>isn’t it bad to use a truncated y-axis?</em> they will ask, smugly. And yes, in many situations it’s a bad idea to truncate axis of quantities with a known range like a 1-10 point scale, so here’s the same plot as above with “proper” limits:</p>
+<pre class="r"><code>ggplot(data = startrek, aes(x = ep_abs, y = rating, fill = show_abr)) +
+  geom_point(shape = 21, color = &quot;black&quot;, size = 3) +
+  scale_x_continuous(breaks = seq(0, 1e3, 50), 
+                     minor_breaks = seq(0, 1e3, 25)) +
+  scale_y_continuous(breaks = seq(0, 10, 1), 
+                     minor_breaks = seq(0, 10, .5), limits = c(1, 10)) +
+  scale_fill_brewer(palette = &quot;Set2&quot;) + 
+  labs(title = &quot;Star Trek TV Shows&quot;,
+       subtitle = &quot;Ratings on trakt.tv&quot;,
+       x = &quot;Sequential Episode Number&quot;,
+       y = &quot;Rating (1-10)&quot;,
+       fill = &quot;Show&quot;,
+       caption = plot_caption) +
+  theme(legend.position = &quot;bottom&quot;)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/unnamed-chunk-4-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/unnamed-chunk-4-1.png' class='fresco' data-fresco-caption='Same as plot before, with full-sized y-axis'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='Same as plot before, with full-sized y-axis'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/unnamed-chunk-4-1.png'  width = "100%"   alt='Same as plot before, with full-sized y-axis' /></a></picture>
+<figcaption>
+Same as plot before, with full-sized y-axis
+</figcaption>
+</figure>
+<p>The thing is, it’s harder to see differences within individual shows. It’s a more or less uniform strip of points, which doesn’t really help that much, so I’ll probably stick to the truncated axes.</p>
+</div>
+<div id="within-show-variation" class="section level2">
+<h2>Within-Show Variation</h2>
+<p>Next up we’ll be looking at the variation within each show’s rating, with respect to each show’s total number of episodes.</p>
+<pre class="r"><code>ggplot(data = startrek, 
+       aes(x = show_abr, y = rating, 
+           color = show_abr, fill = show_abr)) +
+  geom_point(alpha = .5, position = position_jitter(width = .5, height = 0)) +
+  geom_boxplot(alpha = .5, color = &quot;black&quot;, outlier.alpha = 0) +
+  scale_fill_brewer(palette = &quot;Set2&quot;) + 
+  scale_color_brewer(palette = &quot;Set2&quot;) + 
+  labs(title = &quot;Star Trek TV Shows&quot;,
+       subtitle = &quot;Ratings on trakt.tv: Within-Show Ratings as Boxplots&quot;,
+       x = &quot;Show&quot;,
+       y = &quot;Rating (1-10)&quot;,
+       caption = plot_caption) +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/within_show_boxplots-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/within_show_boxplots-1.png' class='fresco' data-fresco-caption='Per-show boxplots of episode ratings'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='Per-show boxplots of episode ratings'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/within_show_boxplots-1.png'  width = "100%"   alt='Per-show boxplots of episode ratings' /></a></picture>
+<figcaption>
+Per-show boxplots of episode ratings
+</figcaption>
+</figure>
+<p>We can see <em>TNG</em> with a lot of variation compared to the relatively consistent <em>Enterprise</em>. Also, there are quite a few outliers in <em>TNG</em>, so apaprently there are some <em>really good</em> episodes, and a few <em>really bad</em> episodes (relatively speaking).<br />
+We’ll be looking at the outliers a little later.</p>
+<p>Next up I’d like to look at the ratings of individual seasons of each shows, where we’ll be using boxplots again, but this time per season.</p>
+<pre class="r"><code>ggplot(data = startrek, aes(x = season, y = rating, fill = show_abr)) +
+  geom_boxplot(alpha = .5, color = &quot;black&quot;) +
+  facet_wrap(~show_abr, scales = &quot;free_x&quot;, nrow = 1) +
+  scale_fill_brewer(palette = &quot;Set2&quot;) + 
+  labs(title = &quot;Star Trek TV Shows&quot;,
+       subtitle = &quot;Ratings on trakt.tv: Within-Show Ratings as Boxplots&quot;,
+       x = &quot;Show&quot;,
+       y = &quot;Rating (1-10)&quot;,
+       caption = plot_caption) +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/with_show_season_boxplots-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/with_show_season_boxplots-1.png' class='fresco' data-fresco-caption='Per-season boxplots of episode ratings'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='Per-season boxplots of episode ratings'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/with_show_season_boxplots-1.png'  width = "100%"   alt='Per-season boxplots of episode ratings' /></a></picture>
+<figcaption>
+Per-season boxplots of episode ratings
+</figcaption>
+</figure>
+<p>You might notice a few trends, like <em>TOS</em> getting <em>technically worse</em> over time, while <em>DS9</em> and <em>ENT</em> seem to be getting better over time. I vaguely remember analyzing the seasonal trends of <em>ENT</em> in an earlier blogpost, where I also did some simple statistics to “prove” that the show gets better over time.<br />
+We can make these trends a little more explicit by using simple linear regression to approximate the ratings over time, where time is just the sequential episode number.<br />
+A rising trendline would indicate the show getting better towards the end and vice versa.<br />
+It’s a little too early to evaluate <em>Discovery</em> in this manner, but at least we can see that apparently people really enjoyed the <em>Fall Finale</em>™.<br />
+In other news, I think it’s safe to say that apparently nobody liked <em>TAS</em>, so… yeah. There’s that.</p>
+<pre class="r"><code>ggplot(data = startrek, aes(x = epnum, y = rating, fill = show_abr)) +
+  geom_point(shape = 21, color = &quot;black&quot;, size = 3, alpha = .25) +
+  geom_smooth(aes(color = show_abr), method = lm, se = F) +
+  facet_wrap(~show_abr, nrow = 1, scales = &quot;free_x&quot;) +
+  scale_x_continuous(breaks = pretty_breaks()) +
+  scale_y_continuous(breaks = seq(0, 10, .5), 
+                     minor_breaks = seq(0, 10, .25)) +
+  scale_fill_brewer(palette = &quot;Set2&quot;) + 
+  scale_color_brewer(palette = &quot;Set2&quot;) + 
+  labs(title = &quot;Star Trek TV Shows&quot;,
+       subtitle = &quot;Ratings on trakt.tv&quot;,
+       x = &quot;Sequential Episode Number&quot;,
+       y = &quot;Rating (1-10)&quot;,
+       fill = &quot;Show&quot;,
+       caption = plot_caption) +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/within_show_scatter-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/within_show_scatter-1.png' class='fresco' data-fresco-caption='Per-show trendlines of episode ratings'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='Per-show trendlines of episode ratings'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/within_show_scatter-1.png'  width = "100%"   alt='Per-show trendlines of episode ratings' /></a></picture>
+<figcaption>
+Per-show trendlines of episode ratings
+</figcaption>
+</figure>
+</div>
+<div id="how-do-you-feel-about-histograms" class="section level2">
+<h2>How Do You Feel About Histograms?</h2>
+<p>We’ve seen the individual episode ratings, but how about the general distribution of all the ratings regardless of the show? Just a big distribution which tells us the rough range the ratings seem to be in seems appropriate. It should also be noted that in my experience, ratings on trakt.tv don’t seem to vary <em>that greatly</em>, but rather seem to fall in the range between <em>6</em> and <em>9</em>.<br />
+My working hypothesis is that people tend to, well, watch and rate things they enjoy at least a bit, and if they really dislike it and <em>would</em> rate it <em>5</em> or lower, they don’t go through to watch and rate the whole shebang.<br />
+Anyway, my point being: The ratings might be a little biased, but I think we’re already aware that the trakt.tv user ratings are not a perfect cross-section of society as a whole, so… yeah, I’m fine with that.</p>
+<pre class="r"><code>mx &lt;- round(mean(startrek$rating), 2)
+sx &lt;- round(sd(startrek$rating), 2)
+
+ggplot(data = startrek, aes(x = rating)) +
+  geom_histogram(binwidth = .1) +
+  geom_vline(xintercept = mean(startrek$rating), 
+             linetype = &quot;dashed&quot;, color = &quot;red&quot;, size = 2) +
+  scale_x_continuous(breaks = seq(0, 10, .5), 
+                     minor_breaks = seq(0, 10, .1)) +
+  annotate(geom = &quot;label&quot;,
+           x = 6.5, y = 90,
+           label = paste(&quot;italic(bar(x)) == &quot;, mx,
+                         &quot;~~italic(s[x]) == &quot;, sx),
+           parse = TRUE) +
+  annotate(&quot;rect&quot;,
+           xmin = mx - sx,
+           xmax = mx + sx,
+           ymin = 0,
+           ymax = 125,
+           fill = &quot;grey70&quot;,
+           alpha = 0.2) +
+  labs(title = &quot;Star Trek TV Shows&quot;,
+       subtitle = &quot;Episode Rating Distribution on trakt.tv&quot;,
+       x = &quot;Rating (1-10)&quot;,
+       y = &quot;Absolute Frequency&quot;,
+       caption = plot_caption) </code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/histogram_allover-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/histogram_allover-1.png' class='fresco' data-fresco-caption='Histogram of all ratings'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='Histogram of all ratings'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/histogram_allover-1.png'  width = "100%"   alt='Histogram of all ratings' /></a></picture>
+<figcaption>
+Histogram of all ratings
+</figcaption>
+</figure>
+<p>In this histogram we see that most ratings fall in a relatively thin range around ~7.6, which is a solid <em>“yeah, cool”</em> I guess. There’s only one episode below the 6.0 line, which falls into <em>meh</em>-territory, so that’s interesting.<br />
+Besides that we observe a perfectly <em>“pretty normal”</em> distribution, which shouldn’t be surprising considering we have a total <span class="math inline">\(N = 740\)</span>.</p>
+<pre class="r"><code>ggplot(data = startrek, aes(x = rating, fill = show_abr)) +
+  geom_histogram(aes(y = ..density..), 
+                 binwidth = .2, position = &quot;dodge&quot;) +
+  geom_density(alpha = .5) +
+  scale_fill_brewer(palette = &quot;Set2&quot;) + 
+  facet_wrap(~show_abr, ncol = 2) +
+  labs(title = &quot;Star Trek TV Shows&quot;,
+       subtitle = &quot;Episode Rating Distribution on trakt.tv&quot;,
+       x = &quot;Rating (1-10)&quot;,
+       y = &quot;Absolute Frequency&quot;,
+       fill = &quot;Show&quot;,
+       caption = plot_caption) +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/histogram_byshow-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/histogram_byshow-1.png' class='fresco' data-fresco-caption='Per-show rating distributions'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='Per-show rating distributions'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/histogram_byshow-1.png'  width = "100%"   alt='Per-show rating distributions' /></a></picture>
+<figcaption>
+Per-show rating distributions
+</figcaption>
+</figure>
+<p>In a by-show plot of distributions, we can now use the width of the distributions to estimate the variance within each show, but we kind of did that already earlier. It could be nice to look at the skew of each distribution, but I don’t think there’s that much to gain here.</p>
+</div>
+<div id="the-first-seasons" class="section level2">
+<h2>The First Seasons</h2>
+<p>If I remember correctly, <a href="https://www.theincomparable.com/teevee/discovery/">Jason Snell mentioned</a> that the first season of any Star Trek tended to be <em>not that great</em>, which is why you should probably not jump to conclusions regarding <em>Discovery’s</em> quality just by the first few episodes. So I plotted all the first seasons in one handy graph, where I rescaled the x-axis to a relative number of <em>percentage of episodes of first seaosn</em>, which allows a better comparison. Note that at the time of this writing the first season of <em>Discovery</em> is not yet concluded, but we already saw the silly named <em>Fall Finale</em>™ and know the season will consist of 15 episodes, so I adjusted appropriately.</p>
+<pre class="r"><code>startrek %&gt;%
+  filter(season == 1) %&gt;%
+  group_by(show) %&gt;%
+  mutate(season_progress = episode / max(episode),
+         season_progress = ifelse(grepl(x = show, pattern = &quot;Discovery&quot;), 
+                                  episode / 15, season_progress)) %&gt;%
+  ggplot(aes(x = season_progress, y = rating, 
+             color = show_abr, fill = show_abr)) +
+    geom_point(shape = 21, color = &quot;black&quot;, size = 3, alpha = .25) +
+    geom_smooth(method = loess, se = F, span = 1.5) +
+    scale_x_continuous(breaks = pretty_breaks(), labels = percent) +
+    scale_y_continuous(breaks = seq(0, 10, .5), 
+                       minor_breaks = seq(0, 10, .25)) +
+    scale_fill_brewer(palette = &quot;Set2&quot;, guide = F) + 
+    scale_color_brewer(palette = &quot;Set2&quot;) + 
+    labs(title = &quot;Star Trek TV Shows&quot;,
+         subtitle = &quot;First Season Ratings on trakt.tv&quot;,
+         x = &quot;Relative Episode Position in Show&#39;s First Season&quot;,
+         y = &quot;Rating (1-10)&quot;,
+         color = &quot;Show&quot;,
+         caption = plot_caption) +
+    theme(legend.position = &quot;bottom&quot;)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/firsteasons_scatterlines-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/firsteasons_scatterlines-1.png' class='fresco' data-fresco-caption='First-season episode ratings. The x-axis is computed by dividing the episode number by the total number of episodes in each season'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='First-season episode ratings. The x-axis is computed by dividing the episode number by the total number of episodes in each season'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/firsteasons_scatterlines-1.png'  width = "100%"   alt='First-season episode ratings. The x-axis is computed by dividing the episode number by the total number of episodes in each season' /></a></picture>
+<figcaption>
+First-season episode ratings. The x-axis is computed by dividing the episode number by the total number of episodes in each season
+</figcaption>
+</figure>
+<p>Or, if you prefer the boxplot way of life:</p>
+<pre class="r"><code>startrek %&gt;%
+  filter(season == 1) %&gt;%
+  ggplot(aes(x = show_abr, y = rating, color = show_abr, fill = show_abr)) +
+    geom_point(alpha = .5, position = position_jitter(width = .2, height = 0)) +
+    geom_boxplot(alpha = .5, color = &quot;black&quot;, outlier.alpha = 0) +
+    scale_fill_brewer(palette = &quot;Set2&quot;) + 
+    scale_color_brewer(palette = &quot;Set2&quot;) + 
+    labs(title = &quot;Star Trek TV Shows&quot;,
+         subtitle = &quot;First Season Ratings on trakt.tv&quot;,
+         x = &quot;&quot;,
+         y = &quot;Rating (1-10)&quot;,
+         caption = plot_caption) +
+    theme(legend.position = &quot;none&quot;)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/firstseason_boxplots-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/firstseason_boxplots-1.png' class='fresco' data-fresco-caption='First season episode ratings as boxplots with background dots'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='First season episode ratings as boxplots with background dots'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/firstseason_boxplots-1.png'  width = "100%"   alt='First season episode ratings as boxplots with background dots' /></a></picture>
+<figcaption>
+First season episode ratings as boxplots with background dots
+</figcaption>
+</figure>
+<p>I guess it’s fair to say that <em>Discovery</em> is doing pretty well <em>so far</em>, but it should also be noted that most of the ratings of previous shows were presumably made during rewatches, since trakt hasn’t been around that long. So either <em>DSC</em> is doing pretty good or it’s impossible to actually make a statement about the first-season-hypothesis based on the data, so I opt for the interpration that makes it interesting.</p>
+</div>
+<div id="the-best-and-the-worst-episodes" class="section level2">
+<h2>The Best and the Worst Episodes</h2>
+<p>Ah yes, the thing with the outliers.<br />
+In the following plot, I’ve labelled each episode with regards to whether or not is in an <em>outlier</em>, which I have defined in this case to be any value that deviates more than two IQR from the median. What an IQR range is a thing that you either know or are googleing now, and well let’s face it, it’s not important. Anyway, I labelled the outliers with their episode ID (e.g. <em>s02e03</em>) and the episode title.</p>
+<pre class="r"><code>startrek %&gt;%
+  group_by(show) %&gt;%
+  mutate(median = median(rating),
+         q1 = quantile(rating, probs = 0.25),
+         q3 = quantile(rating, probs = 0.75),
+         outlier_max = median + 2 * (q3 - q1),
+         outlier_min = median - 2 * (q3 - q1),
+         is_outlier = if_else(rating &lt; outlier_min | rating &gt; outlier_max, 
+                              &quot;Outlier&quot;, &quot;No Outlier&quot;)) %&gt;%
+  ungroup -&gt; temp
+
+ggplot(data = temp, aes(x = ep_abs, y = rating, 
+                     fill = show_abr, alpha = is_outlier)) +
+  geom_point(shape = 21, color = &quot;black&quot;) +
+  geom_label_repel(data = filter(temp, is_outlier == &quot;Outlier&quot;), 
+                   aes(label = paste0(epid,&quot;: &quot;, title)),
+                   alpha = .75, size = 3) +
+  scale_fill_brewer(palette = &quot;Set2&quot;) + 
+  scale_alpha_discrete(range = c(0.1, 1), guide = FALSE) +
+  labs(title = &quot;Star Trek TV Shows&quot;,
+       subtitle = &quot;Outliers of Episode Ratings on trakt.tv (Within Show)&quot;,
+       x = &quot;Sequential Episode Number&quot;,
+       y = &quot;Rating (1-10)&quot;,
+       fill = &quot;Show&quot;,
+       caption = plot_caption) +
+  theme(legend.position = &quot;bottom&quot;)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/outliers-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/outliers-1.png' class='fresco' data-fresco-caption='Positive and negative outliers of each show. Outliers are defined in this case as deviating more than two IQR from the median.'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='Positive and negative outliers of each show. Outliers are defined in this case as deviating more than two IQR from the median.'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/outliers-1.png'  width = "100%"   alt='Positive and negative outliers of each show. Outliers are defined in this case as deviating more than two IQR from the median.' /></a></picture>
+<figcaption>
+Positive and negative outliers of each show. Outliers are defined in this case as deviating more than two IQR from the median.
+</figcaption>
+</figure>
+<p>It’s nice how <em>DS9</em> seems to have a lot of positive outliers with only two negative outliers, which indicates that <em>DS9</em> is not that great on average, but a couple of episodes are <em>pretty good</em>. At least that’s the way I interpret it, not sure if that’s a realistic assessment.
+Additionally we can see that <em>TNG</em> takes the cake for both the best and the worst liked episodes all over, so… yay <em>TNG</em> I guess? Idunno.</p>
+</div>
+<div id="inter-show-comparisons" class="section level2">
+<h2>Inter-Show Comparisons</h2>
+<p>Let’s compare all the shows in the <em>statsy</em> way with a simple <em>ANOVA</em> by show.<br />
+If this results in a significant result, which it probably will, it indicates that at least one show has a significantly different variation than the other shows.</p>
+<pre class="r"><code>tadaa_aov(rating ~ show_abr, data = startrek, print = &quot;markdown&quot;)</code></pre>
+<p>Table 1: <strong>One-Way ANOVA</strong>: Using Type III Sum of Squares</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Term</th>
+<th align="center">df</th>
+<th align="center">SS</th>
+<th align="center">MS</th>
+<th align="center">F</th>
+<th align="center">p</th>
+<th align="center"><span class="math inline">\(\eta^2\)</span></th>
+<th align="center">Cohen’s f</th>
+<th align="center">Power</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">show_abr</td>
+<td align="center">6</td>
+<td align="center">10.18</td>
+<td align="center">1.7</td>
+<td align="center">16.56</td>
+<td align="center">&lt; 0.001</td>
+<td align="center">0.12</td>
+<td align="center">0.37</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">Residuals</td>
+<td align="center">733</td>
+<td align="center">75.06</td>
+<td align="center">0.1</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center">739</td>
+<td align="center">85.23</td>
+<td align="center">1.8</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Welp, I don’t have to look at the pariwise comparisons to tell you that <em>TAS</em> is the odd one out because it’s obviously rated consistently lower than the others.<br />
+To make it more interesting, we’ll look at the remaining shows if we kick out <em>TAS</em>:</p>
+<pre class="r"><code>startrek %&gt;%
+  filter(show_abr != &quot;TAS&quot;) %&gt;%
+  tadaa_aov(rating ~ show_abr, data = ., print = &quot;markdown&quot;)</code></pre>
+<p>Table 2: <strong>One-Way ANOVA</strong>: Using Type III Sum of Squares</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Term</th>
+<th align="center">df</th>
+<th align="center">SS</th>
+<th align="center">MS</th>
+<th align="center">F</th>
+<th align="center">p</th>
+<th align="center"><span class="math inline">\(\eta^2\)</span></th>
+<th align="center">Cohen’s f</th>
+<th align="center">Power</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">show_abr</td>
+<td align="center">5</td>
+<td align="center">4.51</td>
+<td align="center">0.9</td>
+<td align="center">8.82</td>
+<td align="center">&lt; 0.001</td>
+<td align="center">0.06</td>
+<td align="center">0.25</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">Residuals</td>
+<td align="center">712</td>
+<td align="center">72.86</td>
+<td align="center">0.1</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center">717</td>
+<td align="center">77.37</td>
+<td align="center">1</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Well I’ll be damned. Who’da thunk.<br />
+The effect (<span class="math inline">\(\eta^2\)</span> and <span class="math inline">\(f\)</span>) is much smaller than before, but we have a <em>lot</em> of statistical power, presumably due to the large sample size.<br />
+Let’s look at the pairwise comparisons:</p>
+<pre class="r"><code>startrek %&gt;%
+  filter(show_abr != &quot;TAS&quot;) %&gt;%
+  aov(rating ~ show_abr, data = .) %&gt;%
+  TukeyHSD() %&gt;%
+  broom::tidy() %&gt;%
+  tadaa_plot_tukey() +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/unnamed-chunk-7-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/unnamed-chunk-7-1.png' class='fresco' data-fresco-caption='unnamed-chunk-7'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='unnamed-chunk-7'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/unnamed-chunk-7-1.png'  width = "100%"   alt='unnamed-chunk-7' /></a></picture>
+<figcaption>
+unnamed-chunk-7
+</figcaption>
+</figure>
+<p>These errorbars indicate which pairwise comparison (e.g. “mean rating of <em>ENT</em> minus mean rating of <em>DS9</em>” in the first row) results in a significant difference from 0, assuming that if the shows have the same mean rating, the difference would be 0. The direction of the difference is determined by the labels to the left, as mentioned, so we can say that <em>TOS</em> is “significantly worse” than <em>Voyager</em>, at least according to mean episode ratings and variation.</p>
+<p>The lasr thing I’d like to take a look at is the possible difference between the total show rating on trakt and the mean episode rating of each show. Since you have the option to give each show an over-all rating without rating each episode, I’m assuming that the nostalgia factor is strong in that regard and many people might give <em>TNG</em> a nostalgia-inflated rating compared to people who rewatched each episode and rated them as they judge them <em>today</em>(ish).<br />
+Long story short, here’s the over-all show ratings, sorted by rating:</p>
+<pre class="r"><code>stshows_titles$rating &lt;- map_dbl(stshows_titles$slug, function(x) {
+                                  trakt.show.ratings(x)$rating 
+                                })
+
+ggplot(data = stshows_titles, aes(x = reorder(abbrv, rating), 
+                                  y = rating, fill = abbrv)) +
+  geom_col(color = &quot;black&quot;, alpha = .75) +
+  coord_flip() +
+  scale_fill_brewer(palette = &quot;Set2&quot;) +
+  scale_y_continuous(breaks = seq(0, 10, 1), 
+                     minor_breaks = seq(0, 10, .5)) +
+  labs(title = &quot;Star Trek TV Shows&quot;,
+         subtitle = &quot;Show Ratings on trakt.tv&quot;,
+         x = &quot;&quot;,
+         y = &quot;Rating (1-10)&quot;,
+         fill = &quot;Show&quot;,
+         caption = plot_caption) +
+    theme(legend.position = &quot;bottom&quot;)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/show_overall-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/show_overall-1.png' class='fresco' data-fresco-caption='Over-all show rating on trakt.tv'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='Over-all show rating on trakt.tv'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/show_overall-1.png'  width = "100%"   alt='Over-all show rating on trakt.tv' /></a></picture>
+<figcaption>
+Over-all show rating on trakt.tv
+</figcaption>
+</figure>
+<p>Now we can use that plot and build upon it. I’ll draw the mean episode rating for each show including errorbars on top of the previous plot, so hold my beer:</p>
+<pre class="r"><code>stshows_titles %&gt;%
+  transmute(show_rating = rating,
+            show_abr = abbrv) %&gt;%
+  full_join(startrek) %&gt;%
+  ggplot() +
+    geom_col(data = stshows_titles, 
+             aes(x = reorder(abbrv, rating), 
+                 y = rating, fill = abbrv), 
+             color = &quot;black&quot;, alpha = .75) +
+    stat_summary(aes(x = reorder(show_abr, show_rating), 
+                     y = rating), 
+                 fun.data = mean_ci_t,
+                 geom = &quot;errorbar&quot;, width = .5) +
+    stat_summary(aes(x = reorder(show_abr, show_rating), y = rating, 
+                     color = show_abr), 
+                 fun.y = mean,
+                 geom = &quot;point&quot;, shape = 21, color = &quot;black&quot;) +
+    coord_flip() +
+    scale_fill_brewer(palette = &quot;Set2&quot;) +
+    scale_color_brewer(palette = &quot;Set2&quot;) +
+    scale_y_continuous(breaks = seq(0, 10, 1), 
+                       minor_breaks = seq(0, 10, .5)) +
+    labs(title = &quot;Star Trek TV Shows&quot;,
+           subtitle = &quot;Show Ratings on trakt.tv&quot;,
+           x = &quot;&quot;,
+           y = &quot;Rating (1-10)&quot;,
+           fill = &quot;Show&quot;,
+           caption = plot_caption) +
+      theme(legend.position = &quot;bottom&quot;)</code></pre>
+<figure>
+<picture><source type='image/webp' srcset='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/show_episodes_meanci-1.webp'><a href='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/show_episodes_meanci-1.png' class='fresco' data-fresco-caption='Over-all rating compared to mean episode rating'
+data-fresco-group='2017-11-23-star-trek-tv-shows-in-data_files' data-lightbox='2017-11-23-star-trek-tv-shows-in-data_files' data-title='Over-all rating compared to mean episode rating'><img src='../../../post/2017-11-23-star-trek-tv-shows-in-data_files/figure-html/show_episodes_meanci-1.png'  width = "100%"   alt='Over-all rating compared to mean episode rating' /></a></picture>
+<figcaption>
+Over-all rating compared to mean episode rating
+</figcaption>
+</figure>
+<p>Neat. These little tie-fighters (wrong franchise, I know) represent the mean episode rating with its confidence interval. What we can learn from that plot is how <em>TNG</em> has a high show rating, but individual episodes tend to be rated lower on average when compared to the over-all show rating.<br />
+Interestingly, it’s the other way around fpr <em>TAS</em>, where the average episode rating is higher than the show rating, so apparently people who <em>remember</em> it liked it better than the people who <em>watched</em> it? Not quite sure, but I’m certain you can figure out a way to rationalize this effect, I’m out ¯\_(ツ)_/¯</p>
+<p>On the other hand, <em>Discovery</em> is very consistent with its mean episiode rating CI enclosing the current show rating over all.<br />
+That’s neat.<br />
+If you disagree, don’t email me.</p>
+</div>
