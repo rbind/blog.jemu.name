@@ -8,7 +8,7 @@ categories:
   - tvshows
 tags:
   - trakt.tv
-  - Rmd
+  - analysis
 shows:
   - "Star Trek"
   - "Star Trek: The Animated Series"
@@ -43,6 +43,10 @@ library(ggrepel)
 
 knitr::opts_chunk$set(fig.width = 10, fig.height = 7,
                       error = FALSE, warning = FALSE, message = FALSE)
+
+cache_path <- make_cache_path("star-trek-tv-shows-in-data")
+plot_caption <- paste0("@jemus42 – blog.jemu.name @ ", Sys.Date())
+
 ```
 
 **Star Trek**. It's a thing.
@@ -70,46 +74,51 @@ library(scales)
 library(purrr)
 library(tadaatoolbox)
 library(ggrepel)
-
-theme_set(theme_tadaa())
-
-plot_caption <- paste0("@jemus42 – blog.jemu.name @ ", Sys.Date())
 ```
 
 Next up, we'll gather the data. Since these shows have ridiculously long titles in a world of single-word-shows, we'll keep track of both titles and commonly used abbreviations.
 Please note that the data collection step is a little clunky, code-wise, but oh well, it get's the job done.
 
-```{r, getting_data}
-stshows <- c("star-trek",
-             "star-trek-the-animated-series",
-             "star-trek-the-next-generation",
-             "star-trek-deep-space-nine",
-             "star-trek-voyager",
-             "star-trek-enterprise",
-             "star-trek-discovery")
-
-abbrv <- c("TOS", "TAS", "TNG", "DS9", "VOY", "ENT", "DSC")
-
+```{r getting_data}
 # Assemble tibble of names
-stshows_titles <- tibble(
-  slug  = stshows,
-  abbrv = abbrv,
-  title = map_chr(slug, function(x) {trakt.show.summary(x)$title})
-)
+stshows <- tibble::tribble(
+                            ~slug, ~show_abr,                            ~show,
+                      "star-trek",     "TOS",                      "Star Trek",
+  "star-trek-the-animated-series",     "TAS", "Star Trek: The Animated Series",
+  "star-trek-the-next-generation",     "TNG", "Star Trek: The Next Generation",
+      "star-trek-deep-space-nine",     "DS9",     "Star Trek: Deep Space Nine",
+              "star-trek-voyager",     "VOY",             "Star Trek: Voyager",
+           "star-trek-enterprise",     "ENT",          "Star Trek: Enterprise",
+            "star-trek-discovery",     "DSC",           "Star Trek: Discovery"
+  )
 
-# Gather data using the slug, appending title and abbreviated title
-startrek <- map_df(stshows, function(stshow) {
-    episodes          <- trakt.get_all_episodes(stshow)
-    episodes$show     <- trakt.show.summary(stshow)$title
-    episodes$show_abr <- stshows_titles$abbrv[stshows_titles$slug == stshow]
+if (file_not_cached(cache_path, startrek)) {
+  
+  startrek <- map_df(stshows$slug, ~{
+    trakt.seasons.summary(.x, extended = "full", episodes = TRUE) %>%
+      pull(episodes) %>%
+      bind_rows() %>%
+      mutate(slug = .x, epnum = seq_along(first_aired))
+  })
+  
+  startrek <- startrek %>%
+    left_join(
+      stshows, 
+      by = "slug"
+    ) %>%
+    arrange(first_aired) %>%
+    mutate(
+      epid = sprintf("s%02de%02d", season, episode),
+      ep_abs = seq_along(episode),
+      show = factor(show, levels = stshows$show, ordered = TRUE),
+      show_abr = factor(show_abr, levels = stshows$show_abr, ordered = TRUE)
+    )
+  
+  cache_file(cache_path, startrek)
+}
 
-    as_tibble(episodes)
-  }) %>%
-  arrange(first_aired) %>%
-  mutate(show =     factor(show, levels = stshows_titles$title, ordered = TRUE),
-         show_abr = factor(show_abr, levels = stshows_titles$abbrv, ordered = TRUE)) %>%
-  arrange(first_aired) %>%
-  mutate(ep_abs = seq_along(episode))
+startrek <- read_cache_file(cache_path, startrek)
+
 ```
 
 ## The Data
@@ -117,14 +126,17 @@ startrek <- map_df(stshows, function(stshow) {
 Here's a randomly chosen sample of two episodes of each show to give you a rough idea of the data I'm working with.
 The dataset contains a few more variables, but I won't be using them or they're just variations on the variables below.
 
-```{r}
+```{r random-episodes-table}
 startrek %>%
   select(show, epid, first_aired, rating, votes) %>%
   group_by(show) %>%
   sample_n(2) %>%
   ungroup() %>%
   arrange(first_aired) %>%
-  knitr::kable()
+  kable(
+    digits = 2,
+    col.names = c("Show", "Episode", "First Aired", "Rating", "Votes")
+  )
 ```
 
 You might notice a few things.
@@ -135,11 +147,11 @@ That's the biggest flaw I see in the data, as with all my trakt-data-shenanigans
 But oh well, who cares, I'm just here to put *Discovery* into a little perspective, so on we go.
 Throughout this post I'll be shortening the show names to a more plot-friendly size, using these commonly used abbreviations for reference:
 
-```{r}
-stshows_titles %>%
-  select(title, abbrv) %>%
-  magrittr::set_names(c("Title", "Abbreviation")) %>%
-  knitr::kable()
+```{r titles-abbrs-table}
+stshows %>%
+  select(show, show_abr) %>%
+  setNames(c("Title", "Abbreviation")) %>%
+  kable()
 ```
 
 ## The Timeline
@@ -149,7 +161,7 @@ startrek %>%
   group_by(show_abr) %>%
   summarize(e_first = min(first_aired),
             e_last  = max(first_aired)) %>%
-  mutate(show_abr = factor(show_abr, levels = rev(stshows_titles$abbrv))) %>%
+  mutate(show_abr = factor(show_abr, levels = rev(stshows_titles$show_abr))) %>%
   ggplot(aes(x = show_abr, color = show_abr)) +
   geom_errorbar(aes(ymin = e_first, ymax = e_last),
                 width = 0, size = 4.5, color = "black") +
@@ -161,17 +173,18 @@ startrek %>%
                    limits = c(as.POSIXct("1963-01-01"), NA)) +
   scale_color_brewer(palette = "Set2", direction = -1, guide = F) +
   coord_flip() +
-  labs(title = "Star Trek TV Shows",
-       subtitle = "Show Timeline",
-       x = "",
-       y = "Show Timespan",
-       caption = plot_caption)
-
+  labs(
+    title = "Star Trek TV Shows",
+    subtitle = "Show Timeline",
+    x = "",
+    y = "Show Timespan",
+    caption = plot_caption
+  )
 ```
 
 
 ```{r timeline, fig.cap="Episode ratings of Star Trek TV shows"}
-ggplot(data = startrek, aes(x = first_aired, y = rating, fill = show)) +
+ggplot(data = startrek, aes(x = first_aired, y = rating, fill = show_abr)) +
   geom_point(shape = 21, color = "black", size = 3) +
   scale_x_datetime(date_breaks = "5 years",
                    date_minor_breaks = "1 year",
@@ -183,7 +196,7 @@ ggplot(data = startrek, aes(x = first_aired, y = rating, fill = show)) +
        subtitle = "Ratings on trakt.tv",
        x = "Original Airdate",
        y = "Rating (1-10)",
-       fill = "Show",
+       fill = "",
        caption = plot_caption) +
   theme(legend.position = "bottom")
 ```
@@ -191,7 +204,7 @@ ggplot(data = startrek, aes(x = first_aired, y = rating, fill = show)) +
 
 ```{r fig.cap="Episode ratings, sequentially numbered by airdate"}
 ggplot(data = startrek, aes(x = ep_abs, y = rating, fill = show_abr)) +
-  geom_point(shape = 21, color = "black", size = 3) +
+  geom_point(shape = 21, color = "black", size = 3, alpha = .75) +
   scale_x_continuous(breaks = seq(0, 1e3, 50),
                      minor_breaks = seq(0, 1e3, 25)) +
   scale_y_continuous(breaks = seq(0, 10, .5),
@@ -201,7 +214,7 @@ ggplot(data = startrek, aes(x = ep_abs, y = rating, fill = show_abr)) +
        subtitle = "Ratings on trakt.tv",
        x = "Sequential Episode Number",
        y = "Rating (1-10)",
-       fill = "Show",
+       fill = "",
        caption = plot_caption) +
   theme(legend.position = "bottom")
 ```
@@ -220,7 +233,7 @@ ggplot(data = startrek, aes(x = ep_abs, y = rating, fill = show_abr)) +
        subtitle = "Ratings on trakt.tv",
        x = "Sequential Episode Number",
        y = "Rating (1-10)",
-       fill = "Show",
+       fill = "",
        caption = plot_caption) +
   theme(legend.position = "bottom")
 ```
@@ -241,7 +254,7 @@ ggplot(data = startrek,
   scale_color_brewer(palette = "Set2") +
   labs(title = "Star Trek TV Shows",
        subtitle = "Ratings on trakt.tv: Within-Show Ratings as Boxplots",
-       x = "Show",
+       x = "",
        y = "Rating (1-10)",
        caption = plot_caption) +
   theme(legend.position = "none")
@@ -253,13 +266,13 @@ We'll be looking at the outliers a little later.
 Next up I'd like to look at the ratings of individual seasons of each shows, where we'll be using boxplots again, but this time per season.
 
 ```{r with_show_season_boxplots, fig.cap="Per-season boxplots of episode ratings"}
-ggplot(data = startrek, aes(x = season, y = rating, fill = show_abr)) +
+ggplot(data = startrek, aes(x = factor(season), y = rating, fill = show_abr)) +
   geom_boxplot(alpha = .5, color = "black") +
   facet_wrap(~show_abr, scales = "free_x", nrow = 1) +
   scale_fill_brewer(palette = "Set2") +
   labs(title = "Star Trek TV Shows",
        subtitle = "Ratings on trakt.tv: Within-Show Ratings as Boxplots",
-       x = "Show",
+       x = "Season",
        y = "Rating (1-10)",
        caption = plot_caption) +
   theme(legend.position = "none")
@@ -272,7 +285,7 @@ It's a little too early to evaluate *Discovery* in this manner, but at least we 
 In other news, I think it's safe to say that apparently nobody liked *TAS*, so... yeah. There's that.
 
 ```{r within_show_scatter, fig.cap="Per-show trendlines of episode ratings"}
-ggplot(data = startrek, aes(x = epnum, y = rating, fill = show_abr)) +
+ggplot(data = startrek, aes(x = episode_abs, y = rating, fill = show_abr)) +
   geom_point(shape = 21, color = "black", size = 3, alpha = .25) +
   geom_smooth(aes(color = show_abr), method = lm, se = F) +
   facet_wrap(~show_abr, nrow = 1, scales = "free_x") +
@@ -339,7 +352,7 @@ ggplot(data = startrek, aes(x = rating, fill = show_abr)) +
        subtitle = "Episode Rating Distribution on trakt.tv",
        x = "Rating (1-10)",
        y = "Absolute Frequency",
-       fill = "Show",
+       fill = "",
        caption = plot_caption) +
   theme(legend.position = "none")
 ```
@@ -370,7 +383,7 @@ startrek %>%
          subtitle = "First Season Ratings on trakt.tv",
          x = "Relative Episode Position in Show's First Season",
          y = "Rating (1-10)",
-         color = "Show",
+         color = "",
          caption = plot_caption) +
     theme(legend.position = "bottom")
 ```
@@ -417,14 +430,14 @@ ggplot(data = temp, aes(x = ep_abs, y = rating,
   geom_point(shape = 21, color = "black") +
   geom_label_repel(data = filter(temp, is_outlier == "Outlier"),
                    aes(label = paste0(epid,": ", title)),
-                   alpha = .75, size = 3) +
+                   alpha = .75, size = 3, show.legend = FALSE) +
   scale_fill_brewer(palette = "Set2") +
   scale_alpha_discrete(range = c(0.1, 1), guide = FALSE) +
   labs(title = "Star Trek TV Shows",
        subtitle = "Outliers of Episode Ratings on trakt.tv (Within Show)",
        x = "Sequential Episode Number",
        y = "Rating (1-10)",
-       fill = "Show",
+       fill = "",
        caption = plot_caption) +
   theme(legend.position = "bottom")
 
@@ -471,12 +484,12 @@ The lasr thing I'd like to take a look at is the possible difference between the
 Long story short, here's the over-all show ratings, sorted by rating:
 
 ```{r show_overall, fig.cap="Over-all show rating on trakt.tv"}
-stshows_titles$rating <- map_dbl(stshows_titles$slug, function(x) {
-                                  trakt.show.ratings(x)$rating
+stshows_titles$rating <- map_dbl(stshows_titles$slug, ~{
+                                  trakt.shows.ratings(.x)$rating
                                 })
 
-ggplot(data = stshows_titles, aes(x = reorder(abbrv, rating),
-                                  y = rating, fill = abbrv)) +
+ggplot(data = stshows_titles, aes(x = reorder(show_abr, rating),
+                                  y = rating, fill = show_abr)) +
   geom_col(color = "black", alpha = .75) +
   coord_flip() +
   scale_fill_brewer(palette = "Set2") +
@@ -497,12 +510,12 @@ Now we can use that plot and build upon it. I'll draw the mean episode rating fo
 ```{r show_episodes_meanci, fig.cap="Over-all rating compared to mean episode rating"}
 stshows_titles %>%
   transmute(show_rating = rating,
-            show_abr = abbrv) %>%
-  full_join(startrek) %>%
+            show_abr = show_abr) %>%
+  full_join(startrek, by = "show_abr") %>%
   ggplot() +
     geom_col(data = stshows_titles,
-             aes(x = reorder(abbrv, rating),
-                 y = rating, fill = abbrv),
+             aes(x = reorder(show_abr, rating),
+                 y = rating, fill = show_abr),
              color = "black", alpha = .75) +
     stat_summary(aes(x = reorder(show_abr, show_rating),
                      y = rating),
