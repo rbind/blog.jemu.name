@@ -32,7 +32,7 @@ editor_options:
 ---
 
 ```{r init, include = FALSE}
-source(rprojroot::find_rstudio_root_file("global.R"))
+source(here::here("global.R"))
 library(tRakt) # devtools::install_github("jemus42/tRakt@v0.13.0")
 library(dplyr)
 library(ggplot2)
@@ -161,7 +161,7 @@ startrek %>%
   group_by(show_abr) %>%
   summarize(e_first = min(first_aired),
             e_last  = max(first_aired)) %>%
-  mutate(show_abr = factor(show_abr, levels = rev(stshows_titles$show_abr))) %>%
+  mutate(show_abr = factor(show_abr, levels = rev(stshows$show_abr))) %>%
   ggplot(aes(x = show_abr, color = show_abr)) +
   geom_errorbar(aes(ymin = e_first, ymax = e_last),
                 width = 0, size = 4.5, color = "black") +
@@ -285,7 +285,7 @@ It's a little too early to evaluate *Discovery* in this manner, but at least we 
 In other news, I think it's safe to say that apparently nobody liked *TAS*, so... yeah. There's that.
 
 ```{r within_show_scatter, fig.cap="Per-show trendlines of episode ratings"}
-ggplot(data = startrek, aes(x = episode_abs, y = rating, fill = show_abr)) +
+ggplot(data = startrek, aes(x = epnum, y = rating, fill = show_abr)) +
   geom_point(shape = 21, color = "black", size = 3, alpha = .25) +
   geom_smooth(aes(color = show_abr), method = lm, se = F) +
   facet_wrap(~show_abr, nrow = 1, scales = "free_x") +
@@ -484,12 +484,12 @@ The lasr thing I'd like to take a look at is the possible difference between the
 Long story short, here's the over-all show ratings, sorted by rating:
 
 ```{r show_overall, fig.cap="Over-all show rating on trakt.tv"}
-stshows_titles$rating <- map_dbl(stshows_titles$slug, ~{
-                                  trakt.shows.ratings(.x)$rating
-                                })
+stshows$rating <- map_dbl(stshows$slug, ~{
+  trakt.shows.ratings(.x)$rating
+})
 
-ggplot(data = stshows_titles, aes(x = reorder(show_abr, rating),
-                                  y = rating, fill = show_abr)) +
+ggplot(data = stshows, aes(x = reorder(show_abr, rating),
+                           y = rating, fill = show_abr)) +
   geom_col(color = "black", alpha = .75) +
   coord_flip() +
   scale_fill_brewer(palette = "Set2") +
@@ -508,12 +508,12 @@ ggplot(data = stshows_titles, aes(x = reorder(show_abr, rating),
 Now we can use that plot and build upon it. I'll draw the mean episode rating for each show including errorbars on top of the previous plot, so hold my beer:
 
 ```{r show_episodes_meanci, fig.cap="Over-all rating compared to mean episode rating"}
-stshows_titles %>%
+stshows %>%
   transmute(show_rating = rating,
             show_abr = show_abr) %>%
   full_join(startrek, by = "show_abr") %>%
   ggplot() +
-    geom_col(data = stshows_titles,
+    geom_col(data = stshows,
              aes(x = reorder(show_abr, rating),
                  y = rating, fill = show_abr),
              color = "black", alpha = .75) +
