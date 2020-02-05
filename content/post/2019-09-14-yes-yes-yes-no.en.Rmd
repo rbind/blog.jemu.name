@@ -1,0 +1,243 @@
+---
+title: Yes yes yes no
+author: jemus42
+date: '2019-09-14'
+slug: yes-yes-yes-no
+draft: no
+categories:
+  - tvshows
+tags:
+  - trakt.tv
+  - rstats
+shows:
+  - Game of Thrones
+  - Dexter
+  - Battlestar Galactica (2003)
+  - How I Met Your Mother
+  - Scrubs
+  - Lost
+packages:
+  - dplyr
+  - kableExtra
+  - tRakt
+  - purrr
+  - ggplot2
+description: "This post is not about how I'm still angry about Game of Thrones, but in a way, it is"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+source(here::here("global.R"))
+
+theme_update(
+  strip.text = element_text(hjust = .5)
+)
+
+cache_path <- make_cache_path("yes-yes-yes-no")
+```
+
+There are some shows that are/were really popular, everyone is excited about them, and then they go down the drain in a both abrupt and spectactular kind of way. Some take their time over a whole season, others have you hoping (and quite possibly in denial) until the end, and then they just kick you in the ol' hope organ.  
+
+I was wondering (for no particular recent-eventsy kind of reason at all, I swear) if some of the shows I recall being considered "bad enders" have something in common, or more interestingly, end badly, differently. 
+
+```{r get-data, summary = "Data collection"}
+library(tRakt)
+library(kableExtra)
+library(dplyr)
+
+shows <- tribble(
+  ~show, ~slug,
+  "Dexter", "dexter",
+  "Lost", "lost-2004",
+  "How I Met Your Mother", "how-i-met-your-mother",
+  "Scrubs", "scrubs",
+  "Battlestar Galactica (2003)", "battlestar-galactica-2003",
+  "Game of Thrones", "game-of-thrones"
+)
+
+if (file_not_cached(cache_path, episodes)) {
+  episodes <- purrr::pmap_df(shows, ~{
+  trakt.seasons.summary(.y, extended = "full", episodes = TRUE) %>%
+    pull(episodes) %>%
+    bind_rows() %>%
+    select(-available_translations)
+    mutate(
+      show = .x,
+      season = as.character(season),
+      episode_abs = seq_along(first_aired)
+    )
+  })
+  
+  cache_file(cache_path, episodes)
+} else {
+  episodes <- read_cache_file(cache_path, episodes)
+}
+```
+
+Here's the highest rated episodes per show to get started:
+
+```{r best-3-per-show, summary = "Show code"}
+episodes %>%
+  group_by(show) %>%
+  top_n(3, rating) %>%
+  arrange(rating, .by_group = TRUE) %>%
+  mutate(
+    rating = round(rating, 1)
+  ) %>%
+  select(
+    show, season, episode, title, rating
+  ) %>%
+  kable(
+    col.names = c("Show", "Season", "Episode", "Title", "Rating"),
+    caption = "Top 3 episodes per show",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("condensed")) %>%
+  collapse_rows(1)
+```
+
+Per-episode ratings are always neat to look at.
+
+```{r ratings-plot, fig.height=9, fig.width=7, fig.cap="Episode ratings per show"}
+ggplot(episodes, aes(x = episode_abs, y = rating)) +
+  geom_point(alpha = .75) +
+  scale_y_continuous(breaks = 0:10, minor_breaks = seq(0, 10, .5)) +
+  facet_wrap(~show, ncol = 1) +
+  labs(
+    title = "Episode Ratings per Show",
+    subtitle = "Ratings on trakt.tv",
+    x = "Absolute Episode #",
+    y = "Rating (1-10)"
+  )
+```
+
+Since I'm primarily interested in the rating of the ending compared to the average for the specific show, we'll standardize the ratings using mean and standard deviation of each show. Just in case, we'll get both centered _and_ standardized ratings.
+
+```{r standardizzle}
+episodes <- episodes %>%
+  group_by(show) %>%
+  mutate(
+    rating_c = rating - mean(rating),
+    rating_z = rating_c / sd(rating)
+  )
+
+episodes %>%
+  group_by(show) %>%
+  filter(rating == max(rating) | rating == min(rating)) %>%
+  arrange(rating, .by_group = TRUE) %>%
+  mutate_at(
+    vars(starts_with("rating")), ~round(.x, 1)
+  ) %>%
+  select(
+    show, season, episode, title, starts_with("rating")
+  ) %>%
+  kable(
+    col.names = c("Show", "Season", "Episode", "Title", 
+                  "Rating", "Rating (centered)", "Rating (standardized)"),
+    caption = "Best and worst episode by show with centered/standardized ratings"
+  ) %>%
+  kable_styling(bootstrap_options = c("condensed")) %>%
+  collapse_rows(1)
+```
+
+Plot them all together:
+
+```{r ratings-plot-standardized, fig.cap="Centered episode ratings per show"}
+ggplot(episodes, aes(x = episode_abs, y = rating_c, fill = show)) +
+  geom_point(alpha = .75, shape = 21) +
+  scale_y_continuous(breaks = seq(-10, 10, .5), minor_breaks = seq(-10, 10, .25)) +
+  labs(
+    title = "Episode Ratings per Show",
+    subtitle = "Centered Ratings",
+    x = "Absolute Episode #",
+    y = "Rating (centered)",
+    fill = ""
+  )
+```
+
+We should also normalize the episode count, so we'll take the absolute episode number and scale them to the interval [0, 100] — then we can interpret it as a percentage of total show run time.
+
+```{r normalize-epcount, fig.cap="Centered ratings, normalized episode number"}
+episodes <- episodes %>%
+  group_by(show) %>%
+  mutate(
+    episode_rel = (episode_abs / max(episode_abs)) * 100
+  )
+
+ggplot(episodes, aes(x = episode_rel, y = rating_c, fill = show)) +
+  geom_point(alpha = .75, shape = 21) +
+  scale_y_continuous(breaks = seq(-10, 10, .5), minor_breaks = seq(0, 10, .25)) +
+  labs(
+    title = "Episode Ratings per Show",
+    subtitle = "Centered Ratings, normalized run time",
+    x = "Relative Episode (% of Total Run)",
+    y = "Rating (centered)",
+    fill = ""
+  )
+```
+
+For display purposes, we'll categorize the last season and last episode respectively.
+
+```{r tag-last-season-eps}
+episodes <- episodes %>%
+  group_by(show) %>%
+  mutate(
+    is_last_season = if_else(
+      as.numeric(season) == max(season), "Last Season", "Earlier Seasons"
+    ),
+    is_last_episode = if_else(episode_rel == 100, "Finale", "Earlier Episodes")
+  )
+```
+
+Now we'll look at the previous plot, but highlight the last seasons of our shows:
+
+```{r scatter-last-season, fig.cap="Centered episode ratings, colored by last/earlier season"}
+ggplot(episodes, aes(x = episode_rel, y = rating_c, fill = is_last_season)) +
+  geom_point(alpha = .75, shape = 21) +
+  #scale_y_continuous(breaks = 0:10, minor_breaks = seq(0, 10, .5)) +
+  labs(
+    title = "Episode Ratings per Show",
+    subtitle = "Centered Ratings, normalized episode numbers",
+    x = "Relative Episode (% of Total Run)",
+    y = "Rating (centered)",
+    fill = ""
+  )
+```
+
+Welp, not for _all_, but for most shows in the mix we're seeing quite a noticable dip at the end there.
+
+```{r last-seasons-comparison-boxplot, fig.cap="Last Seasons: A Boxplot", fig.width=11}
+ggplot(episodes, aes(x = is_last_season, y = rating_c, 
+                     color = is_last_season, fill = is_last_season)) +
+  geom_boxplot(alpha = .25) +
+  geom_violin(alpha = .5) +
+  geom_point(
+    data = episodes %>% filter(is_last_episode == "Finale"),
+    shape = 21, size = 4, color = "black", stroke = 1,
+    key_glyph = "rect"
+  ) +
+  facet_wrap(~show, nrow = 1) +
+  scale_x_discrete(breaks = NULL) +
+  scale_fill_brewer(palette = "Dark2", aesthetics = c("color", "fill")) +
+  labs(
+    title = "Episode Ratings by Earlier/Last Season",
+    subtitle = "The dot is the final episode",
+    x = "", y = "Rating (centered)",
+    color = "", fill = ""
+  )
+```
+
+This is probably the most useful plot so far. Not only can we distinguis between the final season's ratings and the remainder of the show, but we can also see if the finale itself was rated particularly differently.
+
+
+## Conclusion
+
+I think it's fair to say that "bad endings" and "controversial endings" are different categories. While BSG and Lost both have endings that left many people unsatisfied, they're still not noticably lower rated then the remainder of the show – on the contrary even, they're above average.  
+
+Then there's the case of the bad last season. While Scrubs didn't have a band ending per-se, it's just that the whole last season was just too big of a departure from what people liked about the show before, namely, well, the cast for one thing.
+
+And then there's the "well this is just bullshit" endings. Here we find Dexter, How I Met Your Mother, and of course, Game of Thrones.  
+These endings are special – they're not "bad because I didn't like it"-bad, they're "bad because it doesn't make any sense in the context of the hours and hours of previous material".
+
+At least that's my hypothesis.
