@@ -7,7 +7,7 @@ Rscript -e 'blogdown::build_site()'
 echo "----------------"
 echo "Syncing public/ to server..."
 find . -name '.DS_Store' -delete
-# rsync -avz --delete public/ mercy:/srv/blog.jemu.name/public/
+rsync -rltvz --delete public/ mercy:/srv/blog.jemu.name/public/
 
 echo "----------------"
 echo "Done with things"

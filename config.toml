@@ -6,7 +6,7 @@ baseURL = "https://blog.jemu.name/"
 DefaultContentLanguage = "en"
 relativeURLs = false
 languageCode = "en-us"
-title = "Blog Jemu"
+title = "Jemsu Blog"
 #theme = "hugo-redlounge-jemsu"
 theme = "beautifulhugo"
 metaDataFormat = "yaml"
@@ -50,8 +50,8 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 #################
 
 [Params]
-  homeTitle = "The Blog Jemu" # Set a different text for the header on the home page
-  subtitle = "This still exists"
+  homeTitle = "Jemsu Blog" # Set a different text for the header on the home page
+  subtitle = "This still exists for some reason"
   mainSections = ["post","posts"]
   logo = "images/Jemus42.jpg" # Expecting square dimensions
   favicon = "icons/favicon.ico"

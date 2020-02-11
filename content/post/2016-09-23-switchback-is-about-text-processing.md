@@ -3,6 +3,7 @@ author: jemus42
 categories:
   - lolz
 date: 2016-09-23
+draft: yes
 title: “Switchback” Is About Text Processing
 ---
 
