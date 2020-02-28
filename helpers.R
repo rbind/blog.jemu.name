@@ -4,7 +4,7 @@
 # Needed to wrap knitr plot output in semantic html tags
 # which in turn is required for photoswipe.js in beautifulhugo
 
-hook <- function(x, options) {
+plot_hook <- function(x, options) {
   require(glue)
 
   width <- height <- ''
@@ -37,6 +37,19 @@ hook <- function(x, options) {
 
 }
 
+# Enable the code-hiding-via-summary-tags thing
+# Shamelessly stolen from
+# https://github.com/cpsievert/plotly_book/blob/a95fb991fdbfdab209f5f86ce1e1c181e78f801e/index.Rmd#L52-L60
+summary_hook <- function(before, options, envir) {
+  if (length(options$summary)) {
+    if (before) {
+      return(sprintf("<details><summary>Code: %s</summary>\n", options$summary))
+    } else {
+      return("\n</details>")
+    }
+  }
+}
+
 # Caching datasets ----
 
 # Set post-specific cache directiory, create if needed
@@ -48,7 +61,7 @@ make_cache_path <- function(post_slug = "misc") {
 
   if (!file.exists(cache_path)) dir.create(cache_path)
 
-  return(cache_path)
+  cache_path
 }
 
 #' Check if file is not cached
