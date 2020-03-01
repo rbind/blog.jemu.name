@@ -209,10 +209,10 @@
     },
     "broom": {
       "Package": "broom",
-      "Version": "0.5.4",
+      "Version": "0.5.5",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "c8cc938d5fd2d51c33c705cda6998328"
+      "Hash": "70ec3aef8a0df13661bf6cc2ff877d61"
     },
     "callr": {
       "Package": "callr",
@@ -251,10 +251,10 @@
     },
     "cli": {
       "Package": "cli",
-      "Version": "2.0.1",
+      "Version": "2.0.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "5173d8ab28680cf263636b110f4f3220"
+      "Hash": "ff0becff7bfdfe3f75d29aff8f3172dd"
     },
     "cliapp": {
       "Package": "cliapp",
@@ -947,15 +947,15 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.9.3-30",
+      "Version": "0.9.3-42",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "renv",
       "RemoteUsername": "rstudio",
       "RemoteRef": "master",
-      "RemoteSha": "916923a009addb383a2c30826e6266a38da4327d",
-      "Hash": "291d049b7931ebd571be09c5fc82acbe"
+      "RemoteSha": "18d1169f04370d37021fce7dbc188bd256ecde22",
+      "Hash": "dad8e09d5477fa3b8e8bba764e28cca1"
     },
     "reshape2": {
       "Package": "reshape2",
