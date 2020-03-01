@@ -10,7 +10,7 @@ tags:
   - trakt.tv
   - analysis
 shows:
-  - "Star Trek"
+  - "Star Trek: The Original Series"
   - "Star Trek: The Animated Series"
   - "Star Trek: The Next Generation"
   - "Star Trek: Deep Space Nine"
@@ -95,7 +95,7 @@ stshows <- tibble::tribble(
 if (file_not_cached(cache_path, startrek)) {
   
   startrek <- map_df(stshows$slug, ~{
-    trakt.seasons.summary(.x, extended = "full", episodes = TRUE) %>%
+    seasons_summary(.x, extended = "full", episodes = TRUE) %>%
       pull(episodes) %>%
       bind_rows() %>%
       mutate(slug = .x, epnum = seq_along(first_aired))
@@ -485,7 +485,7 @@ Long story short, here's the over-all show ratings, sorted by rating:
 
 ```{r show_overall, fig.cap="Over-all show rating on trakt.tv"}
 stshows$rating <- map_dbl(stshows$slug, ~{
-  trakt.shows.ratings(.x)$rating
+  shows_ratings(.x)$rating
 })
 
 ggplot(data = stshows, aes(x = reorder(show_abr, rating),
@@ -523,7 +523,7 @@ stshows %>%
                  geom = "errorbar", width = .5) +
     stat_summary(aes(x = reorder(show_abr, show_rating), y = rating,
                      color = show_abr),
-                 fun.y = mean,
+                 fun = mean,
                  geom = "point", shape = 21, color = "black") +
     coord_flip() +
     scale_fill_brewer(palette = "Set2") +
