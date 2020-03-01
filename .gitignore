@@ -6,6 +6,7 @@ blogdown/post
 public
 .httr-oauth
 content/post/hidden-archived/
+content/post/*.html
 
 
 # Created by https://www.gitignore.io/api/r
