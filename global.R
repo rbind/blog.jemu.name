@@ -1,14 +1,15 @@
 # Global things sourced in each blogpost
 
 # First up: dependency checking ----
-if (!("devtools" %in% installed.packages())) install.packages("devtools")
-devtools::install_deps(".", upgrade = "never")
+# Should be handled by renv
+# if (!("devtools" %in% installed.packages())) install.packages("devtools")
+# devtools::install_deps(".", upgrade = "never")
 
 # Global stuff ----
 library(ggplot2)
 library(dplyr)
 library(knitr)
-library(tadaatoolbox)
+# library(tadaatoolbox)
 
 source(here::here("helpers.R"))
 
@@ -46,7 +47,7 @@ ggplot2::theme_set(
       panel.spacing.y = unit(2.5, "mm"),
       panel.spacing.x = unit(2, "mm"),
       plot.margin = margin(t = 7, r = 5, b = 7, l = 5),
-      legend.position = "bottom",
+      legend.position = "top",
       plot.background = element_rect(fill = "#FCFCFC", color = "#FCFCFC"),
       panel.background = element_rect(fill = "#FCFCFC", color = "#FCFCFC")
     )

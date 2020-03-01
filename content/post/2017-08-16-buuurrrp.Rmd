@@ -42,7 +42,7 @@ library(hrbrthemes)
 library(kableExtra)
 
 if (file_not_cached(cache_path, ricknmorty)) {
-  ricknmorty <- trakt.seasons.summary(
+  ricknmorty <- seasons_summary(
     "rick-and-morty", extended = "full", episodes = TRUE
     ) %>%
     pull(episodes) %>%

@@ -37,7 +37,7 @@ library(hrbrthemes)
 library(kableExtra)
 
 if (file_not_cached(cache_path, ricknmorty)) {
-  ricknmorty &lt;- trakt.seasons.summary(
+  ricknmorty &lt;- seasons_summary(
     &quot;rick-and-morty&quot;, extended = &quot;full&quot;, episodes = TRUE
     ) %&gt;%
     pull(episodes) %&gt;%
