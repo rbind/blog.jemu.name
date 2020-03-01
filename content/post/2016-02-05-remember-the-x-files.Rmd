@@ -10,11 +10,10 @@ tags:
   - Rmd
 shows:
   - X-Files
-enable_mathjax: true
-notoc: false
+draft: no
 ---
 
-```{r init, include = F}
+```{r init, include = FALSE}
 source(here::here("global.R"))
 ```
 
@@ -34,6 +33,7 @@ It seems I need this stuff a lot.
 ```{r setup, warning=F, message=F}
 library(rvest)
 library(dplyr)
+library(purrr)
 library(magrittr)
 library(stringr)
 library(ggplot2)
@@ -43,8 +43,7 @@ library(tRakt)        # devtools::install_github("jemus42/tRakt")
 library(tadaatoolbox) # devtools::install_github("tadaadata/tadaatoolbox")
 library(waffle)       # devtools::install_github("hrbrmstr/waffle")
 
-theme_set(theme_tadaa())
-options(digits = 3)
+# options(digits = 3)
 ```
 
 And here is the heart of that whole project. Probably my biggest and most complex `%>%`-chain to date.
@@ -53,29 +52,40 @@ I could.
 
 ```{r data}
 xfiles <- read_html("https://en.wikipedia.org/wiki/List_of_The_X-Files_episodes") %>%
-  str_replace_all('</a>\"<img', "ARC</a><img", string = .) %>%
+  str_replace_all('</a>\"<img', "ARC</a><img") %>%
   read_html() %>%
   html_table(fill = TRUE) %>%
-  extract(c(2:6, 8:11)) %>%
-  lapply(., function(x){
-    names(x) <- c("epnum", "episode", "title", "director", "writer", 
-                  "firstaired", "prod_id", "viewers")
-    x        <- as.data.frame(lapply(x, as.character), stringsAsFactors = F)
-    return(x)
+  extract(c(2:6, 8:11))
+
+xfiles <- xfiles %>%
+  map_df(~{
+    set_names(.x, c("epnum", "episode", "title", "director", 
+                    "writer", "firstaired", "prod_id", "viewers"))
   }) %>%
-  bind_rows() %>%
   mutate(title   = str_replace_all(title, '"', ""),
          plotarc = ifelse(grepl("ARC", title), "Mytharc", "Regular"),
          title   = str_replace_all(title, "ARC", ""),
          epnum   = as.numeric(epnum)) %>%
-  bind_rows(., .[nrow(.), ]) %>%
   mutate(epnum = seq_along(epnum)) %>%
   select(-episode, -title, -firstaired) %>%
   mutate(viewers = str_replace_all(viewers, "\\[\\d+]", ""),
          viewers = as.numeric(viewers),
-         plotarc = as.factor(plotarc)) %>%
-  full_join(trakt.get_all_episodes("the-x-files") %>% filter(season != "10"), 
-            by = c("epnum" = "epnum"))
+         plotarc = as.factor(plotarc))
+
+# Duplicate last episode because trakt.tv counts the two-parter as two episodes
+xfiles <- xfiles %>% 
+  bind_rows(
+    xfiles %>%
+      tail(1) %>%
+      mutate(epnum = 202)
+    )
+  
+xfiles_trakt <- seasons_season("the-x-files", seasons = 1:9, extended = "full")  %>%
+  mutate(episode_abs = seq_along(title))
+
+xfiles <- xfiles %>%
+  full_join(xfiles_trakt, by = c("epnum" = "episode_abs"))
+
 ```
 
 Maybe I can explain the process a little, because the first half took me ages to get right.
@@ -114,13 +124,16 @@ ggplot(data = xfiles, aes(x = epnum, y = viewers)) +
 
 
 ```{r model_tidy}
-model         <- lm(data = xfiles, viewers ~ poly(epnum, 2))
-tidy(model)   %>% kable(digits = 3)
+model <- lm(data = xfiles, viewers ~ poly(epnum, 2))
+
+tidy(model) %>% 
+  kable(digits = 3)
 ```
 
 
 ```{r model_glance}
-glance(model) %>% kable(digits = 3)
+glance(model) %>% 
+  kable(digits = 3)
 ```
 
 …And I actually did. Nice.
@@ -150,7 +163,7 @@ Let's start looking at these plot arcs I keep hearing about. First of all, I cla
 ```{r xfiles_plots_arcs_waffle}
 waffle(table(xfiles$plotarc), rows = 10, size = .5, 
        title = "Number of Episodes by Plot Arc", xlab = "1 Square == 1 Episode", 
-       legend_pos = "top", colors = RColorBrewer::brewer.pal(2, "Set1"))
+       legend_pos = "top", colors = RColorBrewer::brewer.pal(3, "Set1")[1:2])
 ```
 
 Yep. That's 62 *mytharc* episodes and 140 remaining episodes.
@@ -214,7 +227,8 @@ So let's take a closer look at the episode ratings by plot arc: Here's a histogr
 ```{r xfiles_plotarc_ratingfrq_1}
 ggplot(data = xfiles, aes(x = rating, fill = plotarc)) +
   geom_density(alpha = .5) +
-  geom_histogram(aes(y = ..density..), position = "dodge", alpha = .6) +
+  # geom_histogram(aes(y = stat(density)), position = "dodge", alpha = .6) +
+  scale_fill_brewer(palette = "Set1") +
   labs(title = "Rating Distribution by Plot Arc",
        x = "Rating", y = "Density", fill = "Plot Arc") +
   theme(legend.position = "top")
