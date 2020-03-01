@@ -27,6 +27,13 @@
       "Repository": "CRAN",
       "Hash": "4744be45519d675af66c28478720fce5"
     },
+    "DT": {
+      "Package": "DT",
+      "Version": "0.12",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0e120603cc57e4f1d741f739aa8147ba"
+    },
     "DescTools": {
       "Package": "DescTools",
       "Version": "0.99.32",
@@ -277,6 +284,13 @@
       "Repository": "CRAN",
       "Hash": "0d57bc8e27b7ba9e45dba825ebc0de6b"
     },
+    "crosstalk": {
+      "Package": "crosstalk",
+      "Version": "1.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "4ac529753d1e529966ef675d7f0c762b"
+    },
     "curl": {
       "Package": "curl",
       "Version": "4.3",
@@ -510,6 +524,13 @@
       "Repository": "CRAN",
       "Hash": "2d7691222f82f41e93f6d30f169bd5e1"
     },
+    "htmlwidgets": {
+      "Package": "htmlwidgets",
+      "Version": "1.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "41bace23583fbc25089edae324de2dc3"
+    },
     "httpuv": {
       "Package": "httpuv",
       "Version": "1.5.2",
@@ -579,6 +600,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "61339152c288b871facca5f68f401f89"
+    },
+    "lazyeval": {
+      "Package": "lazyeval",
+      "Version": "0.2.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "d908914ae53b04d4c0c0fd72ecc35370"
     },
     "lifecycle": {
       "Package": "lifecycle",
@@ -1098,6 +1126,18 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "ce4f6271baa94776db692f1cb2055bee"
+    },
+    "waffle": {
+      "Package": "waffle",
+      "Version": "1.0.1",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "hrbrmstr",
+      "RemoteRepo": "waffle",
+      "RemoteRef": "master",
+      "RemoteSha": "3f61463e6ab8d088ecff35db7cc1edfe633ee9f3",
+      "Hash": "44a59c9ea6ae84c267233f6dcffdc394"
     },
     "webshot": {
       "Package": "webshot",
