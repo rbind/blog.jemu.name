@@ -20,7 +20,9 @@ Anyone and their hamster is writing [bookdown](http://bookdown.org/yihui/bookdow
 
 <!--more-->
 
-But then there's the case where stuff *doesn't* render nicely, and that's where the fun ends and the "*learning about stuff you didn't know was relevant or come to think of it was particularly interesting to begin with is a required step in the process of making things happen that you kinda want to happen*" game starts. Or, as I like to call it, "the ol' **lasydkwrocttoiwpitbwiarsitpomthtywth**" ^[still sucking at acronyms].
+But then there's the case where stuff *doesn't* render nicely, and that's where the fun ends and the "*learning about stuff you didn't know was relevant or come to think of it was particularly interesting to begin with is a required step in the process of making things happen that you kinda want to happen*" game starts. Or, as I like to call it, "the ol' **lasydkwrocttoiwpitbwiarsitpomthtywth**" [^1].
+
+[^1]: still sucking at acronyms
 
 So now that I more or less successfully switched our [R-Intro for psychology undergrads](https://r-intro.tadaa-data.de/book/) (German) over from "auto-built on our server mostly" to "auto-built on [Travis CI](https://travis-ci.org/)", I thought it might be a good time to consolidate some of the things I've learned along the way as someone not terribly familiar with travis outside of R-package testing.
 
@@ -115,8 +117,10 @@ You might stumble over this part though:
 ```
 
 and it's kind of ugly. What this does is "if there's not an executable at `$HOME/bin/phantomjs`, execute this `Rscript` command to install it using the `webshot` package". In general, `phantomjs` is required if you're using some kind of [htmlwidget](https://www.htmlwidgets.org/) in your book, but also render non-interactive output like PDF or epub – it basically makes a snapshot of your widget and pastes the image into your book.  
-The first bit of the command is a bash test expression, checking if there's an executable. Read up on tests/conditions/logic in bash if you're interested, or accept that this is a thing that we did. 
-^[It should also be noted that this command is set up so that the overall exit status is `0` in either case, because otherwise travis would consider the build failed, which is kind of annoying.]  
+The first bit of the command is a bash test expression, checking if there's an executable. Read up on tests/conditions/logic in bash if you're interested, or accept that this is a thing that we did [^2]. 
+
+[^2]: It should also be noted that this command is set up so that the overall exit status is `0` in either case, because otherwise travis would consider the build failed, which is kind of annoying.
+
 Anyway – why did we do this again? Well, we told travis to cache `$HOME/bin` for us, where `phantomjs` gets installed to, and we don't want to download and install `phantomjs` every time we trigger a build, so this seems like a neat way to solve that issue.
 
 Anyway, now travis is building your book in two formats, sequentially, and deploys it to GitHub Pages and everything is awesome and you'll never have to worry about anything ev– aaaand it broke.  
@@ -194,7 +198,7 @@ Nice.
 One thing that annoyed be about this setup was the sequential rendering of the different output formats:
 
 ```yaml
-# Render the actual book on at a time
+# Render the actual book one at a time
 script:
   - "Rscript -e \"bookdown::render_book('index.Rmd', 'bookdown::gitbook')\""
   - "Rscript -e \"bookdown::render_book('index.Rmd', 'bookdown::pdf_book')\""
@@ -231,7 +235,9 @@ Servers are relatively cheap, at least the "just webhosting"-level VPS. Ours is 
 To get started, I followed (and suggest following) [this blogpost](https://oncletom.io/2016/travis-ssh-deploy/).  
 At the end of the day, it was easier to set up than I anticipated. Creating a keypair is simple, and encrypting the private key via the `travis` command line tool isn't exactly rocket science either. 
 
-On the server side, I created a dedicated `travis` user, added the public key to its `authorized_keys` ^[if you're doing this manually, make sure the file has `0600` permissions because you won't be able to login if the file is readable by other users], and made sure the server directory where the output should go is writable by the `travis` user. 
+On the server side, I created a dedicated `travis` user, added the public key to its `authorized_keys` [^3], and made sure the server directory where the output should go is writable by the `travis` user. 
+
+[^3]: if you're doing this manually, make sure the file has `0600` permissions because you won't be able to login if the file is readable by other users
 
 The config bits are as follows:
 
