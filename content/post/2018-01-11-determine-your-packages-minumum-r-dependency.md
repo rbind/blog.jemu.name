@@ -9,7 +9,7 @@ tags:
 draft: no
 ---
 
-So the other day I was wondering how I could determine the minimum R version I technically need to depend on in my R package, `tadaatoolbox`. Naturally, I asked `#rstats`, and I got [a neat suggestion](https://twitter.com/kevin_ushey/status/951132312002899968) which I implemented hastily like this:
+So the other day I was wondering how I could determine the minimum R version I *technically* need to depend on in my R package, `tadaatoolbox`. Naturally, I asked `#rstats`, and I got [a neat suggestion](https://twitter.com/kevin_ushey/status/951132312002899968) which I implemented hastily like this:
 
 ```r
 library(stringr)

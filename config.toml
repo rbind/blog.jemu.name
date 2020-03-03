@@ -10,7 +10,7 @@ title = "Jemsu Blog"
 #theme = "hugo-redlounge-jemsu"
 theme = "beautifulhugo"
 metaDataFormat = "yaml"
-Paginate = 7
+Paginate = 10
 
 # Enable fwatures
 enableEmoji = true
@@ -73,7 +73,7 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 [Author]
   name = "jemus42"
   website = "https://jemu.name"
-  email = "dontspamme@jemu.name"
+  email = "bloggyblog@jemu.name"
   github = "jemus42"
 #  gitlab = "username"
   twitter = "jemus42"
@@ -88,7 +88,7 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
   git-selfhosted = "git.tadaa-data.de/lukas"
   bandcamp = "jemus42"
 #  paypal = "jemus42"
-  mastodon = "cybre.space/@jemus42"
+#  mastodon = "cybre.space/@jemus42"
 
 [[menu.main]]
     name = "About"
