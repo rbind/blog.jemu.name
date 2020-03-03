@@ -3,7 +3,7 @@
 # rm -r public
 
 Rscript -e 'renv::restore()'
-Rscript -e 'blogdown::install_hugo(force = TRUE)'
+Rscript -e 'blogdown::install_hugo(version = "0.65.3")'
 Rscript -e 'blogdown::build_site()'
 
 #echo "----------------"
