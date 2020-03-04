@@ -182,7 +182,7 @@ before_script:
   - "Rscript -e \"remotes::install_github('hrbrmstr/firasans')\""
 ```
 
-I also use Asana Math as `mathfont`, but to get this one, you can just get it as a regular ol' `apt` package.
+I also use Asana Math as `mathfont`, but you can just get it as a regular ol' `apt` package.
 
 ```yaml
 apt_packages:
