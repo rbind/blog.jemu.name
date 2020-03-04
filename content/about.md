@@ -5,7 +5,8 @@ type: page
 
 I'm Lukas, or jemus[42], or jemsu, or whatever.  
 It depends on when you got to know me. Or where.  
-My home on the internet used to be my [Twitter account](https://twitter.com/jemus42), which I abandoned in August '18 (but am still kind of using? It's complicated). There have been a lot of other places, but it appears that Twitter is the only hellhole I can't escape. Send help.
+My home on the internet used to be my [Twitter account](https://twitter.com/jemus42), which I abandoned in August '18 (but am still kind of using? It's complicated). There have been a lot of other places, but it appears that Twitter is the only hellhole I can't escape.  
+Send help.
 
 ## This Site
 
@@ -14,7 +15,7 @@ It's not really in a state where I could publish it, but it's on GitHub for thos
 
 I've switched to [beautifulhugo](https://github.com/halogenica/beautifulhugo), which is the closest to a complete theme for my particular needs I've found (and I've tried *a lot of themes*). I still overrode a lot of elements of the theme via CSS (hackily) or overruled layout templates (similiarly shoddily), and I guess I'm slowly getting there. Still not happy with it though, but as long as I don't have time to dig deeper into Hugo templates it'll have to do. I just hope it doesn't completely break on me again with an upcoming Hugo update.
 
-The blog itself has a [repo on rbind](https://github.com/rbind/blog.jemu.name).
+The blog itself has a [repo on the GitHub rbind organization](https://github.com/rbind/blog.jemu.name).
 
 <!---
 ## Other Places
