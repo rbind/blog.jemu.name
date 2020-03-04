@@ -8,15 +8,14 @@ Here's a list of stuff I work(ed) on to remind myself to get to them again soone
 ## General R projects
 
 - Podcast stats: [podcasts.jemu.name](https://podcasts.jemu.name) (The Incomparable, relay.fm, ATP)
-- [trakt.jemu.name](https://trakt.jemu.name) (to be rewritten)
-- [Mastodon instance data](https://metadon.jemu.name) (retired)
+- A trakt.tv ratings shiny app thing: [trakt.jemu.name](https://trakt.jemu.name) (to be rewritten)
+- Newer iteration of the same idea: [attrakttv.tadaa-data.de](https://attrakttv.tadaa-data.de) (still very young)
 
 ### R Packages
 
 - [tRakt](https://github.com/jemus42/tRakt) ([trakt.tv](http://trakt.tv/) API wrapper)
 - [tauturri](https://github.com/jemus42/tauturri) ([Tautulli (formerly PlexPy)](https://tautulli.com/) API wrapper)
 - [speedrunr](https://github.com/jemus42/speedrunr) ([speedrun.com](https://www.speedrun.com/) API wrapper)
-- [tadaatoolbox](https://github.com/tadaadata/tadaatoolbox) (used for teaching psychology undergrads)
 
 ## Tadaa, Data!-Projects
 
@@ -28,4 +27,3 @@ Here's a list of stuff I work(ed) on to remind myself to get to them again soone
 ### Teaching
 
 - [R-Intro (German)](https://r-intro.tadaa-data.de)
-- [Participation](https://qmparticipation.tadaa-data.de)
