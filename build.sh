@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-PATH=$HOME/bin;$PATH
+PATH=$HOME/bin:$PATH
 echo $PATH
 
 HUGO_VERSION_HAVE=$(hugo version)
