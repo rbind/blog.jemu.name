@@ -49,7 +49,7 @@ library(kableExtra)
 dampe <- tibble::tibble(
   attempts = seq_len(105),
   prob = round(dgeom(attempts - 1, 1/10), 10),
-  chance = paste0("1 in ", scales::comma(ceiling(1/dgeom(attempts - 1, 1/10)))),
+  chance = paste0("1 in ", ceiling(1/dgeom(attempts - 1, 1/10))),
   P = round(exp(pgeom(attempts - 1, 1/10, log.p = TRUE)), 10)
 )
 
