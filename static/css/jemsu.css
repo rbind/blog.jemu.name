@@ -1,5 +1,5 @@
 /* Tweaks to beautifulhugo */
-/* THis is a collection of shitty hacks, don't @ me */
+/* This is a collection of shitty hacks, don't @ me */
 
 body {
   background-color: #FCFCFC
@@ -33,6 +33,7 @@ table tr {
   border-top: none
 }
 
+/* Table cells at least need tabular digits, Fira Mono is a temp fix */
 .blog-post td {
   font-family: "Fira Mono", "Sans Mono", "Consolas", "Courier", monospace;
 }
@@ -228,4 +229,12 @@ text-align: center;
 
 .intro-header .packages-heading {
   text-align: center;
+}
+
+/* Tweak to littlefoot footnote content */
+
+/* Reduce margin on top of footnote text */
+
+.littlefoot-footnote__content p {
+  margin-top: 0;
 }
