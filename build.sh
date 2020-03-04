@@ -8,7 +8,7 @@ HUGO_VERSION_HAVE=$(echo -e "${HUGO_VERSION_HAVE}")
 
 HUGO_VERSION_WANT=0.66.0
 
-if [ HUGO_VERSION_HAVE -eq HUGO_VERSION_HAVE ]; then
+if [ "$HUGO_VERSION_HAVE" -ne "$HUGO_VERSION_HAVE" ]; then
     echo "Hugo versions mismatch";
     echo "Current: $HUGO_VERSION_HAVE"
     echo "Want: $HUGO_VERSION_WANT"
