@@ -151,15 +151,20 @@ code[class*="language-"], pre[class*="language-"] {
 
 .blog-shows a {
   color: #008AFF;
+  display: inline-block; /* prevent linebreak between icon and text */
   text-decoration: none;
   padding: 0px 5px;
 }
 
-/*
 .blog-shows a:before {
-  content: "#";
+   font-family: "Font Awesome 5 Free";
+   content: "\f26c";
+   display: inline-block;
+   padding-right: 5px;
+   vertical-align: middle;
+   font-weight: 900;
+   color: "black";
 }
-*/
 
 .blog-shows a:hover {
   border-radius: 2px;
