@@ -1,17 +1,5 @@
 #! /usr/bin/env bash
 
-# rm -r public
-
-# Debugging
-echo "### which pandoc"
-which pandoc
-
-echo "### pandoc version"
-pandoc --version
-
-echo "### homebrew pandoc version"
-/home/linuxbrew/.linuxbrew/Cellar/pandoc/2.9.2/bin/pandoc --version
-
 echo "##########################"
 echo "# Restoring renv library #"
 echo "##########################"
