@@ -7,16 +7,19 @@
 plot_hook <- function(x, options) {
   require(glue)
 
-  width <- height <- ''
+  width <- height <- ""
   if (!is.null(options$out.width))
-    width <- sprintf(' width = "%s" ', options$out.width)
-  if (!is.null(options$out.height))
-    height <- sprintf(' height = "%s" ', options$out.height)
+    # width <- sprintf(' width = "%s" ', options$out.width)
+    width <- glue(" width = {options$out.width}")
+  if (!is.null(options$out.height)) {
+    # height <- sprintf(' height = "%s" ', options$out.height)
+    height <- glue(" height = {options$out.height}")
+  }
 
   basename <- paste0(knitr::opts_knit$get('base.url'), paste(x, collapse = '.'))
-  filename <- paste0("../../../post/", basename)
+  filename <- glue("../../../post/{basename}")
   filename_webp <- stringr::str_replace(filename, "\\.png$", "\\.webp")
-  id       <- stringr::str_extract(x, "^[^\\/]*")
+  id <- stringr::str_extract(x, "^[^\\/]*")
 
   if (!is.null(options$fig.cap)) {
     caption <- options$fig.cap
@@ -30,7 +33,8 @@ plot_hook <- function(x, options) {
         <source type='image/webp' srcset='{filename_webp}'>
         <a href='{filename}' data-title='{caption}'>
           <img src='{filename}' {width} {height} alt='{caption}' />
-        </a></picture>
+        </a>
+      </picture>
       <figcaption>{caption}</figcaption>
     </figure>"
   )
@@ -85,7 +89,6 @@ cache_file <- function(cache_path, cache_data) {
 # Read a cached file, just a wrapper for readRDS
 read_cache_file <- function(cache_path, cache_data) {
   filename <- paste0(deparse(substitute(cache_data)), ".rds")
-
   readRDS(file.path(cache_path, filename))
 }
 

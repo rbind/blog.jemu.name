@@ -16,7 +16,7 @@ editor_options:
 ---
 
 
-Anyone and their hamster is writing [bookdown](http://bookdown.org/yihui/bookdown) books these days, and that's arguably a good thing – because as long as everything renders nicely, it's a pretty easy way to get some knowledge out there.
+Anyone and their hamster is writing [{bookdown}](http://bookdown.org/yihui/bookdown) books these days, and that's arguably a good thing – because as long as everything renders nicely, it's a pretty easy way to get some knowledge out there.
 
 <!--more-->
 
@@ -75,7 +75,6 @@ Maintaining such a file for your bookdown project is also a good way to keep tra
 Your `.travis.yml` might look something like this (for the first 3 lines, refer to [the travis docs](https://docs.travis-ci.com/user/languages/r) for R projects):
 
 ```yaml  
-sudo: false 
 language: r
 dist: bionic
 
@@ -90,7 +89,7 @@ cache:
 before_script:
   - "[ -x \"$HOME/bin/phantomjs\" ] || Rscript -e \"webshot::install_phantomjs()\""
 
-# Render the actual book on at a time
+# Render the actual book one at a time
 script:
   - "Rscript -e \"bookdown::render_book('index.Rmd', 'bookdown::gitbook')\""
   - "Rscript -e \"bookdown::render_book('index.Rmd', 'bookdown::pdf_book')\""
@@ -100,7 +99,7 @@ script:
 # Also requires a usable gh-pages branch
 deploy:
   provider: pages
-  local_dir: __book # Or however your book output directory is called
+  local_dir: _book # Or whatever your book output directory is called
   skip_cleanup: true
   keep_history: true
   github_token: $GITHUB_PAT
@@ -172,18 +171,18 @@ Anyway, what I did here was, as the comments suggest:
 And... it works. Neat.  
 This makes `TeX Gyre Pagella` and `TeX Gyre Heros` available to XeLaTeX, and adds [Fira](http://mozilla.github.io/Fira/) fonts for both XeLaTeX (where I use `Fira Mono` as a `monofont`) and ggplot2 plots, where I use `Fira Sans` via the aforementioned theme/package.  
 
-Honestly, this should have been a file called `make-ze-font-stuff-be-good.sh` to keep `.travis.yml` more readable, but I actually prefer to deal with as much as possible in the travis config so it's easier to copy "the travis bits" to a new project than when you have to remember/copy multiple scripts.  
+Honestly, this should have been a script called `make-ze-font-stuff-be-good.sh` to keep `.travis.yml` more readable, but I actually prefer to deal with as much as possible in the travis config so it's easier to copy "the travis bits" to a new project than when you have to remember/copy multiple scripts.  
 I think.  
 I might change my mind later.
 
-Regarding the Fira fonts, I should mention that I had to install the `firasans` manually from GitHub as it's not on CRAN, and for some reason the `Remotes:` filed in `DESCRIPTION` wasn't enough to convince travis to install it for me:
+Regarding the Fira fonts, I should mention that I had to install the `firasans` package manually from GitHub as it's not on CRAN, and for some reason the `Remotes:` field in `DESCRIPTION` wasn't enough to convince travis to install it for me:
 
 ```yaml
 before_script:
   - "Rscript -e \"remotes::install_github('hrbrmstr/firasans')\""
 ```
 
-I also use Asana Math as `mathfont`, but to get this one, you can just get it s a regular ol' apt package.
+I also use Asana Math as `mathfont`, but to get this one, you can just get it as a regular ol' `apt` package.
 
 ```yaml
 apt_packages:
@@ -195,7 +194,7 @@ Nice.
 
 ## Speeding things up maybe
 
-One thing that annoyed be about this setup was the sequential rendering of the different output formats:
+One thing that still annoyed me about this setup was the sequential rendering of the different output formats:
 
 ```yaml
 # Render the actual book one at a time
