@@ -55,9 +55,11 @@ pre > code {
   margin-bottom: 10px;
 }
 
+
 .blog-tags:before {
-  content: "Tags: ";
+  content: "";
 }
+
 
 .blog-tags a {
   color: #008AFF;
@@ -89,24 +91,30 @@ pre > code {
 /* --- Packages --- */
 
 .blog-packages {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Fira Mono', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #999;
   font-size: 15px;
-  margin-bottom: 10px;
+  padding-top: 0px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
 }
 
+
+/* package emoji "\U0001f4e6" */
+/*
 .blog-packages:before {
-  content: "R Packages: ";
+  content: "\1F4E6";
 }
+*/
 
 .blog-packages a {
   color: #008AFF;
   text-decoration: none;
-  padding: 0px 5px;
 }
 
 .blog-packages a:before {
-  content: "{";
+  content: "\1F4E6 {";
 }
 
 .blog-packages a:after {
@@ -136,12 +144,14 @@ pre > code {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #999;
   font-size: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
+/*
 .blog-shows:before {
   content: "Shows: ";
 }
+*/
 
 .blog-shows a {
   color: #008AFF;
@@ -166,16 +176,19 @@ pre > code {
   background-color: #CCC;
 }
 
+/*
 .post-preview .blog-shows {
   margin-top: 5px;
   margin-bottom: 0;
 }
-
+*/
+/*
 @media only screen and (min-width: 768px) {
   .post-preview .blog-shows {
     margin-top: 10px;
   }
 }
+*/
 
 /* taxonomy list pages */
 
@@ -230,7 +243,7 @@ text-align: center;
   text-align: center;
 }
 
-/* Tweak to littlefoot footnote content */
+/* ---------- Tweak to littlefoot footnote content ----------  */
 
 /* Reduce margin on top of footnote text */
 
