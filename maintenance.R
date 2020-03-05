@@ -1,4 +1,9 @@
 # Maintenance: Updating third party assets like littlefoot.js etc.
+
+# Minify custom CSS (probably doesn't matter but might as well)
+# system("cd static/css; minify --output jemsu.min.css jemsu.css")
+
+# Third party assets ----
 library(glue)
 
 get_asset_unpkg <- function(package, version, file) {
