@@ -23,7 +23,7 @@
                 <img src="{{ .Params.image }}" alt="{{ .Title }}" class="img-title" />
                 {{ end }}
                 {{ if .Params.video }}
-                <video src="{{ .Params.video }}" loop autoplay muted playsinline class="img-title" />
+                <video src="{{ .Params.video }}" loop autoplay muted playsinline class="img-title" >
                 {{ end }}
               </a>
 
@@ -42,7 +42,7 @@
               </div>
 
               {{ partial "post_tags_extended.html" . }}
-              
+
             </article>
           {{ end }}
         </div>

@@ -12,8 +12,9 @@
  *  Included partial workaround for comments-within-strings bug (commented out
  *   by default).
  */
+
 Prism.languages.r = {
-	'comment': /#.*$/gm,    
+	'comment': /#.*$/gm,
 	// if you want to have a partial workaround for the comments-within-strings bug, use the below instead of the above.
 	// However a comment with an odd number of " in it will not highlight.
 	//'comment': /#(?=(?:[^"\\\r\n]*(\\.|"(?:[^"\\\r\n]*\\.)*[^"\\\r\n]*"))*[^"\r\n]*$).*$/gm,
