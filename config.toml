@@ -28,7 +28,7 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
   package = "packages"
 
 [markup]
-  defaultMarkdownHandler = "goldmark" # "pandoc"
+  defaultMarkdownHandler = "goldmark" # "pandoc" or "goldmark" (default)
   [markup.goldmark]
     [markup.goldmark.extensions]
       definitionList = true
@@ -70,7 +70,7 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 #################
 
 [Params]
-  homeTitle = "Jemsu Blog" # Set a different text for the header on the home page
+  homeTitle = "Blog Jemu" # Set a different text for the header on the home page
   subtitle = "This still exists for some reason"
   mainSections = ["post","posts"]
   logo = "images/Jemus42.jpg" # Expecting square dimensions

@@ -6,8 +6,8 @@ date: 2014-02-03
 title: Service Interface Changes in a nutshell
 ---
 
-Am Beispiel der jüngsten Twitter webinterface Deisgnänderungen.  
-Auch anwendbar auf Facebook webinterface Designänderungen, mobile clients, etc. yadda yadda.
+Regarding the most recent Twitter web-interface changes.  
+Also applicable to Facebook changes, mobile clients, etc. yadda yadda.
 
 1. `$service` changes interface design of `$client`
 2. People complain about changes

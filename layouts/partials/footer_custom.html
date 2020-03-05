@@ -24,3 +24,13 @@
    http://bl.ocks.org/mathematicalcoffee/raw/5655496/
 -->
 <script src="{{ "js/prism.r.js" | absURL }}" type="application/javascript"></script>
+
+<!-- KaTeX extra -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}]
+    });
+  });
+</script>
