@@ -1,12 +1,14 @@
 ---
 title: Video Compression is Magic
+subtitle: "Is *this* a benchmark?"
+description: "In which I take an arbitrary sample file to compare x264 and x265 with regards to file size and more-or-less arbitrary quality benchmarks. N = 1 is sufficient, right?"
 author: jemus42
 date: '2017-10-16'
 slug: video-compression-is-magic
 categories:
   - tech
 tags:
-  - Rmd
+  - video-compression
   - x265
   - x264
   - ffmpeg
@@ -43,7 +45,7 @@ In the meantime, there's the option of substituting your carefully hand-encoded 
 If you're confused at this point, here's a short glossary:
 
 - **AVC**: *Advanced Video Codec* or *x264*: The video codec used in pretty much all modern video.
-- **HEVC**: *High Efficiency Video Codec* or *x265*: The new kid on the block and successor to AVC.
+- **HEVC**: *High Efficiency Video Coding* or *x265*: The new(er) kid on the block and successor to AVC.
 
 Your standard run-of-the-mill video file that obviously fell from a truck will usually come in either an *mp4* or *mkv* **container** with *AVC* video and some kind of audio.  
 If you want to reduce the file size of the video and keep the quality reasonably high, re-encoding the file into HEVC seems to be a valid plan. Obviously it would be technically better to rip the source medium again into HEVC directly instead of transcoding an existing lossily-encoded file, but… yeah, that would be more work and less bashscriptable.  

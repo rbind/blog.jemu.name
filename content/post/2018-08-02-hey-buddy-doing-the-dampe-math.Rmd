@@ -1,5 +1,6 @@
 ---
 title: Hey Buddy! Doing the Dampe Math
+subtitle: "I'm basically tabulating a cmf here."
 author: jemus42
 date: '2018-08-02'
 slug: hey-buddy-doing-the-dampe-math

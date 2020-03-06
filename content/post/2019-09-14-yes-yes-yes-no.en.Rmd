@@ -1,5 +1,6 @@
 ---
-title: Yes yes yes no
+title: Yes yes yes... no!
+subtitle: "Exploring the similarities and differences of shows that ended on a controversial note"
 author: jemus42
 date: '2019-09-14'
 slug: yes-yes-yes-no
