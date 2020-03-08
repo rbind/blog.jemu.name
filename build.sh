@@ -1,9 +1,12 @@
 #! /usr/bin/env bash
 
 # Hugo will be installed to ~/bin, translating to /etc/git-auto-deploy/bin
+# Adding it to $PATH is kind of optional here, might as well call $HOME/bin/hugo in step 2
 PATH=$HOME/bin:$PATH
 
+# Desired hugo version in local setup
 HUGO_VERSION_WANT="0.66.0"
+# Getting current hugo version from itself and extracting the version string
 HUGO_VERSION_HAVE=$(hugo version)
 HUGO_VERSION_HAVE=$(echo -e "${HUGO_VERSION_HAVE:28:6}")
 
