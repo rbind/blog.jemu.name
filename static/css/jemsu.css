@@ -94,7 +94,7 @@ pre > code {
   font-family: 'Fira Mono', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #999;
   font-size: 15px;
-  padding-top: 0px;
+  padding-top: 0;
   padding-right: 5px;
   padding-bottom: 5px;
   padding-left: 5px;
@@ -110,6 +110,7 @@ pre > code {
 
 .blog-packages a {
   color: #008AFF;
+  display: inline-block; /* prevent linebreak between icon and text */
   text-decoration: none;
 }
 
