@@ -5,11 +5,15 @@ date: '2018-01-11'
 slug: determine-your-packages-minumum-r-dependency
 tags:
   - rstats
-  - packages
+  - package-development
 draft: no
 ---
 
-So the other day I was wondering how I could determine the minimum R version I *technically* need to depend on in my R package, `tadaatoolbox`. Naturally, I asked `#rstats`, and I got [a neat suggestion](https://twitter.com/kevin_ushey/status/951132312002899968) which I implemented hastily like this:
+**Update**: You might also be interested in [this discussion](https://community.rstudio.com/t/determining-which-version-of-r-to-depend-on/4396/13) on [community.rstudio.com](https://community.rstudio.com) about whether or not this is a good approach, and what else you might want to do to ensure you depend meaningfully.
+
+----
+
+So the other day I was wondering how I could determine the minimum R version I *technically* need to depend on in my R package. Naturally, I asked `#rstats`, and I got [a neat suggestion](https://twitter.com/kevin_ushey/status/951132312002899968) which I implemented hastily like this:
 
 ```r
 library(stringr)
@@ -63,7 +67,3 @@ Lastly, I was surprised that packages like `broom` or `nortest` don't even expli
 
 So maybe my desire do "depend properly" is totally meaningless anyway and I just should let it go.  
 So that's what I'll do for now.
-
-EDIT: 
-
-You might also be interested in [this discussion](https://community.rstudio.com/t/determining-which-version-of-r-to-depend-on/4396/13) on <community.rstduio.com> about whether or not this is a good approach, and what else you might want to do to ensure you depend meaningfully.
