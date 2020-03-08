@@ -46,6 +46,10 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
       hardWraps = false
       unsafe = true
       xHTML = false
+    [markup.tableOfContents]
+      endLevel = 3
+      ordered = false
+      startLevel = 2
 
 [privacy]
   [privacy.disqus]
