@@ -51,7 +51,7 @@ Additionally, through {renv}, I don't have to worry (much) about R packages on m
 
 You *will* have to rerender everything *once* when setting up this deployment strategy though. Even if you were to copy the `blogdown/` directory in your blog root to your server, it would only cause issues server-side as things like changed package locations _will_ cause issues. I have dealt with those multiple times during setup, and it took me a bit to figure out that this caching mechanism was the reason why some `.js` file located in the {kabelExtra} package directory could not be found. This was ultimately caused by turning on {renv}, and with that also changing the package library location.
 
-As a bonus, I also added a step to the server-side build script to install a specific version of hugo. This is not strictly necessary, but ever since by old theme suddenly stopped working because I wasn't paying attention (and then didn't know how to adapt) to a recent hugo change, I'd rather be on the safe side. It's only fitting given the addition of {renv} to the setup.  
+As a bonus, I also added a step to the server-side build script to install a specific version of hugo. This is not strictly necessary, but ever since my old theme suddenly stopped working because I wasn't paying attention (and then didn't know how to adapt) to a recent hugo change, I'd rather be on the safe side. It's only fitting given the addition of {renv} to the setup.  
 
 Okay then – if you're still here, let's walk through the setup process.
 
@@ -88,7 +88,7 @@ sudo apt update
 sudo apt install git-auto-deploy
 ```
 
-You can check out it's config at `/etc/git-auto-deploy.conf.json` and take note of the configured HTTP port. I suggest disabling HTTPS (we'll handle that differently) and optionally disable the webinterface unless you want to use it.    
+You can check out its config at `/etc/git-auto-deploy.conf.json` and take note of the configured HTTP port. I suggest disabling HTTPS (we'll handle that differently) and optionally disable the webinterface unless you want to use it.    
 
 Now that you've installed `git-auto-deploy`, we'll stash it behind a reverse proxy for convenience (no need to remember a port number) and, more importantly, SSL/TLS support – just because it's really cheap to do if you already have a webserver configured anyway. A `Caddyfile` entry could look like this:
 
