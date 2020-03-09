@@ -1,6 +1,8 @@
 ---
 title: Yes yes yes... no!
 subtitle: "Exploring the similarities and differences of shows that ended on a controversial note"
+description: "This post is not about how I'm still angry about Game of Thrones, but in a way, it is"
+image: "/post/2019-09-14-yes-yes-yes-no.en_files/figure-html/scatter-last-season-1.png"
 author: jemus42
 date: '2019-09-14'
 slug: yes-yes-yes-no
@@ -23,7 +25,6 @@ packages:
   - tRakt
   - purrr
   - ggplot2
-description: "This post is not about how I'm still angry about Game of Thrones, but in a way, it is"
 editor_options: 
   chunk_output_type: console
 ---

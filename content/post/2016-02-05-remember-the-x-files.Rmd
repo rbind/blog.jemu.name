@@ -1,5 +1,8 @@
 ---
 title: Remember the X-Files?
+subtitle: ""
+description: ""
+image: "/post/2016-02-05-remember-the-x-files_files/figure-html/xfiles_plots_arcs_waffle-1.png"
 author: jemus42
 date: '2016-02-05'
 categories:
@@ -29,8 +32,6 @@ Being me, I already looked up the X-Files episodes [ratings on trakt.tv](http://
 To my delight, I noticed that the [appropriate Wikipedia article](https://en.wikipedia.org/wiki/List_of_The_X-Files_episodes) neatly marks the myth arc episodes, ready for plucking.
 
 And then I started plucking.
-
-<!--more-->
 
 ### Setup and data retrieval
 
