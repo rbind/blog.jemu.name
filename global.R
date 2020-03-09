@@ -44,6 +44,7 @@ knitr::knit_hooks$set(
 ggplot2::theme_set(
   firasans::theme_ipsum_fsc() +
     theme(
+      plot.title.position = "plot",
       panel.spacing.y = unit(2.5, "mm"),
       panel.spacing.x = unit(2, "mm"),
       plot.margin = margin(t = 7, r = 5, b = 7, l = 5),

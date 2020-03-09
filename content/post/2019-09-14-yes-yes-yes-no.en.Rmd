@@ -1,5 +1,5 @@
 ---
-title: Yes yes yes... no!
+title: "Yes yes yes... no!"
 subtitle: "Exploring the similarities and differences of shows that ended on a controversial note"
 description: "This post is not about how I'm still angry about Game of Thrones, but in a way, it is"
 image: "/post/2019-09-14-yes-yes-yes-no.en_files/figure-html/scatter-last-season-1.png"
@@ -196,11 +196,12 @@ Now we'll look at the previous plot, but highlight the last seasons of our shows
 
 ```{r scatter-last-season, fig.cap="Centered episode ratings, colored by last/earlier season"}
 ggplot(episodes, aes(x = episode_rel, y = rating_c, fill = is_last_season)) +
-  geom_point(alpha = .75, shape = 21) +
+  geom_point(size = 2, alpha = .75, shape = 21) +
+  scale_fill_brewer(palette = "Dark2") +
   #scale_y_continuous(breaks = 0:10, minor_breaks = seq(0, 10, .5)) +
   labs(
     title = "Episode Ratings per Show",
-    subtitle = "Centered Ratings, normalized episode numbers",
+    subtitle = "Al show, centered Ratings, normalized episode numbers",
     x = "Relative Episode (% of Total Run)",
     y = "Rating (centered)",
     fill = ""
