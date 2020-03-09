@@ -4,7 +4,11 @@
     "Repositories": [
       {
         "Name": "CRAN",
-        "URL": "https://cloud.r-project.org"
+        "URL": "https://cran.uni-muenster.de"
+      },
+      {
+        "Name": "cinc",
+        "URL": "https://cinc.rud.is"
       }
     ]
   },
@@ -15,13 +19,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "8f9ce74c6417d61f0782cbae5fd2b7b0"
-    },
-    "DBI": {
-      "Package": "DBI",
-      "Version": "1.1.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "4744be45519d675af66c28478720fce5"
     },
     "DT": {
       "Package": "DT",
@@ -72,13 +69,6 @@
       "Repository": "CRAN",
       "Hash": "e031418365a7f7a766181ab5a41a5716"
     },
-    "RSQLite": {
-      "Package": "RSQLite",
-      "Version": "2.2.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "2e813101e637bfd423f763d20350ed3d"
-    },
     "Rcpp": {
       "Package": "Rcpp",
       "Version": "1.0.3",
@@ -128,18 +118,6 @@
       "Repository": "CRAN",
       "Hash": "50c838a310445e954bc13f26f26a6ecf"
     },
-    "attrakttv": {
-      "Package": "attrakttv",
-      "Version": "0.1.0",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteUsername": "jemus42",
-      "RemoteRepo": "attrakttv",
-      "RemoteRef": "master",
-      "RemoteSha": "62755aed9b5a0181dbee221f3716184474d9c073",
-      "RemoteHost": "api.github.com",
-      "Hash": "ef1ca8750c0e78f74dc1567dc81c2657"
-    },
     "backports": {
       "Package": "backports",
       "Version": "1.1.5",
@@ -153,27 +131,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "543776ae6848fde2f48ff3816d0628bc"
-    },
-    "bit": {
-      "Package": "bit",
-      "Version": "1.1-15.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "eb6c52d8cc44463085a4cde1c63df163"
-    },
-    "bit64": {
-      "Package": "bit64",
-      "Version": "0.9-7",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "3338d4a9b1352f5a613e2bdcefe784ea"
-    },
-    "blob": {
-      "Package": "blob",
-      "Version": "1.2.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "9addc7e2c5954eca5719928131fed98c"
     },
     "blogdown": {
       "Package": "blogdown",
@@ -245,13 +202,6 @@
       "Repository": "CRAN",
       "Hash": "ff0becff7bfdfe3f75d29aff8f3172dd"
     },
-    "cliapp": {
-      "Package": "cliapp",
-      "Version": "0.1.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "aeaf5df4bf9fdae11dc4aea4f2f5499c"
-    },
     "clipr": {
       "Package": "clipr",
       "Version": "0.7.0",
@@ -293,13 +243,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "cd711af60c47207a776213a368626369"
-    },
-    "dbplyr": {
-      "Package": "dbplyr",
-      "Version": "1.4.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "022c8630abecb00f22740d021ab89595"
     },
     "desc": {
       "Package": "desc",
@@ -474,13 +417,6 @@
       "Repository": "CRAN",
       "Hash": "2c0406b8e0a4c3516ab37be62da74e3c"
     },
-    "hexbin": {
-      "Package": "hexbin",
-      "Version": "1.28.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "3d59212f2814d65dff517e6899813c58"
-    },
     "highr": {
       "Package": "highr",
       "Version": "0.8",
@@ -640,13 +576,6 @@
       "Repository": "CRAN",
       "Hash": "61e4a10781dd00d7d81dd06ca9b94e95"
     },
-    "memoise": {
-      "Package": "memoise",
-      "Version": "1.1.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "58baa74e4603fcfb9a94401c58c8f9b1"
-    },
     "mgcv": {
       "Package": "mgcv",
       "Version": "1.8-31",
@@ -773,13 +702,6 @@
       "Repository": "CRAN",
       "Hash": "09eb987710984fc2905c7129c7d85e65"
     },
-    "plotly": {
-      "Package": "plotly",
-      "Version": "4.9.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "bee8fe8f97d10023ed3740a9c3e9eb02"
-    },
     "plyr": {
       "Package": "plyr",
       "Version": "1.8.6",
@@ -787,26 +709,12 @@
       "Repository": "CRAN",
       "Hash": "ec0e5ab4e5f851f6ef32cd1d1984957f"
     },
-    "pool": {
-      "Package": "pool",
-      "Version": "0.1.4.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "f9c55743c1f7f677c018733459f31b21"
-    },
     "praise": {
       "Package": "praise",
       "Version": "1.0.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "a555924add98c99d2f411e37e7d25e9f"
-    },
-    "prettycode": {
-      "Package": "prettycode",
-      "Version": "1.1.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "1127b6ce86f2be28af0a9250a268a909"
     },
     "prettyunits": {
       "Package": "prettyunits",
@@ -973,20 +881,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "6ca23724bb2c804c1d0b3db4862a39c7"
-    },
-    "shinyjs": {
-      "Package": "shinyjs",
-      "Version": "1.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "b40a5207b6624f6e2b8cdb50689cdb69"
-    },
-    "shinythemes": {
-      "Package": "shinythemes",
-      "Version": "1.1.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "8f047210d7d68ea4860a3c0d8cced272"
     },
     "sourcetools": {
       "Package": "sourcetools",
