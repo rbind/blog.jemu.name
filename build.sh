@@ -12,8 +12,8 @@ HUGO_VERSION_HAVE=$(echo -e "${HUGO_VERSION_HAVE:28:6}")
 
 echo "Current PATH: $PATH"
 
-echo "Nuking /public"
-rm -rf public
+# echo "Nuking /public"
+# rm -rf public
 
 echo ""
 echo "##########################"
