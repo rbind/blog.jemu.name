@@ -1,5 +1,6 @@
 ---
 title: I just wanted to rewatch Stargate
+description: "When one thing leads to another and you accidentally write a small API wrapper"
 author: jemus42
 date: '2014-06-05'
 categories:
@@ -11,8 +12,6 @@ shows:
   - Stargate SG-1
 ---
 
-![](https://stats.jemu.name/tvshows/trakt/plots/stargate-sg-1.png)
-
 Stargate SG-1, while probably a mediocre show in the grand scheme of sci-fi shows, it's the sci-fi show I grew up with, so I tend to enjoy rewatching parts of it occasionally.  
 Well, at least I rewatched it twice so far.  
 The full thing. 10 seasons.  
@@ -20,11 +19,10 @@ Yep. Even those last two.
 
 So this time, I wanted to cherry-pick the good™ episodes, and of course efficient cherry-picking in 2014 involves [R](http://www.r-project.org), the [trakt.tv API](http://trakt.tv/api-docs/show-episode-summary) and a bunch of plots.  
 Because plots.
-<!-- more -->
 
 ## Methodology™ <small>(i.e. "Stuff I did")</small>
-### Step 1: Acquire data  
-<small>(You can prepend this step by disregarding something else, if you like)</small>  
+
+### Step 1: Acquire data  <small>(You can prepend this step by disregarding something else, if you like)</small>  
 
 Over the past few months, I've grown more and more comfortable using R, spawning a bunch of projects with varying longevity. Naturally, I started this one by thinking "There's an API, JSON falls out, I can do JSON, shouldn't be that hard" and who would have guessed, it really wasn't.
 
