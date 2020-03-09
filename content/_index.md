@@ -1,4 +1,4 @@
 ---
 title: "Recent posts"
-description: "Yet another blogdown post abour #rstats, TV shows, and tangential nerdery"
+description: "Yet another blog abour #rstats, TV shows, and tangential nerdery using blogdown and hugo"
 ---

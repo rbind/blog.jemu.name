@@ -12,9 +12,6 @@ HUGO_VERSION_HAVE=$(echo -e "${HUGO_VERSION_HAVE:28:6}")
 
 echo "Current PATH: $PATH"
 
-# echo "Nuking /public"
-# rm -rf public
-
 echo ""
 echo "##########################"
 echo "# Restoring renv library #"
@@ -33,6 +30,9 @@ if [ "$HUGO_VERSION_HAVE" != "$HUGO_VERSION_HAVE" ]; then
 else
     echo "Hugo $HUGO_VERSION_WANT is already installed";
 fi
+
+# echo "Nuking /public"
+# rm -rf public
 
 echo ""
 echo "##########################"
