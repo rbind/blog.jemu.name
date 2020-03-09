@@ -16,6 +16,7 @@ echo ""
 echo "##########################"
 echo "# Restoring renv library #"
 echo "##########################"
+Rscript -e "renv::restore(packages = 'renv')"
 Rscript -e "renv::restore()"
 
 echo ""
