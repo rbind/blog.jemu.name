@@ -4,11 +4,7 @@
     "Repositories": [
       {
         "Name": "CRAN",
-        "URL": "https://cran.uni-muenster.de"
-      },
-      {
-        "Name": "cinc",
-        "URL": "https://cinc.rud.is"
+        "URL": "https://cloud.r-project.org"
       }
     ]
   },
