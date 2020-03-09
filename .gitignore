@@ -1,13 +1,19 @@
+# Debug / maintenance
 scratchpad.R
-# content/*.html
+
+# Rendered output
 static/post
 blogdown/post
-# content/post/*.html
 public
-.httr-oauth
 content/post/hidden-archived/
 content/post/*.html
 
+# Unused assets
+static/css/prism.js
+static/js/prism.r-official.js
+
+# Secrets
+.httr-oauth
 
 # Created by https://www.gitignore.io/api/r
 # Edit at https://www.gitignore.io/?templates=r
