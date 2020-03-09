@@ -1,5 +1,6 @@
 ---
 title: Create A Backup Script for Your R Packages
+description: "Having to re-install a lot of packages is annoying, and this is at least one possibility to help you along the way"
 author: jemus42
 date: '2017-11-15'
 slug: create-a-backup-script-for-your-r-packages

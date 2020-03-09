@@ -1,5 +1,6 @@
 ---
 title: I Just Wanted to Serve Images
+description: "Tweaking knitr to get some richer plot output for your blog. Kind of."
 author: jemus42
 date: '2017-07-30'
 edit_date: '2017-08-07'

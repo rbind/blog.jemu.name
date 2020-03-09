@@ -1,5 +1,6 @@
 ---
 title: Plex and Emby
+description: "Notice: This is a pretty old post, so the comparison between Plex and Emby is surely not up to date anymore."
 author: jemus42
 date: '2015-11-02'
 tags:
