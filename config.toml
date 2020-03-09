@@ -12,7 +12,7 @@ theme = "beautifulhugo"
 metaDataFormat = "yaml"
 Paginate = 10
 
-# Enable fwatures
+# Enable features
 enableEmoji = true
 enableGitInfo = true
 # Rmarkdown special handling
@@ -77,7 +77,7 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
   homeTitle = "Blog Jemu" # Set a different text for the header on the home page
   subtitle = "This still exists for some reason"
   mainSections = ["post","posts"]
-  logo = "images/Jemus42.jpg" # Expecting square dimensions
+  logo = "/images/Jemus42.jpg" # Expecting square dimensions
   favicon = "icons/favicon.ico"
   dateFormat = "January 2, 2006"
   commit = "https://github.com/rbind/blog.jemu.name/tree/"
@@ -97,7 +97,7 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 [Author]
   name = "jemus42"
   website = "https://jemu.name"
-  email = "bloggyblog@jemu.name"
+  email = "blog@jemu.name"
   github = "jemus42"
 #  gitlab = "username"
   twitter = "jemus42"
