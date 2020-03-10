@@ -18,6 +18,11 @@
     // ;<i class="fas fa-user"></i>&nbsp;{{ .Site.Author.name | safeHTML }}
     {{ end }}
   {{ end }}
+
+  {{- if .Site.Params.commento -}}
+    // <i class="fas fa-comment"></i>&nbsp; <a href="{{ .Permalink }}#commento"></a>
+  {{ end }}
+
   {{- if .Site.Params.staticman -}}
   // <i class="fas fa-comment"></i>&nbsp;
     {{ $slug := replace .RelPermalink "/" "" }}
