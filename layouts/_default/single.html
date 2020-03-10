@@ -69,6 +69,13 @@
             {{ partial "staticman-comments.html" . }}
           </div>
         {{ end }}
+
+        {{ if .Site.Params.commento }}
+          <div class="commento-comments">
+            {{ partial "commento-comments.html" . }}
+          </div>
+        {{ end }}
+
       {{ end }}
 
     </div>

@@ -251,3 +251,9 @@ text-align: center;
 .littlefoot-footnote__content p {
   margin-top: 0;
 }
+
+
+/* ------ Comments ------ */
+body > div.container > div > div > div {
+  margin-top: 2em
+}
