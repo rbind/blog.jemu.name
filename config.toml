@@ -90,6 +90,7 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
   socialShare = false
   showRelatedPosts = true
   hideAuthor = true
+  selfHosted = true
 
 [Params.piwik]
   id = "12"
