@@ -241,11 +241,11 @@ Cool cool cool.
 Well, not quite *obsolete*, but for posterity, I'll leave this here.
 
 On a different server – not the one I'm actually hosting this blog on – I'm running an instance of [gitea](https://gitea.io/). Gitea allows [post-receive hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) among other things, and it turns out if you google around a bit you find [perfectly fine](https://gist.github.com/noelboss/3fe13927025b89757f8fb12e9066f2fa) post-receive hooks readily made for you to use.  
-And if, unlike me, you actually read what's explained to you, you make sure that you desired output directory actually exists and you manage to successfully set things up.  
+And if, unlike me, you actually read what's explained to you, you make sure that your desired output directory actually exists and you manage to successfully set things up.  
 
 Once you have such a hook set up, you might as well wedge in that `build.sh`. In that case, you have successfully gotten around the need for both GitHub _and_ `git-auto-deploy`. The only requirement being that you either host a gitea instance (which is terrifyingly easy to set up and lightweight due to it being a single binary with some config files attached) and (additionally or exclusively) host your blog repository there, or use git "vanilla" on your server as the linked gist explains, without any intermediate software.
 
-So… while I haven't gotten around to testing this setup thoroughly, I did manage to get this running purely in the procrastination-induced pauses while writing the main part of this post.  
+So… while I haven't gotten around to testing this setup thoroughly, I did manage to get this running purely in the procrastination-induced side quests while writing the main part of this post.  
 It's an easily-distractedness-buy-one-get-one-free, I guess.
 
 
