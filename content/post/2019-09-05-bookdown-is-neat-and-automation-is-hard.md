@@ -174,7 +174,9 @@ This makes `TeX Gyre Pagella` and `TeX Gyre Heros` available to XeLaTeX, and add
 
 Honestly, this should have been a script called `make-ze-font-stuff-be-good.sh` to keep `.travis.yml` more readable, but I actually prefer to deal with as much as possible in the travis config so it's easier to copy "the travis bits" to a new project than when you have to remember/copy multiple scripts.  
 I think.  
-I might change my mind later.
+I might change my mind later [^mind].
+
+[^mind]: **2020-03-11**: I did. My most recent overhaul of a similiar setup calls a script to download [the Adobe Source Pro fonts](https://fonts.adobe.com/fonts/source-sans) because it was starting to get _really_ messy.
 
 Regarding the Fira fonts, I should mention that I had to install the `firasans` package manually from GitHub as it's not on CRAN, and for some reason the `Remotes:` field in `DESCRIPTION` wasn't enough to convince travis to install it for me:
 
