@@ -9,9 +9,19 @@
             "command": "Rscript -e 'blogdown::build_site()'"
         },
         {
+            "label": "Build Site (blogdown::build_site(run_hugo = FALSE))",
+            "type": "shell",
+            "command": "Rscript -e 'blogdown::build_site(run_hugo = FALSE)'"
+        }
+        {
             "label": "Hugo Server",
             "type": "shell",
             "command": "hugo server"
+        },
+        {
+            "label": "Hugo Server (-D -F --navigateToChanged)",
+            "type": "shell",
+            "command": "hugo server -D -F --navigateToChanged"
         },
         {
             "label": "Blogdown Server (blogdown::serve_site)",
