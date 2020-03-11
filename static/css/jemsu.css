@@ -244,7 +244,7 @@ text-align: center;
   text-align: center;
 }
 
-/* ---------- Tweak to littlefoot footnote content ----------  */
+/* ------ littlefoot.js ------  */
 
 /* Reduce margin on top of footnote text */
 
@@ -254,6 +254,23 @@ text-align: center;
 
 
 /* ------ Comments ------ */
+/* Some breathing room above comments */
 body > div.container > div > div > div {
   margin-top: 2em
+}
+
+
+/* ------ Heading anchors ------- */
+
+/* Fix color of now linked headings */
+h2 a, h3 a, h4 a, h5 a {
+  color: #404040;
+}
+
+/* Preserve vertical distance due to fixed header */
+:target {
+  display: block;
+  position: relative;
+  top: -50px; 
+  visibility: hidden;
 }
