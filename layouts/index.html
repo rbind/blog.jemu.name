@@ -16,7 +16,7 @@
                 <h2 class="post-title">{{ .Title }}</h2>
                 {{ if .Params.subtitle }}
                   <h3 class="post-subtitle">
-                  {{ .Params.subtitle }}
+                  {{ .Params.subtitle | markdownify}}
                   </h3>
                 {{ end }}
                 {{ if .Params.image }}
