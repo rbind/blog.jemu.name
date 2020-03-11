@@ -180,8 +180,8 @@ As I've mentioned before, changing package (or more specifically, library) locat
 In the second step, we have {blogdown} install hugo, specifically the current version (0.66.0). The binary will end up in `/etc/git-auto-deploy/bin`, where at least `git-auto-deploy` will find it, and where it's safe from system-hugo or homebrew-hugo or any other hugo you may have installed on your server. Unfortunately this will re-download hugo every time the script is triggered, even though `force = FALSE` is specified, and I'm not quite sure why yet.  
 In my actual `build.sh` I've solved this with some `bash` scripting.
 
-<summary>You can take a peek here.</summary>
 <details>
+<summary>You can take a peek here.</summary>
 
 ```bash
 #! /usr/bin/env bash
@@ -236,7 +236,7 @@ So – that's it. I really hope this is a help to at least *some* people.
 I should also note that in the process of writing this quasi-tutorial the last couple of days, I also created and solved some other issues that kind of ended up making this whole thing obsolete.  
 Cool cool cool.
 
-### Post-credit scene <small>Now without GitHub and git-auto-deploy</small> {#post-credit}
+### Post-credit scene <small>Now without GitHub and git-auto-deploy</small> {#post-credit-scene}
 
 Well, not quite *obsolete*, but for posterity, I'll leave this here.
 
