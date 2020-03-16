@@ -1,14 +1,10 @@
 {
   "R": {
-    "Version": "3.6.2",
+    "Version": "3.6.3",
     "Repositories": [
       {
         "Name": "CRAN",
-        "URL": "https://cran.uni-muenster.de"
-      },
-      {
-        "Name": "cinc",
-        "URL": "https://cinc.rud.is"
+        "URL": "https://cloud.r-project.org"
       }
     ]
   },
@@ -795,15 +791,15 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.9.3-51",
+      "Version": "0.9.3-56",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteUsername": "rstudio",
       "RemoteRepo": "renv",
       "RemoteRef": "master",
-      "RemoteSha": "0f93d59cd1fca547c0075064b0c85b69b4910e9b",
+      "RemoteSha": "f7db6478b34533d3f22213e5f3a3bc870df9dc3b",
       "RemoteHost": "api.github.com",
-      "Hash": "b5c143a7d8a7a0310c8b664b1ccb75bf"
+      "Hash": "078981f064672c463f27b2f8aa732cff"
     },
     "reshape2": {
       "Package": "reshape2",
