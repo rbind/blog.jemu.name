@@ -30,7 +30,7 @@ echo ""
 echo "Current hugo version is $HUGO_VERSION_HAVE"
 echo "Desired hugo version is $HUGO_VERSION_WANT"
 
-if [ "$HUGO_VERSION_HAVE" != "$HUGO_VERSION_HAVE" ]; then
+if [[ "$HUGO_VERSION_HAVE" != "$HUGO_VERSION_HAVE" ]]; then
     echo "Hugo versions mismatch: Have: $HUGO_VERSION_HAVE - want: $HUGO_VERSION_WANT"
     echo "Installing hugo"
     Rscript -e "blogdown::install_hugo(version = \"$HUGO_VERSION_WANT\", force = FALSE)"
