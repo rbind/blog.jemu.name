@@ -30,12 +30,12 @@ echo ""
 echo "Current hugo version is $HUGO_VERSION_HAVE"
 echo "Desired hugo version is $HUGO_VERSION_WANT"
 
-if [[ "$HUGO_VERSION_HAVE" != "$HUGO_VERSION_HAVE" ]]; then
+if [[ "$HUGO_VERSION_HAVE" == "$HUGO_VERSION_WANT" ]]; then
+    echo "Hugo $HUGO_VERSION_WANT is already installed"
+else
     echo "Hugo versions mismatch: Have: $HUGO_VERSION_HAVE - want: $HUGO_VERSION_WANT"
     echo "Installing hugo"
-    Rscript -e "blogdown::install_hugo(version = \"$HUGO_VERSION_WANT\", force = FALSE)"
-else
-    echo "Hugo $HUGO_VERSION_WANT is already installed"
+    echo Rscript -e "blogdown::install_hugo(version = \"$HUGO_VERSION_WANT\", force = FALSE)"
 fi
 
 # echo "Nuking /public"
