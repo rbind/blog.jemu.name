@@ -45,7 +45,8 @@ echo ""
 echo "##########################"
 echo "# Building site          #"
 echo "##########################"
-Rscript -e "blogdown::build_site()"
+Rscript -e "blogdown::build_site(run_hugo = FALSE)"
+hugo --minify
 
 echo ""
 echo "##########################"
