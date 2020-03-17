@@ -16,20 +16,26 @@ echo ""
 echo "##########################"
 echo "# Restoring renv library #"
 echo "##########################"
+echo "Restoring renv itself (renv::restore(packages = 'renv'))"
+echo ""
 Rscript -e "renv::restore(packages = 'renv')"
+echo "Restoring everything else (renv::restore())"
 Rscript -e "renv::restore()"
 
 echo ""
 echo "##########################"
 echo "# Checking Hugo          #"
 echo "##########################"
+echo ""
+echo "Current hugo version is $HUGO_VERSION_HAVE"
+echo "Desired hugo version is $HUGO_VERSION_WANT"
 
 if [ "$HUGO_VERSION_HAVE" != "$HUGO_VERSION_HAVE" ]; then
-    echo "Hugo versions mismatch: Have: $HUGO_VERSION_HAVE - want: $HUGO_VERSION_WANT";
+    echo "Hugo versions mismatch: Have: $HUGO_VERSION_HAVE - want: $HUGO_VERSION_WANT"
     echo "Installing hugo"
     Rscript -e "blogdown::install_hugo(version = \"$HUGO_VERSION_WANT\", force = FALSE)"
 else
-    echo "Hugo $HUGO_VERSION_WANT is already installed";
+    echo "Hugo $HUGO_VERSION_WANT is already installed"
 fi
 
 # echo "Nuking /public"
