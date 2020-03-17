@@ -35,7 +35,7 @@ if [[ "$HUGO_VERSION_HAVE" == "$HUGO_VERSION_WANT" ]]; then
 else
     echo "Hugo versions mismatch: Have: $HUGO_VERSION_HAVE - want: $HUGO_VERSION_WANT"
     echo "Installing hugo"
-    echo Rscript -e "blogdown::install_hugo(version = \"$HUGO_VERSION_WANT\", force = FALSE)"
+    echo Rscript -e "blogdown::install_hugo(version = \"$HUGO_VERSION_WANT\", force = TRUE)"
 fi
 
 # echo "Nuking /public"
