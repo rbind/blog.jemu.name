@@ -92,9 +92,11 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
   hideAuthor = true
   selfHosted = true
 
-[Params.piwik]
-  id = "12"
-  server = "analytics.tadaa-data.de/"
+[Params.matomo]
+#  id = "12"
+#  server = "analytics.tadaa-data.de/"
+  id = "2"
+  server = "matomo.jemu.name"
 
 [Author]
   name = "jemus42"
