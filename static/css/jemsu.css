@@ -272,5 +272,5 @@ h2 a, h3 a, h4 a, h5 a {
   display: block;
   position: relative;
   top: -50px; 
-  visibility: hidden;
+  /*visibility: hidden; causes issue with commento login box not visible*/
 }
