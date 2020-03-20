@@ -1,0 +1,21 @@
+#################
+# beautifulhugo #
+#################
+
+homeTitle = "Blog Jemu" # Set a different text for the header on the home page
+subtitle = "This still exists for some reason"
+mainSections = ["post","posts"]
+logo = "/images/Jemus42.jpg" # Expecting square dimensions
+favicon = "icons/favicon.ico"
+dateFormat = "January 2, 2006"
+commit = "https://github.com/rbind/blog.jemu.name/tree/"
+rss = true
+comments = true
+commento = true
+readingTime = true
+wordCount = true
+useHLJS = false
+socialShare = false
+showRelatedPosts = true
+hideAuthor = true
+selfHosted = true

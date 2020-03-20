@@ -7,7 +7,6 @@ DefaultContentLanguage = "en"
 relativeURLs = false
 languageCode = "en-us"
 title = "Jemsu Blog"
-#theme = "hugo-redlounge-jemsu"
 theme = "beautifulhugo"
 metaDataFormat = "yaml"
 Paginate = 10
@@ -69,29 +68,6 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 ## Theme-specific settings     ##
 #################################
 
-#################
-# beautifulhugo #
-#################
-
-[Params]
-  homeTitle = "Blog Jemu" # Set a different text for the header on the home page
-  subtitle = "This still exists for some reason"
-  mainSections = ["post","posts"]
-  logo = "/images/Jemus42.jpg" # Expecting square dimensions
-  favicon = "icons/favicon.ico"
-  dateFormat = "January 2, 2006"
-  commit = "https://github.com/rbind/blog.jemu.name/tree/"
-  rss = true
-  comments = true
-  commento = true
-  readingTime = true
-  wordCount = true
-  useHLJS = false
-  socialShare = false
-  showRelatedPosts = true
-  hideAuthor = true
-  selfHosted = true
-
 [Params.matomo]
 #  id = "12"
 #  server = "analytics.tadaa-data.de/"
@@ -117,52 +93,3 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
   bandcamp = "jemus42"
 #  paypal = "jemus42"
 #  mastodon = "cybre.space/@jemus42"
-
-[[menu.main]]
-    name = "About"
-    url = "about"
-    identifier = "about"
-    weight = 1
-
-[[menu.main]]
-    name = "Projects"
-    url = "projects"
-    identifier = "projects"
-    weight = 2
-
-[[menu.main]]
-    name = "Posts"
-    url = "post"
-    identifier = "posts"
-    weight = 3
-
-# Submenu for post taxonomies
-[[menu.main]]
-    name = "categories"
-    url = "categories"
-    parent = "posts"
-    weight = 1
-
-[[menu.main]]
-    name = "Tags"
-    url = "tags"
-    parent = "posts"
-    weight = 2
-
-[[menu.main]]
-    name = "Shows"
-    url = "shows"
-    parent = "posts"
-    weight = 3
-
-[[menu.main]]
-    name = "R Packages"
-    url = "packages"
-    parent = "posts"
-    weight = 4
-# End submenu for taxonomies
-
-#[[menu.main]]
-#    name = "Source"
-#    url = "https://github.com/rbind/blog.jemu.name"
-#    weight = "4"
