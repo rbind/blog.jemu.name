@@ -1,15 +1,9 @@
 # Global things sourced in each blogpost
 
-# First up: dependency checking ----
-# Should be handled by renv
-# if (!("devtools" %in% installed.packages())) install.packages("devtools")
-# devtools::install_deps(".", upgrade = "never")
-
 # Global stuff ----
 library(ggplot2)
 library(dplyr)
 library(knitr)
-# library(tadaatoolbox)
 
 source(here::here("helpers.R"))
 

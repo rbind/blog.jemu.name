@@ -19,7 +19,7 @@
             "command": "hugo server"
         },
         {
-            "label": "Hugo Server (-D -F --navigateToChanged)",
+            "label": "Hugo server (-D -F --navigateToChanged)",
             "type": "shell",
             "command": "hugo server -D -F --navigateToChanged"
         },

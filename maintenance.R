@@ -19,7 +19,10 @@ get_asset_unpkg <- function(package, version, file) {
   )
 
   # Symlinking
-  command <- glue("cd {target_dir}; ln -sf {package}-{version}.{type} {package}.{type}")
+  command <- glue(
+    "cd {target_dir}
+    ln -sf {package}-{version}.{type} {package}.{type}"
+  )
   system(command)
 }
 
