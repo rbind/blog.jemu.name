@@ -7,7 +7,11 @@
 <script src="{{ "js/littlefoot.js" | absURL }}" type="application/javascript"></script>
 
 <script type="application/javascript">
-   littlefoot.default()
+   littlefoot.default({
+    activateOnHover: true,
+    dismissDelay: 50,
+    buttonTemplate: "<button aria-controls='fncontent:<% id %>' aria-expanded='false' aria-label='Footnote <% number %>' class='littlefoot-footnote__button' id='<% reference %>' rel='footnote' title='See Footnote <% number %>' /><% number %></button>"
+  })
 </script>
 
 
