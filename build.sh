@@ -5,7 +5,7 @@
 PATH=$HOME/bin:$PATH
 
 # Desired hugo version in local setup
-HUGO_VERSION_WANT="0.67.0"
+HUGO_VERSION_WANT="0.69.0"
 # Getting current hugo version from itself and extracting the version string
 HUGO_VERSION_HAVE=$(hugo version)
 HUGO_VERSION_HAVE=$(echo -e "${HUGO_VERSION_HAVE:28:6}")
