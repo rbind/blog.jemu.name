@@ -25,7 +25,7 @@ Ever since [{blogdown}][blogdown][^1] came around, blogging in R-land has actual
 That's neat. It also lowered the bar for many people who might not have picked up blogging or who more-or-less stopped blogging because the hurdle of maintaining a hacky setup that allows for RMarkdown content to be incorporated into an existing blogging engine (like Jekyll) was just a little too high. Not that I would have [any experience][blogging] with that sort of issue.  
 
 One thing that has been bugging me about my blogdown setup however was the question of automated deployment. I've been hosting my blog on my own little server in the cloud™ forever, and I have most recently resorted to calling `blogdown::build_site()` locally and then `rsync`ing the `public/` folder to the appropriate place on the server.  
-While this *works*, it's not as automated as it could be. Ideally, I wouldn't need to run anything locally if I just want to make a small edit -- let the server to the work.  
+While this *works*, it's not as automated as it could be. Ideally, I wouldn't need to run anything locally if I just want to make a small edit -- let the server do the work.  
 
 While [the blogdown book][blogdown-deployment] describes various methods of deployment, including the "can-actually-build-stuff-for-you"-[Travis CI](https://travis-ci.org/)-route, it also makes some fair points against it.  
 In my case, I primarily decided against Travis because [I just recently danced this dance](/2019/09/bookdown-is-neat-and-automation-is-hard/) while trying to automate a {bookdown} deployment.  
