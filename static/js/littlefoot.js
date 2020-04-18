@@ -1,1 +1,1 @@
-littlefoot-3.2.3.js
+littlefoot-3.2.4.js
