@@ -256,10 +256,15 @@
     },
     "dplyr": {
       "Package": "dplyr",
-      "Version": "0.8.5",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "57a42ddf80f429764ff7987128c3fd0a"
+      "Version": "0.8.99.9002",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "tidyverse",
+      "RemoteRepo": "dplyr",
+      "RemoteRef": "master",
+      "RemoteSha": "abc093461d29ccc3d850580e09d6d2c400a30686",
+      "Hash": "56d55979222d86736b687999b38be125"
     },
     "ellipsis": {
       "Package": "ellipsis",
@@ -689,13 +694,6 @@
       "Repository": "CRAN",
       "Hash": "5e655fb54cceead0f095f22d7be33da3"
     },
-    "plogr": {
-      "Package": "plogr",
-      "Version": "0.2.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "09eb987710984fc2905c7129c7d85e65"
-    },
     "plyr": {
       "Package": "plyr",
       "Version": "1.8.6",
@@ -815,10 +813,15 @@
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "0.4.5",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "1cc1b38e4db40ea6eb19ab8080bbed3b"
+      "Version": "0.4.5.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "r-lib",
+      "RemoteRepo": "rlang",
+      "RemoteRef": "master",
+      "RemoteSha": "a90b04b9d6a17f1aabadaed357784efc22116d2a",
+      "Hash": "2fbb2f0ebd2669870d84f4234ec6d481"
     },
     "rmarkdown": {
       "Package": "rmarkdown",
