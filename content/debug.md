@@ -16,11 +16,11 @@ This is a footnote in `[^ref]` format with a lot of text [^longtext].
 
 # Math
 
-This is an equation in `$$math$$`:
+This is an equation in $‌$ math $‌$:
 
 $$\beta = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{Y}$$
 
-The same inline: $\beta = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{Y}$.
+The same inline: `$\beta = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{Y}$`.
 
 How about `align` environments without `$$`?
 
@@ -40,14 +40,14 @@ f(t) &= \frac{\mathrm{d} F(t)}{\mathrm{d}t} \\
 &= - \frac{\mathrm{d} S(t)}{\mathrm{d}t}
 \end{align}$$
 
-Now with `\[ \]`:
+Now with `\\[ \\]`:
 
-\[\begin{align}
+\begin{align}
 f(t) &= \frac{\mathrm{d} F(t)}{\mathrm{d}t} \\
 &= \frac{\mathrm{d} (1 - S(t))}{\mathrm{d}t} && \bigg|\ S(t) := 1 - F(t) \Rightarrow F(t) = 1 - S(t) \\
 &= \frac{\mathrm{d} (-S(t))}{\mathrm{d}t} \\
 &= - \frac{\mathrm{d} S(t)}{\mathrm{d}t}
-\end{align}\]
+\end{align}
 
 Now with `$$` but `aligned`:
 
