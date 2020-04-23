@@ -8,17 +8,16 @@
 
 <script type="application/javascript">
    littlefoot.default({
-    activateOnHover: true,
+    activateOnHover: false,
     dismissDelay: 50,
     buttonTemplate: "<button aria-controls='fncontent:<% id %>' aria-expanded='false' aria-label='Footnote <% number %>' class='littlefoot-footnote__button' id='<% reference %>' rel='footnote' title='See Footnote <% number %>' /><% number %></button>"
   })
 </script>
 
-
 <script src="{{ "js/prism.js" | absURL }}" type="application/javascript"></script>
 
-<!-- Also add custom R highlighting via
-   http://bl.ocks.org/mathematicalcoffee/raw/5655496/
+<!-- 
+  Also add custom R highlighting via http://bl.ocks.org/mathematicalcoffee/raw/5655496/
 -->
 
 <script src="{{ "js/prism.r.js" | absURL }}" type="application/javascript"></script>
@@ -29,16 +28,18 @@ https://github.com/PrismJS/prism/blob/master/components/prism-r.js
 -->
 
 <!-- Mathjax -->
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <script async src="/js/math-fix.js"></script>
 
 <!-- KaTeX extra -->
-<!-- <script>
+<!-- 
+<script>
   document.addEventListener("DOMContentLoaded", function() {
     renderMathInElement(document.body, {delimiters: [
       {left: "$$", right: "$$", display: true},
       {left: "$", right: "$", display: false}]
     });
   });
-</script> -->
+</script> 
+-->

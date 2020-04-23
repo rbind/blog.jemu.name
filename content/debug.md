@@ -6,7 +6,7 @@ type: page
 This page is used for debugging purposes.
 One might consider it a test case.
 
-# Footnotes
+## Footnotes
 
 This is a footnote in `^[inline format]` as used by [pandoc](https://pandoc.org/MANUAL.html#footnotes) but not supported by [Hugo's Goldmark](https://gohugo.io/getting-started/configuration-markup/#goldmark) ^[Hello there].
 
@@ -14,7 +14,7 @@ This is a footnote in `[^ref]` format as appears to be more widely supported [^r
 
 This is a footnote in `[^ref]` format with a lot of text [^longtext].
 
-# Math
+## Math
 
 This is an equation in $‌$ math $‌$:
 
