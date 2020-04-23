@@ -201,7 +201,7 @@ ggplot(episodes, aes(x = episode_rel, y = rating_c, fill = is_last_season)) +
   #scale_y_continuous(breaks = 0:10, minor_breaks = seq(0, 10, .5)) +
   labs(
     title = "Episode Ratings per Show",
-    subtitle = "Al show, centered Ratings, normalized episode numbers",
+    subtitle = "All shows, centered Ratings, normalized episode numbers",
     x = "Relative Episode (% of Total Run)",
     y = "Rating (centered)",
     fill = ""
