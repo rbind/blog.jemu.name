@@ -59,7 +59,7 @@
   
   {{- if .Site.Params.selfHosted -}}
   <script src="{{ "js/katex.min.js" | absURL }}"></script>
-  <script src="{{ "js/auto-render.min.js" | absURL }}"></script>
+  <script src="{{ "js/auto-render.min.js" | absURL }}" onload='renderMathInElement(document.body);'></script>
   <script src="{{ "js/jquery.min.js" | absURL }}"></script>
   <script src="{{ "js/bootstrap.min.js" | absURL }}"></script>
   {{- else -}}
