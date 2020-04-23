@@ -30,6 +30,6 @@ The blog itself has a [repo on the GitHub rbind organization](https://github.com
 If, for whatever reason, you feel like you would like to by me a coffee, here are your options:
 
 - [PayPal.me](https://www.paypal.me/jemus42) (one-time)
-- [Patreon](https://www.patreon.com/jemus42) (monthly)
+- (that's about it)
 
 I don't really have any reason to ask for support, but sometimes it comes up.
