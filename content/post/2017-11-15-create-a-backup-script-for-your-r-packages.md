@@ -31,9 +31,8 @@ This is where my (presumably wholly unoriginal) idea comes in, and I present to 
 pkgs  <- rownames(installed.packages())
 # Assemble script
 scrpt <- glue::glue(
-  "if (!('[pkgs]' %in% installed.packages())) ",
-  "install.packages('[pkgs]')",
-  .open = "[", .close = "]"
+  "if (!('{pkgs}' %in% installed.packages())) ",
+  "install.packages('{pkgs}')"
 )
 
 # Write to file
