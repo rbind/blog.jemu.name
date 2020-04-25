@@ -27,8 +27,9 @@ To do this, you throw away your current R installation, or at least your current
 This is where my (presumably wholly unoriginal) idea comes in, and I present to you a simple piece of R code that will generate an R script that will reinstall all your packages.  
 
 ```r
-# Get packages
-pkgs  <- rownames(installed.packages())
+# Get packages, sort alphabetically for minor convenience later
+pkgs  <- sort(rownames(installed.packages()))
+
 # Assemble script
 scrpt <- glue::glue(
   "if (!('{pkgs}' %in% installed.packages())) ",
@@ -36,7 +37,7 @@ scrpt <- glue::glue(
 )
 
 # Write to file
-writeLines(scrpt, con = "package-reimport.R")
+writeLines(scrpt, con = glue::glue("R-{R.version$major}.{R.version$minor}-package-reinstall.R"))
 ```
 
 It will look something like this:
