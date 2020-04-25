@@ -56,7 +56,7 @@ if (!('stringr' %in% installed.packages())) install.packages('stringr')
 
 You get the idea.  
 
-Note how I make use of `installed.packaged()` again to make sure to not repeatedly install and re-install packages that might have already been installed as a dependency of a previous package.  
+Note how I make use of `installed.packages()` again to make sure to not repeatedly install and re-install packages that might have already been installed as a dependency of a previous package.  
 
 And yes, this will only work for CRAN packages or packages available in one of the repositories you set via `options("repos")`. If you rely on GitHub or local packages in production, I'll just assume you're aware of that and act accordingly, but that's out of the scope of this little thing. If you want *proper* package reproducibility and whatnot, you're probably better of using a *proper package management thing* like… ~~`packrat`~~ `renv`? Microsoft's MRAN and snapshot stuff? I don't know.  
 I just did this little thing.  
