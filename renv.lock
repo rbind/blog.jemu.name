@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "3.6.3",
+    "Version": "4.0.0",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -25,17 +25,17 @@
     },
     "DescTools": {
       "Package": "DescTools",
-      "Version": "0.99.34",
+      "Version": "0.99.35",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "bc4d822b745c3b414c2db24c0b15ecb2"
+      "Hash": "46f50f594a84e58a690bf697a4f55adf"
     },
     "MASS": {
       "Package": "MASS",
-      "Version": "7.3-51.5",
+      "Version": "7.3-51.6",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "9efe80472b21189ebab1b74169808c26"
+      "Hash": "1dad32ac9dbd8057167b2979fb932ff7"
     },
     "Matrix": {
       "Package": "Matrix",
@@ -144,17 +144,17 @@
     },
     "boot": {
       "Package": "boot",
-      "Version": "1.3-24",
+      "Version": "1.3-25",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "72557d88b5f42f01221dfa436de99301"
+      "Hash": "bd51734a754b6c2baf28b2d1ebc11e91"
     },
     "broom": {
       "Package": "broom",
-      "Version": "0.5.5",
+      "Version": "0.5.6",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "70ec3aef8a0df13661bf6cc2ff877d61"
+      "Hash": "754fdb4d17d4ae871343ff2909728ca3"
     },
     "callr": {
       "Package": "callr",
@@ -259,12 +259,12 @@
       "Version": "0.8.99.9002",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
       "RemoteUsername": "tidyverse",
       "RemoteRepo": "dplyr",
       "RemoteRef": "master",
-      "RemoteSha": "abc093461d29ccc3d850580e09d6d2c400a30686",
-      "Hash": "56d55979222d86736b687999b38be125"
+      "RemoteSha": "0f2c7f52d6c9e560087247b234cb08a0a002e425",
+      "RemoteHost": "api.github.com",
+      "Hash": "a47de7b4e5192b763fcfad71f34eefbd"
     },
     "ellipsis": {
       "Package": "ellipsis",
@@ -321,8 +321,8 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "firasans",
       "RemoteUsername": "hrbrmstr",
+      "RemoteRepo": "firasans",
       "RemoteRef": "master",
       "RemoteSha": "52f83c85e5663df2746b004bfef68123e182ba80",
       "Hash": "b9edf0a7eef2f2092587f9964755fe73"
@@ -336,10 +336,10 @@
     },
     "foreign": {
       "Package": "foreign",
-      "Version": "0.8-76",
+      "Version": "0.8-79",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "649b9c7a979d50d869578c73fed072cd"
+      "Hash": "910ad5e5ce9aae0d0f57186ca9a12e1e"
     },
     "fs": {
       "Package": "fs",
@@ -364,17 +364,27 @@
     },
     "ggplot2": {
       "Package": "ggplot2",
-      "Version": "3.3.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "911561e07da928345f1ae2d69f97f3ea"
+      "Version": "3.3.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "tidyverse",
+      "RemoteRepo": "ggplot2",
+      "RemoteRef": "master",
+      "RemoteSha": "1d4c5732c97b4d8309224262209ff9e87e00aa7a",
+      "Hash": "3e77311804fcd1bf2ba4687ed6c64a6f"
     },
     "ggrepel": {
       "Package": "ggrepel",
-      "Version": "0.8.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "c013a50b19695daf04853679e1bc105a"
+      "Version": "0.9.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "slowkow",
+      "RemoteRepo": "ggrepel",
+      "RemoteRef": "master",
+      "RemoteSha": "3941cf1558cec1cbee7c533cc7216c4cd72e0433",
+      "Hash": "f34ee51605e15d74eb37446b5f2a48dc"
     },
     "glue": {
       "Package": "glue",
@@ -384,9 +394,9 @@
       "RemoteUsername": "tidyverse",
       "RemoteRepo": "glue",
       "RemoteRef": "master",
-      "RemoteSha": "a3375fe0c8ba6b3f160e4774d6b4ad883944b6fb",
+      "RemoteSha": "2c19de2d28bbbdb5e2c1be5f1bfeba979d192f68",
       "RemoteHost": "api.github.com",
-      "Hash": "59cfa0c364bda832f80d3649caa3828f"
+      "Hash": "5783a49ba885abed7a825d79fd1559ad"
     },
     "gridExtra": {
       "Package": "gridExtra",
@@ -626,10 +636,10 @@
     },
     "nnet": {
       "Package": "nnet",
-      "Version": "7.3-13",
+      "Version": "7.3-14",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "aaeb5c7cae85223cc6d282f295dff295"
+      "Hash": "0d87e50e11394a7151a28873637d799a"
     },
     "nortest": {
       "Package": "nortest",
@@ -647,10 +657,10 @@
     },
     "openxlsx": {
       "Package": "openxlsx",
-      "Version": "4.1.4",
+      "Version": "4.1.5",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "664378f856aceb385eabbce0f202abd8"
+      "Hash": "9b9b5322c83ee21db73c8ba3787897ca"
     },
     "pbkrtest": {
       "Package": "pbkrtest",
@@ -661,10 +671,10 @@
     },
     "pillar": {
       "Package": "pillar",
-      "Version": "1.4.3",
+      "Version": "1.4.4",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "fa3ed60396b6998d0427c57dab90fba4"
+      "Hash": "b01d2494d0e2b6b02fae40e1543fbcb0"
     },
     "pixiedust": {
       "Package": "pixiedust",
@@ -675,10 +685,10 @@
     },
     "pkgbuild": {
       "Package": "pkgbuild",
-      "Version": "1.0.6",
+      "Version": "1.0.8",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "899835dfe286963471cbdb9591f8f94f"
+      "Hash": "8d8b5e29223aabb829246397299f0592"
     },
     "pkgconfig": {
       "Package": "pkgconfig",
@@ -738,10 +748,10 @@
     },
     "ps": {
       "Package": "ps",
-      "Version": "1.3.2",
+      "Version": "1.3.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "98777535b61c57d1749344345e2a4ccd"
+      "Hash": "425d938eb9c02906a8ac98c0c2a306b5"
     },
     "purrr": {
       "Package": "purrr",
@@ -787,15 +797,10 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.9.3-80",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteUsername": "rstudio",
-      "RemoteRepo": "renv",
-      "RemoteRef": "master",
-      "RemoteSha": "da7bffd747b05384a99e0d4be0bf372d0b6364a1",
-      "RemoteHost": "api.github.com",
-      "Hash": "0a0d77b05edd86858c439e081a1c83e7"
+      "Version": "0.10.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0d3f1c2b63e70b3d918246b4e2ca59b7"
     },
     "reshape2": {
       "Package": "reshape2",
@@ -813,15 +818,15 @@
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "0.4.5.9000",
+      "Version": "0.4.6.9000",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
       "RemoteUsername": "r-lib",
       "RemoteRepo": "rlang",
       "RemoteRef": "master",
-      "RemoteSha": "a90b04b9d6a17f1aabadaed357784efc22116d2a",
-      "Hash": "2fbb2f0ebd2669870d84f4234ec6d481"
+      "RemoteSha": "4bea87590f216af0820d6c82b53309b2e2f5bfdf",
+      "RemoteHost": "api.github.com",
+      "Hash": "ad012bc0313a493d773e6518a5b78ca1"
     },
     "rmarkdown": {
       "Package": "rmarkdown",
@@ -909,10 +914,10 @@
     },
     "systemfonts": {
       "Package": "systemfonts",
-      "Version": "0.2.0",
+      "Version": "0.2.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "460703984c7175ca7a830b6cbf86d243"
+      "Hash": "b9cbe1031f93e8d06e36a330705c654f"
     },
     "tRakt": {
       "Package": "tRakt",
@@ -922,9 +927,21 @@
       "RemoteUsername": "jemus42",
       "RemoteRepo": "tRakt",
       "RemoteRef": "master",
-      "RemoteSha": "0a4ee9cfa4e37f42802dcc41f883ec54aae4d077",
+      "RemoteSha": "8aba9543dc0a362373cf339899a3e88d0d28d190",
       "RemoteHost": "api.github.com",
-      "Hash": "7c0e2035068251fa55130811740880ed"
+      "Hash": "6c2f23217f4082f21d0f61abcda917c2"
+    },
+    "tadaathemes": {
+      "Package": "tadaathemes",
+      "Version": "0.0.1",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "tadaadata",
+      "RemoteRepo": "tadaathemes",
+      "RemoteRef": "master",
+      "RemoteSha": "ccec7cacdad4ca7736ca903423bd312c32afeee4",
+      "Hash": "d8132bd556052cf0e63e2c63299cc11a"
     },
     "tadaatoolbox": {
       "Package": "tadaatoolbox",
@@ -942,17 +959,17 @@
     },
     "tibble": {
       "Package": "tibble",
-      "Version": "3.0.0",
+      "Version": "3.0.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "e742bc8d72071ef9aba29f71f132d773"
+      "Hash": "1c61e4cad000e03b1bd687db16a75926"
     },
     "tidyr": {
       "Package": "tidyr",
-      "Version": "1.0.2",
+      "Version": "1.0.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "fb73a010ace00d6c584c2b53a21b969c"
+      "Hash": "df860e8e4e1a1b454f18537c8bc96211"
     },
     "tidyselect": {
       "Package": "tidyselect",
@@ -977,15 +994,15 @@
     },
     "vctrs": {
       "Package": "vctrs",
-      "Version": "0.2.99.9011",
+      "Version": "0.3.0",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
       "RemoteUsername": "r-lib",
       "RemoteRepo": "vctrs",
       "RemoteRef": "master",
-      "RemoteSha": "b17f2011d94f02136afd844bb3049aa7481a1886",
-      "Hash": "55c108aebd563c2e1068a7c9e07c599d"
+      "RemoteSha": "570a00c895ad6808f2b0c6261b4ecb8bea9dbf2e",
+      "RemoteHost": "api.github.com",
+      "Hash": "525d8c042dba5256863d576a40cae5a4"
     },
     "viridis": {
       "Package": "viridis",
@@ -1022,10 +1039,10 @@
     },
     "withr": {
       "Package": "withr",
-      "Version": "2.1.2",
+      "Version": "2.2.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "aa57ed55ff2df4bea697a07df528993d"
+      "Hash": "ecd17882a0b4419545691e095b74ee89"
     },
     "xfun": {
       "Package": "xfun",
@@ -1036,10 +1053,10 @@
     },
     "xml2": {
       "Package": "xml2",
-      "Version": "1.3.1",
+      "Version": "1.3.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "921dce7c0ec595ed85e77683d3e6c8b6"
+      "Hash": "d4d71a75dd3ea9eb5fa28cc21f9585e2"
     },
     "yaml": {
       "Package": "yaml",

@@ -11,6 +11,7 @@ options(
     servr.port = 4321L,
     blogdown.author = "jemus42",
     blogdown.ext = ".Rmarkdown",
-    blogdown.generator.server = TRUE,
+    blogdown.new_bundle = TRUE,
+    blogdown.generator.server = FALSE,
     blogdown.hugo.server = c("-D", "-F", "--navigateToChanged")
 )
