@@ -35,7 +35,8 @@ table tr {
 
 /* Table cells at least need tabular digits, Fira Mono is a temp fix */
 .blog-post td {
-  font-family: "Fira Mono", "Sans Mono", "Consolas", "Courier", monospace;
+  /*font-family: "Fira Mono", "Sans Mono", "Consolas", "Courier", monospace;*/
+  font-family: 'Open Sans', 'Sans Mono', Helvetica, Arial, sans-serif;
 }
 
 pre > code {
@@ -91,7 +92,7 @@ pre > code {
 /* --- Packages --- */
 
 .blog-packages {
-  font-family: 'Fira Mono', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Fira Mono", "Sans Mono", "Consolas", "Courier", monospace;
   color: #999;
   font-size: 15px;
   padding-top: 0;
@@ -271,6 +272,6 @@ h2 a, h3 a, h4 a, h5 a {
 :target {
   display: block;
   position: relative;
-  top: -50px; 
+  top: -50px;
   /*visibility: hidden; causes issue with commento login box not visible*/
 }
