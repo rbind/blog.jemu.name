@@ -28,7 +28,6 @@ editor_options:
 source(here::here("global.R"))
 
 knitr::opts_chunk$set(
-  out.width = "100%",
   fig.width = 10,
   fig.height = 10 / 1.618
 )

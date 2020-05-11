@@ -13,7 +13,7 @@ source(here::here("helpers.R"))
 
 # knitr: Global chunk options
 knitr::opts_chunk$set(
-  out.width = "90%",
+  out.width = "100%",
   fig.retina = 2,
   error = FALSE,
   warning = FALSE,
