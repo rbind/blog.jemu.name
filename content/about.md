@@ -27,7 +27,7 @@ The blog itself has a [repo on the GitHub rbind organization](https://github.com
 
 ## Support
 
-If, for whatever reason, you feel like you would like to by me a coffee, here are your options:
+If, for whatever reason, you feel like you would like to buy me a coffee, here are your options:
 
 - [PayPal.me](https://www.paypal.me/jemus42) (one-time)
 - (that's about it)
