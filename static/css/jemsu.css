@@ -47,6 +47,12 @@ pre > code {
   font-family: "Fira Mono", "Sans Mono", "Consolas", "Courier", monospace;
 }
 
+div.code-toolbar > .toolbar a,
+div.code-toolbar > .toolbar button,
+div.code-toolbar > .toolbar span {
+  font-family: "Fira Mono", "Sans Mono", "Consolas", "Courier", monospace;
+}
+
 .blog-tags-extended {
   margin-top: 1em
 }

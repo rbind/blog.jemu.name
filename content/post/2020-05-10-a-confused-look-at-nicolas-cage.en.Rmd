@@ -32,6 +32,9 @@ knitr::opts_chunk$set(
   fig.width = 10,
   fig.height = 10 / 1.618
 )
+
+cache_path <- make_cache_path("a-confused-look-at-nicolas-cage-movies")
+
 ```
 
 The other day I watched [Mandy (2018)](https://trakt.tv/movies/mandy-2018), a confusing Nicolas Cage movie that feels like an odd fever dream.  
@@ -61,7 +64,13 @@ To take a look at Cage's movies, I'll first need to find him on trakt.tv – whi
 ```{r finding-cage}
 search_query("Nicolas Cage", type = "person")
 
-cage_credits <- people_movies("nicolas-cage", extended = "full")
+if (file_not_cached(cache_path, cage_credits)) {
+  cage_credits <- people_movies("nicolas-cage", extended = "full")
+  
+  cache_file(cache_path, cage_credits)
+} else {
+  cage_credits <- read_cache_file(cache_path, cage_credits)
+}
 
 cage_movies <- cage_credits$cast %>% 
   filter(
