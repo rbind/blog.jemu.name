@@ -33,6 +33,10 @@ table tr {
   border-top: none
 }
 
+.blog-post table tr th {
+  font-family: 'Open Sans', 'Sans Mono', Helvetica, Arial, sans-serif;
+}
+
 /* Table cells at least need tabular digits, Fira Mono is a temp fix */
 .blog-post td {
   /*font-family: "Fira Mono", "Sans Mono", "Consolas", "Courier", monospace;*/
