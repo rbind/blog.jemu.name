@@ -256,15 +256,15 @@
     },
     "dplyr": {
       "Package": "dplyr",
-      "Version": "0.8.99.9002",
+      "Version": "0.8.99.9003",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteUsername": "tidyverse",
       "RemoteRepo": "dplyr",
       "RemoteRef": "master",
-      "RemoteSha": "0f2c7f52d6c9e560087247b234cb08a0a002e425",
+      "RemoteSha": "4993c0fe3d8e0ad737a6808c22720b02e56e880b",
       "RemoteHost": "api.github.com",
-      "Hash": "a47de7b4e5192b763fcfad71f34eefbd"
+      "Hash": "82105752488918533aa32024498a3680"
     },
     "ellipsis": {
       "Package": "ellipsis",
@@ -367,12 +367,12 @@
       "Version": "3.3.0.9000",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
       "RemoteUsername": "tidyverse",
       "RemoteRepo": "ggplot2",
       "RemoteRef": "master",
-      "RemoteSha": "1d4c5732c97b4d8309224262209ff9e87e00aa7a",
-      "Hash": "3e77311804fcd1bf2ba4687ed6c64a6f"
+      "RemoteSha": "f1422ea6a67364b454d7b8f9094428e952080489",
+      "RemoteHost": "api.github.com",
+      "Hash": "545ed65e817d4ee606ca9c7b9030dad7"
     },
     "ggrepel": {
       "Package": "ggrepel",
@@ -877,10 +877,10 @@
     },
     "scales": {
       "Package": "scales",
-      "Version": "1.1.0",
+      "Version": "1.1.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "a1c68369c629ea3188d0676e37069c65"
+      "Hash": "6f76f71042411426ec8df6c54f34e6dd"
     },
     "selectr": {
       "Package": "selectr",
@@ -931,6 +931,13 @@
       "Repository": "CRAN",
       "Hash": "507f3116a38d37ad330a038b3be07b66"
     },
+    "sysfonts": {
+      "Package": "sysfonts",
+      "Version": "0.8.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "49ed30f4a8938fb04551dced5b6d444e"
+    },
     "systemfonts": {
       "Package": "systemfonts",
       "Version": "0.2.1",
@@ -955,12 +962,12 @@
       "Version": "0.0.1",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
       "RemoteUsername": "tadaadata",
       "RemoteRepo": "tadaathemes",
       "RemoteRef": "master",
-      "RemoteSha": "ccec7cacdad4ca7736ca903423bd312c32afeee4",
-      "Hash": "d8132bd556052cf0e63e2c63299cc11a"
+      "RemoteSha": "08bd79f39dccc023244f0c1eee74e2ccdbcc76d3",
+      "RemoteHost": "api.github.com",
+      "Hash": "2476c58a1fda2a7ef72280455fa3d958"
     },
     "tadaatoolbox": {
       "Package": "tadaatoolbox",
@@ -992,10 +999,10 @@
     },
     "tidyselect": {
       "Package": "tidyselect",
-      "Version": "1.0.0",
+      "Version": "1.1.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "7d4b0f1ab542d8cb7a40c593a4de2f36"
+      "Hash": "6ea435c354e8448819627cf686f66e0a"
     },
     "tinytex": {
       "Package": "tinytex",
@@ -1013,15 +1020,15 @@
     },
     "vctrs": {
       "Package": "vctrs",
-      "Version": "0.3.0",
+      "Version": "0.3.0.9000",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteUsername": "r-lib",
       "RemoteRepo": "vctrs",
       "RemoteRef": "master",
-      "RemoteSha": "570a00c895ad6808f2b0c6261b4ecb8bea9dbf2e",
+      "RemoteSha": "4ff6b79f92658452ef232f94c4334b9167a2d792",
       "RemoteHost": "api.github.com",
-      "Hash": "525d8c042dba5256863d576a40cae5a4"
+      "Hash": "6c09943578a77197b250a9085c2b1072"
     },
     "viridis": {
       "Package": "viridis",
