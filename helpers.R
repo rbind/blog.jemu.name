@@ -17,6 +17,9 @@ plot_hook <- function(x, options) {
   }
 
   basename <- paste0(knitr::opts_knit$get('base.url'), paste(x, collapse = '.'))
+  # this breaks with page bundles >.<
+  # It works fine for regular posts but using page bundles with this results
+  # in wrong paths
   filename <- glue("../../../post/{basename}")
   filename_webp <- stringr::str_replace(filename, "\\.png$", "\\.webp")
   id <- stringr::str_extract(x, "^[^\\/]*")

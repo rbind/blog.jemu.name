@@ -662,6 +662,13 @@
       "Repository": "CRAN",
       "Hash": "9b9b5322c83ee21db73c8ba3787897ca"
     },
+    "patchwork": {
+      "Package": "patchwork",
+      "Version": "1.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "16eee5b5edc41eec5af1149ccdc6b2c9"
+    },
     "pbkrtest": {
       "Package": "pbkrtest",
       "Version": "0.4-8.6",
