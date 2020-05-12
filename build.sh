@@ -5,7 +5,7 @@
 PATH=$HOME/bin:$PATH
 
 # Desired hugo version in local setup
-HUGO_VERSION_WANT="0.69.0"
+HUGO_VERSION_WANT="0.70.0"
 # Getting current hugo version from itself and extracting the version string
 HUGO_VERSION_HAVE=$(hugo version)
 HUGO_VERSION_HAVE=$(echo -e "${HUGO_VERSION_HAVE:28:6}")
@@ -35,7 +35,7 @@ if [[ "$HUGO_VERSION_HAVE" == "$HUGO_VERSION_WANT" ]]; then
 else
     echo "Hugo versions mismatch: Have: $HUGO_VERSION_HAVE - want: $HUGO_VERSION_WANT"
     echo "Installing hugo"
-    echo Rscript -e "blogdown::install_hugo(version = \"$HUGO_VERSION_WANT\", force = TRUE)"
+    Rscript -e "blogdown::install_hugo(version = \"$HUGO_VERSION_WANT\", force = TRUE)"
 fi
 
 # echo "Nuking /public"
