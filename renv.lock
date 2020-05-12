@@ -503,10 +503,15 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.28",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "915a6f0134cdbdf016d7778bc80b2eda"
+      "Version": "1.28.7",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "yihui",
+      "RemoteRepo": "knitr",
+      "RemoteRef": "master",
+      "RemoteSha": "12b50f5bb646acbaf7535c92b4f627ee42e44646",
+      "Hash": "b053e845b5cc236383f4e8ac28ccc264"
     },
     "labelVector": {
       "Package": "labelVector",
@@ -780,6 +785,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "dc0f41e5f60efc5fdbdb35a51a4028c5"
+    },
+    "ragg": {
+      "Package": "ragg",
+      "Version": "0.1.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "55ecadf0808546b2d1e8a06b1658a787"
     },
     "readr": {
       "Package": "readr",

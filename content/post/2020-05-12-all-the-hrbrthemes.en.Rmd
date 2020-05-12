@@ -54,6 +54,10 @@ import_roboto_condensed()
 extrafont::loadfonts()
 ```
 
+```{r check-fonts, summary="Check if extrafont knows about your fonts"}
+extrafont::fonts()
+```
+
 To install them system-wide, you'll want to go to the file path the functions give you (i.e. the path to `hrbrthemes` in your package library) and install the fonts in whichever way you system requires.  
 In my experience, that should at least be enough to use them with PNG or PDF output, but your mileage may vary. You may find [{showtext}](https://github.com/yixuan/showtext) helpful, or use [{ragg}](https://ragg.r-lib.org/) as an alternative device, etc. pp.
 

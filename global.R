@@ -11,8 +11,13 @@ source(here::here("helpers.R"))
 # Hugo config
 # config_toml <- RcppTOML::parseTOML(here::here("config.toml"))
 
+if (!requireNamespace("ragg")) {
+  message("ragg needs to be installed!")
+}
+
 # knitr: Global chunk options
 knitr::opts_chunk$set(
+  dev = "ragg_png",
   out.width = "100%",
   fig.retina = 2,
   error = FALSE,
