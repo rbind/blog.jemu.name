@@ -12,7 +12,7 @@ packages:
   - ggplot2
   - hrbrthemes
   - patchwork
-draft: no
+draft: true
 subtitle: 'Just laying out some themes.'
 description: ''
 image: '/post/2020-05-12-all-the-hrbrthemes.en_files/figure-html/all-ipsum-themes-1.png'
