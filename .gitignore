@@ -1,6 +1,8 @@
 # Debug / maintenance
 scratchpad.R
 
+.vscode/settings.json
+
 # Rendered output
 static/post
 blogdown/post
