@@ -13,7 +13,7 @@ options(
     blogdown.ext = ".Rmarkdown",
     blogdown.subdir = "posts",
     blogdown.new_bundle = TRUE,
-    blogdown.title_case = TRUE
+    blogdown.title_case = TRUE,
     blogdown.generator.server = FALSE,
     blogdown.hugo.server = c("-D", "-F", "--navigateToChanged")
 )

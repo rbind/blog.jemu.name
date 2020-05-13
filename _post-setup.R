@@ -54,7 +54,7 @@ knitr::knit_hooks$set(
 # Enable the code-hiding-via-summary-tags thing
 # Shamelessly stolen from
 # https://github.com/cpsievert/plotly_book/blob/a95fb991fdbfdab209f5f86ce1e1c181e78f801e/index.Rmd#L52-L60
-knitr::hooks$set(
+knitr::knit_hooks$set(
   summary = function(before, options, envir) {
   if (length(options$summary)) {
     if (before) {
