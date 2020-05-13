@@ -8,6 +8,9 @@
   table tr:last-child td {
     border-bottom: 0;
   }
+  table tr td {
+    border-bottom: 0;
+  }
   table tr td:first-child,
   table tr th:first-child {
     border-left: 0;
@@ -21,6 +24,10 @@
 /* Slightly compacter tables */
 table th, table td {
   padding: 1.2rem;
+}
+
+table caption {
+  padding-bottom: 1rem;
 }
 
 /* Sans-font for headings */

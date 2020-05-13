@@ -15,7 +15,7 @@
 
 /* Dark Theme */
 body.colorscheme-dark {
-  @include monokai-dark()
+  @include monokai-dark();
   @include math-dark();
   @include table-dark();
   @include inline-code-dark();
