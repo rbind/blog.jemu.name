@@ -1,5 +1,6 @@
 knitr::opts_chunk$set(
-  fig.path = "", # for leaf bundles to work
+  fig.path = "plots/", # for leaf bundles to work
+  cache.path = "blogdown_cache/", # for leaf bundles, cache in post directory
   fig.retina = 2,
   echo = TRUE,
   message = FALSE, warning = FALSE, error = FALSE,
@@ -58,7 +59,7 @@ knitr::knit_hooks$set(
   summary = function(before, options, envir) {
   if (length(options$summary)) {
     if (before) {
-      return(sprintf("<details><summary>Code: %s</summary>\n", options$summary))
+      return(sprintf("<details><summary>Code: %s</summary>\n\n", options$summary))
     } else {
       return("\n</details>")
     }
