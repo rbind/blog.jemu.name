@@ -1,17 +1,10 @@
 @import "variables";
+@import "content";
 @import "monokai";
 @import "monokailight";
 @import "mathjax";
 @import "tables";
 
-body {
-  font-family: $text-font-family;
-  font-weight: 400;
-}
-
-a {
-  font-weight: 400;
-}
 
 /* Turn a dark plot into a light plot (for testing purposes) */
 @mixin color-inv {
@@ -23,6 +16,9 @@ a {
 /* Dark Theme */
 body.colorscheme-dark {
   @include monokai-dark()
+  @include math-dark();
+  @include table-dark();
+  @include inline-code-dark();
 }
 
 body.colorscheme-auto {
@@ -30,12 +26,14 @@ body.colorscheme-auto {
     @include monokai-dark();
     @include math-dark();
     @include table-dark();
+    @include inline-code-dark();
   }
 }
 
 /* Light theme */
 body.colorscheme-light {
   @include monokai-light();
+  @include math-light();
   @include color-inv()
 }
 

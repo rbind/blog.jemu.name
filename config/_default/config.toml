@@ -27,7 +27,17 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
   series = "series"
 
 [markup]
-  defaultMarkdownHandler = "goldmark" # "pandoc" or "goldmark" (default)
+  defaultMarkdownHandler = "goldmark"
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = false # Use classes + css if false
+    # style = "monokai" # only applies with noClasses = true I think? needs RTFM
+    tabWidth = 2
   [markup.goldmark]
     [markup.goldmark.extensions]
       definitionList = true
