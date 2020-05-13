@@ -7,7 +7,7 @@ DefaultContentLanguage = "en"
 relativeURLs = false
 languageCode = "en-us"
 title = "Jemsu Blog"
-theme = "beautifulhugo"
+theme = "hugo-coder"
 metaDataFormat = "yaml"
 Paginate = 10
 
@@ -23,8 +23,8 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 [taxonomies]
   category = "categories"
   tag = "tags"
-  show = "shows"
   package = "packages"
+  series = "series"
 
 [markup]
   defaultMarkdownHandler = "goldmark" # "pandoc" or "goldmark" (default)
@@ -74,22 +74,28 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
   id = "2"
   server = "matomo.jemu.name"
 
-[Author]
-  name = "jemus42"
-  website = "https://jemu.name"
-  email = "blog@jemu.name"
-  github = "jemus42"
-#  gitlab = "username"
-  twitter = "jemus42"
-#  reddit = "username"
-#  linkedin = "username"
-#  xing = "Lukas_Burk2"
-  stackoverflow = "users/409362/jemus42"
-#  instagram = "jemus42"
-#  youtube = "user/username" # or channel/channelname
-#  soundcloud = "username"
-  spotify = "jemus42"
-  git-selfhosted = "git.tadaa-data.de/lukas"
-  bandcamp = "jemus42"
-#  paypal = "jemus42"
-#  mastodon = "cybre.space/@jemus42"
+[languages]
+    [languages.en]
+        languagename = "English"
+
+        [languages.en.menu]
+
+            [[languages.en.menu.main]]
+            name = "About"
+            weight = 1
+            url = "about/"
+
+            [[languages.en.menu.main]]
+            name = "Blog"
+            weight = 2
+            url = "posts/"
+
+            [[languages.en.menu.main]]
+            name = "Projects"
+            weight = 3
+            url = "projects/"
+
+            [[languages.en.menu.main]]
+            name = "Contact me"
+            weight = 5
+            url = "contact/"

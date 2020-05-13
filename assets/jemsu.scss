@@ -1,0 +1,48 @@
+@import "variables";
+@import "monokai";
+@import "monokailight";
+@import "mathjax";
+@import "tables";
+
+body {
+  font-family: $text-font-family;
+  font-weight: 400;
+}
+
+a {
+  font-weight: 400;
+}
+
+/* Turn a dark plot into a light plot (for testing purposes) */
+@mixin color-inv {
+  figure > a > img {
+    filter: invert(1);
+  }
+}
+
+/* Dark Theme */
+body.colorscheme-dark {
+  @include monokai-dark()
+}
+
+body.colorscheme-auto {
+  @media (prefers-color-scheme: dark) {
+    @include monokai-dark();
+    @include math-dark();
+    @include table-dark();
+  }
+}
+
+/* Light theme */
+body.colorscheme-light {
+  @include monokai-light();
+  @include color-inv()
+}
+
+body.colorscheme-auto {
+  @media (prefers-color-scheme: light) {
+    @include monokai-light();
+    @include math-light();
+    @include color-inv();
+  }
+}

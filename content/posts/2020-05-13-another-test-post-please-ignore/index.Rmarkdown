@@ -1,0 +1,86 @@
+---
+title: Another test post please ignore
+author: jemus42
+date: '2020-05-13'
+slug: []
+categories:
+  - R
+tags: []
+description: 'Trying to figure out how I can make this work.'
+externalLink: ''
+series: ["tvshows"]
+packages:
+  - ggplot2
+  - tRakt
+  - hrbrthemes
+#katex: true # doesnt
+math: true # works
+---
+
+```{r}
+source(here::here("_post-setup.R"))
+```
+
+```{r chunkname, hugoopts=list(alt="alternative text please make it informative", caption="this is what this image shows, write it here or in the paragraph after the image as you prefer")} 
+library(ggplot2)
+library(tadaathemes)
+library(hrbrthemes)
+
+
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = lm, formula = y~x) +
+  labs(title = "Ohai") +
+  theme_modern_rc()
+```
+
+```{r devs-episode-ratings, hugoopts=list(caption = "My glorious plot")}
+library(tRakt)
+library(dplyr)
+library(ggrepel)
+
+deveps <- seasons_summary("devs", episodes = TRUE, extended = "full") %>%
+  pull(episodes) %>%
+  bind_rows()
+
+ggplot(deveps, aes(x = episode, y = rating, size = votes)) +
+  geom_point() +
+  geom_text_repel(
+    data = filter(deveps, rating < 7.5),
+    aes(label = paste(title, rating, sep = ": ")),
+    color = "#999999",
+    box.padding = 2,
+    segment.color = "#999999",
+    show.legend = FALSE
+  ) +
+  scale_size_binned() +
+  labs(title = "Devs episode ratings on trakt.tv") +
+  theme_trakt()
+
+
+```
+
+
+Does it do math? Here's $f(x) = x^2$.  
+Also inline: $\sigma(x) = \max(0, x)$
+
+
+\begin{align}
+\beta = (X^T X)^{-1} X^T Y
+\end{align}
+
+
+## Here's a heading
+
+Maybe a table?
+
+```{r}
+library(kableExtra)
+
+iris %>%
+  head(20) %>%
+  mutate(id = seq_along(Species) * 10) %>%
+  kable(caption = "My nice looking table") %>%
+  kable_styling(position = "center")
+```
+

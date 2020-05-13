@@ -18,7 +18,7 @@ if (!requireNamespace("ragg")) {
 # knitr: Global chunk options
 knitr::opts_chunk$set(
   dev = "ragg_png",
-  out.width = "100%",
+  #out.width = "100%",
   fig.retina = 2,
   error = FALSE,
   warning = FALSE,
@@ -28,15 +28,15 @@ knitr::opts_chunk$set(
 )
 
 # Code highlighting via prims.js requires manually set class
-knitr::opts_chunk$set(
-  class.source = c("language-r")
-)
+# knitr::opts_chunk$set(
+#   class.source = c("language-r")
+# )
 
 # Set hooks defined in helpers.R
-knitr::knit_hooks$set(
-  plot = plot_hook,
-  summary = summary_hook
-)
+# knitr::knit_hooks$set(
+#   plot = plot_hook,
+#   summary = summary_hook
+# )
 
 # Plot output ----
 

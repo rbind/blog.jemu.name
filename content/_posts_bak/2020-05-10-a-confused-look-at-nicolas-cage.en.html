@@ -1,0 +1,446 @@
+---
+title: A confused look at Nicolas Cage movies
+author: jemus42
+date: '2020-05-10'
+slug: a-confused-look-at-nicolas-cage-movies
+categories:
+  - movies
+tags:
+  - trakt.tv
+  - movies
+  - Nicolas Cage
+packages:
+  - tRakt
+  - tadaathemes
+  - ggrepel
+  - ggplot2
+  - dplyr
+  - kableExtra
+draft: no
+subtitle: 'Because I just watched Mandy and I need to work through it.'
+description: ''
+image: '/post/2020-05-10-a-confused-look-at-nicolas-cage.en_files/figure-html/movies-ratings-1.png'
+editor_options:
+  chunk_output_type: console
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>The other day I watched <a href="https://trakt.tv/movies/mandy-2018">Mandy (2018)</a>, a confusing Nicolas Cage movie that feels like an odd fever dream.<br />
+A few weeks ago, I watched <a href="https://trakt.tv/movies/color-out-of-space-2020">Color Out of Space (2020)</a>, a confusing Nicolas Cage movie that feels like an odd fever dream, based on the <a href="http://www.hplovecraft.com/writings/texts/fiction/cs.aspx">Lovecraft story of the same name</a> which I read a couple weeks prior.<br />
+So… yeah. That’s why Nic Cage has been on my mind a little lately.</p>
+<p>Additionally, I’ve been trying to fiddle around with {ggplot2} themes a little more, because relying on <a href="https://hrbrmstr.github.io/hrbrthemes/index.html">{hrbrthemes}</a> alone felt a little unsatisfying, and I thought it was time to make a theme that fits trakt.tv reasonably well.<br />
+And, while we’re at it, I saw these great <a href="https://ggrepel.slowkow.com/articles/examples.html#aesthetics-1">{ggrepel} examples</a> which is why I wanted to play around with {ggrepel} a little more.</p>
+<p>And that’s where this post comes from, so here goes nothing.</p>
+<p>I’ll start by loading all the things:</p>
+<pre class="r language-r"><code>library(tRakt) # jemus42/tRakt
+library(tadaathemes) # tadaadata/tadaathemes for theme_trakt()
+library(ggplot2)
+library(ggrepel) # &gt;= 0.9.0
+library(dplyr)
+library(kableExtra)
+
+plot_caption &lt;- &quot;Data from trakt.tv // @jemus42&quot;</code></pre>
+<p>To take a look at Cage’s movies, I’ll first need to find him on trakt.tv – which is easy enough through the search. Once I have his identifiers (I’ll be using the <code>slug</code> because it’s nice and human-readable), I can use <code>people_movies</code> to get, well, the <em>movies</em> of this particular <del><em>people</em></del> person.</p>
+<pre class="r language-r"><code>search_query(&quot;Nicolas Cage&quot;, type = &quot;person&quot;)</code></pre>
+<pre><code># A tibble: 1 x 7
+  type   score name         trakt slug         imdb      tmdb 
+  &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;
+1 person  154. Nicolas Cage 15197 nicolas-cage nm0000115 2963 </code></pre>
+<pre class="r language-r"><code>if (file_not_cached(cache_path, cage_credits)) {
+  cage_credits &lt;- people_movies(&quot;nicolas-cage&quot;, extended = &quot;full&quot;)
+  
+  cache_file(cache_path, cage_credits)
+} else {
+  cage_credits &lt;- read_cache_file(cache_path, cage_credits)
+}
+
+cage_movies &lt;- cage_credits$cast %&gt;% 
+  filter(
+    runtime &gt;= 80, votes &gt;= 10,
+    !stringr::str_detect(character, &quot;(uncredited)|(voice)|(Himself)&quot;)
+  )</code></pre>
+<p>The returned objects is a <code>list</code> of two <code>tibble</code>s, named <code>cast</code> and <code>crew</code>. I’m only interested in the <code>cast</code> bit, and I’ll filter out items where the character description indictaes Cage’s role was uncredited, it’s a voice role or he’s playing himself <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. I’ll also exclude movies shorter than 80 minutes and those with less than 10 votes on trakt.tv, because I have to draw the line <em>somewhere</em>.</p>
+<pre class="r language-r"><code>cage_movies %&gt;%
+  arrange(desc(released)) %&gt;%
+  head(10) %&gt;%
+  select(year, title, character, runtime, rating, votes) %&gt;%
+  kable(
+    caption = &quot;The 10 latest Nic Cage movies&quot;,
+    col.names = c(&quot;Year&quot;, &quot;Movie&quot;, &quot;Role&quot;, &quot;Runtime (mins)&quot;, &quot;Rating&quot;, &quot;Votes&quot;),
+    digits = 1
+  ) %&gt;%
+  kable_styling(
+    position = &quot;center&quot;
+  )</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:movie-list">Table 1: </span>The 10 latest Nic Cage movies
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+Year
+</th>
+<th style="text-align:left;">
+Movie
+</th>
+<th style="text-align:left;">
+Role
+</th>
+<th style="text-align:right;">
+Runtime (mins)
+</th>
+<th style="text-align:right;">
+Rating
+</th>
+<th style="text-align:right;">
+Votes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Kill Chain
+</td>
+<td style="text-align:left;">
+Araña
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+6.5
+</td>
+<td style="text-align:right;">
+371
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Color Out of Space
+</td>
+<td style="text-align:left;">
+Nathan Gardner
+</td>
+<td style="text-align:right;">
+111
+</td>
+<td style="text-align:right;">
+6.4
+</td>
+<td style="text-align:right;">
+1528
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Primal
+</td>
+<td style="text-align:left;">
+Frank Walsh
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+6.5
+</td>
+<td style="text-align:right;">
+682
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Grand Isle
+</td>
+<td style="text-align:left;">
+Walter
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+231
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Running with the Devil
+</td>
+<td style="text-align:left;">
+The Cook
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+6.7
+</td>
+<td style="text-align:right;">
+1032
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+A Score to Settle
+</td>
+<td style="text-align:left;">
+Frank
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:right;">
+6.5
+</td>
+<td style="text-align:right;">
+976
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Between Worlds
+</td>
+<td style="text-align:left;">
+Joe
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+5.8
+</td>
+<td style="text-align:right;">
+447
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Mandy
+</td>
+<td style="text-align:left;">
+Red Miller
+</td>
+<td style="text-align:right;">
+122
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+2660
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+211
+</td>
+<td style="text-align:left;">
+Mike Chandler
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+6.1
+</td>
+<td style="text-align:right;">
+1299
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Looking Glass
+</td>
+<td style="text-align:left;">
+Ray
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:right;">
+6.1
+</td>
+<td style="text-align:right;">
+740
+</td>
+</tr>
+</tbody>
+</table>
+<p>So, now I have some reasonably useful data. Let’s take a look at the number of movies per year:</p>
+<pre class="r language-r"><code>cage_movies %&gt;%
+  count(year) %&gt;%
+  ggplot(aes(x = year, y = n)) +
+  geom_col(color = &quot;#1D1D1D&quot;) +
+  annotate(
+    &quot;text&quot;, x = 2005, y = 5.5, label = &quot;2014&quot;, color = &quot;#999999&quot;, size = 5,
+    family = &quot;Lato&quot;
+  ) +
+  annotate(
+    &quot;curve&quot;, color = &quot;#999999&quot;, curvature = -.25,
+    x = 2005.4, y = 5.7, xend = 2013.2, yend = 6,
+    arrow = arrow(ends = &quot;last&quot;, length = unit(5, &quot;pt&quot;))
+  ) +
+  scale_y_continuous(breaks = seq(1, 10, 1)) +
+  labs(
+    title = &quot;Nic Cage Movies per Year&quot;,
+    subtitle = &quot;Excluding uncredited and voice roles&quot;,
+    x = &quot;Year&quot;, y = &quot;# of Movies&quot;,
+    caption = plot_caption
+  ) +
+  theme_trakt()</code></pre>
+<figure>
+<picture>
+<source type='image/webp' srcset='../../../post/2020-05-10-a-confused-look-at-nicolas-cage.en_files/figure-html/movies-year-1.webp'>
+<a href='../../../post/2020-05-10-a-confused-look-at-nicolas-cage.en_files/figure-html/movies-year-1.png' data-title='Nic Cage movies per year: 2014 was a good year for Cage fans'>
+<img src='../../../post/2020-05-10-a-confused-look-at-nicolas-cage.en_files/figure-html/movies-year-1.png'  width = 100%  alt='Nic Cage movies per year: 2014 was a good year for Cage fans' />
+</a>
+</picture>
+<figcaption>
+Nic Cage movies per year: 2014 was a good year for Cage fans
+</figcaption>
+</figure>
+<p>Now the ratings for these movies, with a point size according to the number of votes cast:</p>
+<pre class="r language-r"><code>cage_movies %&gt;%
+  mutate(title_label = glue::glue(&quot;{title} ({year})&quot;)) %&gt;%
+  {
+  ggplot(., aes(x = released, y = rating, size = votes)) +
+  coord_cartesian(ylim = c(1, 10)) +
+  geom_point(
+    shape = 21, alpha = .75, fill = &quot;#EA212D&quot;, color = &quot;#1D1D1D&quot;
+  ) +
+  geom_label_repel(
+    data = filter(., rating &lt; 4 | rating &gt; 7.5),
+    aes(label = title_label), 
+    size = 4, color = &quot;white&quot;, fill = NA,
+    family = &quot;Lato&quot;,
+    force_pull = .5,
+    box.padding = 4,
+    point.padding = .7,
+    label.padding = .5,
+    label.size = 0,
+    segment.color = &quot;#999999&quot;,
+    segment.curvature = -.25,
+    segment.ncp = 2,
+    segment.angle = 90,
+    max.overlaps = Inf, max.iter = 10000,
+    seed = 3236, show.legend = FALSE
+  ) +
+  scale_y_continuous(breaks = seq(1, 10, 1)) +
+  scale_size_binned(guide = guide_bins(
+    keywidth = unit(15, &quot;mm&quot;),
+    axis.colour = &quot;#999999&quot;,
+    aesthetics = c(&quot;size&quot;, &quot;point.size&quot;)
+  )) +
+  labs(
+    title = &quot;Nic Cage Movie Ratings on trakt.tv&quot;,
+    subtitle = &quot;By release date and number of votes&quot;,
+    x = &quot;Release Date&quot;, y = &quot;Rating (1-10)&quot;,
+    size = &quot;Votes&quot;,
+    caption = plot_caption
+  ) +
+  theme_trakt()
+  }</code></pre>
+<figure>
+<picture>
+<source type='image/webp' srcset='../../../post/2020-05-10-a-confused-look-at-nicolas-cage.en_files/figure-html/movies-ratings-1.webp'>
+<a href='../../../post/2020-05-10-a-confused-look-at-nicolas-cage.en_files/figure-html/movies-ratings-1.png' data-title='Nic Cage movie ratings on trakt.tv'>
+<img src='../../../post/2020-05-10-a-confused-look-at-nicolas-cage.en_files/figure-html/movies-ratings-1.png'  width = 100%  alt='Nic Cage movie ratings on trakt.tv' />
+</a>
+</picture>
+<figcaption>
+Nic Cage movie ratings on trakt.tv
+</figcaption>
+</figure>
+<p>And yes, I spent <em>hours</em> tweaking the {ggrepel} settings here, and at some point I gave up and called it good enough. I thought also mention that this plot highlights some of the weaknesses with the trakt.tv data – when it comes to ratings, especially for older items, it really shows that trakt.tv hasn’t been around for nearly as long as IMDb, and doesn’t even come close in terms of actively-rating-stuff user base. While I’m still sad about that, it doesn’t really matter that much for this little thing, but I thought I’d have to mention it.</p>
+<p>Anyway, let’s take a look at the movies that have over 5000 votes, as a more or less arbitrary threshold for popularity:</p>
+<pre class="r language-r"><code>cage_movies %&gt;%
+  filter(votes &gt; 5000) %&gt;%
+  mutate(
+    title_label = glue::glue(&quot;{title} ({year})&quot;),
+    title_label = stringr::str_replace(title_label, &quot;:&quot;, &quot;:\n&quot;)
+  ) %&gt;%
+  ggplot(aes(x = released, y = rating)) +
+  coord_cartesian(ylim = c(1, 10)) +
+  geom_point(
+    shape = 21, alpha = .75, size = 5,
+    fill = &quot;#EA212D&quot;, color = &quot;#1D1D1D&quot;
+  ) +
+  geom_label_repel(
+    aes(label = title_label), 
+    size = 4, color = &quot;white&quot;, fill = NA,
+    family = &quot;Lato&quot;,
+    box.padding = 1,
+    point.padding = .7,
+    label.padding = .5,
+    label.size = 0,
+    segment.color = &quot;#999999&quot;,
+    segment.curvature = -.25,
+    max.overlaps = Inf, max.iter = 10000,
+    seed = 3236, show.legend = FALSE
+  ) +
+  scale_y_continuous(breaks = seq(1, 10, 1)) +
+  labs(
+    title = &quot;Nic Cage Movie Ratings on trakt.tv&quot;,
+    subtitle = &quot;Excluding movies with a low number of votes&quot;,
+    x = &quot;Release Date&quot;, y = &quot;Rating (1-10)&quot;,
+    size = &quot;Votes&quot;,
+    caption = plot_caption
+  ) +
+  theme_trakt()</code></pre>
+<figure>
+<picture>
+<source type='image/webp' srcset='../../../post/2020-05-10-a-confused-look-at-nicolas-cage.en_files/figure-html/movies-ratings-subset-1.webp'>
+<a href='../../../post/2020-05-10-a-confused-look-at-nicolas-cage.en_files/figure-html/movies-ratings-subset-1.png' data-title='Selected Nic Cage movie ratings on trakt.tv'>
+<img src='../../../post/2020-05-10-a-confused-look-at-nicolas-cage.en_files/figure-html/movies-ratings-subset-1.png'  width = 100%  alt='Selected Nic Cage movie ratings on trakt.tv' />
+</a>
+</picture>
+<figcaption>
+Selected Nic Cage movie ratings on trakt.tv
+</figcaption>
+</figure>
+<p>It’s a little <em>too</em> busy with the labels I think, but if you click on the plot to zoom it out, I think it at least does it’s job well enough.</p>
+<p>Anyway, I think that’s about it for now, there’s a lot more that could be done with this little dataset, but I just wanted to play around with some stuff.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>to which extent one might argue he’s always kind of playing himself is a different story<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
