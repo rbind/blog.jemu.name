@@ -3,7 +3,7 @@ description = "Yet Another Personal Site"
 keywords = "blog,rstats,R,personal"
 info = "Doing things with R, mostly"
 avatarurl = "images/jemus42.jpg"
-gravatar = "jemus42@gmail.com"
+gravatar = "jemus42@quantenbrot.de"
 footercontent = "This is a thing that exists"
 
 dateformat = "January 2, 2006"

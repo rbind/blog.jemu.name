@@ -1,4 +1,4 @@
-if (window.location.hostname != "127.0.0.1") {
+if (window.location.hostname == "blog.jemu.name") {
   var _paq = _paq || [];
   _paq.push(["trackPageView"]);
   _paq.push(["enableLinkTracking"]);
