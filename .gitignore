@@ -1,6 +1,10 @@
 # Debug / maintenance
 scratchpad.R
 
+.vscode/settings.json
+
+_posts_bak
+
 # Rendered output
 static/post
 blogdown/post
@@ -8,9 +12,7 @@ public
 content/post/hidden-archived/
 content/post/*.html
 
-# Unused assets
-static/css/prism.js
-static/js/prism.r-official.js
+resources/_gen/**
 
 # Secrets
 .httr-oauth

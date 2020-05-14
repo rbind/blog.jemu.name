@@ -7,27 +7,44 @@ DefaultContentLanguage = "en"
 relativeURLs = false
 languageCode = "en-us"
 title = "Jemsu Blog"
-theme = "beautifulhugo"
+theme = "hugo-coder"
 metaDataFormat = "yaml"
 Paginate = 10
 
 # Enable features
 enableEmoji = true
 enableGitInfo = true
+
 # Rmarkdown special handling
-ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
+ignoreFiles = [
+  "\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$",  # Generally recommended settings
+  "\\.knit\\.md$", "\\.utf8\\.md$", "\\.tmp\\.html$", # Knitr temp files just in case
+  "\\.lock$", "^renv$", # Ignore renv if used within page bundles
+  "\\.graffle$" # Diagrams
+  ]
 
 [permalinks]
-  post = "/:year/:month/:slug/"
+  posts = "/:year/:month/:slug/"
 
 [taxonomies]
-  category = "categories"
+  #category = "categories"
   tag = "tags"
-  show = "shows"
-  package = "packages"
+  series = "series"
+  package = "packages" # No theme support yet
+  show = "shows"       # No theme support yet
 
 [markup]
-  defaultMarkdownHandler = "goldmark" # "pandoc" or "goldmark" (default)
+  defaultMarkdownHandler = "goldmark"
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = false # Use classes + css if false
+    # style = "monokai" # only applies with noClasses = true I think? needs RTFM
+    tabWidth = 2
   [markup.goldmark]
     [markup.goldmark.extensions]
       definitionList = true
@@ -69,27 +86,26 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 #################################
 
 [Params.matomo]
-#  id = "12"
-#  server = "analytics.tadaa-data.de/"
   id = "2"
   server = "matomo.jemu.name"
 
-[Author]
-  name = "jemus42"
-  website = "https://jemu.name"
-  email = "blog@jemu.name"
-  github = "jemus42"
-#  gitlab = "username"
-  twitter = "jemus42"
-#  reddit = "username"
-#  linkedin = "username"
-#  xing = "Lukas_Burk2"
-  stackoverflow = "users/409362/jemus42"
-#  instagram = "jemus42"
-#  youtube = "user/username" # or channel/channelname
-#  soundcloud = "username"
-  spotify = "jemus42"
-  git-selfhosted = "git.tadaa-data.de/lukas"
-  bandcamp = "jemus42"
-#  paypal = "jemus42"
-#  mastodon = "cybre.space/@jemus42"
+[languages]
+    [languages.en]
+        languagename = "English"
+
+        [languages.en.menu]
+
+            [[languages.en.menu.main]]
+            name = "About"
+            weight = 2
+            url = "about/"
+
+            [[languages.en.menu.main]]
+            name = "Posts"
+            weight = 1
+            url = "posts/"
+
+            [[languages.en.menu.main]]
+            name = "Projects"
+            weight = 3
+            url = "projects/"

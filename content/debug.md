@@ -1,6 +1,8 @@
 ---
 title: Debug
 type: page
+katex: false
+math: true
 ---
 
 This page is used for debugging purposes.
@@ -40,7 +42,7 @@ f(t) &= \frac{\mathrm{d} F(t)}{\mathrm{d}t} \\
 &= - \frac{\mathrm{d} S(t)}{\mathrm{d}t}
 \end{align}$$
 
-Now with `\\[ \\]`:
+Now with `align`:
 
 \begin{align}
 f(t) &= \frac{\mathrm{d} F(t)}{\mathrm{d}t} \\

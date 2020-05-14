@@ -1,0 +1,22 @@
+ <!-- matomo -->
+ <script type="text/javascript">
+  if (window.location.hostname != "127.0.0.1") {
+    var _paq = _paq || [];
+    _paq.push(["trackPageView"]);
+    _paq.push(["enableLinkTracking"]);
+  
+    (function() {
+      var u=(("https:" == document.location.protocol) ? "https" : "http") + "://{{ .Site.Params.matomo.server }}/";
+      _paq.push(["setTrackerUrl", u+"matomo.php"]);
+      _paq.push(["setSiteId", "{{ .Site.Params.matomo.id }}"]);
+      var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+      g.defer=true; g.async=true; g.src=u+"matomo.js"; s.parentNode.insertBefore(g,s);
+    })();
+  }
+  </script>
+  <noscript>
+  <!-- matomo Image Tracker -->
+  <img src="http://{{ .Site.Params.matomo.server }}/matomo.php?idsite={{ .Site.Params.matomo.id }}&amp;rec=1" style="border:0" alt="" />
+  <!-- End matomo -->
+  </noscript>
+  <!-- End matomo Code -->

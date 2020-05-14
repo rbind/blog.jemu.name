@@ -1,0 +1,45 @@
+/* Regular text */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;700&display=swap');
+
+body {
+  font-family: $text-font-family;
+  font-weight: 400;
+}
+
+h1 small,
+h2 small,
+h3 small,
+h4 small {
+  font-size: 60%;
+}
+
+/* Links */
+a {
+  font-weight: 400;
+}
+
+/* inline-code */
+h1 code,
+h2 code,
+h3 code,
+h4 code {
+  font-size: inherit;
+}
+
+@mixin inline-code-dark {
+  code {
+    background-color: $bg-color-dark;
+  }
+}
+
+/* Littlefoot */
+div.littlefoot-footnote__wrapper > div > p {
+  // text-align: left;
+  color: $fg-color;
+}
+
+@mixin littlefoot-dark {
+  .littlefoot-footnote__button {
+    color: $alt-fg-color-dark;
+  }   
+}

@@ -1,0 +1,42 @@
+@mixin table-dark {
+  table th, table td {
+    border: 1px solid $alt-fg-color-dark;
+  }
+  table tr:first-child th {
+    border-top: 0;
+  }
+  table tr:last-child td {
+    border-bottom: 0;
+  }
+  table tr td {
+    border-bottom: 0;
+  }
+  table tr td:first-child,
+  table tr th:first-child {
+    border-left: 0;
+  }
+  table tr td:last-child,
+  table tr th:last-child {
+    border-right: 0;
+  }
+}
+
+/* Slightly compacter tables */
+table th, table td {
+  padding: 1.2rem;
+}
+
+table caption {
+  padding-bottom: 1rem;
+}
+
+/* Sans-font for headings */
+table th {
+  font-family: $heading-font-family;
+}
+
+/* Centered tables by default */
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
