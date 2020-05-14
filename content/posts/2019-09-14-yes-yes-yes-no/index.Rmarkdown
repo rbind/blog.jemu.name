@@ -29,7 +29,7 @@ editor_options:
 ---
 
 ```{r setup, include = FALSE}
-source(here::here("_post-setup.R"))
+source(here::here("R/post-setup.R.R"))
 ```
 
 There are some shows that are/were really popular, everyone is excited about them, and then they go down the drain in a both abrupt and spectactular kind of way. Some take their time over a whole season, others have you hoping (and quite possibly in denial) until the end, and then they just kick you in the ol' hope organ.  

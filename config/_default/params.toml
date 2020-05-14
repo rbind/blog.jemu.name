@@ -32,13 +32,16 @@ maxSeeAlsoItems = 5
 custom_css = ["css/littlefoot.css"]
 
 # Custom SCSS (needs to be placed in /assets/, _not_ /static/)
-custom_scss = ["jemsu.scss"]
+custom_scss = ["scss/jemsu.scss"]
 
 # Custom JS
 custom_js = [
     "js/littlefoot.js",
-    "js/jemsu.js"
+    "js/jemsu.js",
+    "js/dark-mode-toggle.js"
     ]
+    
+commentoUrl = "https://commento.jemu.name"
 
 # If you want to use fathom(https://usefathom.com) for analytics, add this section
 #[params.fathomAnalytics]

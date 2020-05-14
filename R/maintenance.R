@@ -60,3 +60,14 @@ browseURL(prism_config_download)
 # Copy files to static/css and /static/js
 # Minify CSS
 system("cd static/css; minify --output prism.min.css prism.css")
+
+# Make chroma style ----
+
+chroma_gen <- function(style = "monokai") {
+  cmd <- glue::glue("hugo gen chromastyles --style={style} > static/css/syntax-{style}.css")
+  system(cmd)
+}
+
+# chroma_gen("api")
+# chroma_gen("fruity")
+# chroma_gen("monokailight")

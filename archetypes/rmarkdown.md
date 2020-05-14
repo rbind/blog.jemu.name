@@ -1,5 +1,5 @@
 ---
-title: Another test post please ignore
+title: A title
 author: jemus42
 date: ""
 slug: []
@@ -8,12 +8,14 @@ categories:
 tags: []
 description: ""
 externalLink: ""
-series: ["tvshows"]
+series:
+  - R
 packages: ""
-#katex: true # doesnt
-math: true # works
+math: true # works, "katex: true" doesnt
+editor_options: 
+  chunk_output_type: console
 ---
 
-```{r}
-source(here::here("_post-setup.R"))
+```{r setup}
+source(here::here("R/post-setup.R.R"))
 ```

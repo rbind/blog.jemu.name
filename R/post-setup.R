@@ -66,16 +66,3 @@ knitr::knit_hooks$set(
   }
 }
 )
-
-# Make chroma style
-
-# chroma_gen <- function(style = "monokai") {
-#   cmd <- glue::glue("hugo gen chromastyles --style={style} > static/css/syntax-{style}.css")
-#   system(cmd)
-# }
-
-# chroma_gen("api")
-# chroma_gen("fruity")
-# chroma_gen("monokailight")
-
-# ggplot2 theme ----
