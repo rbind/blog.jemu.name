@@ -1,7 +1,6 @@
 @import "variables";
 @import "text";
 @import "monokai";
-@import "monokailight";
 @import "mathjax";
 @import "tables";
 //@import "nav-toggle";
@@ -16,6 +15,7 @@
 
 /* Dark Theme */
 body.colorscheme-dark {
+  @include monokai-base();
   @include monokai-dark();
   @include math-dark();
   @include table-dark();
@@ -25,6 +25,7 @@ body.colorscheme-dark {
 
 body.colorscheme-auto {
   @media (prefers-color-scheme: dark) {
+    @include monokai-base();
     @include monokai-dark();
     @include math-dark();
     @include table-dark();
@@ -35,6 +36,7 @@ body.colorscheme-auto {
 
 /* Light theme */
 body.colorscheme-light {
+  @include monokai-base();
   @include monokai-light();
   @include math-light();
   // @include color-inv()
@@ -42,6 +44,7 @@ body.colorscheme-light {
 
 body.colorscheme-auto {
   @media (prefers-color-scheme: light) {
+    @include monokai-base();
     @include monokai-light();
     @include math-light();
     // @include color-inv();
