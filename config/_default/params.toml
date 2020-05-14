@@ -37,7 +37,8 @@ custom_scss = ["scss/jemsu.scss"]
 # Custom JS
 custom_js = [
     "js/littlefoot.js",
-    "js/jemsu.js"
+    "js/jemsu.js",
+    "js/matomo.js"
     ]
     
 commentoUrl = "https://commento.jemu.name"

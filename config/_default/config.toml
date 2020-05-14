@@ -85,9 +85,10 @@ ignoreFiles = [
 ## Theme-specific settings     ##
 #################################
 
-[Params.matomo]
-  id = "2"
-  server = "matomo.jemu.name"
+# Added matomo via hardcoded values in matomo.js to avoid more theme layout overrides
+# [Params.matomo]
+#   id = "2"
+#   server = "matomo.jemu.name"
 
 [languages]
     [languages.en]
