@@ -18,7 +18,7 @@ Since I spent half the time of the setup reading through blogposts/tutorials/doc
 
 ## My Personal VPS {#personal-vps}
 
-My personal VPS was probably the oldest part of my infratsructure. I rented it a few years ago, initially just for shits and giggles, then to run the [wurstmineberg Minecraft server](https://wurstmineberg.de), then to run the wurstmineberg creative server[^1], and in the meantime I was using it to host websites, the occasional [ZNC](http://wiki.znc.in/ZNC), [twitter bots](https://github.com/mispy/twitter_ebooks), Wordpress sites, R scripts that produced things like [this](https://stats.jemu.name/tvshows/trakt/trakt-popular.html)[^2], and of course a [shiny server](https://shiny.rstudio.com) for my [trakt.tv webapp](https://trakt.jemu.name).  
+My personal VPS was probably the oldest part of my infratsructure. I rented it a few years ago, initially just for shits and giggles, then to run the [wurstmineberg Minecraft server](https://wurstmineberg.de), then to run the wurstmineberg creative server[^1], and in the meantime I was using it to host websites, the occasional [ZNC](https://wiki.znc.in/ZNC), [twitter bots](https://github.com/mispy/twitter_ebooks), Wordpress sites, R scripts that produced things like [this](https://stats.jemu.name/tvshows/trakt/trakt-popular.html)[^2], and of course a [shiny server](https://shiny.rstudio.com) for my [trakt.tv webapp](https://trakt.jemu.name).  
 
 I probably forgot a few things here and there, but that probably just shows that this was my one-for-all hosting box.  
 And it also sucked big time. It was a Ubuntu 12.04 LTS machine, a single 32bit CPU core, 1GB of RAM which sometimes could be bumped up to 2GB[^3]. All in all not ideal for pretty much anything that happened after 2012. I vaguely remember that I had to build the shiny server from source because there is no 32bit package, which was *not* a fun thing to do, but alas, I went with it.  
@@ -62,7 +62,7 @@ Anyway, once I figured that out both my wordpress sites and my [h5ai](https://la
 
 ### R stuff! Shiny Server! Magic! {#r-stuff}
 
-Now that I have hardware [supported by shiny server](http://docs.rstudio.com/shiny-server/#ubuntu-12.04), setting things up is basically trivial. If you're curious about RStudio Server, you'll be happy to know that setting that up is basically the same process, so if you've [already set up an R installation](https://cran.rstudio.com/bin/linux/ubuntu/README.html), adding the RStudio Server is pretty much 2 lines of Shell.
+Now that I have hardware [supported by shiny server](https://docs.rstudio.com/shiny-server/#ubuntu-12.04), setting things up is basically trivial. If you're curious about RStudio Server, you'll be happy to know that setting that up is basically the same process, so if you've [already set up an R installation](https://cran.rstudio.com/bin/linux/ubuntu/README.html), adding the RStudio Server is pretty much 2 lines of Shell.
 
 The thing about an R installation is that you usually have multiple libraries[^6], and if your setup is similar to mine (R used by my own user and the shiny server), you may want to centralize you're installed R packages if you don't have any particular reason for allowing specific users specific packages.  
 In my case, I added the following line to `/etc/R/Renviron`:

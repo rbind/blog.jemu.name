@@ -21,11 +21,11 @@ So let's fix that.
 
 ## What do we have?
 We have the season posters, or at least the season boxset covers. Can't be too hard to get a color from those, right?  
-As you can see from the [Stargate SG-1 season posters on this page](http://trakt.tv/show/stargate-sg1), they mostly have distinct colors. Mostly. But alas, trakt apparently didn't get a consistent set of season posters, so I had to fill in the blanks via google image searches.  
+As you can see from the [Stargate SG-1 season posters on this page](https://trakt.tv/show/stargate-sg1), they mostly have distinct colors. Mostly. But alas, trakt apparently didn't get a consistent set of season posters, so I had to fill in the blanks via google image searches.  
 
 Like a fucking animal.
 
-Well then. Once I downloaded all the season images, I tried to figure out how to determine the average/most dominant/whatever color for each image. Thankfully I have a full blown [L3viathan](https://twitter.com/l3viathan2142) at my disposal, who pointed me at [imagemagick](http://imagemagick.org).  
+Well then. Once I downloaded all the season images, I tried to figure out how to determine the average/most dominant/whatever color for each image. Thankfully I have a full blown [L3viathan](https://twitter.com/l3viathan2142) at my disposal, who pointed me at [imagemagick](https://imagemagick.org).  
 And as it turned out, `convert file.png -filter box -resize 1x1! -format "%[pixel:u]" info:` actually did a decent job.  
 For the first season cover of *SG1*, the output looks like this: `srgb(57,91,121)` – And I can live with that.  
 Blatantly ignoring the leading 's', I used these values to get a list of rgb colors in R, starting by putting numbers in vectors in a list:
@@ -125,14 +125,11 @@ print(p)
 Piece of cake. Glorious, delicious cake.  
 As I pointed out before, the *SG1* season posters on trakt are inconsistent, so I'll use the *Game of Thrones* posters as an example. They have nice distinct colors, so that should do well.
 
-![](http://dump.quantenbrot.de/x6CJDvXL2PQ5kQrypbbuHr0.png)
-![](http://stuff.wurstmannberg.de/tRakt/GoT_seasons_ratings_boxplots.png)
+![](https://dump.quantenbrot.de/x6CJDvXL2PQ5kQrypbbuHr0.png)
+![](https://stuff.wurstmannberg.de/tRakt/GoT_seasons_ratings_boxplots.png)
 
 Well… Good enough.  
 I can still adjust how much actually gets added in the makeshift brightness™ adjustion step, but oh well.  
 At least it's automated now.  
 
 Of course, the trakt stuff requires the functions of [that thing I did last time](https://github.com/jemus42/tRakt).
-
-
-

@@ -13,7 +13,7 @@ And if you were like me, you probably liked it.
 
 Anyway, the true question is obviously not about the feasibility of long skirts in electronic rock music performances, but rather the inspiration behind the lyrics.  
 Before I start talking about the lyrics, I'd like to remind you that this song was originally released in 2004[^2], which makes me feel oddly… old.  
-I will be using [AZlyrics](http://www.azlyrics.com/lyrics/celldweller/switchback.html) as a source because I obviously can't be bothered to transcribe it myself, so there you go: 
+I will be using [AZlyrics](https://www.azlyrics.com/lyrics/celldweller/switchback.html) as a source because I obviously can't be bothered to transcribe it myself, so there you go: 
 
 
 > (Switch back)  

@@ -33,7 +33,7 @@ That topic will come up in the next section^[I ended up leaving that one out for
 Knitr is great. You can write a chunk of R code that produces text or image output, and knitr will take that output and stitch it below the code chunk in the resulting output file.  
 The thing is, by default plots are rendered using the `png` graphics device, while the file path to the image is encapsulated by a standard HTML `<img>` tag.  
 An `<img>` is all we need, right? So where's the problem?  
-Well have you heard about [lightbox](http://lokeshdhakar.com/projects/lightbox2/)? There are dozens of JavaScript libraries like this (or rather jQuery plugins, but you get the idea) -- they're nice little additions to any post with multiple images, because they allow you to easily view, zoom and browse multiple images. If you're used to data analysis projects like mine, you'll see your fair share of plot after plot blog posts, so it seemed only natural for me to use something like this for my blog.  
+Well have you heard about [lightbox](https://lokeshdhakar.com/projects/lightbox2/)? There are dozens of JavaScript libraries like this (or rather jQuery plugins, but you get the idea) -- they're nice little additions to any post with multiple images, because they allow you to easily view, zoom and browse multiple images. If you're used to data analysis projects like mine, you'll see your fair share of plot after plot blog posts, so it seemed only natural for me to use something like this for my blog.  
 After a little trial and error with lightbox2, I ended up using [fresco] for some minor usability reasons.  
 
 The way most these plugins seem to work is by either writing custom JavaScript (which I can't be bothered to do), or attach secondary attributes to the image via an encloding `<a href=…>` to trigger the JS code to fire up the box. Now I could have probably used JS to attach these attributes to the plot after the page has loaded, but that seemed clunky and potentially slow, or at least slower than just baking the stuff into the plot output.  
@@ -122,8 +122,8 @@ Also, don't even ask me about SVG[^svg].
 [blogdown]: https://github.com/rstudio/blogdown
 [blogdown_book]: https://bookdown.org/yihui/blogdown
 [bookdown]: https://github.com/rstudio/bookdown
-[RMarkdown]: http://rmarkdown.rstudio.com/
+[RMarkdown]: https://rmarkdown.rstudio.com/
 [knitr]: https://yihui.name/knitr/
 [Hugo]: https://gohugo.io
-[fresco]: http://www.frescojs.com/
+[fresco]: https://www.frescojs.com/
 [picturetag]: https://www.html5rocks.com/en/tutorials/responsive/picture-element/

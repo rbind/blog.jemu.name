@@ -17,7 +17,7 @@ editor_options:
 ---
 
 
-Anyone and their hamster is writing [{bookdown}](http://bookdown.org/yihui/bookdown) books these days, and that's arguably a good thing – because as long as everything renders nicely, it's a pretty easy way to get some knowledge out there.
+Anyone and their hamster is writing [{bookdown}](https://bookdown.org/yihui/bookdown) books these days, and that's arguably a good thing – because as long as everything renders nicely, it's a pretty easy way to get some knowledge out there.
 
 <!--more-->
 
@@ -128,7 +128,7 @@ Anyway, now travis is building your book in two formats, sequentially, and deplo
 ## But fonts though
 
 The thing about simple setups is that they only work for simple projects.  
-For me, things start breaking around the topic of fonts a lot. Maybe because I like [Fira Sans](https://gitlab.com/hrbrmstr/firasans) in my ggplot2 themes, or maybe because I like [TeX Gyre Pagella](http://www.gust.org.pl/projects/e-foundry/tex-gyre/index_html) in my PDFs.
+For me, things start breaking around the topic of fonts a lot. Maybe because I like [Fira Sans](https://gitlab.com/hrbrmstr/firasans) in my ggplot2 themes, or maybe because I like [TeX Gyre Pagella](https://www.gust.org.pl/projects/e-foundry/tex-gyre/index_html) in my PDFs.
 
 After diving into the old google rabbit hole of terrible font things, I ended up with this:
 
@@ -141,11 +141,11 @@ before_install:
     mkdir -p $HOME/.fonts
     # Check if fonts are present in cached .fonts dir, if not, download + install
     if [ ! -e $HOME/.fonts/gyre.zip ]; then
-     wget http://www.gust.org.pl/projects/e-foundry/tex-gyre/pagella/qpl2_501otf.zip -O $HOME/.fonts/gyre.zip
+     wget https://www.gust.org.pl/projects/e-foundry/tex-gyre/pagella/qpl2_501otf.zip -O $HOME/.fonts/gyre.zip
      unzip $HOME/.fonts/gyre.zip -d $HOME/.fonts/
     fi
     if [ ! -e $HOME/.fonts/gyreheros.zip ]; then
-     wget http://www.gust.org.pl/projects/e-foundry/tex-gyre/heros/qhv2.004otf.zip -O $HOME/.fonts/gyreheros.zip
+     wget https://www.gust.org.pl/projects/e-foundry/tex-gyre/heros/qhv2.004otf.zip -O $HOME/.fonts/gyreheros.zip
      unzip $HOME/.fonts/gyreheros.zip -d $HOME/.fonts/
     fi
     if [ ! -e $HOME/.fonts/fira.zip ]; then
@@ -170,7 +170,7 @@ Anyway, what I did here was, as the comments suggest:
 5. `fc-cache -fv` makes the new fonts in `.fonts` available to the system. `fc-list` is only there for debugging purposes so the lst of currently available fonts gets printed in the travis build log.
 
 And... it works. Neat.  
-This makes `TeX Gyre Pagella` and `TeX Gyre Heros` available to XeLaTeX, and adds [Fira](http://mozilla.github.io/Fira/) fonts for both XeLaTeX (where I use `Fira Mono` as a `monofont`) and ggplot2 plots, where I use `Fira Sans` via the aforementioned theme/package.  
+This makes `TeX Gyre Pagella` and `TeX Gyre Heros` available to XeLaTeX, and adds [Fira](https://mozilla.github.io/Fira/) fonts for both XeLaTeX (where I use `Fira Mono` as a `monofont`) and ggplot2 plots, where I use `Fira Sans` via the aforementioned theme/package.  
 
 Honestly, this should have been a script called `make-ze-font-stuff-be-good.sh` to keep `.travis.yml` more readable, but I actually prefer to deal with as much as possible in the travis config so it's easier to copy "the travis bits" to a new project than when you have to remember/copy multiple scripts.  
 I think.  

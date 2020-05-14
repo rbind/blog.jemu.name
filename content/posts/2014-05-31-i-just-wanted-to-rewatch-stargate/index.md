@@ -17,7 +17,7 @@ Well, at least I rewatched it twice so far.
 The full thing. 10 seasons.  
 Yep. Even those last two.  
 
-So this time, I wanted to cherry-pick the good™ episodes, and of course efficient cherry-picking in 2014 involves [R](http://www.r-project.org), the [trakt.tv API](http://trakt.tv/api-docs/show-episode-summary) and a bunch of plots.  
+So this time, I wanted to cherry-pick the good™ episodes, and of course efficient cherry-picking in 2014 involves [R](https://www.r-project.org), the [trakt.tv API](https://trakt.tv/api-docs/show-episode-summary) and a bunch of plots.  
 Because plots.
 
 ## Methodology™ <small>(i.e. "Stuff I did")</small>
@@ -26,7 +26,7 @@ Because plots.
 
 Over the past few months, I've grown more and more comfortable using R, spawning a bunch of projects with varying longevity. Naturally, I started this one by thinking "There's an API, JSON falls out, I can do JSON, shouldn't be that hard" and who would have guessed, it really wasn't.
 
-So, where do we start. I suggest you start by getting your API key, which you can see [here, if you're logged in](http://trakt.tv/api-docs/authentication).  
+So, where do we start. I suggest you start by getting your API key, which you can see [here, if you're logged in](https://trakt.tv/api-docs/authentication).  
 I suggest you put that in a .gitignore'd text file if you intend to publish anything you did, or at least you should know that I did, for it shall make the next stuff more understandable.  
 You can read you key from a, for example, JSON file and store it as an `option`, which seems to be the preferred way to store API keys or passwords, since R options don't linger around in your workspace. Or something. To be honest, I have no idea. I've seen it done this way on other projects and thought it was neat. There. I said it. Can we move on now? Okay.
 
@@ -42,7 +42,7 @@ options(trakt.apikey = fromJSON("key.json")$apikey) # File "key.json" contains a
 trakt <- list() # Creating the empty object
  
 trakt$show.summary <- function(target, apikey = getOption("trakt.apikey"), extended = NULL){
-  baseURL <- "http://api.trakt.tv/show/summaries.json/"
+  baseURL <- "https://api.trakt.tv/show/summaries.json/"
   url     <- paste0(baseURL, apikey, "/", target)
   if (!is.null(extended)){
     url   <- paste0(url, "/", extended)
@@ -53,7 +53,7 @@ trakt$show.summary <- function(target, apikey = getOption("trakt.apikey"), exten
 
 trakt$getSeasons <- function(query, dropspecials = TRUE, apikey = getOption("trakt.apikey")){
   require(plyr)
-  baseURL            <- "http://api.trakt.tv/show/seasons.json/"
+  baseURL            <- "https://api.trakt.tv/show/seasons.json/"
   query              <- paste0(baseURL, apikey, "/", query)
   show.seasons       <- fromJSON(query)
   if (dropspecials){
@@ -65,13 +65,13 @@ trakt$getSeasons <- function(query, dropspecials = TRUE, apikey = getOption("tra
 }
 ```
 
-That should be enough to get started. The `target`in these functions refers to either the TVDB ID of the show (I'll get to that) or the *slug*, i.e. that part of the show URL that's basically the name, i.e. for `http://trakt.tv/show/stargate-sg1` the slug would be `stargate-sg1`. While that's easy to find and remember, I rather implemented the search API to get basic show info and extract the TVDB ID from that for further use, like this: 
+That should be enough to get started. The `target`in these functions refers to either the TVDB ID of the show (I'll get to that) or the *slug*, i.e. that part of the show URL that's basically the name, i.e. for `https://trakt.tv/show/stargate-sg1` the slug would be `stargate-sg1`. While that's easy to find and remember, I rather implemented the search API to get basic show info and extract the TVDB ID from that for further use, like this: 
 
 ```r
 trakt$search <- function(query, apikey = getOption("trakt.apikey"), limit = 1){
   query    <- as.character(query) # Just to make sure…
   query    <- gsub(" ", "+", query) # _Not_ perfect URL normalization
-  url      <- paste0("http://api.trakt.tv/search/shows.json/", apikey, "?query=")
+  url      <- paste0("https://api.trakt.tv/search/shows.json/", apikey, "?query=")
   query    <- paste0(url, query, "&limit=", limit)
   response <- fromJSON(query)
   return(response)
@@ -136,8 +136,8 @@ initializeEpisodes <- function(show.seasons){
 
 trakt$getEpisodeData <- function(query, show.episodes, apikey = getOption("trakt.apikey"), dropunaired = TRUE){
   require(lubridate)
-  # Episode summary API http://trakt.tv/api-docs/show-episode-summary
-  baseURL <- "http://api.trakt.tv/show/episode/summary.json/"
+  # Episode summary API https://trakt.tv/api-docs/show-episode-summary
+  baseURL <- "https://api.trakt.tv/show/episode/summary.json/"
   
   # Making the API calls and storing the responses as parts of the episode set
   for (epnum in show.episodes$epnum){
@@ -197,7 +197,7 @@ SG1$seasons$season  <- factor(SG1$seasons$season,
 
 ```
 
-So, through the power that is [plyr](http://plyr.had.co.nz/), we used `SG1$episodes`to append extra columns to `SG$seasons`, namely `avg.rating.season`(average episode rating of that season), `rating.sd`(standard deviation accompanying that average), `top.rating.episode`(the highest episode rating of that season), and `lowest.rating.epiusode`(you guessed it).  
+So, through the power that is [plyr](https://plyr.had.co.nz/), we used `SG1$episodes`to append extra columns to `SG$seasons`, namely `avg.rating.season`(average episode rating of that season), `rating.sd`(standard deviation accompanying that average), `top.rating.episode`(the highest episode rating of that season), and `lowest.rating.epiusode`(you guessed it).  
 Wheee.
 
 So, now back to my original plan: Cherry-picking episodes to watch.  
@@ -266,7 +266,7 @@ themes <- list(theme(axis.text  = element_text(size = 14, colour = "black")),
                theme(legend.title = element_text(size = 14)),
                theme(axis.title.y = element_text(size = rel(1.5), angle = 90, vjust = .9)),
                theme(axis.title.x = element_text(size = rel(1.5), vjust = -.5)))
-# see http://docs.ggplot2.org/current/theme.html
+# see https://docs.ggplot2.org/current/theme.html
 
 #### Color scale for Stargate SG-1 seasons ####
 # Thanks to @L3viathan2142 for 'convert file.png -filter box -resize 1x1! -format "%[pixel:u]" info:'
@@ -300,7 +300,7 @@ p <- p + themes
 ```
 
 And that gives you the plot from the post title.  
-I did a whole bunch of other plots which you can find [here](http://stuff.wurstmannberg.de/tRakt/)
+I did a whole bunch of other plots which you can find [here](https://stuff.wurstmannberg.de/tRakt/)
 and look at how I made them [here](https://github.com/jemus42/tRakt).  
 
 It's fun.
@@ -345,7 +345,7 @@ names(house)
 
 You can use these new datasets pretty much interchangeably with the SG1 set, so you can plug them in any existing plotting code, adjust the labels and whatever else comes to mind, and you're good to go.
 
-The next step would be to put that stuff in a [shiny](http://shiny.rstudio.com/) app, but before I can do that I need to figure out how to make the plots web-friendly (i.e. labeling dots), the interactivity side of that should be sufficiently covered by shiny itself, and maby [ggvis](https://github.com/rstudio/ggvis/), but Idunno, I kind of have other stuff to do these days.  
+The next step would be to put that stuff in a [shiny](https://shiny.rstudio.com/) app, but before I can do that I need to figure out how to make the plots web-friendly (i.e. labeling dots), the interactivity side of that should be sufficiently covered by shiny itself, and maby [ggvis](https://github.com/rstudio/ggvis/), but Idunno, I kind of have other stuff to do these days.  
 Not that this has ever stopped me from procrastinating, but oh well, you know the drill. 
 
 ## Conclusion

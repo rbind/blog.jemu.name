@@ -13,7 +13,7 @@ Here's a list of stuff I work(ed) on to remind myself to get to them again soone
 
 ### R Packages
 
-- [tRakt](https://github.com/jemus42/tRakt) ([trakt.tv](http://trakt.tv/) API wrapper)
+- [tRakt](https://github.com/jemus42/tRakt) ([trakt.tv](https://trakt.tv/) API wrapper)
 - [tauturri](https://github.com/jemus42/tauturri) ([Tautulli (formerly PlexPy)](https://tautulli.com/) API wrapper)
 - [speedrunr](https://github.com/jemus42/speedrunr) ([speedrun.com](https://www.speedrun.com/) API wrapper)
 

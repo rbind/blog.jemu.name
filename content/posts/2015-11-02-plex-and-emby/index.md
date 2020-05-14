@@ -34,7 +34,7 @@ The idea is the following: You have a shitton of media lying around and want to 
 When your server is running, you can use their browser-based interfaces either locally or through their respective web-endpoints (both Plex and Emby have shortcuts to their webapps on their websites when you're logged in). From that, you can manage, organize and view your media. The device you're watching on doesn't have to support the codec, container or whatever of the source media, the media server is a good friend and transcodes your media for you if necessary, according to your settings. You can also adjust the streaming quality if your connection is embarrassingly German.   
 In case you have a dedicated media center machine lying around, you'll probably want to install their Home Theater Apps. These are native applications that can be controlled with a remote, and have some nifty settings available like optical audio out and what have you. I don't want to go into too that too far because I don't want the audiohpiles making fun of me.
 
-At this point I should point out that [Emby doesn't have such an app for OS X](http://emby.media/downloads/emby-theater/), so I never used their media center and can only speak for [Plex's Home Theater app](https://plex.tv/downloads#plex-pht), which I like a lot. It's also controllable from their Android app, pretty similar to how chromecast playing works.  
+At this point I should point out that [Emby doesn't have such an app for OS X](https://emby.media/downloads/emby-theater/), so I never used their media center and can only speak for [Plex's Home Theater app](https://plex.tv/downloads#plex-pht), which I like a lot. It's also controllable from their Android app, pretty similar to how chromecast playing works.  
 
 And that brings us to Android. Once again, it should be noted that I don't own an iOS device and have no idea how the iOS versions of their apps are doing. I assume they do fine.  
 Bottom line is this: Plex' app is very nicely designed, material themed and functioning very reliably. 
@@ -45,7 +45,7 @@ The previous sentence is pretty much the TL;DR of this whole blogpost, by the wa
 
 ## My setup
 
-I'm running the current stable release of [FreeNAS](http://freenas.org) on this [HP MicroServer](http://n40l.wikia.com/wiki/HP_MicroServer_N40L_Wiki). I have installed Plex and Emby in FreeBSD jails, so they're caged from the main OS. Also, I'm running a ZFS storage pool where all my media is located, which is mounted in the respective jails. Note that I don't use the plugins provided by FreeNAS anymore, because they were causing more trouble than benefit. I set up "regular" jails through the FreeNAS webinterface, `ssh`'d into at, and set stuff up that way. 
+I'm running the current stable release of [FreeNAS](https://freenas.org) on this [HP MicroServer](https://n40l.wikia.com/wiki/HP_MicroServer_N40L_Wiki). I have installed Plex and Emby in FreeBSD jails, so they're caged from the main OS. Also, I'm running a ZFS storage pool where all my media is located, which is mounted in the respective jails. Note that I don't use the plugins provided by FreeNAS anymore, because they were causing more trouble than benefit. I set up "regular" jails through the FreeNAS webinterface, `ssh`'d into at, and set stuff up that way. 
 
 To view stuff, I open the Plex app on my phone, choose the item, click the chromecast button, my tv chimes to life, and stuff plays. Then the trakt.tv plugin scrobbles peacefully, and trakt remembers my watched progress for me, which is also synced with Plex. And Emby.  
 Emby, meanwhile, monitors a folder on my drive where… things are incoming. It then autosorts them in their respective folders, where the auto-updating Plex library picks it up.
@@ -88,11 +88,11 @@ Plex has the really nice Plex Home Theater app for OS X and many other platforms
 
 ### Are there mobile apps?
 
-<!--{% img left http://dump.jemu.name/x1QZR.png 150px title:'Plex for Android' %} {% img left http://dump.jemu.name/e24wG.png 150px title:'Plex for Android – Episode view' %}-->
+<!--{% img left https://dump.jemu.name/x1QZR.png 150px title:'Plex for Android' %} {% img left https://dump.jemu.name/e24wG.png 150px title:'Plex for Android – Episode view' %}-->
 
 Plex has a really nice looking Android app which just adds to the overall polished look of Plex. Emby also has an Android app that, in my opinion, does not look as nice but still works well enough, even though I'm a beta tester and often experience hiccups, but I can't really blame beta software for being beta. It should be noted that Emby's Android app is more powerful as far as server control is concerned, like plugins configuration and an overview of the auto-organization queue. The Emby app feels like an androidified version of the regular Emby webinterface, while the Plex app feels like a separate entity.
 
-{% img right http://dump.jemu.name/1cDYg.png 150px title:'Emby for Android' %} {% img right http://dump.jemu.name/BAJXP.png 150px title:'Emby for Android – Episode view' %}
+{% img right https://dump.jemu.name/1cDYg.png 150px title:'Emby for Android' %} {% img right https://dump.jemu.name/BAJXP.png 150px title:'Emby for Android – Episode view' %}
 
 As for iOS: Yeah, but I don't have any iOS devices.
 

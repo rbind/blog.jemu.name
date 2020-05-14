@@ -11,7 +11,7 @@ title: The Bottomless Pit of Educational Youtube
 ---
 
 Youtube is great.  
-Not only is it a great source of entertainment, it's also a great way to drown out the ever growing numbness accompanying the vague, yet menacing vo[i](http://www.welcometonightvale.com/)d slowly encompassing everything that is and ever will be.  
+Not only is it a great source of entertainment, it's also a great way to drown out the ever growing numbness accompanying the vague, yet menacing vo[i](https://www.welcometonightvale.com/)d slowly encompassing everything that is and ever will be.  
 Also, it can be extraordinarily educational if you stumble upon the right channels.
 
 I want to give you some recommendations on where to start your dive into the endless pit of stuff to watch, but as I prepare a mental list, I realize that I have *no* idea how to group or organize that list. And that's why I'll just start somehwere and see how it goes, so there's that. 
@@ -67,7 +67,7 @@ I'm not done watching all of his videos, but I recently watched through his [Ess
 
 ### [CGPGrey][grey]
 
-Grey appears with Brady on [Hello Internet](http://www.hellointernet.fm/)[^6], but it's a little known fact that he also has this really small-time Youtube channel few people know about.  
+Grey appears with Brady on [Hello Internet](https://www.hellointernet.fm/)[^6], but it's a little known fact that he also has this really small-time Youtube channel few people know about.  
 In my mind, Grey is the archetypical *"person explains and discusses interesting topic using animations"*-Youtuber, and while his upload frequency is excrutatingly low, every single one of his videos is pretty much a guaranteed hit in some way or another.  
 He's not specialized to a single discipline like the aforementioned math channels, but rather talks about a variety of topics. I personally enjoyed his videos on [voting is done suboptimally in many places](https://www.youtube.com/watch?v=s7tWHJfhiyo). There's a lot about politics, geography and history, but he also likes talking about the [future of humanity in the face of automization](https://www.youtube.com/watch?v=7Pq-S557XQU) or [psychological phenomena](https://www.youtube.com/watch?v=O2hO4_UEe-4).   
 I could go in more detail, but his videos are short enough for you to just binge through them in an afternoon or alternatively appropriate timespan in the context of your biorhythm.  
@@ -137,7 +137,7 @@ By now you should have a decent enough primer to go exploring for yourself. Don'
 <!--Links-->
 <!--Brady-->
 [grey]: https://www.youtube.com/channel/UC2C_jShtL725hvbm1arSV9w
-[bradysite]: http://www.bradyharan.com/
+[bradysite]: https://www.bradyharan.com/
 [numberphile]: https://www.youtube.com/user/numberphile
 [sixtysym]: https://www.youtube.com/user/sixtysymbols
 [periodic]: https://www.youtube.com/user/periodicvideos

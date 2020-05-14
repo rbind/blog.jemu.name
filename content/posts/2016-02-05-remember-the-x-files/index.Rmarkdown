@@ -36,7 +36,7 @@ if (file.exists("xfiles.rds")) xfiles <- readRDS("xfiles.rds")
 ```
 
 With the return of the X-Files in form of a miniseries, I was tempted to catch up on the original run of the show, since I had only seen the occasional episode in the late 90's or early 00's (my mom was a big fan).
-Being me, I already looked up the X-Files episodes [ratings on trakt.tv](http://trakt.jemu.name) to see if there's something interesting about them, but I didn't think there was. However, when I listened to the [Incomparable talking about the show](https://www.theincomparable.com/theincomparable/284/index.php), I learned that apparently X-Files can be divided into the "myth arc" and regular, more stand-alone episodes. That's when I realized I need to get my tv show analysis boots on and try to see what I could do.
+Being me, I already looked up the X-Files episodes [ratings on trakt.tv](https://trakt.jemu.name) to see if there's something interesting about them, but I didn't think there was. However, when I listened to the [Incomparable talking about the show](https://www.theincomparable.com/theincomparable/284/index.php), I learned that apparently X-Files can be divided into the "myth arc" and regular, more stand-alone episodes. That's when I realized I need to get my tv show analysis boots on and try to see what I could do.
 To my delight, I noticed that the [appropriate Wikipedia article](https://en.wikipedia.org/wiki/List_of_The_X-Files_episodes) neatly marks the myth arc episodes, ready for plucking.
 
 And then I started plucking.

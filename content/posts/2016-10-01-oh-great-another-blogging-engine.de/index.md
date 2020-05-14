@@ -21,7 +21,7 @@ Natürlich hätte ich die alle irgendwie fixen können, aber das hätte zum Eine
 
 Ich will einen Blog führen, aber mit octopress/jekyll fühlte es sich eher so an, als würde ich ein stetig wachsenden repository an code maintainen müssen. Ich will nicht alte posts auf deprecated tags untersuchen müssen.  
 
-Naja, jedenfalls sieht es nicht so aus als würde sich bei octopress in absehbarer Zeit irgendwas tun, deswegen habe ich beschlossen den ganzen Scheiß endgültig sein zu lassen und mich [hugo](http://gohugo.io/) zu widmen.  
+Naja, jedenfalls sieht es nicht so aus als würde sich bei octopress in absehbarer Zeit irgendwas tun, deswegen habe ich beschlossen den ganzen Scheiß endgültig sein zu lassen und mich [hugo](https://gohugo.io/) zu widmen.  
 Hugo frisst auch Markdown und spuckt statisches HTML aus, es kann auch template partials, es ist (für meinen Geschmack eigentlich viel zu) customizable, aber es funktioniert einfach.  
 Es ist einfach nur ein in Go geschriebenes binary, es hat keine external dependecies, ich muss keine externen libraries aktuell halten oder in einem gegenseitig kompatiblen Zustand halten, ich muss einfach nur `hugo` in die Shell klöppeln und BÄM, Blog.  
 Derzeit arbeite ich daran meine alten Blogposts (hoffentlich zum letzten Mal) zu überarbeiten um sie sauber von hugo rendern zu lassen, aber so insgesamt kommt mir das ganz brauchbar vor.  

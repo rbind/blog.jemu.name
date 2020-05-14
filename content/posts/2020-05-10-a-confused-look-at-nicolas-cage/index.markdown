@@ -27,7 +27,7 @@ editor_options:
 
 
 The other day I watched [Mandy (2018)](https://trakt.tv/movies/mandy-2018), a confusing Nicolas Cage movie that feels like an odd fever dream.  
-A few weeks ago, I watched [Color Out of Space (2020)](https://trakt.tv/movies/color-out-of-space-2020), a confusing Nicolas Cage movie that feels like an odd fever dream, based on the [Lovecraft story of the same name](http://www.hplovecraft.com/writings/texts/fiction/cs.aspx) which I read a couple weeks prior.  
+A few weeks ago, I watched [Color Out of Space (2020)](https://trakt.tv/movies/color-out-of-space-2020), a confusing Nicolas Cage movie that feels like an odd fever dream, based on the [Lovecraft story of the same name](https://www.hplovecraft.com/writings/texts/fiction/cs.aspx) which I read a couple weeks prior.  
 So... yeah. That's why Nic Cage has been on my mind a little lately.
 
 Additionally, I've been trying to fiddle around with {ggplot2} themes a little more, because relying on [{hrbrthemes}](https://hrbrmstr.github.io/hrbrthemes/index.html) alone felt a little unsatisfying, and I thought it was time to make a theme that fits trakt.tv reasonably well.  
