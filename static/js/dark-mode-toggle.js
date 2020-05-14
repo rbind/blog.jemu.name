@@ -19,7 +19,7 @@ darkModeMediaQuery.addListener((event) => {
 });
 
 function setTheme(theme) {
-  console.log("setTheme")
+  // console.log("setTheme")
 
   if (theme === "dark") {
     localStorage.setItem("colorscheme", "dark");

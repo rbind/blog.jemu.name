@@ -1,3 +1,4 @@
+// Initialize littlefoot.js
 littlefoot.default({
   activateOnHover: false,
   dismissDelay: 50,
