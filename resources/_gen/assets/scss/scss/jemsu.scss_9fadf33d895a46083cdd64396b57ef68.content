@@ -1,0 +1,1060 @@
+/* Regular text */
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;700&display=swap");
+body {
+  font-family: "Source Serif Pro", Georgia, serif;
+  font-weight: 400; }
+
+h1 small,
+h2 small,
+h3 small,
+h4 small {
+  font-size: 60%; }
+
+/* Links */
+a {
+  font-weight: 400; }
+
+/* inline-code */
+h1 code,
+h2 code,
+h3 code,
+h4 code {
+  font-size: inherit; }
+
+/* Littlefoot */
+div.littlefoot-footnote__wrapper > div > p {
+  color: #212121; }
+
+/* Mathjax fixes in dark/light mode because in Rmd it's enclosed in <code> */
+/* Slightly compacter tables */
+table th, table td {
+  padding: 1.2rem; }
+
+table caption {
+  padding-bottom: 1rem; }
+
+/* Sans-font for headings */
+table th {
+  font-family: Lato, Helvetica, sans-serif; }
+
+/* Centered tables by default */
+table {
+  margin-left: auto;
+  margin-right: auto; }
+
+/* Turn a dark plot into a light plot (for testing purposes) */
+/* Dark Theme */
+body.colorscheme-dark {
+  /* Other */
+  /* Error */
+  /* LineTableTD */
+  /* LineTable */
+  /* LineHighlight */
+  /* LineNumbersTable */
+  /* LineNumbers */
+  /* KeywordNamespace */
+  /* NameTag */
+  /* Literal */
+  /* LiteralNumber */
+  /* LiteralNumberBin */
+  /* LiteralNumberFloat */
+  /* LiteralNumberHex */
+  /* LiteralNumberInteger */
+  /* LiteralNumberIntegerLong */
+  /* LiteralNumberOct */
+  /* OperatorWord */
+  /* Comment */
+  /* CommentHashbang */
+  /* CommentMultiline */
+  /* CommentSingle */
+  /* CommentSpecial */
+  /* CommentPreproc */
+  /* CommentPreprocFile */
+  /* Generic */
+  /* GenericEmph */
+  /* GenericError */
+  /* GenericHeading */
+  /* GenericOutput */
+  /* GenericPrompt */
+  /* GenericStrong */
+  /* GenericTraceback */
+  /* GenericUnderline */
+  /* TextWhitespace */
+  /* Background */
+  /* LineNumbersTable */
+  /* LineNumbers */
+  /* Keyword */
+  /* KeywordConstant */
+  /* KeywordDeclaration */
+  /* KeywordPseudo */
+  /* KeywordReserved */
+  /* KeywordType */
+  /* Name */
+  /* NameAttribute */
+  /* NameBuiltin */
+  /* NameBuiltinPseudo */
+  /* NameClass */
+  /* NameConstant */
+  /* NameDecorator */
+  /* NameEntity */
+  /* NameException */
+  /* NameFunction */
+  /* NameFunctionMagic */
+  /* NameLabel */
+  /* NameNamespace */
+  /* NameOther */
+  /* NameProperty */
+  /* NameVariable */
+  /* NameVariableClass */
+  /* NameVariableGlobal */
+  /* NameVariableInstance */
+  /* NameVariableMagic */
+  /* LiteralDate */
+  /* LiteralString */
+  /* LiteralStringAffix */
+  /* LiteralStringBacktick */
+  /* LiteralStringChar */
+  /* LiteralStringDelimiter */
+  /* LiteralStringDoc */
+  /* LiteralStringDouble */
+  /* LiteralStringEscape */
+  /* LiteralStringHeredoc */
+  /* LiteralStringInterpol */
+  /* LiteralStringOther */
+  /* LiteralStringRegex */
+  /* LiteralStringSingle */
+  /* LiteralStringSymbol */
+  /* Operator */
+  /* Punctuation */
+  /* GenericDeleted */
+  /* GenericInserted */
+  /* GenericSubheading */ }
+  body.colorscheme-dark .chroma .err {
+    color: #960050;
+    background-color: #1e0010; }
+  body.colorscheme-dark .chroma .lntd {
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    border: 0; }
+  body.colorscheme-dark .chroma .lntable {
+    border-spacing: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    width: auto;
+    overflow: auto;
+    display: block; }
+  body.colorscheme-dark .chroma .hl {
+    display: block;
+    width: 100%;
+    background-color: #ffffcc; }
+  body.colorscheme-dark .chroma .lnt {
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: #7f7f7f; }
+  body.colorscheme-dark .chroma .ln {
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: #7f7f7f; }
+  body.colorscheme-dark .chroma .kn {
+    color: #f92672; }
+  body.colorscheme-dark .chroma .nt {
+    color: #f92672; }
+  body.colorscheme-dark .chroma .l {
+    color: #ae81ff; }
+  body.colorscheme-dark .chroma .m {
+    color: #ae81ff; }
+  body.colorscheme-dark .chroma .mb {
+    color: #ae81ff; }
+  body.colorscheme-dark .chroma .mf {
+    color: #ae81ff; }
+  body.colorscheme-dark .chroma .mh {
+    color: #ae81ff; }
+  body.colorscheme-dark .chroma .mi {
+    color: #ae81ff; }
+  body.colorscheme-dark .chroma .il {
+    color: #ae81ff; }
+  body.colorscheme-dark .chroma .mo {
+    color: #ae81ff; }
+  body.colorscheme-dark .chroma .ow {
+    color: #f92672; }
+  body.colorscheme-dark .chroma .c {
+    color: #75715e; }
+  body.colorscheme-dark .chroma .ch {
+    color: #75715e; }
+  body.colorscheme-dark .chroma .cm {
+    color: #75715e; }
+  body.colorscheme-dark .chroma .c1 {
+    color: #75715e; }
+  body.colorscheme-dark .chroma .cs {
+    color: #75715e; }
+  body.colorscheme-dark .chroma .cp {
+    color: #75715e; }
+  body.colorscheme-dark .chroma .cpf {
+    color: #75715e; }
+  body.colorscheme-dark .chroma .ge {
+    font-style: italic; }
+  body.colorscheme-dark .chroma .gs {
+    font-weight: bold; }
+  body.colorscheme-dark .chroma {
+    color: #f8f8f2;
+    background-color: #1D1D1D; }
+  body.colorscheme-dark .chroma .lnt {
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: #7f7f7f; }
+  body.colorscheme-dark .chroma .ln {
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: #7f7f7f; }
+  body.colorscheme-dark .chroma .k {
+    color: #66d9ef; }
+  body.colorscheme-dark .chroma .kc {
+    color: #66d9ef; }
+  body.colorscheme-dark .chroma .kd {
+    color: #66d9ef; }
+  body.colorscheme-dark .chroma .kp {
+    color: #66d9ef; }
+  body.colorscheme-dark .chroma .kr {
+    color: #66d9ef; }
+  body.colorscheme-dark .chroma .kt {
+    color: #66d9ef; }
+  body.colorscheme-dark .chroma .na {
+    color: #a6e22e; }
+  body.colorscheme-dark .chroma .nc {
+    color: #a6e22e; }
+  body.colorscheme-dark .chroma .no {
+    color: #66d9ef; }
+  body.colorscheme-dark .chroma .nd {
+    color: #a6e22e; }
+  body.colorscheme-dark .chroma .ne {
+    color: #a6e22e; }
+  body.colorscheme-dark .chroma .nf {
+    color: #a6e22e; }
+  body.colorscheme-dark .chroma .nx {
+    color: #a6e22e; }
+  body.colorscheme-dark .chroma .ld {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .s {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .sa {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .sb {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .sc {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .dl {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .sd {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .s2 {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .se {
+    color: #ae81ff; }
+  body.colorscheme-dark .chroma .sh {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .si {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .sx {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .sr {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .s1 {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .ss {
+    color: #e6db74; }
+  body.colorscheme-dark .chroma .o {
+    color: #fb2976; }
+  body.colorscheme-dark .chroma .gd {
+    color: #f92672; }
+  body.colorscheme-dark .chroma .gi {
+    color: #a6e22e; }
+  body.colorscheme-dark .chroma .gu {
+    color: #75715e; }
+  body.colorscheme-dark mjx-container {
+    background-color: #212121;
+    border: 0;
+    color: #dadada; }
+  body.colorscheme-dark table th, body.colorscheme-dark table td {
+    border: 1px solid #dadada; }
+  body.colorscheme-dark table tr:first-child th {
+    border-top: 0; }
+  body.colorscheme-dark table tr:last-child td {
+    border-bottom: 0; }
+  body.colorscheme-dark table tr td {
+    border-bottom: 0; }
+  body.colorscheme-dark table tr td:first-child,
+  body.colorscheme-dark table tr th:first-child {
+    border-left: 0; }
+  body.colorscheme-dark table tr td:last-child,
+  body.colorscheme-dark table tr th:last-child {
+    border-right: 0; }
+  body.colorscheme-dark code {
+    background-color: #212121; }
+  body.colorscheme-dark .littlefoot-footnote__button {
+    color: #dadada; }
+
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto {
+    /* Other */
+    /* Error */
+    /* LineTableTD */
+    /* LineTable */
+    /* LineHighlight */
+    /* LineNumbersTable */
+    /* LineNumbers */
+    /* KeywordNamespace */
+    /* NameTag */
+    /* Literal */
+    /* LiteralNumber */
+    /* LiteralNumberBin */
+    /* LiteralNumberFloat */
+    /* LiteralNumberHex */
+    /* LiteralNumberInteger */
+    /* LiteralNumberIntegerLong */
+    /* LiteralNumberOct */
+    /* OperatorWord */
+    /* Comment */
+    /* CommentHashbang */
+    /* CommentMultiline */
+    /* CommentSingle */
+    /* CommentSpecial */
+    /* CommentPreproc */
+    /* CommentPreprocFile */
+    /* Generic */
+    /* GenericEmph */
+    /* GenericError */
+    /* GenericHeading */
+    /* GenericOutput */
+    /* GenericPrompt */
+    /* GenericStrong */
+    /* GenericTraceback */
+    /* GenericUnderline */
+    /* TextWhitespace */
+    /* Background */
+    /* LineNumbersTable */
+    /* LineNumbers */
+    /* Keyword */
+    /* KeywordConstant */
+    /* KeywordDeclaration */
+    /* KeywordPseudo */
+    /* KeywordReserved */
+    /* KeywordType */
+    /* Name */
+    /* NameAttribute */
+    /* NameBuiltin */
+    /* NameBuiltinPseudo */
+    /* NameClass */
+    /* NameConstant */
+    /* NameDecorator */
+    /* NameEntity */
+    /* NameException */
+    /* NameFunction */
+    /* NameFunctionMagic */
+    /* NameLabel */
+    /* NameNamespace */
+    /* NameOther */
+    /* NameProperty */
+    /* NameVariable */
+    /* NameVariableClass */
+    /* NameVariableGlobal */
+    /* NameVariableInstance */
+    /* NameVariableMagic */
+    /* LiteralDate */
+    /* LiteralString */
+    /* LiteralStringAffix */
+    /* LiteralStringBacktick */
+    /* LiteralStringChar */
+    /* LiteralStringDelimiter */
+    /* LiteralStringDoc */
+    /* LiteralStringDouble */
+    /* LiteralStringEscape */
+    /* LiteralStringHeredoc */
+    /* LiteralStringInterpol */
+    /* LiteralStringOther */
+    /* LiteralStringRegex */
+    /* LiteralStringSingle */
+    /* LiteralStringSymbol */
+    /* Operator */
+    /* Punctuation */
+    /* GenericDeleted */
+    /* GenericInserted */
+    /* GenericSubheading */ }
+    body.colorscheme-auto .chroma .err {
+      color: #960050;
+      background-color: #1e0010; }
+    body.colorscheme-auto .chroma .lntd {
+      vertical-align: top;
+      padding: 0;
+      margin: 0;
+      border: 0; }
+    body.colorscheme-auto .chroma .lntable {
+      border-spacing: 0;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      width: auto;
+      overflow: auto;
+      display: block; }
+    body.colorscheme-auto .chroma .hl {
+      display: block;
+      width: 100%;
+      background-color: #ffffcc; }
+    body.colorscheme-auto .chroma .lnt {
+      margin-right: 0.4em;
+      padding: 0 0.4em 0 0.4em;
+      color: #7f7f7f; }
+    body.colorscheme-auto .chroma .ln {
+      margin-right: 0.4em;
+      padding: 0 0.4em 0 0.4em;
+      color: #7f7f7f; }
+    body.colorscheme-auto .chroma .kn {
+      color: #f92672; }
+    body.colorscheme-auto .chroma .nt {
+      color: #f92672; }
+    body.colorscheme-auto .chroma .l {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .m {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .mb {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .mf {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .mh {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .mi {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .il {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .mo {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .ow {
+      color: #f92672; }
+    body.colorscheme-auto .chroma .c {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .ch {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .cm {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .c1 {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .cs {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .cp {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .cpf {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .ge {
+      font-style: italic; }
+    body.colorscheme-auto .chroma .gs {
+      font-weight: bold; }
+    body.colorscheme-auto .chroma {
+      color: #f8f8f2;
+      background-color: #1D1D1D; }
+    body.colorscheme-auto .chroma .lnt {
+      margin-right: 0.4em;
+      padding: 0 0.4em 0 0.4em;
+      color: #7f7f7f; }
+    body.colorscheme-auto .chroma .ln {
+      margin-right: 0.4em;
+      padding: 0 0.4em 0 0.4em;
+      color: #7f7f7f; }
+    body.colorscheme-auto .chroma .k {
+      color: #66d9ef; }
+    body.colorscheme-auto .chroma .kc {
+      color: #66d9ef; }
+    body.colorscheme-auto .chroma .kd {
+      color: #66d9ef; }
+    body.colorscheme-auto .chroma .kp {
+      color: #66d9ef; }
+    body.colorscheme-auto .chroma .kr {
+      color: #66d9ef; }
+    body.colorscheme-auto .chroma .kt {
+      color: #66d9ef; }
+    body.colorscheme-auto .chroma .na {
+      color: #a6e22e; }
+    body.colorscheme-auto .chroma .nc {
+      color: #a6e22e; }
+    body.colorscheme-auto .chroma .no {
+      color: #66d9ef; }
+    body.colorscheme-auto .chroma .nd {
+      color: #a6e22e; }
+    body.colorscheme-auto .chroma .ne {
+      color: #a6e22e; }
+    body.colorscheme-auto .chroma .nf {
+      color: #a6e22e; }
+    body.colorscheme-auto .chroma .nx {
+      color: #a6e22e; }
+    body.colorscheme-auto .chroma .ld {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .s {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .sa {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .sb {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .sc {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .dl {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .sd {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .s2 {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .se {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .sh {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .si {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .sx {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .sr {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .s1 {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .ss {
+      color: #e6db74; }
+    body.colorscheme-auto .chroma .o {
+      color: #fb2976; }
+    body.colorscheme-auto .chroma .gd {
+      color: #f92672; }
+    body.colorscheme-auto .chroma .gi {
+      color: #a6e22e; }
+    body.colorscheme-auto .chroma .gu {
+      color: #75715e; }
+    body.colorscheme-auto mjx-container {
+      background-color: #212121;
+      border: 0;
+      color: #dadada; }
+    body.colorscheme-auto table th, body.colorscheme-auto table td {
+      border: 1px solid #dadada; }
+    body.colorscheme-auto table tr:first-child th {
+      border-top: 0; }
+    body.colorscheme-auto table tr:last-child td {
+      border-bottom: 0; }
+    body.colorscheme-auto table tr td {
+      border-bottom: 0; }
+    body.colorscheme-auto table tr td:first-child,
+    body.colorscheme-auto table tr th:first-child {
+      border-left: 0; }
+    body.colorscheme-auto table tr td:last-child,
+    body.colorscheme-auto table tr th:last-child {
+      border-right: 0; }
+    body.colorscheme-auto code {
+      background-color: #212121; }
+    body.colorscheme-auto .littlefoot-footnote__button {
+      color: #dadada; } }
+
+/* Light theme */
+body.colorscheme-light {
+  /* Other */
+  /* Error */
+  /* LineTableTD */
+  /* LineTable */
+  /* LineHighlight */
+  /* LineNumbersTable */
+  /* LineNumbers */
+  /* KeywordNamespace */
+  /* NameTag */
+  /* Literal */
+  /* LiteralNumber */
+  /* LiteralNumberBin */
+  /* LiteralNumberFloat */
+  /* LiteralNumberHex */
+  /* LiteralNumberInteger */
+  /* LiteralNumberIntegerLong */
+  /* LiteralNumberOct */
+  /* OperatorWord */
+  /* Comment */
+  /* CommentHashbang */
+  /* CommentMultiline */
+  /* CommentSingle */
+  /* CommentSpecial */
+  /* CommentPreproc */
+  /* CommentPreprocFile */
+  /* Generic */
+  /* GenericEmph */
+  /* GenericError */
+  /* GenericHeading */
+  /* GenericOutput */
+  /* GenericPrompt */
+  /* GenericStrong */
+  /* GenericTraceback */
+  /* GenericUnderline */
+  /* TextWhitespace */
+  /* Background */
+  /* LineNumbersTable */
+  /* LineNumbers */
+  /* Keyword */
+  /* KeywordConstant */
+  /* KeywordDeclaration */
+  /* KeywordPseudo */
+  /* KeywordReserved */
+  /* KeywordType */
+  /* Name */
+  /* NameAttribute */
+  /* NameBuiltin */
+  /* NameBuiltinPseudo */
+  /* NameClass */
+  /* NameConstant */
+  /* NameDecorator */
+  /* NameEntity */
+  /* NameException */
+  /* NameFunction */
+  /* NameFunctionMagic */
+  /* NameLabel */
+  /* NameNamespace */
+  /* NameOther */
+  /* NameProperty */
+  /* NameVariable */
+  /* NameVariableClass */
+  /* NameVariableGlobal */
+  /* NameVariableInstance */
+  /* NameVariableMagic */
+  /* LiteralDate */
+  /* LiteralString */
+  /* LiteralStringAffix */
+  /* LiteralStringBacktick */
+  /* LiteralStringChar */
+  /* LiteralStringDelimiter */
+  /* LiteralStringDoc */
+  /* LiteralStringDouble */
+  /* LiteralStringEscape */
+  /* LiteralStringHeredoc */
+  /* LiteralStringInterpol */
+  /* LiteralStringOther */
+  /* LiteralStringRegex */
+  /* LiteralStringSingle */
+  /* LiteralStringSymbol */
+  /* Operator */
+  /* Punctuation */
+  /* GenericDeleted */
+  /* GenericInserted */
+  /* GenericSubheading */ }
+  body.colorscheme-light .chroma .err {
+    color: #960050;
+    background-color: #1e0010; }
+  body.colorscheme-light .chroma .lntd {
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    border: 0; }
+  body.colorscheme-light .chroma .lntable {
+    border-spacing: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    width: auto;
+    overflow: auto;
+    display: block; }
+  body.colorscheme-light .chroma .hl {
+    display: block;
+    width: 100%;
+    background-color: #ffffcc; }
+  body.colorscheme-light .chroma .lnt {
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: #7f7f7f; }
+  body.colorscheme-light .chroma .ln {
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: #7f7f7f; }
+  body.colorscheme-light .chroma .kn {
+    color: #f92672; }
+  body.colorscheme-light .chroma .nt {
+    color: #f92672; }
+  body.colorscheme-light .chroma .l {
+    color: #ae81ff; }
+  body.colorscheme-light .chroma .m {
+    color: #ae81ff; }
+  body.colorscheme-light .chroma .mb {
+    color: #ae81ff; }
+  body.colorscheme-light .chroma .mf {
+    color: #ae81ff; }
+  body.colorscheme-light .chroma .mh {
+    color: #ae81ff; }
+  body.colorscheme-light .chroma .mi {
+    color: #ae81ff; }
+  body.colorscheme-light .chroma .il {
+    color: #ae81ff; }
+  body.colorscheme-light .chroma .mo {
+    color: #ae81ff; }
+  body.colorscheme-light .chroma .ow {
+    color: #f92672; }
+  body.colorscheme-light .chroma .c {
+    color: #75715e; }
+  body.colorscheme-light .chroma .ch {
+    color: #75715e; }
+  body.colorscheme-light .chroma .cm {
+    color: #75715e; }
+  body.colorscheme-light .chroma .c1 {
+    color: #75715e; }
+  body.colorscheme-light .chroma .cs {
+    color: #75715e; }
+  body.colorscheme-light .chroma .cp {
+    color: #75715e; }
+  body.colorscheme-light .chroma .cpf {
+    color: #75715e; }
+  body.colorscheme-light .chroma .ge {
+    font-style: italic; }
+  body.colorscheme-light .chroma .gs {
+    font-weight: bold; }
+  body.colorscheme-light .chroma {
+    color: #272822;
+    background-color: #f3f3f3; }
+  body.colorscheme-light .chroma .lnt {
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: #7f7f7f; }
+  body.colorscheme-light .chroma .ln {
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: #7f7f7f; }
+  body.colorscheme-light .chroma .k {
+    color: #00a8c8; }
+  body.colorscheme-light .chroma .kc {
+    color: #00a8c8; }
+  body.colorscheme-light .chroma .kd {
+    color: #00a8c8; }
+  body.colorscheme-light .chroma .kp {
+    color: #00a8c8; }
+  body.colorscheme-light .chroma .kr {
+    color: #00a8c8; }
+  body.colorscheme-light .chroma .kt {
+    color: #00a8c8; }
+  body.colorscheme-light .chroma .n {
+    color: #111111; }
+  body.colorscheme-light .chroma .na {
+    color: #75af00; }
+  body.colorscheme-light .chroma .nb {
+    color: #111111; }
+  body.colorscheme-light .chroma .bp {
+    color: #111111; }
+  body.colorscheme-light .chroma .nc {
+    color: #75af00; }
+  body.colorscheme-light .chroma .no {
+    color: #00a8c8; }
+  body.colorscheme-light .chroma .nd {
+    color: #75af00; }
+  body.colorscheme-light .chroma .ni {
+    color: #111111; }
+  body.colorscheme-light .chroma .ne {
+    color: #75af00; }
+  body.colorscheme-light .chroma .nf {
+    color: #75af00; }
+  body.colorscheme-light .chroma .fm {
+    color: #111111; }
+  body.colorscheme-light .chroma .nl {
+    color: #111111; }
+  body.colorscheme-light .chroma .nn {
+    color: #111111; }
+  body.colorscheme-light .chroma .nx {
+    color: #75af00; }
+  body.colorscheme-light .chroma .py {
+    color: #111111; }
+  body.colorscheme-light .chroma .nv {
+    color: #111111; }
+  body.colorscheme-light .chroma .vc {
+    color: #111111; }
+  body.colorscheme-light .chroma .vg {
+    color: #111111; }
+  body.colorscheme-light .chroma .vi {
+    color: #111111; }
+  body.colorscheme-light .chroma .vm {
+    color: #111111; }
+  body.colorscheme-light .chroma .ld {
+    color: #d88200; }
+  body.colorscheme-light .chroma .s {
+    color: #d88200; }
+  body.colorscheme-light .chroma .sa {
+    color: #d88200; }
+  body.colorscheme-light .chroma .sb {
+    color: #d88200; }
+  body.colorscheme-light .chroma .sc {
+    color: #d88200; }
+  body.colorscheme-light .chroma .dl {
+    color: #d88200; }
+  body.colorscheme-light .chroma .sd {
+    color: #d88200; }
+  body.colorscheme-light .chroma .s2 {
+    color: #d88200; }
+  body.colorscheme-light .chroma .se {
+    color: #8045ff; }
+  body.colorscheme-light .chroma .sh {
+    color: #d88200; }
+  body.colorscheme-light .chroma .si {
+    color: #d88200; }
+  body.colorscheme-light .chroma .sx {
+    color: #d88200; }
+  body.colorscheme-light .chroma .sr {
+    color: #d88200; }
+  body.colorscheme-light .chroma .s1 {
+    color: #d88200; }
+  body.colorscheme-light .chroma .ss {
+    color: #d88200; }
+  body.colorscheme-light .chroma .o {
+    color: #f92672; }
+  body.colorscheme-light .chroma .p {
+    color: #111111; }
+  body.colorscheme-light mjx-container {
+    background-color: #FAFAFA;
+    border: 0; }
+
+@media (prefers-color-scheme: light) {
+  body.colorscheme-auto {
+    /* Other */
+    /* Error */
+    /* LineTableTD */
+    /* LineTable */
+    /* LineHighlight */
+    /* LineNumbersTable */
+    /* LineNumbers */
+    /* KeywordNamespace */
+    /* NameTag */
+    /* Literal */
+    /* LiteralNumber */
+    /* LiteralNumberBin */
+    /* LiteralNumberFloat */
+    /* LiteralNumberHex */
+    /* LiteralNumberInteger */
+    /* LiteralNumberIntegerLong */
+    /* LiteralNumberOct */
+    /* OperatorWord */
+    /* Comment */
+    /* CommentHashbang */
+    /* CommentMultiline */
+    /* CommentSingle */
+    /* CommentSpecial */
+    /* CommentPreproc */
+    /* CommentPreprocFile */
+    /* Generic */
+    /* GenericEmph */
+    /* GenericError */
+    /* GenericHeading */
+    /* GenericOutput */
+    /* GenericPrompt */
+    /* GenericStrong */
+    /* GenericTraceback */
+    /* GenericUnderline */
+    /* TextWhitespace */
+    /* Background */
+    /* LineNumbersTable */
+    /* LineNumbers */
+    /* Keyword */
+    /* KeywordConstant */
+    /* KeywordDeclaration */
+    /* KeywordPseudo */
+    /* KeywordReserved */
+    /* KeywordType */
+    /* Name */
+    /* NameAttribute */
+    /* NameBuiltin */
+    /* NameBuiltinPseudo */
+    /* NameClass */
+    /* NameConstant */
+    /* NameDecorator */
+    /* NameEntity */
+    /* NameException */
+    /* NameFunction */
+    /* NameFunctionMagic */
+    /* NameLabel */
+    /* NameNamespace */
+    /* NameOther */
+    /* NameProperty */
+    /* NameVariable */
+    /* NameVariableClass */
+    /* NameVariableGlobal */
+    /* NameVariableInstance */
+    /* NameVariableMagic */
+    /* LiteralDate */
+    /* LiteralString */
+    /* LiteralStringAffix */
+    /* LiteralStringBacktick */
+    /* LiteralStringChar */
+    /* LiteralStringDelimiter */
+    /* LiteralStringDoc */
+    /* LiteralStringDouble */
+    /* LiteralStringEscape */
+    /* LiteralStringHeredoc */
+    /* LiteralStringInterpol */
+    /* LiteralStringOther */
+    /* LiteralStringRegex */
+    /* LiteralStringSingle */
+    /* LiteralStringSymbol */
+    /* Operator */
+    /* Punctuation */
+    /* GenericDeleted */
+    /* GenericInserted */
+    /* GenericSubheading */ }
+    body.colorscheme-auto .chroma .err {
+      color: #960050;
+      background-color: #1e0010; }
+    body.colorscheme-auto .chroma .lntd {
+      vertical-align: top;
+      padding: 0;
+      margin: 0;
+      border: 0; }
+    body.colorscheme-auto .chroma .lntable {
+      border-spacing: 0;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      width: auto;
+      overflow: auto;
+      display: block; }
+    body.colorscheme-auto .chroma .hl {
+      display: block;
+      width: 100%;
+      background-color: #ffffcc; }
+    body.colorscheme-auto .chroma .lnt {
+      margin-right: 0.4em;
+      padding: 0 0.4em 0 0.4em;
+      color: #7f7f7f; }
+    body.colorscheme-auto .chroma .ln {
+      margin-right: 0.4em;
+      padding: 0 0.4em 0 0.4em;
+      color: #7f7f7f; }
+    body.colorscheme-auto .chroma .kn {
+      color: #f92672; }
+    body.colorscheme-auto .chroma .nt {
+      color: #f92672; }
+    body.colorscheme-auto .chroma .l {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .m {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .mb {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .mf {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .mh {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .mi {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .il {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .mo {
+      color: #ae81ff; }
+    body.colorscheme-auto .chroma .ow {
+      color: #f92672; }
+    body.colorscheme-auto .chroma .c {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .ch {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .cm {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .c1 {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .cs {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .cp {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .cpf {
+      color: #75715e; }
+    body.colorscheme-auto .chroma .ge {
+      font-style: italic; }
+    body.colorscheme-auto .chroma .gs {
+      font-weight: bold; }
+    body.colorscheme-auto .chroma {
+      color: #272822;
+      background-color: #f3f3f3; }
+    body.colorscheme-auto .chroma .lnt {
+      margin-right: 0.4em;
+      padding: 0 0.4em 0 0.4em;
+      color: #7f7f7f; }
+    body.colorscheme-auto .chroma .ln {
+      margin-right: 0.4em;
+      padding: 0 0.4em 0 0.4em;
+      color: #7f7f7f; }
+    body.colorscheme-auto .chroma .k {
+      color: #00a8c8; }
+    body.colorscheme-auto .chroma .kc {
+      color: #00a8c8; }
+    body.colorscheme-auto .chroma .kd {
+      color: #00a8c8; }
+    body.colorscheme-auto .chroma .kp {
+      color: #00a8c8; }
+    body.colorscheme-auto .chroma .kr {
+      color: #00a8c8; }
+    body.colorscheme-auto .chroma .kt {
+      color: #00a8c8; }
+    body.colorscheme-auto .chroma .n {
+      color: #111111; }
+    body.colorscheme-auto .chroma .na {
+      color: #75af00; }
+    body.colorscheme-auto .chroma .nb {
+      color: #111111; }
+    body.colorscheme-auto .chroma .bp {
+      color: #111111; }
+    body.colorscheme-auto .chroma .nc {
+      color: #75af00; }
+    body.colorscheme-auto .chroma .no {
+      color: #00a8c8; }
+    body.colorscheme-auto .chroma .nd {
+      color: #75af00; }
+    body.colorscheme-auto .chroma .ni {
+      color: #111111; }
+    body.colorscheme-auto .chroma .ne {
+      color: #75af00; }
+    body.colorscheme-auto .chroma .nf {
+      color: #75af00; }
+    body.colorscheme-auto .chroma .fm {
+      color: #111111; }
+    body.colorscheme-auto .chroma .nl {
+      color: #111111; }
+    body.colorscheme-auto .chroma .nn {
+      color: #111111; }
+    body.colorscheme-auto .chroma .nx {
+      color: #75af00; }
+    body.colorscheme-auto .chroma .py {
+      color: #111111; }
+    body.colorscheme-auto .chroma .nv {
+      color: #111111; }
+    body.colorscheme-auto .chroma .vc {
+      color: #111111; }
+    body.colorscheme-auto .chroma .vg {
+      color: #111111; }
+    body.colorscheme-auto .chroma .vi {
+      color: #111111; }
+    body.colorscheme-auto .chroma .vm {
+      color: #111111; }
+    body.colorscheme-auto .chroma .ld {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .s {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .sa {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .sb {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .sc {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .dl {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .sd {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .s2 {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .se {
+      color: #8045ff; }
+    body.colorscheme-auto .chroma .sh {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .si {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .sx {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .sr {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .s1 {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .ss {
+      color: #d88200; }
+    body.colorscheme-auto .chroma .o {
+      color: #f92672; }
+    body.colorscheme-auto .chroma .p {
+      color: #111111; }
+    body.colorscheme-auto mjx-container {
+      background-color: #FAFAFA;
+      border: 0; } }
+
+/*# sourceMappingURL=jemsu.css.map */

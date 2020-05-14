@@ -12,7 +12,8 @@ public
 content/post/hidden-archived/
 content/post/*.html
 
-resources/_gen/**
+# Don't ignore those 
+# resources/_gen/**
 
 # Secrets
 .httr-oauth
