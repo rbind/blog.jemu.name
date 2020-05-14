@@ -24,10 +24,10 @@ ignoreFiles = [
   ]
 
 [permalinks]
-  post = "/:year/:month/:slug/"
+  posts = "/:year/:month/:slug/"
 
 [taxonomies]
-  category = "categories"
+  #category = "categories"
   tag = "tags"
   series = "series"
   package = "packages" # No theme support yet
