@@ -34,13 +34,13 @@ body.colorscheme-auto {
 body.colorscheme-light {
   @include monokai-light();
   @include math-light();
-  @include color-inv()
+  // @include color-inv()
 }
 
 body.colorscheme-auto {
   @media (prefers-color-scheme: light) {
     @include monokai-light();
     @include math-light();
-    @include color-inv();
+    // @include color-inv();
   }
 }
