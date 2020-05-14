@@ -4,7 +4,7 @@
 library(ggplot2)
 library(dplyr)
 library(knitr)
-library(extrafont)
+#library(extrafont)
 
 source(here::here("helpers.R"))
 

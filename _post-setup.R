@@ -1,6 +1,6 @@
 knitr::opts_chunk$set(
   fig.path = "plots/", # for leaf bundles to work
-  cache.path = "blogdown_cache/", # for leaf bundles, cache in post directory
+  # cache.path = "blogdown_cache/", # is ignored :/ (for leaf bundles, cache in post directory)
   fig.retina = 2,
   echo = TRUE,
   message = FALSE, warning = FALSE, error = FALSE,
@@ -77,3 +77,5 @@ knitr::knit_hooks$set(
 # chroma_gen("api")
 # chroma_gen("fruity")
 # chroma_gen("monokailight")
+
+# ggplot2 theme ----
