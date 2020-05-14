@@ -12,8 +12,11 @@ public
 content/post/hidden-archived/
 content/post/*.html
 
-# Don't ignore those 
-# resources/_gen/**
+# These get built by hugo anyway
+resources/_gen/**
+
+# javascrip libs
+node_modules
 
 # Secrets
 .httr-oauth
