@@ -31,16 +31,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r init, include = FALSE}
-source(here::here("_post-setup.R"))
 
-knitr::opts_chunk$set(
-  fig.width = 10,
-  fig.height = 7
-)
-
-if (file.exists("startrek.rds")) startrek <- readRDS("startrek.rds")
-```
 
 **Star Trek**. It's a thing.
 Not only is it a thing, it's also a big franchise. You might have heard of it.
@@ -59,7 +50,7 @@ Anyway, I did my usual "pull data from <trakt.tv> and look at it"-thing, and her
 
 We start by loading our favorite R packages for setup purposes:
 
-```{r setup}
+```r 
 library(tRakt) # remotes::install_github("jemus42/tRakt@v0.13.0")
 library(dplyr)
 library(ggplot2)
@@ -87,7 +78,7 @@ plot_caption <- paste0("@jemus42 @ ", Sys.Date())
 Next up, we'll gather the data. Since these shows have ridiculously long titles in a world of single-word-shows, we'll keep track of both titles and commonly used abbreviations.
 Please note that the data collection step is a little clunky, code-wise, but oh well, it get's the job done.
 
-```{r getting-data-setup}
+```r 
 # Assemble tibble of names
 stshows <- tibble::tribble(
   ~slug, ~show_abr, ~show,
@@ -101,7 +92,7 @@ stshows <- tibble::tribble(
 )
 ```
 
-```{r get-data-cached, eval=!file.exists("startrek.rds")}
+```r 
 startrek <- map_df(stshows$slug, ~ {
   seasons_summary(.x, extended = "full", episodes = TRUE) %>%
     pull(episodes) %>%
@@ -123,9 +114,7 @@ startrek <- startrek %>%
   )
 ```
 
-```{r cache-file, include=FALSE}
-if (!file.exists("startrek.rds")) saveRDS(startrek, "startrek.rds")
-```
+
 
 
 ## The Data
@@ -133,7 +122,7 @@ if (!file.exists("startrek.rds")) saveRDS(startrek, "startrek.rds")
 Here's a randomly chosen sample of two episodes of each show to give you a rough idea of the data I'm working with.
 The dataset contains a few more variables, but I won't be using them or they're just variations on the variables below.
 
-```{r random-episodes-table}
+```r 
 startrek %>%
   select(show, epid, first_aired, rating, votes) %>%
   group_by(show) %>%
@@ -146,6 +135,117 @@ startrek %>%
   ) %>%
   kable_styling()
 ```
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Show </th>
+   <th style="text-align:left;"> Episode </th>
+   <th style="text-align:left;"> First Aired </th>
+   <th style="text-align:right;"> Rating </th>
+   <th style="text-align:right;"> Votes </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Star Trek </td>
+   <td style="text-align:left;"> s01e16 </td>
+   <td style="text-align:left;"> 1967-01-06 01:30:00 </td>
+   <td style="text-align:right;"> 7.53 </td>
+   <td style="text-align:right;"> 362 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek </td>
+   <td style="text-align:left;"> s03e17 </td>
+   <td style="text-align:left;"> 1969-01-25 01:30:00 </td>
+   <td style="text-align:right;"> 6.96 </td>
+   <td style="text-align:right;"> 223 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: The Animated Series </td>
+   <td style="text-align:left;"> s01e04 </td>
+   <td style="text-align:left;"> 1973-09-29 04:00:00 </td>
+   <td style="text-align:right;"> 7.11 </td>
+   <td style="text-align:right;"> 112 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: The Animated Series </td>
+   <td style="text-align:left;"> s01e09 </td>
+   <td style="text-align:left;"> 1973-11-03 05:00:00 </td>
+   <td style="text-align:right;"> 7.16 </td>
+   <td style="text-align:right;"> 98 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: The Next Generation </td>
+   <td style="text-align:left;"> s04e13 </td>
+   <td style="text-align:left;"> 1991-02-05 02:00:00 </td>
+   <td style="text-align:right;"> 7.57 </td>
+   <td style="text-align:right;"> 431 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: The Next Generation </td>
+   <td style="text-align:left;"> s06e17 </td>
+   <td style="text-align:left;"> 1993-03-02 02:00:00 </td>
+   <td style="text-align:right;"> 7.50 </td>
+   <td style="text-align:right;"> 324 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Voyager </td>
+   <td style="text-align:left;"> s01e05 </td>
+   <td style="text-align:left;"> 1995-02-06 05:00:00 </td>
+   <td style="text-align:right;"> 7.53 </td>
+   <td style="text-align:right;"> 491 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Voyager </td>
+   <td style="text-align:left;"> s02e22 </td>
+   <td style="text-align:left;"> 1996-04-08 04:00:00 </td>
+   <td style="text-align:right;"> 7.43 </td>
+   <td style="text-align:right;"> 336 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Deep Space Nine </td>
+   <td style="text-align:left;"> s06e08 </td>
+   <td style="text-align:left;"> 1997-11-17 05:00:00 </td>
+   <td style="text-align:right;"> 6.77 </td>
+   <td style="text-align:right;"> 226 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Deep Space Nine </td>
+   <td style="text-align:left;"> s06e14 </td>
+   <td style="text-align:left;"> 1998-02-18 05:00:00 </td>
+   <td style="text-align:right;"> 7.84 </td>
+   <td style="text-align:right;"> 270 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Enterprise </td>
+   <td style="text-align:left;"> s03e07 </td>
+   <td style="text-align:left;"> 2003-10-30 01:00:00 </td>
+   <td style="text-align:right;"> 7.51 </td>
+   <td style="text-align:right;"> 413 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Enterprise </td>
+   <td style="text-align:left;"> s04e04 </td>
+   <td style="text-align:left;"> 2004-10-30 00:00:00 </td>
+   <td style="text-align:right;"> 7.60 </td>
+   <td style="text-align:right;"> 416 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Discovery </td>
+   <td style="text-align:left;"> s01e04 </td>
+   <td style="text-align:left;"> 2017-10-09 00:30:00 </td>
+   <td style="text-align:right;"> 7.82 </td>
+   <td style="text-align:right;"> 6708 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Discovery </td>
+   <td style="text-align:left;"> s01e14 </td>
+   <td style="text-align:left;"> 2018-02-05 01:30:00 </td>
+   <td style="text-align:right;"> 7.95 </td>
+   <td style="text-align:right;"> 4166 </td>
+  </tr>
+</tbody>
+</table>
 
 You might notice a few things.
 First up, the vote count. While *trakt.tv* is pretty neat, it doesn't have nearly the userbase of bigger sites like IMDb, nor has it been around for as long. Additionally, how many people do you know who not only rewatch older tv shows, but also take the time to rate each episode individually on sites like trakt?
@@ -155,17 +255,55 @@ That's the biggest flaw I see in the data, as with all my trakt-data-shenanigans
 But oh well, who cares, I'm just here to put *Discovery* into a little perspective, so on we go.
 Throughout this post I'll be shortening the show names to a more plot-friendly size, using these commonly used abbreviations for reference:
 
-```{r titles-abbrs-table}
+```r 
 stshows %>%
   select(show, show_abr) %>%
   setNames(c("Title", "Abbreviation")) %>%
   kable() %>%
   kable_styling()
 ```
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Title </th>
+   <th style="text-align:left;"> Abbreviation </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Star Trek </td>
+   <td style="text-align:left;"> TOS </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: The Animated Series </td>
+   <td style="text-align:left;"> TAS </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: The Next Generation </td>
+   <td style="text-align:left;"> TNG </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Deep Space Nine </td>
+   <td style="text-align:left;"> DS9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Voyager </td>
+   <td style="text-align:left;"> VOY </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Enterprise </td>
+   <td style="text-align:left;"> ENT </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Discovery </td>
+   <td style="text-align:left;"> DSC </td>
+  </tr>
+</tbody>
+</table>
 
 ## The Timeline
 
-```{r timeline_bars, fig.cap="Airtimes of Star Trek TV Shows", fig.height=3, fig.width=8}
+```r 
 startrek %>%
   group_by(show_abr) %>%
   summarize(
@@ -196,9 +334,10 @@ startrek %>%
     caption = plot_caption
   )
 ```
+{{<figure src="plots/timeline_bars-1.png" link="plots/timeline_bars-1.png">}}
 
 
-```{r timeline, fig.cap="Episode ratings of Star Trek TV shows"}
+```r 
 ggplot(data = startrek, aes(x = first_aired, y = rating, fill = show_abr)) +
   geom_point(shape = 21, color = "black", size = 3) +
   scale_x_datetime(
@@ -218,9 +357,10 @@ ggplot(data = startrek, aes(x = first_aired, y = rating, fill = show_abr)) +
     caption = plot_caption
   )
 ```
+{{<figure src="plots/timeline-1.png" link="plots/timeline-1.png">}}
 
 
-```{r fig.cap="Episode ratings, sequentially numbered by airdate"}
+```r 
 ggplot(data = startrek, aes(x = ep_abs, y = rating, fill = show_abr)) +
   geom_point(shape = 21, color = "black", size = 3, alpha = .75) +
   scale_x_continuous(
@@ -241,10 +381,11 @@ ggplot(data = startrek, aes(x = ep_abs, y = rating, fill = show_abr)) +
     caption = plot_caption
   )
 ```
+{{<figure src="plots/unnamed-chunk-1-1.png" link="plots/unnamed-chunk-1-1.png">}}
 
 *But random internet guy*, people will now exclaim, *isn't it bad to use a truncated y-axis?* they will ask, smugly. And yes, in many situations it's a bad idea to truncate axes of quantities with a known range like a 1-10 point scale, so here's the same plot as above with "proper" limits:
 
-```{r fig.cap="Same as plot before, with full-sized y-axis"}
+```r 
 ggplot(data = startrek, aes(x = ep_abs, y = rating, fill = show_abr)) +
   geom_point(shape = 21, color = "black", size = 3) +
   scale_x_continuous(
@@ -265,6 +406,7 @@ ggplot(data = startrek, aes(x = ep_abs, y = rating, fill = show_abr)) +
     caption = plot_caption
   ) 
 ```
+{{<figure src="plots/unnamed-chunk-2-1.png" link="plots/unnamed-chunk-2-1.png">}}
 
 The thing is, it's harder to see differences within individual shows. It's a more or less uniform strip of points, which doesn't really help that much, so I'll probably stick to the truncated axes.
 
@@ -272,7 +414,7 @@ The thing is, it's harder to see differences within individual shows. It's a mor
 
 Next up we'll be looking at the variation within each show's rating, with respect to each show's total number of episodes.
 
-```{r within_show_boxplots, fig.cap="Per-show boxplots of episode ratings"}
+```r 
 ggplot(
   data = startrek,
   aes(
@@ -293,13 +435,14 @@ ggplot(
   ) +
   theme(legend.position = "none")
 ```
+{{<figure src="plots/within_show_boxplots-1.png" link="plots/within_show_boxplots-1.png">}}
 
 We can see *TNG* with a lot of variation compared to the relatively consistent *Enterprise*. Also, there are quite a few outliers in *TNG*, so apaprently there are some *really good* episodes, and a few *really bad* episodes (relatively speaking).
 We'll be looking at the outliers a little later.
 
 Next up I'd like to look at the ratings of individual seasons of each shows, where we'll be using boxplots again, but this time per season.
 
-```{r with_show_season_boxplots, fig.cap="Per-season boxplots of episode ratings"}
+```r 
 ggplot(data = startrek, aes(x = factor(season), y = rating, fill = show_abr)) +
   geom_boxplot(alpha = .5, color = "black") +
   facet_wrap(~show_abr, scales = "free_x", nrow = 1) +
@@ -313,6 +456,7 @@ ggplot(data = startrek, aes(x = factor(season), y = rating, fill = show_abr)) +
   ) +
   theme(legend.position = "none")
 ```
+{{<figure src="plots/with_show_season_boxplots-1.png" link="plots/with_show_season_boxplots-1.png">}}
 
 You might notice a few trends, like *TOS* getting *technically worse* over time, while *DS9* and *ENT* seem to be getting better over time. I vaguely remember analyzing the seasonal trends of *ENT* in an earlier blogpost, where I also did some simple statistics to "prove" that the show gets better over time.
 We can make these trends a little more explicit by using simple linear regression to approximate the ratings over time, where time is just the sequential episode number.
@@ -320,7 +464,7 @@ A rising trendline would indicate the show getting better towards the end and vi
 It's a little too early to evaluate *Discovery* in this manner, but at least we can see that apparently people really enjoyed the *Fall Finale*™.
 In other news, I think it's safe to say that apparently nobody liked *TAS*, so... yeah. There's that.
 
-```{r within_show_scatter, fig.cap="Per-show trendlines of episode ratings"}
+```r 
 ggplot(data = startrek, aes(x = epnum, y = rating, fill = show_abr)) +
   geom_point(shape = 21, color = "black", size = 3, alpha = .25) +
   geom_smooth(aes(color = show_abr), method = lm, se = F) +
@@ -342,6 +486,7 @@ ggplot(data = startrek, aes(x = epnum, y = rating, fill = show_abr)) +
   ) +
   theme(legend.position = "none")
 ```
+{{<figure src="plots/within_show_scatter-1.png" link="plots/within_show_scatter-1.png">}}
 
 ## How Do You Feel About Histograms?
 
@@ -349,7 +494,7 @@ We've seen the individual episode ratings, but how about the general distributio
 My working hypothesis is that people tend to, well, watch and rate things they enjoy at least a bit, and if they really dislike it and *would* rate it *5* or lower, they don't go through to watch and rate the whole shebang.
 Anyway, my point being: The ratings might be a little biased, but I think we're already aware that the trakt.tv user ratings are not a perfect cross-section of society as a whole, so... yeah, I'm fine with that.
 
-```{r histogram_allover, fig.height=5, fig.width=8, fig.cap="Histogram of all ratings"}
+```r 
 mx <- round(mean(startrek$rating), 2)
 sx <- round(sd(startrek$rating), 2)
 
@@ -388,11 +533,12 @@ ggplot(data = startrek, aes(x = rating)) +
     caption = plot_caption
   )
 ```
+{{<figure src="plots/histogram_allover-1.png" link="plots/histogram_allover-1.png">}}
 
 In this histogram we see that most ratings fall in a relatively thin range around ~7.6, which is a solid *"yeah, cool"* I guess. There's only one episode below the 6.0 line, which falls into *meh*-territory, so that's interesting.
-Besides that we observe a perfectly *"pretty normal"* distribution, which shouldn't be surprising considering we have a total $N = `r nrow(startrek)`$.
+Besides that we observe a perfectly *"pretty normal"* distribution, which shouldn't be surprising considering we have a total `\(N = 754\)`.
 
-```{r histogram_byshow, fig.height=9, fig.cap="Per-show rating distributions"}
+```r 
 ggplot(data = startrek, aes(x = rating, fill = show_abr)) +
   geom_histogram(aes(y = ..density..),
     binwidth = .2, position = "dodge"
@@ -410,6 +556,7 @@ ggplot(data = startrek, aes(x = rating, fill = show_abr)) +
   ) +
   theme(legend.position = "none")
 ```
+{{<figure src="plots/histogram_byshow-1.png" link="plots/histogram_byshow-1.png">}}
 
 In a by-show plot of distributions, we can now use the width of the distributions to estimate the variance within each show, but we kind of did that already earlier. It could be nice to look at the skew of each distribution, but I don't think there's that much to gain here.
 
@@ -417,7 +564,7 @@ In a by-show plot of distributions, we can now use the width of the distribution
 
 If I remember correctly, [Jason Snell mentioned](https://www.theincomparable.com/teevee/discovery/) that the first season of any Star Trek tended to be *not that great*, which is why you should probably not jump to conclusions regarding *Discovery's* quality just by the first few episodes. So I plotted all the first seasons in one handy graph, where I rescaled the x-axis to a relative number of *percentage of episodes of first seaosn*, which allows a better comparison. Note that at the time of this writing the first season of *Discovery* is not yet concluded, but we already saw the silly named *Fall Finale*™ and know the season will consist of 15 episodes, so I adjusted appropriately.
 
-```{r firsteasons_scatterlines, hugoopts=list(caption="First-season episode ratings. The x-axis is computed by dividing the episode number by the total number of episodes in each season")}
+```r 
 startrek %>%
   filter(season == 1) %>%
   group_by(show) %>%
@@ -450,10 +597,11 @@ startrek %>%
   ) +
   theme(legend.position = "bottom")
 ```
+{{<figure src="plots/firsteasons_scatterlines-1.png" caption="First-season episode ratings. The x-axis is computed by dividing the episode number by the total number of episodes in each season" link="plots/firsteasons_scatterlines-1.png">}}
 
 Or, if you prefer the boxplot way of life:
 
-```{r firstseason_boxplots, hugoopts=list(caption="First season episode ratings as boxplots with background dots")}
+```r 
 startrek %>%
   filter(season == 1) %>%
   ggplot(aes(x = show_abr, y = rating, color = show_abr, fill = show_abr)) +
@@ -470,6 +618,7 @@ startrek %>%
   ) +
   theme(legend.position = "none")
 ```
+{{<figure src="plots/firstseason_boxplots-1.png" caption="First season episode ratings as boxplots with background dots" link="plots/firstseason_boxplots-1.png">}}
 
 I guess it's fair to say that *Discovery* is doing pretty well *so far*, but it should also be noted that most of the ratings of previous shows were presumably made during rewatches, since trakt hasn't been around that long. So either *DSC* is doing pretty good or it's impossible to actually make a statement about the first-season-hypothesis based on the data, so I opt for the interpration that makes it interesting.
 
@@ -478,7 +627,7 @@ I guess it's fair to say that *Discovery* is doing pretty well *so far*, but it 
 Ah yes, the thing with the outliers.
 In the following plot, I've labelled each episode with regards to whether or not is in an *outlier*, which I have defined in this case to be any value that deviates more than two IQR from the median. What an IQR range is a thing that you either know or are googleing now, and well let's face it, it's not important. Anyway, I labelled the outliers with their episode ID (e.g. *s02e03*) and the episode title.
 
-```{r outliers, hugoopts=list(caption="Positive and negative outliers of each show. Outliers are defined in this case as deviating more than two IQR from the median.")}
+```r 
 startrek %>%
   group_by(show) %>%
   mutate(
@@ -515,6 +664,7 @@ ggplot(data = temp, aes(
   ) +
   theme(legend.position = "bottom")
 ```
+{{<figure src="plots/outliers-1.png" caption="Positive and negative outliers of each show. Outliers are defined in this case as deviating more than two IQR from the median." link="plots/outliers-1.png">}}
 
 It's nice how *DS9* seems to have a lot of positive outliers with only two negative outliers, which indicates that *DS9* is not that great on average, but a couple of episodes are *pretty good*. At least that's the way I interpret it, not sure if that's a realistic assessment.
 Additionally we can see that *TNG* takes the cake for both the best and the worst liked episodes all over, so... yay *TNG* I guess? Idunno.
@@ -524,24 +674,52 @@ Additionally we can see that *TNG* takes the cake for both the best and the wors
 Let's compare all the shows in the *statsy* way with a simple *ANOVA* by show.
 If this results in a significant result, which it probably will, it indicates that at least one show has a significantly different variation than the other shows.
 
-```{r}
+```r 
 tadaa_aov(rating ~ show_abr, data = startrek, print = "markdown")
 ```
+Table 1: **One-Way ANOVA**: Using Type III Sum of Squares
+
+
+|   Term    | df  |  SS   |  MS  |   F   |   p    | `\(\eta^2\)` | Cohen's f | Power |
+|:---------:|:---:|:-----:|:----:|:-----:|:------:|:--------:|:---------:|:-----:|
+| show_abr  |  6  | 16.5  | 2.75 | 25.11 | < .001 |   0.17   |   0.45    |   1   |
+| Residuals | 747 | 81.82 | 0.11 |       |        |          |           |       |
+|   Total   | 753 | 98.32 | 2.86 |       |        |          |           |       |
+
+
+<br>
+
+
+<br>
 
 Welp, I don't have to look at the pariwise comparisons to tell you that *TAS* is the odd one out because it's obviously rated consistently lower than the others.
 To make it more interesting, we'll look at the remaining shows if we kick out *TAS*:
 
-```{r}
+```r 
 startrek %>%
   filter(show_abr != "TAS") %>%
   tadaa_aov(rating ~ show_abr, data = ., print = "markdown")
 ```
+Table 2: **One-Way ANOVA**: Using Type III Sum of Squares
+
+
+|   Term    | df  |  SS   |  MS  |  F   |   p    | `\(\eta^2\)` | Cohen's f | Power |
+|:---------:|:---:|:-----:|:----:|:----:|:------:|:--------:|:---------:|:-----:|
+| show_abr  |  5  | 8.54  | 1.71 | 15.8 | < .001 |   0.1    |   0.33    |   1   |
+| Residuals | 726 | 78.5  | 0.11 |      |        |          |           |       |
+|   Total   | 731 | 87.04 | 1.82 |      |        |          |           |       |
+
+
+<br>
+
+
+<br>
 
 Well I'll be damned. Who'da thunk.
-The effect ($\eta^2$ and $f$) is much smaller than before, but we have a *lot* of statistical power, presumably due to the large sample size.
+The effect ($\eta^2$ and `\(f\)`) is much smaller than before, but we have a *lot* of statistical power, presumably due to the large sample size.
 Let's look at the pairwise comparisons:
 
-```{r tukeyhsd}
+```r 
 startrek %>%
   filter(show_abr != "TAS") %>%
   aov(rating ~ show_abr, data = .) %>%
@@ -550,13 +728,14 @@ startrek %>%
   tadaa_plot_tukey() +
   theme(legend.position = "none")
 ```
+{{<figure src="plots/tukeyhsd-1.png" link="plots/tukeyhsd-1.png">}}
 
 These errorbars indicate which pairwise comparison (e.g. "mean rating of *ENT* minus mean rating of *DS9*" in the first row) results in a significant difference from 0, assuming that if the shows have the same mean rating, the difference would be 0. The direction of the difference is determined by the labels to the left, as mentioned, so we can say that *TOS* is "significantly worse" than *Voyager*, at least according to mean episode ratings and variation.
 
 The lasr thing I'd like to take a look at is the possible difference between the total show rating on trakt and the mean episode rating of each show. Since you have the option to give each show an over-all rating without rating each episode, I'm assuming that the nostalgia factor is strong in that regard and many people might give *TNG* a nostalgia-inflated rating compared to people who rewatched each episode and rated them as they judge them *today*(ish).
 Long story short, here's the over-all show ratings, sorted by rating:
 
-```{r show_overall, fig.cap="Over-all show rating on trakt.tv"}
+```r 
 stshows$rating <- map_dbl(stshows$slug, ~ {
   shows_ratings(.x)$rating
 })
@@ -581,10 +760,11 @@ ggplot(data = stshows, aes(
     caption = plot_caption
   )
 ```
+{{<figure src="plots/show_overall-1.png" link="plots/show_overall-1.png">}}
 
 Now we can use that plot and build upon it. I'll draw the mean episode rating for each show including errorbars on top of the previous plot, so hold my beer:
 
-```{r show_episodes_meanci, fig.cap="Over-all rating compared to mean episode rating"}
+```r 
 stshows %>%
   transmute(
     show_rating = rating,
@@ -630,6 +810,7 @@ stshows %>%
     caption = plot_caption
   )
 ```
+{{<figure src="plots/show_episodes_meanci-1.png" link="plots/show_episodes_meanci-1.png">}}
 
 Neat. These little tie-fighters (wrong franchise, I know) represent the mean episode rating with its confidence interval. What we can learn from that plot is how *TNG* has a high show rating, but individual episodes tend to be rated lower on average when compared to the over-all show rating.
 Interestingly, it's the other way around fpr *TAS*, where the average episode rating is higher than the show rating, so apparently people who *remember* it liked it better than the people who *watched* it? Not quite sure, but I'm certain you can figure out a way to rationalize this effect, I'm out ¯\\\_(ツ)_/¯

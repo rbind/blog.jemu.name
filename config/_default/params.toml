@@ -14,7 +14,7 @@
     since = 2015
 
     # Git Commit in Footer, uncomment the line below to enable it.
-    commit = "https://github.com/luizdepra/hugo-coder/tree/"
+    commit = "https://github.com/rbind/blog.jemu.name/tree/"
 
     rtl = false
 

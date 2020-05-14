@@ -11,6 +11,7 @@ series:
   - TV Shows
 tags:
   - trakt.tv
+shows:
   - Game of Thrones
   - Dexter
   - Battlestar Galactica (2003)
@@ -33,14 +34,30 @@ There are some shows that are/were really popular, everyone is excited about the
 
 I was wondering (for no particular recent-eventsy kind of reason at all, I swear) if some of the shows I recall being considered "bad enders" have something in common, or more interestingly, end badly, differently. 
 
-<details><summary>Code: Data collection</summary>
-
 ```r 
 library(tRakt)
 library(kableExtra)
 library(dplyr)
 library(ggplot2)
+library(hrbrthemes)
 
+theme_set(
+  theme_modern_rc() +
+    theme(
+      plot.title.position = "plot",
+      panel.spacing.y = unit(2.5, "mm"),
+      panel.spacing.x = unit(2, "mm"),
+      #plot.margin = margin(t = 7, r = 5, b = 7, l = 5),
+      legend.position = "top",
+      strip.text = element_text(hjust = .5)
+    )
+)
+```
+
+
+<details><summary>Code: Data collection</summary>
+
+```r 
 shows <- tribble(
   ~show, ~slug,
   "Dexter", "dexter",
@@ -406,8 +423,10 @@ episodes %>%
 Plot them all together:
 
 ```r 
-ggplot(episodes, aes(x = episode_abs, y = rating_c, fill = show)) +
+ggplot(episodes, aes(x = episode_abs, y = rating_c, color = show, fill = show)) +
   geom_point(alpha = .75, shape = 21) +
+  scale_color_ft(guide = FALSE) +
+  scale_fill_ft() +
   scale_y_continuous(breaks = seq(-10, 10, .5), minor_breaks = seq(-10, 10, .25)) +
   labs(
     title = "Episode Ratings per Show",
@@ -428,8 +447,10 @@ episodes <- episodes %>%
     episode_rel = (episode_abs / max(episode_abs)) * 100
   )
 
-ggplot(episodes, aes(x = episode_rel, y = rating_c, fill = show)) +
+ggplot(episodes, aes(x = episode_rel, y = rating_c, color = show, fill = show)) +
   geom_point(alpha = .75, shape = 21) +
+  scale_color_ft(guide = FALSE) +
+  scale_fill_ft() +
   scale_y_continuous(breaks = seq(-10, 10, .5), minor_breaks = seq(0, 10, .25)) +
   labs(
     title = "Episode Ratings per Show",

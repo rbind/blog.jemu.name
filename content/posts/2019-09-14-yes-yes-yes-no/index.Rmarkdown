@@ -44,7 +44,7 @@ library(ggplot2)
 library(hrbrthemes)
 
 theme_set(
-  heme_modern_rc() +
+  theme_modern_rc() +
     theme(
       plot.title.position = "plot",
       panel.spacing.y = unit(2.5, "mm"),
