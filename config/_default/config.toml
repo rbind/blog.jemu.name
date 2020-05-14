@@ -2,7 +2,7 @@
 ## Hugo settings               ##
 #################################
 
-baseURL = "https://blog.jemu.name/"
+baseURL = "/"
 DefaultContentLanguage = "en"
 relativeURLs = false
 languageCode = "en-us"
