@@ -10,10 +10,13 @@ Send help.
 
 ## This Site
 
-This blog is built with [hugo](https://gohugo.io) and [blogdown](https://github.com/rstudio/blogdown), using ~~[my fork](https://github.com/jemus42/hugo-redlounge-jemsu) of the [Red Lounge theme](https://themes.gohugo.io/redlounge/) which I've tweaked in some minor and major ways.  
+This blog is built with [hugo](https://gohugo.io) and [blogdown](https://github.com/rstudio/blogdown), ~~using [my fork](https://github.com/jemus42/hugo-redlounge-jemsu) of the [Red Lounge theme](https://themes.gohugo.io/redlounge/) which I've tweaked in some minor and major ways.  
 It's not really in a state where I could publish it, but it's on GitHub for those interested.~~~
 
-I've switched to [beautifulhugo](https://github.com/halogenica/beautifulhugo), which is the closest to a complete theme for my particular needs I've found (and I've tried *a lot of themes*). I still overrode a lot of elements of the theme via CSS (hackily) or overruled layout templates (similiarly shoddily), and I guess I'm slowly getting there. Still not happy with it though, but as long as I don't have time to dig deeper into Hugo templates it'll have to do. I just hope it doesn't completely break on me again with an upcoming Hugo update.
+~~I've switched to [beautifulhugo](https://github.com/halogenica/beautifulhugo), which is the closest to a complete theme for my particular needs I've found (and I've tried *a lot of themes*). I still overrode a lot of elements of the theme via CSS (hackily) or overruled layout templates (similiarly shoddily), and I guess I'm slowly getting there. Still not happy with it though, but as long as I don't have time to dig deeper into Hugo templates it'll have to do. I just hope it doesn't completely break on me again with an upcoming Hugo update.~~
+
+I have switched themes *once again*, this time to [hugo-coder](https://github.com/luizdepra/hugo-coder/), a much simpler and somewhat more elegant theme that has built-in support for automagic light/dark mode switching based on the CSS `prefers-color-scheme` property.  
+I have also switched things up under the hood a lot. For example, I now use [server-side code highlighting](https://ropensci.org/technotes/2020/04/30/code-highlighting/) instead of using prism.js, but that's a story for a blog post.
 
 The blog itself has a [repo on the GitHub rbind organization](https://github.com/rbind/blog.jemu.name).
 

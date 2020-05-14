@@ -44,6 +44,7 @@ extrafont::loadfonts()
 ```
 
 <details><summary>Code: Check if extrafont knows about your fonts</summary>
+
 ```r 
 extrafont::fonts()
 ```

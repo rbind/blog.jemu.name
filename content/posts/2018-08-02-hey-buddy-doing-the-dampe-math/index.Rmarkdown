@@ -1,0 +1,66 @@
+---
+title: Hey Buddy! Doing the Dampe Math
+author: jemus42
+date: '2018-08-02'
+slug: hey-buddy-doing-the-dampe-math
+series:
+  - Statistics
+tags:
+  - Speedrunning
+  - Ocarina of Time
+description: "I'm basically tabulating a cmf here."
+editor_options: 
+  chunk_output_type: console
+---
+
+If you've ever watched an [*Ocarina of Time* 100% speedrun][oot100], or played the game yourself, you'll probably know about Dampe. As a gravedigger in Kakariko graveyard, he'll offer to dig up graves for you when you go to him as child Link to get a random treasure. If you're mildly lucky, you'll get enough rupees to try again. If you're really lucky, you'll get the heart piece.  
+The latter is obviously part of the 100% definition of the game, so hundo speedruns sooner or later have to face dampe and gamble on the 10% chance of him digging up the heartpiece.
+
+As one of the few major rng-dependent[^rng] events in the run he's kind of notorius, especially when he kills multiple runs in a row by needing more than 10 attempts to finally get the heart piece.  
+The math itself is pretty straight forward: In a speedrun, runners use a method to reset Dampe to a specific plot, allowing them to dig on the same grave spot over and over again, theoretically ad infinitum. While this method is not as "safe" as the intended method, which is capped at 15 tries maximum, it's significantly faster unless you get "bad Dampe rng". Each time Dampe digs, there's a 10% chance to get the heartpiece, which means in mathy terms we can define $p = 0.1$ and $k$ as the number of tries until success, giving us:
+
+$$P(k = 1) = p = 0.1$$
+
+Second try Dampe would be the probability of "failing" the first attempt and *then* succeed afterwards, or:
+
+$$P(k = 2) = (1-p) \times p = 0.9 \times 0.1 = 0.09$$
+
+And in general terms:
+
+$$P(k) = (1-p)^{k-1} \times p$$
+
+Which, conveniently, is known as the [*geometric distribution*](https://en.wikipedia.org/wiki/Geometric_distribution). In R, we can calculate individual probabilities using `dgeom(x, prob = .1)` to get the probability for "failing `x` times before success", meaning we need to use `k = x - 1` to get the number of attempts it took to get the heartpiece, include the last dig.  
+
+So, with a lot of talk about odds and chances and whatnot every time Dampe is misbehaving again, I thought I'd take the opportunity to make a little lookup table to see just *how* unlikely your latest 61st try Dampe really was.
+
+Here's what's included:
+
+- **Attempt**: How often you had to let Dampe dig until the heart piece, $k$
+- **Probability**: The probability for $k$, as a singular outcome
+- **Odds (Singular)**: $\frac{1}{\text{Probability}}$, the probability for that outcome in human readable terms
+- **Probability (cumulative)**: Probability of $1$ *through* $k$ tries, i.e. the probability for getting $k$ *or lower* tries
+
+(So, in statsy terms, I'm basically just printing the *pmf* and *cdf* for $k = 1$ through $k = 105$ in a table. Yip.)
+
+```{r, echo=FALSE}
+library(kableExtra)
+
+dampe <- tibble::tibble(
+  attempts = seq_len(105),
+  prob = round(dgeom(attempts - 1, 1/10), 10),
+  chance = paste0("1 in ", ceiling(1/dgeom(attempts - 1, 1/10))),
+  P = round(exp(pgeom(attempts - 1, 1/10, log.p = TRUE)), 10)
+)
+
+kable(
+  dampe, 
+  col.names = c("Attempt", "Probability", "Odds", "Probability (cumulative)"),
+  align = "c"
+) %>%
+  kable_styling()
+```
+
+
+[^rng]: **R**andom **n**umber **g**enerator; in speedrunning terms it's become synonymous with 'random event' or 'specific outcome of an event determined by [pseudo] random number generation'. I know it's kind of weird to use "rng" as an adjective or catch-all term, but oh well. Context and such.
+
+[oot100]: https://www.speedrun.com/oot#100
