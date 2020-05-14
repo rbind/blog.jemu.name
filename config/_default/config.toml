@@ -9,13 +9,19 @@ languageCode = "en-us"
 title = "Jemsu Blog"
 theme = "hugo-coder"
 metaDataFormat = "yaml"
-Paginate = 10
+Paginate = 20
 
 # Enable features
 enableEmoji = true
 enableGitInfo = true
+
 # Rmarkdown special handling
-ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
+ignoreFiles = [
+  "\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$",  # Generally recommended settings
+  "\\.knit\\.md$", "\\.utf8\\.md$", "\\.tmp\\.html$", # Knitr temp files just in case
+  "\\.lock$", "^renv$", # Ignore renv if used within page bundles
+  "\\.graffle$" # Diagrams
+  ]
 
 [permalinks]
   post = "/:year/:month/:slug/"
@@ -23,8 +29,9 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 [taxonomies]
   category = "categories"
   tag = "tags"
-  package = "packages"
   series = "series"
+  package = "packages" # No theme support yet
+  show = "shows"       # No theme support yet
 
 [markup]
   defaultMarkdownHandler = "goldmark"
@@ -79,8 +86,6 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 #################################
 
 [Params.matomo]
-#  id = "12"
-#  server = "analytics.tadaa-data.de/"
   id = "2"
   server = "matomo.jemu.name"
 
