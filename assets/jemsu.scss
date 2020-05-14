@@ -19,6 +19,7 @@ body.colorscheme-dark {
   @include math-dark();
   @include table-dark();
   @include inline-code-dark();
+  @include littlefoot-dark();
 }
 
 body.colorscheme-auto {
@@ -27,6 +28,7 @@ body.colorscheme-auto {
     @include math-dark();
     @include table-dark();
     @include inline-code-dark();
+    @include littlefoot-dark();
   }
 }
 

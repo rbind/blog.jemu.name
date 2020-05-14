@@ -29,3 +29,15 @@ h4 code {
     background-color: $bg-color-dark;
   }
 }
+
+/* Littlefoot */
+div.littlefoot-footnote__wrapper > div > p {
+  text-align: left;
+  color: $fg-color;
+}
+
+@mixin littlefoot-dark {
+  .littlefoot-footnote__button {
+    color: $alt-fg-color-dark;
+  }   
+}

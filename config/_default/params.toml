@@ -2,7 +2,7 @@ author = "Lukas Burk"
 description = "Yet Another Personal Site"
 keywords = "blog,rstats,R,personal"
 info = "Doing things with R, mostly"
-#avatarurl = "images/avatar.jpg"
+avatarurl = "images/jemus42.jpg"
 gravatar = "jemus42@gmail.com"
 footercontent = "This is a thing that exists"
 
@@ -35,7 +35,10 @@ custom_css = ["css/littlefoot.css"]
 custom_scss = ["jemsu.scss"]
 
 # Custom JS
-custom_js = ["js/littlefoot.js"]
+custom_js = [
+    "js/littlefoot.js",
+    "js/jemsu.js"
+    ]
 
 # If you want to use fathom(https://usefathom.com) for analytics, add this section
 #[params.fathomAnalytics]
