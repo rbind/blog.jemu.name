@@ -119,7 +119,7 @@ So to start, here are the first five rows:
 
 To start of, here's some tables:
 
-<table class="table table-condensed" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>Table 2:  File size (MiB) by CRF and codec used</caption>
  <thead>
 <tr>

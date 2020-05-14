@@ -36,7 +36,7 @@ There are some shows that are/were really popular, everyone is excited about the
 
 I was wondering (for no particular recent-eventsy kind of reason at all, I swear) if some of the shows I recall being considered "bad enders" have something in common, or more interestingly, end badly, differently. 
 
-```{r setup}
+```{r pkgs}
 library(tRakt)
 library(kableExtra)
 library(dplyr)
