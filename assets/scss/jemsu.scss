@@ -6,7 +6,7 @@
 @import "nav-toggle";
 
 
-/* Turn a dark plot into a light plot (for testing purposes) */
+/* Turn a dark plot into a light plot (for testing purposes, not really.) */
 @mixin color-inv {
   figure > a > img {
     filter: invert(1);

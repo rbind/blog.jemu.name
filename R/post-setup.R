@@ -27,7 +27,7 @@ knitr::knit_hooks$set(
   }
 )
 
-# plot output in .Rmarkdown
+# plot output to hugo shortcode in .Rmarkdown
 # see https://ropensci.org/technotes/2020/04/23/rmd-learnings/
 knitr::knit_hooks$set(
   plot = function(x, options) {

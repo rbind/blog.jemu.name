@@ -68,6 +68,5 @@ chroma_gen <- function(style = "monokai") {
   system(cmd)
 }
 
-# chroma_gen("api")
-# chroma_gen("fruity")
-# chroma_gen("monokailight")
+chroma_gen("monokai")
+chroma_gen("monokailight")
