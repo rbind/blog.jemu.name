@@ -1,0 +1,69 @@
+---
+title: "Hook Testing"
+author: '@jemus42'
+date: "5/16/2020"
+output: github_document
+---
+
+```{r setup, include=TRUE}
+knitr::knit_hooks$set(source = function(x, options) {
+
+  # The original source in a fenced code block
+  source_orig <- paste(c("```r", x, "```"), collapse = "\n")
+
+  fold_option <- options[["code_fold"]]
+
+  # If option not set or explicitly FALSE, return regular code chunk
+  if (is.null(fold_option) | isFALSE(fold_option)) {
+   return(source_orig) 
+  } 
+  
+  summary_text <- ifelse(
+    is.character(fold_option), # If the option is text,
+    fold_option,               # use it as <summary>Label</summary>,
+    "Click to expand"          # otherwise here's a default
+  )
+  
+  # Output details tag
+  glue::glue(
+    "<details>
+      <summary>{summary_text}</summary>
+      {source_orig}
+    </details>"
+  )
+})
+
+```
+
+### Regular output as usual, `code_fold` not set
+
+```{r testing-hook-hide}
+library(dplyr, warn.conflicts = FALSE)
+iris %>%
+  filter(Sepal.Width > 3) %>%
+  head(5)
+```
+
+### Hidden source, custom summary, `code_fold="I heard you like flowers"`
+
+```{r testing-hook-show, code_fold="I heard you like flowers"}
+iris %>%
+  filter(Sepal.Width > 3) %>%
+  head(5)
+```
+
+### Hidden source, default summary, `code_fold=TRUE`
+
+```{r testing-hook-show-default, code_fold=TRUE}
+iris %>%
+  filter(Sepal.Width > 3) %>%
+  head(5)
+```
+
+### Source shown, `code_fold=FALSE`
+
+```{r testing-hook-show-disabled, code_fold=FALSE}
+iris %>%
+  filter(Sepal.Width > 3) %>%
+  head(5)
+```

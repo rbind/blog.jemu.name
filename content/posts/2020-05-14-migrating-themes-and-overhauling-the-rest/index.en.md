@@ -12,6 +12,7 @@ series:
   - Blogging
 packages: ''
 math: yes
+toc: true
 editor_options:
   chunk_output_type: console
 ---
@@ -29,7 +30,7 @@ In situations like this, I often think about this line from Terry Pratchett's *[
 
 > "Sometimes things smash so bad it’s better to leave it alone than try to pick up the pieces. I mean, where would you start?"
 >
-> --- Toliver Groat
+> --- Tolliver Groat
 
 So I decided to start from scratch, more or less, by switching to a different theme ([Coder](https://github.com/luizdepra/hugo-coder)) which has a couple benefits I like or grew to appreciate:
 
@@ -129,10 +130,7 @@ The blog posts itself are now *all* called `index.Rmarkdown` / `index.md`.
 Let that one marinade [^lk]. Do you use RStudio's `ctrl + .` shortcut to quickly search and open a file in your project? I do. Or at least I did. But now, if I want to refer back to an older post for something, I have to use RStudio's less-than-stellar file browser. Or at least I *would* have to do that, because thankfully I've really *really* grown to like [Visual Studio Code](https://code.visualstudio.com/) for longer text editing (like blog posts!).  
 VS Code also has a quick file selector (`⌘+P` on macOS), but in contrast to RStudio's implementation, this one fuzzy-matches the whole file path, which is probably better explained visually:
 
-<video width="100%" height="500" controls loop="true">
-  <source src="vscode-file-searcher.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+{{< video mp4="vscode-file-searcher.mp4" loop=true autoplay=true muted=false >}}
 
 <small>(If the video can't be displayed, [here's a big ol' gif (18MB)](vscode-file-searcher.gif))</small>
 
@@ -160,13 +158,96 @@ move_rmd_post("path-to-old-post.Rmd")
 
 I used this (and a variation to handle `.md` posts) to move all posts, first one at a time to make sure it's working, and then using a loop, iterating over all the posts I had previously moved from `content/` to a temporary migration-dump. There's still some cleanup I have to do on older posts for theme reasons, but at least they're all where they should be.
 
+### Quick Hit: Embedding `<video>`
+
+While writing this post, I used my first [HTML \<video\> tag][video-tag] for the short clip of VS Code you've seen above (hopefully). I thought using this over an embedded GIF was worth it, assuming `<video>` should be widely supported by modern browsers, and MP4 files should also not be a problem on most platforms. In this case, the GIF I linked for compatibility is 18MB, while the MP4 measures only 6MB before and 1MB after compression [^vcomp] – seems worth it.  
+
+[^vcomp]: If anyone cares: I used `ffmpeg -i input.mp4 -vcodec libx264 -crf 23 output.mp4` for compression
+
+At first I used raw HTML to include the video because hugo does not provide a shortcode for `video` like it does for `figure` elements with the [`{{</* figure */>}}` shortcode][hugo-figure-shortcode], so I thought I might as well make my own, just in case I want to embed more short clips in the future. Note that if you want to embed longer videos, you might as well use eisting shortcodes for services like YouTube and Vimeo – but for this single-second clip that seemed very much like overkill, even for my standards.
+
+This constitutes my first attempt at creating [a reasonably comfortable hugo shortcode][hugo-shortcode-docs], and I am likely to further improve upon it, especially with regard to the somehwat clunkily handled logic. 
+
+If you want to try it out yourself, place the following code in a file `layouts/shortcodes/video.html`:
+
+```go
+{{ if .IsNamedParams }}
+  <video
+    {{ with .Get "width" }} width="{{.}}" {{ end }} 
+    {{ with .Get "height" }} height="{{.}}" {{ end }}
+    {{ if .Get "loop" | eq true }} loop {{ end }}
+    {{ if .Get "autoplay" | eq true }} autoplay {{ end }}
+    {{ if .Get "loop" | ne false }} muted {{ end }}
+    {{ if .Get "controls" | ne false }} controls {{ end }}
+  >
+    {{ with .Get "mp4" }}<source src="{{.}}" type="video/mp4">{{ end }}
+    {{ with .Get "ogg" }}<source src="{{.}}" type="video/ogg">{{ end }}
+    {{ with .Get "webm" }}<source src="{{.}}" type="video/webm">{{ end }}
+    Your browser does not support the video tag.
+  </video>
+{{ else }}
+  <video muted controls>
+    <source src="{{ .Get 0 }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+{{ end }}
+```
+
+Here are the two possible use cases for multiple named or one unnamed parameter, with their respective HTML output underneath:
+
+```go
+{{</* video mp4="vscode-file-searcher.mp4" loop=true autoplay=true */>}}
+```
+
+```html
+<video loop autoplay controls>
+  <source src="vscode-file-searcher.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+```
+
+For a quick embed with default settings, you can use this:
+
+```go
+{{</* video "vscode-file-searcher.mp4" */>}}
+```
+
+```html
+<video muted controls>
+  <source src="vscode-file-searcher.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+```
+
+This displayed the video with controls, muted, without looping or autoplay, and without explicit `width`/`height` settings. I insist on the "muted by default" approach, but the omission of explicit dimensions assumes that your theme has appropriate CSS to size the video appropriately.  
+In my case, I handled it like this to ensure it's only ever as wide as the content surrounding it and centered if it's smaller:
+
+```css
+.content video {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+```
+
+Better solutions may be available.  
+If you want to make your own shortcodes, there's also those used by [the hugo docs itself][hugo-shortcodes] you can use for reference.
+
+[video-tag]: https://www.w3schools.com/tags/tag_video.asp
+[hugo-figure-shortcode]: https://gohugo.io/content-management/shortcodes/
+[hugo-shortcode-docs]: https://gohugo.io/templates/shortcode-templates/#single-named-example-image
+[hugo-shortcodes]: https://github.com/gohugoio/hugoDocs/tree/master/layouts/shortcodes
+
 ## Embracing (.R)markdown
 
 The next change I decided to make was from writing `.Rmd` posts to `.Rmarkdown` posts to render `.markdown` instead of `.html`. You can read up [on this in the blogdown book](https://bookdown.org/yihui/blogdown/output-format.html) if you want, but in my case there's an easy reason: I don't *need* pandoc's markdown features, but I *would like* for both my regular `.md` posts (such as this one) and my RMarkdown-powered posts to both be handled by hugo, merely for consistency.  
-Hugo uses ~~`blackfriday`~~ `goldmark` as its default markdown engine since `v0.60.0` (see [here][hugo-output-formats] and [here](https://gohugo.io/getting-started/configuration-markup/) – this should probably be updated in the blogdown book at some point). There's nothing I really miss using this over `pandoc`'s admittedly very powerful markdown [^pandocfootnotes]. 
+Hugo uses ~~`blackfriday`~~ `goldmark` as its default markdown engine since `v0.60.0` (see [here][hugo-output-formats] and [here](https://gohugo.io/getting-started/configuration-markup/) – this should probably be updated in the blogdown book at some point). There's nothing I really miss using this over `pandoc`'s admittedly very powerful markdown [^pandocfootnotes].  
 
-In the past I experimented with giving posts a table of contents, something I still plan on adding to my current theme (finger's crossed for upstream theme support). They worked fine on (at the time) `blackfriday`-rendered posts, but not for RMarkdown posts, since `pandoc` produced a different structure (I think), and I still lack the CSS/webdesign skills to make a ToC look nice myself.  
-This is just one example from the top of my head where I found the duality of markdown engines in the same blog a little annoying, but I'm sure many people gladly have both `goldmark` and `pandoc` coexist without issues, or heavily rely on some advanced `pandoc` feature or make more use of {htmlwidgets}. But I don't. Yet.
+In the past I experimented with giving posts a table of contents, something I still plan on adding to my current theme [^toc]. They worked fine on (at the time) `blackfriday`-rendered posts, but not for RMarkdown posts, since `pandoc` produced a different structure (I think), and I still lack the CSS/webdesign skills to make a ToC look nice myself.  
+This is just one example from the top of my head where I found the duality of markdown engines in the same blog a little annoying, but I'm sure many people gladly have both `goldmark` and `pandoc` coexist without issues, or heavily rely on some advanced `pandoc` feature or make more use of {htmlwidgets}. But I don't. Yet.  
+
+[^toc]: During my writing of this post, I have since integrated a simple TOC. It's not {rmarkdown}/bootstrap-level "floaty to the left and stuff" yet, but maybe I'll get there.
 
 Fun fact: If you've checked [the hugo docs link above][hugo-output-formats], you'll find `pandoc` is listed as an option as well! Why not just use that and have *everything* be handled by `pandoc`?  
 Finally, R users across the world rejoice as hugo joyfully integrates with their favorite text processing tool!  
@@ -189,9 +270,11 @@ I have since changed my opinion.
 The problem is that `styler` will happily recognize and format code in `.Rmd` files, but not in `.Rmarkdown` files, so I just used the RStudio addin and selected-then-reformatted offending chunks with the "Style selection" bit.  
 Was it necessary? Probably not. Do I wish `.Rmarkdown` was handled as a first-class alias of `.Rmd`? Kind of.  
 
-This also applies to `renv`, which I use for the entirety of my blog repository ([see also ](2020/03/auto-deploying-a-blogdown-blog-the-needlessly-hard-way/)). `renv` doesn't recognize dependencies in `.Rmarkdown` files, and I haven't spent too much time trying to fix it, but I thought it should be noted. Since `renv` is still fairly young, I think there's a decent chance it'll gain that functionality in the future – which in turn is probably also true for `styler` if more and more people were to adopt `.Rmarkdown`.
+This also applies to `renv`, which I use for the entirety of my blog repository ([see also ](2020/03/auto-deploying-a-blogdown-blog-the-needlessly-hard-way/)). `renv` doesn't recognize dependencies in `.Rmarkdown` files, and I haven't spent too much time trying to fix it, but I thought it should be noted. Since `renv` is still fairly young, I think there's a decent chance it'll gain that functionality in the future – which in turn is probably also true for `styler` if more and more people were to adopt `.Rmarkdown`.  
 
 And if not, and I find it too much of a hassle, I might end up just switching back to `.Rmd` and using `md_document` as the output format. Maybe I should have done that in the first place? Well I guess I'll find out.
+
+*Real time edit: I have since [been informed](https://twitter.com/lorenzwalthert/status/1261187131290107904) that this is an open issue on styler, so depending on when you're reading this, it's already solved*.
 
 [^ahill]: …which in turn refers to [Alison Hill's neat post on the subject](https://alison.rbind.io/post/2019-02-21-hugo-page-bundles/)
 [^dupfile]: I have created a lot of `episodes.rds` in my time pulling data from [trakt.tv], okay?
@@ -317,18 +400,18 @@ It's nice to have things both customizable *but also* provide a friendly default
 In that spirit, I thought about light vs. dark {ggplot2} themes, and wondered if it [was possible to automatically render plots with two versions of the same base theme](https://twitter.com/Jemus42/status/1260608125180227585) and have not only the blog itself, but *also* the plots switch color schemes through the use of some `src=` path manipulations possible with JavaScript.  
 I haven't tried to make that happen yet, but it would be *oh so so cool*.
 
-[^webdevfriend]: I recommend keeping one of those, they're handy! Even if they tend to recommend you a bazillion frameworks if all you want is some little thing
+[^webdevfriend]: I recommend keeping one of those, they're handy! Even if they tend to recommend you a dozen frameworks and a package manager (with a note about how *nobody* should use these *others* anymore) if all you want is some little CSS/JS thing and not convert your blog into a nodejs-based webapp or whatever. Okay that only happened twice or so, *but still!*
 
 ## Nicer Footnotes: littlefoot.js
 
 If there's on aspect of my previous theme(s) I definitely wanted to keep, it's [littlefoot.js].  
-In case you haven't noticed yet, I tend to make *heavy* use of footnotes [^meta] and I like them to be accessible directly where they're placed. Yes, usually footnotes come with links that take you down to the bottom of the post where all the decontextualized footnotes are placed, and yes, these footnotes tend to have "go back to where I was"-links that take you back to… well, where you ~~was~~ where – but I always find that somewhat jarring. It's a minor annoyance, and I wouldn't be surprised to learn that nobody else cares that much, but… have you noticed \*gestures towards entire blog post\*.
+In case you haven't noticed yet, I tend to make *heavy* use of footnotes [^meta] and I like them to be accessible directly where they're placed. Yes, usually footnotes come with links that take you down to the bottom of the post where all the decontextualized footnotes are placed, and yes, these footnotes tend to have "go back to where I was"-links that take you back to… well, where you ~~was~~ where – but I always find that somewhat jarring. It's a minor annoyance, and I wouldn't be surprised to learn that few others care that much about such a minor detail, but… have you noticed \*gestures towards entire blog post\*.
 
 {{< figure src="theme-littlefoot.gif" title="" alt="GIF showing littlefoot.js in action. A small button with the footnote number is displayed next to the text, and when the button is clicked the footnote text expands next to the text" caption="littlefoot.js in action: Read a footnote without scrolling or losing your place" >}}
 
 Since littlefoot.js is fairly lightweight and doesn't need a heavy jquery or bootstrap dependency, I'm fairly happy I could just include it again without having to feel a little bad about it.
 
-Also, because I like my weird helper functions, here's my helper to download littlefoot.js from [unpkg.com] and put it where it needs to go
+Also, because I like my weird helper functions, here's my helper to download littlefoot.js from [unpkg.com] and put it where it needs to go:
 
 <details><summary>Click to show code</summary>
 
@@ -363,12 +446,27 @@ get_asset_unpkg("littlefoot", littlefoot_version, "dist/littlefoot.css")
 
 </details>
 
+So there's that. Yes, I know `npm` exists. Or `yarn`. Or… `bower`? Or I could use the CDN directly, but that would impact load times as I found unpkg to be somewhat slow in the past.  
+Yes, it probably doesn't matter.
+
 [^meta]: Hi there. This footnote exists merely for the purposes of being meta. Being *meta* used to be a very cool thing, and I think it's still somewhat interesting in many contexts – maybe not this particular one, I'll give you that, but there's an argument to be made about how current humoristic trends (over-?)use the concept of *meta*-ness for the purpose of coming off as clever instead of actually being funny, but then again, *funnyness* in itself is an inherently fluid concept, which I would *like* to get into at some point, but I should finish this blog post first I guess.
 
-### Auto-Linking Headers with Partials
+----
+<small>
+Note:
+At this point during my writing of this blog post, my preview window suddenly flashed white and the light theme turned on. That was my operating system realizing it's dawn and it's light mode time now.  
+Incidentally, this is also my signal that I should maybe go to bed like I wanted to many hours ago.
+</small>
 
-## Using `knitr` Hooks for Blogging Comfort
+## Using {knitr} Hooks for Blogging Comfort
 
+A few years ago, I wrote about [using {knitr} hooks to enrich plot output](2017/07/i-just-wanted-to-serve-images/#so-what-do) by having {knitr} output an HTML `\<figure\>` tag instead of a simple `\<img\ src="">`.  
+My original intent was somehwat convoluted and had third party JavaScript integration for fancy gallery display in mind, while *also* converting a plot to an additional format ([WebP](https://en.wikipedia.org/wiki/WebP)).  
+I gave up on that idea after not getting it to work quite right, but hey, that's where I learned to leverage [{knitr} hooks](https://yihui.org/knitr/hooks/)!  
+
+After reading [Maëlle's post](https://ropensci.org/technotes/2020/04/23/rmd-learnings/) (have I linked it often enough yet?) and decided to go full-on `.Rmarkdown`, it seemed like the logical conclusion to switch my plot hook to leverage hugo's `{{</* figure */>}}`-shortcode. 
+
+Thankfully Maëlle had already done the heavy lifting of figuring out how to escape the short code, so I started off by nabbing her code, as one does, and added an extra line to have the plot by default be a hyperlink to itself:
 
 ```r
 # plot output in .Rmarkdown
@@ -392,8 +490,15 @@ knitr::knit_hooks$set(
 )
 ```
 
+This allows you to click on any plot to view it in full, albeit requiring you to hit the back button afterwards. While not as pretty as these custom gallery integration thingies [^photosw], this is at least somewhat expected behavior and works consistently on any device.  
+I wanted at least *some* easy option to view a plot in full, and I guess this will do for now.
+
+[^photosw]: The [beatutifulhugo] theme integrates [Photoswipe.js], which is quite nice, but also depends on jquery as far as I could tell. If you want to integrate it into your theme, you can use [liwenyip/hugo-easy-gallery](https://github.com/liwenyip/hugo-easy-gallery/).
+
+Besides the `plot` hook, I had also previously used a [chunk hook](https://yihui.org/knitr/hooks/#chunk-hooks) to emulate something along the lines of {rmarkdown}'s [`code_folding`](https://bookdown.org/yihui/rmarkdown/html-document.html#code-folding):
+
 ```r
-# Shamelessly stolen from
+# Shamelessly copied from
 # https://github.com/cpsievert/plotly_book/blob/a95fb991fdbfdab209f5f86ce1e1c181e78f801e/index.Rmd#L52-L60
 knitr::knit_hooks$set(
   summary = function(before, options, envir) {
@@ -408,9 +513,69 @@ knitr::knit_hooks$set(
 )
 ```
 
+Thanks, [@cpsievert](https://github.com/cpsievert)! 
+As you might have been able to tell, this does not only hide the source code of a chunk, but *also* its output – so it's usefull if you want to hide a long output like a large table, but if you only want to hide the code, you'll probably have to use an [output hook](https://yihui.org/knitr/hooks/#output-hooks). I haven't played around with it yet, but as far as I can tell manipulating the `source` hook should do the trick.
+
+. . .
+
+*~~Several minutes~~ half an hour or so later*
+
+Okay I think [I got it](https://twitter.com/Jemus42/status/1261464714485182465).  
+Here's the hook, utilizing a `code_fold` chunk option:
+
+```r
+knitr::knit_hooks$set(source = function(x, options) {
+
+  # The original source in a fenced code block
+  source_orig <- paste(c("```r", x, "```"), collapse = "\n")
+  fold_option <- options[["code_fold"]]
+
+  # If option not set or explicitly FALSE, return regular code chunk
+  if (is.null(fold_option) | isFALSE(fold_option)) {
+   return(source_orig) 
+  } 
+  
+  summary_text <- ifelse(
+    is.character(fold_option), # If the option is text,
+    fold_option,               # use it as <summary>Label</summary>,
+    "Click to expand"          # otherwise here's a default
+  )
+  
+  # Output details tag
+  glue::glue(
+    "<details>
+      <summary>{summary_text}</summary>
+      {source_orig}
+    </details>"
+  )
+})
+```
+
+This hook will do the following:
+
+1. Just output your code in a <code>```r</code> code fence by default
+2. Enclose your code in a `<details>` tag, thereby making it "click to expand", if the `code_summary` chunk option is `TRUE` or a `character`
+3. The `<summary>` tag will display either display  
+    a. "Click to expand" by default, if `code_summary` is e.g. `TRUE`  
+    b. The value of `code_summary` if it is a `character`  
+4. Behave like 1. if `code_summary=FALSE` (for consistency)
+
+Please note that so far I have only tested it successfully in {rmarkdown} with `github_document` output, because `md_document` stripped the trailing `r` from the code fence. I haven't tried it in blogdown yet, but I'm pretty sure if it *doesn't* work I'll at least get it to work with some tweaks.  
+If you were to use this with the `html_document` output format, the code would not be highlighted, so keep that in mind if you do your own testing.
+
+Here's my debugging [RMarkdown](knitr-hooks.Rmd), the rendered [Markdown](knitr-hooks.md), and the preview [HTML](knitr-hooks.html) if you want to check it out.
+
+I think that's enough fun with hooks for today (it took me a while) [^hooktweak], but I think the potential should have become pretty clear. We could also leverage this to enclose R source code inside fancy custom hugo shortcodes for *even cooler* source formatting, which *would still* be perfectly compatible with whatever you're able to do in your `.md` posts.
+
+[^hooktweak]: Yes, this could still be tweaked further to support other engines like Python or BASH by leveraging the default hook I think, I haven't read all of [Yihui's words on the matter](https://bookdown.org/yihui/rmarkdown-cookbook/output-hooks.html) yet
+
 ## The Quest for Taxonomies
 
 
+
+## The Very Last Bit: Auto-Linking Headers
+
+[merged](https://github.com/gohugoio/hugo/issues/6713#event-3342223328)
 
 <!-- links -->
 [trakt.tv]: https://trakt.tv
@@ -420,3 +585,5 @@ knitr::knit_hooks$set(
 [littlefoot.js]: https://github.com/goblindegook/littlefoot
 [unpkg.com]: https://unpkg.com
 [Coder]: https://github.com/luizdepra/hugo-coder
+[Photoswipe.js]: https://photoswipe.com/
+[beatutifulhugo]: https://github.com/halogenica/beautifulhugo
