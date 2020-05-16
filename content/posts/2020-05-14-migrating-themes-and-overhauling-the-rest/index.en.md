@@ -244,7 +244,6 @@ If you want to make your own shortcodes, there's also those used by [the hugo do
 
 {{< addendum title="Real Time Edit" >}}
 I have since learned that [it's perfectly fine to wrap this in `<figure>`, which also enables alt-text and captions](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element). Here's the new shortcode I'm using now, which is built on top of [the built-in figure shortcode](https://github.com/gohugoio/hugo/blob/aba2647c152ffff927f42523b77ee6651630cd67/tpl/tplimpl/embedded/templates/shortcodes/figure.html):
-{{< /addendum >}}
 
 <details>
 <summary>Click to show alternative shortcode</summary>
@@ -284,6 +283,8 @@ I have since learned that [it's perfectly fine to wrap this in `<figure>`, which
 ```
 
 </details>
+
+{{< /addendum >}}
 
 ## Embracing (.R)markdown
 
@@ -545,8 +546,6 @@ I have not figured out a good way to "double plot" a {ggplot2} object with two p
 Besides the `plot` hook, I had also previously used a [chunk hook](https://yihui.org/knitr/hooks/#chunk-hooks) to emulate something along the lines of {rmarkdown}'s [`code_folding`](https://bookdown.org/yihui/rmarkdown/html-document.html#code-folding):
 
 ```r
-# Shamelessly copied from
-# https://github.com/cpsievert/plotly_book/blob/a95fb991fdbfdab209f5f86ce1e1c181e78f801e/index.Rmd#L52-L60
 knitr::knit_hooks$set(
   summary = function(before, options, envir) {
   if (length(options$summary)) {
@@ -560,7 +559,7 @@ knitr::knit_hooks$set(
 )
 ```
 
-Thanks, [@cpsievert](https://github.com/cpsievert)! 
+Thanks, [Carson Sievert](https://github.com/cpsievert/plotly_book/blob/a95fb991fdbfdab209f5f86ce1e1c181e78f801e/index.Rmd#L52-L60)! 
 As you might have been able to tell, this does not only hide the source code of a chunk, but *also* its output – so it's usefull if you want to hide a long output like a large table, but if you only want to hide the code, you'll probably have to use an [output hook](https://yihui.org/knitr/hooks/#output-hooks). I haven't played around with it yet, but as far as I can tell manipulating the `source` hook should do the trick.
 
 . . .

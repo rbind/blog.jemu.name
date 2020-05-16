@@ -45,6 +45,7 @@ code {
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
+  border-radius: 5px;
 }
 
 // littlefoot.js
@@ -84,6 +85,7 @@ div.littlefoot-footnote__wrapper > div > p {
 
 div.addendum {
   border-left: 4px;
+  // border-right: 4px;
   border-left-style: solid;
   padding-left: 1rem;
   padding-bottom: 1rem;
@@ -96,13 +98,13 @@ div.addendum {
 @mixin addendum-light {
   div.addendum {
     border-left-color: $link-color;
-    background-color: darken($bg-color, 10%); 
+    background-color: darken($bg-color, 4%); 
   }
 }
 
 @mixin addendum-dark {
   div.addendum {
     border-left-color: $link-color;
-    background-color: lighten($bg-color-dark, 10%); 
+    background-color: darken($bg-color-dark, 4%); 
   }
 }

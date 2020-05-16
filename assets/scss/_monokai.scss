@@ -3,7 +3,6 @@
   /* Error */ .chroma .err { color: #960050; background-color: #1e0010 }
   /* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
   /* LineTable */ .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; width: auto; overflow: auto; display: block; }
-  /* LineHighlight */ .chroma .hl { display: block; width: 100%;background-color: #ffffcc }
   /* LineNumbersTable */ .chroma .lnt { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
   /* LineNumbers */ .chroma .ln { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
   /* KeywordNamespace */ .chroma .kn { color: #f92672 }
@@ -39,6 +38,7 @@
 
 @mixin monokai-dark {
   /* Background */ .chroma { color: #f8f8f2; background-color: #1D1D1D }
+  /* LineHighlight */ .chroma .hl { display: block; width: 100%;background-color: #484828 }
   /* LineNumbersTable */ .chroma .lnt { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
   /* LineNumbers */ .chroma .ln { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
   /* Keyword */ .chroma .k { color: #66d9ef }
@@ -91,6 +91,7 @@
 
 @mixin monokai-light {
   /* Background */ .chroma { color: #272822; background-color: #f3f3f3 }
+  /* LineHighlight */ .chroma .hl { display: block; width: 100%;background-color: #ffffcc }
   /* LineNumbersTable */ .chroma .lnt { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
   /* LineNumbers */ .chroma .ln { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
   /* Keyword */ .chroma .k { color: #00a8c8 }
