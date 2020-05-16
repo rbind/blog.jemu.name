@@ -37,9 +37,9 @@ So I decided to start from scratch, more or less, by switching to a different th
 - **Simpler** design. I recently spent some time reading [Yihui's blog](https://yihui.org/) and his advice on choosing a simpler theme and not worrying too much about the fancy stuff really spoke _and_ somehwat offended me, given that worrying too much about irrelevant fancyness is basically my entire energy.
 - Built-in support for **light/dark mode** with automatic switching based on the visitor's system preference
 - **No bootstrap**/jquery required: Ever done some benchmarks/audits for your blog/website? You start caring about load times and render-blocking elements and whatnot way more than you want to. I thought simpler was better.
-- **Actively maintained**. My first hugo theme was stale and caused a lot of frustration when hugo changed the way it handled the home page pagination… or something? I forgot. Anyway, I couldn't figure out how to fix it myself and was kind of stranded.
+- **Actively maintained**. My first hugo theme was stale and caused a lot of frustration when hugo changed the way it handled the home page pagination… or something? I forgot. Anyway, I couldn't figure out how to fix it myself and was kind of stranded. That was also the moment where I became very careful with overriding theme elements in `/layots/`, and now I try to make sure I can switch back to "vanilla" if needed.
 
-My previous (second) theme ([beautifulhugo](https://github.com/halogenica/beautifulhugo)) isn't bad, but… well, after a while, I found it *a bit much* [^yihuiadv]. There are also a number of things I wanted to add myself, some I even managed successfully, but it never really quite worked the way I wanted to – and for some of my ideas I would have needed a deep dive into hugo's templating and taxonomy system and overwrite a *lot* of the theme's `layout`.  
+My previous (second) theme [beautifulhugo] isn't bad, but… well, after a while, I found it *a bit much* [^yihuiadv]. There are also a number of things I wanted to add myself, some I even managed successfully, but it never really quite worked the way I wanted to – and for some of my ideas I would have needed a deep dive into hugo's templating and taxonomy system and overwrite a *lot* of the theme's `layout`.  
 And if I've learned one thing about hugo themes over the years, it's that messing with a theme too much will just cause a lot of pain down the road because your local tweaks will inevitably end up being incompatible with the core theme, but your core theme should be kept up to date because of the inevitable changes to hugo itself.
 
 But the theme itself is not all I wanted to change. 
@@ -53,7 +53,7 @@ Alternative title: *Page Bundles: The Obvious Solution to a Sucky Workflow*
 
 Thanks to [Maëlle's posts on the rOpenSci blog about hugo](https://ropensci.org/tags/hugo) I realized that I had been hugo'ing wrong all this time. I vaguely remember reading about [page bundles](https://gohugo.io/content-management/page-bundles/) in the hugo docs, but never gave it much thought. Reading [Maëlle's post](https://ropensci.org/technotes/2020/04/23/rmd-learnings/) [^ahill] made me realize how useful it would be for me. 
 
-Many of my posts contain some sort of "analysis", or at least some dataset like a TV show's episode data from [trakt.tv]. Of course I want to keep that data locally and don't retrieve it every time I re-render the post, and yes, I know {blogdown} does caching for me, but sometimes it's usefull to nuke the `blogdown` folder, y'know?  
+Many of my posts contain some sort of "analysis", or at least some dataset like a TV show's episode data from [trakt.tv]. Of course I want to keep that data locally and don't retrieve it every time I re-render the post, and yes, I know {blogdown} does caching for me, but sometimes it's useful to nuke the `/blogdown/` folder, y'know?  
 I had this whole set of helper functions to check for, store, and retrieve datasets in blog posts, putting them in `/dataset/slug-of-the-post/data-name.rds` where they would be easily accessible for future rebuilds.  
 For posterity, and since I intend to remove them from my blog's repository soon, here they are:
 
@@ -104,7 +104,7 @@ cache_date <- function(cache_data, cache_path) {
 </details>
 
 It was such an overengineered solution.  
-With page bundles, I can now refer to a file `dataset.rds` in the (relative to the post) current working directory, don't have to preprend the post's slug to ensure there's no duplicate file names [^dupfile] and can easily check for it's existence via `file.exists("dataset.rds")`. I can also split my code chunks in three parts so 
+With page bundles, I can now refer to a file `dataset.rds` in the (relative to the post) current working directory, don't have to prepend the post's slug to ensure there's no duplicate file names [^dupfile] and can easily check for its existence via `file.exists("dataset.rds")`. I can also split my code chunks in three parts so 
 
 - the initial setup chunk loads the file if it exists.
 - the chunk that *would* retrieve the data depends on said dataset's existence with the chunk option `eval=!file.exists("dataset.rds")`.
@@ -122,6 +122,11 @@ read_cache_file(...)
 
 …bit is all about (even though it should be relatively obvious given my affinity for descriptive function names).  
 As an added bonus, now I also have a place to store occasional screenshots and diagrams directly with their posts, and all in all I just love that my `/static` folder is a lot cleaner now.  
+
+{{< addendum title="Addendum" >}}
+During the writing of this post I have collected _a bunch_ of additional screenshots, videos and sample files which I am *so happy* to be able to store right where the text lives and reference without worrying about file paths.  
+Give page bundles a go, folks.
+{{< /addendum >}}
 
 *However*… there's one tremendous downside to using page bundles.  
 \*Pauses for audible gasp from imaginary audience\*  
@@ -158,13 +163,13 @@ I used this (and a variation to handle `.md` posts) to move all posts, first one
 
 ### Quick Hit: Embedding `<video>`
 
-While writing this post, I used my first [HTML \<video\> tag][video-tag] for the short clip of VS Code you've seen above (hopefully). I thought using this over an embedded GIF was worth it, assuming `<video>` should be widely supported by modern browsers, and MP4 files should also not be a problem on most platforms. In this case, the GIF I originally wanted to embed is 18MB, while the MP4 measures only 6MB before and 1MB after compression [^vcomp] – seems worth it.  
+While writing this post, I used my first [HTML \<video\> element][video-tag] for the short clip of VS Code you've seen above (hopefully). I thought using this over an embedded GIF was worth it, assuming `<video>` should be widely supported by modern browsers, and MP4 files should also not be a problem on most platforms. In this case, the GIF I originally wanted to embed is 18MB, while the MP4 measures only 6MB before and 1MB after compression [^vcomp] – seems worth it.  
 
 [^vcomp]: If anyone cares: I used `ffmpeg -i input.mp4 -vcodec libx264 -crf 23 output.mp4` for compression
 
-At first I used raw HTML to include the video because hugo does not provide a shortcode for `video` like it does for `figure` elements with the [`{{</* figure */>}}` shortcode][hugo-figure-shortcode], so I thought I might as well make my own, just in case I want to embed more short clips in the future. Note that if you want to embed longer videos, you might as well use eisting shortcodes for services like YouTube and Vimeo – but for this single-second clip that seemed very much like overkill, even for my standards.
+At first I used raw HTML to include the video because hugo does not provide a shortcode for `video` like it does for `figure` elements with the [`{{</* figure */>}}` shortcode][hugo-figure-shortcode], so I thought I might as well make my own, just in case I want to embed more short clips in the future. Note that if you want to embed longer videos, you might as well use existing shortcodes for services like YouTube and Vimeo – but for this single-second clip that seemed very much like overkill, even for my standards.
 
-This constitutes my first attempt at creating [a reasonably comfortable hugo shortcode][hugo-shortcode-docs], and I am likely to further improve upon it, especially with regard to the somehwat clunkily handled logic. 
+This constitutes my first attempt at creating [a reasonably comfortable hugo shortcode][hugo-shortcode-docs]. I am likely to further improve upon it, especially with regard to the somewhat clunkily handled logic. 
 
 If you want to try it out yourself, place the following code in a file `layouts/shortcodes/video.html`:
 
@@ -222,7 +227,7 @@ For a quick embed with default settings, you can use this:
 </video>
 ```
 
-This displayed the video with controls, muted, without looping or autoplay, and without explicit `width`/`height` settings. I insist on the "muted by default" approach, but the omission of explicit dimensions assumes that your theme has appropriate CSS to size the video appropriately.  
+This displays the video with controls, muted, without looping or autoplay, and without explicit `width`/`height` settings. I insist on the "muted by default" approach, but the omission of explicit dimensions assumes that your theme has appropriate CSS to size the video appropriately.  
 In my case, I handled it like this to ensure it's only ever as wide as the content surrounding it and centered if it's smaller:
 
 ```css
@@ -237,7 +242,9 @@ In my case, I handled it like this to ensure it's only ever as wide as the conte
 Better solutions may be available.  
 If you want to make your own shortcodes, there's also those used by [the hugo docs itself][hugo-shortcodes] you can use for reference.
 
-*Real time edit*: I have since learned that [it's perfectly fine to wrap this in `<figure>`, which also enables alt-text and captions.](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element). Here's the new shortcode I'm using now, which is built on top of [the built-in figure shortcode](https://github.com/gohugoio/hugo/blob/aba2647c152ffff927f42523b77ee6651630cd67/tpl/tplimpl/embedded/templates/shortcodes/figure.html):
+{{< addendum title="Real Time Edit" >}}
+I have since learned that [it's perfectly fine to wrap this in `<figure>`, which also enables alt-text and captions](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element). Here's the new shortcode I'm using now, which is built on top of [the built-in figure shortcode](https://github.com/gohugoio/hugo/blob/aba2647c152ffff927f42523b77ee6651630cd67/tpl/tplimpl/embedded/templates/shortcodes/figure.html):
+{{< /addendum >}}
 
 <details>
 <summary>Click to show alternative shortcode</summary>
@@ -278,24 +285,19 @@ If you want to make your own shortcodes, there's also those used by [the hugo do
 
 </details>
 
-[video-tag]: https://www.w3schools.com/tags/tag_video.asp
-[hugo-figure-shortcode]: https://gohugo.io/content-management/shortcodes/
-[hugo-shortcode-docs]: https://gohugo.io/templates/shortcode-templates/#single-named-example-image
-[hugo-shortcodes]: https://github.com/gohugoio/hugoDocs/tree/master/layouts/shortcodes
-
 ## Embracing (.R)markdown
 
-The next change I decided to make was from writing `.Rmd` posts to `.Rmarkdown` posts to render `.markdown` instead of `.html`. You can read up [on this in the blogdown book](https://bookdown.org/yihui/blogdown/output-format.html) if you want, but in my case there's an easy reason: I don't *need* pandoc's markdown features, but I *would like* for both my regular `.md` posts (such as this one) and my RMarkdown-powered posts to both be handled by hugo, merely for consistency.  
+The next change I decided to make was from writing `.Rmd` posts to `.Rmarkdown` posts to render `.markdown` instead of `.html`. You can read up [on this in the blogdown book](https://bookdown.org/yihui/blogdown/output-format.html) if you want, but in my case there's an easy reason: I don't *need* pandoc's markdown features, but I *would like* for both my regular `.md` posts (such as this one) and my {rmarkdown}-powered posts to both be handled by hugo, merely for consistency.  
 Hugo uses ~~`blackfriday`~~ `goldmark` as its default markdown engine since `v0.60.0` (see [here][hugo-output-formats] and [here](https://gohugo.io/getting-started/configuration-markup/) – this should probably be updated in the blogdown book at some point). There's nothing I really miss using this over `pandoc`'s admittedly very powerful markdown [^pandocfootnotes].  
 
-In the past I experimented with giving posts a table of contents, something I still plan on adding to my current theme [^toc]. They worked fine on (at the time) `blackfriday`-rendered posts, but not for RMarkdown posts, since `pandoc` produced a different structure (I think), and I still lack the CSS/webdesign skills to make a ToC look nice myself.  
+In the past I experimented with giving posts a table of contents, something I still plan on adding to my current theme [^toc]. They worked fine on (at the time) `blackfriday`-rendered posts, but not for `.Rmd` posts, since `pandoc` produced a different structure (I think), and I still lack the CSS/webdesign skills to make a ToC look nice myself.  
 This is just one example from the top of my head where I found the duality of markdown engines in the same blog a little annoying, but I'm sure many people gladly have both `goldmark` and `pandoc` coexist without issues, or heavily rely on some advanced `pandoc` feature or make more use of {htmlwidgets}. But I don't. Yet.  
 
 [^toc]: During my writing of this post, I have since integrated a simple TOC. It's not {rmarkdown}/bootstrap-level "floaty to the left and stuff" yet, but maybe I'll get there.
 
 Fun fact: If you've checked [the hugo docs link above][hugo-output-formats], you'll find `pandoc` is listed as an option as well! Why not just use that and have *everything* be handled by `pandoc`?  
 Finally, R users across the world rejoice as hugo joyfully integrates with their favorite text processing tool!  
-Well, not quite. Hugo's `pandoc` support is fairly limited with regards to the supported extensions, and it doesn't look like it's customizable, i.e. no easy config options to enable arbitrary extensions which would make it behave the same as with {rmarkdown}. Maybe in the future `pandoc` is the only thing we'll need, but until then, I'm quite happy with hugo's default.
+Well, not quite. Hugo's `pandoc` support is fairly limited with regards to the supported extensions, and it doesn't look like it's customizable, i.e. no easy config options to enable arbitrary extensions which would make it behave the same as with {rmarkdown}. Maybe in the future `pandoc` is the only thing we'll need, but until then, I'm quite happy with hugo's default. An besides, one of the major benefits of hugo is it's *ridiculously* fast render times compared to your regular `.Rmd` or alternatives like Jekyll, so why not embrace that benefit?
 
 *However*… there's another caveat to using `.Rmarkdown`, and it's just the file extension.  
 Do you use `styler`? I recently tried to use it to re-format code chunks in older blog posts. Posts I wrote at a time where I thought that 
@@ -314,18 +316,18 @@ I have since changed my opinion.
 The problem is that `styler` will happily recognize and format code in `.Rmd` files, but not in `.Rmarkdown` files, so I just used the RStudio addin and selected-then-reformatted offending chunks with the "Style selection" bit.  
 Was it necessary? Probably not. Do I wish `.Rmarkdown` was handled as a first-class alias of `.Rmd`? Kind of.  
 
-This also applies to `renv`, which I use for the entirety of my blog repository ([see also ](2020/03/auto-deploying-a-blogdown-blog-the-needlessly-hard-way/)). `renv` doesn't recognize dependencies in `.Rmarkdown` files, and I haven't spent too much time trying to fix it, but I thought it should be noted. Since `renv` is still fairly young, I think there's a decent chance it'll gain that functionality in the future – which in turn is probably also true for `styler` if more and more people were to adopt `.Rmarkdown`.  
+This also applies to {renv}, which I use for the entirety of my blog repository ([see also ](/2020/03/auto-deploying-a-blogdown-blog-the-needlessly-hard-way)). {renv} doesn't recognize dependencies in `.Rmarkdown` files, and I haven't spent too much time trying to fix it, but I thought it should be noted. Since {renv} is still fairly young, I think there's a decent chance it'll gain that functionality in the future – which in turn is probably also true for `styler` if more and more people were to adopt `.Rmarkdown`.  
 
 And if not, and I find it too much of a hassle, I might end up just switching back to `.Rmd` and using `md_document` as the output format. Maybe I should have done that in the first place? Well I guess I'll find out.
 
-*Real time edit: I have since [been informed](https://twitter.com/lorenzwalthert/status/1261187131290107904) that this is an open issue on styler, so depending on when you're reading this, it's already solved*.
+{{< addendum title="Real Time Edit" >}}
+I have since [been informed](https://twitter.com/lorenzwalthert/status/1261187131290107904) that this is an open issue on styler, so depending on when you're reading this, it's already solved.
+{{< /addendum >}}
 
 [^ahill]: …which in turn refers to [Alison Hill's neat post on the subject](https://alison.rbind.io/post/2019-02-21-hugo-page-bundles/)
 [^dupfile]: I have created a lot of `episodes.rds` in my time pulling data from [trakt.tv], okay?
 [^pandocfootnotes]: Besides maybe pandoc's syntax for [inline footnotes](https://pandoc.org/MANUAL.html#footnotes). You might have noticed I *do* like my footnotes, but we'll get to that later.
 [^lk]: [I miss Letterkenny](https://www.youtube.com/watch?v=o5dtu-pbEb8)
-
-[hugo-output-formats]: https://gohugo.io/content-management/formats/#list-of-content-formats
 
 ## Syntax Highlighting
 
@@ -344,7 +346,7 @@ And here's how my regular RStudio code tab looks:
 by the way, that theme is based on "*Monokai Spacegray Eighties*", which you can find on [this theme editor](https://tmtheme-editor.herokuapp.com/#!/editor/theme/Monokai%20Spacegray%20Eighties). I'm so very thankful to [Mara](https://twitter.com/dataandme) for posting this site on Twitter a while ago, it has enabled me to waste a lot of time worrying about very small and unecessary details! I mean, what *is* the correct color for a built-in constant anyway, and should it differ form a user-defined constant? :thinking:
 
 I like that theme, and I thought it would be neat if the code on my blog looked similiar.  
-At the time I set up my first hugo blog, I really wasn't too happy with highlight.js, but still wanted a fairly good solution with a decent R language support often lacking with highlighting engines.  
+At the time I set up my first hugo blog, I really wasn't too happy with [highlight.js], but still wanted a fairly good solution with a decent R language support often lacking (at the time) with highlighting engines.  
 I ended up going with [prism.js], which was customizable and had some really neat features.  
 Here are examples of what it looked like:
 
@@ -355,22 +357,24 @@ Prism also supported a toolbar that showed the code's language and a "Copy" butt
 {{< figure src="highlighting-prism-buttons-json.png" title="" alt="JSON with language indicator and 'Copy' button" caption="I like my configs copyable" >}}
 
 So, I used prism.js and all was well.  
-But nohohoo, I *also* insisted on using a custom [language deifnition for R][prism-r] I found poking around the internet which came with a tweaked [CSS file][prism-r-css] because the built-in R support wasn't *good enough* for me. Functions calls were not highlighted and the glorious `%>%` was not recognized as an operator and highlighted the way it deserved. These injustices had to be rectified.  
+
+Jokes aside, I *also* insisted on using a custom [language deifnition for R][prism-r] I found [poking around the internet](http://bl.ocks.org/mathematicalcoffee/raw/5655496/) which came with a tweaked [CSS file][prism-r-css] because the built-in R support wasn't *good enough* for me. Function calls were not highlighted and the glorious `%>%` was not recognized as an operator and highlighted the way it deserved. These injustices had to be rectified, and these tweaks did a good job.  
 I fiddled with the regex for a while until it *kind of* worked, happily ignoring the caveat I read by the original author about `"strings with # in them"`.  
 It took me a while until I actually wrote a post where that issue came up:
 
 {{< figure src="highlighting-prism-r-comments.png" title="" alt="R code example showing the use of hex color strings which are not highlighted correctly due to the # character marking them as comments" caption="Including hex color strings is dangerous, kids" >}}
 
-So to fix it, I would have needed to tweak the language definition regex again, or switch to the default prism.js language definition for R and hope I like it now.  
-I did not.  
-I was weary of prism.js anyway, because it was another third party JavaScript library I had to load, it was hard to maintain (which is my own fault given the above tweaks), and not easy to update.  
+So to fix it, I would have needed to tweak the language definition regex again by using the (slower) workaround provided, or switch to the default prism.js language definition for R and hope I like it now.  
+I did not do any of that, however. 
+ 
+I was weary of prism.js anyway, because it was another third party JavaScript library I had to load to do some heavy lifting, it was hard to maintain (which is my own fault given the above tweaks), and not easy to update.  
 There's no easy CDN-ready solution for prism.js (with extensions) – you have to go to the site, check all the boxes for the languages you want to support, the extensions you want to use, and then you can download the bundle and push it into your `/static/js` folder.  
 
 Manually ticking boxes and clicking a download button doesn't seem nice. Was there a better solution?  
 Probably. What was my solution?  
 Not much better.
 
-I wrote helper code I put in a `maintenance.R` file that let me define languages and extension (because I didn't remember which extension I chose the first time I installed it), generate a download URL and open it in the browser for me (yes).
+I wrote helper code I put in a `maintenance.R` file that let me define highlighting languages and extensions (because I didn't remember which configuration I chose the first time I installed it), generate a download URL and open it in the browser for me (yes).
 
 <details><summary>Click if you want to have a look</summary>
 
@@ -422,10 +426,10 @@ chroma_gen("monokai")
 chroma_gen("monokailight")
 ```
 
-I then refactored the two CSS files into one SCSS file and split them into three parts: The `base` theme for the elements common to both light and dark variants (VS Codes file comparison view came in handy there), and a `light` and `dark` variant. They are defined as a `@mixin` which makes them easy to include for my theme's light/dark modes, and when I want to tweak some colors, it's easier to figure out where the changes need to be made and which view (light or dark or both) they affect.  
-You can see what the SCSS looks like [here](https://github.com/rbind/blog.jemu.name/blob/26575cb38c44df379da73d8561a7f26094d7e1d7/assets/scss/_monokai.scss).
+I then refactored the two CSS files into one SCSS file and split them into three parts: The `base` theme for the elements common to both light and dark variants (VS Code's file comparison view came in handy there), and a `light` and `dark` variant. They are defined as a `@mixin`'s which makes them easy to include for my theme's light/dark modes, and when I want to tweak some colors for contrast or prettyness, it's easier to figure out where the changes need to be made and which view (light or dark or both) they affect.  
+You can see what the SCSS looks like [here](https://github.com/rbind/blog.jemu.name/blob/26575cb38c44df379da73d8561a7f26094d7e1d7/assets/scss/_monokai.scss), but note that this was my first time touching SCSS in years, and I never really learned how it works besides by example, so beware of bad practices.
 
-Now my highlighting is fairly robust, doesn't rely on third party JavaScript libraries, and the color scheme is easily customizable [^hicust]. Neat.  
+Now my highlighting is fairly robust, doesn't rely on third party JavaScript libraries to classify tokens in real time, and the color scheme is easily customizable [^hicust]. Neat.  
 
 Thanks again to Maëlle for making me reconsider my approach with her post on [syntax highlighting with hugo](https://ropensci.org/technotes/2020/04/30/code-highlighting/).
 
@@ -443,7 +447,7 @@ This javascript is attached to the toggle button you probably see on the top rig
 The JS solution used by that last blog only works if the `colorscheme` preference is not set to `"auto"` but fixed to `"light"` or `"dark"`, so I'm glad I have a solution now.  
 It's nice to have things both customizable *but also* provide a friendly default.
 
-In that spirit, I thought about light vs. dark {ggplot2} themes, and wondered if it [was possible to automatically render plots with two versions of the same base theme](https://twitter.com/Jemus42/status/1260608125180227585) and have not only the blog itself, but *also* the plots switch color schemes through the use the [HTML `<picture>` tag](https://www.w3schools.com/html/html_images_picture.asp) which would allow to define different images for different [settings of the `prefers-color-scheme`](https://stackoverflow.com/a/56030447/409362) property.  
+In that spirit, I thought about light vs. dark {ggplot2} themes, and wondered if it [was possible to automatically render plots with two versions of the same base theme](https://twitter.com/Jemus42/status/1260608125180227585) and have not only the blog itself, but *also* the plots switch color schemes through the use the [HTML `<picture>` element][picturetag] which would allow to define different images for different [settings of the `prefers-color-scheme`](https://stackoverflow.com/a/56030447/409362) property.  
 I haven't tried to make that happen yet, but it would be *oh so so cool*.
 
 [^webdevfriend]: I recommend keeping one of those, they're handy! Even if they tend to recommend you a dozen frameworks and a package manager you really don't want to get into.
@@ -497,17 +501,10 @@ Yes, it probably doesn't matter.
 
 [^meta]: Hi there. This footnote exists merely for the purposes of being meta. Being *meta* used to be a very cool thing, and I think it's still somewhat interesting in many contexts – maybe not this particular one, I'll give you that, but there's an argument to be made about how current humoristic trends (over-?)use the concept of *meta*-ness for the purpose of coming off as clever instead of actually being funny, but then again, *funnyness* in itself is an inherently fluid concept, which I would *like* to get into at some point, but I should finish this blog post first I guess.
 
-----
-<small>
-Note:
-At this point during my writing of this blog post, my preview window suddenly flashed white and the light theme turned on. That was my operating system realizing it's dawn and it's light mode time now.  
-Incidentally, this is also my signal that I should maybe go to bed like I wanted to many hours ago.
-</small>
-
 ## Using {knitr} Hooks for Blogging Comfort
 
-A few years ago, I wrote about [using {knitr} hooks to enrich plot output](2017/07/i-just-wanted-to-serve-images/#so-what-do) by having {knitr} output an HTML `<figure>` tag instead of a simple `<img src="">`.  
-My original intent was somehwat convoluted and had third party JavaScript integration for fancy gallery display in mind, while *also* converting a plot to an additional format ([WebP](https://en.wikipedia.org/wiki/WebP)) to serve responsive and more bandwidth-friendly images through the [HTML `<picture>`-tag](https://www.w3schools.com/html/html_images_picture.asp).  
+A few years ago, I wrote about [using {knitr} hooks to enrich plot output](/2017/07/i-just-wanted-to-serve-images/#so-what-do) by having {knitr} output an [HTML `<figure>` element][figuretag] instead of a simple `<img src="">`.  
+My original intent was somehwat convoluted and had third party JavaScript integration for fancy gallery display in mind, while *also* converting a plot to an additional format ([WebP](https://en.wikipedia.org/wiki/WebP)) to serve responsive and more bandwidth-friendly images through the previously mentioned [HTML `<picture>`-element][picturetag].  
 I gave up on that idea after not getting it to work quite right, but hey, that's where I learned to leverage [{knitr} hooks](https://yihui.org/knitr/hooks/)!  
 
 ### Hugo-Friendly Plot Output
@@ -541,7 +538,7 @@ I wanted at least *some* easy option to view a plot in full, and I guess this wi
 In any case, this hook is adaptable to also use an alternative shortcode, for example one that would not only use the `<figure>` element, but also the `<picture>` element I mentioned previously. *Technically* you should be able to write your own `figure`-shortcode that utilizes `<picture>` (they are intended to be able to work together), and have the code for the hook derive multiple image file names from the same input. The idea would be to plot `iris-color.png` and have the hook derive `iris-colors-light.png` and `iris-colors-dark.png` from it, which would then be put into different `srcset`'s in the `<picture>`.  
 I have not figured out a good way to "double plot" a {ggplot2} object with two pre-set themes, but once that's figured out, the hugo/blogdown infrastructure is *all there* to make it work.
 
-[^photosw]: The [beatutifulhugo] theme integrates [Photoswipe.js], which is quite nice, but also depends on jquery as far as I could tell. If you want to integrate it into your theme, you can use [liwenyip/hugo-easy-gallery](https://github.com/liwenyip/hugo-easy-gallery/).
+[^photosw]: The [beautifulhugo] theme integrates [Photoswipe.js], which is quite nice, but also depends on jquery as far as I could tell. If you want to integrate it into your theme, you can use [liwenyip/hugo-easy-gallery](https://github.com/liwenyip/hugo-easy-gallery/).
 
 ### Chunk and Code Folding
 
@@ -639,7 +636,7 @@ My goal was to declare the used (or at least the important) packages in my posts
 
 But I never quite figured out how to make the templating work. I did, however, get at least a list of all the packages I used on any post, sorted by usage frequency:
 
-{{< figure src="theme-package-taxonomy-list.png" alt="Package overview showing collapsable list of packages, clickin on a package revealed the posts that used the package" caption="I was even somewhat happy with that!" >}}
+{{< figure src="theme-package-taxonomy-list.png" height="500px" alt="Package overview showing collapsable list of packages, clickin on a package revealed the posts that used the package" caption="I was even somewhat happy with that!" >}}
 
 Another idea I had was to use the same principle for TV shows, as I did quite a lot of random episode rating plotting in the past:
 
@@ -673,14 +670,21 @@ Please just trust me on this one.
 
 <!-- links -->
 [trakt.tv]: https://trakt.tv
+[highlight.js]: https://highlightjs.org/
 [prism.js]: https://prismjs.com/
 [prism-r]: https://github.com/rbind/blog.jemu.name/blob/fc7742b21fce64984044be9b6a2e365320db8c2e/static/js/prism.r.js
 [prism-r-css]: https://github.com/rbind/blog.jemu.name/blob/fc7742b21fce64984044be9b6a2e365320db8c2e/static/css/prism.okaidia.css
+[figuretag]: https://www.w3schools.com/tags/tag_figure.asp
+[picturetag]: https://www.w3schools.com/html/html_images_picture.asp
+[video-tag]: https://www.w3schools.com/tags/tag_video.asp
+[hugo-figure-shortcode]: https://gohugo.io/content-management/shortcodes/
+[hugo-shortcode-docs]: https://gohugo.io/templates/shortcode-templates/#single-named-example-image
+[hugo-shortcodes]: https://github.com/gohugoio/hugoDocs/tree/master/layouts/shortcodes
 [littlefoot.js]: https://github.com/goblindegook/littlefoot
 [unpkg.com]: https://unpkg.com
 [Coder]: https://github.com/luizdepra/hugo-coder
 [Photoswipe.js]: https://photoswipe.com/
-[beatutifulhugo]: https://github.com/halogenica/beautifulhugo
+[beautifulhugo]: https://github.com/halogenica/beautifulhugo
 [hugo docs]: https://gohugo.io/documentation/
 [hugo source]: https://github.com/gohugoio/hugo
 [rmarkdown cookbook]: https://bookdown.org/yihui/rmarkdown-cookbook
@@ -688,3 +692,4 @@ Please just trust me on this one.
 [blogdown book]: https://bookdown.org/yihui/blogdown/
 [taxonomies]: https://gohugo.io/content-management/taxonomies/
 [Hugo Academix]: https://sourcethemes.com/academic/
+[hugo-output-formats]: https://gohugo.io/content-management/formats/#list-of-content-formats
