@@ -56,6 +56,53 @@ div.littlefoot-footnote__wrapper > div > p {
 
 @mixin littlefoot-dark {
   .littlefoot-footnote__button {
-    color: $alt-fg-color-dark;
-  }   
+    color: $fg-color-dark;
+  }
+}
+
+@mixin littlefoot-light {
+  .littlefoot-footnote__button {
+    // color: $fg-color;
+    color: lighten($fg-color, 10%);
+  }
+}
+
+// Addendum shortcode
+
+.addendum h6 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-top: 10px;
+}
+
+.addendum p {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-right: 2rem;
+}
+
+
+div.addendum {
+  border-left: 4px;
+  border-left-style: solid;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+@mixin addendum-light {
+  div.addendum {
+    border-left-color: $link-color;
+    background-color: darken($bg-color, 10%); 
+  }
+}
+
+@mixin addendum-dark {
+  div.addendum {
+    border-left-color: $link-color;
+    background-color: lighten($bg-color-dark, 10%); 
+  }
 }

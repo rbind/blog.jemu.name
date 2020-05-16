@@ -22,6 +22,7 @@ body.colorscheme-dark {
   @include table-dark();
   @include inline-code-dark();
   @include littlefoot-dark();
+  @include addendum-dark();
 }
 
 body.colorscheme-auto {
@@ -32,6 +33,7 @@ body.colorscheme-auto {
     @include table-dark();
     @include inline-code-dark();
     @include littlefoot-dark();
+    @include addendum-dark();
   }
 }
 
@@ -40,6 +42,8 @@ body.colorscheme-light {
   @include monokai-base();
   @include monokai-light();
   @include math-light();
+  @include littlefoot-light();
+  @include addendum-light();
   // @include color-inv()
 }
 
@@ -48,6 +52,8 @@ body.colorscheme-auto {
     @include monokai-base();
     @include monokai-light();
     @include math-light();
+    @include littlefoot-light();
+    @include addendum-light();
     // @include color-inv();
   }
 }
