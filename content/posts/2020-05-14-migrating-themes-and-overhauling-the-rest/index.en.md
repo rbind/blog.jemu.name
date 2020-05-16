@@ -32,7 +32,7 @@ In situations like this, I often think about this line from Terry Pratchett's *[
 >
 > --- Tolliver Groat
 
-So I decided to start from scratch, more or less, by switching to a different theme ([Coder](https://github.com/luizdepra/hugo-coder)) which has a couple benefits I like or grew to appreciate:
+So I decided to start from scratch, more or less, by switching to a different theme ([Coder]) which has a couple benefits I like or grew to appreciate given my 3+ years of hugo/blogdown experience:
 
 - **Simpler** design. I recently spent some time reading [Yihui's blog](https://yihui.org/) and his advice on choosing a simpler theme and not worrying too much about the fancy stuff really spoke _and_ somehwat offended me, given that worrying too much about irrelevant fancyness is basically my entire energy.
 - Built-in support for **light/dark mode** with automatic switching based on the visitor's system preference
@@ -132,8 +132,8 @@ Give page bundles a go, folks.
 \*Pauses for audible gasp from imaginary audience\*  
 
 The blog posts itself are now *all* called `index.Rmarkdown` / `index.md`.  
-Let that one marinade [^lk]. Do you use RStudio's `ctrl + .` shortcut to quickly search and open a file in your project? I do. Or at least I did. But now, if I want to refer back to an older post for something, I have to use RStudio's less-than-stellar file browser. Or at least I *would* have to do that, because thankfully I've really *really* grown to like [Visual Studio Code](https://code.visualstudio.com/) for longer text editing (like blog posts!).  
-VS Code also has a quick file selector (`⌘+P` on macOS), but in contrast to RStudio's implementation, this one fuzzy-matches the whole file path, which is probably better explained visually:
+Let that one marinade [^lk]. Do you use RStudio's <kbd>ctrl + .</kbd> shortcut to quickly search and open a file in your project? I do. Or at least I did. But now, if I want to refer back to an older post for something, I have to use RStudio's less-than-stellar file browser. Or at least I *would* have to do that, because thankfully I've really *really* grown to like [Visual Studio Code](https://code.visualstudio.com/) for longer text editing (like blog posts!).  
+VS Code also has a quick file selector (<kbd>⌘ + P</kbd> on macOS), but in contrast to RStudio's implementation, this one fuzzy-matches the whole file path, which is probably better explained visually:
 
 {{< videofig mp4="vscode-file-searcher.mp4" loop=true autoplay=true muted=false alt="VS Code file selector in action, showing how to find a blog post by title" caption="The VS Code file selector and other features have somewhat soured my love for RStudio" >}}
 
@@ -161,7 +161,7 @@ move_rmd_post("path-to-old-post.Rmd")
 
 I used this (and a variation to handle `.md` posts) to move all posts, first one at a time to make sure it's working, and then using a loop, iterating over all the posts I had previously moved from `content/` to a temporary migration-dump. There's still some cleanup I have to do on older posts for theme reasons, but at least they're all where they should be.
 
-### Quick Hit: Embedding `<video>`
+## Quick Hit: Embedding `<video>`
 
 While writing this post, I used my first [HTML \<video\> element][video-tag] for the short clip of VS Code you've seen above (hopefully). I thought using this over an embedded GIF was worth it, assuming `<video>` should be widely supported by modern browsers, and MP4 files should also not be a problem on most platforms. In this case, the GIF I originally wanted to embed is 18MB, while the MP4 measures only 6MB before and 1MB after compression [^vcomp] – seems worth it.  
 
@@ -208,7 +208,7 @@ Here are the two possible use cases for multiple named or one unnamed parameter,
 ```
 
 ```html
-<video loop autoplay controls>
+<video loop autoplay muted controls>
   <source src="vscode-file-searcher.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
@@ -240,7 +240,7 @@ In my case, I handled it like this to ensure it's only ever as wide as the conte
 ```
 
 Better solutions may be available.  
-If you want to make your own shortcodes, there's also those used by [the hugo docs itself][hugo-shortcodes] you can use for reference.
+If you want to make your own shortcodes, there's also those used by [the hugo docs itself][hugo-shortcodes] you can use for reference as well as various [examples throughout GitHub](https://github.com/parsiya/Hugo-Shortcodes/tree/master/shortcodes).
 
 {{< addendum title="Real Time Edit" >}}
 I have since learned that [it's perfectly fine to wrap this in `<figure>`, which also enables alt-text and captions](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element). Here's the new shortcode I'm using now, which is built on top of [the built-in figure shortcode](https://github.com/gohugoio/hugo/blob/aba2647c152ffff927f42523b77ee6651630cd67/tpl/tplimpl/embedded/templates/shortcodes/figure.html):
@@ -338,7 +338,7 @@ Before I get to how I handle syntax highlighting *now*, I first want to tell a t
 
 One of the first settings I always change in RStudio whenever I have to set it up on a different machine is the "highlight function calls" checkbox:
 
-{{< figure src="highlighting-RStudio-setting.png" title="" alt="RStudio settings window Code -> Display showing the 'Highlight R function calls' checkbox ticked" caption="Always highlight function calls in R is the hill I'm prepared to die on" >}}
+{{< figure src="highlighting-RStudio-setting.png" title="" alt="RStudio settings window Code -> Display showing the 'Highlight R function calls' checkbox ticked" caption="“Always highlight function calls” in R is the hill I'm prepared to die on" >}}
 
 And here's how my regular RStudio code tab looks:
 
@@ -614,7 +614,7 @@ This hook will do the following:
 Please note that so far I have only tested it successfully in {rmarkdown} with `github_document` output, because `md_document` stripped the trailing `r` from the code fence. I haven't tried it in blogdown yet, but I'm pretty sure if it *doesn't* work I'll at least get it to work with some tweaks.  
 If you were to use this with the `html_document` output format, the code would not be highlighted, so keep that in mind if you do your own testing.
 
-Here's my debugging [RMarkdown](knitr-hooks.Rmd), the rendered [Markdown](knitr-hooks.md), and the preview [HTML](knitr-hooks.html) if you want to check it out.
+Here's my debugging [RMarkdown](hook-test/knitr-hooks.Rmd), the rendered [Markdown](hook-test/knitr-hooks.md), and the preview [HTML](hook-test/knitr-hooks.html) if you want to check it out.
 
 I think that's enough fun with hooks for today (it took me a while) [^hooktweak], but I think the potential should have become pretty clear. We could also leverage this to enclose R source code inside fancy custom hugo shortcodes for *even cooler* source formatting, which *would still* be perfectly compatible with whatever you're able to do in your `.md` posts.
 
