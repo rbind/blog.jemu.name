@@ -407,7 +407,7 @@ I haven't tried to make that happen yet, but it would be *oh so so cool*.
 If there's on aspect of my previous theme(s) I definitely wanted to keep, it's [littlefoot.js].  
 In case you haven't noticed yet, I tend to make *heavy* use of footnotes [^meta] and I like them to be accessible directly where they're placed. Yes, usually footnotes come with links that take you down to the bottom of the post where all the decontextualized footnotes are placed, and yes, these footnotes tend to have "go back to where I was"-links that take you back to… well, where you ~~was~~ where – but I always find that somewhat jarring. It's a minor annoyance, and I wouldn't be surprised to learn that few others care that much about such a minor detail, but… have you noticed \*gestures towards entire blog post\*.
 
-{{< video mp4="theme-littlefoot.mp4" autoplay loop >}}
+{{< video mp4="theme-littlefoot.mp4" autoplay=true loop=true >}}
 
 Since littlefoot.js is fairly lightweight and doesn't need a heavy jquery or bootstrap dependency, I'm fairly happy I could just include it again without having to feel a little bad about it.
 
