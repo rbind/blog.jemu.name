@@ -3,10 +3,20 @@ title: Debug
 type: page
 katex: false
 math: true
+toc: true
 ---
 
 This page is used for debugging purposes.
 One might consider it a test case.
+
+## Shortcodes
+
+{{< codecaption lang="r" caption="A code caption" >}}
+library(ggplot2)
+
+ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length)) +
+  geom_point(size = 2)
+{{< /codecaption >}}
 
 ## Footnotes
 
