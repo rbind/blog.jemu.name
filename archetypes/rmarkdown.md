@@ -19,7 +19,7 @@ editor_options:
 ---
 
 ```{r setup}
-source(here::here("R/post-setup.R.R"))
+source(here::here("R/post-setup.R"))
 ```
 
 

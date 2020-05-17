@@ -37,7 +37,7 @@ And then I started plucking.
 Here are the R packages I used for the analysis. Some of them are from GitHub, and two of them are my own packages.
 It seems I need this stuff a lot.
 
-```r 
+```r
 library(rvest)
 library(dplyr)
 library(purrr)
@@ -67,7 +67,7 @@ And here is the heart of that whole project. Probably my biggest and most comple
 I realize that going for big and complex chains is not necessarily a good thing because of readibility and understandability, but at some point I just wanted to know if I could actually do all the data retrieval *and cleanup* in one chain.
 I could.
 
-```r 
+```r
 xfiles <- read_html("https://en.wikipedia.org/wiki/List_of_The_X-Files_episodes") %>%
   # str_replace_all('</a>\"<img', "ARC</a><img") %>%
   read_html() %>%
@@ -131,7 +131,7 @@ Before I start the plottage, here are some numbers: The original run of the seri
 
 That's a lot of views. Let's plot them over the seasons.
 
-```r 
+```r
 ggplot(data = xfiles, aes(x = episode, y = viewers)) +
   geom_point(size = 4) +
   facet_grid(. ~ season) +
@@ -140,11 +140,12 @@ ggplot(data = xfiles, aes(x = episode, y = viewers)) +
     x = "Episode", y = "Viewers (Millions)"
   )
 ```
+
 {{<figure src="plots/xfiles_plots_viewers_1-1.png" link="plots/xfiles_plots_viewers_1-1.png">}}
 
 That's beautiful. I bet I could draw a quadratic curve right through those data points and probably even get a good regression fit out of it.
 
-```r 
+```r
 ggplot(data = xfiles, aes(x = epnum, y = viewers)) +
   geom_point(size = 4) +
   geom_smooth(method = lm, formula = y ~ poly(x, 2), se = F, color = "red") +
@@ -153,10 +154,11 @@ ggplot(data = xfiles, aes(x = epnum, y = viewers)) +
     x = "Episode", y = "Viewers (Millions)"
   )
 ```
+
 {{<figure src="plots/xfiles_plots_viewers_2-1.png" link="plots/xfiles_plots_viewers_2-1.png">}}
 
 
-```r 
+```r
 model <- lm(data = xfiles, viewers ~ poly(epnum, 2))
 
 tidy(model) %>%
@@ -171,7 +173,7 @@ tidy(model) %>%
 |poly(epnum, 2)2 |  -43.175|     2.107|   -20.495|       0|
 
 
-```r 
+```r
 glance(model) %>%
   kable(digits = 3)
 ```
@@ -186,7 +188,7 @@ These measures indicate that that curve I drew is a pretty decent approximation 
 
 Let's look at the averages for each season and throw some confidence intervals in for good measure.
 
-```r 
+```r
 xfiles %>%
   ggplot(aes(x = season, y = rating)) +
   stat_summary(
@@ -200,6 +202,7 @@ xfiles %>%
     x = "Season", y = "Average Viewers (Millions)"
   )
 ```
+
 {{<figure src="plots/xfiles_plots_viewers_3-1.png" link="plots/xfiles_plots_viewers_3-1.png">}}
 
 It's probably quite telling that season 9 got less viewers than the first season.
@@ -208,19 +211,20 @@ It's probably quite telling that season 9 got less viewers than the first season
 
 Let's start looking at these plot arcs I keep hearing about. First of all, I classified all the episodes according to the Wikipedia episode list in "Mytharc" and "Regular", and now let's see how many of each there are.
 
-```r 
+```r
 waffle(table(xfiles$plotarc),
   rows = 10, size = .5,
   title = "Number of Episodes by Plot Arc", xlab = "1 Square == 1 Episode",
   legend_pos = "top", colors = RColorBrewer::brewer.pal(3, "Set1")[1:2]
 )
 ```
+
 {{<figure src="plots/xfiles_plots_arcs_waffle-1.png" link="plots/xfiles_plots_arcs_waffle-1.png">}}
 
 Yep. That's 62 *mytharc* episodes and 140 remaining episodes.
 I'm assuming the plot arcs don't have any influence on the original viewer numbers, but let's check that.
 
-```r 
+```r
 ggplot(data = xfiles, aes(x = episode, y = viewers, colour = plotarc)) +
   geom_point(size = 4) +
   geom_smooth(method = lm, se = F) +
@@ -232,9 +236,10 @@ ggplot(data = xfiles, aes(x = episode, y = viewers, colour = plotarc)) +
   ) +
   theme(legend.position = "top")
 ```
+
 {{<figure src="plots/xfiles_plots_arcs_viewers-1.png" link="plots/xfiles_plots_arcs_viewers-1.png">}}
 
-```r 
+```r
 xfiles %>%
   group_by(plotarc) %>%
   summarize(
@@ -248,13 +253,14 @@ xfiles %>%
   scale_color_brewer(palette = "Set1", guide = F) +
   labs(title = "Average Viewers with 95% CI", x = "Plot Arc", y = "Average Viewers (Millions)")
 ```
+
 {{<figure src="plots/xfiles_plots_arcs_viewers2-1.png" link="plots/xfiles_plots_arcs_viewers2-1.png">}}
 
 Huh, it actually looks like there is a mild increase in viewers for the *mytharc*, but nothing significant (the CIs overlap a lot).
 
 So, what's next? How about we look at the trakt.tv episode ratings to compare the plot arcs:
 
-```r 
+```r
 ggplot(data = xfiles, aes(x = episode, y = rating, colour = plotarc)) +
   geom_point(size = 4) +
   geom_smooth(method = lm, se = F) +
@@ -266,11 +272,12 @@ ggplot(data = xfiles, aes(x = episode, y = rating, colour = plotarc)) +
   ) +
   theme(legend.position = "top")
 ```
+
 {{<figure src="plots/xfiles_plotarcs_episodes-1.png" link="plots/xfiles_plotarcs_episodes-1.png">}}
 
 That seems… oddly conclusive. The mytharc appear to be consistently more well-received than non-mytharc episodes, but that might be due to people on rewatches (remember trakt.tv wasn't around during the 90s) only watch and/or rate the mytharc episodes more often?
 
-```r 
+```r
 ggplot(data = xfiles, aes(x = episode, y = votes, colour = plotarc)) +
   geom_point(size = 4) +
   geom_smooth(method = lm, se = F) +
@@ -282,13 +289,14 @@ ggplot(data = xfiles, aes(x = episode, y = votes, colour = plotarc)) +
   ) +
   theme(legend.position = "top")
 ```
+
 {{<figure src="plots/xfiles_plotarcs_votes-1.png" link="plots/xfiles_plotarcs_votes-1.png">}}
 
 Well, nope. That seems pretty uniform and resembles the same kind of vote distribution I commonly see on shows on trakt.tv.
 
 So let's take a closer look at the episode ratings by plot arc: Here's a histogram with overlaid density distribution and the means with confidence intervals.
 
-```r 
+```r
 ggplot(data = xfiles, aes(x = rating, fill = plotarc)) +
   geom_density(alpha = .5) +
   # geom_histogram(aes(y = stat(density)), position = "dodge", alpha = .6) +
@@ -299,10 +307,11 @@ ggplot(data = xfiles, aes(x = rating, fill = plotarc)) +
   ) +
   theme(legend.position = "top")
 ```
+
 {{<figure src="plots/xfiles_plotarc_ratingfrq_1-1.png" link="plots/xfiles_plotarc_ratingfrq_1-1.png">}}
 
 
-```r 
+```r
 xfiles %>%
   group_by(plotarc) %>%
   summarize(
@@ -316,11 +325,12 @@ xfiles %>%
   scale_color_brewer(palette = "Set1", guide = F) +
   labs(title = "Average Rating with 95% CI", x = "Plot Arc", y = "Rating (0-100)")
 ```
+
 {{<figure src="plots/xfiles_plotarc_ratingfrq_2-1.png" link="plots/xfiles_plotarc_ratingfrq_2-1.png">}}
 
 As you can see, there's quite a nice distinction. Especially the second plot shows an obvious difference which is so big a statistical test for significance would be entirely pointless. But who am I to judge, here's a t-test.
 
-```r 
+```r
 tadaa_t.test(xfiles, rating, plotarc, print = "markdown")
 ```
 Table 1: **Two Sample t-test** with alternative hypothesis: `\(\mu_1 \neq \mu_2\)`
@@ -341,7 +351,7 @@ If you're not familiar with t-tests and power analysis: That's ridiculous. The p
 Anyway, let's continue.
 The next thing I'm curious about is if that difference in ratings is seen throughout the series, or possibly limited to some seasons.
 
-```r 
+```r
 xfiles %>%
   group_by(plotarc, season) %>%
   summarize(
@@ -356,6 +366,7 @@ xfiles %>%
   labs(title = "Average Rating with 95% CI", x = "Season", y = "Rating (0-100)", color = "Plot Arc") +
   theme(legend.position = "top")
 ```
+
 {{<figure src="plots/xfiles_plotarc_rating_season-1.png" link="plots/xfiles_plotarc_rating_season-1.png">}}
 
 Here we have the mean rating with a 95% CI for each season, and who would have guessed, the overall trend is the same. Besides season 6 and maybe season 5, there's a significant difference in ratings within each season per plotarc.
@@ -368,7 +379,7 @@ Anyways, I just wanted to make some plots.
 
 So to end this, let's take a quick look at the writers who brought us this show (filtered for at leats 2 episode credits):
 
-```r 
+```r
 xfiles %>%
   group_by(plotarc, writer) %>%
   tally() %>%
@@ -382,4 +393,5 @@ xfiles %>%
     x = "Writer", y = "Number of Episodes"
   )
 ```
+
 {{<figure src="plots/xfiles_plot_writers-1.png" link="plots/xfiles_plot_writers-1.png">}}

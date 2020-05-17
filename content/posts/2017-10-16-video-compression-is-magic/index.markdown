@@ -287,19 +287,24 @@ To start of, here's some tables:
 That's… accurate, yet not very visually stimulating.  
 Needs more plot.
 
+
 {{<figure src="plots/sizes_by_codec-1.png" link="plots/sizes_by_codec-1.png">}}
 
 Okay, let's zoom in a little by ignoring CRF 51 and CRF 01, as they're silly anyway.
+
 
 {{<figure src="plots/sizes_by_codec_subset-1.png" link="plots/sizes_by_codec_subset-1.png">}}
 
 Hm, yes, quite.  
 Now a breakdown to compare codecs across presets:
 
+
 {{<figure src="plots/sizes_by_preset-1.png" link="plots/sizes_by_preset-1.png">}}
+
 {{<figure src="plots/sizes_by_preset-2.png" link="plots/sizes_by_preset-2.png">}}
 
 As you might have noticed, absolute file sizes might not be as interesting and/or generalizable as relative size changes, so here we go:
+
 
 {{<figure src="plots/sizes_relative-1.png" link="plots/sizes_relative-1.png">}}
 
@@ -478,15 +483,20 @@ Also, *yes* I know the "sum" column/row doesn't make sense, but it's the default
 
 And now, the plotty thing.
 
+
 {{<figure src="plots/ssim_by_codec-1.png" link="plots/ssim_by_codec-1.png">}}
+
 {{<figure src="plots/ssim_by_codec-2.png" link="plots/ssim_by_codec-2.png">}}
 
 
 
+
 {{<figure src="plots/ssim_by_preset-1.png" link="plots/ssim_by_preset-1.png">}}
+
 {{<figure src="plots/ssim_by_preset-2.png" link="plots/ssim_by_preset-2.png">}}
 
 Now let's do that thing again where we compare all the *CRF* by *preset* cells in a grid, but now using SSIM as a metric:
+
 
 {{<figure src="plots/SSIM_relative-1.png" link="plots/SSIM_relative-1.png">}}
 
@@ -495,15 +505,18 @@ Bummer.
 
 ## Quality(ish) versus Size
 
+
 {{<figure src="plots/ssim_by_size-1.png" link="plots/ssim_by_size-1.png">}}
 
 I've tried log scales on this one, but it didn't really help.  
 Let's look at the subset of reasonable CRFs:
 
+
 {{<figure src="plots/ssim_by_size_subset-1.png" link="plots/ssim_by_size_subset-1.png">}}
 
 Well if there's a lesson here, it seems that *ultrafast* is probably not the way to go.  
 Let's take another look, ignoring the *ultrafast* data.
+
 
 {{<figure src="plots/ssim_by_size_subset2-1.png" link="plots/ssim_by_size_subset2-1.png">}}
 

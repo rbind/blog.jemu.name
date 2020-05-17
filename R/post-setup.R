@@ -36,7 +36,7 @@ knitr::knit_hooks$set(
     # Link image to itself if there's no explicit link set
     if (!hasName(hugoopts, "link")) hugoopts$link <- x
     paste0(
-      "{", "{<figure src=", '"', x, '" ',
+      "\n{", "{<figure src=", '"', x, '" ',
       if (!is.null(hugoopts)) {
         glue::glue_collapse(
           glue::glue('{names(hugoopts)}="{hugoopts}"'),
@@ -67,7 +67,7 @@ knitr::knit_hooks$set(
 knitr::knit_hooks$set(source = function(x, options) {
 
   # The original source in a fenced code block
-  source_orig <- paste(c("```r", x, "```"), collapse = "\n")
+  source_orig <- paste(c("```r", x, "```\n"), collapse = "\n")
   fold_option <- options[["code_fold"]]
 
   # If option not set or explicitly FALSE, return regular code chunk

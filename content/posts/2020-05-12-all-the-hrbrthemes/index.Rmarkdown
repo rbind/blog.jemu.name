@@ -17,7 +17,7 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-source(here::here("R/post-setup.R.R"))
+source(here::here("R/post-setup.R"))
 
 knitr::opts_chunk$set(
   fig.width = 10,

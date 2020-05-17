@@ -25,7 +25,7 @@ editor_options:
 ---
 
 ```{r init, include = FALSE}
-source(here::here("R/post-setup.R.R"))
+source(here::here("R/post-setup.R"))
 knitr::opts_chunk$set(echo = FALSE)
 
 library(ggplot2)
