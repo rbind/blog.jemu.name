@@ -631,7 +631,7 @@ This hook will do the following:
 Please note that so far I have only tested it successfully in {rmarkdown} with `github_document` output, because `md_document` stripped the trailing `r` from the code fence. I haven't tried it in blogdown yet, but I'm pretty sure if it *doesn't* work I'll at least get it to work with some tweaks.  
 If you were to use this with the `html_document` output format, the code would not be highlighted, so keep that in mind if you do your own testing.
 
-Here's my debugging [RMarkdown](/hook-test/knitr-hooks.Rmd), the rendered [Markdown](/hook-test/knitr-hooks.md), and the preview [HTML](/hook-test/knitr-hooks.html) if you want to check it out.
+Here's my debugging [RMarkdown](https://dump.jemu.name/knitr-hooks.Rmd) if you want to check it out.
 
 I think that's enough fun with hooks for today (it took me a while) [^hooktweak], but I think the potential should have become pretty clear. We could also leverage this to enclose R source code inside fancy custom hugo shortcodes for *even cooler* source formatting, which *would still* be perfectly compatible with whatever you're able to do in your `.md` posts.
 
