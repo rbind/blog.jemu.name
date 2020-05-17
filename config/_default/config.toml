@@ -21,7 +21,7 @@ ignoreFiles = [
   "\\.knit\\.md$", "\\.utf8\\.md$", "\\.tmp\\.html$", # Knitr temp files just in case
   "\\.lock$", "^renv$", # Ignore renv if used within page bundles
   "\\.graffle$", # Diagrams
-  "knitr-hooks\\.Rmd"
+  "^knitr-hooks\\."
   ]
 
 [permalinks]
