@@ -352,7 +352,7 @@ And here's what my regular RStudio code tab usually looks like:
 
 by the way, that theme is based on *"Monokai Spacegray Eighties"*, which you can find on [this theme editor](https://tmtheme-editor.herokuapp.com/#!/editor/theme/Monokai%20Spacegray%20Eighties) that outputs RStudio-compatible themes. I'm still so very thankful to [Mara](https://twitter.com/dataandme) for posting this site on Twitter a while ago, it has enabled me to waste a lot of time worrying about very small and unecessary details! I mean, what *is* the correct color for a built-in constant anyway, and should it differ form a user-defined constant? :thinking:
 
-I like that theme, and I thought it would be neat if the code on my blog looked similiar.  
+I like that theme, and I thought it would be neat if the code on my blog looked similar.  
 At the time I set up my first hugo blog, I really wasn't too happy with [highlight.js], but still wanted a fairly good solution with a decent R language support often lacking (at the time) with highlighting engines.  
 I ended up going with [prism.js], which was customizable and had some really neat features.  
 Here are examples of what it looked like:
@@ -365,7 +365,7 @@ Prism also supported a toolbar that showed the code's language and a "Copy" butt
 
 So, I used prism.js and all was well.  
 
-Jokes aside, I *also* insisted on using a custom [language deifnition for R][prism-r] I found [poking around the internet](http://bl.ocks.org/mathematicalcoffee/raw/5655496/) which came with a tweaked [CSS file][prism-r-css] because the built-in R support wasn't *good enough* for me. Function calls were not highlighted and the glorious `%>%` was not recognized as an operator and highlighted the way it deserved. These injustices had to be rectified, and these tweaks did a good job.  
+Jokes aside, I *also* insisted on using a custom [language definition for R][prism-r] I found [poking around the internet](http://bl.ocks.org/mathematicalcoffee/raw/5655496/) which came with a tweaked [CSS file][prism-r-css] because the built-in R support wasn't *good enough* for me. Function calls were not highlighted and the glorious `%>%` was not recognized as an operator and highlighted the way it deserved. These injustices had to be rectified, and these tweaks did a good job.  
 I fiddled with the regex for a while until it *kind of* worked, happily ignoring the caveat I read by the original author about `"strings with # in them"`.  
 It took me a while until I actually wrote a post where that issue came up:
 
@@ -452,7 +452,7 @@ Thanks again to Maëlle for making me reconsider my approach with her post on [s
 One of the selling features (for me, at least) of the [Coder] theme is the light and dark mode switching based on your system preferences. Whatever your preference, you're probably reading this post in the "correct" color scheme. Unless you're on a system that doesn't have global color scheme preference, or your browser doesn't pick up on it, or you haven't enabled it for some reason. But *technically* it's automatically *correct*.  
 The best kind of technically correct.
 
-The only thing I was missing on the theme side was a user-controllable toggle, just in case a reader's preferences aren't set, or even just for testing purposes --- having a manual override seemed like a good thing to have. 
+The only thing I was missing on the theme side was a user-controllable toggle, just in case a reader's preferences aren't set or recognized, or even just for testing purposes --- having a manual override seemed like a good thing to have. 
 
 Thankfully I have a [web-developer friend](https://github.com/zookee1) [^webdevfriend] who came through and cobbled together a fairly simple solution. This one is specific to the [Coder] theme which controls the color scheme via just one `class` of the `<body>` tag, but you can see it [here](https://github.com/rbind/blog.jemu.name/blob/9889fc8ec826e7e91194c8d8b7563a9547f1fbb8/static/js/jemsu.js#L8-L30) if you'd like a reference.  
 This javascript is attached to the toggle button you probably see on the top right of the page, which is defined [here](https://github.com/rbind/blog.jemu.name/blob/9889fc8ec826e7e91194c8d8b7563a9547f1fbb8/layouts/partials/header.html#L7-L15) and I copied from [there](https://gitlab.com/clement-pannetier/clementpannetier.dev/-/tree/fedd75b93939f2ed45e9ce9671f684a370572f09/).  
@@ -461,7 +461,7 @@ By the way, the JS solution used by that linked blog only works if the `colorsch
 It's nice to have things both customizable *but also* provide a friendly default.
 
 In that spirit, I thought about light vs. dark {ggplot2} themes, and wondered if it [was possible to automatically render plots with two versions of the same base theme](https://twitter.com/Jemus42/status/1260608125180227585) and have not only the blog itself, but *also* the plots switch color schemes through the use the [HTML `<picture>` element][picturetag] which would allow to define different images for different [settings of the `prefers-color-scheme`](https://stackoverflow.com/a/56030447/409362) property.  
-I haven't tried to make that happen yet, but it would be *oh so so cool*.
+I have a rough idea with missing parts on how to do that which I'll get to later, but it would be *oh so so cool*.
 
 [^webdevfriend]: I recommend keeping one of those, they're handy! Even if they tend to recommend you a dozen frameworks and a package manager you really don't want to get into.
 
@@ -549,14 +549,12 @@ This allows you to click on any plot to view it in full, albeit requiring you to
 I wanted at least *some* easy option to view a plot in full, and I guess this will do for now.  
 
 In any case, this hook is adaptable to also use an alternative shortcode, for example one that would not only use the `<figure>` element, but also the `<picture>` element I mentioned previously.  
-*Technically* you should be able to write your own `figure`-shortcode that utilizes `<picture>` (they are intended to be able to work together), and have the code for the hook derive multiple image file names from the same input.  
+*Technically* you should be able to write your own `figure`-shortcode that utilizes the previously mentioned `<picture>` element, and have the hook or shortcode derive multiple images from the same input.  
 
 The idea would be to plot `iris-color.png` and have the hook derive `iris-colors-light.png` and `iris-colors-dark.png` from it, which would then be put into different `srcset`'s in the `<picture>`.  
 You could then have the `-light.png` and `-dark.png` images displayed dynamically according to the [`prefers-color-scheme`][pcs] feature.
 
 I have not figured out a good way to "double plot" a {ggplot2} object with two pre-set themes, but once that's figured out, the hugo/blogdown infrastructure is *all there* to make it work.  
-
-It would be so cool.
 
 [^photosw]: The [beautifulhugo] theme integrates [Photoswipe.js], which is quite nice, but also depends on jquery as far as I could tell. If you want to integrate it into your theme, you can use [liwenyip/hugo-easy-gallery](https://github.com/liwenyip/hugo-easy-gallery/).
 
