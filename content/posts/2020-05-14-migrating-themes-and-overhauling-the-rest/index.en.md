@@ -7,14 +7,14 @@ slug: migrating-themes-and-overhauling-the-rest
 tags:
   - blogdown
   - knitr
-description: ''
+  - hugo
+  - html
+description: 'A long tale of how I migrated to a different hugo theme and revamped my entire blogdown blog using new things I learned and old things I rediscovered.'
 series:
   - Blogging
 packages: ''
-math: yes
+math: false
 toc: true
-editor_options:
-  chunk_output_type: console
 ---
 
 Oh boy.  
@@ -26,11 +26,11 @@ I really should have been working on my master's thesis lately. I should have do
 I tend to get these ideas stuck in my head that end up consuming me, forcing me down one rabbit hole after the other and I can only focus on something more important again after it's done, in one way or another.  
 
 Anyway, somehow I got my blog on my mind again, maybe because I realized there were many bits around the theme I didn't like, stuff I never really got working right, and an overall desire to just revamp the hole thing.  
-In situations like this, I often think about this line from Terry Pratchett's *[Going Postal](https://en.wikipedia.org/wiki/Terry_Pratchett%27s_Going_Postal)*, the first Discworld book I ever read:
+In situations like this, I often think about this line from *Going Postal*, the first Discworld book I ever read:
 
-> "Sometimes things smash so bad it’s better to leave it alone than try to pick up the pieces. I mean, where would you start?"
->
-> --- Tolliver Groat
+{{< blockquote author="Tolliver Groat" link="https://en.wikipedia.org/wiki/Terry_Pratchett%27s_Going_Postal" title="Terry Pratchett's “Going Postal“" >}}
+"Sometimes things smash so bad it’s better to leave it alone than try to pick up the pieces. I mean, where would you start?"
+{{< /blockquote >}}
 
 So I decided to start from scratch, more or less, by switching to a different theme ([Coder]) which has a couple benefits I like or grew to appreciate given my 3+ years of hugo/blogdown experience:
 
