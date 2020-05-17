@@ -44,12 +44,11 @@ library(ggplot2)
 library(hrbrthemes)
 
 theme_set(
-  theme_modern_rc() +
+  theme_ipsum_rc() +
     theme(
       plot.title.position = "plot",
       panel.spacing.y = unit(2.5, "mm"),
       panel.spacing.x = unit(2, "mm"),
-      #plot.margin = margin(t = 7, r = 5, b = 7, l = 5),
       legend.position = "top",
       strip.text = element_text(hjust = .5)
     )
@@ -158,8 +157,8 @@ Plot them all together:
 ```{r ratings-plot-standardized, fig.cap="Centered episode ratings per show"}
 ggplot(episodes, aes(x = episode_abs, y = rating_c, color = show, fill = show)) +
   geom_point(alpha = .75, shape = 21) +
-  scale_color_ft(guide = FALSE) +
-  scale_fill_ft() +
+  scale_color_ipsum(guide = FALSE) +
+  scale_fill_ipsum() +
   scale_y_continuous(breaks = seq(-10, 10, .5), minor_breaks = seq(-10, 10, .25)) +
   labs(
     title = "Episode Ratings per Show",
@@ -181,8 +180,8 @@ episodes <- episodes %>%
 
 ggplot(episodes, aes(x = episode_rel, y = rating_c, color = show, fill = show)) +
   geom_point(alpha = .75, shape = 21) +
-  scale_color_ft(guide = FALSE) +
-  scale_fill_ft() +
+  scale_color_ipsum(guide = FALSE) +
+  scale_fill_ipsum() +
   scale_y_continuous(breaks = seq(-10, 10, .5), minor_breaks = seq(0, 10, .25)) +
   labs(
     title = "Episode Ratings per Show",

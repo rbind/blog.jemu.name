@@ -1,6 +1,7 @@
 knitr::opts_chunk$set(
   fig.path = "plots/", # for leaf bundles to work
-  # cache.path = "blogdown_cache/", # is ignored :/ (for leaf bundles, cache in post directory)
+  cache = TRUE,
+  cache.path = "blogdown_cache/", # is ignored :/ (for leaf bundles, cache in post directory)
   fig.retina = 2,
   echo = TRUE,
   message = FALSE, warning = FALSE, error = FALSE,
@@ -64,28 +65,28 @@ knitr::knit_hooks$set(
 
 # Fold source code only ----
 # in .Rmarkdown only
-knitr::knit_hooks$set(source = function(x, options) {
-
-  # The original source in a fenced code block
-  source_orig <- paste(c("```r", x, "```\n"), collapse = "\n")
-  fold_option <- options[["code_fold"]]
-
-  # If option not set or explicitly FALSE, return regular code chunk
-  if (is.null(fold_option) | isFALSE(fold_option)) {
-   return(source_orig) 
-  } 
-  
-  summary_text <- ifelse(
-    is.character(fold_option), # If the option is text,
-    fold_option,               # use it as <summary>Label</summary>,
-    "Click to expand"          # otherwise here's a default
-  )
-  
-  # Output details tag
-  glue::glue(
-    "<details>
-      <summary>{summary_text}</summary>
-      {source_orig}
-    </details>"
-  )
-})
+# knitr::knit_hooks$set(source = function(x, options) {
+#
+#   # The original source in a fenced code block
+#   source_orig <- paste(c("```r", x, "```\n"), collapse = "\n")
+#   fold_option <- options[["code_fold"]]
+#
+#   # If option not set or explicitly FALSE, return regular code chunk
+#   if (is.null(fold_option) | isFALSE(fold_option)) {
+#    return(source_orig)
+#   }
+#
+#   summary_text <- ifelse(
+#     is.character(fold_option), # If the option is text,
+#     fold_option,               # use it as <summary>Label</summary>,
+#     "Click to expand"          # otherwise here's a default
+#   )
+#
+#   # Output details tag
+#   glue::glue(
+#     "<details>
+#       <summary>{summary_text}</summary>
+#       {source_orig}
+#     </details>"
+#   )
+# })

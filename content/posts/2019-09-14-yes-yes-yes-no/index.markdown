@@ -42,20 +42,17 @@ library(ggplot2)
 library(hrbrthemes)
 
 theme_set(
-  theme_modern_rc() +
+  theme_ipsum_rc() +
     theme(
       plot.title.position = "plot",
       panel.spacing.y = unit(2.5, "mm"),
       panel.spacing.x = unit(2, "mm"),
-      #plot.margin = margin(t = 7, r = 5, b = 7, l = 5),
       legend.position = "top",
       strip.text = element_text(hjust = .5)
     )
 )
 ```
 
-
-<details><summary>Code: Data collection</summary>
 
 ```r 
 shows <- tribble(
@@ -86,8 +83,6 @@ if (!file.exists("episodes.rds")) {
   episodes <- readRDS("episodes.rds")
 }
 ```
-
-</details>
 
 Here's the highest rated episodes per show to get started:
 
@@ -265,6 +260,7 @@ ggplot(episodes, aes(x = episode_abs, y = rating)) +
     y = "Rating (1-10)"
   )
 ```
+
 {{<figure src="plots/ratings-plot-1.png" link="plots/ratings-plot-1.png">}}
 
 Since I'm primarily interested in the rating of the ending compared to the average for the specific show, we'll standardize the ratings using mean and standard deviation of each show. Just in case, we'll get both centered _and_ standardized ratings.
@@ -425,8 +421,8 @@ Plot them all together:
 ```r 
 ggplot(episodes, aes(x = episode_abs, y = rating_c, color = show, fill = show)) +
   geom_point(alpha = .75, shape = 21) +
-  scale_color_ft(guide = FALSE) +
-  scale_fill_ft() +
+  scale_color_ipsum(guide = FALSE) +
+  scale_fill_ipsum() +
   scale_y_continuous(breaks = seq(-10, 10, .5), minor_breaks = seq(-10, 10, .25)) +
   labs(
     title = "Episode Ratings per Show",
@@ -436,6 +432,7 @@ ggplot(episodes, aes(x = episode_abs, y = rating_c, color = show, fill = show)) 
     fill = ""
   )
 ```
+
 {{<figure src="plots/ratings-plot-standardized-1.png" link="plots/ratings-plot-standardized-1.png">}}
 
 We should also normalize the episode count, so we'll take the absolute episode number and scale them to the interval [0, 100] — then we can interpret it as a percentage of total show run time.
@@ -449,8 +446,8 @@ episodes <- episodes %>%
 
 ggplot(episodes, aes(x = episode_rel, y = rating_c, color = show, fill = show)) +
   geom_point(alpha = .75, shape = 21) +
-  scale_color_ft(guide = FALSE) +
-  scale_fill_ft() +
+  scale_color_ipsum(guide = FALSE) +
+  scale_fill_ipsum() +
   scale_y_continuous(breaks = seq(-10, 10, .5), minor_breaks = seq(0, 10, .25)) +
   labs(
     title = "Episode Ratings per Show",
@@ -460,6 +457,7 @@ ggplot(episodes, aes(x = episode_rel, y = rating_c, color = show, fill = show)) 
     fill = ""
   )
 ```
+
 {{<figure src="plots/normalize-epcount-1.png" link="plots/normalize-epcount-1.png">}}
 
 For display purposes, we'll categorize the last season and last episode respectively.
@@ -490,6 +488,7 @@ ggplot(episodes, aes(x = episode_rel, y = rating_c, fill = is_last_season)) +
     fill = ""
   )
 ```
+
 {{<figure src="plots/scatter-last-season-1.png" link="plots/scatter-last-season-1.png">}}
 
 Welp, not for _all_, but for most shows in the mix we're seeing quite a noticable dip at the end there.
@@ -514,6 +513,7 @@ ggplot(episodes, aes(x = is_last_season, y = rating_c,
     color = "", fill = ""
   )
 ```
+
 {{<figure src="plots/last-seasons-comparison-boxplot-1.png" caption="Last Seasons: A Boxplot" link="plots/last-seasons-comparison-boxplot-1.png">}}
 
 This is probably the most useful plot so far. Not only can we distinguis between the final season's ratings and the remainder of the show, but we can also see if the finale itself was rated particularly differently.
