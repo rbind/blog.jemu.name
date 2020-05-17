@@ -21,7 +21,7 @@ I really did it again. The procrastinative energy was too strong.
 
 {{< figure src="migration-github-diff.png" title="" alt="GitHub diff summary showing 180 changed files with 6570 additions and 1807 deletions." caption="This is fine." >}}
 
-I really should have been working on more important things lately, rather than losing myself in various side-projects [^sideproj].  
+I really should have been working on more important things lately, rather than losing myself in  side-projects [^sideproj].  
 I tend to get these ideas stuck in my head that end up consuming me, forcing me down one rabbit hole after the other and I can only focus on something more important again after it's *done*, in one way or another.  
 
 A few days ago, I somehow got my blog on my mind again, maybe because I realized there were many bits around the theme I didn't like, stuff I never really got working right, and an overall desire to just revamp the hole thing fueled by recent input I'll explain soon.  
