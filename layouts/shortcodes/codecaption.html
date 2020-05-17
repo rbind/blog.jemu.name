@@ -3,11 +3,11 @@
      see readme for usage -->
 
 <figure class="code">
-  <figcaption>
-    <p>{{ .Get "caption" | markdownify }}</p>
-  </figcaption>
   <div class="codewrapper">
     <!-- {{ .Inner | markdownify }} -->
     {{ highlight (trim .Inner "\n\r") (.Get "lang") "linenos=true" }}
   </div>
+  <figcaption>
+    <p>{{ .Get "caption" | markdownify }}</p>
+  </figcaption>
 </figure>
