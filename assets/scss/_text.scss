@@ -21,6 +21,7 @@ h4 small {
 // summary / details 
 .content summary {
   border-radius: 5px;
+  padding-left: 1rem;
 }
 
 @mixin summary-dark {
