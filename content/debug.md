@@ -19,6 +19,12 @@ ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length)) +
   geom_point(size = 2)
 {{< /codecaption >}}
 
+{{< addendum title="An Addendum" >}}
+I found out a relevant thing, so here's a relevant thing
+{{< /addendum >}}
+
+{{< maintenance >}}
+
 ## Footnotes
 
 This is a footnote in `^[inline format]` as used by [pandoc](https://pandoc.org/MANUAL.html#footnotes) but not supported by [Hugo's Goldmark](https://gohugo.io/getting-started/configuration-markup/#goldmark) ^[Hello there].

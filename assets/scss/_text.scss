@@ -156,8 +156,12 @@ div.addendum {
   }
 }
 
-// codecaption shortcode / code in <figure>
+// Maintenance notice (has .addendum class, so use id to overrule)
+#maintenance {
+  border: 0.5rem solid #FECE31;
+}
 
+// codecaption shortcode / code in <figure>
 figure.code {
   text-align: left;
 }
