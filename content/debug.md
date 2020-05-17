@@ -7,7 +7,8 @@ toc: true
 ---
 
 This page is used for debugging purposes.
-One might consider it a test case.
+One might consider it [a `test` case](/debug).  
+Here's some `inline code` without a link.
 
 ## Shortcodes
 

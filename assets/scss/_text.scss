@@ -55,7 +55,21 @@ code {
 
 @mixin inline-code-dark {
   code {
-    background-color: $bg-color-dark;
+    background-color: $monokai-bg-dark;
+  }
+  
+  a code {
+    color: $link-color-dark;
+  }
+}
+
+@mixin inline-code-light {
+  code {
+    background-color: $monokai-bg-light;
+  }
+  
+  a code {
+    color: $link-color;
   }
 }
 

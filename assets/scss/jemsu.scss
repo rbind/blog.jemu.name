@@ -43,6 +43,7 @@ body.colorscheme-auto {
 body.colorscheme-light {
   @include monokai-base();
   @include monokai-light();
+  @include inline-code-light();
   @include math-light();
   @include littlefoot-light();
   @include addendum-light();
@@ -54,6 +55,7 @@ body.colorscheme-auto {
   @media (prefers-color-scheme: light) {
     @include monokai-base();
     @include monokai-light();
+    @include inline-code-light();
     @include math-light();
     @include littlefoot-light();
     @include addendum-light();
