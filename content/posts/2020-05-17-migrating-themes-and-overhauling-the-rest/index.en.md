@@ -654,7 +654,7 @@ My goal was to declare the used (or at least the important) packages in my posts
 
 But I never quite figured out how to make the templating work. I did, however, get at least a list of all the packages I used on any post, sorted by usage frequency:
 
-{{< figure src="theme-package-taxonomy-list.png" height="500px" alt="Package overview showing collapsable list of packages, clickin on a package revealed the posts that used the package" caption="I was even somewhat happy with that!" >}}
+{{< figure src="theme-package-taxonomy-list.png" alt="Package overview showing collapsable list of packages, clickin on a package revealed the posts that used the package" caption="I was even somewhat happy with that!" >}}
 
 Another idea I had was to use the same principle for TV shows, as I did quite a lot of random episode rating plotting in the past:
 
