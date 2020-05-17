@@ -20,7 +20,7 @@ h4 small {
 
 // summary / details 
 .content summary {
-  border-radius: 5px;
+  border-radius: 1rem;
   padding-left: 1rem;
 }
 
@@ -66,12 +66,12 @@ code {
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
-  border-radius: 5px;
+  border-radius: 1rem;
 }
 
 // images
 .content article figure img {
-  border-radius: 5px;
+  border-radius: 1rem;
 }
 
 // littlefoot.js
@@ -118,7 +118,7 @@ div.addendum {
   margin-left: 2rem;
   margin-right: 2rem;
   margin-bottom: 1rem;
-  border-radius: 5px;
+  border-radius: 1rem;
 }
 
 @mixin addendum-light {
