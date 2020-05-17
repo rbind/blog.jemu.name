@@ -9,6 +9,7 @@ tags:
   - Speedrunning
   - Ocarina of Time
 description: "I'm basically tabulating a cmf here."
+math: true
 editor_options: 
   chunk_output_type: console
 ---
