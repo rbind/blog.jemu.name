@@ -18,6 +18,23 @@ h4 small {
   padding: 0 5px;
 }
 
+// summary / details 
+.content summary {
+  border-radius: 5px;
+}
+
+@mixin summary-dark {
+  .content summary {
+    background-color: $monokai-bg-dark;
+  }
+}
+
+@mixin summary-light {
+  .content summary {
+    background-color: $monokai-bg-light;
+  }
+}
+
 /* Links */
 a {
   font-weight: 400;
