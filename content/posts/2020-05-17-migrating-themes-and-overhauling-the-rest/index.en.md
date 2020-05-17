@@ -144,7 +144,7 @@ So let's say I want to refer back to my recent post featuring Nic Cage movies or
 
 Neat.
 
-The only annoying was is to actually migrate all the old posts to the new file structure. Since I don't have too many blog posts that survived my occasional "oh glob, did *I* write this? Let's pretend that didn't happen"-sprees, I could have done it manually, but creating a lot of folders with predictable paths and renaming/moving files… that's machine work. Here's my helper function:
+The only annoying thing left was to actually migrate all the old posts to the new file structure. Since I don't have too many blog posts that survived my occasional "oh glob, did *I* write this? Let's pretend that didn't happen"-sprees, I could have done it manually, but creating a lot of folders with predictable paths and renaming/moving files… that's machine work. Here's my helper function:
 
 ```r
 move_rmd_post <- function(path) {
