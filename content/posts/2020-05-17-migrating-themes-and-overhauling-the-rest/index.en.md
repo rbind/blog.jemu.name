@@ -133,7 +133,7 @@ Give page bundles a go, folks.
 
 *\*Pauses for audible gasp from imaginary audience\**
 
-The blog posts itself are now *all* called `index.Rmarkdown` or `index.md`.  
+The blog posts themselves are now *all* called `index.Rmarkdown` or `index.md`.  
 Let that one marinade [^lk]. Do you use RStudio's <kbd>ctrl + .</kbd> shortcut to quickly search and open a file in your project? I do. Or at least I did. But now, if I want to refer back to an older post for something, I have to use RStudio's less-than-stellar file browser.  
 
 Or at least I *would* have to do that, because thankfully I've really *really* grown to like [Visual Studio Code](https://code.visualstudio.com/) for longer text editing (like blog posts! Or hugo stuff in general! It's really great).  
@@ -172,7 +172,7 @@ While writing this post, I used my first [HTML \<video\> element][video-tag] for
 
 [^vcomp]: If anyone cares: I used `ffmpeg -i input.mp4 -vcodec libx264 -crf 23 output.mp4` for compression
 
-At first I used raw HTML to include the video because hugo does not provide a shortcode for `video` like it does for `figure` elements with the [`{{</* figure */>}}` shortcode][hugo-figure-shortcode], so I thought I might as well make my own, just in case I want to embed more short clips in the future. Note that if you want to embed longer videos, you might as well use existing shortcodes for services like YouTube and Vimeo --- but for this single-second clip that seemed very much like overkill, even for my standards.
+At first I used raw HTML to include the video because hugo does not provide a shortcode for `<video>` like it does for `<figure>` elements with the [`{{</* figure */>}}` shortcode][hugo-figure-shortcode], so I thought I might as well make my own, just in case I want to embed more short clips in the future. Note that if you want to embed longer videos, you might as well use existing shortcodes for services like YouTube and Vimeo --- but for this single-second clip that seemed very much like overkill, even for my standards.
 
 This constitutes my first attempt at creating [a reasonably comfortable hugo shortcode][hugo-shortcode-docs]. I am likely to further improve upon it, especially with regard to the somewhat clunkily handled logic. 
 
@@ -350,7 +350,7 @@ And here's what my regular RStudio code tab usually looks like:
 
 {{< figure src="highlighting-RStudio-example.png" title="" alt="R code highlighting example showing my preferred color scheme" caption="Featuring a teaser for an upcoming section!" >}}
 
-by the way, that theme is based on *"Monokai Spacegray Eighties"*, which you can find on [this theme editor](https://tmtheme-editor.herokuapp.com/#!/editor/theme/Monokai%20Spacegray%20Eighties) that outputs RStudio-compatible themes. I'm still so very thankful to [Mara](https://twitter.com/dataandme) for posting this site on Twitter a while ago, it has enabled me to waste a lot of time worrying about very small and unecessary details! I mean, what *is* the correct color for a built-in constant anyway, and should it differ form a user-defined constant? :thinking:
+By the way, that theme is based on *"Monokai Spacegray Eighties"*, which you can find on [this theme editor](https://tmtheme-editor.herokuapp.com/#!/editor/theme/Monokai%20Spacegray%20Eighties) that outputs RStudio-compatible themes. I'm still so very thankful to [Mara](https://twitter.com/dataandme) for posting this site on Twitter a while ago, it has enabled me to waste a lot of time worrying about very small and unecessary details! I mean, what *is* the correct color for a built-in constant anyway, and should it differ form a user-defined constant? :thinking:
 
 I like that theme, and I thought it would be neat if the code on my blog looked similar.  
 At the time I set up my first hugo blog, I really wasn't too happy with [highlight.js], but still wanted a fairly good solution with a decent R language support often lacking (at the time) with highlighting engines.  
@@ -647,7 +647,7 @@ If you're one of the ~~10s of people~~ ~~couple people~~ If you are the person w
 
 {{< figure src="theme-package-taxonomy.png" alt="Bottom of a blog post showing a list of used R packages with package-emoji displayed before each" caption="I thought this was a little prettier than `sessionInfo()`" >}}
 
-My goal was to declare the used (or at least the important) packages in my posts YAML-header and then get a list of packages at the bottom of the post, where each package would link to an overview page where you could see 
+My goal was to declare the packages I used (or at least those I want to highlight) in my posts YAML-header and then get a list of packages at the bottom of the post, where each one would link to an overview page where you could see 
 
 1. Metadata about the package (CRAN/GitHub link, maybe a package description?)
 2. All the posts that utilize that package
