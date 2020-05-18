@@ -678,7 +678,7 @@ Wheee, only one full day after publishing the post, it's there.
 With [hugo 0.71](https://gohugo.io/news/0.71.0-relnotes/), the render hooks for headings are officially a thing now!
 Look [here for the docs](https://gohugo.io/getting-started/configuration-markup#heading-link-example). 
 I immediately took their example and nabbed the "chain"-SVG from the hugo docs while I was at it, and now, well, look below, or above.  
-Maybe we'll get [render hooks for footnotes](https://github.com/ropensci/roweb2/issues/656) next so I can ditch littlefoot.js :upside_down_face:
+Maybe we'll get [render hooks for footnotes](https://discourse.gohugo.io/t/how-to-add-title-tooltip-with-footnote-content-to-footnote-link/25498/2) next so I can ditch littlefoot.js :upside_down_face:
 {{< /addendum >}}
 
 {{< videofig mp4="render-hook-headings.mp4" loop=true autoplay=true alt="Headings on this blog now have a chain icon next to them which links to the headings anchor" caption="Neat." >}}
