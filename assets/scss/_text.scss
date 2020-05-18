@@ -13,6 +13,13 @@ h4 small {
   font-size: 60%;
 }
 
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover {
+  text-decoration: none;
+}
+
 // pagination numbers
 .pagination li {
   padding: 0 5px;
@@ -41,11 +48,11 @@ a {
   font-weight: 400;
 }
 
-a:hover {
-  text-decoration: none;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-}
+// a:hover {
+//   text-decoration: none;
+//   border-bottom-width: 2px;
+//   border-bottom-style: solid;
+// }
 
 /* inline-code */
 h1 code,
@@ -164,4 +171,32 @@ div.addendum {
 // codecaption shortcode / code in <figure>
 figure.code {
   text-align: left;
+}
+
+
+// Auto-linked headers
+
+a > svg.anchor-symbol {
+  color: transparent;
+  height: 1em;
+  //padding-top: 5px;
+}
+
+
+@mixin anchor-dark {
+  a > svg.anchor-symbol {
+    fill: $link-color-dark;
+  } 
+  a > svg.anchor-symbol:hover {
+    fill: $link-color;
+  }
+}
+
+@mixin anchor-light {
+  a > svg.anchor-symbol {
+    fill: $link-color;
+  } 
+  a > svg.anchor-symbol:hover {
+    fill: $link-color-dark;
+  }
 }

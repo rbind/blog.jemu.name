@@ -673,6 +673,16 @@ That way I at least don't have to maintain my quasi-fork of {blogdown}'s "New Po
 
 Lastly, I was about to write about how I had previously used a custom [render-hook](https://gohugo.io/getting-started/configuration-markup#markdown-render-hooks) I found on the hugo issue tracker. This made all the `<h(n)>` headings automatically be a hyperlink to themselves, which I usually like for easier section-accurate link sharing. I have not re-implemented this for my current theme, and since [the proposed render-hook was merged while I was still working on this post](https://github.com/gohugoio/hugo/issues/6713#event-3342223328), I think I'll just wait for the next release of hugo to do the lifting for me.
 
+{{< addendum title="It's a thing now!" >}}
+Wheee, only one full day after publishing the post, it's there.  
+With [hugo 0.71](https://gohugo.io/news/0.71.0-relnotes/), the render hooks for headings are officially a thing now!
+Look [here for the docs](https://gohugo.io/getting-started/configuration-markup#heading-link-example). 
+I immediately took their example and nabbed the "chain"-SVG from the hugo docs while I was at it, and now, well, look below, or above.  
+Maybe we'll get [render hooks for footnotes](https://github.com/ropensci/roweb2/issues/656) next so I can ditch littlefoot.js :upside_down_face:
+{{< /addendum >}}
+
+{{< videofig mp4="render-hook-headings.mp4" loop=true autoplay=true alt="Headings on this blog now have a chain icon next to them which links to the headings anchor" caption="Neat." >}}
+
 ## Conclusion
 
 I just wanted to give a quick recap of what I learned, what I changed, and why I think that's a better approach than what I did before --- but instead I ended up with a multi-day project, tons of sidquests and more learning in the form of a 7000-word stream-of-consciousness wall of text few people will ever see.  
