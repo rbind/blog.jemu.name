@@ -671,7 +671,7 @@ That way I at least don't have to maintain my quasi-fork of {blogdown}'s "New Po
 
 ## The Very Last Bit: Auto-Linking Headers
 
-Lastly, I was about to write about I had previously used a custom [render-hook](https://gohugo.io/getting-started/configuration-markup#markdown-render-hooks) I found on the hugo issue tracker. This made all the `<h(n)>` headings automatically be a hyperlink to themselves, which I usually like for easier section-accurate link sharing. I have not re-implemented this for my current theme, and since [the proposed render-hook was merged while I was still working on this post](https://github.com/gohugoio/hugo/issues/6713#event-3342223328), I think I'll just wait for the next release of hugo to do the lifting for me.
+Lastly, I was about to write about how I had previously used a custom [render-hook](https://gohugo.io/getting-started/configuration-markup#markdown-render-hooks) I found on the hugo issue tracker. This made all the `<h(n)>` headings automatically be a hyperlink to themselves, which I usually like for easier section-accurate link sharing. I have not re-implemented this for my current theme, and since [the proposed render-hook was merged while I was still working on this post](https://github.com/gohugoio/hugo/issues/6713#event-3342223328), I think I'll just wait for the next release of hugo to do the lifting for me.
 
 ## Conclusion
 
