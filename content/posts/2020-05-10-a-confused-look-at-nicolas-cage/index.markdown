@@ -37,7 +37,7 @@ And that's where this post comes from, so here goes nothing.
 
 I'll start by loading all the things:
 
-```r
+```r 
 library(tRakt) # jemus42/tRakt
 library(tadaathemes) # tadaadata/tadaathemes for theme_trakt()
 library(ggplot2)
@@ -50,7 +50,7 @@ plot_caption <- "Data from trakt.tv // @jemus42"
 
 To take a look at Cage's movies, I'll first need to find him on trakt.tv – which is easy enough through the search. Once I have his identifiers (I'll be using the `slug` because it's nice and human-readable), I can use `people_movies` to get, well, the *movies* of this particular ~~*people*~~ person.  
 
-```r
+```r 
 search_query("Nicolas Cage", type = "person")
 ```
 
@@ -61,7 +61,7 @@ search_query("Nicolas Cage", type = "person")
 ## 1 person  159. Nicolas Cage 15197 nicolas-cage nm0000115 2963
 ```
 
-```r
+```r 
 if (file.exists("cage_credits.rds")) {
   cage_credits <- people_movies("nicolas-cage", extended = "full")
   
@@ -81,7 +81,7 @@ The returned objects is a `list` of two `tibble`s, named `cast` and `crew`. I'm 
 
 [^himself]: to which extent one might argue he's always kind of playing himself is a different story
 
-```r
+```r 
 cage_movies %>%
   arrange(desc(released)) %>%
   head(10) %>%
@@ -114,7 +114,7 @@ cage_movies %>%
    <td style="text-align:left;"> Araña </td>
    <td style="text-align:right;"> 92 </td>
    <td style="text-align:right;"> 6.4 </td>
-   <td style="text-align:right;"> 375 </td>
+   <td style="text-align:right;"> 380 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2020 </td>
@@ -122,7 +122,7 @@ cage_movies %>%
    <td style="text-align:left;"> Nathan Gardner </td>
    <td style="text-align:right;"> 111 </td>
    <td style="text-align:right;"> 6.4 </td>
-   <td style="text-align:right;"> 1557 </td>
+   <td style="text-align:right;"> 1576 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2019 </td>
@@ -130,7 +130,7 @@ cage_movies %>%
    <td style="text-align:left;"> Frank Walsh </td>
    <td style="text-align:right;"> 97 </td>
    <td style="text-align:right;"> 6.5 </td>
-   <td style="text-align:right;"> 688 </td>
+   <td style="text-align:right;"> 692 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2019 </td>
@@ -146,7 +146,7 @@ cage_movies %>%
    <td style="text-align:left;"> The Cook </td>
    <td style="text-align:right;"> 100 </td>
    <td style="text-align:right;"> 6.7 </td>
-   <td style="text-align:right;"> 1036 </td>
+   <td style="text-align:right;"> 1039 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2019 </td>
@@ -154,7 +154,7 @@ cage_movies %>%
    <td style="text-align:left;"> Frank </td>
    <td style="text-align:right;"> 103 </td>
    <td style="text-align:right;"> 6.5 </td>
-   <td style="text-align:right;"> 985 </td>
+   <td style="text-align:right;"> 987 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2018 </td>
@@ -170,7 +170,7 @@ cage_movies %>%
    <td style="text-align:left;"> Red Miller </td>
    <td style="text-align:right;"> 122 </td>
    <td style="text-align:right;"> 6.3 </td>
-   <td style="text-align:right;"> 2670 </td>
+   <td style="text-align:right;"> 2675 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2018 </td>
@@ -178,7 +178,7 @@ cage_movies %>%
    <td style="text-align:left;"> Mike Chandler </td>
    <td style="text-align:right;"> 86 </td>
    <td style="text-align:right;"> 6.1 </td>
-   <td style="text-align:right;"> 1301 </td>
+   <td style="text-align:right;"> 1302 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2018 </td>
@@ -193,7 +193,7 @@ cage_movies %>%
 
 So, now I have some reasonably useful data. Let's take a look at the number of movies per year:
 
-```r
+```r 
 cage_movies %>%
   count(year) %>%
   ggplot(aes(x = year, y = n)) +
@@ -221,7 +221,7 @@ cage_movies %>%
 
 Now the ratings for these movies, with a point size according to the number of votes cast:
 
-```r
+```r 
 cage_movies %>%
   mutate(title_label = glue::glue("{title} ({year})")) %>%
   {
@@ -270,7 +270,7 @@ And yes, I spent *hours* tweaking the {ggrepel} settings here, and at some point
 
 Anyway, let's take a look at the movies that have over 5000 votes, as a more or less arbitrary threshold for popularity:
 
-```r
+```r 
 cage_movies %>%
   filter(votes > 5000) %>%
   mutate(

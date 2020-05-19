@@ -148,80 +148,80 @@ startrek %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> Star Trek </td>
-   <td style="text-align:left;"> s01e16 </td>
-   <td style="text-align:left;"> 1967-01-06 01:30:00 </td>
-   <td style="text-align:right;"> 7.53 </td>
-   <td style="text-align:right;"> 362 </td>
+   <td style="text-align:left;"> s01e02 </td>
+   <td style="text-align:left;"> 1966-09-16 00:30:00 </td>
+   <td style="text-align:right;"> 7.22 </td>
+   <td style="text-align:right;"> 680 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Star Trek </td>
-   <td style="text-align:left;"> s03e17 </td>
-   <td style="text-align:left;"> 1969-01-25 01:30:00 </td>
-   <td style="text-align:right;"> 6.96 </td>
-   <td style="text-align:right;"> 223 </td>
+   <td style="text-align:left;"> s01e08 </td>
+   <td style="text-align:left;"> 1966-10-28 00:30:00 </td>
+   <td style="text-align:right;"> 6.87 </td>
+   <td style="text-align:right;"> 449 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Star Trek: The Animated Series </td>
-   <td style="text-align:left;"> s01e04 </td>
-   <td style="text-align:left;"> 1973-09-29 04:00:00 </td>
-   <td style="text-align:right;"> 7.11 </td>
-   <td style="text-align:right;"> 112 </td>
+   <td style="text-align:left;"> s01e06 </td>
+   <td style="text-align:left;"> 1973-10-13 04:00:00 </td>
+   <td style="text-align:right;"> 6.76 </td>
+   <td style="text-align:right;"> 109 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Star Trek: The Animated Series </td>
-   <td style="text-align:left;"> s01e09 </td>
-   <td style="text-align:left;"> 1973-11-03 05:00:00 </td>
-   <td style="text-align:right;"> 7.16 </td>
-   <td style="text-align:right;"> 98 </td>
+   <td style="text-align:left;"> s02e04 </td>
+   <td style="text-align:left;"> 1974-09-28 04:00:00 </td>
+   <td style="text-align:right;"> 7.63 </td>
+   <td style="text-align:right;"> 87 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Star Trek: The Next Generation </td>
-   <td style="text-align:left;"> s04e13 </td>
-   <td style="text-align:left;"> 1991-02-05 02:00:00 </td>
-   <td style="text-align:right;"> 7.57 </td>
-   <td style="text-align:right;"> 431 </td>
+   <td style="text-align:left;"> s01e08 </td>
+   <td style="text-align:left;"> 1987-11-10 02:00:00 </td>
+   <td style="text-align:right;"> 7.30 </td>
+   <td style="text-align:right;"> 580 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Star Trek: The Next Generation </td>
-   <td style="text-align:left;"> s06e17 </td>
-   <td style="text-align:left;"> 1993-03-02 02:00:00 </td>
-   <td style="text-align:right;"> 7.50 </td>
-   <td style="text-align:right;"> 324 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Star Trek: Voyager </td>
-   <td style="text-align:left;"> s01e05 </td>
-   <td style="text-align:left;"> 1995-02-06 05:00:00 </td>
-   <td style="text-align:right;"> 7.53 </td>
-   <td style="text-align:right;"> 491 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Star Trek: Voyager </td>
-   <td style="text-align:left;"> s02e22 </td>
-   <td style="text-align:left;"> 1996-04-08 04:00:00 </td>
-   <td style="text-align:right;"> 7.43 </td>
-   <td style="text-align:right;"> 336 </td>
+   <td style="text-align:left;"> s05e06 </td>
+   <td style="text-align:left;"> 1991-10-29 02:00:00 </td>
+   <td style="text-align:right;"> 7.66 </td>
+   <td style="text-align:right;"> 415 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Star Trek: Deep Space Nine </td>
-   <td style="text-align:left;"> s06e08 </td>
-   <td style="text-align:left;"> 1997-11-17 05:00:00 </td>
-   <td style="text-align:right;"> 6.77 </td>
-   <td style="text-align:right;"> 226 </td>
+   <td style="text-align:left;"> s03e18 </td>
+   <td style="text-align:left;"> 1995-04-10 04:00:00 </td>
+   <td style="text-align:right;"> 7.36 </td>
+   <td style="text-align:right;"> 240 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Voyager </td>
+   <td style="text-align:left;"> s03e21 </td>
+   <td style="text-align:left;"> 1997-04-09 04:00:00 </td>
+   <td style="text-align:right;"> 7.67 </td>
+   <td style="text-align:right;"> 341 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Star Trek: Deep Space Nine </td>
-   <td style="text-align:left;"> s06e14 </td>
-   <td style="text-align:left;"> 1998-02-18 05:00:00 </td>
-   <td style="text-align:right;"> 7.84 </td>
-   <td style="text-align:right;"> 270 </td>
+   <td style="text-align:left;"> s07e05 </td>
+   <td style="text-align:left;"> 1998-10-28 05:00:00 </td>
+   <td style="text-align:right;"> 7.36 </td>
+   <td style="text-align:right;"> 265 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Star Trek: Voyager </td>
+   <td style="text-align:left;"> s05e23 </td>
+   <td style="text-align:left;"> 1999-05-05 04:00:00 </td>
+   <td style="text-align:right;"> 6.99 </td>
+   <td style="text-align:right;"> 305 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Star Trek: Enterprise </td>
-   <td style="text-align:left;"> s03e07 </td>
-   <td style="text-align:left;"> 2003-10-30 01:00:00 </td>
-   <td style="text-align:right;"> 7.51 </td>
-   <td style="text-align:right;"> 413 </td>
+   <td style="text-align:left;"> s02e11 </td>
+   <td style="text-align:left;"> 2002-12-12 01:00:00 </td>
+   <td style="text-align:right;"> 7.47 </td>
+   <td style="text-align:right;"> 412 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Star Trek: Enterprise </td>
@@ -232,17 +232,17 @@ startrek %>%
   </tr>
   <tr>
    <td style="text-align:left;"> Star Trek: Discovery </td>
-   <td style="text-align:left;"> s01e04 </td>
-   <td style="text-align:left;"> 2017-10-09 00:30:00 </td>
-   <td style="text-align:right;"> 7.82 </td>
-   <td style="text-align:right;"> 6708 </td>
+   <td style="text-align:left;"> s02e04 </td>
+   <td style="text-align:left;"> 2019-02-08 01:30:00 </td>
+   <td style="text-align:right;"> 7.76 </td>
+   <td style="text-align:right;"> 2641 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Star Trek: Discovery </td>
-   <td style="text-align:left;"> s01e14 </td>
-   <td style="text-align:left;"> 2018-02-05 01:30:00 </td>
-   <td style="text-align:right;"> 7.95 </td>
-   <td style="text-align:right;"> 4166 </td>
+   <td style="text-align:left;"> s02e11 </td>
+   <td style="text-align:left;"> 2019-03-29 00:30:00 </td>
+   <td style="text-align:right;"> 7.92 </td>
+   <td style="text-align:right;"> 2510 </td>
   </tr>
 </tbody>
 </table>
@@ -334,6 +334,7 @@ startrek %>%
     caption = plot_caption
   )
 ```
+
 {{<figure src="plots/timeline_bars-1.png" link="plots/timeline_bars-1.png">}}
 
 
@@ -357,6 +358,7 @@ ggplot(data = startrek, aes(x = first_aired, y = rating, fill = show_abr)) +
     caption = plot_caption
   )
 ```
+
 {{<figure src="plots/timeline-1.png" link="plots/timeline-1.png">}}
 
 
@@ -381,6 +383,7 @@ ggplot(data = startrek, aes(x = ep_abs, y = rating, fill = show_abr)) +
     caption = plot_caption
   )
 ```
+
 {{<figure src="plots/unnamed-chunk-1-1.png" link="plots/unnamed-chunk-1-1.png">}}
 
 *But random internet guy*, people will now exclaim, *isn't it bad to use a truncated y-axis?* they will ask, smugly. And yes, in many situations it's a bad idea to truncate axes of quantities with a known range like a 1-10 point scale, so here's the same plot as above with "proper" limits:
@@ -406,6 +409,7 @@ ggplot(data = startrek, aes(x = ep_abs, y = rating, fill = show_abr)) +
     caption = plot_caption
   ) 
 ```
+
 {{<figure src="plots/unnamed-chunk-2-1.png" link="plots/unnamed-chunk-2-1.png">}}
 
 The thing is, it's harder to see differences within individual shows. It's a more or less uniform strip of points, which doesn't really help that much, so I'll probably stick to the truncated axes.
@@ -435,6 +439,7 @@ ggplot(
   ) +
   theme(legend.position = "none")
 ```
+
 {{<figure src="plots/within_show_boxplots-1.png" link="plots/within_show_boxplots-1.png">}}
 
 We can see *TNG* with a lot of variation compared to the relatively consistent *Enterprise*. Also, there are quite a few outliers in *TNG*, so apaprently there are some *really good* episodes, and a few *really bad* episodes (relatively speaking).
@@ -456,6 +461,7 @@ ggplot(data = startrek, aes(x = factor(season), y = rating, fill = show_abr)) +
   ) +
   theme(legend.position = "none")
 ```
+
 {{<figure src="plots/with_show_season_boxplots-1.png" link="plots/with_show_season_boxplots-1.png">}}
 
 You might notice a few trends, like *TOS* getting *technically worse* over time, while *DS9* and *ENT* seem to be getting better over time. I vaguely remember analyzing the seasonal trends of *ENT* in an earlier blogpost, where I also did some simple statistics to "prove" that the show gets better over time.
@@ -486,6 +492,7 @@ ggplot(data = startrek, aes(x = epnum, y = rating, fill = show_abr)) +
   ) +
   theme(legend.position = "none")
 ```
+
 {{<figure src="plots/within_show_scatter-1.png" link="plots/within_show_scatter-1.png">}}
 
 ## How Do You Feel About Histograms?
@@ -533,6 +540,7 @@ ggplot(data = startrek, aes(x = rating)) +
     caption = plot_caption
   )
 ```
+
 {{<figure src="plots/histogram_allover-1.png" link="plots/histogram_allover-1.png">}}
 
 In this histogram we see that most ratings fall in a relatively thin range around ~7.6, which is a solid *"yeah, cool"* I guess. There's only one episode below the 6.0 line, which falls into *meh*-territory, so that's interesting.
@@ -556,6 +564,7 @@ ggplot(data = startrek, aes(x = rating, fill = show_abr)) +
   ) +
   theme(legend.position = "none")
 ```
+
 {{<figure src="plots/histogram_byshow-1.png" link="plots/histogram_byshow-1.png">}}
 
 In a by-show plot of distributions, we can now use the width of the distributions to estimate the variance within each show, but we kind of did that already earlier. It could be nice to look at the skew of each distribution, but I don't think there's that much to gain here.
@@ -597,6 +606,7 @@ startrek %>%
   ) +
   theme(legend.position = "bottom")
 ```
+
 {{<figure src="plots/firsteasons_scatterlines-1.png" caption="First-season episode ratings. The x-axis is computed by dividing the episode number by the total number of episodes in each season" link="plots/firsteasons_scatterlines-1.png">}}
 
 Or, if you prefer the boxplot way of life:
@@ -618,6 +628,7 @@ startrek %>%
   ) +
   theme(legend.position = "none")
 ```
+
 {{<figure src="plots/firstseason_boxplots-1.png" caption="First season episode ratings as boxplots with background dots" link="plots/firstseason_boxplots-1.png">}}
 
 I guess it's fair to say that *Discovery* is doing pretty well *so far*, but it should also be noted that most of the ratings of previous shows were presumably made during rewatches, since trakt hasn't been around that long. So either *DSC* is doing pretty good or it's impossible to actually make a statement about the first-season-hypothesis based on the data, so I opt for the interpration that makes it interesting.
@@ -664,6 +675,7 @@ ggplot(data = temp, aes(
   ) +
   theme(legend.position = "bottom")
 ```
+
 {{<figure src="plots/outliers-1.png" caption="Positive and negative outliers of each show. Outliers are defined in this case as deviating more than two IQR from the median." link="plots/outliers-1.png">}}
 
 It's nice how *DS9* seems to have a lot of positive outliers with only two negative outliers, which indicates that *DS9* is not that great on average, but a couple of episodes are *pretty good*. At least that's the way I interpret it, not sure if that's a realistic assessment.
@@ -728,6 +740,7 @@ startrek %>%
   tadaa_plot_tukey() +
   theme(legend.position = "none")
 ```
+
 {{<figure src="plots/tukeyhsd-1.png" link="plots/tukeyhsd-1.png">}}
 
 These errorbars indicate which pairwise comparison (e.g. "mean rating of *ENT* minus mean rating of *DS9*" in the first row) results in a significant difference from 0, assuming that if the shows have the same mean rating, the difference would be 0. The direction of the difference is determined by the labels to the left, as mentioned, so we can say that *TOS* is "significantly worse" than *Voyager*, at least according to mean episode ratings and variation.
@@ -760,6 +773,7 @@ ggplot(data = stshows, aes(
     caption = plot_caption
   )
 ```
+
 {{<figure src="plots/show_overall-1.png" link="plots/show_overall-1.png">}}
 
 Now we can use that plot and build upon it. I'll draw the mean episode rating for each show including errorbars on top of the previous plot, so hold my beer:
@@ -810,6 +824,7 @@ stshows %>%
     caption = plot_caption
   )
 ```
+
 {{<figure src="plots/show_episodes_meanci-1.png" link="plots/show_episodes_meanci-1.png">}}
 
 Neat. These little tie-fighters (wrong franchise, I know) represent the mean episode rating with its confidence interval. What we can learn from that plot is how *TNG* has a high show rating, but individual episodes tend to be rated lower on average when compared to the over-all show rating.
