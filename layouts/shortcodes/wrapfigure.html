@@ -1,16 +1,13 @@
-<!-- Based on the original figure shortcode
-https://github.com/gohugoio/hugo/blob/aba2647c152ffff927f42523b77ee6651630cd67/tpl/tplimpl/embedded/templates/shortcodes/figure.html
+<!-- 
+  Take arbitrary contentand wrap it into the very flexible figure tag.
+  This should make it easier to create flexible content that benefits from caption and attrs
+  without the need to create increasingly complex shortcode to wrap all kinds of things in <figure>.
+  
+  The boilerplate is lifted directly from hugo's built-in figure shortcode 
 -->
-
-<!-- This is still WIP as I haven't figured out how to properly handled the variable inputs yet -->
-
 <figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
 
-  <!-- <picture>
-    <source media="(min-width: 650px)" srcset="img_pink_flowers.jpg">
-    <source media="(min-width: 465px)" srcset="img_white_flower.jpg">
-    <img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;">
-  </picture> -->
+  {{ .Inner }}
 
     {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
         <figcaption>
