@@ -1,6 +1,7 @@
 ---
 title: Debug
 type: page
+draft: true
 katex: false
 math: true
 toc: true
