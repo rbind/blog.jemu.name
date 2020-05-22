@@ -207,15 +207,11 @@ a > svg.anchor-symbol {
     background-color: $alt-bg-color-dark;
   }
   
-  .commento-root .commento-card .commento-body p {
-    color: $fg-color-dark;
-  }
-  
-  .commento-root .commento-card .commento-name {
-    color: $fg-color-dark;
-  }
-  
-  .commento-root .commento-logged-container .commento-logged-in-as .commento-name {
+  .commento-root .commento-card .commento-body p,
+  .commento-root .commento-card .commento-name,
+  .commento-root .commento-logged-container .commento-logged-in-as .commento-name,
+  .commento-root .commento-footer .commento-logo-container .commento-logo-text,
+  .commento-root .commento-logged-container .commento-profile-button {
     color: $fg-color-dark;
   }
 }
