@@ -12,6 +12,7 @@ packages:
   - bookdown
 draft: no
 description: ''
+toc: true
 editor_options:
   chunk_output_type: console
 ---

@@ -12,6 +12,7 @@ tags:
 false: true
 subtitle: 'Just laying out some themes.'
 description: ''
+toc: true
 editor_options:
   chunk_output_type: console
 ---
@@ -45,12 +46,17 @@ import_econ_sans()
 import_tinyhand()
 import_plex_sans()
 import_roboto_condensed()
+```
 
-# Depending on your output device, you might have to
+Depending on your output device, you might have to
+
+```{r check-fonts-1, eval=FALSE}
 extrafont::loadfonts()
 ```
 
-```{r check-fonts, summary="Check if extrafont knows about your fonts"}
+Check if extrafont knows about your fonts:
+
+```{r check-fonts-2, eval=FALSE}
 extrafont::fonts()
 ```
 

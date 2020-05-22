@@ -5,7 +5,7 @@ description: "In which I waste too much time doing something travis and/or netli
 author: 'jemus42'
 date: '2020-03-07'
 slug: auto-deploying-a-blogdown-blog-the-needlessly-hard-way
-image: "blogdown-deployment-setup.png"
+featured_image: "blogdown-deployment-setup.png"
 categories:
   - rstats
   - meta
@@ -19,6 +19,7 @@ tags:
 packages:
   - blogdown
   - renv
+toc: true
 ---
 
 Ever since [{blogdown}][blogdown][^1] came around, blogging in R-land has actually been feasible.  
@@ -249,7 +250,7 @@ So – that's it. I really hope this is a help to at least *some* people.
 I should also note that in the process of writing this quasi-tutorial the last couple of days, I also created and solved some other issues that kind of ended up making this whole thing obsolete.  
 Cool cool cool.
 
-### Post-credit scene <small>Now without GitHub and git-auto-deploy</small> {#post-credit-scene}
+## Post-credit scene <small>Now without GitHub and git-auto-deploy</small> {#post-credit-scene}
 
 Well, not quite *obsolete*, but for posterity, I'll leave this here.
 
