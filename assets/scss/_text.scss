@@ -209,11 +209,18 @@ a > svg.anchor-symbol {
   
   .commento-root .commento-card .commento-body p,
   .commento-root .commento-card .commento-name,
+  .commento-root .commento-markdown-button,
+  .commento-root .commento-mod-tools::before,
   .commento-root .commento-logged-container .commento-logged-in-as .commento-name,
   .commento-root .commento-footer .commento-logo-container .commento-logo-text,
   .commento-root .commento-logged-container .commento-profile-button {
     color: $fg-color-dark;
   }
+  
+  .commento-root .commento-card .commento-option-remove {
+    background: $link-color-dark;
+  }
+  
 }
 
 
