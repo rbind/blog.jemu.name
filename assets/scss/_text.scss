@@ -199,3 +199,44 @@ a > svg.anchor-symbol {
     fill: $link-color-dark;
   }
 }
+
+
+// Commento ///
+@mixin commento-dark {
+  .commento-root .commento-card {
+    background-color: $alt-bg-color-dark;
+  }
+  
+  .commento-root .commento-card .commento-body p {
+    color: $fg-color-dark;
+  }
+  
+  .commento-root .commento-card .commento-name {
+    color: $fg-color-dark;
+  }
+  
+  .commento-root .commento-logged-container .commento-logged-in-as .commento-name {
+    color: $fg-color-dark;
+  }
+}
+
+
+// Code chunks //
+// Tried something similiar to https://regisphilibert.com/blog/2017/04/hugo-cheat-sheet-go-template-translator/
+// But I think the tabulr display here messes with the positioning maybe?
+
+// .highlight code::before {
+//   content: attr(data-lang);
+//   position: absolute;
+//   font-size: 75%;
+//   display: block;
+//   //background: #f5f9f9;
+//   //bottom: calc(100% - 1px);
+//   //color: #999;
+//   //right: 0;
+//   //padding: .2em .5em;
+//   // border-top-left-radius: 5px;
+//   // border-top-right-radius: 5px;
+//   // border: 1px solid #ece9e2;
+//   z-index: 3;
+// }

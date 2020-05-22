@@ -25,6 +25,7 @@ body.colorscheme-dark {
   @include addendum-dark();
   @include summary-dark();
   @include anchor-dark();
+  @include commento-dark();
 }
 
 body.colorscheme-auto {
@@ -38,6 +39,7 @@ body.colorscheme-auto {
     @include addendum-dark();
     @include summary-dark();
     @include anchor-dark();
+    @include commento-dark();
   }
 }
 
