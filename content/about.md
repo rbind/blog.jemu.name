@@ -5,6 +5,7 @@ type: page
 
 I'm Lukas, or jemus[42], or jemsu, or whatever.  
 It depends on when you got to know me. Or where.  
+
 My home on the internet used to be my [Twitter account](https://twitter.com/jemus42), which I abandoned in August '18 (but am still kind of using? It's complicated). There have been a lot of other places, but it appears that Twitter is the only hellhole I can't escape.  
 Send help.
 
@@ -28,7 +29,7 @@ The blog itself has a [repo on the GitHub rbind organization](https://github.com
 
 -->
 
-## Support
+## Tip Jar
 
 If, for whatever reason, you feel like you would like to buy me a coffee, here are your options:
 
