@@ -13,6 +13,10 @@ Here's some `inline code` without a link.
 
 ## Shortcodes
 
+Have you heard about {{< pkg "ggplot2" >}}?
+Or {{< pkg "fansi" >}}? 
+Or {{< pkg "colorspace" >}}?
+
 {{< codecaption lang="r" caption="A code caption" >}}
 library(ggplot2)
 

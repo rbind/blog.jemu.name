@@ -1,0 +1,3 @@
+{{ $pkg := index .Site.Data.packages (.Get 0) }}
+{{ $url := $pkg.url_pkgdown | default $pkg.url_git | default $pkg.url_other }}
+<a class="rpkg" href="{{ $url }}" title = "{{ $pkg.name }}" alt = "{{ $pkg.name }}"><code>{{ printf "{%s}" $pkg.name }}</code></a>

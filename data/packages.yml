@@ -1,0 +1,1272 @@
+askpass:
+  version: '1.1'
+  maintainer: Jeroen Ooms
+  name: askpass
+  url_git: https://github.com/jeroen/askpass#readme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=askpass
+backports:
+  version: 1.1.7
+  maintainer: Michel Lang
+  name: backports
+  url_git: https://github.com/r-lib/backports
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=backports
+base64enc:
+  version: 0.1.3
+  maintainer: Simon Urbanek
+  name: base64enc
+  url_git: http://www.rforge.net/base64enc
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=base64enc
+BH:
+  version: 1.72.0.3
+  maintainer: Dirk Eddelbuettel
+  name: BH
+  url_git: https://github.com/eddelbuettel/bh
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=BH
+blogdown:
+  version: '0.19'
+  maintainer: Yihui Xie
+  name: blogdown
+  url_git: https://github.com/rstudio/blogdown
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=blogdown
+bookdown:
+  version: '0.19'
+  maintainer: Yihui Xie
+  name: bookdown
+  url_git: https://github.com/rstudio/bookdown
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=bookdown
+brio:
+  version: 1.0.0
+  maintainer: Jim Hester
+  name: brio
+  url_git: https://github.com/r-lib/brio
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=brio
+broom:
+  version: 0.5.6
+  maintainer: Alex Hayes
+  name: broom
+  url_git: http://github.com/tidyverse/broom
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=broom
+callr:
+  version: 3.4.3
+  maintainer: Gábor Csárdi
+  name: callr
+  url_git: https://github.com/r-lib/callr#readme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=callr
+car:
+  version: 3.0.8
+  maintainer: John Fox
+  name: car
+  url_git: https://r-forge.r-project.org/projects/car/
+  url_other: https://socserv.socsci.mcmaster.ca/jfox/Books/Companion/index.html
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=car
+carData:
+  version: 3.0.3
+  maintainer: John Fox
+  name: carData
+  url_git: https://r-forge.r-project.org/projects/car/
+  url_other: http://socserv.socsci.mcmaster.ca/jfox/Books/Companion/index.html
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=carData
+cellranger:
+  version: 1.1.0
+  maintainer: Jennifer Bryan
+  name: cellranger
+  url_git: https://github.com/rsheets/cellranger
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=cellranger
+checkmate:
+  version: 2.0.0
+  maintainer: Michel Lang
+  name: checkmate
+  url_git: https://github.com/mllg/checkmate
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=checkmate
+class:
+  version: 7.3.17
+  maintainer: Brian Ripley
+  name: class
+  url_git: ''
+  url_other: http://www.stats.ox.ac.uk/pub/MASS4/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=class
+cli:
+  version: 2.0.2
+  maintainer: Gábor Csárdi
+  name: cli
+  url_git: https://github.com/r-lib/cli#readme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=cli
+clipr:
+  version: 0.7.0
+  maintainer: Matthew Lincoln
+  name: clipr
+  url_git: https://github.com/mdlincoln/clipr
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=clipr
+cluster:
+  version: 2.1.0
+  maintainer: Martin Maechler
+  name: cluster
+  url_git: https://svn.r-project.org/R-packages/trunk/cluster
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=cluster
+colorspace:
+  version: 1.4.1
+  maintainer: Achim Zeileis
+  name: colorspace
+  url_git: http://colorspace.R-Forge.R-project.org
+  url_other: http://hclwizard.org/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=colorspace
+crayon:
+  version: 1.3.4
+  maintainer: Gábor Csárdi
+  name: crayon
+  url_git: https://github.com/r-lib/crayon#readme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=crayon
+crosstalk:
+  version: 1.1.0.1
+  maintainer: Joe Cheng
+  name: crosstalk
+  url_git: https://rstudio.github.io/crosstalk/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=crosstalk
+curl:
+  version: '4.3'
+  maintainer: Jeroen Ooms
+  name: curl
+  url_git: https://github.com/jeroen/curl#readme
+  url_other: https://curl.haxx.se/libcurl/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=curl
+data.table:
+  version: 1.12.8
+  maintainer: Matt Dowle
+  name: data.table
+  url_git: https://Rdatatable.gitlab.io/data.table
+  url_other: http://r-datatable.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=data.table
+desc:
+  version: 1.2.0
+  maintainer: Gábor Csárdi
+  name: desc
+  url_git: https://github.com/r-lib/desc#readme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=desc
+DescTools:
+  version: 0.99.35
+  maintainer: Andri Signorell
+  name: DescTools
+  url_git: https://github.com/AndriSignorell/DescTools/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=DescTools
+digest:
+  version: 0.6.25
+  maintainer: Dirk Eddelbuettel
+  name: digest
+  url_git: ''
+  url_other: http://dirk.eddelbuettel.com/code/digest.html
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=digest
+dplyr:
+  version: 0.8.99.9003
+  maintainer: Hadley Wickham
+  name: dplyr
+  url_git: https://github.com/tidyverse/dplyr
+  url_other: ''
+  url_pkgdown: https://dplyr.tidyverse.org
+  url_cran: https://CRAN.R-project.org/package=dplyr
+DT:
+  version: '0.13'
+  maintainer: Yihui Xie
+  name: DT
+  url_git: https://github.com/rstudio/DT
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=DT
+ellipsis:
+  version: 0.3.1
+  maintainer: Hadley Wickham
+  name: ellipsis
+  url_git: https://github.com/r-lib/ellipsis
+  url_other: ''
+  url_pkgdown: https://ellipsis.r-lib.org
+  url_cran: https://CRAN.R-project.org/package=ellipsis
+evaluate:
+  version: '0.14'
+  maintainer: Yihui Xie
+  name: evaluate
+  url_git: https://github.com/r-lib/evaluate
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=evaluate
+expm:
+  version: 0.999.4
+  maintainer: Martin Maechler
+  name: expm
+  url_git: http://R-Forge.R-project.org/projects/expm/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=expm
+extrafont:
+  version: '0.17'
+  maintainer: Winston Chang
+  name: extrafont
+  url_git: https://github.com/wch/extrafont
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=extrafont
+extrafontdb:
+  version: '1.0'
+  maintainer: Winston Chang
+  name: extrafontdb
+  url_git: https://github.com/wch/extrafontdb
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=extrafontdb
+fansi:
+  version: 0.4.1
+  maintainer: Brodie Gaslam
+  name: fansi
+  url_git: https://github.com/brodieG/fansi
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=fansi
+farver:
+  version: 2.0.3
+  maintainer: Thomas Lin Pedersen
+  name: farver
+  url_git: https://github.com/thomasp85/farver
+  url_other: https://farver.data-imaginist.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=farver
+fastmap:
+  version: 1.0.1
+  maintainer: Winston Chang
+  name: fastmap
+  url_git: https://r-lib.github.io/fastmap/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=fastmap
+forcats:
+  version: 0.5.0
+  maintainer: Hadley Wickham
+  name: forcats
+  url_git: https://github.com/tidyverse/forcats
+  url_other: ''
+  url_pkgdown: http://forcats.tidyverse.org
+  url_cran: https://CRAN.R-project.org/package=forcats
+foreign:
+  version: 0.8.79
+  maintainer: R Core Team
+  name: foreign
+  url_git: https://svn.r-project.org/R-packages/trunk/foreign
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=foreign
+fs:
+  version: 1.4.1
+  maintainer: Jim Hester
+  name: fs
+  url_git: https://github.com/r-lib/fs
+  url_other: ''
+  url_pkgdown: http://fs.r-lib.org
+  url_cran: https://CRAN.R-project.org/package=fs
+generics:
+  version: 0.0.2
+  maintainer: Max Kuhn
+  name: generics
+  url_git: https://github.com/r-lib/generics
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=generics
+ggplot2:
+  version: 3.3.0.9000
+  maintainer: Hadley Wickham
+  name: ggplot2
+  url_git: https://github.com/tidyverse/ggplot2
+  url_other: ''
+  url_pkgdown: http://ggplot2.tidyverse.org
+  url_cran: https://CRAN.R-project.org/package=ggplot2
+ggrepel:
+  version: 0.9.0
+  maintainer: Kamil Slowikowski
+  name: ggrepel
+  url_git: https://github.com/slowkow/ggrepel
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=ggrepel
+gh:
+  version: 1.1.0
+  maintainer: Gábor Csárdi
+  name: gh
+  url_git: https://github.com/r-lib/gh#readme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=gh
+git2r:
+  version: 0.27.1
+  maintainer: Stefan Widgren
+  name: git2r
+  url_git: https://github.com/ropensci/git2r
+  url_other: https://docs.ropensci.org/git2r
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=git2r
+glue:
+  version: 1.4.1.9000
+  maintainer: Jim Hester
+  name: glue
+  url_git: https://github.com/tidyverse/glue
+  url_other: ''
+  url_pkgdown: https://glue.tidyverse.org/
+  url_cran: https://CRAN.R-project.org/package=glue
+gtable:
+  version: 0.3.0
+  maintainer: Hadley Wickham
+  name: gtable
+  url_git: https://github.com/r-lib/gtable
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=gtable
+haven:
+  version: 2.2.0
+  maintainer: Hadley Wickham
+  name: haven
+  url_git: https://github.com/tidyverse/haven
+  url_other: ''
+  url_pkgdown: http://haven.tidyverse.org
+  url_cran: https://CRAN.R-project.org/package=haven
+here:
+  version: '0.1'
+  maintainer: Kirill Müller
+  name: here
+  url_git: https://github.com/krlmlr/here
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=here
+highr:
+  version: '0.8'
+  maintainer: Yihui Xie
+  name: highr
+  url_git: https://github.com/yihui/highr
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=highr
+Hmisc:
+  version: 4.4.0
+  maintainer: Frank E Harrell Jr
+  name: Hmisc
+  url_git: https://github.com/harrelfe/Hmisc
+  url_other: http://biostat.mc.vanderbilt.edu/Hmisc
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=Hmisc
+hms:
+  version: 0.5.3
+  maintainer: Kirill Müller
+  name: hms
+  url_git: https://github.com/tidyverse/hms
+  url_other: ''
+  url_pkgdown: https://hms.tidyverse.org/
+  url_cran: https://CRAN.R-project.org/package=hms
+hrbrthemes:
+  version: 0.8.0
+  maintainer: Bob Rudis
+  name: hrbrthemes
+  url_git: http://github.com/hrbrmstr/hrbrthemes
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=hrbrthemes
+htmlTable:
+  version: 1.13.3
+  maintainer: Max Gordon
+  name: htmlTable
+  url_git: ''
+  url_other: http://gforge.se/packages/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=htmlTable
+htmltools:
+  version: 0.4.0
+  maintainer: Joe Cheng
+  name: htmltools
+  url_git: https://github.com/rstudio/htmltools
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=htmltools
+htmlwidgets:
+  version: 1.5.1
+  maintainer: Joe Cheng
+  name: htmlwidgets
+  url_git: https://github.com/ramnathv/htmlwidgets
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=htmlwidgets
+httpuv:
+  version: 1.5.2
+  maintainer: Joe Cheng
+  name: httpuv
+  url_git: https://github.com/rstudio/httpuv
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=httpuv
+httr:
+  version: 1.4.1
+  maintainer: Hadley Wickham
+  name: httr
+  url_git: https://github.com/r-lib/httr
+  url_other: ''
+  url_pkgdown: https://httr.r-lib.org/
+  url_cran: https://CRAN.R-project.org/package=httr
+ini:
+  version: 0.3.1
+  maintainer: David Valentim Dias
+  name: ini
+  url_git: https://github.com/dvdscripter/ini
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=ini
+isoband:
+  version: 0.2.1
+  maintainer: Claus O. Wilke
+  name: isoband
+  url_git: https://github.com/wilkelab/isoband
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=isoband
+janitor:
+  version: 2.0.1
+  maintainer: Sam Firke
+  name: janitor
+  url_git: https://github.com/sfirke/janitor
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=janitor
+jpeg:
+  version: 0.1.8.1
+  maintainer: Simon Urbanek
+  name: jpeg
+  url_git: http://www.rforge.net/jpeg/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=jpeg
+jsonlite:
+  version: 1.6.1
+  maintainer: Jeroen Ooms
+  name: jsonlite
+  url_git: ''
+  url_other: https://arxiv.org/abs/1403.2805
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=jsonlite
+kableExtra:
+  version: 1.1.0
+  maintainer: Hao Zhu
+  name: kableExtra
+  url_git: http://haozhu233.github.io/kableExtra/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=kableExtra
+knitr:
+  version: 1.28.7
+  maintainer: Yihui Xie
+  name: knitr
+  url_git: ''
+  url_other: https://yihui.org/knitr/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=knitr
+later:
+  version: 1.0.0
+  maintainer: Joe Cheng
+  name: later
+  url_git: https://github.com/r-lib/later
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=later
+lattice:
+  version: 0.20.41
+  maintainer: Deepayan Sarkar
+  name: lattice
+  url_git: http://lattice.r-forge.r-project.org/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=lattice
+latticeExtra:
+  version: 0.6.29
+  maintainer: Deepayan Sarkar
+  name: latticeExtra
+  url_git: http://latticeextra.r-forge.r-project.org/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=latticeExtra
+lifecycle:
+  version: 0.2.0
+  maintainer: Lionel Henry
+  name: lifecycle
+  url_git: https://github.com/r-lib/lifecycle
+  url_other: ''
+  url_pkgdown: https://lifecycle.r-lib.org/
+  url_cran: https://CRAN.R-project.org/package=lifecycle
+lme4:
+  version: 1.1.23
+  maintainer: Ben Bolker
+  name: lme4
+  url_git: https://github.com/lme4/lme4/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=lme4
+lubridate:
+  version: 1.7.8
+  maintainer: Vitalie Spinu
+  name: lubridate
+  url_git: https://github.com/tidyverse/lubridate
+  url_other: ''
+  url_pkgdown: http://lubridate.tidyverse.org
+  url_cran: https://CRAN.R-project.org/package=lubridate
+magick:
+  version: '2.3'
+  maintainer: Jeroen Ooms
+  name: magick
+  url_git: https://github.com/ropensci/magick
+  url_other: https://docs.ropensci.org/magick
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=magick
+maptools:
+  version: 1.0.1
+  maintainer: Roger Bivand
+  name: maptools
+  url_git: http://maptools.r-forge.r-project.org/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=maptools
+markdown:
+  version: '1.1'
+  maintainer: Yihui Xie
+  name: markdown
+  url_git: https://github.com/rstudio/markdown
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=markdown
+MASS:
+  version: 7.3.51.6
+  maintainer: Brian Ripley
+  name: MASS
+  url_git: ''
+  url_other: http://www.stats.ox.ac.uk/pub/MASS4/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=MASS
+Matrix:
+  version: 1.2.18
+  maintainer: Martin Maechler
+  name: Matrix
+  url_git: http://Matrix.R-forge.R-project.org/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=Matrix
+MatrixModels:
+  version: 0.4.1
+  maintainer: Martin Maechler
+  name: MatrixModels
+  url_git: http://Matrix.R-forge.R-project.org/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=MatrixModels
+mime:
+  version: '0.9'
+  maintainer: Yihui Xie
+  name: mime
+  url_git: https://github.com/yihui/mime
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=mime
+minqa:
+  version: 1.2.4
+  maintainer: Katharine M. Mullen
+  name: minqa
+  url_git: http://optimizer.r-forge.r-project.org
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=minqa
+munsell:
+  version: 0.5.0
+  maintainer: Charlotte Wickham
+  name: munsell
+  url_git: https://github.com/cwickham/munsell/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=munsell
+mvtnorm:
+  version: 1.1.0
+  maintainer: Torsten Hothorn
+  name: mvtnorm
+  url_git: http://mvtnorm.R-forge.R-project.org
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=mvtnorm
+nlme:
+  version: 3.1.147
+  maintainer: R-core
+  name: nlme
+  url_git: https://svn.r-project.org/R-packages/trunk/nlme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=nlme
+nnet:
+  version: 7.3.14
+  maintainer: Brian Ripley
+  name: nnet
+  url_git: ''
+  url_other: http://www.stats.ox.ac.uk/pub/MASS4/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=nnet
+openssl:
+  version: 1.4.1
+  maintainer: Jeroen Ooms
+  name: openssl
+  url_git: https://github.com/jeroen/openssl#readme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=openssl
+openxlsx:
+  version: 4.1.5
+  maintainer: Philipp Schauberger
+  name: openxlsx
+  url_git: https://ycphs.github.io/openxlsx/index.html
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=openxlsx
+patchwork:
+  version: 1.0.0
+  maintainer: Thomas Lin Pedersen
+  name: patchwork
+  url_git: https://github.com/thomasp85/patchwork
+  url_other: https://patchwork.data-imaginist.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=patchwork
+pbkrtest:
+  version: 0.4.8.6
+  maintainer: Søren Højsgaard
+  name: pbkrtest
+  url_git: ''
+  url_other: http://people.math.aau.dk/~sorenh/software/pbkrtest/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=pbkrtest
+pillar:
+  version: 1.4.4
+  maintainer: Kirill Müller
+  name: pillar
+  url_git: https://github.com/r-lib/pillar
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=pillar
+pixiedust:
+  version: 0.9.0
+  maintainer: Benjamin Nutter
+  name: pixiedust
+  url_git: https://github.com/nutterb/pixiedust
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=pixiedust
+pkgbuild:
+  version: 1.0.8
+  maintainer: Jim Hester
+  name: pkgbuild
+  url_git: https://github.com/r-lib/pkgbuild
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=pkgbuild
+pkgconfig:
+  version: 2.0.3
+  maintainer: Gábor Csárdi
+  name: pkgconfig
+  url_git: https://github.com/r-lib/pkgconfig#readme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=pkgconfig
+pkgload:
+  version: 1.0.2
+  maintainer: Jim Hester
+  name: pkgload
+  url_git: https://github.com/r-lib/pkgload
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=pkgload
+plyr:
+  version: 1.8.6
+  maintainer: Hadley Wickham
+  name: plyr
+  url_git: https://github.com/hadley/plyr
+  url_other: http://had.co.nz/plyr
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=plyr
+png:
+  version: 0.1.7
+  maintainer: Simon Urbanek
+  name: png
+  url_git: http://www.rforge.net/png/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=png
+praise:
+  version: 1.0.0
+  maintainer: Gabor Csardi
+  name: praise
+  url_git: https://github.com/gaborcsardi/praise
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=praise
+prettyunits:
+  version: 1.1.1
+  maintainer: Gabor Csardi
+  name: prettyunits
+  url_git: https://github.com/gaborcsardi/prettyunits
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=prettyunits
+processx:
+  version: 3.4.2
+  maintainer: Gábor Csárdi
+  name: processx
+  url_git: https://github.com/r-lib/processx#readme
+  url_other: ''
+  url_pkgdown: https://processx.r-lib.org
+  url_cran: https://CRAN.R-project.org/package=processx
+progress:
+  version: 1.2.2
+  maintainer: Gábor Csárdi
+  name: progress
+  url_git: https://github.com/r-lib/progress#readme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=progress
+promises:
+  version: 1.1.0
+  maintainer: Joe Cheng
+  name: promises
+  url_git: https://rstudio.github.io/promises
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=promises
+ps:
+  version: 1.3.3
+  maintainer: Gábor Csárdi
+  name: ps
+  url_git: https://github.com/r-lib/ps#readme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=ps
+purrr:
+  version: 0.3.4
+  maintainer: Lionel Henry
+  name: purrr
+  url_git: https://github.com/tidyverse/purrr
+  url_other: ''
+  url_pkgdown: http://purrr.tidyverse.org
+  url_cran: https://CRAN.R-project.org/package=purrr
+pwr:
+  version: 1.3.0
+  maintainer: Helios De Rosario
+  name: pwr
+  url_git: https://github.com/heliosdrm/pwr
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=pwr
+R.cache:
+  version: 0.14.0
+  maintainer: Henrik Bengtsson
+  name: R.cache
+  url_git: https://github.com/HenrikBengtsson/R.cache
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=R.cache
+R.methodsS3:
+  version: 1.8.0
+  maintainer: Henrik Bengtsson
+  name: R.methodsS3
+  url_git: https://github.com/HenrikBengtsson/R.methodsS3
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=R.methodsS3
+R.oo:
+  version: 1.23.0
+  maintainer: Henrik Bengtsson
+  name: R.oo
+  url_git: https://github.com/HenrikBengtsson/R.oo
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=R.oo
+R.utils:
+  version: 2.9.2
+  maintainer: Henrik Bengtsson
+  name: R.utils
+  url_git: https://github.com/HenrikBengtsson/R.utils
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=R.utils
+R6:
+  version: 2.4.1
+  maintainer: Winston Chang
+  name: R6
+  url_git: https://github.com/r-lib/R6/
+  url_other: ''
+  url_pkgdown: https://r6.r-lib.org
+  url_cran: https://CRAN.R-project.org/package=R6
+ragg:
+  version: 0.2.0
+  maintainer: Thomas Lin Pedersen
+  name: ragg
+  url_git: https://github.com/r-lib/ragg
+  url_other: ''
+  url_pkgdown: https://ragg.r-lib.org
+  url_cran: https://CRAN.R-project.org/package=ragg
+Rcpp:
+  version: 1.0.4.6
+  maintainer: Dirk Eddelbuettel
+  name: Rcpp
+  url_git: https://github.com/RcppCore/Rcpp
+  url_other: http://www.rcpp.org
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=Rcpp
+RcppEigen:
+  version: 0.3.3.7.0
+  maintainer: Dirk Eddelbuettel
+  name: RcppEigen
+  url_git: ''
+  url_other: http://dirk.eddelbuettel.com/code/rcpp.eigen.html
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=RcppEigen
+readr:
+  version: 1.3.1
+  maintainer: Jim Hester
+  name: readr
+  url_git: https://github.com/tidyverse/readr
+  url_other: ''
+  url_pkgdown: http://readr.tidyverse.org
+  url_cran: https://CRAN.R-project.org/package=readr
+readxl:
+  version: 1.3.1
+  maintainer: Jennifer Bryan
+  name: readxl
+  url_git: https://github.com/tidyverse/readxl
+  url_other: ''
+  url_pkgdown: https://readxl.tidyverse.org
+  url_cran: https://CRAN.R-project.org/package=readxl
+rematch:
+  version: 1.0.1
+  maintainer: Gabor Csardi
+  name: rematch
+  url_git: https://github.com/MangoTheCat/rematch
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=rematch
+rematch2:
+  version: 2.1.2
+  maintainer: Gábor Csárdi
+  name: rematch2
+  url_git: https://github.com/r-lib/rematch2#readme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=rematch2
+remotes:
+  version: 2.1.1
+  maintainer: Jim Hester
+  name: remotes
+  url_git: https://github.com/r-lib/remotes#readme
+  url_other: ''
+  url_pkgdown: https://remotes.r-lib.org
+  url_cran: https://CRAN.R-project.org/package=remotes
+renv:
+  version: 0.10.0
+  maintainer: Kevin Ushey
+  name: renv
+  url_git: https://rstudio.github.io/renv
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=renv
+reshape2:
+  version: 1.4.4
+  maintainer: Hadley Wickham
+  name: reshape2
+  url_git: https://github.com/hadley/reshape
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=reshape2
+rio:
+  version: 0.5.16
+  maintainer: Thomas J. Leeper
+  name: rio
+  url_git: https://github.com/leeper/rio
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=rio
+rlang:
+  version: 0.4.6.9000
+  maintainer: Lionel Henry
+  name: rlang
+  url_git: https://github.com/r-lib/rlang
+  url_other: ''
+  url_pkgdown: http://rlang.r-lib.org
+  url_cran: https://CRAN.R-project.org/package=rlang
+rmarkdown:
+  version: '2.1'
+  maintainer: Yihui Xie
+  name: rmarkdown
+  url_git: https://github.com/rstudio/rmarkdown
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=rmarkdown
+rpart:
+  version: 4.1.15
+  maintainer: Beth Atkinson
+  name: rpart
+  url_git: https://github.com/bethatkinson/rpart
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=rpart
+rprojroot:
+  version: 1.3.2
+  maintainer: Kirill Müller
+  name: rprojroot
+  url_git: https://github.com/krlmlr/rprojroot
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=rprojroot
+rstudioapi:
+  version: '0.11'
+  maintainer: Kevin Ushey
+  name: rstudioapi
+  url_git: https://github.com/rstudio/rstudioapi
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=rstudioapi
+Rttf2pt1:
+  version: 1.3.8
+  maintainer: Winston Chang
+  name: Rttf2pt1
+  url_git: https://github.com/wch/Rttf2pt1
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=Rttf2pt1
+rvest:
+  version: 0.3.5
+  maintainer: Hadley Wickham
+  name: rvest
+  url_git: https://github.com/tidyverse/rvest
+  url_other: ''
+  url_pkgdown: http://rvest.tidyverse.org/
+  url_cran: https://CRAN.R-project.org/package=rvest
+scales:
+  version: 1.1.1
+  maintainer: Hadley Wickham
+  name: scales
+  url_git: https://github.com/r-lib/scales
+  url_other: ''
+  url_pkgdown: https://scales.r-lib.org
+  url_cran: https://CRAN.R-project.org/package=scales
+selectr:
+  version: 0.4.2
+  maintainer: Simon Potter
+  name: selectr
+  url_git: ''
+  url_other: https://sjp.co.nz/projects/selectr
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=selectr
+servr:
+  version: '0.16'
+  maintainer: Yihui Xie
+  name: servr
+  url_git: https://github.com/yihui/servr
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=servr
+sessioninfo:
+  version: 1.1.1
+  maintainer: Gábor Csárdi
+  name: sessioninfo
+  url_git: https://github.com/r-lib/sessioninfo#readme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=sessioninfo
+shiny:
+  version: 1.4.0.2
+  maintainer: Winston Chang
+  name: shiny
+  url_git: ''
+  url_other: http://shiny.rstudio.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=shiny
+snakecase:
+  version: 0.11.0
+  maintainer: Malte Grosser
+  name: snakecase
+  url_git: https://github.com/Tazinho/snakecase
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=snakecase
+sp:
+  version: 1.4.2
+  maintainer: Edzer Pebesma
+  name: sp
+  url_git: https://github.com/edzer/sp/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=sp
+SparseM:
+  version: '1.78'
+  maintainer: Roger Koenker
+  name: SparseM
+  url_git: ''
+  url_other: http://www.econ.uiuc.edu/~roger/research/sparse/sparse.html
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=SparseM
+spatial:
+  version: 7.3.12
+  maintainer: Brian Ripley
+  name: spatial
+  url_git: ''
+  url_other: http://www.stats.ox.ac.uk/pub/MASS4/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=spatial
+stringi:
+  version: 1.4.6
+  maintainer: Marek Gagolewski
+  name: stringi
+  url_git: ''
+  url_other: http://www.gagolewski.com/software/stringi/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=stringi
+stringr:
+  version: 1.4.0
+  maintainer: Hadley Wickham
+  name: stringr
+  url_git: https://github.com/tidyverse/stringr
+  url_other: ''
+  url_pkgdown: http://stringr.tidyverse.org
+  url_cran: https://CRAN.R-project.org/package=stringr
+styler:
+  version: 1.3.2
+  maintainer: Lorenz Walthert
+  name: styler
+  url_git: https://github.com/r-lib/styler
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=styler
+survival:
+  version: 3.1.12
+  maintainer: Terry M Therneau
+  name: survival
+  url_git: https://github.com/therneau/survival
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=survival
+sys:
+  version: '3.3'
+  maintainer: Jeroen Ooms
+  name: sys
+  url_git: https://github.com/jeroen/sys
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=sys
+sysfonts:
+  version: 0.8.1
+  maintainer: Yixuan Qiu
+  name: sysfonts
+  url_git: https://github.com/yixuan/sysfonts
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=sysfonts
+systemfonts:
+  version: 0.2.2
+  maintainer: Thomas Lin Pedersen
+  name: systemfonts
+  url_git: https://github.com/r-lib/systemfonts
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=systemfonts
+tadaatoolbox:
+  version: 0.16.1
+  maintainer: Lukas Burk
+  name: tadaatoolbox
+  url_git: https://github.com/tadaadata/tadaatoolbox
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=tadaatoolbox
+testthat:
+  version: 2.3.2
+  maintainer: Hadley Wickham
+  name: testthat
+  url_git: https://github.com/r-lib/testthat
+  url_other: ''
+  url_pkgdown: http://testthat.r-lib.org
+  url_cran: https://CRAN.R-project.org/package=testthat
+tibble:
+  version: 3.0.1
+  maintainer: Kirill Müller
+  name: tibble
+  url_git: https://github.com/tidyverse/tibble
+  url_other: ''
+  url_pkgdown: https://tibble.tidyverse.org/
+  url_cran: https://CRAN.R-project.org/package=tibble
+tidyr:
+  version: 1.1.0
+  maintainer: Hadley Wickham
+  name: tidyr
+  url_git: https://github.com/tidyverse/tidyr
+  url_other: ''
+  url_pkgdown: https://tidyr.tidyverse.org
+  url_cran: https://CRAN.R-project.org/package=tidyr
+tidyselect:
+  version: 1.1.0
+  maintainer: Lionel Henry
+  name: tidyselect
+  url_git: https://github.com/r-lib/tidyselect
+  url_other: ''
+  url_pkgdown: https://tidyselect.r-lib.org
+  url_cran: https://CRAN.R-project.org/package=tidyselect
+tinytex:
+  version: '0.23'
+  maintainer: Yihui Xie
+  name: tinytex
+  url_git: https://github.com/yihui/tinytex
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=tinytex
+usethis:
+  version: 1.6.1
+  maintainer: Jennifer Bryan
+  name: usethis
+  url_git: https://github.com/r-lib/usethis
+  url_other: ''
+  url_pkgdown: https://usethis.r-lib.org
+  url_cran: https://CRAN.R-project.org/package=usethis
+utf8:
+  version: 1.1.4
+  maintainer: Patrick O. Perry
+  name: utf8
+  url_git: https://github.com/patperry/r-utf8
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=utf8
+vctrs:
+  version: 0.3.0.9000
+  maintainer: Hadley Wickham
+  name: vctrs
+  url_git: ''
+  url_other: ''
+  url_pkgdown: https://vctrs.r-lib.org/
+  url_cran: https://CRAN.R-project.org/package=vctrs
+viridis:
+  version: 0.5.1
+  maintainer: Simon Garnier
+  name: viridis
+  url_git: https://github.com/sjmgarnier/viridis
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=viridis
+viridisLite:
+  version: 0.3.0
+  maintainer: Simon Garnier
+  name: viridisLite
+  url_git: https://github.com/sjmgarnier/viridisLite
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=viridisLite
+waffle:
+  version: 1.0.1
+  maintainer: Bob Rudis
+  name: waffle
+  url_git: https://gitlab.com/hrbrmstr/waffle
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=waffle
+webshot:
+  version: 0.5.2
+  maintainer: Winston Chang
+  name: webshot
+  url_git: https://github.com/wch/webshot/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=webshot
+whisker:
+  version: '0.4'
+  maintainer: Edwin de Jonge
+  name: whisker
+  url_git: http://github.com/edwindj/whisker
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=whisker
+withr:
+  version: 2.2.0
+  maintainer: Jim Hester
+  name: withr
+  url_git: http://github.com/r-lib/withr#readme
+  url_other: ''
+  url_pkgdown: http://withr.r-lib.org
+  url_cran: https://CRAN.R-project.org/package=withr
+xfun:
+  version: '0.14'
+  maintainer: Yihui Xie
+  name: xfun
+  url_git: https://github.com/yihui/xfun
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=xfun
+xml2:
+  version: 1.3.2
+  maintainer: Jim Hester
+  name: xml2
+  url_git: https://github.com/r-lib/xml2
+  url_other: ''
+  url_pkgdown: https://xml2.r-lib.org/
+  url_cran: https://CRAN.R-project.org/package=xml2
+xtable:
+  version: 1.8.4
+  maintainer: David Scott
+  name: xtable
+  url_git: http://xtable.r-forge.r-project.org/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=xtable
+yaml:
+  version: 2.2.1
+  maintainer: Jeremy Stephens
+  name: yaml
+  url_git: https://github.com/viking/r-yaml/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=yaml
+zip:
+  version: 2.0.4
+  maintainer: Gábor Csárdi
+  name: zip
+  url_git: https://github.com/r-lib/zip#readme
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=zip
