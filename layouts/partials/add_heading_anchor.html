@@ -1,5 +1,0 @@
-<!--- original template, see https://github.com/gohugoio/hugo/issues/6713
-{{ . | replaceRE "(<h[1-9] id=\"([^\"]+)\".+)(</h[1-9]+>)" `<a href="#${2}" class="heading-anchor" ariaLabel="Anchor">${1}</a>${3}` | safeHTML }}
--->
-<!-- some tweak to make "preserve fixed navbar spacing thing"-hack work -->
-{{ . | replaceRE "(<h[1-9] id=\"([^\"]+)\".+)(</h[1-9]+>)" `<a id="${2}"></a><a href="#${2}" ariaLabel="Anchor">${1}</a>${3}`| safeHTML }}
