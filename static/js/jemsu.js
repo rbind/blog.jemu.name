@@ -39,9 +39,12 @@ window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
   if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-    mybutton.style.display = "block";
+    mybutton.style.visibility = "visible";
+    mybutton.style.opacity = "1";
   } else {
-    mybutton.style.display = "none";
+    mybutton.style.visibility = "hidden";
+    mybutton.style.opacity = "0";
+
   }
 }
 
