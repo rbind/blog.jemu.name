@@ -1,8 +1,8 @@
 author = "Lukas Burk"
-description = "Yet Another Personal Site"
+description = "Yet Another {blogdown} Blog"
 keywords = "blog,rstats,R,personal"
 info = "Doing things with R, mostly"
-avatarurl = "images/jemus42.jpg"
+#avatarurl = "images/jemus42.jpg"
 gravatar = "jemus42@quantenbrot.de"
 footercontent = "Bad at blogging since 2009!"
 
@@ -42,6 +42,10 @@ custom_js = [
     ]
     
 commentoUrl = "https://commento.jemu.name"
+
+# Icons
+favicon_16 = "/favicon-16x16.png"
+favicon_32 = "/favicon-32x32.png"
 
 # If you want to use fathom(https://usefathom.com) for analytics, add this section
 #[params.fathomAnalytics]

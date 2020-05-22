@@ -3,7 +3,9 @@ scratchpad.R
 
 .vscode/settings.json
 
-_posts_bak
+# favicon generator stuff
+static/html_code.html
+static/README.md
 
 # Rendered output
 static/post
