@@ -21,7 +21,10 @@
         {
             "label": "Hugo server (-D -F --navigateToChanged)",
             "type": "shell",
-            "command": "hugo server -D -F --navigateToChanged"
+            "command": "hugo server -D -F --navigateToChanged",
+            "problemMatcher": [
+                "$go"
+            ]
         },
         {
             "label": "Blogdown Server (blogdown::serve_site)",
