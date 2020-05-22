@@ -20,6 +20,12 @@
               <i class="fas fa-clock"></i>
               {{ i18n "reading_time" .ReadingTime }}
             </span>
+            <!-- Begin customization: Commento comment count -->
+            <span class="comment-count">
+              <i class="fas fa-comments"></i>
+              <a href="#commento"></a>
+            </span>
+            <!-- End customization: Commento comment count -->
           </div>
           {{ with .Page.Params.Categories }}{{ partial "taxonomy/categories.html" . }}{{ end }}
           {{ with .Page.Params.Tags }}{{ partial "taxonomy/tags.html" . }}{{ end }}
