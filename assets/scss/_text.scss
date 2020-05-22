@@ -249,3 +249,38 @@ a > svg.anchor-symbol {
 //   // border: 1px solid #ece9e2;
 //   z-index: 3;
 // }
+
+
+// Scroll to top button
+#totop {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 10px; /* Some padding */
+  border-radius: 1rem; /* Rounded corners */
+  //font-size: 18px; /* Increase font size */
+  font-family: $heading-font-family;
+}
+
+@mixin scrolltop-light {
+  #totop {
+    background-color: $alt-bg-color; /* Set a background color */
+  }
+  #totop:hover {
+    color: $link-color; /* Add a dark-grey background on hover */
+  }
+}
+
+@mixin scrolltop-dark {
+  #totop {
+    background-color: $alt-bg-color-dark; /* Set a background color */
+  }
+  #totop:hover {
+    color: $link-color-dark; /* Add a dark-grey background on hover */
+  }
+}

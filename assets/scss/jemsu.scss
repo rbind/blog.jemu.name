@@ -26,6 +26,7 @@ body.colorscheme-dark {
   @include summary-dark();
   @include anchor-dark();
   @include commento-dark();
+  @include scrolltop-dark();
 }
 
 body.colorscheme-auto {
@@ -40,6 +41,7 @@ body.colorscheme-auto {
     @include summary-dark();
     @include anchor-dark();
     @include commento-dark();
+    @include scrolltop-dark();
   }
 }
 
@@ -53,6 +55,7 @@ body.colorscheme-light {
   @include addendum-light();
   @include summary-light();
   @include anchor-light();
+  @include scrolltop-light();
   // @include color-inv()
 }
 
@@ -66,6 +69,7 @@ body.colorscheme-auto {
     @include addendum-light();
     @include summary-light();
     @include anchor-light();
+    @include scrolltop-light();
     // @include color-inv();
   }
 }
