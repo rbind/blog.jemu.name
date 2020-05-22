@@ -40,20 +40,20 @@ if(typeof(scrollbutton) != 'undefined' && scrollbutton != null){
     window.onscroll = function() {scrollFunction()};
 
     function scrollFunction() {
-    if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-        scrollbutton.style.visibility = "visible";
-        scrollbutton.style.opacity = "1";
-    } else {
-        scrollbutton.style.visibility = "hidden";
-        scrollbutton.style.opacity = "0";
+        if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+            scrollbutton.style.visibility = "visible";
+            scrollbutton.style.opacity = "1";
+        } else {
+            scrollbutton.style.visibility = "hidden";
+            scrollbutton.style.opacity = "0";
 
-    }
+        }
     }
 
     // When the user clicks on the button, scroll to the top of the document
     function topFunction() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
 
 }
