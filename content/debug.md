@@ -14,9 +14,8 @@ One might consider it [a `test` case](/debug).
 
 ### Package decoration
 
-Have you heard about {{< pkg "ggplot2" >}}?
-Or {{< pkg "fansi" >}}? 
-Or {{< pkg "colorspace" >}}?
+Have you heard about {{< pkg "ggplot2" >}}?  
+Or {{< pkg "fansi" >}}? Or {{< pkg "colorspace" >}}?
 
 I have this packages called {{< pkg "tRakt" >}} and it's not on CRAN.
 
