@@ -14,7 +14,7 @@ tags:
 description: ""
 series:
   - Software
-toc: false
+toc: true
 math: true # works, "katex: true" doesnt
 ---
 
@@ -51,8 +51,7 @@ And here's a video of it in (semi-)action, where I only trigger the keys (see th
 
 And under the hood it's only these four elements:
 
-{{< figure src="workflow-schema.png" alt="Alfred workflow structure showing 4 components" caption="Workflow in Alfred's workflow… viewer… thingy" >}}
-
+{{< figure src="workflow-schema.png" alt="Alfred workflow structure showing 4 components" caption="The graphical approach makes this nicely intuitive" >}}
 
 ## ~~Step by Step~~ The Whole Shebang
 
