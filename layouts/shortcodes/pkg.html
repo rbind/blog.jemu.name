@@ -1,6 +1,6 @@
 {{ $pkg := index .Site.Data.packages (.Get 0) }}
 {{ $url := $pkg.url_pkgdown | default $pkg.url_git | default $pkg.url_other }}
 <span class="rpkg">
-<a href="{{ $url }}" alt = "{{ $pkg.name }}">{{ printf "{%s}" $pkg.name }}</a>
+<a href="{{ $url }}" alt = "{{ $pkg.name }}">{{ (printf (.Site.Params.pkg_format) $pkg.name) | safeHTML }}</a>
 <span class="tooltip">{{ $pkg.title }}{{ if not $pkg.url_cran }}<br>The package is not on CRAN {{ end }}</span>
 </span>

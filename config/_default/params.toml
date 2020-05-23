@@ -6,6 +6,9 @@ info = "Doing things with R, mostly"
 gravatar = "jemus42@quantenbrot.de"
 footercontent = "Bad at blogging since 2009!"
 
+# For package shortcode (configurability++;)
+pkg_format = "<i class='fas fa-box'></i> {%s}"
+
 dateformat = "January 2, 2006"
 
 hideFooter = false
