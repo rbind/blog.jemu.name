@@ -17,7 +17,7 @@
         <th>Source</th>
         <th>Website</th>
       </tr>
-        {{- range .Site.Data.packages -}}
+        {{- range sort .Site.Data.packages -}}
         {{- partial "list-pkgs" . -}}
         {{- end -}}
     </table>
