@@ -154,8 +154,8 @@ crosstalk:
   version: 1.1.0.1
   maintainer: Joe Cheng
   name: crosstalk
-  url_git: https://rstudio.github.io/crosstalk/
-  url_other: ''
+  url_git: ''
+  url_other: https://rstudio.github.io/crosstalk/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=crosstalk
 curl:
@@ -170,7 +170,7 @@ data.table:
   version: 1.12.8
   maintainer: Matt Dowle
   name: data.table
-  url_git: https://Rdatatable.gitlab.io/data.table
+  url_git: https://github.com/Rdatatable/data.table
   url_other: http://r-datatable.com
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=data.table
@@ -274,10 +274,18 @@ fastmap:
   version: 1.0.1
   maintainer: Winston Chang
   name: fastmap
-  url_git: https://r-lib.github.io/fastmap/
-  url_other: ''
+  url_git: https://github.com/r-lib/fastmap
+  url_other: https://r-lib.github.io/fastmap/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=fastmap
+firasans:
+  version: 0.1.0
+  maintainer: Bob Rudis
+  name: firasans
+  url_git: https://github.com/hrbrmstr/firasans
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: ''
 forcats:
   version: 0.5.0
   maintainer: Hadley Wickham
@@ -371,7 +379,7 @@ here:
   maintainer: Kirill Müller
   name: here
   url_git: https://github.com/krlmlr/here
-  url_other: ''
+  url_other: http://krlmlr.github.io/here
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=here
 highr:
@@ -446,6 +454,14 @@ httr:
   url_other: ''
   url_pkgdown: https://httr.r-lib.org/
   url_cran: https://CRAN.R-project.org/package=httr
+hugodown:
+  version: 0.0.0.9000
+  maintainer: Hadley Wickham
+  name: hugodown
+  url_git: https://github.com/r-lib/hugodown
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: ''
 ini:
   version: 0.3.1
   maintainer: David Valentim Dias
@@ -470,6 +486,14 @@ janitor:
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=janitor
+jemisc:
+  version: 0.0.3
+  maintainer: Lukas Burk
+  name: jemisc
+  url_git: https://github.com/jemus42/jemisc
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: ''
 jpeg:
   version: 0.1.8.1
   maintainer: Simon Urbanek
@@ -490,8 +514,8 @@ kableExtra:
   version: 1.1.0
   maintainer: Hao Zhu
   name: kableExtra
-  url_git: http://haozhu233.github.io/kableExtra/
-  url_other: ''
+  url_git: https://github.com/haozhu233/kableExtra
+  url_other: http://haozhu233.github.io/kableExtra/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=kableExtra
 knitr:
@@ -658,8 +682,8 @@ openxlsx:
   version: 4.1.5
   maintainer: Philipp Schauberger
   name: openxlsx
-  url_git: https://ycphs.github.io/openxlsx/index.html
-  url_other: ''
+  url_git: https://github.com/ycphs/openxlsx
+  url_other: https://ycphs.github.io/openxlsx/index.html
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=openxlsx
 patchwork:
@@ -770,8 +794,8 @@ promises:
   version: 1.1.0
   maintainer: Joe Cheng
   name: promises
-  url_git: https://rstudio.github.io/promises
-  url_other: ''
+  url_git: https://github.com/rstudio/promises
+  url_other: https://rstudio.github.io/promises
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=promises
 ps:
@@ -906,8 +930,8 @@ renv:
   version: 0.10.0
   maintainer: Kevin Ushey
   name: renv
-  url_git: https://rstudio.github.io/renv
-  url_other: ''
+  url_git: ''
+  url_other: https://rstudio.github.io/renv
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=renv
 reshape2:
@@ -955,7 +979,7 @@ rprojroot:
   maintainer: Kirill Müller
   name: rprojroot
   url_git: https://github.com/krlmlr/rprojroot
-  url_other: ''
+  url_other: https://krlmlr.github.io/rprojroot
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=rprojroot
 rstudioapi:
@@ -1035,7 +1059,7 @@ sp:
   maintainer: Edzer Pebesma
   name: sp
   url_git: https://github.com/edzer/sp/
-  url_other: ''
+  url_other: https://edzer.github.io/sp/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=sp
 SparseM:
@@ -1110,6 +1134,14 @@ systemfonts:
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=systemfonts
+tadaathemes:
+  version: 0.0.1
+  maintainer: Lukas Burk
+  name: tadaathemes
+  url_git: https://github.com/tadaadata/tadaathemes
+  url_other: https://tadaadata.github.io/tadaathemes
+  url_pkgdown: ''
+  url_cran: ''
 tadaatoolbox:
   version: 0.16.1
   maintainer: Lukas Burk
@@ -1158,6 +1190,14 @@ tinytex:
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=tinytex
+tRakt:
+  version: 0.15.0.9000
+  maintainer: Lukas Burk
+  name: tRakt
+  url_git: https://github.com/jemus42/tRakt
+  url_other: https://jemus42.github.io/tRakt
+  url_pkgdown: ''
+  url_cran: ''
 usethis:
   version: 1.6.1
   maintainer: Jennifer Bryan

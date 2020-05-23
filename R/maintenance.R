@@ -105,7 +105,7 @@ gen_package_yaml <- function() {
       name = package,
       maintainer = str_remove_all(maintainer, "\\s*<.*>"),
       urlkind = case_when(
-        str_detect(urls, "(github|gitlab|bitbucket|[Rr](-)?[Ff]orge|svn\\.r-project)") ~ "git",
+        str_detect(urls, "(github\\.com|gitlab\\.com|bitbucket|[Rr](-)?[Ff]orge|svn\\.r-project)") ~ "git",
         str_detect(urls, "(CRAN|cran|r-project)") ~ "cran",
         str_detect(urls, "(tidyverse|r-lib|tidymodels|github\\.io)\\.org") ~ "pkgdown",
         TRUE ~ "other"
@@ -116,7 +116,8 @@ gen_package_yaml <- function() {
       names_from = "urlkind", names_prefix = "url_",
       values_from = "urls", values_fn = first, values_fill = ""
     ) %>%
-    inner_join(packages_cran, by = "package") %>%
+    left_join(packages_cran, by = "package") %>%
+    mutate(url_cran = ifelse(is.na(url_cran), "", url_cran)) %>%
     ungroup() %>%
     nest_by(package) -> pkgslist
 
@@ -125,3 +126,5 @@ gen_package_yaml <- function() {
 
   yaml::write_yaml(x, here::here("data/packages.yml"))
 }
+
+gen_package_yaml()
