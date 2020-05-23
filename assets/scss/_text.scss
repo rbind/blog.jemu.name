@@ -107,28 +107,7 @@ code {
   object-fit: contain;
 }
 
-// littlefoot.js
-// Override justification and make it readable in dark mode
-div.littlefoot-footnote__wrapper > div > p {
-  text-align: left;
-  color: $fg-color;
-}
-
-@mixin littlefoot-dark {
-  .littlefoot-footnote__button {
-    color: $fg-color-dark;
-  }
-}
-
-@mixin littlefoot-light {
-  .littlefoot-footnote__button {
-    // color: $fg-color;
-    color: lighten($fg-color, 10%);
-  }
-}
-
 // Addendum shortcode
-
 .addendum h6 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -140,7 +119,6 @@ div.littlefoot-footnote__wrapper > div > p {
   margin-bottom: 0;
   padding-right: 2rem;
 }
-
 
 div.addendum {
   border-left: 0.5rem;
@@ -178,7 +156,6 @@ figure.code {
   text-align: left;
 }
 
-
 // Auto-linked headers
 
 a > svg.anchor-symbol {
@@ -204,57 +181,6 @@ a > svg.anchor-symbol {
     fill: $link-color-dark;
   }
 }
-
-
-// Commento ///
-@mixin commento-dark {
-  .commento-root .commento-card {
-    background-color: $bg-color-dark;
-  }
-  
-  .commento-root *,
-  .commento-root .commento-card .commento-body p,
-  .commento-root .commento-card .commento-name,
-  .commento-root .commento-markdown-button,
-  .commento-root .commento-anonymous-checkbox-container input[type=checkbox]+label,
-  .commento-root .commento-mod-tools::before,
-  .commento-root .commento-logged-container .commento-logged-in-as .commento-name,
-  .commento-root .commento-footer .commento-logo-container .commento-logo-text,
-  .commento-root .commento-logged-container .commento-profile-button {
-    color: $fg-color-dark;
-  }
-  
-  .commento-root a {
-    color: $link-color-dark;
-  }
-  
-  .commento-root .commento-card .commento-option-remove {
-    background: $link-color-dark;
-  }
-  
-}
-
-
-// Code chunks //
-// Tried something similiar to https://regisphilibert.com/blog/2017/04/hugo-cheat-sheet-go-template-translator/
-// But I think the tabulr display here messes with the positioning maybe?
-
-// .highlight code::before {
-//   content: attr(data-lang);
-//   position: absolute;
-//   font-size: 75%;
-//   display: block;
-//   //background: #f5f9f9;
-//   //bottom: calc(100% - 1px);
-//   //color: #999;
-//   //right: 0;
-//   //padding: .2em .5em;
-//   // border-top-left-radius: 5px;
-//   // border-top-right-radius: 5px;
-//   // border: 1px solid #ece9e2;
-//   z-index: 3;
-// }
-
 
 // Scroll to top button
 #totop {
@@ -307,15 +233,12 @@ a.rpkg {
 .tooltip {
   font-family: $heading-font-family;
   visibility: hidden;
-  //display: none;
   width: auto;
   background-color: $alt-bg-color-dark;
   color: $fg-color-dark;
   text-align: center;
   padding: 1rem;
-  border-radius: 1rem;
- 
-  /* Position the tooltip text - see examples below! */
+  border-radius: 1rem; 
   position: fixed;
   bottom: 5%;
   right: 5%;
@@ -326,6 +249,5 @@ a.rpkg {
 .rpkg:focus-within .tooltip,
 .rpkg:focus .tooltip,
 .rpkg:active .tooltip {
-  //display: inline;
   visibility: visible;
 }
