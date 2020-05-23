@@ -11,7 +11,7 @@ tags:
   - RStudio
   - Workflow
   - macOS
-description: ""
+description: "Making a simple Alfred workflow to quickly find and open your RStudio projects in either RStudio or VS Code"
 series:
   - Software
 toc: true
