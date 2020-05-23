@@ -1,6 +1,21 @@
 <tr>
   <td>
-    <code class="rpkg pkg-title">{{ printf "{%s}" .name }}</code>
+    <code class="rpkg pkg-title" id="{{ .name }}">{{ printf "{%s}" .name }}</code>
+  </td>
+  <td>
+    {{ with .title }} 
+      {{ . }}
+    {{ end }}
+  </td>
+  <td>
+    {{ with .version }} 
+      {{ . }}
+    {{ end }}
+  </td>
+  <td>
+    {{ with .maintainer }} 
+      {{ . }}
+    {{ end }}
   </td>
   <td>
     {{ with .url_cran }} 

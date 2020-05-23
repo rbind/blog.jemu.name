@@ -297,3 +297,35 @@ a > svg.anchor-symbol {
     color: $link-color-dark; /* Add a dark-grey background on hover */
   }
 }
+
+// package tooltip
+
+a.rpkg {
+  font-family: $code-font-family;
+}
+
+.tooltip {
+  font-family: $heading-font-family;
+  visibility: hidden;
+  //display: none;
+  width: auto;
+  background-color: $alt-bg-color-dark;
+  color: $fg-color-dark;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 1rem;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  z-index: 3;
+}
+
+.rpkg:hover .tooltip,
+.rpkg:focus-within .tooltip,
+.rpkg:focus .tooltip,
+.rpkg:active .tooltip {
+  //display: inline;
+  visibility: visible;
+}

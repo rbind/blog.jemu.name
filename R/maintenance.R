@@ -93,6 +93,8 @@ gen_package_yaml <- function() {
 
     tibble::tibble(
       package = .x,
+      title = description$get("Title") %>% as.character(),
+      #description = description$get("Description") %>% as.character(),
       urls = description$get_urls(),
       version = description$get_version() %>% as.character(),
       maintainer = description$get_maintainer()
