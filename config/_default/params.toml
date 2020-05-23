@@ -9,6 +9,8 @@ footercontent = "Bad at blogging since 2009!"
 # For package shortcode (configurability++;)
 # pkg_format = "<i class='fas fa-box'></i> {%s}"
 pkg_format = "{%s}"
+pkg_icon_cran = "<i class='fab fa-r-project'></i>"
+pkg_icon_git = "<i class='fab fa-git-alt'></i>"
 
 dateformat = "January 2, 2006"
 

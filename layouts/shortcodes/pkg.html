@@ -1,6 +1,11 @@
 {{ $pkg := index .Site.Data.packages (.Get 0) }}
 {{ $url := $pkg.url_pkgdown | default $pkg.url_git | default $pkg.url_other }}
+
 <span class="rpkg">
-<a href="{{ $url }}" alt = "{{ $pkg.name }}">{{ (printf (.Site.Params.pkg_format) $pkg.name) | safeHTML }}</a>
+<a href="{{ $url }}" alt = "{{ $pkg.name }}">{{ if $pkg.url_cran }}
+  {{ print .Site.Params.pkg_icon_cran | safeHTML }}
+{{ else }}
+  {{ print .Site.Params.pkg_icon_git | safeHTML }}
+{{ end }}{{ (printf (.Site.Params.pkg_format) $pkg.name) | safeHTML }}</a>
 <span class="tooltip">{{ $pkg.title }}{{ if not $pkg.url_cran }}<br>(Not on CRAN){{ end }}</span>
 </span>
