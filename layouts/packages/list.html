@@ -6,6 +6,17 @@
     <h1 class="title">{{ .Title }}</h1>
     {{ .Content }}
     
+     <!-- Still experimenting how to array (or map? or slice? Idunno)
+    Here's the packages mentioned in page params: <br><br>
+    
+    {{ range (where .Site.Pages ".Params.packages" "!=" nil) }}
+    {{ range (slice .Params.packages) }} 
+      <li>{{ . }}</li>
+    {{ end }}
+       
+    {{ end }} 
+    -->
+    
     <hr>
     <table>
       <tr>
