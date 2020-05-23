@@ -18,7 +18,7 @@ Have you heard about {{< pkg "ggplot2" >}}?
 Or {{< pkg "fansi" >}}? 
 Or {{< pkg "colorspace" >}}?
 
-I have this packages call {{< pkg "tRakt" >}} and it's not on CRAN.
+I have this packages called {{< pkg "tRakt" >}} and it's not on CRAN.
 
 ### Code with caption in figure tag
 
