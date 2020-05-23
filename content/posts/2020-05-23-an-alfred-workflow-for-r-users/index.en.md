@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 title: An Alfred Workflow for R Users
 author: jemus42
 date: "2020-05-23"
