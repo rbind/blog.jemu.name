@@ -11,9 +11,10 @@
         {{ end }}
         {{ now.Year }}
         {{ with .Site.Params.Author }} {{ . }} {{ end }}
+        <br>
       {{ end }}
       {{ if not .Site.Params.hideCredits }}
-        {{ if not .Site.Params.hideCopyright }} · {{ end }}
+        {{ if not .Site.Params.hideCopyright }} {{ end }}
         Befuddledly cobbled together with  
         <a href="https://bookdown.org/yihui/blogdown/"><i class="fab fa-r-project"></i></a>, 
         <a href="https://github.com/rbind/blog.jemu.name"><i class="fas fa-code-branch"></i></a>,
