@@ -6,7 +6,7 @@ date: "2020-05-23"
 slug: []
 featured_image: workflow-schema.png
 tags: 
-  - Alfred.app
+  - Alfred
   - VS Code
   - RStudio
   - Workflow
@@ -116,10 +116,12 @@ In the second half, I do the same thing but with the handicap that my self-hoste
 So, what do we learn today?
 
 1. Productivity tools are only productivity tools if you use them for productivity. Installation does not suffice.
-2. Not every Alfred Workflow worth installing has to be a massively-featured complexity monster that sat unmaintained on [packal] for 5 years.
+2. Not every Alfred Workflow worth installing has to be a massively-featured complexity monster that sat unmaintained on [packal] for 5 years [^packalold].
 3. Solving your own problems is worth more than downloading/installing someone else's solutions that work for *them*.
 
-I hope at least someone find this useful.
+I hope at least someone finds this useful.
+
+[^packalold]: If you find a cool looking workflow on packal (when it's not currently broken), and see that the workflow hasn't been updated in a long time, there are usually two options. A) The workflow is fairly simple and rock-solid, hence no need for updating, or B) Tough luck, it doesn't work anymore and the creator has moved on and abandoned it. I have found examples for both cases, and it's a little frustrating to be honest.
 
 <!-- links -->
 [Alfred]: https://www.alfredapp.com/
