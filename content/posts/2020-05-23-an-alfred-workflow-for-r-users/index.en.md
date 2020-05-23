@@ -3,7 +3,7 @@ draft: true
 title: An Alfred Workflow for R Users
 author: jemus42
 date: "2020-05-23"
-slug: []
+slug: "alfred-workflow-for-r-users"
 featured_image: workflow-demo-search.png
 tags: 
   - Alfred

@@ -34,7 +34,11 @@
 
       <div>
         {{ if .Params.featured_image }}
+        <!-- Begin customization: Extra div class to center featured_image -->
+        <div class="featured-image">
           <img src='{{ .Params.featured_image }}' alt="Featured image"/>
+        </div>
+        <!-- End customization: Extra div class to center featured_image -->
         {{ end }}
         <!-- Begin customization: TOC partial -->
         {{ partial "toc" . }}
