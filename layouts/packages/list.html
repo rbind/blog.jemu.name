@@ -5,12 +5,18 @@
   <section class="container list">
     <h1 class="title">{{ .Title }}</h1>
     {{ .Content }}
-    <ul>
-      {{- range .Site.Data.packages -}}
-      {{- partial "list-pkgs" . -}}
-      {{- end -}}
-    </ul>
-
+    
+    <table>
+      <tr>
+        <th>Package</th>
+        <th>CRAN</th>
+        <th>Source</th>
+        <th>Website</th>
+      </tr>
+        {{- range .Site.Data.packages -}}
+        {{- partial "list-pkgs" . -}}
+        {{- end -}}
+    </table>
     {{ partial "pagination.html" . }}
   </section>
 {{ end }}

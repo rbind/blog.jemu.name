@@ -1,13 +1,20 @@
-<li>
-  <!-- <span class="date">{{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}</span> -->
-  <code class="rpkg pkg-title">{{ printf "{%s}" .name }}</code>: 
-  {{ with .url_cran }} 
-    <a title = "CRAN" href = "{{ . }}">CRAN</a>
-  {{ end }}
-  {{ with .url_git }}
-    <a title = "Source Repository" href = "{{ . }}">Source</a>
-  {{ end }}
-  {{ with .url_pkgdown | default .url_other }}
-    <a title = "Website" href = "{{ . }}">Website</a>
-  {{ end }}
-</li>
+<tr>
+  <td>
+    <code class="rpkg pkg-title">{{ printf "{%s}" .name }}</code>
+  </td>
+  <td>
+    {{ with .url_cran }} 
+      <a title = "CRAN" href = "{{ . }}">CRAN</a>
+    {{ end }}
+  </td>
+  <td>
+    {{ with .url_git }}
+      <a title = "Source Repository" href = "{{ . }}">Source</a>
+    {{ end }}
+  </td>
+  <td>
+    {{ with .url_pkgdown | default .url_other }}
+      <a title = "Website" href = "{{ . }}">Website</a>
+    {{ end }}
+  </td>
+</tr>
