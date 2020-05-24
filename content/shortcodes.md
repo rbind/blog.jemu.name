@@ -66,6 +66,12 @@ I have this package called {{< pkg "tRakt" >}} and it's not on CRAN.
 
 ## Expandable content: `summary`
 
+```go
+{{</* summary "Click to expand" */>}}
+This is the secret content *they* don't want you to know.
+{{</* /summary */>}}
+```
+
 {{< summary "Click to expand" >}}
 This is the secret content *they* don't want you to know.
 {{< /summary >}}
@@ -76,8 +82,8 @@ This is the secret content *they* don't want you to know.
 
 ## Wikipedia links: `wp`
 
-`{{</* wp "Go" */>}}`
+`{{</* wp tag="Go programming language" title="Go" */>}}`
 
-Hugo is written in {{< wp "Go" >}}.
+Hugo is written in {{< wp tag="Go programming language" title="Go" >}}.
 
 ## Arbitrary figure-ization: `wrapfigure`
