@@ -15,11 +15,23 @@ This page exists as a preview and mainly for debugging purposes.
 
 If I found a solution after the fact:
 
+```go
+{{</* addendum title="An Addendum" */>}}
+I found out a relevant thing, so here's a relevant thing
+{{</* /addendum */>}}
+```
+
 {{< addendum title="An Addendum" >}}
 I found out a relevant thing, so here's a relevant thing
 {{< /addendum >}}
 
 ## Blockquotes: `blockquote`
+
+```go
+{{</* blockquote author="Terry Pratchett" link="" title="Going Postal" */>}}
+Sometimes things smash so bad it’s better to leave it alone than try to pick up the pieces. I mean, where would you start?
+{{</* /blockquote */>}}
+```
 
 {{< blockquote author="Terry Pratchett" link="" title="Going Postal" >}}
 Sometimes things smash so bad it’s better to leave it alone than try to pick up the pieces. I mean, where would you start?
@@ -27,7 +39,16 @@ Sometimes things smash so bad it’s better to leave it alone than try to pick u
 
 ## Code with caption in figure tag: `codecaption`
 
-Some R code:
+This wraps hugo's built-in `highlight` function.
+
+```go
+{{</* codecaption lang="r" caption="A code caption" */>}}
+library(ggplot2)
+
+ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length)) +
+  geom_point(size = 2)
+{{</* /codecaption */>}}
+```
 
 {{< codecaption lang="r" caption="A code caption" >}}
 library(ggplot2)
@@ -36,12 +57,6 @@ ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length)) +
   geom_point(size = 2)
 {{< /codecaption >}}
 
-Some BASH stuff
-
-{{< codecaption lang="bash" caption="Arbitrary languages" >}}
-export WURST=wasser
-echo $WURST
-{{< /codecaption >}}
 
 ## Maintenance & Borked: `maintenance`
 
@@ -58,6 +73,8 @@ No `.Inner` content for now, i.e. it's just `{{</* maintenance */>}}`
 To be implemented
 
 ## Package decoration: `pkg`
+
+`{{</* pkg "ggplot2" */>}}`: Relies on a `data/packages.yml` file.
 
 Have you heard about {{< pkg "ggplot2" >}}?  
 Or {{< pkg "fansi" >}}? Or {{< pkg "colorspace" >}}?
