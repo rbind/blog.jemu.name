@@ -19,7 +19,7 @@ math: true # works, "katex: true" doesnt
 ---
 
 Over the past few years, [Alfred] has become one of my favorite macOS apps.  
-It's definitely up there with other apps I wouldn't want to use a Mac without the likes [Bartender], [Typinator] or [iStat Menus].  
+It's definitely up there with other apps I wouldn't want to use a Mac without: [Bartender], [Typinator] or [iStat Menus].  
 
 When I first started using it, I was pretty overwhelmed by all the things it could so, so I mostly stuck to things that felt like immediate extensions of macOS's built-in Spotlight --- which already made <kbd>⌘+Space</kbd> my reflexive choice to the general problem of "finding things" or even just opening an App --- Alfred was just a lot *better* at it.  
 Add better file maneuverability in the search window, custom search providers and some other bits, and there was my fully-featured Spotlight replacement.  
