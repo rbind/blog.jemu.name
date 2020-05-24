@@ -1,0 +1,12 @@
+<section class="container page">
+  <article>
+    <header>
+      <h1>{{ .Title }}</h1>
+    </header>
+    <!-- Begin customization: TOC partial -->
+    {{ partial "toc" . }}
+    <!-- Begin customization: TOC partial -->
+
+    {{ .Content }}
+  </article>
+</section>
