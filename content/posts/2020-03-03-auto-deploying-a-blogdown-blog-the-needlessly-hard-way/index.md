@@ -109,7 +109,6 @@ Next up we'll tell `git-auto-deploy` about your blog repository, so pick a direc
 The relevant section of `/etc/git-auto-deploy.conf.json` should look like this, where you would plug in your repository's `"url"` and `"path"` corresponding to the location of your repository on your server respectively.
 
 ```json
-// Project configs
 "repositories": [
   {
     "url": "https://github.com/rbind/blog.jemu.name.git",
