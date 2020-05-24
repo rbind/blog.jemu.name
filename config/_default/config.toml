@@ -7,7 +7,7 @@ DefaultContentLanguage = "en"
 relativeURLs = false
 languageCode = "en-us"
 title = "jemsu"
-theme = "hugo-coder"
+theme = ["jemsugo", "hugo-coder"]
 metaDataFormat = "yaml"
 Paginate = 12
 
