@@ -3,4 +3,4 @@
 	url = https://github.com/luizdepra/hugo-coder.git
 [submodule "themes/jemsugo"]
 	path = themes/jemsugo
-	url = git@github.com:jemus42/jemsugo.git
+	url = https://github.com/jemus42/jemsugo.git
