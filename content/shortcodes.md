@@ -72,6 +72,12 @@ This is the secret content *they* don't want you to know.
 
 ## Videos with caption: `videofig`
 
+`{{</* videofig mp4="my-file.mp4" loop=true autoplay=true alt="" caption="" */>}}`
+
 ## Wikipedia links: `wp`
+
+`{{</* wp "Go" */>}}`
+
+Hugo is written in {{< wp "Go" >}}.
 
 ## Arbitrary figure-ization: `wrapfigure`
