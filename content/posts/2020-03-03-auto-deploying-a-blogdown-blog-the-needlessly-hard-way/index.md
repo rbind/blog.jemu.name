@@ -1,5 +1,5 @@
 ---
-title: Auto-deploying a blogdown blog the needlessly hard way
+title: Auto-Deploying A {blogdown} Blog the Needlessly Hard Way
 subtitle: "Because blogging about blogging is *still* cool. Right?"
 description: "In which I waste too much time doing something travis and/or netlify probably already do for you, but at least it's working fine, I guess?"
 author: 'jemus42'

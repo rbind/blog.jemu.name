@@ -1,5 +1,5 @@
 ---
-title: Bookdown is neat and automation is hard
+title: Bookdown is Neat and Automation is Hard
 subtitle: "Automating {bookdown} deployment with Travis CI and copius scripting"
 author: jemus42
 date: '2019-09-05'

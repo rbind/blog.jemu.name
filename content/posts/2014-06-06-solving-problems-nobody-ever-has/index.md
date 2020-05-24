@@ -3,7 +3,7 @@ author: jemus42
 tags:
   - R
 date: 2014-06-06
-title: Solving problems nobody ever has
+title: Solving Problems Nobody Ever Has
 ---
 
 <small>Remember that last post?  
