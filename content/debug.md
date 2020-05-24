@@ -10,31 +10,6 @@ toc: true
 This page is used for debugging purposes.
 One might consider it [a `test` case](/debug).
 
-## Shortcodes
-
-### Package decoration
-
-Have you heard about {{< pkg "ggplot2" >}}?  
-Or {{< pkg "fansi" >}}? Or {{< pkg "colorspace" >}}?
-
-I have this packages called {{< pkg "tRakt" >}} and it's not on CRAN.
-
-### Code with caption in figure tag
-
-{{< codecaption lang="r" caption="A code caption" >}}
-library(ggplot2)
-
-ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length)) +
-  geom_point(size = 2)
-{{< /codecaption >}}
-
-### Addendum & Maintenance
-
-{{< addendum title="An Addendum" >}}
-I found out a relevant thing, so here's a relevant thing
-{{< /addendum >}}
-
-{{< maintenance >}}
 
 ## Footnotes
 
