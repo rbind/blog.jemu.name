@@ -1,5 +1,6 @@
 ---
 title: Shortcode Showcase
+slug: shortcodes
 type: page
 draft: false
 katex: false
