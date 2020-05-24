@@ -3,15 +3,9 @@ title: How to Make the Most of (my) Plex Server
 author: jemus42
 date: '2017-10-25'
 slug: how-to-make-the-most-of-my-plex-server
-categories:
-  - tech
 tags:
   - plex
   - NAS
-shows: []
-packages: []
-enable_mathjax: no
-enable_katex: no
 ---
 
 If you're reading this, chances are I redirected you here because I share my Plex server with you.  

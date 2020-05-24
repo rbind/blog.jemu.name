@@ -3,9 +3,6 @@ title: I just wanted to rewatch Stargate
 description: "When one thing leads to another and you accidentally write a small API wrapper"
 author: jemus42
 date: '2014-06-05'
-categories:
-  - rstats
-  - tvshows
 tags:
   - trakt.tv
 shows: 

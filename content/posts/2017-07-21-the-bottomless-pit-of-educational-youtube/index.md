@@ -1,7 +1,5 @@
 ---
 author: jemus42
-categories:
-- media
 date: 2017-07-25
 draft: false
 slug: the-bottomless-pit-of-educational-youtube

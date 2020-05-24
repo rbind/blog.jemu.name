@@ -1,7 +1,7 @@
 ---
 author: jemus42
-categories:
-- rstats
+tags:
+  - R
 date: 2014-06-06
 title: Solving problems nobody ever has
 ---
@@ -67,7 +67,7 @@ sg1.cols     <- sapply(sg1.cols.num, function(s){
 
 Another fine example for the handyness of the `*apply`function family in R, no `for`was shed that day.
 
-# Going the extra mile
+## Going the extra mile
 
 That was not enough.  
 I can pull the season poster urls from trakt just the same way I pulled the ratings, titles and whatnot in the last post, so why not use them directly?  

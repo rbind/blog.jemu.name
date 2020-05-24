@@ -1,11 +1,10 @@
 ---
 author: jemus42
-categories:
-- rambling
 tags:
 - Minecraft
 date: 2013-11-12
 title: How do I even Minecraft?
+toc: true
 ---
 
 <small>[You ever heard of Minecraft?](https://mindcrack.altervista.org/wiki/Phrases#Y)</small>
@@ -18,11 +17,11 @@ Eigentlich ist es auch weniger ein "How to Minecraft" sondern eher ein "How do I
 
 <!-- more -->
 
-# -1. Brace yourselves. [^2]
+## -1. Brace yourselves. [^2]
 
 Bevor ihr euch Minecraft kauft/ladet/installiert, sorgt dafür, dass ihr genug Flüssigkeit und seeehr schnell zuzubereitende Nahrung in greifbarer Nähe habt. No seriously. Kein "Nur mal eben antesten" ohne ausreichende Grundversorgung. Its quite essential. You will possibly die otherwise. Enthusiastic newcomers have forgotten to order food because Minecraft. We were hungry for _hours_. <small>True story</small>
 
-# 0. Buy the game or pirate it, but no, buy it.
+## 0. Buy the game or pirate it, but no, buy it.
 
 Es sind 20€ für ein Spiel, das seit 2 Jahren entwickelt wird, und wohl in 2 Jahren auch noch entwickelt werden wird. Die [Devs](https://mojang.com/about/) haben jedenfalls keine Pläne die Entwicklung einzustellen. Und auch wenn ihr den Spaß an Vanilla Minecraft verliert, gibt es eine Moddingszene, die wächst wie Unkraut. Die komplette Mod-Überdosis könnt ihr euch zum Beispiel mit [FTB](https://feed-the-beast.com/) geben.  
 Aber erstmal Introkram, da war ja was. 
@@ -30,7 +29,7 @@ If buy, goto [minecraft.net](https://minecraft.net/) und viel Spaß bei der etwa
 
 Achja, eine Sache noch zum Anfang: Möglicherweise fühlt ihr euch wohler Minecraft auf Deutsch zu spielen – und das steht euch auch völlig frei – aber seid euch des Umstands bewusst, dass sowohl das Wiki als auch etwaig populäre Tutorials etc. im englischsprachigen Raum dann doch meistens a) umfangreicher und b) besser™ sind. Vielleicht liegt es auch nur daran, dass ich "[Kolben](https://minecraft.gamepedia.com/Piston)" und "[Lohenstaub](https://minecraft.gamepedia.com/Blaze_Powder)" einfach awkward finde (see what has been done there?). Es ist wie mit vieler anderen Software auch: Wenn ihr's auf englisch benutzt, sind Dinge leichter zu googlen ¯\\\_(ツ)_/¯
 
-# 1. Youtube: Like the wiki but with ~~talking gifs~~ more videos
+## 1. Youtube: Like the wiki but with ~~talking gifs~~ more videos
 
 Minecraft lebt von der Community, und die Community lebt nicht nur im Minecraftforum (I've never been there except I googlefu'd there), sondern auch zu großen Teilen auf Youtube. Accept that.  
 Es gibt nicht nur generische Let's Plays, sondern auch mehr Tutorials als ihr jemals gucken könntet. Einigermaßen legendär ist da PaulsoaresJr, dessen "How to survive your first night"-Video _die_ Referenz ist, zu der Neulinge geschickt werden können.   
@@ -41,13 +40,13 @@ Was zumindest mir am Anfang sehr geholfen hat waren die kurzen [Erklärungsvideo
 
 Und wenn ihr dann soweit seid, dass ihr euch grob orientieren könnt (spatial wie vokabulatiös), könnt ihr eure Fragen hoffentlich sogar textuell formulieren. Und euch dann ans Wiki wenden.
 
-# 2. Use the Wiki. No, seriously.
+## 2. Use the Wiki. No, seriously.
 
 Es gibt im Spiel keine Tutorial-Phase wie in einem generischen Adventure. Den einzigen Anhaltspunkt, den ihr bekommt, ist das Achievement-System, an dem ihr euch so grob entlanghangeln könnt. Tools craften, furnace craften, iron smelten, alles knorke. Und wie krieg' ich noch gleich so'ne Pick?  
 And that's why you watch a tutorial first.  
 Niemand sagt euch irgendwas _im_ Spiel, also gewöhnt euch dran speziell in den ersten 3-4 ~~Tag~~ ~~Woch~~ … Gewöhnt euch daran, einen Tab mit dem Wiki offen zu haben, wenn ihr Minecraft spielt. Egal ob ihr ein Craftingrecipe vergessen habt oder überlegt, ob die mob cap des [Nethers](https://minecraft.gamepedia.com/Nether) dieselbe ist wie die der [Overworld](https://minecraft.gamepedia.com/Overworld) – the wiki's your friend. Your kind of weird and not always showering friend.
 
-# 3. SSP, SMP, CSP, CMP, 3-character-initialisms my anus
+## 3. SSP, SMP, CSP, CMP, 3-character-initialisms my anus
 
 Ihr habt die Wahl Minecraft entweder alleine (SP, singleplayer) oder auf einem Server (oder einer in eurem LAN geöffneten Welt) mit mehreren Leuten (MP, multiplayer) zu Spielen, und ihr habt die Wahl Minecraft im [Creative](https://minecraft.gamepedia.com/Creative) Mode oder im [Survival Mode](https://minecraft.gamepedia.com/Survival) zu spielen. Offenbar gibt es da Unterschiede.
 Um mit dem Spiel vertraut zu werden bietet es sich natürlich an allein anzufangen – außer ihr habt wie ich jemanden vor Ort, der neben euch sitzt, mit euch spielt und euch eine Einführung gibt.  

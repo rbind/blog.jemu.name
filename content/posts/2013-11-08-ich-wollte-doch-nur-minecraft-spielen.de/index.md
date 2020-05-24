@@ -1,7 +1,5 @@
 ---
 author: jemus42
-categories:
-  - rambling
 date: 2013-11-08
 tags:
   - Minecraft
@@ -19,7 +17,7 @@ Blogposts über Minecraft sind jetzt voll im Trend, hab ich beschlossen seit ich
 Es folgt daher ein Versuch <em>The Story of [Wurstmineberg](https://wurstmineberg.de)</em> zu… Beschreiben? Nacherzählen? Naja, irgendwiesowas, was es dann geworden ist lege ich am Ende fest.
 <!-- more -->
 
-# Alles begann an einem Abend im August 2012
+## Alles begann an einem Abend im August 2012
 
 …Vöglein sangen, Grillen… zirpten?  
 
@@ -37,7 +35,7 @@ Das Resultat war, dass ich spielen konnte wie im Singleplayermodus, und Bene ein
 Alles war mehr oder weniger derpy.  
 Alle gewannen.  
 
-# Expansion heißt Expansion heißt Expansion
+## Expansion heißt Expansion heißt Expansion
 
 Das ganze ging auch erstaunlich lange gut, bis Anfang 2013 sogar.  
 Es begab sich durch nicht mehr nachvollziehbare Umstände[^1], dass irgendwann neben Bene und mir noch andere Leute auf dem Server spielten, oder dies zumindest versuchten. Ich sah mich nach okayen Minecraftserverhostern <sup><small>(schönes Wort)</small></sup> um, und stellte erstmal fest in was für einem beschissenen Zustand diese ganze Community in der Richtung ist.  
@@ -49,7 +47,7 @@ Zu dieser Zeit fand auch der bisher einflussreichste Mitgliederzuwachs statt, de
 Suddenly Leben.  
 Dinge passierten ganz ohne mein Zutun.  
 
-# There are things, let's use them to make other things!
+## There are things, let's use them to make other things!
 
 Wo Daten rumliegen lassen sich Dinge damit tun.  
 Mark my words, people.  
@@ -64,7 +62,7 @@ Nebenbei registrierten wir auch ein [Subreddit](https://reddit.com/r/wurstminebe
 Parallel führte die Twitteraktivität zu unerwarteter Publicity, und wir hatten auf einmal mehr Leute auf dem Server als ich Finger an einer Hand, was mich vollkommen überfordert(e)[^2]. Zum Glück sammelten wir neben daueraktiven auch ein paar permanente [Karteileichen](https://twitter.com/viirus42) ein, was zumindest die Serverlast etwas in Grenzen hielt, denn die wurde langsam zum größten Problem.  
 And then we serious'd.
 
-# Lass da mal Geld draufwerfen
+## Lass da mal Geld draufwerfen
 
 Wir diskutierten ein bisschen rum und guckten wie so die Bereitschaft finanzieller Beteiligung ist, uns einen richtigen echten Server aus echter Hardware statt eines vservers zuzulegen, um das mit der Performance (und dem storage) in den Griff zu kriegen, und sieheda, [ein Server ward geboren](https://www.nessus.at/produkte/rootserver/l).  
 Communityfinanziert, wie sich das gehört, per Überweisung direkt an mich, damit ich mich in ~2814 Jahren in die Karibik absetzen kann. Der Deal ist einfach: Wer mag kann sich beteiligen, ich führe so transparent wie möglich Buch und wer sich beteiligt kriegt keinerlei Boni außer einem Platz in meinem Herzen und vielleicht die Chance von meiner Todesliste gestrichen zu werden.  
@@ -75,7 +73,7 @@ Jedenfalls zogen wir dann vom vserver auf den dedicated server um, Dinge passier
 
 Für die Nichtminecraftenden: Der "normale" Minecraft Server gibt einem außer dem Logfile nicht wirklich viel Output, aber modifizierte Server, wie bukkit als populäres Beispiel, bieten einem die Möglichkeit Plugins zu nutzen, die allerlei Kram anstellen, von dynamischen worldmaps bis… keine Ahnung. Fancy foo jedenfalls. Sowas kam für uns aber nie in Frage, wir waren ein [Snapshot](https://minecraft.gamepedia.com/Snapshot#Snapshots_.26_Pre-releases)-Server, sprich, wir upgradeten so früh wie möglich auf die aktuellste Developmentversion des Spiels, um möglcihst früh Zugang zu neuen Features zu haben und sozusagen dem Spiel bei der Weiterentwicklung zuzuschauen. Die Bukkit-Devs können da schlecht mithalten.  
 
-# Developers, developers, developers!
+## Developers, developers, developers!
 
 Irgendwann neulich ist die customization dann etwas… Naja, in Fahrt gekommen.  
 Der Bot wurde immer mächtiger, das interne Servermanagement erfolgte nicht mehr über ein generisches, vom Minecraftwiki copypastetes init-Script, sondern über eine [besser angepasste Variante](https://github.com/wurstmineberg/init-minecraft).  

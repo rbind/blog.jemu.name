@@ -2,14 +2,12 @@
 title: My Summer Spring Cleaning, Part 2
 author: jemus42
 date: '2016-11-05'
-categories:
-  - tech
 tags:
   - NAS
   - FreeNAS
   - plex
   - nginx
-type: post
+toc: true
 ---
 
 Since it's now November, I think it's about time to finish talking about my summer spring cleaning. If you missed [part 1 about my personal VPS](https://blog.jemu.name/post/2016/10/my-summer-spring-cleaning-part-1/), you didn't really miss anything.

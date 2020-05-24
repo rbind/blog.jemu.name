@@ -2,14 +2,12 @@
 title: My Summer Spring Cleaning, Part 1
 author: jemus42
 date: '2016-10-12'
-categories:
-  - tech
 tags:
   - Ubuntu
   - VPS
   - nginx
   - rstats
-type: post
+toc: true
 ---
 
 Over the past few weeks I've been upgrading large parts of my personal server infrastructure, including new hardware in my home and different hosts in the ~~butt~~ cloud<sup>TM</sup>.  

@@ -6,16 +6,15 @@ author: 'jemus42'
 date: '2020-03-07'
 slug: auto-deploying-a-blogdown-blog-the-needlessly-hard-way
 featured_image: "blogdown-deployment-setup.png"
-categories:
-  - rstats
-  - meta
+series: 
+  - Blogging
 tags:
-  - blogging
   - Ubuntu
-  - linux
+  - Linux
   - caddy
   - git-auto-deploy
   - git
+  - R
 packages:
   - blogdown
   - renv

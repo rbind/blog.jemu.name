@@ -4,16 +4,14 @@ description: "Having to re-install a lot of packages is annoying, and this is at
 author: jemus42
 date: '2017-11-15'
 slug: create-a-backup-script-for-your-r-packages
-categories:
-  - rstats
+series: 
+  - R
 tags:
-  - packages
-  - maintenance
-  - backup
+  - Packages
+  - Maintenance
+  - Backup
 packages:
   - glue
-enable_mathjax: no
-enable_katex: no
 ---
 
 So today I was playing around with the `installed.packages()` function, and I thought to myself:  

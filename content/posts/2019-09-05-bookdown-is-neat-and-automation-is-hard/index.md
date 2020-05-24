@@ -4,10 +4,10 @@ subtitle: "Automating {bookdown} deployment with Travis CI and copius scripting"
 author: jemus42
 date: '2019-09-05'
 slug: bookdown-is-neat-and-automation-is-hard
-categories:
-  - rstats
+series:
+  - R
 tags:
-  - travis-ci
+  - Travis CI
 packages:
   - bookdown
 draft: no
