@@ -8,6 +8,9 @@ math: false
 toc: true
 ---
 
+These shortcodes live in a theme-component: [jemus42/jemsugo](https://github.com/jemus42/jemsugo).  
+This page exists as a preview and mainly for debugging purposes.
+
 ## An extra content box: `addendum`
 
 If I found a solution after the fact:
@@ -59,7 +62,7 @@ To be implemented
 Have you heard about {{< pkg "ggplot2" >}}?  
 Or {{< pkg "fansi" >}}? Or {{< pkg "colorspace" >}}?
 
-I have this packages called {{< pkg "tRakt" >}} and it's not on CRAN.
+I have this package called {{< pkg "tRakt" >}} and it's not on CRAN.
 
 ## Expandable content: `summary`
 
