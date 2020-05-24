@@ -31,36 +31,6 @@ littlefoot_version <- "3.2.4"
 get_asset_unpkg("littlefoot", littlefoot_version, "dist/littlefoot.js")
 get_asset_unpkg("littlefoot", littlefoot_version, "dist/littlefoot.css")
 
-# prism.js ----
-
-# No direct download link for specific config available :(
-# Assemble link to desired configuration and download manually
-
-make_prismjs_url <- function(theme = "prism-okaidia", languages, plugins) {
-  baseurl <- "https://prismjs.com/download.html"
-  languages <- paste0(languages, collapse = "+")
-  plugins <- paste0(plugins, collapse = "+")
-
-  glue::glue("{baseurl}#themes={theme}&languages={languages}&plugins={plugins}")
-}
-
-primsjs_languages <- c(
-  "markup", "css", "clike", "javascript", "bash", "json", "json5", "latex",
-  "makefile", "nginx", "regex", "sas", "shell-session", "sql", "toml", "yaml"
-)
-
-prismjs_plugins <- c(
-  "line-highlight", "line-numbers", "autolinker", "show-language", "toolbar",
-  "copy-to-clipboard", "download-button", "match-braces"
-)
-
-prism_config_download <- make_prismjs_url("prism-okaidia", primsjs_languages, prismjs_plugins)
-browseURL(prism_config_download)
-
-# Copy files to static/css and /static/js
-# Minify CSS
-system("cd static/css; minify --output prism.min.css prism.css")
-
 # Make chroma style ----
 
 chroma_gen <- function(style = "monokai") {
@@ -68,8 +38,9 @@ chroma_gen <- function(style = "monokai") {
   system(cmd)
 }
 
-chroma_gen("monokai")
-chroma_gen("monokailight")
+# Currently used styles are tweaked and refactord to SCSS in /assets/scss/
+# chroma_gen("monokai")
+# chroma_gen("monokailight")
 
 # Generate package.yaml ----
 
