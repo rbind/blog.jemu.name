@@ -13,10 +13,11 @@ Paginate = 20
 
 [module]
   [[module.imports]]
-    path = "github.com/luizdepra/hugo-coder"
+    path = "github.com/jemus42/hugo-rstats-pkg-meta"
   [[module.imports]]
     path = "github.com/jemus42/jemsugo"
-
+  [[module.imports]]
+    path = "github.com/luizdepra/hugo-coder"
 
 # Enable features
 enableEmoji = true
