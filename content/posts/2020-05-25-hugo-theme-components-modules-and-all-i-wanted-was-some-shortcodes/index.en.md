@@ -40,21 +40,21 @@ This wraps a `<video>` element inside a `<figure>` element inluding a `<figcapti
 I generally like the added caption over a plain `<video>` tag, and since I learned that the `<figure>` tag is meant to hold all kinds of content including `<pre>` (for code), `<video>` and `<picture>`, I also added a shortcode to wrap highlighted code in `<figure>`, *and* a generalized shortcode to wrap *anything* inside `<figure>` with a caption. Once I copypasted [Hugo's embedded `figure.html`](https://github.com/gohugoio/hugo/blob/aba2647c152ffff927f42523b77ee6651630cd67/tpl/tplimpl/embedded/templates/shortcodes/figure.html) shortcode, the floodgates were open on my shortcoding and `<figure>`-wrapping.
 
 Another more complex thing I'm playing around with is a shortcode to mention R packages in text. You might have seen R packages referred to something like `{ggplot2}`. That's a package name wrapped inside `{ }` for [whatever reason][curlies], _and_ inside `` ` ` `` for the monospaced formatting. And I haven't even linked it to it's website!  
-That's *a lot* of work. Wouldn't it be *much easier* to just type `{{</* pkg "ggplot2" */>}}`? [^snip]
+That's *a lot* of work. Wouldn't it be *much easier* to just type `{{</* pkg "ggplot2" */>}}`?
 
 ...What do you mean *"no it wouldn't, that's worse"*?
 
-[^snip]: I should note that I wouldn't be using so many shortcodes if it wasn't for [Alfred](https://www.alfredapp.com/)'s snippet functionality. Seriously, give whatever snippet tool you have access to a go. It's great.
+Well anyway, now I did it. Then I thought "wouldn't it be cool if this was *smarter*" and justified it's syntactic overhead [^snip]?  
+Well, my [previous ideas regarding package taxonomies](/2020/05/migrating-themes-and-overhauling-the-rest/#the-quest-for-taxonomies) have since lead to the realization that this is *probably* much better handled via Hugo's [data templates]. 
 
-Well anyway, now I did it. Then I thought "wouldn't it be cool if this was *smarter*" and justified it's syntactic overhead?  
-Well, my [previous ideas about package taxonomies](/2020/05/migrating-themes-and-overhauling-the-rest/#the-quest-for-taxonomies) have since lead to the realization that this is *probably* much better handled via Hugo's [data templates]. 
+[^snip]: I should note that I wouldn't be using so many shortcodes if it wasn't for [Alfred](https://www.alfredapp.com/)'s snippet functionality. Seriously, give whatever snippet tool you have access to a go. It's great.
 
 The gist is this: Create a file named `/data/packages.yaml` (could also be `.json`), fill it with package metadata, and now you have access to said data in layout templates and shortcodes via `.Site.Data.packages`.  
 What is this for? Well, the current iteration of that `pkg` shortcode looks like this:
 
-Did you hear about {{< pkg "ggplot2" >}}? It's a neat package and has a fancy website. I also like {{< pkg "ggrepel" >}}, which also has a fancy website but my shortcode hasn't figured that out yet. Then there's my own package, {{< pkg "tRakt" >}}, which is not on CRAN so it gets a different icon. All of them have a hover-tooltip with the package's `Title:` from their `DESCRIPTION` file though, which probably doesn't work right on mobile.  
+Did you hear about {{< pkg "ggplot2" >}}? It's a neat package and has a fancy website. I also like {{< pkg "ggrepel" >}}, which also has a fancy website but my shortcode hasn't figured that out yet. Then there's my own package, {{< pkg "tRakt" >}}, which is not on CRAN so it gets a different icon. 
 
-But nobody uses mobile devices these days anyway and this wasn't a totally pointless feature to waste a night over because I couldn't get the CSS right, …right?  
+All of them have a hover-tooltip with the package's `Title:` from their `DESCRIPTION` file though, which probably doesn't work right on mobile. But nobody uses mobile devices these days anyway and this wasn't a totally pointless feature to waste a night over because I couldn't get the CSS right, …right?  
 Please validate my bad life choices.  
 Thanks.
 
@@ -67,7 +67,7 @@ Sorry.
 This shortcode relies on the existence of the [`packages.yml`](https://github.com/rbind/blog.jemu.name/blob/4415a09997e5e859644b2b8a17e86150099bd317/data/packages.yml). I generated this from the packages' `DESCRIPTION` files installed in my blog's {{< pkg "renv" >}}-library, `available.packages()` for CRAN urls, and [this result of a wasted evening](https://github.com/rbind/blog.jemu.name/blob/master/R/maintenance.R#L47-L103). There's probably better solutions available [as Maëlle suggested](https://twitter.com/ma_salmon/status/1264186424443764736) [^codemeta], but I just wanted to get started with something relatively simple --- after all, I was primarly after three things:
 
 - The package's name
-- A CRAN url / CRAN "status"
+- A CRAN url and (CRAN | Not CRAN)
 - A GitHub / source URL
 
 [^codemeta]: The [output of `codemetar`](https://docs.ropensci.org/codemetar/#create-a-codemetajson-in-one-function-call) is a lot more complex, takes a while to generate, and is probably not feasible if I want to generate metadata for *a lot* of packages maybe? But it's cool for what it does --- I'd just need this in *one big file for all packages* form I think.
@@ -146,7 +146,11 @@ require (
 {{< /codecaption >}}
 
 
-That `replace` line is used, as the comment suggests, for local testing. It's mentioned in the Hugo docs, but without much further info about what it really does. Thankfully [this blog post](https://thewebivore.com/using-replace-in-go-mod-to-point-to-your-local-module/) was helpful to get the gist, and I *think* it now works as expected.
+That `replace` line is used, as the comment suggests, for local testing. It's mentioned in the Hugo docs, but without much further info about what it really does. Thankfully [this blog post](https://thewebivore.com/using-replace-in-go-mod-to-point-to-your-local-module/) was helpful to get the gist, and I *think* it now works as expected. 
+
+And the "local testing" thing really makes the difference in workflows compared to submodules: I can tweak my shortcodes in their local folder outside the blog repo, and when I save changes, the `hugo server` running in my blog repo automatically picks them up. It's almost as if this is the way it's supposed to work in the first place!  
+…And what I already had when I still had the shortcodes in my blog rather then external, so… yeah.  
+But external though!
 
 I have now deleted my `themes` directory, ran `git submodule deinit` on both submodules, and *it still works* --- even on netlify! So I'm reasonably confident that yes, this modules thing… it might actually work?  
 Just like that?
