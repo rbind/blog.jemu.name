@@ -248,3 +248,10 @@ a > svg.anchor-symbol {
 .rpkg:active .tooltip {
   visibility: visible;
 }
+
+// the inline pkg thing
+.rpkg i {
+  font-size: 80%;
+  position: relative;
+  left: 2px;
+}
