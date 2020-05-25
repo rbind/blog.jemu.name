@@ -528,6 +528,6 @@ The results might be limited to my version of HandBrake (`1.0.7 (2017040900)`), 
 
 ¯\\\_(ツ)_/¯
 
-Note: If you have anything else you want to try with the data, you can grab it [here](https://blog.jemu.name/post/2017-10-16-video-compression-is-magic_files/samples.csv).
+Note: If you have anything else you want to try with the data, you can grab it [here](samples.rds).
 
 [^1]: If I do this again, I will track the encoding time. Seriously, don't to *placebo*.
