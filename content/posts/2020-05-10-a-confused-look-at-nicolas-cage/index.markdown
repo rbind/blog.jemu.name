@@ -1,10 +1,8 @@
 ---
-title: A confused look at Nicolas Cage movies
+title: A Confused Look at Nicolas Cage Movies
 author: jemus42
 date: '2020-05-10'
 slug: a-confused-look-at-nicolas-cage-movies
-categories:
-  - movies
 tags:
   - trakt.tv
   - movies

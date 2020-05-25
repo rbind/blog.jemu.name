@@ -12,6 +12,7 @@ tags:
 false: true
 subtitle: 'Just laying out some themes.'
 description: ''
+toc: true
 editor_options:
   chunk_output_type: console
 ---
@@ -38,35 +39,19 @@ import_econ_sans()
 import_tinyhand()
 import_plex_sans()
 import_roboto_condensed()
+```
 
-# Depending on your output device, you might have to
+Depending on your output device, you might have to
+
+```r 
 extrafont::loadfonts()
 ```
 
-<details><summary>Code: Check if extrafont knows about your fonts</summary>
+Check if extrafont knows about your fonts:
 
 ```r 
 extrafont::fonts()
 ```
-
-```
-##  [1] "Roboto Condensed"                       
-##  [2] "Roboto Black"                           
-##  [3] "Roboto"                                 
-##  [4] "Roboto Light"                           
-##  [5] "Roboto Medium"                          
-##  [6] "Roboto Thin"                            
-##  [7] "Roboto Condensed Light"                 
-##  [8] "Roboto Mono for Powerline"              
-##  [9] "Roboto Mono Light for Powerline"        
-## [10] "Roboto Mono Medium for Powerline"       
-## [11] "Roboto Mono Thin for Powerline"         
-## [12] "Roboto Slab"                            
-## [13] "SourceCodePro+Powerline+Awesome Regular"
-```
-
-
-</details>
 
 To install them system-wide, you'll want to go to the file path the functions give you (i.e. the path to `hrbrthemes` in your package library) and install the fonts in whichever way you system requires.  
 In my experience, that should at least be enough to use them with PNG or PDF output, but your mileage may vary. You may find [{showtext}](https://github.com/yixuan/showtext) helpful, or use [{ragg}](https://ragg.r-lib.org/) as an alternative device, etc. pp.
@@ -114,6 +99,7 @@ p_facets +
   labs(title = "ggplot2::theme_minimal", subtitle = "Arial, probably?") +
   theme_minimal()
 ```
+
 {{<figure src="plots/example-plot-1.png" link="plots/example-plot-1.png">}}
 
 I'll also be using the `ipsum` and `ft` color palettes provided by {hrbrthemes}, for the light and dark theme variants respectively – this post is not about color palettes, that's a rabbit hole for another day, but I might as well include them for the themes' presumed "intended look".
@@ -132,6 +118,7 @@ p1 <- p_facets +
   theme_ipsum()
 p1
 ```
+
 {{<figure src="plots/theme_ipsum-1.png" link="plots/theme_ipsum-1.png">}}
 
 
@@ -144,6 +131,7 @@ p2 <- p_facets +
   theme_ipsum_es()
 p2
 ```
+
 {{<figure src="plots/theme_ipsum_es-1.png" link="plots/theme_ipsum_es-1.png">}}
 
 
@@ -156,6 +144,7 @@ p3 <- p_facets +
   theme_ipsum_ps()
 p3
 ```
+
 {{<figure src="plots/theme_ipsum_ps-1.png" link="plots/theme_ipsum_ps-1.png">}}
 
 
@@ -168,6 +157,7 @@ p4 <- p_facets +
   theme_ipsum_pub()
 p4
 ```
+
 {{<figure src="plots/theme_ipsum_pub-1.png" link="plots/theme_ipsum_pub-1.png">}}
 
 
@@ -180,6 +170,7 @@ p5 <- p_facets +
   theme_ipsum_rc()
 p5
 ```
+
 {{<figure src="plots/theme_ipsum_rc-1.png" link="plots/theme_ipsum_rc-1.png">}}
 
 
@@ -192,6 +183,7 @@ p6 <- p_facets +
   theme_ipsum_tw()
 p6
 ```
+
 {{<figure src="plots/theme_ipsum_tw-1.png" link="plots/theme_ipsum_tw-1.png">}}
 
 ## All the `ipsum` theme variations
@@ -200,6 +192,7 @@ p6
 # Plotting them in two rows (<3 patchwork)
 ((p1 + p2 + p3) / (p4 + p5 + p6))
 ```
+
 {{<figure src="plots/all-ipsum-themes-1.png" link="plots/all-ipsum-themes-1.png">}}
 
 ## The modern/dark themes
@@ -219,6 +212,7 @@ p7 <- p_facets +
   theme_modern_rc()
 p7
 ```
+
 {{<figure src="plots/theme_modern_rc-1.png" link="plots/theme_modern_rc-1.png">}}
 
 ### `theme_ft_rc` <small>(Robot Condensed)</small> (dark)
@@ -230,6 +224,7 @@ p8 <- p_facets +
   theme_ft_rc()
 p8
 ```
+
 {{<figure src="plots/theme_ft_rc-1.png" link="plots/theme_ft_rc-1.png">}}
 
 ### All the dark themes
@@ -237,6 +232,7 @@ p8
 ```r 
 (p7 + p8) / (p8 + p7)
 ```
+
 {{<figure src="plots/all-dark-themes-1.png" link="plots/all-dark-themes-1.png">}}
 
 ## Whatever the hell this is
@@ -252,4 +248,5 @@ p9 <- p_facets +
   theme_tinyhand()
 p9
 ```
+
 {{<figure src="plots/theme_tinyhand-1.png" link="plots/theme_tinyhand-1.png">}}

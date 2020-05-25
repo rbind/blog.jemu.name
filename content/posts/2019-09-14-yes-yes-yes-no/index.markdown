@@ -1,5 +1,5 @@
 ---
-title: "Yes yes yes... no!"
+title: "Yes Yes Yes... No!"
 subtitle: "Exploring the similarities and differences of shows that ended on a controversial note"
 description: "This post is not about how I'm still angry about Game of Thrones, but in a way, it is"
 author: jemus42

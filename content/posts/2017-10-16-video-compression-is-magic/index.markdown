@@ -2,24 +2,21 @@
 title: Video Compression is Magic
 subtitle: "Is *this* a benchmark?"
 description: "In which I take an arbitrary sample file to compare x264 and x265 with regards to file size and more-or-less arbitrary quality benchmarks. N = 1 is sufficient, right?"
-image: "/post/2017-10-16-video-compression-is-magic_files/figure-html/ssim_by_size_subset2-1.png"
+featured_image: "plots/ssim_by_size_subset2-1.png"
 author: jemus42
 date: '2017-10-16'
 slug: video-compression-is-magic
-categories:
-  - tech
 tags:
   - video-compression
   - x265
   - x264
   - ffmpeg
-shows: []
 packages:
   - ggplot2
   - kableExtra
   - dplyr
   - tidyr 
-draft: no
+toc: true
 editor_options: 
   chunk_output_type: console
 ---
