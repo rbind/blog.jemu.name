@@ -7,9 +7,16 @@ DefaultContentLanguage = "en"
 relativeURLs = false
 languageCode = "en-us"
 title = "jemsu"
-theme = ["jemsugo", "hugo-coder"]
+#theme = ["jemsugo", "hugo-coder"]
 metaDataFormat = "yaml"
 Paginate = 12
+
+[module]
+  [[module.imports]]
+    path = "github.com/luizdepra/hugo-coder"
+  [[module.imports]]
+    path = "github.com/jemus42/jemsugo"
+
 
 # Enable features
 enableEmoji = true
