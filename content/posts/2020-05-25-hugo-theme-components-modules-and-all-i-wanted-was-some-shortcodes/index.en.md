@@ -44,37 +44,37 @@ That's *a lot* of work. Wouldn't it be *much easier* to just type `{{</* pkg "gg
 
 ...What do you mean *"no it wouldn't, that's worse"*?
 
-Well anyway, now I did it. Then I thought "wouldn't it be cool if this was *smarter*" and justified it's syntactic overhead [^snip]?  
+Well anyway, now I did it. Then I thought "wouldn't it be cool if this was *smarter*" and justified it's syntactic overhead?  
 Well, my [previous ideas regarding package taxonomies](/2020/05/migrating-themes-and-overhauling-the-rest/#the-quest-for-taxonomies) have since lead to the realization that this is *probably* much better handled via Hugo's [data templates]. 
-
-[^snip]: I should note that I wouldn't be using so many shortcodes if it wasn't for [Alfred](https://www.alfredapp.com/)'s snippet functionality. Seriously, give whatever snippet tool you have access to a go. It's great.
 
 The gist is this: Create a file named `/data/packages.yaml` (could also be `.json`), fill it with package metadata, and now you have access to said data in layout templates and shortcodes via `.Site.Data.packages`.  
 What is this for? Well, the current iteration of that `pkg` shortcode looks like this:
 
-Did you hear about {{< pkg "ggplot2" >}}? It's a neat package and has a fancy website. I also like {{< pkg "ggrepel" >}}, which also has a fancy website but my shortcode hasn't figured that out yet. Then there's my own package, {{< pkg "tRakt" >}}, which is not on CRAN so it gets a different icon. 
+Did you hear about {{< pkg "ggplot2" >}}? It's a neat package and has a fancy website. I also like {{< pkg "ggrepel" >}}, which also has a fancy website but my shortcode hasn't figured that out yet. Then there's my own package, {{< pkg "tRakt" >}}, which is not on CRAN so it gets a different icon [^snip]. 
 
-All of them have a hover-tooltip with the package's `Title:` from their `DESCRIPTION` file though, which probably doesn't work right on mobile. But nobody uses mobile devices these days anyway and this wasn't a totally pointless feature to waste a night over because I couldn't get the CSS right, …right?  
+[^snip]: I should note that I wouldn't be using so many shortcodes if it wasn't for [Alfred](https://www.alfredapp.com/)'s snippet functionality. Seriously, give whatever snippet tool you have access to a go. It's great.
+
+All of them have a hover-tooltip with the package's `Title:` from their `DESCRIPTION` file --- which probably doesn't work right on mobile. But nobody uses mobile devices these days anyway and this wasn't a totally pointless feature to waste a night over because I couldn't get the CSS positioning right, …right?  
 Please validate my bad life choices.  
 Thanks.
 
 {{< addendum title="For Posterity" >}}
-Depending on when you're reading this, these examples either don't work anymore, or they look completely different because I've changed my mind and/or learned a lot since I wrote this initially, and the shortcode has changed since then.  
+Depending on when you're reading this, these examples either don't work anymore, or they look completely different because I've changed my mind and/or learned a lot since I wrote this initially, and the shortcode has changed accordingly.  
 That's the blog-post equivalent of a live demo.  
 Sorry.
 {{< /addendum >}}
 
-This shortcode relies on the existence of the [`packages.yml`](https://github.com/rbind/blog.jemu.name/blob/4415a09997e5e859644b2b8a17e86150099bd317/data/packages.yml). I generated this from the packages' `DESCRIPTION` files installed in my blog's {{< pkg "renv" >}}-library, `available.packages()` for CRAN urls, and [this result of a wasted evening](https://github.com/rbind/blog.jemu.name/blob/master/R/maintenance.R#L47-L103). There's probably better solutions available [as Maëlle suggested](https://twitter.com/ma_salmon/status/1264186424443764736) [^codemeta], but I just wanted to get started with something relatively simple --- after all, I was primarly after three things:
+This shortcode relies on the existence of [`packages.yml`](https://github.com/rbind/blog.jemu.name/blob/4415a09997e5e859644b2b8a17e86150099bd317/data/packages.yml). I generated this from the packages' `DESCRIPTION` files installed in my blog's {{< pkg "renv" >}}-library, `available.packages()` for CRAN urls, and [this result of a wasted evening](https://github.com/rbind/blog.jemu.name/blob/2894d54e55820a48fe682a80c81bc30d4a2e5686/R/maintenance.R#L47-L100). There's probably better solutions available [as Maëlle suggested](https://twitter.com/ma_salmon/status/1264186424443764736) [^codemeta], but I just wanted to get started with something relatively simple --- after all, I was primarly after three things:
 
 - The package's name
-- A CRAN url and (CRAN | Not CRAN)
-- A GitHub / source URL
+- A CRAN url, also serving as a (CRAN | Not CRAN)-indicator
+- A GitHub / source repository URL
 
 [^codemeta]: The [output of `codemetar`](https://docs.ropensci.org/codemetar/#create-a-codemetajson-in-one-function-call) is a lot more complex, takes a while to generate, and is probably not feasible if I want to generate metadata for *a lot* of packages maybe? But it's cool for what it does --- I'd just need this in *one big file for all packages* form I think.
 
-Additionally, I'm a little bummed out about not having a good method of determining which package has a dedicated documentation website, e.g. via `{pkgdown}`, because preferably I'd like to make the package name link to its website and the associated icon either link to CRAN or to its source / GitHub repository. Guess there's a lot of room for improvement [^pkgdown].  
+Additionally, I haven't found a good method of determining which package has a dedicated documentation website, e.g. via `{pkgdown}`, because preferably I'd like to make the package name link to its website and the associated icon either link to CRAN or to its source / GitHub repository. Guess there's a lot of room for improvement [^pkgdown].  
 
-[^pkgdown]: Wonder why I didn't use the shortcode to refer to `pkgdown`? Well that package isn't installed in my blog's project library, so it's not in the `packages.yaml` (because I didn't want one file for *all packages ever* (yet)), and… yes, I need to find a better solution for that data source. 
+[^pkgdown]: Wonder why I didn't use the shortcode to refer to `pkgdown`? Well that package isn't installed in my blog's project library, so it's not in the `packages.yaml` (because I didn't want one file for *all packages ever* (yet)), and… well, I have since updated that file from all packages installed on my local machine, but left this note here as a reminder about the limitations of this approach. 
 
 But I digress, I wanted to talk about shortcode externalization.  
 Focus.  
@@ -86,6 +86,8 @@ I was scared about [Hugo modules] (built upon Go modules) at first because neith
 [^rabbithole]: I kid, of course. I'm starting to like the dynamic I'm developing with Maëlle where I have a half-baked idea and she throws enough ideas and suggestions my way to actually make them work (kind of). <br> 🐇🕳️
 
 ## Theme Components and `git` Submodules
+
+It turned out that [theme components] are a pretty nifty Hugo feature --- you can basically mix and match various themes and theme-like components as you please, as long as you keep precedence in mind. That's the perfect solution for a repository that only contains shortcodes, for example.  
 
 The first step was to remove my shortcodes from my site's `/layouts/shortcodes` and place them into their own cozy little repository at [jemus42/jemsugo] [^namingthings]. Note the file structure: They still live in `/layouts/shortcodes` so Hugo knows where ~~it can stick them~~ how to merge them into its filesystem during rendering... or something.
 
@@ -107,7 +109,7 @@ theme = ["jemsugo", "hugo-coder"]
 
 Note that now the `theme` key (or whatever they're called in TOML) is not a single string anymore, but an… array? Again, whatever they're called in TOML. This is cool from Hugo's side, but {{< pkg "blogdown" >}} doesn't seem to like it, at least `blogdown::serve_site` and `blogdown::build_site(..., run_hugo = TRUE)` seem to not expect this being a multi-valued element.  
 
-Besides that, everything seemed to work fine though. You can control the precendence of theme components by adjusting the order in which they appear in the `theme` setting, so in this case my `jemsugo` components take precedence over everything in `hugo-coder` --- which in this case does not matter at all, as `hugo-coder` doesn't provide any shortcodes. If there was a `videofig` shortcode in Coder though, it would be ovewritten by my own.
+Besides that, everything seemed to work fine though. You can control the precedence of theme components by adjusting the order in which they appear in the `theme` setting, so in this case my `jemsugo` components take precedence over everything in `hugo-coder` --- which in this case does not matter at all, as `hugo-coder` doesn't provide any shortcodes. If there was a `videofig` shortcode in Coder though, it would be ovewritten by my own.
 
 To update your `git` submodules, you can run `git submodule update --rebase --remote`.  
 Which is something that I did quite a lot, because once I externalized my shortcodes, I'd have to push the shortcode repository to GitHub and pull it from my blog's repository locally every time I wanted to preview some changes.  
@@ -178,7 +180,7 @@ Before you deploy your site by pushing to whereever your site is built from (lik
 I have now deleted my `themes` directory, ran `git submodule deinit` on both submodules, and *it still works* --- even on netlify! So I'm reasonably confident that yes, this modules thing… it might actually work?  
 Just like that?
 
-I'm not sure how to handle the precedence thing though, so what if I wanted to make sure some shortcode in `jemus42/jemsugo` takes precendence over a shortcode with the same name in a different module --- I assume there's a solution for that, but I'll look into that some more once I actually have the need for it.  
+I'm not sure how to handle the precedence thing though, so what if I wanted to make sure some shortcode in `jemus42/jemsugo` takes precedence over a shortcode with the same name in a different module --- I assume there's a solution for that, but I'll look into that some more once I actually have the need for it.  
 In any case, according to [bep, modules are here to stay and the `theme = ` thing is left for compatibility](https://discourse.gohugo.io/t/hugo-modules-for-dummies/20758/3), so I doubt there's something modules *can't* do that was possible before. 
 
 
