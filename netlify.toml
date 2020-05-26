@@ -3,14 +3,14 @@
   command = "hugo -D"
   HUGO_VERSION = "0.71.0"
   HUGO_ENABLEGITINFO = "true"
-  GO_VERSION = "1.14"
 
 [context.production.environment]
   HUGO_ENV = "production"
   HUGO_TITLE = "Development Preview - blog.jemu.name"
-
+  HUGO_VERSION = "0.71.0"
 [context.branch-deploy.environment]
   HUGO_TITLE = "Branch Preview - blog.jemu.name"
-
+  HUGO_VERSION = "0.71.0"
 [context.deploy-preview.environment]
   HUGO_TITLE = "Deploy Preview - blog.jemu.name"
+  HUGO_VERSION = "0.71.0"
