@@ -89,7 +89,7 @@ I hesitated to get into [Hugo modules] (built upon Go modules) at first because 
 
 It turned out that [theme components] are a pretty nifty Hugo feature --- you can basically mix and match various themes and theme-like components as you please, as long as you keep precedence in mind. That's the perfect solution for a repository that only contains shortcodes, for example.  
 
-The first step was to remove my shortcodes from my site's `/layouts/shortcodes` and place them into their own cozy little repository at [jemus42/jemsugo] [^namingthings]. Note the file structure: They still live in `/layouts/shortcodes` so Hugo merges them correctly with other theme components.
+The first step was to remove my shortcodes from my site's `/layouts/shortcodes` and place them into their own cozy little repository at {{< gh "jemus42/jemsugo" >}} [^namingthings]. Note the file structure: They still live in `/layouts/shortcodes` so Hugo merges them correctly with other theme components.
 
 Once that was done, I could add this new repository as a secondary `git submodule` in my site's `/theme/` directory, where you'd usually only find, well, your theme:
 
@@ -179,7 +179,7 @@ Before you deploy your site by pushing to whereever your site is built from (lik
 I have now deleted my `themes` directory, ran `git submodule deinit` on both submodules, and *it still works* --- even on netlify! So I'm reasonably confident that yes, this modules thing… it might actually not have been that complicated?  
 Just like that?
 
-I'm not sure how to handle the precedence thing though, so what if I wanted to make sure some shortcode in `jemus42/jemsugo` takes precedence over a shortcode with the same name in a different module --- I assume there's a solution for that, but I'll look into that some more once I actually have the need for it.  
+I'm not sure how to handle the precedence thing though, so what if I wanted to make sure some shortcode in {{< gh "jemus42/jemsugo" >}} takes precedence over a shortcode with the same name in a different module --- I assume there's a solution for that, but I'll look into that some more once I actually have the need for it.  
 In any case, according to [bep, modules are here to stay and the `theme = ` thing is left for compatibility](https://discourse.gohugo.io/t/hugo-modules-for-dummies/20758/3), so I doubt there's something modules *can't* do that was possible before --- they already have a much greater set of features.
 
 
@@ -206,5 +206,4 @@ Well, I'll see how it \*clear's throat\* … *Goes*.
 
 [curlies]: https://twitter.com/ma_salmon/status/1264191903383392257
 
-[jemus42/jemsugo]: https://github.com/jemus42/jemsugo
 [luizdepra/hugo-coder]: https://github.com/luizdepra/hugo-coder
