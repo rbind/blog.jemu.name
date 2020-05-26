@@ -24,7 +24,7 @@ body.colorscheme-dark {
   @include table-dark();
   @include inline-code-dark();
   @include littlefoot-dark();
-  @include addendum-dark();
+  @include notebox-dark();
   @include summary-dark();
   @include anchor-dark();
   @include commento-dark();
@@ -39,7 +39,7 @@ body.colorscheme-auto {
     @include table-dark();
     @include inline-code-dark();
     @include littlefoot-dark();
-    @include addendum-dark();
+    @include notebox-dark();
     @include summary-dark();
     @include anchor-dark();
     @include commento-dark();
@@ -54,7 +54,7 @@ body.colorscheme-light {
   @include inline-code-light();
   @include math-light();
   @include littlefoot-light();
-  @include addendum-light();
+  @include notebox-light();
   @include summary-light();
   @include anchor-light();
   @include scrolltop-light();
@@ -68,7 +68,7 @@ body.colorscheme-auto {
     @include inline-code-light();
     @include math-light();
     @include littlefoot-light();
-    @include addendum-light();
+    @include notebox-light();
     @include summary-light();
     @include anchor-light();
     @include scrolltop-light();

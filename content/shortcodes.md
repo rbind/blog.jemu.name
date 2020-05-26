@@ -17,13 +17,37 @@ If I found a solution after the fact:
 
 ```go
 {{</* addendum title="An Addendum" */>}}
-I found out a relevant thing, so here's a relevant thing
+I found out a relevant thing, so here's a relevant thing. Inner content is markownified
 {{</* /addendum */>}}
 ```
 
 {{< addendum title="An Addendum" >}}
-I found out a relevant thing, so here's a relevant thing
+I found out a relevant thing, so here's a relevant thing.  
+This box has no `type` parameter set, so the "addendum" class is used as a default.
 {{< /addendum >}}
+
+{{< addendum title="A Warning" type="warning">}}
+This box has type="warning", in case I don't want you to make the same mistake I probably made.
+{{< /addendum >}}
+
+{{< addendum title="A Problem" type="problem">}}
+This is a box with type="problem", for when something is kind of… a problem?
+{{< /addendum >}}
+
+## Maintenance & Borked: `maintenance`
+
+If a post is bork: `{{</* maintenance */>}}`
+
+{{< maintenance >}}
+
+`{{</* maintenance "Custom Title" */>}}`
+
+{{< maintenance "Custom Title" >}}
+
+Styling relies on `note-box` CSS class which is shared by `addendum` shortcodes.
+
+No `.Inner` content for now.
+
 
 ## Blockquotes: `blockquote`
 
@@ -62,16 +86,6 @@ ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length)) +
 `{{</* gh "user/repo" */>}}`
 
 My blog's repo is at {{< gh "rbind/blog.jemu.name" >}}, and these shortcodes live in {{< gh "jemus42/jemsugo" >}}.
-
-## Maintenance & Borked: `maintenance`
-
-If a post is bork:
-
-{{< maintenance >}}
-
-Styling relies on `addendum`.
-
-No `.Inner` content for now, i.e. it's just `{{</* maintenance */>}}`
 
 ## Figures with responsive images: `picturefig`
 
