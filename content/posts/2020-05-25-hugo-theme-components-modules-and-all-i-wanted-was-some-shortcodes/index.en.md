@@ -15,15 +15,15 @@ math: no
 
 ## Fun With Shortcodes
 
- I had been playing around with some custom shortcodes, either to fill a gap as far as functionality provided by Hugo's existing (built-in) shortcodes was concerned, for my own convenience to wrap frequently uses elements, or just for fun as a learning exercise (and let's be honest, usually all of the above combined).
+ I had been playing around with making some custom [Hugo shortcodes](https://gohugo.io/content-management/shortcodes/) to fill some gaps as far as functionality provided by Hugo's existing (built-in) shortcodes was concerned. Others were for my own convenience to wrap frequently used elements, and some were just for fun as a learning exercise (and let's be honest, usually all of the above combined).
  
-On the *"filling a need"* side, there's my shortcode to embed videos. It's not perfect, and I already found [a smarter one](https://github.com/martignoni/hugo-video/blob/master/layouts/shortcodes/video.html) in the wild, but it does it's job and works for me:
+On the *"filling a gap"* side, there's my shortcode to embed videos. It's not perfect, and I already found [a smarter one](https://github.com/martignoni/hugo-video/blob/master/layouts/shortcodes/video.html) in the wild, but it does it's job and works for me:
 
 {{< codecaption lang="go" caption="" >}}
 {{</* videofig mp4="my-file.mp4" loop=true autoplay=true caption="A catchy caption" */>}}
 {{< /codecaption >}}
 
-This wraps a `<video>` element inside a `<figure>` element inluding a `<figcaption>`, as you might have seen in action already, and the output HTML looks roughly like this:
+This wraps a `<video>` element inside a `<figure>` element inluding a `<figcaption>`, as you might have seen in action already in a previous post. The output HTML looks roughly like this:
 
 {{< codecaption lang="html" caption="" >}}
 <figure>
@@ -39,16 +39,16 @@ This wraps a `<video>` element inside a `<figure>` element inluding a `<figcapti
 
 I generally like the added caption over a plain `<video>` tag, and since I learned that the `<figure>` tag is meant to hold all kinds of content including `<pre>` (for code), `<video>` and `<picture>`, I also added a shortcode to wrap highlighted code in `<figure>`, *and* a generalized shortcode to wrap *anything* inside `<figure>` with a caption. Once I copypasted [Hugo's embedded `figure.html`](https://github.com/gohugoio/hugo/blob/aba2647c152ffff927f42523b77ee6651630cd67/tpl/tplimpl/embedded/templates/shortcodes/figure.html) shortcode, the floodgates were open on my shortcoding and `<figure>`-wrapping.
 
-Another more complex thing I'm playing around with is a shortcode to mention R packages in text. You might have seen R packages referred to something like `{ggplot2}`. That's a package name wrapped inside `{ }` for [whatever reason][curlies], _and_ inside `` ` ` `` for the monospaced formatting. And I haven't even linked it to it's website!  
-That's *a lot* of work. Wouldn't it be *much easier* to just type `{{</* pkg "ggplot2" */>}}`?
+A more complex thing I'm playing around with is a shortcode to mention R packages in text. You might have seen R packages referred to something like this: `{ggplot2}`. That's a package name wrapped inside `{ }` for [whatever reason][curlies], _and_ inside `` ` ` `` for the monospaced formatting. And I haven't even linked the package to its website!  
+That's *a lot* of work for just one package mention. Wouldn't it be *much easier* to just type `{{</* pkg "ggplot2" */>}}`?
 
 ...What do you mean *"no it wouldn't, that's worse"*?
 
-Well anyway, now I did it. Then I thought "wouldn't it be cool if this was *smarter*" and justified it's syntactic overhead?  
-Well, my [previous ideas regarding package taxonomies](/2020/05/migrating-themes-and-overhauling-the-rest/#the-quest-for-taxonomies) have since lead to the realization that this is *probably* much better handled via Hugo's [data templates]. 
+Well anyway, now I did it. Next I thought "wouldn't it be cool if this was *smarter*" and, well, justified it's syntactic overhead?  
+As it turned out, my [previous ideas regarding package taxonomies](/2020/05/migrating-themes-and-overhauling-the-rest/#the-quest-for-taxonomies) have since lead to the realization that this is *probably* much better handled via Hugo's [data templates], and once you have some R package metadata lying around, that shortcode suddenly has a lot more potential.
 
 The gist is this: Create a file named `/data/packages.yaml` (could also be `.json`), fill it with package metadata, and now you have access to said data in layout templates and shortcodes via `.Site.Data.packages`.  
-What is this for? Well, the current iteration of that `pkg` shortcode looks like this:
+What is this for? Well, the current iteration of that `pkg` shortcode looks like in this:
 
 Did you hear about {{< pkg "ggplot2" >}}? It's a neat package and has a fancy website. I also like {{< pkg "ggrepel" >}}, which also has a fancy website but my shortcode hasn't figured that out yet. Then there's my own package, {{< pkg "tRakt" >}}, which is not on CRAN so it gets a different icon [^snip]. 
 
@@ -60,17 +60,17 @@ Thanks.
 
 {{< addendum title="For Posterity" >}}
 Depending on when you're reading this, these examples either don't work anymore, or they look completely different because I've changed my mind and/or learned a lot since I wrote this initially, and the shortcode has changed accordingly.  
-That's the blog-post equivalent of a live demo.  
-Sorry.
+That's the blog-post equivalent of a live demo, sorry.  
+You can check out the shortcode [as of right now here](https://github.com/jemus42/jemsugo/blob/44bd506487f52ccd37cb947417e4ca888dfd736c/layouts/shortcodes/pkg.html).
 {{< /addendum >}}
 
 This shortcode relies on the existence of [`packages.yml`](https://github.com/rbind/blog.jemu.name/blob/4415a09997e5e859644b2b8a17e86150099bd317/data/packages.yml). I generated this from the packages' `DESCRIPTION` files installed in my blog's {{< pkg "renv" >}}-library, `available.packages()` for CRAN urls, and [this result of a wasted evening](https://github.com/rbind/blog.jemu.name/blob/2894d54e55820a48fe682a80c81bc30d4a2e5686/R/maintenance.R#L47-L100). There's probably better solutions available [as Maëlle suggested](https://twitter.com/ma_salmon/status/1264186424443764736) [^codemeta], but I just wanted to get started with something relatively simple --- after all, I was primarly after three things:
 
-- The package's name
+- The package's name (surprisingly)
 - A CRAN url, also serving as a (CRAN | Not CRAN)-indicator
 - A GitHub / source repository URL
 
-[^codemeta]: The [output of `codemetar`](https://docs.ropensci.org/codemetar/#create-a-codemetajson-in-one-function-call) is a lot more complex, takes a while to generate, and is probably not feasible if I want to generate metadata for *a lot* of packages maybe? But it's cool for what it does --- I'd just need this in *one big file for all packages* form I think.
+[^codemeta]: The [output of `codemetar`](https://docs.ropensci.org/codemetar/#create-a-codemetajson-in-one-function-call) is a lot more complex and takes a moment to generate *per package*, so it's probably not feasible if I want to generate metadata for *a lot* of packages maybe? But it's cool for what it does --- I'd just need this in *one big file for all packages and also some non-CRAN packages* form I think.
 
 Additionally, I haven't found a good method of determining which package has a dedicated documentation website, e.g. via `{pkgdown}`, because preferably I'd like to make the package name link to its website and the associated icon either link to CRAN or to its source / GitHub repository. Guess there's a lot of room for improvement [^pkgdown].  
 
@@ -81,9 +81,9 @@ Focus.
 
 Anyway, with some new shortcodes in hand, I wondered how I'd get them to be usable with another Hugo site without having to copypaste them over. That's when, once again, [Maëlle *literally pushed me* into another rabbit hole](https://twitter.com/ma_salmon/status/1264192872498290688) about Hugo modules and theme components [^rabbithole].  
 
-I hesitated to get into [Hugo modules] (built upon Go modules) at first because neither this [Go modules] intro nor this [Go modules wiki] was particularly easy to skim through, given my only contact with Go had been the second syllable in my chosen static site generator.
+I hesitated to get into [Hugo modules] (built upon Go modules) at first because neither these [Go modules] docs nor this [Go modules wiki] was particularly easy to skim through, given my only contact with Go had been the second syllable in my chosen static site generator.
 
-[^rabbithole]: I kid, of course. I'm starting to like the dynamic I'm developing with Maëlle where I have a half-baked idea and she throws enough ideas and suggestions my way to actually make them work (kind of). <br> 🐇🕳️
+[^rabbithole]: I kid, of course. I'm starting to like the dynamic where I have a half-baked idea and she throws enough ideas and suggestions my way to actually make them work (kind of). <br> 🐇🕳️
 
 ## Theme Components and `git` Submodules
 
@@ -91,7 +91,7 @@ It turned out that [theme components] are a pretty nifty Hugo feature --- you ca
 
 The first step was to remove my shortcodes from my site's `/layouts/shortcodes` and place them into their own cozy little repository at [jemus42/jemsugo] [^namingthings]. Note the file structure: They still live in `/layouts/shortcodes` so Hugo merges them correctly with other theme components.
 
-Once that was done, I could add this new repository as a secondary `git submodule` in my site's `/theme/` directory, where you'd usually only find your, well, theme:
+Once that was done, I could add this new repository as a secondary `git submodule` in my site's `/theme/` directory, where you'd usually only find, well, your theme:
 
 ```bash
 # Adding a git submodule
@@ -121,7 +121,7 @@ That's not a terribly nice workflow, and I assume the `git` people will know a b
 
 Why [Hugo modules] though? Didn't `git` submodules work *just fine*?  
 Yes. Yes they worked *just fine*, and this *just fine* included updating submodules via `git submodule update --rebase --remote` after I first ran `git push` on the repository that contained my shortcodes.  
-What Hugo modules allow is to just run `hugo mod get -u` in my blog repo after I git `git push` in --- *wait a minuute* that's not better!  
+What Hugo modules allow is to just run `hugo mod get -u` in my blog repo after I ran `git push` in --- *wait a minuute* that's not better!  
 
 Okay, there is a decent workaround to ease local testing with modules, but first, let's walk through the steps to use Hugo modules instead of theme components + `git` submodules.
 
@@ -132,7 +132,7 @@ All it took (I think), was to declare *my blog itself* a Hugo module by running 
 hugo mod init github.com/rbind/blog.jemu.name
 {{< /codecaption >}}
 
-This creates a `go.mod` (and a `go.sum`) file in the site's root that lists the modules you're using, once you have declared any in your `config.toml`.  
+This creates a `go.mod` (and later a `go.sum`) file in the site's root that lists the modules you're using, once you have declared any in your `config.toml`.  
 
 Here's my `config.toml` for the theme component configuration from previously:
 
@@ -150,7 +150,7 @@ The equivalent configuration using Hugo modules apparently looks like this, whil
     path = "github.com/luizdepra/hugo-coder"
 {{< /codecaption >}}
 
-And the `go.mod` in my blog's root now looks like this:
+After running `hugo mod get -u` and/or a quick `hugo server` for testing, the `go.mod` in my blog's root now looks like this:
 
 {{< codecaption lang="go" caption="Satisfyingly self-explanatory" >}}
 module github.com/rbind/blog.jemu.name
@@ -167,9 +167,8 @@ require (
 {{< /codecaption >}}
 
 
-That `replace` line is used, as the comment suggests, for local testing. It's mentioned in the Hugo docs, but without much further info about what it really does or if its placement in `go.mod` matters. Thankfully [this blog post](https://thewebivore.com/using-replace-in-go-mod-to-point-to-your-local-module/) was helpful to get the gist, and I *think* it now works as expected. 
-
-And the "local testing" thing really makes the difference in workflows compared to submodules: I can tweak my shortcodes in their local folder outside the blog repo, and when I save changes, the `hugo server` running in my blog repo automatically picks them up. It's almost as if this is the way it's supposed to work in the first place!  
+That `replace` line is used, as the comment suggests, for local testing. It's mentioned in the Hugo docs, but without much info about what it really does or if its placement in `go.mod` matters. Thankfully [this blog post](https://thewebivore.com/using-replace-in-go-mod-to-point-to-your-local-module/) was helpful to get the gist, and I *think* it now works as expected.  
+And it's the "local testing" thing that really makes the difference in workflows compared to submodules: I can tweak my shortcodes in their local folder outside the blog repo, and when I save changes the `hugo server` running in my blog repo automatically picks them up. It's almost as if this is the way it's supposed to work in the first place!  
 …And what I already had when I still had the shortcodes in my blog rather then external, so… yeah.  
 But external though!  
 
@@ -177,16 +176,16 @@ But external though!
 Before you deploy your site by pushing to whereever your site is built from (like Netlify), you'll have to comment out that `replace` line in `go.mod` again, because Netlify won't know that local path of yours.
 {{< /addendum >}}
 
-I have now deleted my `themes` directory, ran `git submodule deinit` on both submodules, and *it still works* --- even on netlify! So I'm reasonably confident that yes, this modules thing… it might actually work?  
+I have now deleted my `themes` directory, ran `git submodule deinit` on both submodules, and *it still works* --- even on netlify! So I'm reasonably confident that yes, this modules thing… it might actually not have been that complicated?  
 Just like that?
 
 I'm not sure how to handle the precedence thing though, so what if I wanted to make sure some shortcode in `jemus42/jemsugo` takes precedence over a shortcode with the same name in a different module --- I assume there's a solution for that, but I'll look into that some more once I actually have the need for it.  
-In any case, according to [bep, modules are here to stay and the `theme = ` thing is left for compatibility](https://discourse.gohugo.io/t/hugo-modules-for-dummies/20758/3), so I doubt there's something modules *can't* do that was possible before. 
+In any case, according to [bep, modules are here to stay and the `theme = ` thing is left for compatibility](https://discourse.gohugo.io/t/hugo-modules-for-dummies/20758/3), so I doubt there's something modules *can't* do that was possible before --- they already have a much greater set of features.
 
 
 ## Conclusion
 
-This whole shift in workflows is still pretty new to me, and I mainly discovered my way through it while I was still writing this post.  
+This whole shift in dependency workflows is still pretty new to me, and I mainly discovered my way through it while I was still writing this post.  
 
 I haven't gathered a lot of experience with the Hugo modules approach yet, and there might be a case or two in which I wish I'd still be using the original approach (using my theme as a `git` submodule and my shortcodes in my site).  
 I guess the worst thing that could happen would be learning more about how Go works, especially with regards to module caching (*where are they even stored*?) and versioning, or whatever that `_vendor` thing is all about. 
