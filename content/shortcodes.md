@@ -112,6 +112,17 @@ This is the secret content *they* don't want you to know.
 This is the secret content *they* don't want you to know.
 {{< /summary >}}
 
+## Sows and movies Trakt.tv: `trakt`
+
+Not sure about proper API yet, currently: 
+
+`{{</* trakt "movies" "inception-2010" "Inception" */>}}` -> {{< trakt "movies" "inception-2010" "Inception" >}}
+
+`{{</* trakt "shows" "devs" "Devs is a very beautiful show" */>}}` -> {{< trakt "shows" "devs" "Devs is a very beautiful show" >}}
+
+This seems more complicated than just doing a quick search on trakt and copypasting the url.
+
+
 ## Videos with caption: `videofig`
 
 `{{</* videofig mp4="my-file.mp4" loop=true autoplay=true alt="" caption="" */>}}`
