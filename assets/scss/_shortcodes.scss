@@ -3,8 +3,9 @@ article .note-box > h6 {
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding-top: 10px;
-  text-align: center;
-  font-variant: small-caps;
+  padding-left: 2rem;
+  // text-align: center;
+  // font-variant: small-caps;
 }
 
 article .note-box > p {
@@ -12,17 +13,13 @@ article .note-box > p {
   margin-bottom: 0;
   padding-left: 2rem;
   padding-right: 2rem;
-  text-align: center;
+  // text-align: center;
 }
 
 div.note-box {
   border-left: 0.5rem;
-  // border-right: 4px;
   border-left-style: solid;
-  //padding-left: 1rem;
   padding-bottom: 1rem;
-  // margin-left: 2rem;
-  // margin-right: 2rem;
   margin-left: auto;
   margin-right: auto;
   width: 90%;
@@ -106,8 +103,8 @@ figure.code {
 // the inline pkg thing
 .rpkg i {
   font-size: 80%;
-  position: relative;
-  left: 2px;
+  // position: relative;
+  // left: 2px;
 }
 
 // video, videofig //
