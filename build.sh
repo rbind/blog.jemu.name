@@ -2,7 +2,8 @@
 
 # Hugo will be installed to ~/bin, translating to /etc/git-auto-deploy/bin
 # Adding it to $PATH is kind of optional here, might as well call $HOME/bin/hugo in step 2
-PATH=$HOME/bin:$PATH
+PATH=$HOME/bin:/home/linuxbrew/.linuxbrew/bin/:$PATH
+# Linuxbrew path is needed for go, which is needed for hugo modules
 
 # Desired hugo version in local setup
 HUGO_VERSION_WANT="0.71.0"
