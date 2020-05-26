@@ -1,16 +1,15 @@
 [build] 
   publish = "public"
   command = "hugo -D"
+  HUGO_TITLE = "Development Preview - blog.jemu.name"
+  HUGO_VERSION = "0.71.0"
+  HUGO_ENABLEGITINFO = "true"
 
 [context.production.environment]
-  HUGO_VERSION = "0.71.0"
   HUGO_ENV = "production"
-  HUGO_ENABLEGITINFO = "true"
   
 [context.branch-deploy.environment]
-  HUGO_VERSION = "0.71.0"
-  HUGO_ENABLEGITINFO = "true"
-  
+  HUGO_TITLE = "Branch Preview - blog.jemu.name"
+
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.71.0"
-  HUGO_ENABLEGITINFO = "true"
+  HUGO_TITLE = "Deploy Preview - blog.jemu.name"
