@@ -30,6 +30,11 @@
             "label": "Blogdown Server (blogdown::serve_site)",
             "type": "shell",
             "command": "Rscript -e 'blogdown::serve_site()'"
+        },
+        {
+            "label": "Update master from develop",
+            "type": "shell",
+            "command": "git fetch . develop:master; git push origin master:master"
         }
     ]
 }
