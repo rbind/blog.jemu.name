@@ -81,7 +81,7 @@ Focus.
 
 Anyway, with some new shortcodes in hand, I wondered how I'd get them to be usable with another Hugo site without having to copypaste them over. That's when, once again, [Maëlle *literally pushed me* into another rabbit hole](https://twitter.com/ma_salmon/status/1264192872498290688) about Hugo modules and theme components [^rabbithole].  
 
-I was scared about [Hugo modules] (built upon Go modules) at first because neither this [Go modules] intro nor this [Go modules wiki] was particularly easy to skim through, given my only contact with Go had been the second syllable in my chosen static site generator.
+I hesitated to get into [Hugo modules] (built upon Go modules) at first because neither this [Go modules] intro nor this [Go modules wiki] was particularly easy to skim through, given my only contact with Go had been the second syllable in my chosen static site generator.
 
 [^rabbithole]: I kid, of course. I'm starting to like the dynamic I'm developing with Maëlle where I have a half-baked idea and she throws enough ideas and suggestions my way to actually make them work (kind of). <br> 🐇🕳️
 
@@ -89,9 +89,9 @@ I was scared about [Hugo modules] (built upon Go modules) at first because neith
 
 It turned out that [theme components] are a pretty nifty Hugo feature --- you can basically mix and match various themes and theme-like components as you please, as long as you keep precedence in mind. That's the perfect solution for a repository that only contains shortcodes, for example.  
 
-The first step was to remove my shortcodes from my site's `/layouts/shortcodes` and place them into their own cozy little repository at [jemus42/jemsugo] [^namingthings]. Note the file structure: They still live in `/layouts/shortcodes` so Hugo knows where ~~it can stick them~~ how to merge them into its filesystem during rendering... or something.
+The first step was to remove my shortcodes from my site's `/layouts/shortcodes` and place them into their own cozy little repository at [jemus42/jemsugo] [^namingthings]. Note the file structure: They still live in `/layouts/shortcodes` so Hugo merges them correctly with other theme components.
 
-Once that what done, I could add this new repository as a secondary `git submodule` in my site's `/theme/` directory, where you'd usually only find your, well, theme:
+Once that was done, I could add this new repository as a secondary `git submodule` in my site's `/theme/` directory, where you'd usually only find your, well, theme:
 
 ```bash
 # Adding a git submodule
