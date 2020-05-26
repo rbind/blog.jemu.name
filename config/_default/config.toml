@@ -12,6 +12,8 @@ metaDataFormat = "yaml"
 Paginate = 20
 
 [module]
+  [module.hugoVersion]
+    min = "0.70.0" # Due to headings render hook
   [[module.imports]]
     path = "github.com/jemus42/hugo-rstats-pkg-meta"
   [[module.imports]]
