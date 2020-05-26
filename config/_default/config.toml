@@ -39,8 +39,8 @@ ignoreFiles = [
   #category = "categories"
   tag = "tags"
   series = "series"
-  package = "packages" # No theme support yet
-  show = "shows"       # No theme support yet
+  #package = "packages" # No theme support yet
+  #show = "shows"       # No theme support yet
 
 [markup]
   defaultMarkdownHandler = "goldmark"
