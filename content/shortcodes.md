@@ -57,6 +57,11 @@ ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length)) +
   geom_point(size = 2)
 {{< /codecaption >}}
 
+## Linking GitHub: `gh`
+
+`{{</* gh "user/repo" */>}}`
+
+My blog's repo is at {{< gh "rbind/blog.jemu.name" >}}, and these shortcodes live in {{< gh "jemus42/jemsugo" >}}.
 
 ## Maintenance & Borked: `maintenance`
 

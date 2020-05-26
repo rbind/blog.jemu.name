@@ -1,0 +1,106 @@
+// Addendum shortcode
+article .addendum > h6 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-top: 10px;
+  text-align: center;
+}
+
+article .addendum > p {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
+}
+
+div.addendum {
+  border-left: 0.5rem;
+  // border-right: 4px;
+  border-left-style: solid;
+  //padding-left: 1rem;
+  padding-bottom: 1rem;
+  // margin-left: 2rem;
+  // margin-right: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+}
+
+@mixin addendum-light {
+  div.addendum {
+    border-left-color: $link-color;
+    background-color: darken($bg-color, 4%); 
+  }
+}
+
+@mixin addendum-dark {
+  div.addendum {
+    border-left-color: $link-color;
+    background-color: darken($bg-color-dark, 4%); 
+  }
+}
+
+// Maintenance notice (has .addendum class, so use id to overrule)
+#maintenance {
+  border: 0.5rem solid #FECE31;
+}
+
+// codecaption shortcode / code in <figure>
+figure.code {
+  text-align: left;
+}
+
+// gh //
+.gh-repo a {
+  font-family: $code-font-family;
+}
+
+
+// pkg //
+// package tooltip
+.rpkg a {
+  font-family: $code-font-family;
+}
+
+.tooltip {
+  font-family: $heading-font-family;
+  visibility: hidden;
+  width: auto;
+  background-color: $alt-bg-color-dark;
+  color: $fg-color-dark;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 1rem; 
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  z-index: 3;
+}
+
+.rpkg:hover .tooltip,
+.rpkg:focus-within .tooltip,
+.rpkg:focus .tooltip,
+.rpkg:active .tooltip {
+  visibility: visible;
+}
+
+// the inline pkg thing
+.rpkg i {
+  font-size: 80%;
+  position: relative;
+  left: 2px;
+}
+
+// video, videofig //
+// video element
+.content video {
+  // display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  border-radius: 1rem;
+}
