@@ -2,7 +2,7 @@
 title: Hugo Theme Components, Modules, and All I Wanted Was Some Shortcodes
 author: jemus42
 date: '2020-05-25'
-slug: hugo-theme-components-modules-and-all-i-wanted-was-some-shortcodes
+slug: hugo-theme-components-modules
 series:
   - Blogging
 tags:
@@ -72,66 +72,85 @@ This shortcode relies on the existence of the [`packages.yml`](https://github.co
 
 [^codemeta]: The [output of `codemetar`](https://docs.ropensci.org/codemetar/#create-a-codemetajson-in-one-function-call) is a lot more complex, takes a while to generate, and is probably not feasible if I want to generate metadata for *a lot* of packages maybe? But it's cool for what it does --- I'd just need this in *one big file for all packages* form I think.
 
-Additionally, I'm a little bummed out about not having a good method of determining which package has a dedicated website / `{pkgdown}` site, because preferably I'd like to make the package name link to its website and the associated icon either link to CRAN or to its source / GitHub repository. Guess there's a lot of room for improvement [^pkgdown].
+Additionally, I'm a little bummed out about not having a good method of determining which package has a dedicated documentation website, e.g. via `{pkgdown}`, because preferably I'd like to make the package name link to its website and the associated icon either link to CRAN or to its source / GitHub repository. Guess there's a lot of room for improvement [^pkgdown].  
 
-[^pkgdown]: Wonder why I didn't use the shortcode to refer to `pkgdown`? Well that package isn't installed in my blog's project library, so it's not in the `packages.yaml` (because I didn't want one file for *all packages ever* (yet)), and… yes, I need to find a better solution for that data source.  
+[^pkgdown]: Wonder why I didn't use the shortcode to refer to `pkgdown`? Well that package isn't installed in my blog's project library, so it's not in the `packages.yaml` (because I didn't want one file for *all packages ever* (yet)), and… yes, I need to find a better solution for that data source. 
 
 But I digress, I wanted to talk about shortcode externalization.  
 Focus.  
 
 Anyway, with some new shortcodes in hand, I wondered how I'd get them to be usable with another Hugo site without having to copypaste them over. That's when, once again, [Maëlle *literally pushed me* into another rabbit hole](https://twitter.com/ma_salmon/status/1264192872498290688) about Hugo modules and theme components [^rabbithole].  
 
-I was scared about [Hugo modules] at first because neither this [go modules] intro nor this [go modules wiki] was particularly easy to skim through given my only contact with go had been the second syllable in my chosen static site generator.
+I was scared about [Hugo modules] (built upon Go modules) at first because neither this [Go modules] intro nor this [Go modules wiki] was particularly easy to skim through, given my only contact with Go had been the second syllable in my chosen static site generator.
 
-[^rabbithole]: I kid, of course. I'm starting to like the dynamic I'm developing with Maëlle where I have a half-baked idea and she throws enough ideas and suggestions my way to actually make them work. <br> 🐇🕳️
+[^rabbithole]: I kid, of course. I'm starting to like the dynamic I'm developing with Maëlle where I have a half-baked idea and she throws enough ideas and suggestions my way to actually make them work (kind of). <br> 🐇🕳️
 
 ## Theme Components and `git` Submodules
 
 The first step was to remove my shortcodes from my site's `/layouts/shortcodes` and place them into their own cozy little repository at [jemus42/jemsugo] [^namingthings]. Note the file structure: They still live in `/layouts/shortcodes` so Hugo knows where ~~it can stick them~~ how to merge them into its filesystem during rendering... or something.
 
+Once that what done, I could add this new repository as a secondary `git submodule` in my site's `/theme/` directory, where you'd usually only find your, well, theme:
+
+```bash
+# Adding a git submodule
+git submodule add https://github.com/jemus42/jemsugo.git themes/jemsugo
+````
+
+The next step was to adjust my `config.toml` to tell it about the secondary [theme component][theme components]:
+
+```toml
+# Before:
+theme = "hugo-coder"
+# After:
+theme = ["jemsugo", "hugo-coder"]
+```
+
+Note that now the `theme` key (or whatever they're called in TOML) is not a single string anymore, but an… array? Again, whatever they're called in TOML. This is cool from Hugo's side, but {{< pkg "blogdown" >}} doesn't seem to like it, at least `blogdown::serve_site` and `blogdown::build_site(..., run_hugo = TRUE)` seem to not expect this being a multi-valued element.  
+
+Besides that, everything seemed to work fine though. You can control the precendence of theme components by adjusting the order in which they appear in the `theme` setting, so in this case my `jemsugo` components take precedence over everything in `hugo-coder` --- which in this case does not matter at all, as `hugo-coder` doesn't provide any shortcodes. If there was a `videofig` shortcode in Coder though, it would be ovewritten by my own.
+
+To update your `git` submodules, you can run `git submodule update --rebase --remote`.  
+Which is something that I did quite a lot, because once I externalized my shortcodes, I'd have to push the shortcode repository to GitHub and pull it from my blog's repository locally every time I wanted to preview some changes.  
+That's not a terribly nice workflow, and I assume the `git` people will know a better solution --- but the point was moot as soon as I realized that Hugo modules were only a small step away, and not that hard to get into.
+
 [^namingthings]: It turns out naming things is really hard. Have you heard? 😱
 
-## Switching to Modules
+## Switching to Hugo Modules
 
-Why modules though? Didn't submodules work *just fine*?  
-Yes. Yes they worked *just fine*, and this *just fine* included updating submodules via `git submodule update --rebase --remote` after I first ran `git push` on the repository that contained my shortcodes. That's… not so nice?  
-What Hugo modules allow is to just run `hugo mod get -u` in my blog repo and --- *wait a minuute* that's not better!  
+Why [Hugo modules] though? Didn't `git` submodules work *just fine*?  
+Yes. Yes they worked *just fine*, and this *just fine* included updating submodules via `git submodule update --rebase --remote` after I first ran `git push` on the repository that contained my shortcodes.  
+What Hugo modules allow is to just run `hugo mod get -u` in my blog repo after I git `git push` in --- *wait a minuute* that's not better!  
 
-I'm not entirely sure what the benfit is yet besides that dealing with `git` submodules can be a little annoying here and there, but I'll see how it goes --- but let's get to the set up first.
+Okay, there is a decent workaround to ease local testing with modules, but first, let's walk through the steps to use Hugo modules instead of theme components + `git` submodules.
 
-What it took in the end to make it work:
-
-In *my site's* repository: 
+After skimming [this helpful post on the Hugo forums][modules-for-dummies], I realized that the thing I wanted to use as a module didn't even need special configuration, meaning I didn't need to run `hugo mod init` in my `jemsugo` repo (apparently), and I didn't need my theme to be specially configured as well.  
+All it took (I think), was to declare *my blog itself* a Hugo module by running this in it's root directory:
 
 {{< codecaption lang="bash" caption="Substitute the repo spec accordingly (or maybe remove it? I'm not sure)" >}}
 hugo mod init github.com/rbind/blog.jemu.name
 {{< /codecaption >}}
 
+This creates a `go.mod` (and a `go.sum`) file in the site's root that lists the modules you're using, once you have declared any in your `config.toml`.  
 
-My `config.toml` *used* to contain this line:
+Here's my `config.toml` for the theme component configuration from previously:
 
-{{< codecaption lang="TOML" caption="Tired: Define theme components like this" >}}
+{{< codecaption lang="toml" caption="Tired: Define theme components like this" >}}
 theme = ["jemsugo", "hugo-coder"]
 {{< /codecaption >}}
 
-You probably also have a line like `theme = "my-theme"`, but you know what? That's for *old people* [^modnew]!
+The equivalent configuration using Hugo modules apparently looks like this, while *removing the `theme = ` line*:
 
-[^modnew]: It should be noted that Hugo modules were introduce in Fall 2019 or so. So yes, obviously you should use them for everything over the previous method, what could go wrong!
-
-The *equivalent*(!) using Hugo modules apparently looks like this:
-
-{{< codecaption lang="r" caption="Wired: Using hugo modules like that" >}}
+{{< codecaption lang="toml" caption="Wired: Using Hugo modules like that" >}}
 [module]
   [[module.imports]]
-    path = "github.com/luizdepra/hugo-coder"
-  [[module.imports]]
     path = "github.com/jemus42/jemsugo"
+  [[module.imports]]
+    path = "github.com/luizdepra/hugo-coder"
 {{< /codecaption >}}
 
+And the `go.mod` in my blog's root now looks like this:
 
-The `go.mod` in my blog's root now looks like this:
-
-{{< codecaption lang="r" caption="A code caption" >}}
+{{< codecaption lang="go" caption="Satisfyingly self-explanatory" >}}
 module github.com/rbind/blog.jemu.name
 
 go 1.14
@@ -146,18 +165,31 @@ require (
 {{< /codecaption >}}
 
 
-That `replace` line is used, as the comment suggests, for local testing. It's mentioned in the Hugo docs, but without much further info about what it really does. Thankfully [this blog post](https://thewebivore.com/using-replace-in-go-mod-to-point-to-your-local-module/) was helpful to get the gist, and I *think* it now works as expected. 
+That `replace` line is used, as the comment suggests, for local testing. It's mentioned in the Hugo docs, but without much further info about what it really does or if its placement in `go.mod` matters. Thankfully [this blog post](https://thewebivore.com/using-replace-in-go-mod-to-point-to-your-local-module/) was helpful to get the gist, and I *think* it now works as expected. 
 
 And the "local testing" thing really makes the difference in workflows compared to submodules: I can tweak my shortcodes in their local folder outside the blog repo, and when I save changes, the `hugo server` running in my blog repo automatically picks them up. It's almost as if this is the way it's supposed to work in the first place!  
 …And what I already had when I still had the shortcodes in my blog rather then external, so… yeah.  
-But external though!
+But external though!  
+
+{{< addendum title="From local testing to deployment" >}}
+Before you deploy your site by pushing to whereever your site is built from (like Netlify), you'll have to comment out that `replace` line in `go.mod` again, because Netlify won't know that local path of yours.
+{{< /addendum >}}
 
 I have now deleted my `themes` directory, ran `git submodule deinit` on both submodules, and *it still works* --- even on netlify! So I'm reasonably confident that yes, this modules thing… it might actually work?  
 Just like that?
 
-I'm not sure how to handle the precedence thing though, so what if I want to make sure some shortcode in `jemus42/jemsugo` takes precendence over a shortcode with the same name in a different module, but I assume there's a solution for that.  
-According to [bep, modules are here to stay and the `theme = ` thing is left for compatibility](https://discourse.gohugo.io/t/hugo-modules-for-dummies/20758/3), so I doubt there's something modules *can't* do that was possible before. 
+I'm not sure how to handle the precedence thing though, so what if I wanted to make sure some shortcode in `jemus42/jemsugo` takes precendence over a shortcode with the same name in a different module --- I assume there's a solution for that, but I'll look into that some more once I actually have the need for it.  
+In any case, according to [bep, modules are here to stay and the `theme = ` thing is left for compatibility](https://discourse.gohugo.io/t/hugo-modules-for-dummies/20758/3), so I doubt there's something modules *can't* do that was possible before. 
 
+
+## Conclusion
+
+This whole shift in workflows is still pretty new to me, and I mainly discovered my way through it while I was still writing this post.  
+
+I haven't gathered a lot of experience with the Hugo modules approach yet, and there might be a case or two in which I wish I'd still be using the original approach (using my theme as a `git` submodule and my shortcodes in my site).  
+I guess the worst thing that could happen would be learning more about how Go works, especially with regards to module caching (*where are they even stored*?) and versioning, or whatever that `_vendor` thing is all about. 
+
+Well, I'll see how it \*clear's throat\* … *Goes*.
 
 <!-- Links -->
 
@@ -165,14 +197,13 @@ According to [bep, modules are here to stay and the `theme = ` thing is left for
 [use-modules]: https://gohugo.io/hugo-modules/use-modules/
 [Hugo modules]: https://gohugo.io/hugo-modules/
 [module-config]: https://gohugo.io/hugo-modules/configuration/
-[go modules]: https://blog.golang.org/using-go-modules
-[go modules wiki]: https://github.com/golang/go/wiki/Modules
+[Go modules]: https://blog.golang.org/using-go-modules
+[Go modules wiki]: https://github.com/golang/go/wiki/Modules
 [modules-for-dummies]: https://discourse.gohugo.io/t/hugo-modules-for-dummies/20758
 
 [data templates]: https://gohugo.io/templates/data-templates/
 
 [curlies]: https://twitter.com/ma_salmon/status/1264191903383392257
-
 
 [jemus42/jemsugo]: https://github.com/jemus42/jemsugo
 [luizdepra/hugo-coder]: https://github.com/luizdepra/hugo-coder

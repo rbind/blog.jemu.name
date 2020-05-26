@@ -2,6 +2,7 @@
 scratchpad.R
 
 .vscode/settings.json
+blog.jemu.name.code-workspace
 
 # favicon generator stuff
 static/html_code.html
