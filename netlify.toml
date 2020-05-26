@@ -1,6 +1,6 @@
 [build] 
   publish = "public"
-  command = "hugo -D"
+  command = "hugo --minify -D"
   HUGO_VERSION = "0.71.0"
   HUGO_ENABLEGITINFO = "true"
 
