@@ -1,0 +1,17 @@
+{{/* Refer to R packages fancily
+/*   Requires a packages.yml data source and some site params
+/*   If I get this working right, I'll document it properly, I swear
+*/}}
+
+{{ $pkg := index .Site.Data.packages (.Get 0) }}
+{{ $url := $pkg.url_pkgdown | default $pkg.url_git | default $pkg.url_other }}
+
+<span class="rpkg">
+{{ if $pkg.url_cran }}
+  {{ with  .Site.Params.pkg_icon_cran }} <a href="{{ $pkg.url_cran }}" alt="CRAN link">{{ . | safeHTML }}</a>{{ end }}
+{{ else }}
+  {{ with  .Site.Params.pkg_icon_git }} <a href="{{ $pkg.url_git }}" alt="Repository link">{{ . | safeHTML }}</a>{{ end }}
+{{ end }}
+<a href="{{ $url }}" alt = "{{ $pkg.name }}">{{ (printf (.Site.Params.pkg_format) (.Get 0)) | safeHTML }}</a>
+<span class="tooltip">{{ $pkg.title }}</span>
+</span>
