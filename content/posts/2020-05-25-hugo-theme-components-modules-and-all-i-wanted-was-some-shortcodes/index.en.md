@@ -17,7 +17,7 @@ math: no
 
  I had been playing around with making some custom [Hugo shortcodes](https://gohugo.io/content-management/shortcodes/) to fill some gaps as far as functionality provided by Hugo's existing (built-in) shortcodes was concerned. Others were for my own convenience to wrap frequently used elements, and some were just for fun as a learning exercise (and let's be honest, usually all of the above combined).
  
-On the *"filling a gap"* side, there's my shortcode to embed videos. It's not perfect, and I already found [a smarter one](https://github.com/martignoni/hugo-video/blob/master/layouts/shortcodes/video.html) in the wild, but it does it's job and works for me:
+On the *"filling a gap"* side, there's my shortcode to embed videos. It's not perfect, and I already found [a smarter one](https://github.com/martignoni/hugo-video/blob/master/layouts/shortcodes/video.html) in the wild, but it does its job and works for me:
 
 {{< codecaption lang="go" caption="" >}}
 {{</* videofig mp4="my-file.mp4" loop=true autoplay=true caption="A catchy caption" */>}}
@@ -44,7 +44,7 @@ That's *a lot* of work for just one package mention. Wouldn't it be *much easier
 
 ...What do you mean *"no it wouldn't, that's worse"*?
 
-Well anyway, now I did it. Next I thought "wouldn't it be cool if this was *smarter*" and, well, justified it's syntactic overhead?  
+Well anyway, now I did it. Next I thought "wouldn't it be cool if this was *smarter*" and, well, justified its syntactic overhead?  
 As it turned out, my [previous ideas regarding package taxonomies](/2020/05/migrating-themes-and-overhauling-the-rest/#the-quest-for-taxonomies) have since lead to the realization that this is *probably* much better handled via Hugo's [data templates], and once you have some R package metadata lying around, that shortcode suddenly has a lot more potential.
 
 The gist is this: Create a file named `/data/packages.yaml` (could also be `.json`), fill it with package metadata, and now you have access to said data in layout templates and shortcodes via `.Site.Data.packages`.  
@@ -126,7 +126,7 @@ What Hugo modules allow is to just run `hugo mod get -u` in my blog repo after I
 Okay, there is a decent workaround to ease local testing with modules, but first, let's walk through the steps to use Hugo modules instead of theme components + `git` submodules.
 
 After skimming [this helpful post on the Hugo forums][modules-for-dummies], I realized that the thing I wanted to use as a module didn't even need special configuration, meaning I didn't need to run `hugo mod init` in my `jemsugo` repo (apparently), and I didn't need my theme to be specially configured as well.  
-All it took (I think), was to declare *my blog itself* a Hugo module by running this in it's root directory:
+All it took (I think), was to declare *my blog itself* a Hugo module by running this in its root directory:
 
 {{< codecaption lang="bash" caption="Substitute the repo spec accordingly (or maybe remove it? I'm not sure)" >}}
 hugo mod init github.com/rbind/blog.jemu.name
@@ -191,6 +191,18 @@ I haven't gathered a lot of experience with the Hugo modules approach yet, and t
 I guess the worst thing that could happen would be learning more about how Go works, especially with regards to module caching (*where are they even stored*?) and versioning, or whatever that `_vendor` thing is all about. 
 
 Well, I'll see how it \*clear's throat\* … *Goes*.
+
+{{< addendum title="Addendum Re: Module Location" >}}
+Turns out hugo modules are by default stored in your `/tmp/` (or equivalent), and you can use the environment variable `HUGO_CACHEDIR`, which I've now set as follows:
+
+```bash
+export HUGO_CACHEDIR=$HOME/.local/share/
+```
+
+And as far as the local-testing vs. deployment goes, I guess *that's* what [vendoring](https://gohugo.io/hugo-modules/use-modules/#vendor-your-modules) is for? If you `hugo mod vendor` your modules, hugo will look for them in `_vendor` first, so you could then probably use that fact and the `--ignoreVendor` flag for local testing?  
+Needs more playing around with.
+
+{{< /addendum >}}
 
 <!-- Links -->
 
