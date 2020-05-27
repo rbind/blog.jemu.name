@@ -34,7 +34,8 @@
         {
             "label": "Update master from develop",
             "type": "shell",
-            "command": "git fetch . develop:master; git push origin master:master"
+            "command": "git fetch . develop:master; git push origin master:master",
+            "problemMatcher": []
         }
     ]
 }
