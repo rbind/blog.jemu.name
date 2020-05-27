@@ -112,7 +112,7 @@ This is the secret content *they* don't want you to know.
 This is the secret content *they* don't want you to know.
 {{< /summary >}}
 
-## Sows and movies Trakt.tv: `trakt`
+## Shows and movies Trakt.tv: `trakt`
 
 Not sure about proper API yet, currently: 
 
