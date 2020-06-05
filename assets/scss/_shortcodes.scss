@@ -36,14 +36,14 @@ div.note-box {
 
 @mixin notebox-light {
   div.note-box {
-    background-color: darken($bg-color, 4%); 
+    background-color: darken($bg-color, 4%);
   }
 }
 
 @mixin notebox-dark {
   div.note-box {
-    background-color: darken($bg-color-dark, 4%); 
-  }  
+    background-color: darken($bg-color-dark, 4%);
+  }
 }
 
 div.addendum {
@@ -73,6 +73,10 @@ figure.code {
 
 
 // pkg //
+.rpkg {
+  white-space: nowrap;
+}
+
 // package tooltip
 .rpkg a {
   font-family: $code-font-family;
@@ -86,7 +90,7 @@ figure.code {
   color: $fg-color-dark;
   text-align: center;
   padding: 1rem;
-  border-radius: 1rem; 
+  border-radius: 1rem;
   position: fixed;
   bottom: 5%;
   right: 5%;
