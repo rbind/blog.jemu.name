@@ -1,8 +1,9 @@
 knitr::opts_chunk$set(
-  fig.path = "plots/", # for leaf bundles to work
+  fig.path = "plots/", # for leaf bundles to work nicely
   cache = TRUE,
-  cache.path = "blogdown_cache/", # is ignored :/ (for leaf bundles, cache in post directory)
+  cache.path = "blogdown_cache/", # (for leaf bundles, cache in post directory)
   fig.retina = 2,
+  fig.width = 8.5,
   echo = TRUE,
   message = FALSE, warning = FALSE, error = FALSE,
   fig.align = "center",
