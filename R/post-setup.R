@@ -7,7 +7,9 @@ knitr::opts_chunk$set(
   echo = TRUE,
   message = FALSE, warning = FALSE, error = FALSE,
   fig.align = "center",
-  out.width = "95%"
+  out.width = "95%",
+  comment = "#>",
+  collapse = TRUE
 )
 
 # knitr hook to use Hugo highlighting options ----
@@ -56,7 +58,7 @@ knitr::knit_hooks$set(
   chunk_fold = function(before, options, envir) {
   if (length(options$chunk_fold)) {
     if (before) {
-      return(sprintf("<details><summary>Click to expand: %s</summary>\n\n", options$summary))
+      return(sprintf("<details><summary>Click to expand: %s</summary>\n\n", options$chunk_fold))
     } else {
       return("\n</details>")
     }
