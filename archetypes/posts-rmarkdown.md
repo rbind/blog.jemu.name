@@ -18,13 +18,15 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r setup}
+```{r setup, include=FALSE}
 source(here::here("R/post-setup.R"))
 ```
 
+## Introduction
 
 
-<!-- End --- >
-```{r sessioninfo, summary="Session Info"}
-sessioninfo:sessioninfo()
+## Conclusion
+
+```{r sessioninfo, chunk_fold="Session Info"}
+sessioninfo::session_info()
 ```

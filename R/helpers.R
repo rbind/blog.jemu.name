@@ -1,56 +1,49 @@
 #### Helper functions ####
 
-# A modified plot hook ----
-# Needed to wrap knitr plot output in semantic html tags
-# which in turn is required for photoswipe.js in beautifulhugo
+# knitr hooks ----
 
-plot_hook <- function(x, options) {
-  require(glue)
-
-  width <- height <- ""
-  if (!is.null(options$out.width))
-    # width <- sprintf(' width = "%s" ', options$out.width)
-    width <- glue(" width = {options$out.width}")
-  if (!is.null(options$out.height)) {
-    # height <- sprintf(' height = "%s" ', options$out.height)
-    height <- glue(" height = {options$out.height}")
-  }
-
-  basename <- paste0(knitr::opts_knit$get('base.url'), paste(x, collapse = '.'))
-  # this breaks with page bundles >.<
-  # It works fine for regular posts but using page bundles with this results
-  # in wrong paths
-  filename <- glue("../../../post/{basename}")
-  filename_webp <- stringr::str_replace(filename, "\\.png$", "\\.webp")
-  id <- stringr::str_extract(x, "^[^\\/]*")
-
-  if (!is.null(options$fig.cap)) {
-    caption <- options$fig.cap
-  } else {
-    caption <- opts_current$get("label")
-  }
-
-  glue(
-    "<figure>
-      <picture>
-        <source type='image/webp' srcset='{filename_webp}'>
-        <a href='{filename}' data-title='{caption}'>
-          <img src='{filename}' {width} {height} alt='{caption}' />
-        </a>
-      </picture>
-      <figcaption>{caption}</figcaption>
-    </figure>"
+# Wrap source code in hugo highlight shortcode
+hook_source <- function(x, options) {
+  hlopts <- options$hlopts
+  paste0(
+    "```", "r ",
+    if (!is.null(hlopts)) {
+      paste0("{",
+             glue::glue_collapse(
+               glue::glue('{names(hlopts)}={hlopts}'),
+               sep = ","
+             ), "}"
+      )
+    },
+    "\n", glue::glue_collapse(x, sep = "\n"), "\n```\n"
   )
+}
 
+
+# Hugo plot hook ----
+# see https://ropensci.org/technotes/2020/04/23/rmd-learnings/
+hook_plot <- function(x, options) {
+  hugoopts <- options$hugoopts
+  # Link image to itself if there's no explicit link set
+  if (!hasName(hugoopts, "link")) hugoopts$link <- x
+  paste0(
+    "\n{", "{<figure src=", '"', x, '" ',
+    if (!is.null(hugoopts)) {
+      glue::glue_collapse(
+        glue::glue('{names(hugoopts)}="{hugoopts}"'),
+        sep = " "
+      )
+    },
+    ">}}\n"
+  )
 }
 
 # Enable the code-hiding-via-summary-tags thing
-# Shamelessly stolen from
 # https://github.com/cpsievert/plotly_book/blob/a95fb991fdbfdab209f5f86ce1e1c181e78f801e/index.Rmd#L52-L60
-summary_hook <- function(before, options, envir) {
-  if (length(options$summary)) {
+hook_chunk_fold <- function(before, options, envir) {
+  if (length(options$chunk_fold)) {
     if (before) {
-      return(sprintf("<details><summary>Code: %s</summary>\n", options$summary))
+      return(sprintf("<details><summary>Click to expand: %s</summary>\n\n", options$chunk_fold))
     } else {
       return("\n</details>")
     }
@@ -59,44 +52,30 @@ summary_hook <- function(before, options, envir) {
 
 # Caching datasets ----
 
-# Set post-specific cache directiory, create if needed
-# Use at beginning of post
-# Might take rmarkdown::metadata$slug as input dynamically
-make_cache_path <- function(post_slug = "misc") {
-
-  cache_path <- here::here(file.path("datasets", post_slug))
-
-  if (!file.exists(cache_path)) dir.create(cache_path)
-
-  cache_path
+is_cached <- function(x) {
+  file.exists(x)
 }
 
-#' Check if file is not cached
-#' @param cache_path As returned by make_cache_path
-#' @param cache_data Bare name of data to cache
-#' @example
-#' if (file_note_cache(cache_path, bigdata)) {
-#'   { do expensive stuff }
-#' }
-file_not_cached <- function(cache_path, cache_data) {
-  filename <- paste0(deparse(substitute(cache_data)), ".rds")
-  !(file.exists(file.path(cache_path, filename)))
+not_cached <- function(x) {
+  !file.exists(x)
 }
 
-# Cache a file, just a wrapper for saveRDS
-cache_file <- function(cache_path, cache_data) {
-  filename <- paste0(deparse(substitute(cache_data)), ".rds")
-  saveRDS(cache_data, file.path(cache_path, filename))
-}
+# Rendering singular posts -----
 
-# Read a cached file, just a wrapper for readRDS
-read_cache_file <- function(cache_path, cache_data) {
-  filename <- paste0(deparse(substitute(cache_data)), ".rds")
-  readRDS(file.path(cache_path, filename))
-}
+render_latest <- function(post_dir = "posts", clean = FALSE) {
+  post_files <- fs::dir_ls(
+    here::here("content", post_dir),
+    recurse = TRUE,
+    glob = "*.Rmarkdown"
+  )
+  post_mtime <- fs::file_info(post_files)$change_time
+  latest_post <- post_files[which.max(post_mtime)]
 
-# Get date from cached file
-cache_date <- function(cache_data, cache_path) {
-  filename <- paste0(deparse(substitute(cache_data)), ".rds")
-  format(file.mtime(file.path(cache_path, filename)), "%F")
+  if (clean) {
+    fs::dir_delete(here::here(fs::path_dir(latest_post), "plots"))
+    fs::dir_delete(here::here(fs::path_dir(latest_post), "post_cache"))
+    fs::file_delete(here::here(fs::path_dir(latest_post), "index.en.markdown"))
+  }
+
+  blogdown:::render_page(latest_post)
 }

@@ -16,6 +16,6 @@ AutoAppendNewline: Yes
 StripTrailingWhitespace: Yes
 
 BuildType: Custom
-CustomScriptPath: build.sh
+CustomScriptPath: render_latest.R
 
 QuitChildProcessesOnExit: Yes

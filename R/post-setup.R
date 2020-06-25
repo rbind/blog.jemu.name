@@ -1,3 +1,5 @@
+source(here::here("R/helpers.R"))
+
 knitr::opts_chunk$set(
   fig.path = "plots/", # for leaf bundles to work nicely
   cache = TRUE,
@@ -9,61 +11,23 @@ knitr::opts_chunk$set(
   fig.align = "center",
   out.width = "95%",
   comment = "#>",
-  collapse = TRUE
+  collapse = FALSE
 )
 
 # knitr hook to use Hugo highlighting options ----
 knitr::knit_hooks$set(
-  source = function(x, options) {
-    hlopts <- options$hlopts
-    paste0(
-      "```", "r ",
-      if (!is.null(hlopts)) {
-        paste0("{",
-               glue::glue_collapse(
-                 glue::glue('{names(hlopts)}={hlopts}'),
-                 sep = ","
-               ), "}"
-        )
-      },
-      "\n", glue::glue_collapse(x, sep = "\n"), "\n```\n"
-    )
-  }
+  source = hook_source
 )
 
 # Plot to hugo figure shortcode ----
 # in .Rmarkdown only
-# see https://ropensci.org/technotes/2020/04/23/rmd-learnings/
 knitr::knit_hooks$set(
-  plot = function(x, options) {
-    hugoopts <- options$hugoopts
-    # Link image to itself if there's no explicit link set
-    if (!hasName(hugoopts, "link")) hugoopts$link <- x
-    paste0(
-      "\n{", "{<figure src=", '"', x, '" ',
-      if (!is.null(hugoopts)) {
-        glue::glue_collapse(
-          glue::glue('{names(hugoopts)}="{hugoopts}"'),
-          sep = " "
-        )
-      },
-      ">}}\n"
-    )
-  }
+  plot = hook_plot
 )
 
 # Fold entire chunk incl output ----
-# https://github.com/cpsievert/plotly_book/blob/a95fb991fdbfdab209f5f86ce1e1c181e78f801e/index.Rmd#L52-L60
 knitr::knit_hooks$set(
-  chunk_fold = function(before, options, envir) {
-  if (length(options$chunk_fold)) {
-    if (before) {
-      return(sprintf("<details><summary>Click to expand: %s</summary>\n\n", options$chunk_fold))
-    } else {
-      return("\n</details>")
-    }
-  }
-}
+  chunk_fold = hook_chunk_fold
 )
 
 # Fold source code only ----
