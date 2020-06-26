@@ -108,16 +108,16 @@ takeway_run(10)
 #>     step numbers     sum
 #>    <int> <list>    <int>
 #>  1     1 <int [3]>   250
-#>  2     2 <int [3]>    34
-#>  3     3 <int [3]>    18
-#>  4     4 <int [3]>    16
-#>  5     5 <int [3]>    14
+#>  2     2 <int [3]>    52
+#>  3     3 <int [3]>    36
+#>  4     4 <int [3]>    20
+#>  5     5 <int [3]>    16
 #>  6     6 <int [3]>    12
-#>  7     7 <int [3]>    10
-#>  8     8 <int [3]>     8
-#>  9     9 <int [3]>     6
+#>  7     7 <int [3]>     8
+#>  8     8 <int [3]>     4
+#>  9     9 <int [3]>     4
 #> 10    10 <int [3]>     4
-#> 11    11 <int [3]>     2
+#> 11    11 <int [3]>     4
 ```
 
 Note that the `numbers` column is actually a list column containing a vector with the numbers at that step. I could have pasted them together as a string after I got their sum, but oh well --- I'll do that later.
@@ -208,9 +208,9 @@ runs %>%
 </tbody>
 </table>
 
-Neato, 3 winning runs and each of them qualify. So here's 3 perfectly fine submission for you, for free ^[cheat]. 
+Neato, 3 winning runs and each of them qualify. So here's 3 perfectly fine submission for you, for free [^cheat]. 
 
-[cheat]: But that would be cheating. You monster.
+[^cheat]: But that would be cheating. You monster.
 
 ## Bonus Plot
 

@@ -153,9 +153,9 @@ runs %>%
   kable()
 ```
 
-Neato, 3 winning runs and each of them qualify. So here's 3 perfectly fine submission for you, for free ^[cheat]. 
+Neato, 3 winning runs and each of them qualify. So here's 3 perfectly fine submission for you, for free [^cheat]. 
 
-[cheat]: But that would be cheating. You monster.
+[^cheat]: But that would be cheating. You monster.
 
 ## Bonus Plot
 
