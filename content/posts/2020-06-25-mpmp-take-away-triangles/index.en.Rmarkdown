@@ -22,7 +22,7 @@ editor_options:
 
 ```{r setup, include=FALSE, cache=FALSE}
 source(here::here("R/post-setup.R"))
-knitr::opts_chunk$set(cache = FALSE)
+# knitr::opts_chunk$set(cache = FALSE)
 
 if (file.exists("runs.rds")) runs <- readRDS("runs.rds")
 ```
@@ -78,7 +78,8 @@ I'm not too sure about the notation, but I think if I put it like this should be
 \{a,b,c\} &\mapsto \{|a-b|, |a-c|, |b-c|\} \\
 \end{align}
 
-...I can't tell if that's helping.  
+...I can't tell if that's helping. 
+
 Anyway, now I have a function to do "one step". The next *step* (heh) is to iteratively do the take-aways for a set number of steps (I chose 50 here) while also starting off with a random set of integers between 1 and 100 (arbitrarily enough).  
 It turns out this is one of the few cases where you need (I think) a `for` loop in `R`, because you need the $n$th result to calculate the $n+1$th result --- but if anyone manages a more functional-progamming-y solution via `purrr::map`, I'd be curious to see it.
 
@@ -117,7 +118,19 @@ runs <- purrr::map_df(1:100, ~{
   takeway_run(steps = 50) %>%
     mutate(run_id = .x)
 })
+```
 
+```{r cache-write, include=FALSE, eval=!file.exists("runs.rds")}
+saveRDS(runs, "runs.rds")
+```
+
+```{r cache-read, include=FALSE, eval=file.exists("runs.rds")}
+runs <- readRDS("runs.rds")
+```
+
+Let's take a quick look:
+
+```{r looksie}
 runs
 ```
 

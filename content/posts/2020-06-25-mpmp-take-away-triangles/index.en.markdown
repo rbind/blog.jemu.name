@@ -77,7 +77,8 @@ I'm not too sure about the notation, but I think if I put it like this should be
 \{a,b,c\} &\mapsto \{|a-b|, |a-c|, |b-c|\} \\
 \end{align}`
 
-...I can't tell if that's helping.  
+...I can't tell if that's helping. 
+
 Anyway, now I have a function to do "one step". The next *step* (heh) is to iteratively do the take-aways for a set number of steps (I chose 50 here) while also starting off with a random set of integers between 1 and 100 (arbitrarily enough).  
 It turns out this is one of the few cases where you need (I think) a `for` loop in `R`, because you need the `\(n\)`th result to calculate the `\(n+1\)`th result --- but if anyone manages a more functional-progamming-y solution via `purrr::map`, I'd be curious to see it.
 
@@ -107,17 +108,17 @@ takeway_run(10)
 #> # A tibble: 11 x 3
 #>     step numbers     sum
 #>    <int> <list>    <int>
-#>  1     1 <int [3]>   250
-#>  2     2 <int [3]>    52
-#>  3     3 <int [3]>    36
-#>  4     4 <int [3]>    20
-#>  5     5 <int [3]>    16
-#>  6     6 <int [3]>    12
-#>  7     7 <int [3]>     8
-#>  8     8 <int [3]>     4
-#>  9     9 <int [3]>     4
-#> 10    10 <int [3]>     4
-#> 11    11 <int [3]>     4
+#>  1     1 <int [3]>   142
+#>  2     2 <int [3]>   132
+#>  3     3 <int [3]>   122
+#>  4     4 <int [3]>   112
+#>  5     5 <int [3]>   102
+#>  6     6 <int [3]>    92
+#>  7     7 <int [3]>    82
+#>  8     8 <int [3]>    72
+#>  9     9 <int [3]>    62
+#> 10    10 <int [3]>    52
+#> 11    11 <int [3]>    42
 ```
 
 Note that the `numbers` column is actually a list column containing a vector with the numbers at that step. I could have pasted them together as a string after I got their sum, but oh well --- I'll do that later.
@@ -133,7 +134,15 @@ runs <- purrr::map_df(1:100, ~{
   takeway_run(steps = 50) %>%
     mutate(run_id = .x)
 })
+```
 
+
+
+
+
+Let's take a quick look:
+
+```r 
 runs
 ```
 
@@ -141,16 +150,16 @@ runs
 #> # A tibble: 5,100 x 4
 #>     step numbers     sum run_id
 #>    <int> <list>    <int>  <int>
-#>  1     1 <int [3]>   239      1
-#>  2     2 <int [3]>    16      1
-#>  3     3 <int [3]>    12      1
-#>  4     4 <int [3]>     8      1
-#>  5     5 <int [3]>     4      1
-#>  6     6 <int [3]>     4      1
-#>  7     7 <int [3]>     4      1
-#>  8     8 <int [3]>     4      1
-#>  9     9 <int [3]>     4      1
-#> 10    10 <int [3]>     4      1
+#>  1     1 <int [3]>   153      1
+#>  2     2 <int [3]>   128      1
+#>  3     3 <int [3]>    64      1
+#>  4     4 <int [3]>    64      1
+#>  5     5 <int [3]>    64      1
+#>  6     6 <int [3]>    64      1
+#>  7     7 <int [3]>    64      1
+#>  8     8 <int [3]>    64      1
+#>  9     9 <int [3]>    64      1
+#> 10    10 <int [3]>    64      1
 #> # … with 5,090 more rows
 ```
 
@@ -176,7 +185,7 @@ winning_runs
 ```
 
 ```
-#> [1] 66 71 96
+#> [1] 65 70 95
 ```
 
 Well then, what where the starting numbers? Did they sum to 14? That would disqualify them.
@@ -259,9 +268,9 @@ runs %>%
  <thead>
   <tr>
    <th style="text-align:right;"> Step </th>
-   <th style="text-align:left;"> Run 66 </th>
-   <th style="text-align:left;"> Run 71 </th>
-   <th style="text-align:left;"> Run 96 </th>
+   <th style="text-align:left;"> Run 65 </th>
+   <th style="text-align:left;"> Run 70 </th>
+   <th style="text-align:left;"> Run 95 </th>
   </tr>
  </thead>
 <tbody>
