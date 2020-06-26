@@ -9,11 +9,17 @@ tags:
   - maths
   - puzzle
 featured_image: "plots/takeaway-runs-plot-1.png"
-description: ''
+description: "In which I fiddle around with this weeks Matt Parker's Maths Puzzle"
 externalLink: ''
 series:
   - R
-packages: ''
+packages: 
+  - ggplot2
+  - purrr
+  - dplyr
+  - tidyr
+  - hrbrthemes
+  - kableExtra
 toc: yes
 math: yes
 editor_options: 
