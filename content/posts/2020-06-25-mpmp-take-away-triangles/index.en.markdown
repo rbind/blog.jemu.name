@@ -14,7 +14,7 @@ externalLink: ''
 series:
   - R
 packages: ''
-toc: no
+toc: yes
 math: yes
 editor_options: 
   chunk_output_type: console
@@ -22,9 +22,9 @@ editor_options:
 
 
 
-It finally happened (I think)! In this weeks *Matt Parker's Maths Puzzles* (MPMP), the challenge proposed is actually something I had a quick idea for on how to solve it in R.  
+It finally happened! In this weeks *Matt Parker's Maths Puzzles* (MPMP), the challenge proposed was finally something I had a quick idea for on how to solve it in R.  
 
-IF you're unfamiliar with the MPMP series, or specificially the current challenge (posted on June 24th), [here's the video with the puzzle which I won't embed because tracking and stuff](https://www.youtube.com/watch?v=WZnVOYGLiy4).
+If you're unfamiliar with the MPMP series, or specificially the current challenge (posted on June 24th), [here's the video with the puzzle which I won't embed because tracking and stuff](https://www.youtube.com/watch?v=WZnVOYGLiy4).
 
 The puzzle submission page with some extra info is [located here](http://www.think-maths.co.uk/trianglepuzzle) if you want to give it a go, but I'll restate the goal here:
 
@@ -46,6 +46,8 @@ theme_set(theme_ft_rc())
 plot_caption <- glue::glue("@jemus42 // {Sys.Date()}")
 ```
 
+## `takeaway()`: The Basic Building Block
+
 First up I'll define a function to do "one round" of takeaway on a set of 3 numbers, e.g. `\(X = \{4, 8, 12\}\)`. I'll use the first digit as the left corner, the right digit as the right corner, and the middle digit as the centered corner of the triangles (it makes sense if you've watched the video I swear), and using `R`'s vectorization this is fairly easy to implement:
 
 ```r 
@@ -56,15 +58,19 @@ takeaway <- function(x) {
 }
 
 # Demo:
-x <- c(4, 8, 12)
+x <- c(5, 8, 12)
 takeaway(x)
 ```
 
 ```
-#> [1] 4 8 4
+#> [1] 3 7 4
 ```
 
-I'm not too sure about the notation, but I think if I put it like this it should at least roughly get the idea across:
+This should implement the following operation:
+
+{{< figure src="take-away-diagram.png" alt="Diagram showing the take-way triangle operation" caption="Once again, money spent on OmniGraffle very well... underutilized." >}}
+
+I'm not too sure about the notation, but I think if I put it like this should be a roughly correct way to formalize the operation:
 
 `\begin{align}
 \operatorname{takeaway}: \mathbb{N}^3 &\to \mathbb{N}^3 \\
@@ -101,20 +107,22 @@ takeway_run(10)
 #> # A tibble: 11 x 3
 #>     step numbers     sum
 #>    <int> <list>    <int>
-#>  1     1 <int [3]>   139
-#>  2     2 <int [3]>   164
-#>  3     3 <int [3]>   116
-#>  4     4 <int [3]>    68
-#>  5     5 <int [3]>    48
-#>  6     6 <int [3]>    28
-#>  7     7 <int [3]>    20
-#>  8     8 <int [3]>    12
-#>  9     9 <int [3]>     8
+#>  1     1 <int [3]>   250
+#>  2     2 <int [3]>    34
+#>  3     3 <int [3]>    18
+#>  4     4 <int [3]>    16
+#>  5     5 <int [3]>    14
+#>  6     6 <int [3]>    12
+#>  7     7 <int [3]>    10
+#>  8     8 <int [3]>     8
+#>  9     9 <int [3]>     6
 #> 10    10 <int [3]>     4
-#> 11    11 <int [3]>     4
+#> 11    11 <int [3]>     2
 ```
 
 Note that the `numbers` column is actually a list column containing a vector with the numbers at that step. I could have pasted them together as a string after I got their sum, but oh well --- I'll do that later.
+
+## Doing Things A Lot
 
 Now that we have a function to generate a random run of 50 steps, we'll do the classic "computer fast brain slow" approach of "just simulating a bunch" by generating 100 successive runs, each with random starting numbers:
 
@@ -204,6 +212,8 @@ Neato, 3 winning runs and each of them qualify. So here's 3 perfectly fine submi
 
 [cheat]: But that would be cheating. You monster.
 
+## Bonus Plot
+
 I also couldn't resist to plot all the runs by their number's sums at each step, highlighting the 3 winners:
 
 ```r 
@@ -227,8 +237,9 @@ runs %>%
 
 {{<figure src="plots/takeaway-runs-plot-1.png" link="plots/takeaway-runs-plot-1.png">}}
 
+## Conclusion
 
-Here are the winning runs in full --- or rather only the first 10 steps. It turns out 50 steps was more than enough given the size of my starting numbers.
+And finally, here are the winning runs in full --- or rather only the first 10 steps. It turns out 50 steps was more than enough given the size of my starting numbers.
 
 ```r 
 runs %>%
