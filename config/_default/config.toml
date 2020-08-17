@@ -24,6 +24,7 @@ Paginate = 20
 # Enable features
 enableEmoji = true
 enableGitInfo = true
+enableRobotsTXT = true
 
 # Rmarkdown special handling
 ignoreFiles = [
