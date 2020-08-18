@@ -88,7 +88,9 @@ Immer ganz nett.
 
 [Website](https://www.relay.fm/liftoff) / [Overcast](https://overcast.fm/itunes1031275911/liftoff)
 
-**Genres**: Two dudes talking *about space and related subjects*
+**Genres**: Two dudes talking 
+
+*…about space and related subjects*
 
 I like space. It's where all my stuff is.
 
@@ -114,13 +116,17 @@ Von Vox.com, die übrigens auch ganz [guten Kram auf YouTube](https://www.youtub
 
 **Genres**: Two dudes talking
 
-…about weird Wikipedia articles.  
+*…about weird Wikipedia articles.*  
+
 Meistens zu kurz um wirklich interessant zu sein, oft mehr so *"haha, weird. Okay moving on with my life now"*.
 
 ### The Unmade Podcast
 
 [Website](https://www.unmade.fm/) / [Overcast](https://overcast.fm/itunes1274023400/the-unmade-podcast)
 
+**Genres**: Two dudes talking
+
+…about anything and nothing in particular.
 
 Ein Podcast in dem's nicht wirklich um was geht. Brady (Haran, see also: Numberphile) und ein Freund reden über Podcast Ideen von fragwürdiger Umsetzbarkeit, die manchmal _genius_ sind und in der Regel zumindest ganz entertaining.  
 Ansonsten aber eher Geschwafel dessen enjoyability von deiner Sympathie mit den Hosts abhängt.
@@ -129,7 +135,9 @@ Ansonsten aber eher Geschwafel dessen enjoyability von deiner Sympathie mit den 
 
 [Website](https://atp.fm/) / [Overcast](https://overcast.fm/itunes617416468)
 
-**Genres**: Three dudes talking *about tech because of course*
+**Genres**: Three dudes talking 
+
+*…about tech because of course*.
 
 (What do you call a group of three white men? [^punchline])
 
@@ -181,7 +189,8 @@ Manche podcasts sind halt gescripted, aber nicht *fiction*-scripted, sondern, ä
 [Website](https://www.wnycstudios.org/podcasts/anthropocene-reviewed) / [Overcast](https://overcast.fm/itunes1342003491/the-anthropocene-reviewed)
 
 Wo ich gerade bei John Green war. Er *"reviewed"* Teile der modern human experience, und auch wenn ich nicht all caught up bin, würde ich ihn doch empfehlen wollen.  
-Interessant, oddly personal, kinda great.
+Interessant, oddly personal, kinda great.  
+Zur Not auch gut zum einschlafen.
 
 ### Lore
 
