@@ -26,6 +26,8 @@ knitr::opts_chunk$set(
 )
 ```
 
+**Updated** on 2020-10-09 to include `theme_ipsum_gs` with *Goldman Sans*.
+
 Recently, as part of a glorious procrastinative effort, I started trying to build some {ggplot2} themes. It's been years since I really tried tweaking themes, because ever since {hrbrthemes} rolled around I just went for those as a safe default.  
 I have been using `theme_ipsum_rc` as my go-to theme with minor tweaks here and there for so long that I almost forgot that there's a lot more where that came from – [the package website](https://hrbrmstr.github.io/hrbrthemes/) however doesn't give a complete preview of all the themes (and it's outdated at the time of this writing).  
 
@@ -46,6 +48,7 @@ import_econ_sans()
 import_tinyhand()
 import_plex_sans()
 import_roboto_condensed()
+import_goldman_sans()
 ```
 
 Depending on your output device, you might have to
@@ -170,12 +173,24 @@ p6 <- p_facets +
 p6
 ```
 
+### `theme_ipsum_gs` <small>(Goldman Sans)</small>
+
+```{r theme_ipsum_gs}
+p7 <- p_facets + 
+  scale_color_ipsum() +
+  labs(title = "theme_ipsum_gs", subtitle = "Goldman Sans") +
+  theme_ipsum_gs()
+p7
+```
+
 ## All the `ipsum` theme variations
 
 ```{r all-ipsum-themes, fig.cap="All ipsum themes (click to zoom)", fig.height = 8, fig.width = 17}
 # Plotting them in two rows (<3 patchwork)
 ((p1 + p2 + p3) / (p4 + p5 + p6))
 ```
+
+*(Yes, Goldman Sans is missing, but I couldn't think of a neat way to plot 7 plots in a neat arrangement, sorry)*
 
 ## The modern/dark themes
 

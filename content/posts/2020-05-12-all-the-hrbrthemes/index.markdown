@@ -19,6 +19,8 @@ editor_options:
 
 
 
+**Updated** on 2020-10-09 to include `theme_ipsum_gs` with *Goldman Sans*.
+
 Recently, as part of a glorious procrastinative effort, I started trying to build some {ggplot2} themes. It's been years since I really tried tweaking themes, because ever since {hrbrthemes} rolled around I just went for those as a safe default.  
 I have been using `theme_ipsum_rc` as my go-to theme with minor tweaks here and there for so long that I almost forgot that there's a lot more where that came from – [the package website](https://hrbrmstr.github.io/hrbrthemes/) however doesn't give a complete preview of all the themes (and it's outdated at the time of this writing).  
 
@@ -39,6 +41,7 @@ import_econ_sans()
 import_tinyhand()
 import_plex_sans()
 import_roboto_condensed()
+import_goldman_sans()
 ```
 
 Depending on your output device, you might have to
@@ -56,7 +59,7 @@ extrafont::fonts()
 To install them system-wide, you'll want to go to the file path the functions give you (i.e. the path to `hrbrthemes` in your package library) and install the fonts in whichever way you system requires.  
 In my experience, that should at least be enough to use them with PNG or PDF output, but your mileage may vary. You may find [{showtext}](https://github.com/yixuan/showtext) helpful, or use [{ragg}](https://ragg.r-lib.org/) as an alternative device, etc. pp.
 
-Anyway, here's a quick list of the included {hrbrthemes} themes as of **v0.8.0**:
+Anyway, here's a quick list of the included {hrbrthemes} themes as of **v0.8.6**:
 
 ```r 
 # List all themes in package
@@ -68,6 +71,7 @@ glue::glue("- `{pkg_themes}()`")
 - `theme_ft_rc()`
 - `theme_ipsum()`
 - `theme_ipsum_es()`
+- `theme_ipsum_gs()`
 - `theme_ipsum_ps()`
 - `theme_ipsum_pub()`
 - `theme_ipsum_rc()`
@@ -186,6 +190,18 @@ p6
 
 {{<figure src="plots/theme_ipsum_tw-1.png" link="plots/theme_ipsum_tw-1.png">}}
 
+### `theme_ipsum_gs` <small>(Goldman Sans)</small>
+
+```r 
+p7 <- p_facets + 
+  scale_color_ipsum() +
+  labs(title = "theme_ipsum_gs", subtitle = "Goldman Sans") +
+  theme_ipsum_gs()
+p7
+```
+
+{{<figure src="plots/theme_ipsum_gs-1.png" link="plots/theme_ipsum_gs-1.png">}}
+
 ## All the `ipsum` theme variations
 
 ```r 
@@ -194,6 +210,8 @@ p6
 ```
 
 {{<figure src="plots/all-ipsum-themes-1.png" link="plots/all-ipsum-themes-1.png">}}
+
+*(Yes, Goldman Sans is missing, but I couldn't think of a neat way to plot 7 plots in a neat arrangement, sorry)*
 
 ## The modern/dark themes
 
