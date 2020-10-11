@@ -144,10 +144,10 @@
     },
     "blogdown": {
       "Package": "blogdown",
-      "Version": "0.20",
+      "Version": "0.21",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "3f5342aa58bd21ab1b5bed287a2bc5d3"
+      "Hash": "df219adae2750920faa98762afe3426b"
     },
     "bookdown": {
       "Package": "bookdown",
@@ -1082,9 +1082,9 @@
       "RemoteUsername": "jemus42",
       "RemoteRepo": "tRakt",
       "RemoteRef": "master",
-      "RemoteSha": "3ef0333c1821c55da4b47fe63773262a27c33fdf",
+      "RemoteSha": "6870eeb7a357b669157820fb5786529cba7c20e7",
       "RemoteHost": "api.github.com",
-      "Hash": "920a89dd5a1f090c47f7950ac96f2c9f"
+      "Hash": "5f76cf904c49d11f215832b934566bb9"
     },
     "tadaathemes": {
       "Package": "tadaathemes",
@@ -1094,9 +1094,9 @@
       "RemoteUsername": "tadaadata",
       "RemoteRepo": "tadaathemes",
       "RemoteRef": "master",
-      "RemoteSha": "7d3c446c083bdf3f6ddcc6d67a52a47142ef7c2d",
+      "RemoteSha": "6303dafb3dcab23a1f723c46fd0de60f2404b141",
       "RemoteHost": "api.github.com",
-      "Hash": "36a5c58aef0d387a2d5d0d1aa62e65ff"
+      "Hash": "457bfd3dbebd4f550635b6bafbce7d08"
     },
     "tadaatoolbox": {
       "Package": "tadaatoolbox",
