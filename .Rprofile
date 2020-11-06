@@ -12,10 +12,12 @@ options(
     blogdown.author = "jemus42",
     blogdown.ext = ".Rmarkdown",
     blogdown.subdir = "posts",
-    blogdown.new_bundle = TRUE,
     blogdown.title_case = TRUE,
-    blogdown.generator.server = TRUE,
-    blogdown.hugo.server = c("-D", "-F", "--navigateToChanged")
+    # No longer needed since they're defaults as of blogdown 0.21
+    # blogdown.new_bundle = TRUE,
+    # blogdown.generator.server = TRUE,
+    blogdown.hugo.server = c("-D", "-F", "--navigateToChanged"),
+    blogdown.knit.on_save = FALSE
 )
 
 # Unset client secret so tRakt won't try authorization
