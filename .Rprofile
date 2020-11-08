@@ -17,7 +17,8 @@ options(
     # blogdown.new_bundle = TRUE,
     # blogdown.generator.server = TRUE,
     blogdown.hugo.server = c("-D", "-F", "--navigateToChanged"),
-    blogdown.knit.on_save = FALSE
+    blogdown.knit.on_save = FALSE,
+    blogdown.serve_site.startup = FALSE
 )
 
 # Unset client secret so tRakt won't try authorization
