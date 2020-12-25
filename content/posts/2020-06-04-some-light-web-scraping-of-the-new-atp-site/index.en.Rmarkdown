@@ -1,0 +1,412 @@
+---
+title: Some Light Web-Scraping of the New ATP Site
+author: jemus42
+date: "2020-12-11" # '2020-06-04'
+slug: some-light-web-scraping-of-the-new-atp-site
+series:
+  - R
+tags:
+  - "web scraping"
+featured_image: null
+description: ''
+packages:
+  - polite
+  - rvest
+toc: yes
+math: no
+always_allow_html: yes
+output:
+  hugodown::hugo_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+source(here::here("R/post-setup.R"))
+knitr::opts_chunk$set(cache = FALSE)
+
+if (file.exists("atp_episodes.rds")) atp_episodes <- readRDS("atp_episodes.rds")
+```
+
+## Introduction
+
+{{< addendum title="Note" >}}
+I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over 6 months because… well, the year's been busy.
+
+The code for this has since been put into its own [little package](https://github.com/jemus42/poddr) — so if you want to just get some data, you can install that or get the up-to-date data [from my other project's site](https://podcasts.jemu.name/data/).
+{{< /addendum >}}
+
+```{r pkgs, chunk_fold="Show packages & setup"}
+# For web-scraping
+library(polite)
+library(rvest)
+
+# For convenience
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(lubridate)
+
+# Tables
+library(kableExtra)
+
+# Plotting
+library(ggplot2)
+library(tadaathemes) # remotes::install_github("tadaadata/tadaathemes")
+
+plot_caption <- glue::glue("@jemus42 // {Sys.Date()}")
+```
+
+There are two main "tricks" to successful web-scraping (in my admittedly limited experience):
+
+1. Get as close to the information you care about by using identifying CSS selectors.
+2. Whittle down text content as needed by trying to not have regular expressions wear you down.
+
+
+For step 1, I like using [SelectorGadget], but you may be more comfortable using your favorite browser's developer tools, or looking at the site's HTML source, or being *really* good at guessing.  
+For point 2, you'll probably want to spend some time on (and bookmark) [regexr] or [regex101], and maybe you'll like the {{< pkg "rematch2" >}} package. I haven't tried the latter yet, but I tend to think "I should look at that some time" every once in a while before I go back to my regular regexing.
+
+Then there's **step 0** of web scraping:  
+**Don't be a dick to the site you're scraping**.  
+In this case I don't think there's too much of a chance of me hammering the site in question too much, as I learned I'm going to need a total of *9* pages. So… I don't think I could do too much damage even if tried. However, I will still use the {{< pkg "polite" >}} package because I wanted to try it out anyway, and from what I gather it's explicit purpose is to, well, be *polite* with your scraping.
+
+Oh, and I totally forgot **step -1** of web scraping:  
+Make sure you actually have permission. There's plenty of sites out there that don't allow third parties to scrape their content without expressed permission. Read the TOS if applicable, and make sure you're not playing the *"but it's a free website why am I not entitled to scraping all its content and use it for my own purposes"* card.  
+In this particular case, I'm fairly certain that tabulating podcast episodes and shownote URLs is "safe".  
+Things are different for popular scraping targets like [IMDb](https://www.imdb.com/conditions).
+
+> **Robots and Screen Scraping**: You may not use data mining, robots, screen scraping, or similar data gathering and extraction tools on this site, except with our express written consent as noted below.
+
+So, even if you were extra polite in your IMDb scraping, you're still being a dick by breaking their TOS, so you're going to have to get that data [through their official channel](https://developer.imdb.com/) for your projects. 
+
+[SelectorGadget]: https://selectorgadget.com/
+[regexr]: https://regexr.com/
+[regex101]: https://regex101.com/
+
+```{r data-getting}
+session <- bow("https://atp.fm/", force = TRUE)
+links <- scrape(session) %>%
+  html_nodes("li a") 
+
+atp_links <- tibble::tibble(
+  text = html_text(links),
+  url = html_attr(links, "href")
+)
+
+head(atp_links)
+```
+
+
+## Segmentation
+
+```{r}
+articles <- scrape(session) %>%
+  html_nodes("article") 
+
+length(articles)
+
+tibble::tibble(
+  episode = html_nodes(articles, "h2 a") %>% html_text()
+)
+```
+
+
+
+```{r assemble-episodes}
+atp_parse_page <- function(page) {
+  rvest::html_nodes(page, "article") %>%
+    purrr::map_dfr(~ {
+      meta <- rvest::html_node(.x, ".metadata") %>%
+        rvest::html_text() %>%
+        stringr::str_trim()
+
+      date <- meta %>%
+        stringr::str_extract("^.*(?=\\\n)") %>%
+        lubridate::mdy()
+
+      duration <- meta %>%
+        stringr::str_extract("\\d{2}:\\d{2}:\\d{2}") %>%
+        hms::as_hms()
+
+      number <- .x %>%
+        rvest::html_nodes("h2 a") %>%
+        rvest::html_text() %>%
+        stringr::str_extract("^\\d+")
+
+      title <- .x %>%
+        rvest::html_nodes("h2 a") %>%
+        rvest::html_text() %>%
+        stringr::str_remove("^\\d+:\\s")
+
+      # Get the sponsor links
+      link_text_sponsor <- .x %>%
+        rvest::html_nodes("ul~ ul li") %>%
+        rvest::html_nodes("a") %>%
+        rvest::html_text()
+
+      link_href_sponsor <- .x %>%
+        rvest::html_nodes("ul~ ul li") %>%
+        rvest::html_nodes("a") %>%
+        rvest::html_attr("href")
+
+      links_sponsor <- tibble(
+        link_text = link_text_sponsor,
+        link_url = link_href_sponsor,
+        type = "Sponsor"
+      )
+
+      # Get the regular shownotes links
+      link_text <- .x %>%
+        rvest::html_nodes(".subtitle+ ul li , li a") %>%
+        rvest::html_nodes("li a") %>%
+        rvest::html_text()
+
+      link_href <- .x %>%
+        rvest::html_nodes(".subtitle+ ul li , li a") %>%
+        rvest::html_nodes("li a") %>%
+        rvest::html_attr("href")
+
+      links_regular <- tibble(
+        link_text = link_text,
+        link_url = link_href,
+        link_type = "Shownotes"
+      )
+
+      # Piece it all together
+      tibble(
+        number = number,
+        title = title,
+        duration = duration,
+        date = date,
+        year = lubridate::year(date),
+        month = lubridate::month(date, abbr = FALSE, label = TRUE),
+        weekday = lubridate::wday(date, abbr = FALSE, label = TRUE),
+        links = list(dplyr::bind_rows(links_regular, links_sponsor)),
+        n_links = purrr::map_int(links, nrow)
+      )
+    })
+}
+```
+
+## Getting _All_ the Episodes
+
+Or: This is my first `while`-loop in R since… I think 2014?  
+I don't regret *everything* per se, but I think this is actually reasonable.
+
+```{r scrape-atp, eval=!file.exists("atp_episodes.rds")}
+atp_get_episodes <- function(page_limit = NULL) {
+
+  if (is.null(page_limit)) page_limit <- Inf
+
+  # Get the first page and scrape it
+  session <- polite::bow(url = "https://atp.fm")
+
+  atp_pages <- list("1" = polite::scrape(session))
+  next_page_num <- 2
+
+  # Early return for first page only
+  if (page_limit == 1) {
+    atp_parse_page(atp_pages[[1]])
+  }
+
+  # Find out how many pages there will be in total
+  # purely for progress bar cosmetics.
+  latest_ep_num <- atp_pages[[1]] %>%
+    rvest::html_nodes("h2 a") %>%
+    rvest::html_text() %>%
+    stringr::str_extract("^\\d+") %>%
+    as.numeric() %>%
+    max()
+
+  # First page has 5 episodes, 50 episodes per page afterwards
+  total_pages <- ceiling((latest_ep_num - 5) / 50) + 1
+
+  pb <- progress::progress_bar$new(
+    format = "Getting pages [:bar] :current/:total (:percent) ETA: :eta",
+    total = total_pages
+  )
+  pb$tick()
+
+  # Iteratively get the next page until the limit is reached
+  # (or of there's no next page to retrieve)
+  while (next_page_num <= page_limit) {
+    pb$tick()
+
+    atp_pages[[next_page_num]] <- polite::scrape(
+      session,
+      query = list(page = next_page_num)
+    )
+
+    # Find the next page number
+    next_page_num <- atp_pages[[next_page_num]] %>%
+      rvest::html_nodes("#pagination a+ a") %>%
+      rvest::html_attr("href") %>%
+      stringr::str_extract("\\d+$") %>%
+      as.numeric()
+
+    # Break the loop if there's no next page
+    if (length(next_page_num) == 0) break
+  }
+
+  # Now parse all the pages and return
+  pb <- progress::progress_bar$new(
+    format = "Parsing pages [:bar] :current/:total (:percent) ETA: :eta",
+    total = length(atp_pages)
+  )
+
+  purrr::map_dfr(atp_pages, ~ {
+    pb$tick()
+    atp_parse_page(.x)
+  })
+}
+
+# Parse all the pages
+atp_episodes <- atp_get_episodes()
+```
+
+```{r cache-atp-eps, include=FALSE, eval=!file.exists("atp_episodes.rds")}
+saveRDS(atp_episodes, "atp_episodes.rds")
+```
+
+
+## Looking at Links
+
+One of the neat things we can do with this ATP data compared to [other podcast data I've scraped in the past](https://podcasts.jemu.name/) is the inclusion of nicely formatted shownote links. 
+So we might as well take a closer look at what we've got there.
+
+### Number of Links
+
+```{r links-histo}
+ggplot(atp_episodes, aes(x = n_links)) +
+  geom_bar(alpha = .75, color = "white") +
+  scale_x_binned() +
+  labs(
+    title = "ATP.fm: Number of Links per Episode",
+    x = "# of Links in Episode Shownotes",
+    y = "Count",
+    caption = plot_caption
+  ) + 
+  theme_tadaa()
+```
+
+Huh, what's with the right outlier?
+
+```{r links-top}
+atp_episodes %>%
+  slice_max(n_links, n = 5) %>%
+  select(date, episode, n_links) %>%
+  kable(caption = "Episodes with most links") %>%
+  kable_styling()
+```
+
+Okay, so [episode 119][e119] *wins*. But it seems unfair to not take episode length into account, so let's try that.
+
+[e119]: https://atp.fm/119
+
+```{r links-duration-scatter}
+ggplot(atp_episodes, aes(x = duration_hms, y = n_links)) +
+  geom_point() +
+  labs(
+    title = "ATP.fm: Number of Links per Episode",
+    x = "Episode Duration (H:M:S)",
+    y = "Number of Links in Show Notes",
+    caption = plot_caption
+  ) +
+  theme_tadaa()
+```
+
+Well okay, there's an unsurprising trend there. Maybe we should take a look at `links / minute`, as a metric of how much linkage there is being done.
+
+```{r links-per-minute}
+atp_episodes %>%
+  mutate(lpm = n_links / (as.numeric(duration_hms) / 60)) %>%
+  slice_max(lpm, n = 5) %>% 
+    select(date, episode, duration_hms, n_links, lpm) %>%
+  kable(caption = "Episodes with most links per minute") %>%
+  kable_styling()
+```
+
+
+```{r links-duration-monthly}
+atp_episodes %>%
+  mutate(
+    month = lubridate::month(date, abbr = TRUE, label = TRUE)
+  ) %>%
+  ggplot(aes(x = month, y = n_links)) +
+  geom_jitter(shape = 21, fill = "#374453") +
+  geom_boxplot(outlier.alpha = 0, alpha = .25, color = "#374453") +
+  geom_point(stat = "summary", fun = mean, fill = "white", shape = 21) + 
+  theme_tadaa()
+```
+
+### URL Protocol
+
+```{r links-proto}
+atp_episodes_links <- atp_episodes %>%
+  unnest(links) %>%
+  mutate(
+    HTTPS = str_detect(link_url, "^https"),
+    domain = urltools::domain(link_url) %>%
+      str_remove_all("www\\.")
+  ) 
+
+atp_episodes_links %>%
+  ggplot(aes(x = HTTPS)) +
+  geom_bar(alpha = .75, color = "white") + 
+  theme_tadaa()
+
+atp_episodes_links %>%
+  count(year = lubridate::year(date), HTTPS) %>%
+  ggplot(aes(x = year, y = n, fill = HTTPS)) +
+  geom_col(alpha = .75, color = "white") + 
+  theme_tadaa()
+```
+
+
+```{r links-proto-2020}
+atp_episodes_links %>%
+  filter(year(date) == 2020, !HTTPS) %>%
+  count(domain, sort = TRUE) %>%
+  head(10) %>%
+  kable(
+    col.names = c("Domain", "# of HTTP links")
+  ) %>%
+  kable_styling()
+```
+
+### Domains
+
+```{r links-domains}
+atp_episodes_links %>%
+  count(domain, sort = TRUE)
+```
+
+```{r links-domains-year}
+atp_episodes_links %>%
+  count(year = year(date), domain, sort = TRUE) %>%
+  group_by(year) %>%
+  slice_max(n, n = 5) %>%
+  kable() %>%
+  kable_styling() %>%
+  collapse_rows(1)
+```
+
+
+## Conclusion
+
+```{r sessioninfo, chunk_fold="Session Info"}
+sess <- sessioninfo::session_info()
+
+sess$platform %>%
+  unclass() %>%
+  tibble::as_tibble() %>%
+  t() %>%
+  knitr::kable() %>%
+  kableExtra::kable_styling()
+
+sess$packages %>%
+  tibble::as_tibble() %>%
+  dplyr::select(package, version = ondiskversion, source) %>%
+  knitr::kable() %>%
+  kableExtra::kable_styling()
+```
