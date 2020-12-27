@@ -1,0 +1,88 @@
+---
+title: Importing your Trakt.tv Movies to Letterboxd
+author: jemus42
+date: '2020-12-27'
+slug: importing-your-trakt-tv-movies-to-letterboxd
+categories: []
+tags: 
+  - trakt.tv
+  - letterboxd
+featured_image: ~
+description: 'A quick overview on how to get your movie watch history and ratings out of trakt.tv and into letterboxd with R'
+externalLink: ''
+series:
+  - R
+packages: ''
+toc: no
+math: no
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+source(here::here("R/post-setup.R"))
+```
+
+Every once in a while I'm reminded that [letterboxd](https://letterboxd.com/) exists, and it's more popular for movies that my beloved [trakt.tv](https://trakt.tv).
+While my Plex-based setup can auto-scrobble movies to trakt, it can't do the same for letterboxd, so unless I manually check in and rate movies over there, it's not going to happen.  
+Unless I can automate it, which is at least in some sense possible thanks to letterboxd's [import options](https://letterboxd.com/import/) where you can just chuck in a CSV file of your watched movies including your rating. 
+Looking at [its documentation](https://letterboxd.com/about/importing-data/), I realized that shouldn't be too hard to reproduce using my {{< pkg "tRakt" >}} package to get my data out of trakt and into letterboxd, so here goes.
+
+```{r}
+library(tRakt)
+library(dplyr)
+
+rated_movies <- user_ratings(user = "jemus42", type = "movies")
+
+# whittle down for the importer
+rated_movies <- rated_movies %>%
+  select(
+    Title = title,
+    imdbID = imdb,
+    rating10 = rating
+  )
+```
+
+Now I have my ratings, but to fill out the diary entries with corresponding dates I need the  `WatchedDate` column --- I don't particularly care about having a complete / accurate movie watching history on both trakt _and_ letterboxd, but it's easy enough to get via the trakt API:
+
+```{r}
+watched_movies <- user_watched(
+  user = "jemus42",
+  type = "movies"
+)
+```
+
+Now just join the two datasets and here we go.
+
+```{r}
+watched_movies %>%
+  select(
+    WatchedDate = last_watched_at,
+    Title = title,
+    imdbID = imdb
+  ) %>%
+  mutate(WatchedDate = as.Date(WatchedDate)) %>%
+  left_join(rated_movies, by = c("imdbID", "Title")) %>%
+  readr::write_csv(
+    file = "trakt-movies-letterboxd.csv",
+    quote_escape = "backslash"
+  )
+```
+
+{{< figure src="https://dump.jemu.name/20201227151138-7zl8det8ymgaaov.png" alt="" caption="Seems to work fine as well." >}}
+
+
+```{r sessioninfo, chunk_fold="Session Info"}
+sess <- sessioninfo::session_info()
+
+sess$platform %>%
+  unclass() %>%
+  tibble::as_tibble() %>%
+  t() %>%
+  knitr::kable() %>%
+  kableExtra::kable_styling()
+
+sess$packages %>%
+  tibble::as_tibble() %>%
+  dplyr::select(package, version = ondiskversion, source) %>%
+  knitr::kable() %>%
+  kableExtra::kable_styling()
+```
