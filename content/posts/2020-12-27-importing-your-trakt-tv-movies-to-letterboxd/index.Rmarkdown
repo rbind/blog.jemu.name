@@ -21,7 +21,7 @@ math: no
 source(here::here("R/post-setup.R"))
 ```
 
-Every once in a while I'm reminded that [letterboxd](https://letterboxd.com/) exists, and it's more popular for movies that my beloved [trakt.tv](https://trakt.tv).
+Every once in a while I'm reminded that [letterboxd](https://letterboxd.com/) exists, and it's more popular for movies than my beloved [trakt.tv](https://trakt.tv).
 While my Plex-based setup can auto-scrobble movies to trakt, it can't do the same for letterboxd, so unless I manually check in and rate movies over there, it's not going to happen.  
 Unless I can automate it, which is at least in some sense possible thanks to letterboxd's [import options](https://letterboxd.com/import/) where you can just chuck in a CSV file of your watched movies including your rating. 
 Looking at [its documentation](https://letterboxd.com/about/importing-data/), I realized that shouldn't be too hard to reproduce using my {{< pkg "tRakt" >}} package to get my data out of trakt and into letterboxd, so here goes.
