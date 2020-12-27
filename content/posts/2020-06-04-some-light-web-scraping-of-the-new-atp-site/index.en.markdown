@@ -1,22 +1,22 @@
 ---
 title: Some Light Web-Scraping of the New ATP Site
 author: jemus42
-date: "2020-12-11" # '2020-06-04'
+date: "2020-12-25" # '2020-06-04'
 slug: some-light-web-scraping-of-the-new-atp-site
 series:
   - R
 tags:
   - "web scraping"
-featured_image: null
+  - "podcasts"
+featured_image: "plots/links-histo-1.png"
 description: ''
 packages:
   - polite
   - rvest
 toc: yes
 math: no
+draft: true
 always_allow_html: yes
-output:
-  hugodown::hugo_document
 editor_options: 
   chunk_output_type: console
 ---
@@ -58,29 +58,32 @@ plot_caption <- glue::glue("@jemus42 // {Sys.Date()}")
 
 There are two main "tricks" to successful web-scraping (in my admittedly limited experience):
 
-1. Get as close to the information you care about by using identifying CSS selectors.
+1. Get as close to the information you care about by using / identifying CSS selectors.
 2. Whittle down text content as needed by trying to not have regular expressions wear you down.
-
 
 For step 1, I like using [SelectorGadget], but you may be more comfortable using your favorite browser's developer tools, or looking at the site's HTML source, or being *really* good at guessing.  
 For point 2, you'll probably want to spend some time on (and bookmark) [regexr] or [regex101], and maybe you'll like the {{< pkg "rematch2" >}} package. I haven't tried the latter yet, but I tend to think "I should look at that some time" every once in a while before I go back to my regular regexing.
 
 Then there's **step 0** of web scraping:  
-**Don't be a dick to the site you're scraping**.  
-In this case I don't think there's too much of a chance of me hammering the site in question too much, as I learned I'm going to need a total of *9* pages. So… I don't think I could do too much damage even if tried. However, I will still use the {{< pkg "polite" >}} package because I wanted to try it out anyway, and from what I gather it's explicit purpose is to, well, be *polite* with your scraping.
+**Don't be a jerk to the site you're scraping**.  
+In this case I don't think there's too much of a chance of me hammering the site in question too much, as I learned I'm going to need a total of *10* pages. So… I don't think I could do too much damage even if tried. However, I will still use the {{< pkg "polite" >}} package because I wanted to try it out anyway, and from what I gather it's explicit purpose is to, well, be *polite* with your scraping while still being compatible with your standard {{< pkg "rvest" >}} workflow.
 
 Oh, and I totally forgot **step -1** of web scraping:  
 Make sure you actually have permission. There's plenty of sites out there that don't allow third parties to scrape their content without expressed permission. Read the TOS if applicable, and make sure you're not playing the *"but it's a free website why am I not entitled to scraping all its content and use it for my own purposes"* card.  
-In this particular case, I'm fairly certain that tabulating podcast episodes and shownote URLs is "safe".  
+In this particular case, I'm fairly certain that tabulating podcast episodes and shownote URLs is "safe" [^sorrymarco].    
 Things are different for popular scraping targets like [IMDb](https://www.imdb.com/conditions).
+
 
 > **Robots and Screen Scraping**: You may not use data mining, robots, screen scraping, or similar data gathering and extraction tools on this site, except with our express written consent as noted below.
 
-So, even if you were extra polite in your IMDb scraping, you're still being a dick by breaking their TOS, so you're going to have to get that data [through their official channel](https://developer.imdb.com/) for your projects. 
+So, even if you were extra polite in your IMDb scraping, you're still being a jerk by breaking their TOS, so you're going to have to get that data [through their official channel](https://developer.imdb.com/) for your projects. 
 
 [SelectorGadget]: https://selectorgadget.com/
 [regexr]: https://regexr.com/
 [regex101]: https://regex101.com/
+[^sorrymarco]: Please don't hate me Marco 🥺
+
+Anyway, let's get started with a basic scraping setup: I'm going to get the first page of [atp.fm](https://atp.fm) and collect all the links, separated into text and URL:
 
 ```r 
 session <- bow("https://atp.fm/", force = TRUE)
@@ -107,43 +110,52 @@ head(atp_links)
 #> 6 LG UltraFine 5K  https://www.apple.com/shop/product/HMUB2LL/A/lg-ultrafine-5k…
 ```
 
-
-## Segmentation
-
-```r 
-articles <- scrape(session) %>%
-  html_nodes("article") 
-
-length(articles)
-```
-
-```
-#> [1] 5
-```
+Welp, that's pretty straight forward. It's made pretty simple by the fact that all the shownote links are list items (`<li>`), but of course it would be nicer if we could match links to the episode they belong to.  
+We can do that by iterating over all the `<article>` elements in the page, which enclose each episode post. 
+As an example, let's get the episode number/titles of the most recent episodes:
 
 ```r 
+episode_titles <- scrape(session) %>%
+  html_nodes("article") %>%
+  html_nodes("h2 a") %>%
+  html_text()
+
 tibble::tibble(
-  episode = html_nodes(articles, "h2 a") %>% html_text()
+  number = str_extract(episode_titles, "^\\d+"),
+  episode = str_remove(episode_titles, "^\\d+:\\s")
 )
 ```
 
 ```
-#> # A tibble: 5 x 1
-#>   episode                        
-#>   <chr>                          
-#> 1 410: The Comfort Is Killing Me 
-#> 2 409: Midrange Snob             
-#> 3 408: Feature Headphones        
-#> 4 407: It Isn't a Big Grapefruit 
-#> 5 406: A Bomb on Your Home Screen
+#> # A tibble: 5 x 2
+#>   number episode                   
+#>   <chr>  <chr>                     
+#> 1 410    The Comfort Is Killing Me 
+#> 2 409    Midrange Snob             
+#> 3 408    Feature Headphones        
+#> 4 407    It Isn't a Big Grapefruit 
+#> 5 406    A Bomb on Your Home Screen
 ```
 
+This is also the first case of regex making things a little neater in the result but harder to grasp along the way. If you've been spared the regex way of life until now, what whe did here breaks down to this:
 
+1. Take the episode title, e.g. `"410: The Comfort Is Killing Me"` from the HTML via `html_text()`
+2. *Extract* the number by taking the non-zero amount of digits (`\\d+`) from the beginning of the string (`^`)
+3. *Remove* that same number, including a `:` and an extra whitespace (`\\s`) to be left with the episode title.
+
+Thankfully {{< pkg "stringr" >}} makes this nice and readable.  
+And now we can… go all out. Figure out all the elements of the site we're interested in regarding episode metadata and links, and put all the scrapey bits into a function for convenience. 
+I won't explain each element, but feel free to comment if you don't understand a specific part. In any case, with the minimal amount of setup required you can easily trial and error your way through this part if you're into that.
+
+<details><summary>Click to expand: atp_parse_page()</summary>
 
 ```r 
 atp_parse_page <- function(page) {
   rvest::html_nodes(page, "article") %>%
+    # Iterate over all the article elements (episodes) on the page
+    # Makes it easier to collect elements corresponding to each episode
     purrr::map_dfr(~ {
+      # Extract the metadata block, we'll take that apart in steps
       meta <- rvest::html_node(.x, ".metadata") %>%
         rvest::html_text() %>%
         stringr::str_trim()
@@ -180,7 +192,7 @@ atp_parse_page <- function(page) {
       links_sponsor <- tibble(
         link_text = link_text_sponsor,
         link_url = link_href_sponsor,
-        type = "Sponsor"
+        link_type = "Sponsor"
       )
 
       # Get the regular shownotes links
@@ -200,7 +212,8 @@ atp_parse_page <- function(page) {
         link_type = "Shownotes"
       )
 
-      # Piece it all together
+      # Piece it all together all tibbly
+      # Links will be a list-column
       tibble(
         number = number,
         title = title,
@@ -216,10 +229,61 @@ atp_parse_page <- function(page) {
 }
 ```
 
+</details>
+
+Now we have a compact way to get all the interesting bits in a neat tibble, including a list-column with shownote links separated into sponsor- and topical URLs:
+
+```r 
+scraped_page <- scrape(session) %>%
+  atp_parse_page()
+
+glimpse(scraped_page)
+```
+
+```
+#> Rows: 5
+#> Columns: 9
+#> $ number   <chr> "410", "409", "408", "407", "406"
+#> $ title    <chr> "The Comfort Is Killing Me", "Midrange Snob", "Feature Headp…
+#> $ duration <time> 02:29:29, 02:10:03, 02:10:44, 01:49:53, 02:36:18
+#> $ date     <date> 2020-12-22, 2020-12-17, 2020-12-10, 2020-12-03, 2020-11-25
+#> $ year     <dbl> 2020, 2020, 2020, 2020, 2020
+#> $ month    <ord> December, December, December, December, November
+#> $ weekday  <ord> Tuesday, Thursday, Thursday, Thursday, Wednesday
+#> $ links    <list> [<tbl_df[29 x 3]>, <tbl_df[20 x 3]>, <tbl_df[21 x 3]>, <tbl…
+#> $ n_links  <int> 29, 20, 21, 24, 32
+```
+
+```r 
+scraped_page$links[[1]]
+```
+
+```
+#> # A tibble: 29 x 3
+#>    link_text       link_url                                            link_type
+#>    <chr>           <chr>                                               <chr>    
+#>  1 Barney          https://twitter.com/barneyiam/status/1339483009557… Shownotes
+#>  2 Snazzy Labs vi… https://www.youtube.com/watch?v=FK5JXHZCcuY&featur… Shownotes
+#>  3 9to5mac         https://9to5mac.com/2020/12/18/airpods-max-smart-c… Shownotes
+#>  4 Apple Support   https://support.apple.com/en-us/HT211886            Shownotes
+#>  5 Pro Display XDR https://www.apple.com/pro-display-xdr/              Shownotes
+#>  6 LG UltraFine 5K https://www.apple.com/shop/product/HMUB2LL/A/lg-ul… Shownotes
+#>  7 Joseph Duffy    https://twitter.com/Joe_Duffy/status/1339609400416… Shownotes
+#>  8 been revised    https://www.notebookcheck.net/LG-refreshes-the-Ult… Shownotes
+#>  9 Tinus           https://twitter.com/Tinusg/status/1339903162111680… Shownotes
+#> 10 bug report      https://bugs.chromium.org/p/chromium/issues/detail… Shownotes
+#> # … with 19 more rows
+```
+
+Now what's left is to get _all_ the episodes, because why not.
+
+
 ## Getting _All_ the Episodes
 
 Or: This is my first `while`-loop in R since… I think 2014?  
 I don't regret *everything* per se, but I think this is actually reasonable.
+
+<details><summary>Click to expand: atp_get_episodes()</summary>
 
 ```r 
 atp_get_episodes <- function(page_limit = NULL) {
@@ -292,6 +356,10 @@ atp_get_episodes <- function(page_limit = NULL) {
 atp_episodes <- atp_get_episodes()
 ```
 
+</details>
+
+
+
 
 
 
@@ -300,7 +368,6 @@ atp_episodes <- atp_get_episodes()
 One of the neat things we can do with this ATP data compared to [other podcast data I've scraped in the past](https://podcasts.jemu.name/) is the inclusion of nicely formatted shownote links. 
 So we might as well take a closer look at what we've got there.
 
-### Number of Links
 
 ```r 
 ggplot(atp_episodes, aes(x = n_links)) +
@@ -322,7 +389,7 @@ Huh, what's with the right outlier?
 ```r 
 atp_episodes %>%
   slice_max(n_links, n = 5) %>%
-  select(date, episode, n_links) %>%
+  select(date, title, n_links) %>%
   kable(caption = "Episodes with most links") %>%
   kable_styling()
 ```
@@ -331,35 +398,35 @@ atp_episodes %>%
  <thead>
   <tr>
    <th style="text-align:left;"> date </th>
-   <th style="text-align:left;"> episode </th>
+   <th style="text-align:left;"> title </th>
    <th style="text-align:right;"> n_links </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> 2015-05-29 </td>
-   <td style="text-align:left;"> 119: Promoretired </td>
-   <td style="text-align:right;"> 73 </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> 2014-11-14 </td>
-   <td style="text-align:left;"> 91: Press Agree to Drive </td>
-   <td style="text-align:right;"> 58 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2020-06-04 </td>
-   <td style="text-align:left;"> 381: Uncomfortable Truths </td>
-   <td style="text-align:right;"> 52 </td>
+   <td style="text-align:left;"> Press Agree to Drive </td>
+   <td style="text-align:right;"> 55 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2015-02-27 </td>
-   <td style="text-align:left;"> 106: That’s Slightly Right </td>
-   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:left;"> That’s Slightly Right </td>
+   <td style="text-align:right;"> 50 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-02-20 </td>
+   <td style="text-align:left;"> Do You Want to Sell Sugar Phones for the Rest of Your Life? </td>
+   <td style="text-align:right;"> 50 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2014-11-07 </td>
-   <td style="text-align:left;"> 90: Speculative Abandonware </td>
-   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:left;"> Speculative Abandonware </td>
+   <td style="text-align:right;"> 50 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019-08-19 </td>
+   <td style="text-align:left;"> You Are a Computer Athlete </td>
+   <td style="text-align:right;"> 48 </td>
   </tr>
 </tbody>
 </table>
@@ -369,7 +436,7 @@ Okay, so [episode 119][e119] *wins*. But it seems unfair to not take episode len
 [e119]: https://atp.fm/119
 
 ```r 
-ggplot(atp_episodes, aes(x = duration_hms, y = n_links)) +
+ggplot(atp_episodes, aes(x = duration, y = n_links)) +
   geom_point() +
   labs(
     title = "ATP.fm: Number of Links per Episode",
@@ -386,9 +453,9 @@ Well okay, there's an unsurprising trend there. Maybe we should take a look at `
 
 ```r 
 atp_episodes %>%
-  mutate(lpm = n_links / (as.numeric(duration_hms) / 60)) %>%
+  mutate(lpm = n_links / (as.numeric(duration) / 60)) %>%
   slice_max(lpm, n = 5) %>% 
-    select(date, episode, duration_hms, n_links, lpm) %>%
+  select(date, title, duration, n_links, lpm) %>%
   kable(caption = "Episodes with most links per minute") %>%
   kable_styling()
 ```
@@ -397,47 +464,47 @@ atp_episodes %>%
  <thead>
   <tr>
    <th style="text-align:left;"> date </th>
-   <th style="text-align:left;"> episode </th>
-   <th style="text-align:left;"> duration_hms </th>
+   <th style="text-align:left;"> title </th>
+   <th style="text-align:left;"> duration </th>
    <th style="text-align:right;"> n_links </th>
    <th style="text-align:right;"> lpm </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> 2015-05-29 </td>
-   <td style="text-align:left;"> 119: Promoretired </td>
-   <td style="text-align:left;"> 01:39:42 </td>
-   <td style="text-align:right;"> 73 </td>
-   <td style="text-align:right;"> 0.7321966 </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> 2014-11-14 </td>
-   <td style="text-align:left;"> 91: Press Agree to Drive </td>
+   <td style="text-align:left;"> Press Agree to Drive </td>
    <td style="text-align:left;"> 01:40:43 </td>
-   <td style="text-align:right;"> 58 </td>
-   <td style="text-align:right;"> 0.5758729 </td>
+   <td style="text-align:right;"> 55 </td>
+   <td style="text-align:right;"> 0.5460864 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2018-03-01 </td>
-   <td style="text-align:left;"> 263: Old Potato </td>
-   <td style="text-align:left;"> 01:34:24 </td>
-   <td style="text-align:right;"> 47 </td>
-   <td style="text-align:right;"> 0.4978814 </td>
+   <td style="text-align:left;"> 2015-11-24 </td>
+   <td style="text-align:left;"> Lasers and Pew-Pew and Space Aliens </td>
+   <td style="text-align:left;"> 01:27:43 </td>
+   <td style="text-align:right;"> 42 </td>
+   <td style="text-align:right;"> 0.4788144 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2014-11-07 </td>
-   <td style="text-align:left;"> 90: Speculative Abandonware </td>
+   <td style="text-align:left;"> Speculative Abandonware </td>
    <td style="text-align:left;"> 01:44:37 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0.4874940 </td>
+   <td style="text-align:right;"> 50 </td>
+   <td style="text-align:right;"> 0.4779353 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-02-20 </td>
+   <td style="text-align:left;"> Do You Want to Sell Sugar Phones for the Rest of Your Life? </td>
+   <td style="text-align:left;"> 01:46:25 </td>
+   <td style="text-align:right;"> 50 </td>
+   <td style="text-align:right;"> 0.4698512 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2014-12-26 </td>
-   <td style="text-align:left;"> 97: You Have to Know When to Stop </td>
+   <td style="text-align:left;"> You Have to Know When to Stop </td>
    <td style="text-align:left;"> 01:27:18 </td>
-   <td style="text-align:right;"> 42 </td>
-   <td style="text-align:right;"> 0.4810997 </td>
+   <td style="text-align:right;"> 40 </td>
+   <td style="text-align:right;"> 0.4581901 </td>
   </tr>
 </tbody>
 </table>
@@ -445,13 +512,9 @@ atp_episodes %>%
 
 ```r 
 atp_episodes %>%
-  mutate(
-    month = lubridate::month(date, abbr = TRUE, label = TRUE)
-  ) %>%
   ggplot(aes(x = month, y = n_links)) +
-  geom_jitter(shape = 21, fill = "#374453") +
-  geom_boxplot(outlier.alpha = 0, alpha = .25, color = "#374453") +
-  geom_point(stat = "summary", fun = mean, fill = "white", shape = 21) + 
+  geom_boxplot(alpha = .25, fill = "#374453") +
+  geom_point(stat = "summary", fun = mean, fill = "lightblue", shape = 21, size = 3) + 
   theme_tadaa()
 ```
 
@@ -463,7 +526,7 @@ atp_episodes %>%
 atp_episodes_links <- atp_episodes %>%
   unnest(links) %>%
   mutate(
-    HTTPS = str_detect(link_url, "^https"),
+    HTTPS = ifelse(str_detect(link_url, "^https"), "https", "http"),
     domain = urltools::domain(link_url) %>%
       str_remove_all("www\\.")
   ) 
@@ -488,11 +551,11 @@ atp_episodes_links %>%
 
 ```r 
 atp_episodes_links %>%
-  filter(year(date) == 2020, !HTTPS) %>%
-  count(domain, sort = TRUE) %>%
+  filter(year(date) == 2020, HTTPS == "http") %>%
+  count(domain, link_type, sort = TRUE) %>%
   head(10) %>%
   kable(
-    col.names = c("Domain", "# of HTTP links")
+    col.names = c("Domain", "Link Type", "# of HTTP links")
   ) %>%
   kable_styling()
 ```
@@ -500,49 +563,60 @@ atp_episodes_links %>%
  <thead>
   <tr>
    <th style="text-align:left;"> Domain </th>
+   <th style="text-align:left;"> Link Type </th>
    <th style="text-align:right;"> # of HTTP links </th>
   </tr>
  </thead>
 <tbody>
   <tr>
+   <td style="text-align:left;"> hypercritical.co </td>
+   <td style="text-align:left;"> Shownotes </td>
+   <td style="text-align:right;"> 25 </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> amazon.com </td>
-   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> Shownotes </td>
+   <td style="text-align:right;"> 23 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> squarespace.com </td>
-   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> Sponsor </td>
+   <td style="text-align:right;"> 19 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> neutral.fm </td>
+   <td style="text-align:left;"> drops.caseyliss.com </td>
+   <td style="text-align:left;"> Shownotes </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> hover.com </td>
+   <td style="text-align:left;"> Sponsor </td>
    <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> hypercritical.co </td>
+   <td style="text-align:left;"> awaytravel.com </td>
+   <td style="text-align:left;"> Sponsor </td>
    <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> awaytravel.com </td>
+   <td style="text-align:left;"> 5by5.tv </td>
+   <td style="text-align:left;"> Shownotes </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> getbluevine.com </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> hover.com </td>
+   <td style="text-align:left;"> Sponsor </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> jamf.com </td>
+   <td style="text-align:left;"> Sponsor </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 5by5.tv </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> alwayshttp.com </td>
-   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> meetcarrot.com </td>
+   <td style="text-align:left;"> Shownotes </td>
+   <td style="text-align:right;"> 2 </td>
   </tr>
 </tbody>
 </table>
@@ -551,28 +625,30 @@ atp_episodes_links %>%
 
 ```r 
 atp_episodes_links %>%
+  filter(link_type == "Shownotes") %>%
   count(domain, sort = TRUE)
 ```
 
 ```
-#> # A tibble: 1,788 x 2
+#> # A tibble: 1,521 x 2
 #>    domain                  n
 #>    <chr>               <int>
-#>  1 twitter.com           929
-#>  2 en.wikipedia.org      851
-#>  3 apple.com             326
-#>  4 amazon.com            323
-#>  5 youtube.com           225
-#>  6 relay.fm              172
-#>  7 squarespace.com       166
-#>  8 developer.apple.com   163
-#>  9 marco.org             126
-#> 10 caseyliss.com         115
-#> # … with 1,778 more rows
+#>  1 twitter.com           926
+#>  2 en.wikipedia.org      844
+#>  3 amazon.com            313
+#>  4 apple.com             256
+#>  5 youtube.com           214
+#>  6 relay.fm              166
+#>  7 developer.apple.com   134
+#>  8 caseyliss.com          99
+#>  9 github.com             88
+#> 10 marco.org              86
+#> # … with 1,511 more rows
 ```
 
 ```r 
 atp_episodes_links %>%
+  filter(link_type == "Shownotes") %>%
   count(year = year(date), domain, sort = TRUE) %>%
   group_by(year) %>%
   slice_max(n, n = 5) %>%
@@ -590,119 +666,219 @@ atp_episodes_links %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2013 </td>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="9"> 2013 </td>
+   <td style="text-align:left;"> anandtech.com </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   
    <td style="text-align:left;"> marco.org </td>
-   <td style="text-align:right;"> 19 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> squarespace.com </td>
-   <td style="text-align:right;"> 17 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> youtube.com </td>
-   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> david-smith.org </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> everymac.com </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> itunes.apple.com </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> theverge.com </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> tumblr.caseyliss.com </td>
+   <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
    <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2014 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 140 </td>
+   <td style="text-align:right;"> 127 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 99 </td>
+   <td style="text-align:right;"> 93 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> 5by5.tv </td>
-   <td style="text-align:right;"> 30 </td>
+   <td style="text-align:right;"> 26 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> arstechnica.com </td>
-   <td style="text-align:right;"> 27 </td>
+   <td style="text-align:right;"> 22 </td>
   </tr>
   <tr>
    
-   <td style="text-align:left;"> squarespace.com </td>
-   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:left;"> youtube.com </td>
+   <td style="text-align:right;"> 21 </td>
   </tr>
   <tr>
    <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2015 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 162 </td>
+   <td style="text-align:right;"> 149 </td>
   </tr>
   <tr>
    
+   <td style="text-align:left;"> twitter.com </td>
+   <td style="text-align:right;"> 125 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> apple.com </td>
+   <td style="text-align:right;"> 62 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> amazon.com </td>
+   <td style="text-align:right;"> 52 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> developer.apple.com </td>
+   <td style="text-align:right;"> 30 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2016 </td>
+   <td style="text-align:left;"> en.wikipedia.org </td>
+   <td style="text-align:right;"> 119 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> amazon.com </td>
+   <td style="text-align:right;"> 77 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> twitter.com </td>
+   <td style="text-align:right;"> 72 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> apple.com </td>
+   <td style="text-align:right;"> 48 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> relay.fm </td>
+   <td style="text-align:right;"> 32 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2017 </td>
    <td style="text-align:left;"> twitter.com </td>
    <td style="text-align:right;"> 134 </td>
   </tr>
   <tr>
    
-   <td style="text-align:left;"> apple.com </td>
-   <td style="text-align:right;"> 80 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> amazon.com </td>
-   <td style="text-align:right;"> 70 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> developer.apple.com </td>
-   <td style="text-align:right;"> 38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2016 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 137 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 90 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> amazon.com </td>
-   <td style="text-align:right;"> 80 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> apple.com </td>
    <td style="text-align:right;"> 69 </td>
   </tr>
   <tr>
    
-   <td style="text-align:left;"> jonathanmann.net </td>
-   <td style="text-align:right;"> 46 </td>
+   <td style="text-align:left;"> amazon.com </td>
+   <td style="text-align:right;"> 45 </td>
   </tr>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2017 </td>
+   
+   <td style="text-align:left;"> apple.com </td>
+   <td style="text-align:right;"> 33 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> relay.fm </td>
+   <td style="text-align:right;"> 33 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2018 </td>
    <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 147 </td>
+   <td style="text-align:right;"> 184 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 80 </td>
+   <td style="text-align:right;"> 130 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> amazon.com </td>
-   <td style="text-align:right;"> 50 </td>
+   <td style="text-align:right;"> 42 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> youtube.com </td>
+   <td style="text-align:right;"> 42 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> relay.fm </td>
+   <td style="text-align:right;"> 25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="6"> 2019 </td>
+   <td style="text-align:left;"> twitter.com </td>
+   <td style="text-align:right;"> 154 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> en.wikipedia.org </td>
+   <td style="text-align:right;"> 96 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> amazon.com </td>
+   <td style="text-align:right;"> 36 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> apple.com </td>
+   <td style="text-align:right;"> 36 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> relay.fm </td>
+   <td style="text-align:right;"> 29 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> youtube.com </td>
+   <td style="text-align:right;"> 29 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2020 </td>
+   <td style="text-align:left;"> twitter.com </td>
+   <td style="text-align:right;"> 162 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> en.wikipedia.org </td>
+   <td style="text-align:right;"> 151 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> amazon.com </td>
+   <td style="text-align:right;"> 46 </td>
   </tr>
   <tr>
    
@@ -711,83 +887,8 @@ atp_episodes_links %>%
   </tr>
   <tr>
    
-   <td style="text-align:left;"> jonathanmann.net </td>
-   <td style="text-align:right;"> 40 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2018 </td>
-   <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 199 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 132 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> amazon.com </td>
-   <td style="text-align:right;"> 46 </td>
-  </tr>
-  <tr>
-   
    <td style="text-align:left;"> youtube.com </td>
-   <td style="text-align:right;"> 46 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> apple.com </td>
-   <td style="text-align:right;"> 37 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2019 </td>
-   <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 171 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 109 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> apple.com </td>
-   <td style="text-align:right;"> 61 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> amazon.com </td>
    <td style="text-align:right;"> 41 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> relay.fm </td>
-   <td style="text-align:right;"> 38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2020 </td>
-   <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 77 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 75 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> youtube.com </td>
-   <td style="text-align:right;"> 21 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> apple.com </td>
-   <td style="text-align:right;"> 16 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> developer.apple.com </td>
-   <td style="text-align:right;"> 16 </td>
   </tr>
 </tbody>
 </table>
@@ -843,7 +944,7 @@ sess$platform %>%
   </tr>
   <tr>
    <td style="text-align:left;"> date </td>
-   <td style="text-align:left;"> 2020-12-25 </td>
+   <td style="text-align:left;"> 2020-12-27 </td>
   </tr>
 </tbody>
 </table>
