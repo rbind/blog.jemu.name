@@ -1,7 +1,7 @@
 ---
 title: Some Light Web-Scraping of the New ATP Site
 author: jemus42
-date: "2020-12-25" # '2020-06-04'
+date: "2020-12-28" # '2020-06-04'
 slug: some-light-web-scraping-of-the-new-atp-site
 series:
   - R
@@ -20,6 +20,18 @@ always_allow_html: yes
 editor_options: 
   chunk_output_type: console
 ---
+<script src="{{< blogdown/postref >}}index.en_files/kePrint-0.0.1/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index.en_files/kePrint-0.0.1/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index.en_files/kePrint-0.0.1/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index.en_files/kePrint-0.0.1/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index.en_files/kePrint-0.0.1/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index.en_files/kePrint-0.0.1/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 
@@ -944,7 +956,7 @@ sess$platform %>%
   </tr>
   <tr>
    <td style="text-align:left;"> date </td>
-   <td style="text-align:left;"> 2020-12-27 </td>
+   <td style="text-align:left;"> 2020-12-28 </td>
   </tr>
 </tbody>
 </table>
@@ -972,8 +984,8 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> blogdown </td>
-   <td style="text-align:left;"> 0.21 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 0.21.69 </td>
+   <td style="text-align:left;"> Github (rstudio/blogdown@11fec4c) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> bookdown </td>
@@ -1182,7 +1194,7 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> rmarkdown </td>
-   <td style="text-align:left;"> 2.5 </td>
+   <td style="text-align:left;"> 2.6 </td>
    <td style="text-align:left;"> CRAN (R 4.0.3) </td>
   </tr>
   <tr>
