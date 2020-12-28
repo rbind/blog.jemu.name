@@ -13,6 +13,7 @@ options(
     blogdown.ext = ".Rmarkdown",
     blogdown.subdir = "posts",
     blogdown.title_case = TRUE,
+    blogdown.hugo.version = "0.79.0",
     # No longer needed since they're defaults as of blogdown 0.21
     # blogdown.new_bundle = TRUE,
     # blogdown.generator.server = TRUE,
