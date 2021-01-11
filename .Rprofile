@@ -12,14 +12,18 @@ options(
     blogdown.author = "jemus42",
     blogdown.ext = ".Rmarkdown",
     blogdown.subdir = "posts",
-    blogdown.title_case = TRUE,
     blogdown.hugo.version = "0.79.0",
-    # No longer needed since they're defaults as of blogdown 0.21
-    # blogdown.new_bundle = TRUE,
-    # blogdown.generator.server = TRUE,
     blogdown.hugo.server = c("-D", "-F", "--navigateToChanged"),
     blogdown.knit.on_save = FALSE,
-    blogdown.serve_site.startup = FALSE
+    blogdown.serve_site.startup = FALSE,
+    blogdown.files_filter = blogdown:::md5sum_filter,
+    # other nice to haves!
+    blogdown.title_case = TRUE,
+    blogdown.initial_files = FALSE,
+    # nice defaults!
+    blogdown.new_bundle = TRUE,
+    blogdown.warn.future = TRUE,
+    blogdown.draft.output = FALSE
 )
 
 # Unset client secret so tRakt won't try authorization
