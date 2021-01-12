@@ -6,6 +6,8 @@ type: page
 I'm Lukas, or jemus[42], or jemsu, or whatever.  
 It depends on when you got to know me. Or where.  
 
+{{< figure src="/images/lukas.jpg" alt="Obligatory coffee selfie" caption="Because a professional portrait would be silly" >}}
+
 My home on the internet used to be my [Twitter account](https://twitter.com/jemus42), which I abandoned in August '18 (but am still kind of using? It's complicated). There have been a lot of other places, but it appears that Twitter is the only hellhole I can't escape.  
 Send help.
 
@@ -21,19 +23,7 @@ I have also switched things up under the hood a lot. For example, I now use [ser
 
 The blog itself has a [repo on the GitHub rbind organization](https://github.com/rbind/blog.jemu.name).
 
-<!---
-## Other Places
-
-* <i class='fa fa-tv'></i> [trakt.tv](https://trakt.tv/users/jemus42)
-* <i class='fa fa-university'></i> [ResearchGate](https://www.researchgate.net/profile/Lukas_Burk)
-
--->
 
 ## Tip Jar
 
-If, for whatever reason, you feel like you would like to buy me a coffee, here are your options:
-
-- [PayPal.me](https://www.paypal.me/jemus42)
-- [Ko-fi](https://ko-fi.com/jemus42)
-
-I don't really have any reason to ask for support, but sometimes it comes up.
+{{< figure src="/images/Ko-fi_Icon_RGB_stroke_cut.png" alt="ko-fi page" caption="" width="300px" link="https://ko-fi.com/jemus42">}}
