@@ -1,7 +1,7 @@
 ---
 title: Some Light Web-Scraping of the New ATP Site
 author: jemus42
-date: "2020-12-28" # '2020-06-04'
+date: "2021-01-11" # '2020-06-04'
 slug: some-light-web-scraping-of-the-new-atp-site
 series:
   - R
@@ -9,7 +9,7 @@ tags:
   - "web scraping"
   - "podcasts"
 featured_image: "plots/links-histo-1.png"
-description: ''
+description: 'Trying my hand at a little more web-scraping. Just gathering some data about ATP podcast episodes, not because it’s useful, but because it’s possible.'
 packages:
   - polite
   - rvest
@@ -25,7 +25,9 @@ editor_options:
 source(here::here("R/post-setup.R"))
 knitr::opts_chunk$set(cache = FALSE)
 
-if (file.exists("atp_episodes.rds")) atp_episodes <- readRDS("atp_episodes.rds")
+if (file.exists("atp_episodes.rds")) {
+  atp_episodes <- readRDS("atp_episodes.rds")
+}
 ```
 
 ## Introduction
@@ -33,7 +35,7 @@ if (file.exists("atp_episodes.rds")) atp_episodes <- readRDS("atp_episodes.rds")
 {{< addendum title="Note" >}}
 I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over 6 months because… well, the year's been busy.
 
-The code for this has since been put into its own [little package](https://github.com/jemus42/poddr) — so if you want to just get some data, you can install that or get the up-to-date data [from my other project's site](https://podcasts.jemu.name/data/).
+The code for the scrapey bits has since been put into its own [little package](https://github.com/jemus42/poddr) — so if you want to just get some data, you can install that or get the up-to-date data [from my other project's site](https://podcasts.jemu.name/data/).
 {{< /addendum >}}
 
 ```{r pkgs, chunk_fold="Show packages & setup"}
@@ -66,11 +68,14 @@ For step 1, I like using [SelectorGadget], but you may be more comfortable using
 For point 2, you'll probably want to spend some time on (and bookmark) [regexr] or [regex101], and maybe you'll like the {{< pkg "rematch2" >}} package. I haven't tried the latter yet, but I tend to think "I should look at that some time" every once in a while before I go back to my regular regexing.
 
 Then there's **step 0** of web scraping:  
-**Don't be a jerk to the site you're scraping**.  
-In this case I don't think there's too much of a chance of me hammering the site in question too much, as I learned I'm going to need a total of *10* pages. So… I don't think I could do too much damage even if tried. However, I will still use the {{< pkg "polite" >}} package because I wanted to try it out anyway, and from what I gather it's explicit purpose is to, well, be *polite* with your scraping while still being compatible with your standard {{< pkg "rvest" >}} workflow.
+*Don't be a jerk to the site you're scraping*.  
+In this case I don't think there's too much of a chance of me hammering the site in question too much, as I learned I'm going to need a total of *10* pages.
+So… I don't think I could do too much damage even if tried. However, I will still use the {{< pkg "polite" >}} package because I wanted to try it out anyway, and from what I gather it's explicit purpose is to, well, be *polite* with your scraping while still being compatible with your standard {{< pkg "rvest" >}} workflow.
 
 Oh, and I totally forgot **step -1** of web scraping:  
-Make sure you actually have permission. There's plenty of sites out there that don't allow third parties to scrape their content without expressed permission. Read the TOS if applicable, and make sure you're not playing the *"but it's a free website why am I not entitled to scraping all its content and use it for my own purposes"* card.  
+*Make sure you actually have permission*. 
+There's plenty of sites out there that don't allow third parties to scrape their content without expressed permission. 
+Read the TOS if applicable, and make sure you're not playing the *"but it's a free website why am I not entitled to scraping all its content and use it for my own purposes"* card.  
 In this particular case, I'm fairly certain that tabulating podcast episodes and shownote URLs is "safe" [^sorrymarco].    
 Things are different for popular scraping targets like [IMDb](https://www.imdb.com/conditions).
 
@@ -99,7 +104,7 @@ atp_links <- tibble::tibble(
 head(atp_links)
 ```
 
-Welp, that's pretty straight forward. It's made pretty simple by the fact that all the shownote links are list items (`<li>`), but of course it would be nicer if we could match links to the episode they belong to.  
+Welp, that's pretty straight forward. It's made fairly easy by the fact that all the shownote links are list items (`<li>`), but of course it would be nicer if we could match links to the episode they belong to.  
 We can do that by iterating over all the `<article>` elements in the page, which enclose each episode post. 
 As an example, let's get the episode number/titles of the most recent episodes:
 
@@ -115,7 +120,7 @@ tibble::tibble(
 )
 ```
 
-This is also the first case of regex making things a little neater in the result but harder to grasp along the way. If you've been spared the regex way of life until now, what whe did here breaks down to this:
+This is also the first case of regex making things a little neater in the result but harder to grasp along the way. If you've been spared the regex way of life until now, what we did here breaks down to this:
 
 1. Take the episode title, e.g. `"410: The Comfort Is Killing Me"` from the HTML via `html_text()`
 2. *Extract* the number by taking the non-zero amount of digits (`\\d+`) from the beginning of the string (`^`)
@@ -123,9 +128,12 @@ This is also the first case of regex making things a little neater in the result
 
 Thankfully {{< pkg "stringr" >}} makes this nice and readable.  
 And now we can… go all out. Figure out all the elements of the site we're interested in regarding episode metadata and links, and put all the scrapey bits into a function for convenience. 
-I won't explain each element, but feel free to comment if you don't understand a specific part. In any case, with the minimal amount of setup required you can easily trial and error your way through this part if you're into that.
+I won't explain each element, but feel free to comment if you don't understand a specific part. In any case, with the minimal amount of setup required you can easily trial-and-error your way through this part if you're into that[^butnote].
+
+[^butnote]: But please note that you don't have to re-read the website in question to scrape it. You can save the website content to a variable and then use that as the base for all your `html_nodes` and regex experiments.
 
 ```{r assemble-episodes, chunk_fold="atp_parse_page()"}
+# Here, page is an object as returned by polite::scrape()
 atp_parse_page <- function(page) {
   rvest::html_nodes(page, "article") %>%
     # Iterate over all the article elements (episodes) on the page
@@ -207,7 +215,7 @@ atp_parse_page <- function(page) {
 
 Now we have a compact way to get all the interesting bits in a neat tibble, including a list-column with shownote links separated into sponsor- and topical URLs:
 
-```{r}
+```{r sponsor-link-looksy}
 scraped_page <- scrape(session) %>%
   atp_parse_page()
 
@@ -218,7 +226,6 @@ scraped_page$links[[1]]
 
 Now what's left is to get _all_ the episodes, because why not.
 
-
 ## Getting _All_ the Episodes
 
 Or: This is my first `while`-loop in R since… I think 2014?  
@@ -227,6 +234,8 @@ I don't regret *everything* per se, but I think this is actually reasonable.
 ```{r scrape-atp, eval=!file.exists("atp_episodes.rds"), chunk_fold="atp_get_episodes()"}
 atp_get_episodes <- function(page_limit = NULL) {
 
+  # If there's no page limit, we set it to infinity
+  # because it's easier if it's a number and I'm bad at while loops
   if (is.null(page_limit)) page_limit <- Inf
 
   # Get the first page and scrape it
@@ -252,6 +261,7 @@ atp_get_episodes <- function(page_limit = NULL) {
   # First page has 5 episodes, 50 episodes per page afterwards
   total_pages <- ceiling((latest_ep_num - 5) / 50) + 1
 
+  # Everything is better with progress bars.
   pb <- progress::progress_bar$new(
     format = "Getting pages [:bar] :current/:total (:percent) ETA: :eta",
     total = total_pages
@@ -303,12 +313,10 @@ saveRDS(atp_episodes, "atp_episodes.rds")
 atp_episodes <- readRDS("atp_episodes.rds")
 ```
 
-
 ## Looking at Links
 
 One of the neat things we can do with this ATP data compared to [other podcast data I've scraped in the past](https://podcasts.jemu.name/) is the inclusion of nicely formatted shownote links. 
 So we might as well take a closer look at what we've got there.
-
 
 ```{r links-histo}
 ggplot(atp_episodes, aes(x = n_links)) +

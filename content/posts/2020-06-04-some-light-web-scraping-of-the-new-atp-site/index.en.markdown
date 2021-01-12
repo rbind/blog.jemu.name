@@ -1,7 +1,7 @@
 ---
 title: Some Light Web-Scraping of the New ATP Site
 author: jemus42
-date: "2020-12-28" # '2020-06-04'
+date: "2021-01-11" # '2020-06-04'
 slug: some-light-web-scraping-of-the-new-atp-site
 series:
   - R
@@ -9,7 +9,7 @@ tags:
   - "web scraping"
   - "podcasts"
 featured_image: "plots/links-histo-1.png"
-description: ''
+description: 'Trying my hand at a little more web-scraping. Just gathering some data about ATP podcast episodes, not because it’s useful, but because it’s possible.'
 packages:
   - polite
   - rvest
@@ -20,18 +20,6 @@ always_allow_html: yes
 editor_options: 
   chunk_output_type: console
 ---
-<script src="{{< blogdown/postref >}}index.en_files/kePrint-0.0.1/kePrint.js"></script>
-<link href="{{< blogdown/postref >}}index.en_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="{{< blogdown/postref >}}index.en_files/kePrint-0.0.1/kePrint.js"></script>
-<link href="{{< blogdown/postref >}}index.en_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="{{< blogdown/postref >}}index.en_files/kePrint-0.0.1/kePrint.js"></script>
-<link href="{{< blogdown/postref >}}index.en_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="{{< blogdown/postref >}}index.en_files/kePrint-0.0.1/kePrint.js"></script>
-<link href="{{< blogdown/postref >}}index.en_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="{{< blogdown/postref >}}index.en_files/kePrint-0.0.1/kePrint.js"></script>
-<link href="{{< blogdown/postref >}}index.en_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="{{< blogdown/postref >}}index.en_files/kePrint-0.0.1/kePrint.js"></script>
-<link href="{{< blogdown/postref >}}index.en_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 
@@ -40,7 +28,7 @@ editor_options:
 {{< addendum title="Note" >}}
 I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over 6 months because… well, the year's been busy.
 
-The code for this has since been put into its own [little package](https://github.com/jemus42/poddr) — so if you want to just get some data, you can install that or get the up-to-date data [from my other project's site](https://podcasts.jemu.name/data/).
+The code for the scrapey bits has since been put into its own [little package](https://github.com/jemus42/poddr) — so if you want to just get some data, you can install that or get the up-to-date data [from my other project's site](https://podcasts.jemu.name/data/).
 {{< /addendum >}}
 
 <details><summary>Click to expand: Show packages & setup</summary>
@@ -77,11 +65,14 @@ For step 1, I like using [SelectorGadget], but you may be more comfortable using
 For point 2, you'll probably want to spend some time on (and bookmark) [regexr] or [regex101], and maybe you'll like the {{< pkg "rematch2" >}} package. I haven't tried the latter yet, but I tend to think "I should look at that some time" every once in a while before I go back to my regular regexing.
 
 Then there's **step 0** of web scraping:  
-**Don't be a jerk to the site you're scraping**.  
-In this case I don't think there's too much of a chance of me hammering the site in question too much, as I learned I'm going to need a total of *10* pages. So… I don't think I could do too much damage even if tried. However, I will still use the {{< pkg "polite" >}} package because I wanted to try it out anyway, and from what I gather it's explicit purpose is to, well, be *polite* with your scraping while still being compatible with your standard {{< pkg "rvest" >}} workflow.
+*Don't be a jerk to the site you're scraping*.  
+In this case I don't think there's too much of a chance of me hammering the site in question too much, as I learned I'm going to need a total of *10* pages.
+So… I don't think I could do too much damage even if tried. However, I will still use the {{< pkg "polite" >}} package because I wanted to try it out anyway, and from what I gather it's explicit purpose is to, well, be *polite* with your scraping while still being compatible with your standard {{< pkg "rvest" >}} workflow.
 
 Oh, and I totally forgot **step -1** of web scraping:  
-Make sure you actually have permission. There's plenty of sites out there that don't allow third parties to scrape their content without expressed permission. Read the TOS if applicable, and make sure you're not playing the *"but it's a free website why am I not entitled to scraping all its content and use it for my own purposes"* card.  
+*Make sure you actually have permission*. 
+There's plenty of sites out there that don't allow third parties to scrape their content without expressed permission. 
+Read the TOS if applicable, and make sure you're not playing the *"but it's a free website why am I not entitled to scraping all its content and use it for my own purposes"* card.  
 In this particular case, I'm fairly certain that tabulating podcast episodes and shownote URLs is "safe" [^sorrymarco].    
 Things are different for popular scraping targets like [IMDb](https://www.imdb.com/conditions).
 
@@ -112,17 +103,17 @@ head(atp_links)
 
 ```
 #> # A tibble: 6 x 2
-#>   text             url                                                          
-#>   <chr>            <chr>                                                        
-#> 1 Barney           https://twitter.com/barneyiam/status/1339483009557225472     
-#> 2 Snazzy Labs vid… https://www.youtube.com/watch?v=FK5JXHZCcuY&feature=youtu.be 
-#> 3 9to5mac          https://9to5mac.com/2020/12/18/airpods-max-smart-case/       
-#> 4 Apple Support    https://support.apple.com/en-us/HT211886                     
-#> 5 Pro Display XDR  https://www.apple.com/pro-display-xdr/                       
-#> 6 LG UltraFine 5K  https://www.apple.com/shop/product/HMUB2LL/A/lg-ultrafine-5k…
+#>   text                     url                                                  
+#>   <chr>                    <chr>                                                
+#> 1 Example app              https://apps.apple.com/pl/app/mimi-hearing-test/id93…
+#> 2 Maciej                   https://twitter.com/w1nmaciek/status/134439231988217…
+#> 3 Apple guidance on SMC r… https://support.apple.com/en-us/HT203127             
+#> 4 How to do a SMC reset    https://support.apple.com/en-us/HT201295             
+#> 5 Apple T2                 https://en.wikipedia.org/wiki/Apple-designed_process…
+#> 6 BridgeOS                 https://en.wikipedia.org/wiki/BridgeOS
 ```
 
-Welp, that's pretty straight forward. It's made pretty simple by the fact that all the shownote links are list items (`<li>`), but of course it would be nicer if we could match links to the episode they belong to.  
+Welp, that's pretty straight forward. It's made fairly easy by the fact that all the shownote links are list items (`<li>`), but of course it would be nicer if we could match links to the episode they belong to.  
 We can do that by iterating over all the `<article>` elements in the page, which enclose each episode post. 
 As an example, let's get the episode number/titles of the most recent episodes:
 
@@ -140,16 +131,16 @@ tibble::tibble(
 
 ```
 #> # A tibble: 5 x 2
-#>   number episode                   
-#>   <chr>  <chr>                     
-#> 1 410    The Comfort Is Killing Me 
-#> 2 409    Midrange Snob             
-#> 3 408    Feature Headphones        
-#> 4 407    It Isn't a Big Grapefruit 
-#> 5 406    A Bomb on Your Home Screen
+#>   number episode                       
+#>   <chr>  <chr>                         
+#> 1 412    Love Batteries                
+#> 2 411    Are My Instructions Not Clear?
+#> 3 410    The Comfort Is Killing Me     
+#> 4 409    Midrange Snob                 
+#> 5 408    Feature Headphones
 ```
 
-This is also the first case of regex making things a little neater in the result but harder to grasp along the way. If you've been spared the regex way of life until now, what whe did here breaks down to this:
+This is also the first case of regex making things a little neater in the result but harder to grasp along the way. If you've been spared the regex way of life until now, what we did here breaks down to this:
 
 1. Take the episode title, e.g. `"410: The Comfort Is Killing Me"` from the HTML via `html_text()`
 2. *Extract* the number by taking the non-zero amount of digits (`\\d+`) from the beginning of the string (`^`)
@@ -157,11 +148,14 @@ This is also the first case of regex making things a little neater in the result
 
 Thankfully {{< pkg "stringr" >}} makes this nice and readable.  
 And now we can… go all out. Figure out all the elements of the site we're interested in regarding episode metadata and links, and put all the scrapey bits into a function for convenience. 
-I won't explain each element, but feel free to comment if you don't understand a specific part. In any case, with the minimal amount of setup required you can easily trial and error your way through this part if you're into that.
+I won't explain each element, but feel free to comment if you don't understand a specific part. In any case, with the minimal amount of setup required you can easily trial-and-error your way through this part if you're into that[^butnote].
+
+[^butnote]: But please note that you don't have to re-read the website in question to scrape it. You can save the website content to a variable and then use that as the base for all your `html_nodes` and regex experiments.
 
 <details><summary>Click to expand: atp_parse_page()</summary>
 
 ```r 
+# Here, page is an object as returned by polite::scrape()
 atp_parse_page <- function(page) {
   rvest::html_nodes(page, "article") %>%
     # Iterate over all the article elements (episodes) on the page
@@ -255,15 +249,15 @@ glimpse(scraped_page)
 ```
 #> Rows: 5
 #> Columns: 9
-#> $ number   <chr> "410", "409", "408", "407", "406"
-#> $ title    <chr> "The Comfort Is Killing Me", "Midrange Snob", "Feature Headp…
-#> $ duration <time> 02:29:29, 02:10:03, 02:10:44, 01:49:53, 02:36:18
-#> $ date     <date> 2020-12-22, 2020-12-17, 2020-12-10, 2020-12-03, 2020-11-25
-#> $ year     <dbl> 2020, 2020, 2020, 2020, 2020
-#> $ month    <ord> December, December, December, December, November
-#> $ weekday  <ord> Tuesday, Thursday, Thursday, Thursday, Wednesday
-#> $ links    <list> [<tbl_df[29 x 3]>, <tbl_df[20 x 3]>, <tbl_df[21 x 3]>, <tbl…
-#> $ n_links  <int> 29, 20, 21, 24, 32
+#> $ number   <chr> "412", "411", "410", "409", "408"
+#> $ title    <chr> "Love Batteries", "Are My Instructions Not Clear?", "The Com…
+#> $ duration <time> 02:36:26, 02:07:32, 02:29:29, 02:10:03, 02:10:44
+#> $ date     <date> 2021-01-07, 2020-12-29, 2020-12-22, 2020-12-17, 2020-12-10
+#> $ year     <dbl> 2021, 2020, 2020, 2020, 2020
+#> $ month    <ord> January, December, December, December, December
+#> $ weekday  <ord> Thursday, Tuesday, Tuesday, Thursday, Thursday
+#> $ links    <list> [<tbl_df[32 x 3]>, <tbl_df[29 x 3]>, <tbl_df[29 x 3]>, <tbl…
+#> $ n_links  <int> 32, 29, 29, 20, 21
 ```
 
 ```r 
@@ -271,24 +265,23 @@ scraped_page$links[[1]]
 ```
 
 ```
-#> # A tibble: 29 x 3
-#>    link_text       link_url                                            link_type
-#>    <chr>           <chr>                                               <chr>    
-#>  1 Barney          https://twitter.com/barneyiam/status/1339483009557… Shownotes
-#>  2 Snazzy Labs vi… https://www.youtube.com/watch?v=FK5JXHZCcuY&featur… Shownotes
-#>  3 9to5mac         https://9to5mac.com/2020/12/18/airpods-max-smart-c… Shownotes
-#>  4 Apple Support   https://support.apple.com/en-us/HT211886            Shownotes
-#>  5 Pro Display XDR https://www.apple.com/pro-display-xdr/              Shownotes
-#>  6 LG UltraFine 5K https://www.apple.com/shop/product/HMUB2LL/A/lg-ul… Shownotes
-#>  7 Joseph Duffy    https://twitter.com/Joe_Duffy/status/1339609400416… Shownotes
-#>  8 been revised    https://www.notebookcheck.net/LG-refreshes-the-Ult… Shownotes
-#>  9 Tinus           https://twitter.com/Tinusg/status/1339903162111680… Shownotes
-#> 10 bug report      https://bugs.chromium.org/p/chromium/issues/detail… Shownotes
-#> # … with 19 more rows
+#> # A tibble: 32 x 3
+#>    link_text                 link_url                                  link_type
+#>    <chr>                     <chr>                                     <chr>    
+#>  1 Example app               https://apps.apple.com/pl/app/mimi-heari… Shownotes
+#>  2 Maciej                    https://twitter.com/w1nmaciek/status/134… Shownotes
+#>  3 Apple guidance on SMC re… https://support.apple.com/en-us/HT203127  Shownotes
+#>  4 How to do a SMC reset     https://support.apple.com/en-us/HT201295  Shownotes
+#>  5 Apple T2                  https://en.wikipedia.org/wiki/Apple-desi… Shownotes
+#>  6 BridgeOS                  https://en.wikipedia.org/wiki/BridgeOS    Shownotes
+#>  7 Nintendo Famicom          https://en.wikipedia.org/wiki/Nintendo_E… Shownotes
+#>  8 Video of Pols Voice & th… https://www.youtube.com/watch?v=qJwdhfEz… Shownotes
+#>  9 Tip from terence          https://twitter.com/terenceyan_/status/1… Shownotes
+#> 10 sysdiagnose               https://www.jessesquires.com/blog/2018/0… Shownotes
+#> # … with 22 more rows
 ```
 
 Now what's left is to get _all_ the episodes, because why not.
-
 
 ## Getting _All_ the Episodes
 
@@ -300,6 +293,8 @@ I don't regret *everything* per se, but I think this is actually reasonable.
 ```r 
 atp_get_episodes <- function(page_limit = NULL) {
 
+  # If there's no page limit, we set it to infinity
+  # because it's easier if it's a number and I'm bad at while loops
   if (is.null(page_limit)) page_limit <- Inf
 
   # Get the first page and scrape it
@@ -325,6 +320,7 @@ atp_get_episodes <- function(page_limit = NULL) {
   # First page has 5 episodes, 50 episodes per page afterwards
   total_pages <- ceiling((latest_ep_num - 5) / 50) + 1
 
+  # Everything is better with progress bars.
   pb <- progress::progress_bar$new(
     format = "Getting pages [:bar] :current/:total (:percent) ETA: :eta",
     total = total_pages
@@ -374,12 +370,10 @@ atp_episodes <- atp_get_episodes()
 
 
 
-
 ## Looking at Links
 
 One of the neat things we can do with this ATP data compared to [other podcast data I've scraped in the past](https://podcasts.jemu.name/) is the inclusion of nicely formatted shownote links. 
 So we might as well take a closer look at what we've got there.
-
 
 ```r 
 ggplot(atp_episodes, aes(x = n_links)) +
@@ -642,20 +636,20 @@ atp_episodes_links %>%
 ```
 
 ```
-#> # A tibble: 1,521 x 2
+#> # A tibble: 1,526 x 2
 #>    domain                  n
 #>    <chr>               <int>
-#>  1 twitter.com           926
-#>  2 en.wikipedia.org      844
-#>  3 amazon.com            313
-#>  4 apple.com             256
-#>  5 youtube.com           214
-#>  6 relay.fm              166
-#>  7 developer.apple.com   134
+#>  1 twitter.com           929
+#>  2 en.wikipedia.org      858
+#>  3 amazon.com            314
+#>  4 apple.com             258
+#>  5 youtube.com           215
+#>  6 relay.fm              167
+#>  7 developer.apple.com   135
 #>  8 caseyliss.com          99
-#>  9 github.com             88
+#>  9 github.com             89
 #> 10 marco.org              86
-#> # … with 1,511 more rows
+#> # … with 1,516 more rows
 ```
 
 ```r 
@@ -880,12 +874,12 @@ atp_episodes_links %>%
   <tr>
    <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2020 </td>
    <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 162 </td>
+   <td style="text-align:right;"> 163 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 151 </td>
+   <td style="text-align:right;"> 153 </td>
   </tr>
   <tr>
    
@@ -901,6 +895,81 @@ atp_episodes_links %>%
    
    <td style="text-align:left;"> youtube.com </td>
    <td style="text-align:right;"> 41 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="15"> 2021 </td>
+   <td style="text-align:left;"> en.wikipedia.org </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> apple.com </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> support.apple.com </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> twitter.com </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> amazon.com </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> apps.apple.com </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> developer.apple.com </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> eshop.macsales.com </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> gog.com </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> jessesquires.com </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> macmeanoffer.com </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> openttd.org </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> relay.fm </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> web.archive.org </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> youtube.com </td>
+   <td style="text-align:right;"> 1 </td>
   </tr>
 </tbody>
 </table>
@@ -956,7 +1025,7 @@ sess$platform %>%
   </tr>
   <tr>
    <td style="text-align:left;"> date </td>
-   <td style="text-align:left;"> 2020-12-28 </td>
+   <td style="text-align:left;"> 2021-01-12 </td>
   </tr>
 </tbody>
 </table>
@@ -984,8 +1053,8 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> blogdown </td>
-   <td style="text-align:left;"> 0.21.69 </td>
-   <td style="text-align:left;"> Github (rstudio/blogdown@11fec4c) </td>
+   <td style="text-align:left;"> 0.21 </td>
+   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> bookdown </td>
@@ -1094,8 +1163,8 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> htmltools </td>
-   <td style="text-align:left;"> 0.5.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> 0.5.0.9003 </td>
+   <td style="text-align:left;"> Github (rstudio/htmltools@d18bd8e) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> httr </td>
@@ -1163,6 +1232,16 @@ sess$packages %>%
    <td style="text-align:left;"> CRAN (R 4.0.0) </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> prettyunits </td>
+   <td style="text-align:left;"> 1.1.1 </td>
+   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> progress </td>
+   <td style="text-align:left;"> 1.2.2 </td>
+   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> purrr </td>
    <td style="text-align:left;"> 0.3.4 </td>
    <td style="text-align:left;"> CRAN (R 4.0.0) </td>
@@ -1184,8 +1263,8 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> renv </td>
-   <td style="text-align:left;"> 0.12.3 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 0.12.2 </td>
+   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> rlang </td>
@@ -1194,7 +1273,7 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> rmarkdown </td>
-   <td style="text-align:left;"> 2.6 </td>
+   <td style="text-align:left;"> 2.5 </td>
    <td style="text-align:left;"> CRAN (R 4.0.3) </td>
   </tr>
   <tr>
@@ -1255,7 +1334,7 @@ sess$packages %>%
   <tr>
    <td style="text-align:left;"> tadaathemes </td>
    <td style="text-align:left;"> 0.0.1 </td>
-   <td style="text-align:left;"> Github (tadaadata/tadaathemes@0118fb9) </td>
+   <td style="text-align:left;"> local </td>
   </tr>
   <tr>
    <td style="text-align:left;"> tibble </td>
