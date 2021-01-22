@@ -163,14 +163,15 @@ atp_parse_page <- function(page) {
         stringr::str_remove("^\\d+:\\s")
 
       # Get the sponsor links
-      link_text_sponsor <- .x %>%
+      links_sponsor <- .x %>%
+        # Shownotes links are in the second <ul> element
         rvest::html_nodes("ul~ ul li") %>%
-        rvest::html_nodes("a") %>%
+        rvest::html_nodes("a")
+
+      link_text_sponsor <- links_sponsor %>%
         rvest::html_text()
 
-      link_href_sponsor <- .x %>%
-        rvest::html_nodes("ul~ ul li") %>%
-        rvest::html_nodes("a") %>%
+      link_href_sponsor <- links_sponsor %>%
         rvest::html_attr("href")
 
       links_sponsor <- tibble(
@@ -180,14 +181,16 @@ atp_parse_page <- function(page) {
       )
 
       # Get the regular shownotes links
-      link_text <- .x %>%
-        rvest::html_nodes(".subtitle+ ul li , li a") %>%
-        rvest::html_nodes("li a") %>%
+      links_regular <- .x %>%
+        # Get the first <ul> element, then the listed links
+        # This avoids links in paragraphs and shownotes
+        rvest::html_node("ul") %>%
+        rvest::html_nodes("li a")
+
+      link_text <- links_regular %>%
         rvest::html_text()
 
-      link_href <- .x %>%
-        rvest::html_nodes(".subtitle+ ul li , li a") %>%
-        rvest::html_nodes("li a") %>%
+      link_href <- links_regular %>%
         rvest::html_attr("href")
 
       links_regular <- tibble(
@@ -195,7 +198,6 @@ atp_parse_page <- function(page) {
         link_url = link_href,
         link_type = "Shownotes"
       )
-
       # Piece it all together all tibbly
       # Links will be a list-column
       tibble(
@@ -207,7 +209,7 @@ atp_parse_page <- function(page) {
         month = lubridate::month(date, abbr = FALSE, label = TRUE),
         weekday = lubridate::wday(date, abbr = FALSE, label = TRUE),
         links = list(dplyr::bind_rows(links_regular, links_sponsor)),
-        n_links = purrr::map_int(links, nrow)
+        n_links = nrow(links_regular) + nrow(links_sponsor)
       )
     })
 }
@@ -320,15 +322,15 @@ So we might as well take a closer look at what we've got there.
 
 ```{r links-histo}
 ggplot(atp_episodes, aes(x = n_links)) +
-  geom_bar(alpha = .75, color = "white") +
+  geom_bar(alpha = .75) +
   scale_x_binned() +
   labs(
     title = "ATP.fm: Number of Links per Episode",
     x = "# of Links in Episode Shownotes",
-    y = "Count",
+    y = "Episodes",
     caption = plot_caption
   ) + 
-  theme_tadaa()
+  theme_tadaark()
 ```
 
 Huh, what's with the right outlier?
@@ -336,14 +338,22 @@ Huh, what's with the right outlier?
 ```{r links-top}
 atp_episodes %>%
   slice_max(n_links, n = 5) %>%
-  select(date, title, n_links) %>%
-  kable(caption = "Episodes with most links") %>%
-  kable_styling()
+  select(date, number, title, n_links) %>%
+  kable(caption = "Episodes with most links")
 ```
 
 Okay, so [episode 119][e119] *wins*. But it seems unfair to not take episode length into account, so let's try that.
 
 [e119]: https://atp.fm/119
+
+```{r links-most-common-target}
+atp_episodes %>%
+  unnest(links) %>%
+  count(link_url, link_type, sort = TRUE) %>%
+  group_by(link_type) %>%
+  slice_max(n, n = 3)
+```
+
 
 ```{r links-duration-scatter}
 ggplot(atp_episodes, aes(x = duration, y = n_links)) +
@@ -360,12 +370,13 @@ ggplot(atp_episodes, aes(x = duration, y = n_links)) +
 Well okay, there's an unsurprising trend there. Maybe we should take a look at `links / minute`, as a metric of how much linkage there is being done.
 
 ```{r links-per-minute}
+atp_episodes <- atp_episodes %>%
+  mutate(lpm = n_links / (as.numeric(duration) / 60))
+
 atp_episodes %>%
-  mutate(lpm = n_links / (as.numeric(duration) / 60)) %>%
   slice_max(lpm, n = 5) %>% 
   select(date, title, duration, n_links, lpm) %>%
-  kable(caption = "Episodes with most links per minute") %>%
-  kable_styling()
+  kable(caption = "Episodes with most links per minute")
 ```
 
 
@@ -395,8 +406,23 @@ atp_episodes_links %>%
 
 atp_episodes_links %>%
   count(year = lubridate::year(date), HTTPS) %>%
-  ggplot(aes(x = year, y = n, fill = HTTPS)) +
+  group_by(year) %>%
+  mutate(prop = n / sum(n)) %>%
+  ggplot(aes(x = year, y = prop, fill = HTTPS)) +
   geom_col(alpha = .75, color = "white") + 
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  hrbrthemes::scale_y_percent() +
+  theme_tadaa()
+
+atp_episodes_links %>%
+  count(year = lubridate::year(date), HTTPS, link_type) %>%
+  group_by(link_type, year) %>%
+  mutate(prop = n / sum(n)) %>%
+  ggplot(aes(x = year, y = prop, fill = HTTPS)) +
+  facet_wrap(vars(link_type)) +
+  geom_col(alpha = .75, color = "white") + 
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  hrbrthemes::scale_y_percent() +
   theme_tadaa()
 ```
 
@@ -408,8 +434,7 @@ atp_episodes_links %>%
   head(10) %>%
   kable(
     col.names = c("Domain", "Link Type", "# of HTTP links")
-  ) %>%
-  kable_styling()
+  )
 ```
 
 ### Domains

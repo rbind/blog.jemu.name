@@ -20,6 +20,12 @@ always_allow_html: yes
 editor_options: 
   chunk_output_type: console
 ---
+<script src="{{< blogdown/postref >}}index.en_files/kePrint/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/lightable/lightable.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index.en_files/kePrint/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/lightable/lightable.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index.en_files/kePrint/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/lightable/lightable.css" rel="stylesheet" />
 
 
 
@@ -103,14 +109,14 @@ head(atp_links)
 
 ```
 #> # A tibble: 6 x 2
-#>   text                     url                                                  
-#>   <chr>                    <chr>                                                
-#> 1 Example app              https://apps.apple.com/pl/app/mimi-hearing-test/id93…
-#> 2 Maciej                   https://twitter.com/w1nmaciek/status/134439231988217…
-#> 3 Apple guidance on SMC r… https://support.apple.com/en-us/HT203127             
-#> 4 How to do a SMC reset    https://support.apple.com/en-us/HT201295             
-#> 5 Apple T2                 https://en.wikipedia.org/wiki/Apple-designed_process…
-#> 6 BridgeOS                 https://en.wikipedia.org/wiki/BridgeOS
+#>   text           url                                
+#>   <chr>          <chr>                              
+#> 1 Waffle House   https://www.wafflehouse.com/       
+#> 2 Taco Bell      https://www.tacobell.com/          
+#> 3 CocoaLove      https://cocoalove.org/             
+#> 4 Steak ‘n Shake https://www.steaknshake.com/       
+#> 5 Denny’s        https://www.dennys.com/            
+#> 6 Perkins        https://www.perkinsrestaurants.com/
 ```
 
 Welp, that's pretty straight forward. It's made fairly easy by the fact that all the shownote links are list items (`<li>`), but of course it would be nicer if we could match links to the episode they belong to.  
@@ -133,11 +139,11 @@ tibble::tibble(
 #> # A tibble: 5 x 2
 #>   number episode                       
 #>   <chr>  <chr>                         
-#> 1 412    Love Batteries                
-#> 2 411    Are My Instructions Not Clear?
-#> 3 410    The Comfort Is Killing Me     
-#> 4 409    Midrange Snob                 
-#> 5 408    Feature Headphones
+#> 1 413    Suddenly I'm the Marco        
+#> 2 412    Love Batteries                
+#> 3 411    Are My Instructions Not Clear?
+#> 4 410    The Comfort Is Killing Me     
+#> 5 409    Midrange Snob
 ```
 
 This is also the first case of regex making things a little neater in the result but harder to grasp along the way. If you've been spared the regex way of life until now, what we did here breaks down to this:
@@ -185,14 +191,15 @@ atp_parse_page <- function(page) {
         stringr::str_remove("^\\d+:\\s")
 
       # Get the sponsor links
-      link_text_sponsor <- .x %>%
+      links_sponsor <- .x %>%
+        # Shownotes links are in the second <ul> element
         rvest::html_nodes("ul~ ul li") %>%
-        rvest::html_nodes("a") %>%
+        rvest::html_nodes("a")
+
+      link_text_sponsor <- links_sponsor %>%
         rvest::html_text()
 
-      link_href_sponsor <- .x %>%
-        rvest::html_nodes("ul~ ul li") %>%
-        rvest::html_nodes("a") %>%
+      link_href_sponsor <- links_sponsor %>%
         rvest::html_attr("href")
 
       links_sponsor <- tibble(
@@ -202,14 +209,16 @@ atp_parse_page <- function(page) {
       )
 
       # Get the regular shownotes links
-      link_text <- .x %>%
-        rvest::html_nodes(".subtitle+ ul li , li a") %>%
-        rvest::html_nodes("li a") %>%
+      links_regular <- .x %>%
+        # Get the first <ul> element, then the listed links
+        # This avoids links in paragraphs and shownotes
+        rvest::html_node("ul") %>%
+        rvest::html_nodes("li a")
+
+      link_text <- links_regular %>%
         rvest::html_text()
 
-      link_href <- .x %>%
-        rvest::html_nodes(".subtitle+ ul li , li a") %>%
-        rvest::html_nodes("li a") %>%
+      link_href <- links_regular %>%
         rvest::html_attr("href")
 
       links_regular <- tibble(
@@ -217,7 +226,6 @@ atp_parse_page <- function(page) {
         link_url = link_href,
         link_type = "Shownotes"
       )
-
       # Piece it all together all tibbly
       # Links will be a list-column
       tibble(
@@ -229,7 +237,7 @@ atp_parse_page <- function(page) {
         month = lubridate::month(date, abbr = FALSE, label = TRUE),
         weekday = lubridate::wday(date, abbr = FALSE, label = TRUE),
         links = list(dplyr::bind_rows(links_regular, links_sponsor)),
-        n_links = purrr::map_int(links, nrow)
+        n_links = nrow(links_regular) + nrow(links_sponsor)
       )
     })
 }
@@ -249,15 +257,15 @@ glimpse(scraped_page)
 ```
 #> Rows: 5
 #> Columns: 9
-#> $ number   <chr> "412", "411", "410", "409", "408"
-#> $ title    <chr> "Love Batteries", "Are My Instructions Not Clear?", "The Com…
-#> $ duration <time> 02:36:26, 02:07:32, 02:29:29, 02:10:03, 02:10:44
-#> $ date     <date> 2021-01-07, 2020-12-29, 2020-12-22, 2020-12-17, 2020-12-10
-#> $ year     <dbl> 2021, 2020, 2020, 2020, 2020
-#> $ month    <ord> January, December, December, December, December
-#> $ weekday  <ord> Thursday, Tuesday, Tuesday, Thursday, Thursday
-#> $ links    <list> [<tbl_df[32 x 3]>, <tbl_df[29 x 3]>, <tbl_df[29 x 3]>, <tbl…
-#> $ n_links  <int> 32, 29, 29, 20, 21
+#> $ number   <chr> "413", "412", "411", "410", "409"
+#> $ title    <chr> "Suddenly I'm the Marco", "Love Batteries", "Are My Instruct…
+#> $ duration <time> 02:11:48, 02:36:26, 02:07:32, 02:29:29, 02:10:03
+#> $ date     <date> 2021-01-14, 2021-01-07, 2020-12-29, 2020-12-22, 2020-12-17
+#> $ year     <dbl> 2021, 2021, 2020, 2020, 2020
+#> $ month    <ord> January, January, December, December, December
+#> $ weekday  <ord> Thursday, Thursday, Tuesday, Tuesday, Thursday
+#> $ links    <list> [<tbl_df[35 x 3]>, <tbl_df[34 x 3]>, <tbl_df[31 x 3]>, <tbl…
+#> $ n_links  <int> 35, 34, 31, 31, 22
 ```
 
 ```r 
@@ -265,20 +273,20 @@ scraped_page$links[[1]]
 ```
 
 ```
-#> # A tibble: 32 x 3
+#> # A tibble: 35 x 3
 #>    link_text                 link_url                                  link_type
 #>    <chr>                     <chr>                                     <chr>    
-#>  1 Example app               https://apps.apple.com/pl/app/mimi-heari… Shownotes
-#>  2 Maciej                    https://twitter.com/w1nmaciek/status/134… Shownotes
-#>  3 Apple guidance on SMC re… https://support.apple.com/en-us/HT203127  Shownotes
-#>  4 How to do a SMC reset     https://support.apple.com/en-us/HT201295  Shownotes
-#>  5 Apple T2                  https://en.wikipedia.org/wiki/Apple-desi… Shownotes
-#>  6 BridgeOS                  https://en.wikipedia.org/wiki/BridgeOS    Shownotes
-#>  7 Nintendo Famicom          https://en.wikipedia.org/wiki/Nintendo_E… Shownotes
-#>  8 Video of Pols Voice & th… https://www.youtube.com/watch?v=qJwdhfEz… Shownotes
-#>  9 Tip from terence          https://twitter.com/terenceyan_/status/1… Shownotes
-#> 10 sysdiagnose               https://www.jessesquires.com/blog/2018/0… Shownotes
-#> # … with 22 more rows
+#>  1 Waffle House              https://www.wafflehouse.com/              Shownotes
+#>  2 Taco Bell                 https://www.tacobell.com/                 Shownotes
+#>  3 CocoaLove                 https://cocoalove.org/                    Shownotes
+#>  4 Steak ‘n Shake            https://www.steaknshake.com/              Shownotes
+#>  5 Denny’s                   https://www.dennys.com/                   Shownotes
+#>  6 Perkins                   https://www.perkinsrestaurants.com/       Shownotes
+#>  7 “Is it bigger than a bre… http://steveallen.com/author/book_pages/… Shownotes
+#>  8 mentioned on Twitter      https://twitter.com/siracusa/status/1349… Shownotes
+#>  9 OWC Thunderbolt Dock      https://www.owcdigital.com/products/thun… Shownotes
+#> 10 CalDigit TS3 Plus         https://www.amazon.com/dp/B07CZPV8DF/?ta… Shownotes
+#> # … with 25 more rows
 ```
 
 Now what's left is to get _all_ the episodes, because why not.
@@ -377,15 +385,15 @@ So we might as well take a closer look at what we've got there.
 
 ```r 
 ggplot(atp_episodes, aes(x = n_links)) +
-  geom_bar(alpha = .75, color = "white") +
+  geom_bar(alpha = .75) +
   scale_x_binned() +
   labs(
     title = "ATP.fm: Number of Links per Episode",
     x = "# of Links in Episode Shownotes",
-    y = "Count",
+    y = "Episodes",
     caption = plot_caption
   ) + 
-  theme_tadaa()
+  theme_tadaark()
 ```
 
 {{<figure src="plots/links-histo-1.png" link="plots/links-histo-1.png">}}
@@ -395,44 +403,49 @@ Huh, what's with the right outlier?
 ```r 
 atp_episodes %>%
   slice_max(n_links, n = 5) %>%
-  select(date, title, n_links) %>%
-  kable(caption = "Episodes with most links") %>%
-  kable_styling()
+  select(date, number, title, n_links) %>%
+  kable(caption = "Episodes with most links")
 ```
-<table class="table" style="margin-left: auto; margin-right: auto;">
+<table>
 <caption>Table 1: Episodes with most links</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> date </th>
+   <th style="text-align:left;"> number </th>
    <th style="text-align:left;"> title </th>
    <th style="text-align:right;"> n_links </th>
   </tr>
  </thead>
 <tbody>
   <tr>
+   <td style="text-align:left;"> 2015-05-29 </td>
+   <td style="text-align:left;"> 119 </td>
+   <td style="text-align:left;"> Promoretired </td>
+   <td style="text-align:right;"> 73 </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> 2014-11-14 </td>
+   <td style="text-align:left;"> 91 </td>
    <td style="text-align:left;"> Press Agree to Drive </td>
-   <td style="text-align:right;"> 55 </td>
+   <td style="text-align:right;"> 58 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2020-06-04 </td>
+   <td style="text-align:left;"> 381 </td>
+   <td style="text-align:left;"> Uncomfortable Truths </td>
+   <td style="text-align:right;"> 52 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2015-02-27 </td>
+   <td style="text-align:left;"> 106 </td>
    <td style="text-align:left;"> That’s Slightly Right </td>
-   <td style="text-align:right;"> 50 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2015-02-20 </td>
-   <td style="text-align:left;"> Do You Want to Sell Sugar Phones for the Rest of Your Life? </td>
-   <td style="text-align:right;"> 50 </td>
+   <td style="text-align:right;"> 51 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2014-11-07 </td>
+   <td style="text-align:left;"> 90 </td>
    <td style="text-align:left;"> Speculative Abandonware </td>
-   <td style="text-align:right;"> 50 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2019-08-19 </td>
-   <td style="text-align:left;"> You Are a Computer Athlete </td>
-   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 51 </td>
   </tr>
 </tbody>
 </table>
@@ -440,6 +453,28 @@ atp_episodes %>%
 Okay, so [episode 119][e119] *wins*. But it seems unfair to not take episode length into account, so let's try that.
 
 [e119]: https://atp.fm/119
+
+```r 
+atp_episodes %>%
+  unnest(links) %>%
+  count(link_url, link_type, sort = TRUE) %>%
+  group_by(link_type) %>%
+  slice_max(n, n = 3)
+```
+
+```
+#> # A tibble: 6 x 3
+#> # Groups:   link_type [2]
+#>   link_url                         link_type     n
+#>   <chr>                            <chr>     <int>
+#> 1 http://jonathanmann.net/         Shownotes    87
+#> 2 http://neutral.fm/               Shownotes    24
+#> 3 https://developer.apple.com/wwdc Shownotes    13
+#> 4 http://squarespace.com/atp       Sponsor     159
+#> 5 http://hover.com/atp             Sponsor      69
+#> 6 http://betterment.com/atp        Sponsor      57
+```
+
 
 ```r 
 ggplot(atp_episodes, aes(x = duration, y = n_links)) +
@@ -458,14 +493,15 @@ ggplot(atp_episodes, aes(x = duration, y = n_links)) +
 Well okay, there's an unsurprising trend there. Maybe we should take a look at `links / minute`, as a metric of how much linkage there is being done.
 
 ```r 
+atp_episodes <- atp_episodes %>%
+  mutate(lpm = n_links / (as.numeric(duration) / 60))
+
 atp_episodes %>%
-  mutate(lpm = n_links / (as.numeric(duration) / 60)) %>%
   slice_max(lpm, n = 5) %>% 
   select(date, title, duration, n_links, lpm) %>%
-  kable(caption = "Episodes with most links per minute") %>%
-  kable_styling()
+  kable(caption = "Episodes with most links per minute")
 ```
-<table class="table" style="margin-left: auto; margin-right: auto;">
+<table>
 <caption>Table 2: Episodes with most links per minute</caption>
  <thead>
   <tr>
@@ -478,39 +514,39 @@ atp_episodes %>%
  </thead>
 <tbody>
   <tr>
+   <td style="text-align:left;"> 2015-05-29 </td>
+   <td style="text-align:left;"> Promoretired </td>
+   <td style="text-align:left;"> 01:39:42 </td>
+   <td style="text-align:right;"> 73 </td>
+   <td style="text-align:right;"> 0.7321966 </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> 2014-11-14 </td>
    <td style="text-align:left;"> Press Agree to Drive </td>
    <td style="text-align:left;"> 01:40:43 </td>
-   <td style="text-align:right;"> 55 </td>
-   <td style="text-align:right;"> 0.5460864 </td>
+   <td style="text-align:right;"> 58 </td>
+   <td style="text-align:right;"> 0.5758729 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2015-11-24 </td>
-   <td style="text-align:left;"> Lasers and Pew-Pew and Space Aliens </td>
-   <td style="text-align:left;"> 01:27:43 </td>
-   <td style="text-align:right;"> 42 </td>
-   <td style="text-align:right;"> 0.4788144 </td>
+   <td style="text-align:left;"> 2018-03-01 </td>
+   <td style="text-align:left;"> Old Potato </td>
+   <td style="text-align:left;"> 01:34:24 </td>
+   <td style="text-align:right;"> 47 </td>
+   <td style="text-align:right;"> 0.4978814 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2014-11-07 </td>
    <td style="text-align:left;"> Speculative Abandonware </td>
    <td style="text-align:left;"> 01:44:37 </td>
-   <td style="text-align:right;"> 50 </td>
-   <td style="text-align:right;"> 0.4779353 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2015-02-20 </td>
-   <td style="text-align:left;"> Do You Want to Sell Sugar Phones for the Rest of Your Life? </td>
-   <td style="text-align:left;"> 01:46:25 </td>
-   <td style="text-align:right;"> 50 </td>
-   <td style="text-align:right;"> 0.4698512 </td>
+   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:right;"> 0.4874940 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2014-12-26 </td>
    <td style="text-align:left;"> You Have to Know When to Stop </td>
    <td style="text-align:left;"> 01:27:18 </td>
-   <td style="text-align:right;"> 40 </td>
-   <td style="text-align:right;"> 0.4581901 </td>
+   <td style="text-align:right;"> 42 </td>
+   <td style="text-align:right;"> 0.4810997 </td>
   </tr>
 </tbody>
 </table>
@@ -547,12 +583,30 @@ atp_episodes_links %>%
 ```r 
 atp_episodes_links %>%
   count(year = lubridate::year(date), HTTPS) %>%
-  ggplot(aes(x = year, y = n, fill = HTTPS)) +
+  group_by(year) %>%
+  mutate(prop = n / sum(n)) %>%
+  ggplot(aes(x = year, y = prop, fill = HTTPS)) +
   geom_col(alpha = .75, color = "white") + 
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  hrbrthemes::scale_y_percent() +
   theme_tadaa()
 ```
 
 {{<figure src="plots/links-proto-2.png" link="plots/links-proto-2.png">}}
+```r 
+atp_episodes_links %>%
+  count(year = lubridate::year(date), HTTPS, link_type) %>%
+  group_by(link_type, year) %>%
+  mutate(prop = n / sum(n)) %>%
+  ggplot(aes(x = year, y = prop, fill = HTTPS)) +
+  facet_wrap(vars(link_type)) +
+  geom_col(alpha = .75, color = "white") + 
+  scale_x_continuous(breaks = scales::pretty_breaks()) +
+  hrbrthemes::scale_y_percent() +
+  theme_tadaa()
+```
+
+{{<figure src="plots/links-proto-3.png" link="plots/links-proto-3.png">}}
 
 
 ```r 
@@ -562,10 +616,9 @@ atp_episodes_links %>%
   head(10) %>%
   kable(
     col.names = c("Domain", "Link Type", "# of HTTP links")
-  ) %>%
-  kable_styling()
+  )
 ```
-<table class="table" style="margin-left: auto; margin-right: auto;">
+<table>
  <thead>
   <tr>
    <th style="text-align:left;"> Domain </th>
@@ -577,12 +630,12 @@ atp_episodes_links %>%
   <tr>
    <td style="text-align:left;"> hypercritical.co </td>
    <td style="text-align:left;"> Shownotes </td>
-   <td style="text-align:right;"> 25 </td>
+   <td style="text-align:right;"> 27 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> amazon.com </td>
    <td style="text-align:left;"> Shownotes </td>
-   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 25 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> squarespace.com </td>
@@ -600,14 +653,19 @@ atp_episodes_links %>%
    <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> awaytravel.com </td>
-   <td style="text-align:left;"> Sponsor </td>
-   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> neutral.fm </td>
+   <td style="text-align:left;"> Shownotes </td>
+   <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 5by5.tv </td>
    <td style="text-align:left;"> Shownotes </td>
-   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> awaytravel.com </td>
+   <td style="text-align:left;"> Sponsor </td>
+   <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> getbluevine.com </td>
@@ -617,11 +675,6 @@ atp_episodes_links %>%
   <tr>
    <td style="text-align:left;"> jamf.com </td>
    <td style="text-align:left;"> Sponsor </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> meetcarrot.com </td>
-   <td style="text-align:left;"> Shownotes </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
 </tbody>
@@ -636,20 +689,20 @@ atp_episodes_links %>%
 ```
 
 ```
-#> # A tibble: 1,526 x 2
+#> # A tibble: 1,800 x 2
 #>    domain                  n
 #>    <chr>               <int>
-#>  1 twitter.com           929
-#>  2 en.wikipedia.org      858
-#>  3 amazon.com            314
-#>  4 apple.com             258
-#>  5 youtube.com           215
-#>  6 relay.fm              167
-#>  7 developer.apple.com   135
-#>  8 caseyliss.com          99
-#>  9 github.com             89
-#> 10 marco.org              86
-#> # … with 1,516 more rows
+#>  1 twitter.com          1030
+#>  2 en.wikipedia.org      953
+#>  3 apple.com             381
+#>  4 amazon.com            350
+#>  5 youtube.com           248
+#>  6 relay.fm              183
+#>  7 developer.apple.com   179
+#>  8 marco.org             129
+#>  9 caseyliss.com         116
+#> 10 theverge.com          113
+#> # … with 1,790 more rows
 ```
 
 ```r 
@@ -672,219 +725,119 @@ atp_episodes_links %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="9"> 2013 </td>
-   <td style="text-align:left;"> anandtech.com </td>
-   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2013 </td>
+   <td style="text-align:left;"> marco.org </td>
+   <td style="text-align:right;"> 19 </td>
   </tr>
   <tr>
    
-   <td style="text-align:left;"> marco.org </td>
-   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> youtube.com </td>
+   <td style="text-align:right;"> 16 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 3 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> david-smith.org </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> everymac.com </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> itunes.apple.com </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> theverge.com </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> tumblr.caseyliss.com </td>
-   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 14 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 13 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> anandtech.com </td>
+   <td style="text-align:right;"> 11 </td>
   </tr>
   <tr>
    <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2014 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 127 </td>
+   <td style="text-align:right;"> 140 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 93 </td>
+   <td style="text-align:right;"> 99 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> 5by5.tv </td>
-   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 30 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> arstechnica.com </td>
-   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 27 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> youtube.com </td>
-   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 23 </td>
   </tr>
   <tr>
    <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2015 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 149 </td>
+   <td style="text-align:right;"> 161 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 125 </td>
+   <td style="text-align:right;"> 133 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> apple.com </td>
-   <td style="text-align:right;"> 62 </td>
+   <td style="text-align:right;"> 80 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> amazon.com </td>
-   <td style="text-align:right;"> 52 </td>
+   <td style="text-align:right;"> 55 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> developer.apple.com </td>
-   <td style="text-align:right;"> 30 </td>
+   <td style="text-align:right;"> 38 </td>
   </tr>
   <tr>
    <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2016 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 119 </td>
+   <td style="text-align:right;"> 137 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> twitter.com </td>
+   <td style="text-align:right;"> 90 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> amazon.com </td>
-   <td style="text-align:right;"> 77 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:right;"> 80 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> apple.com </td>
-   <td style="text-align:right;"> 48 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> relay.fm </td>
-   <td style="text-align:right;"> 32 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2017 </td>
-   <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 134 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> en.wikipedia.org </td>
    <td style="text-align:right;"> 69 </td>
   </tr>
   <tr>
    
-   <td style="text-align:left;"> amazon.com </td>
-   <td style="text-align:right;"> 45 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> apple.com </td>
-   <td style="text-align:right;"> 33 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> relay.fm </td>
-   <td style="text-align:right;"> 33 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2018 </td>
-   <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 184 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 130 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> amazon.com </td>
-   <td style="text-align:right;"> 42 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> youtube.com </td>
-   <td style="text-align:right;"> 42 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> relay.fm </td>
-   <td style="text-align:right;"> 25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="6"> 2019 </td>
-   <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 154 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 96 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> amazon.com </td>
-   <td style="text-align:right;"> 36 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> apple.com </td>
-   <td style="text-align:right;"> 36 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> relay.fm </td>
-   <td style="text-align:right;"> 29 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> youtube.com </td>
-   <td style="text-align:right;"> 29 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2020 </td>
-   <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 163 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 153 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> amazon.com </td>
+   <td style="text-align:left;"> jonathanmann.net </td>
    <td style="text-align:right;"> 46 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2017 </td>
+   <td style="text-align:left;"> twitter.com </td>
+   <td style="text-align:right;"> 147 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> en.wikipedia.org </td>
+   <td style="text-align:right;"> 80 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> amazon.com </td>
+   <td style="text-align:right;"> 50 </td>
   </tr>
   <tr>
    
@@ -893,17 +846,112 @@ atp_episodes_links %>%
   </tr>
   <tr>
    
+   <td style="text-align:left;"> jonathanmann.net </td>
+   <td style="text-align:right;"> 40 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2018 </td>
+   <td style="text-align:left;"> twitter.com </td>
+   <td style="text-align:right;"> 199 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> en.wikipedia.org </td>
+   <td style="text-align:right;"> 132 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> amazon.com </td>
+   <td style="text-align:right;"> 46 </td>
+  </tr>
+  <tr>
+   
    <td style="text-align:left;"> youtube.com </td>
+   <td style="text-align:right;"> 46 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> apple.com </td>
+   <td style="text-align:right;"> 37 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2019 </td>
+   <td style="text-align:left;"> twitter.com </td>
+   <td style="text-align:right;"> 171 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> en.wikipedia.org </td>
+   <td style="text-align:right;"> 109 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> apple.com </td>
+   <td style="text-align:right;"> 61 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> amazon.com </td>
    <td style="text-align:right;"> 41 </td>
   </tr>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="15"> 2021 </td>
+   
+   <td style="text-align:left;"> relay.fm </td>
+   <td style="text-align:right;"> 38 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2020 </td>
+   <td style="text-align:left;"> twitter.com </td>
+   <td style="text-align:right;"> 175 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> en.wikipedia.org </td>
+   <td style="text-align:right;"> 168 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> apple.com </td>
+   <td style="text-align:right;"> 67 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> amazon.com </td>
+   <td style="text-align:right;"> 48 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> youtube.com </td>
+   <td style="text-align:right;"> 43 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="8"> 2021 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
    <td style="text-align:right;"> 12 </td>
   </tr>
   <tr>
    
+   <td style="text-align:left;"> amazon.com </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   
    <td style="text-align:left;"> apple.com </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> twitter.com </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> amzn.to </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> relay.fm </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
@@ -913,63 +961,8 @@ atp_episodes_links %>%
   </tr>
   <tr>
    
-   <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> amazon.com </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> apps.apple.com </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> developer.apple.com </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> eshop.macsales.com </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> gog.com </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> jessesquires.com </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> macmeanoffer.com </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> openttd.org </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> relay.fm </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> web.archive.org </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   
    <td style="text-align:left;"> youtube.com </td>
-   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
   </tr>
 </tbody>
 </table>
@@ -1025,7 +1018,7 @@ sess$platform %>%
   </tr>
   <tr>
    <td style="text-align:left;"> date </td>
-   <td style="text-align:left;"> 2021-01-12 </td>
+   <td style="text-align:left;"> 2021-01-15 </td>
   </tr>
 </tbody>
 </table>
@@ -1053,7 +1046,7 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> blogdown </td>
-   <td style="text-align:left;"> 0.21 </td>
+   <td style="text-align:left;"> 1.0 </td>
    <td style="text-align:left;"> CRAN (R 4.0.2) </td>
   </tr>
   <tr>
@@ -1088,8 +1081,8 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> dplyr </td>
-   <td style="text-align:left;"> 1.0.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 1.0.3 </td>
+   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> ellipsis </td>
@@ -1113,8 +1106,8 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> fansi </td>
-   <td style="text-align:left;"> 0.4.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> 0.4.2 </td>
+   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> farver </td>
@@ -1127,14 +1120,19 @@ sess$packages %>%
    <td style="text-align:left;"> CRAN (R 4.0.2) </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> gdtools </td>
+   <td style="text-align:left;"> 0.2.3 </td>
+   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> generics </td>
    <td style="text-align:left;"> 0.1.0 </td>
    <td style="text-align:left;"> CRAN (R 4.0.2) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> ggplot2 </td>
-   <td style="text-align:left;"> 3.3.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> 3.3.3 </td>
+   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> glue </td>
@@ -1148,8 +1146,8 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> here </td>
-   <td style="text-align:left;"> 1.0.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 1.0.1 </td>
+   <td style="text-align:left;"> RSPM (R 4.0.3) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> highr </td>
@@ -1158,13 +1156,18 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> hms </td>
-   <td style="text-align:left;"> 0.5.3 </td>
+   <td style="text-align:left;"> 1.0.0 </td>
+   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> hrbrthemes </td>
+   <td style="text-align:left;"> 0.8.0 </td>
    <td style="text-align:left;"> CRAN (R 4.0.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> htmltools </td>
-   <td style="text-align:left;"> 0.5.0.9003 </td>
-   <td style="text-align:left;"> Github (rstudio/htmltools@d18bd8e) </td>
+   <td style="text-align:left;"> 0.5.1.9000 </td>
+   <td style="text-align:left;"> Github (rstudio/htmltools@11cfbf3) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> httr </td>
@@ -1232,16 +1235,6 @@ sess$packages %>%
    <td style="text-align:left;"> CRAN (R 4.0.0) </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> prettyunits </td>
-   <td style="text-align:left;"> 1.1.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> progress </td>
-   <td style="text-align:left;"> 1.2.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> purrr </td>
    <td style="text-align:left;"> 0.3.4 </td>
    <td style="text-align:left;"> CRAN (R 4.0.0) </td>
@@ -1258,22 +1251,22 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> Rcpp </td>
-   <td style="text-align:left;"> 1.0.5 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> 1.0.6 </td>
+   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> renv </td>
-   <td style="text-align:left;"> 0.12.2 </td>
+   <td style="text-align:left;"> 0.12.5 </td>
    <td style="text-align:left;"> CRAN (R 4.0.3) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> rlang </td>
-   <td style="text-align:left;"> 0.4.9 </td>
+   <td style="text-align:left;"> 0.4.10 </td>
    <td style="text-align:left;"> CRAN (R 4.0.2) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> rmarkdown </td>
-   <td style="text-align:left;"> 2.5 </td>
+   <td style="text-align:left;"> 2.6 </td>
    <td style="text-align:left;"> CRAN (R 4.0.3) </td>
   </tr>
   <tr>
@@ -1332,14 +1325,19 @@ sess$packages %>%
    <td style="text-align:left;"> CRAN (R 4.0.0) </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> systemfonts </td>
+   <td style="text-align:left;"> 0.3.2 </td>
+   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> tadaathemes </td>
    <td style="text-align:left;"> 0.0.1 </td>
-   <td style="text-align:left;"> local </td>
+   <td style="text-align:left;"> Github (tadaadata/tadaathemes@0118fb9) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> tibble </td>
-   <td style="text-align:left;"> 3.0.4 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 3.0.5 </td>
+   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> tidyr </td>
@@ -1363,7 +1361,7 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> usethis </td>
-   <td style="text-align:left;"> 1.6.3 </td>
+   <td style="text-align:left;"> 2.0.0 </td>
    <td style="text-align:left;"> CRAN (R 4.0.2) </td>
   </tr>
   <tr>
@@ -1373,7 +1371,7 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> vctrs </td>
-   <td style="text-align:left;"> 0.3.5 </td>
+   <td style="text-align:left;"> 0.3.6 </td>
    <td style="text-align:left;"> CRAN (R 4.0.2) </td>
   </tr>
   <tr>
@@ -1393,8 +1391,8 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> xfun </td>
-   <td style="text-align:left;"> 0.19 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 0.20 </td>
+   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> xml2 </td>
