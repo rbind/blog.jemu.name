@@ -1,7 +1,7 @@
 ---
 title: Some Light Web-Scraping of the New ATP Site
 author: jemus42
-date: "2021-01-11" # '2020-06-04'
+date: "2021-02-11" # '2020-06-04'
 slug: some-light-web-scraping-of-the-new-atp-site
 series:
   - R
@@ -109,14 +109,14 @@ head(atp_links)
 
 ```
 #> # A tibble: 6 x 2
-#>   text           url                                
-#>   <chr>          <chr>                              
-#> 1 Waffle House   https://www.wafflehouse.com/       
-#> 2 Taco Bell      https://www.tacobell.com/          
-#> 3 CocoaLove      https://cocoalove.org/             
-#> 4 Steak ‘n Shake https://www.steaknshake.com/       
-#> 5 Denny’s        https://www.dennys.com/            
-#> 6 Perkins        https://www.perkinsrestaurants.com/
+#>   text                                 url                                      
+#>   <chr>                                <chr>                                    
+#> 1 Neutral #12: Vomit Ruins Everything  https://neutral.fm/12                    
+#> 2 Neutral Special: Please Lose Contro… https://neutral.fm/special-please-lose-c…
+#> 3 Underscore                           https://david-smith.org                  
+#> 4 Model S/X round steering wheel       https://twitter.com/bigsurcraig/status/1…
+#> 5 Touch controlls are force-touch?     https://twitter.com/gurnam/status/135500…
+#> 6 Elon says “no more stalks”           https://twitter.com/elonmusk/status/1354…
 ```
 
 Welp, that's pretty straight forward. It's made fairly easy by the fact that all the shownote links are list items (`<li>`), but of course it would be nicer if we could match links to the episode they belong to.  
@@ -137,13 +137,13 @@ tibble::tibble(
 
 ```
 #> # A tibble: 5 x 2
-#>   number episode                       
-#>   <chr>  <chr>                         
-#> 1 413    Suddenly I'm the Marco        
-#> 2 412    Love Batteries                
-#> 3 411    Are My Instructions Not Clear?
-#> 4 410    The Comfort Is Killing Me     
-#> 5 409    Midrange Snob
+#>   number episode                     
+#>   <chr>  <chr>                       
+#> 1 416    I Will Take Away Those Kudos
+#> 2 415    Sent Without Pants          
+#> 3 414    Promoted Onto the Roof      
+#> 4 413    Suddenly I'm the Marco      
+#> 5 412    Love Batteries
 ```
 
 This is also the first case of regex making things a little neater in the result but harder to grasp along the way. If you've been spared the regex way of life until now, what we did here breaks down to this:
@@ -257,15 +257,15 @@ glimpse(scraped_page)
 ```
 #> Rows: 5
 #> Columns: 9
-#> $ number   <chr> "413", "412", "411", "410", "409"
-#> $ title    <chr> "Suddenly I'm the Marco", "Love Batteries", "Are My Instruct…
-#> $ duration <time> 02:11:48, 02:36:26, 02:07:32, 02:29:29, 02:10:03
-#> $ date     <date> 2021-01-14, 2021-01-07, 2020-12-29, 2020-12-22, 2020-12-17
-#> $ year     <dbl> 2021, 2021, 2020, 2020, 2020
-#> $ month    <ord> January, January, December, December, December
-#> $ weekday  <ord> Thursday, Thursday, Tuesday, Tuesday, Thursday
-#> $ links    <list> [<tbl_df[35 x 3]>, <tbl_df[34 x 3]>, <tbl_df[31 x 3]>, <tbl…
-#> $ n_links  <int> 35, 34, 31, 31, 22
+#> $ number   <chr> "416", "415", "414", "413", "412"
+#> $ title    <chr> "I Will Take Away Those Kudos", "Sent Without Pants", "Promo…
+#> $ duration <time> 02:07:33, 02:27:31, 02:10:33, 02:11:48, 02:36:26
+#> $ date     <date> 2021-02-04, 2021-01-28, 2021-01-21, 2021-01-14, 2021-01-07
+#> $ year     <dbl> 2021, 2021, 2021, 2021, 2021
+#> $ month    <ord> February, January, January, January, January
+#> $ weekday  <ord> Thursday, Thursday, Thursday, Thursday, Thursday
+#> $ links    <list> [<tbl_df[25 x 3]>, <tbl_df[18 x 3]>, <tbl_df[20 x 3]>, <tbl…
+#> $ n_links  <int> 25, 18, 20, 35, 34
 ```
 
 ```r 
@@ -273,20 +273,20 @@ scraped_page$links[[1]]
 ```
 
 ```
-#> # A tibble: 35 x 3
-#>    link_text                 link_url                                  link_type
-#>    <chr>                     <chr>                                     <chr>    
-#>  1 Waffle House              https://www.wafflehouse.com/              Shownotes
-#>  2 Taco Bell                 https://www.tacobell.com/                 Shownotes
-#>  3 CocoaLove                 https://cocoalove.org/                    Shownotes
-#>  4 Steak ‘n Shake            https://www.steaknshake.com/              Shownotes
-#>  5 Denny’s                   https://www.dennys.com/                   Shownotes
-#>  6 Perkins                   https://www.perkinsrestaurants.com/       Shownotes
-#>  7 “Is it bigger than a bre… http://steveallen.com/author/book_pages/… Shownotes
-#>  8 mentioned on Twitter      https://twitter.com/siracusa/status/1349… Shownotes
-#>  9 OWC Thunderbolt Dock      https://www.owcdigital.com/products/thun… Shownotes
-#> 10 CalDigit TS3 Plus         https://www.amazon.com/dp/B07CZPV8DF/?ta… Shownotes
-#> # … with 25 more rows
+#> # A tibble: 25 x 3
+#>    link_text                           link_url                        link_type
+#>    <chr>                               <chr>                           <chr>    
+#>  1 Neutral #12: Vomit Ruins Everything https://neutral.fm/12           Shownotes
+#>  2 Neutral Special: Please Lose Contr… https://neutral.fm/special-ple… Shownotes
+#>  3 Underscore                          https://david-smith.org         Shownotes
+#>  4 Model S/X round steering wheel      https://twitter.com/bigsurcrai… Shownotes
+#>  5 Touch controlls are force-touch?    https://twitter.com/gurnam/sta… Shownotes
+#>  6 Elon says “no more stalks”          https://twitter.com/elonmusk/s… Shownotes
+#>  7 NHTSA                               https://www.nhtsa.gov/          Shownotes
+#>  8 iOS 14.5 Beta adds support for unl… https://9to5mac.com/2021/02/01… Shownotes
+#>  9 Gruber’s take                       https://daringfireball.net/lin… Shownotes
+#> 10 TN1150                              https://developer.apple.com/li… Shownotes
+#> # … with 15 more rows
 ```
 
 Now what's left is to get _all_ the episodes, because why not.
@@ -990,7 +990,7 @@ sess$platform %>%
   </tr>
   <tr>
    <td style="text-align:left;"> os </td>
-   <td style="text-align:left;"> macOS Catalina 10.15.7 </td>
+   <td style="text-align:left;"> macOS Big Sur 10.16 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> system </td>
@@ -1018,7 +1018,7 @@ sess$platform %>%
   </tr>
   <tr>
    <td style="text-align:left;"> date </td>
-   <td style="text-align:left;"> 2021-01-15 </td>
+   <td style="text-align:left;"> 2021-02-04 </td>
   </tr>
 </tbody>
 </table>
