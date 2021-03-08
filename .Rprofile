@@ -16,7 +16,7 @@ options(
     blogdown.hugo.server = c("-D", "-F", "--navigateToChanged"),
     blogdown.knit.on_save = FALSE,
     blogdown.serve_site.startup = FALSE,
-    blogdown.files_filter = blogdown:::md5sum_filter,
+    #blogdown.files_filter = blogdown:::md5sum_filter,
     # other nice to haves!
     blogdown.title_case = TRUE,
     blogdown.initial_files = FALSE,
