@@ -4,6 +4,7 @@ description: "Having to re-install a lot of packages is annoying, and this is at
 author: jemus42
 date: '2017-11-15'
 slug: create-a-backup-script-for-your-r-packages
+toc: false
 series: 
   - R
 tags:
@@ -13,6 +14,10 @@ tags:
 packages:
   - glue
 ---
+
+{{< addendum title="Note" >}}
+This is overly convoluted and you might as well do [what Patrick does](https://twitter.com/pjs_228/status/1398553952526950403)
+{{< /addendum >}}
 
 So today I was playing around with the `installed.packages()` function, and I thought to myself:  
 Boy wouldn't it be a jolly good time to make some kind of backup script from this?
