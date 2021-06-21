@@ -47,7 +47,7 @@ custom_js = [
     "js/matomo.js",
     "https://commento.jemu.name/js/count.js"
     ]
-    
+
 commentoUrl = "https://commento.jemu.name"
 
 # Icons
