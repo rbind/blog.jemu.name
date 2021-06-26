@@ -1,7 +1,7 @@
 ---
 title: Some Light Web-Scraping of the New ATP Site
 author: jemus42
-date: "2021-02-11" # '2020-06-04'
+date: "2021-06-26"
 slug: some-light-web-scraping-of-the-new-atp-site
 series:
   - R
@@ -32,7 +32,7 @@ editor_options:
 ## Introduction
 
 {{< addendum title="Note" >}}
-I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over 6 months because… well, the year's been busy.
+I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over ~~6~~ ~~8~~ 12 months because… well, the year's been busy.
 
 The code for the scrapey bits has since been put into its own [little package](https://github.com/jemus42/poddr) — so if you want to just get some data, you can install that or get the up-to-date data [from my other project's site](https://podcasts.jemu.name/data/).
 {{< /addendum >}}
@@ -109,14 +109,14 @@ head(atp_links)
 
 ```
 #> # A tibble: 6 x 2
-#>   text                                 url                                      
-#>   <chr>                                <chr>                                    
-#> 1 Neutral #12: Vomit Ruins Everything  https://neutral.fm/12                    
-#> 2 Neutral Special: Please Lose Contro… https://neutral.fm/special-please-lose-c…
-#> 3 Underscore                           https://david-smith.org                  
-#> 4 Model S/X round steering wheel       https://twitter.com/bigsurcraig/status/1…
-#> 5 Touch controlls are force-touch?     https://twitter.com/gurnam/status/135500…
-#> 6 Elon says “no more stalks”           https://twitter.com/elonmusk/status/1354…
+#>   text                                  url                                     
+#>   <chr>                                 <chr>                                   
+#> 1 FAA’s TRUST program                   https://www.faa.gov/news/updates/?newsI…
+#> 2 FAA Part 107                          https://www.faa.gov/uas/commercial_oper…
+#> 3 DJI Mini 2                            https://www.dji.com/mini-2              
+#> 4 John’s extension                      https://hypercritical.co/safari-reload-…
+#> 5 Finn Voorhees’ experiment             https://twitter.com/finnvoorhees/status…
+#> 6 Safari on iOS 15 & Monterey automati… https://www.macrumors.com/2021/06/08/sa…
 ```
 
 Welp, that's pretty straight forward. It's made fairly easy by the fact that all the shownote links are list items (`<li>`), but of course it would be nicer if we could match links to the episode they belong to.  
@@ -137,13 +137,13 @@ tibble::tibble(
 
 ```
 #> # A tibble: 5 x 2
-#>   number episode                     
-#>   <chr>  <chr>                       
-#> 1 416    I Will Take Away Those Kudos
-#> 2 415    Sent Without Pants          
-#> 3 414    Promoted Onto the Roof      
-#> 4 413    Suddenly I'm the Marco      
-#> 5 412    Love Batteries
+#>   number episode                       
+#>   <chr>  <chr>                         
+#> 1 436    Eddy Cue Shows Up at Your Door
+#> 2 435    A Strong Number Four          
+#> 3 434    A Squirmy Soup of Rectangles  
+#> 4 433    Before We Leave the Dump      
+#> 5 432    I Shouldn't Need to Wiggle
 ```
 
 This is also the first case of regex making things a little neater in the result but harder to grasp along the way. If you've been spared the regex way of life until now, what we did here breaks down to this:
@@ -257,15 +257,15 @@ glimpse(scraped_page)
 ```
 #> Rows: 5
 #> Columns: 9
-#> $ number   <chr> "416", "415", "414", "413", "412"
-#> $ title    <chr> "I Will Take Away Those Kudos", "Sent Without Pants", "Promo…
-#> $ duration <time> 02:07:33, 02:27:31, 02:10:33, 02:11:48, 02:36:26
-#> $ date     <date> 2021-02-04, 2021-01-28, 2021-01-21, 2021-01-14, 2021-01-07
+#> $ number   <chr> "436", "435", "434", "433", "432"
+#> $ title    <chr> "Eddy Cue Shows Up at Your Door", "A Strong Number Four", "A …
+#> $ duration <time> 01:54:47, 02:11:10, 03:04:02, 02:07:47, 02:21:58
+#> $ date     <date> 2021-06-24, 2021-06-17, 2021-06-08, 2021-06-03, 2021-05-27
 #> $ year     <dbl> 2021, 2021, 2021, 2021, 2021
-#> $ month    <ord> February, January, January, January, January
-#> $ weekday  <ord> Thursday, Thursday, Thursday, Thursday, Thursday
-#> $ links    <list> [<tbl_df[25 x 3]>, <tbl_df[18 x 3]>, <tbl_df[20 x 3]>, <tbl…
-#> $ n_links  <int> 25, 18, 20, 35, 34
+#> $ month    <ord> June, June, June, June, May
+#> $ weekday  <ord> Thursday, Thursday, Tuesday, Thursday, Thursday
+#> $ links    <list> [<tbl_df[47 x 3]>, <tbl_df[42 x 3]>, <tbl_df[20 x 3]>, <tbl_d…
+#> $ n_links  <int> 47, 42, 20, 29, 38
 ```
 
 ```r 
@@ -273,20 +273,20 @@ scraped_page$links[[1]]
 ```
 
 ```
-#> # A tibble: 25 x 3
-#>    link_text                           link_url                        link_type
-#>    <chr>                               <chr>                           <chr>    
-#>  1 Neutral #12: Vomit Ruins Everything https://neutral.fm/12           Shownotes
-#>  2 Neutral Special: Please Lose Contr… https://neutral.fm/special-ple… Shownotes
-#>  3 Underscore                          https://david-smith.org         Shownotes
-#>  4 Model S/X round steering wheel      https://twitter.com/bigsurcrai… Shownotes
-#>  5 Touch controlls are force-touch?    https://twitter.com/gurnam/sta… Shownotes
-#>  6 Elon says “no more stalks”          https://twitter.com/elonmusk/s… Shownotes
-#>  7 NHTSA                               https://www.nhtsa.gov/          Shownotes
-#>  8 iOS 14.5 Beta adds support for unl… https://9to5mac.com/2021/02/01… Shownotes
-#>  9 Gruber’s take                       https://daringfireball.net/lin… Shownotes
-#> 10 TN1150                              https://developer.apple.com/li… Shownotes
-#> # … with 15 more rows
+#> # A tibble: 47 x 3
+#>    link_text                        link_url                           link_type
+#>    <chr>                            <chr>                              <chr>    
+#>  1 FAA’s TRUST program              https://www.faa.gov/news/updates/… Shownotes
+#>  2 FAA Part 107                     https://www.faa.gov/uas/commercia… Shownotes
+#>  3 DJI Mini 2                       https://www.dji.com/mini-2         Shownotes
+#>  4 John’s extension                 https://hypercritical.co/safari-r… Shownotes
+#>  5 Finn Voorhees’ experiment        https://twitter.com/finnvoorhees/… Shownotes
+#>  6 Safari on iOS 15 & Monterey aut… https://www.macrumors.com/2021/06… Shownotes
+#>  7 Rauli Rikama’s observations      https://twitter.com/raulirikama/s… Shownotes
+#>  8 FLoC                             https://en.wikipedia.org/wiki/Fed… Shownotes
+#>  9 Scroll Reverser                  https://pilotmoon.com/scrollrever… Shownotes
+#> 10 Mos                              https://mos.caldis.me/             Shownotes
+#> # … with 37 more rows
 ```
 
 Now what's left is to get _all_ the episodes, because why not.
@@ -469,9 +469,9 @@ atp_episodes %>%
 #>   <chr>                            <chr>     <int>
 #> 1 http://jonathanmann.net/         Shownotes    87
 #> 2 http://neutral.fm/               Shownotes    24
-#> 3 https://developer.apple.com/wwdc Shownotes    13
-#> 4 http://squarespace.com/atp       Sponsor     159
-#> 5 http://hover.com/atp             Sponsor      69
+#> 3 https://developer.apple.com/wwdc Shownotes    14
+#> 4 http://squarespace.com/atp       Sponsor     168
+#> 5 http://hover.com/atp             Sponsor      70
 #> 6 http://betterment.com/atp        Sponsor      57
 ```
 
@@ -485,7 +485,7 @@ ggplot(atp_episodes, aes(x = duration, y = n_links)) +
     y = "Number of Links in Show Notes",
     caption = plot_caption
   ) +
-  theme_tadaa()
+  theme_tadaark()
 ```
 
 {{<figure src="plots/links-duration-scatter-1.png" link="plots/links-duration-scatter-1.png">}}
@@ -557,12 +557,17 @@ atp_episodes %>%
   ggplot(aes(x = month, y = n_links)) +
   geom_boxplot(alpha = .25, fill = "#374453") +
   geom_point(stat = "summary", fun = mean, fill = "lightblue", shape = 21, size = 3) + 
-  theme_tadaa()
+  theme_tadaark()
 ```
 
 {{<figure src="plots/links-duration-monthly-1.png" link="plots/links-duration-monthly-1.png">}}
 
 ### URL Protocol
+
+I don't know if you've heard the news yet, but HTTPS is kind of a big deal.  
+As a matter of fact, it has become more and more of a big deal over the past few years, and one way to illustrate that is the ratio of HTTP/HTTPS links posted on the web.
+So guess what we're doing with the URL data next.
+
 
 ```r 
 atp_episodes_links <- atp_episodes %>%
@@ -576,7 +581,7 @@ atp_episodes_links <- atp_episodes %>%
 atp_episodes_links %>%
   ggplot(aes(x = HTTPS)) +
   geom_bar(alpha = .75, color = "white") + 
-  theme_tadaa()
+  theme_tadaark()
 ```
 
 {{<figure src="plots/links-proto-1.png" link="plots/links-proto-1.png">}}
@@ -589,7 +594,7 @@ atp_episodes_links %>%
   geom_col(alpha = .75, color = "white") + 
   scale_x_continuous(breaks = scales::pretty_breaks()) +
   hrbrthemes::scale_y_percent() +
-  theme_tadaa()
+  theme_tadaark()
 ```
 
 {{<figure src="plots/links-proto-2.png" link="plots/links-proto-2.png">}}
@@ -603,7 +608,7 @@ atp_episodes_links %>%
   geom_col(alpha = .75, color = "white") + 
   scale_x_continuous(breaks = scales::pretty_breaks()) +
   hrbrthemes::scale_y_percent() +
-  theme_tadaa()
+  theme_tadaark()
 ```
 
 {{<figure src="plots/links-proto-3.png" link="plots/links-proto-3.png">}}
@@ -689,20 +694,20 @@ atp_episodes_links %>%
 ```
 
 ```
-#> # A tibble: 1,800 x 2
+#> # A tibble: 1,881 x 2
 #>    domain                  n
 #>    <chr>               <int>
-#>  1 twitter.com          1030
-#>  2 en.wikipedia.org      953
-#>  3 apple.com             381
-#>  4 amazon.com            350
-#>  5 youtube.com           248
-#>  6 relay.fm              183
-#>  7 developer.apple.com   179
+#>  1 twitter.com          1099
+#>  2 en.wikipedia.org     1089
+#>  3 apple.com             410
+#>  4 amazon.com            361
+#>  5 youtube.com           286
+#>  6 developer.apple.com   205
+#>  7 relay.fm              192
 #>  8 marco.org             129
-#>  9 caseyliss.com         116
-#> 10 theverge.com          113
-#> # … with 1,790 more rows
+#>  9 theverge.com          125
+#> 10 caseyliss.com         123
+#> # … with 1,871 more rows
 ```
 
 ```r 
@@ -925,44 +930,29 @@ atp_episodes_links %>%
    <td style="text-align:right;"> 43 </td>
   </tr>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="8"> 2021 </td>
+   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2021 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
-   <td style="text-align:right;"> 12 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> amazon.com </td>
-   <td style="text-align:right;"> 9 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> apple.com </td>
-   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 148 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> twitter.com </td>
-   <td style="text-align:right;"> 3 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> amzn.to </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> relay.fm </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> support.apple.com </td>
-   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 72 </td>
   </tr>
   <tr>
    
    <td style="text-align:left;"> youtube.com </td>
-   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 40 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> apple.com </td>
+   <td style="text-align:right;"> 33 </td>
+  </tr>
+  <tr>
+   
+   <td style="text-align:left;"> developer.apple.com </td>
+   <td style="text-align:right;"> 27 </td>
   </tr>
 </tbody>
 </table>
@@ -986,7 +976,7 @@ sess$platform %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> version </td>
-   <td style="text-align:left;"> R version 4.0.3 Patched (2020-10-13 r79346) </td>
+   <td style="text-align:left;"> R version 4.1.0 Patched (2021-05-29 r80415) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> os </td>
@@ -1018,7 +1008,7 @@ sess$platform %>%
   </tr>
   <tr>
    <td style="text-align:left;"> date </td>
-   <td style="text-align:left;"> 2021-02-04 </td>
+   <td style="text-align:left;"> 2021-06-26 </td>
   </tr>
 </tbody>
 </table>
@@ -1042,292 +1032,342 @@ sess$packages %>%
   <tr>
    <td style="text-align:left;"> assertthat </td>
    <td style="text-align:left;"> 0.2.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> blogdown </td>
-   <td style="text-align:left;"> 1.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 1.1 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> bookdown </td>
    <td style="text-align:left;"> 0.21 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> bslib </td>
+   <td style="text-align:left;"> 0.2.5.1 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> cachem </td>
+   <td style="text-align:left;"> 1.0.4 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> cli </td>
-   <td style="text-align:left;"> 2.2.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 2.3.1 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> colorspace </td>
    <td style="text-align:left;"> 2.0.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> crayon </td>
-   <td style="text-align:left;"> 1.3.4 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> 1.4.1 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> curl </td>
    <td style="text-align:left;"> 4.3 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> DBI </td>
+   <td style="text-align:left;"> 1.1.1 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> digest </td>
    <td style="text-align:left;"> 0.6.27 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> dplyr </td>
-   <td style="text-align:left;"> 1.0.3 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
+   <td style="text-align:left;"> 1.0.4 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> ellipsis </td>
    <td style="text-align:left;"> 0.3.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> evaluate </td>
    <td style="text-align:left;"> 0.14 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> extrafont </td>
    <td style="text-align:left;"> 0.17 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> extrafontdb </td>
    <td style="text-align:left;"> 1.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> fansi </td>
    <td style="text-align:left;"> 0.4.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> farver </td>
    <td style="text-align:left;"> 2.0.3 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fastmap </td>
+   <td style="text-align:left;"> 1.1.0 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> fs </td>
    <td style="text-align:left;"> 1.5.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> gdtools </td>
    <td style="text-align:left;"> 0.2.3 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> generics </td>
    <td style="text-align:left;"> 0.1.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> ggplot2 </td>
    <td style="text-align:left;"> 3.3.3 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> glue </td>
    <td style="text-align:left;"> 1.4.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> gtable </td>
    <td style="text-align:left;"> 0.3.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> here </td>
    <td style="text-align:left;"> 1.0.1 </td>
-   <td style="text-align:left;"> RSPM (R 4.0.3) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> highr </td>
    <td style="text-align:left;"> 0.8 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hms </td>
    <td style="text-align:left;"> 1.0.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hrbrthemes </td>
    <td style="text-align:left;"> 0.8.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> htmltools </td>
    <td style="text-align:left;"> 0.5.1.9000 </td>
-   <td style="text-align:left;"> Github (rstudio/htmltools@11cfbf3) </td>
+   <td style="text-align:left;"> Github (rstudio/htmltools@ac43afe) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> httr </td>
    <td style="text-align:left;"> 1.4.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> jquerylib </td>
+   <td style="text-align:left;"> 0.1.4 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> jsonlite </td>
+   <td style="text-align:left;"> 1.7.2 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> kableExtra </td>
-   <td style="text-align:left;"> 1.3.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 1.3.4 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> knitr </td>
-   <td style="text-align:left;"> 1.30 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 1.31 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> labeling </td>
    <td style="text-align:left;"> 0.4.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> lifecycle </td>
-   <td style="text-align:left;"> 0.2.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> 1.0.0 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> lubridate </td>
-   <td style="text-align:left;"> 1.7.9.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 1.7.10 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> magrittr </td>
    <td style="text-align:left;"> 2.0.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> memoise </td>
-   <td style="text-align:left;"> 1.1.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> 2.0.0 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> mime </td>
-   <td style="text-align:left;"> 0.9 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> 0.10 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> munsell </td>
    <td style="text-align:left;"> 0.5.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pillar </td>
-   <td style="text-align:left;"> 1.4.7 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 1.5.0 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pkgconfig </td>
    <td style="text-align:left;"> 2.0.3 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> polite </td>
    <td style="text-align:left;"> 0.1.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> prettyunits </td>
+   <td style="text-align:left;"> 1.1.1 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> progress </td>
+   <td style="text-align:left;"> 1.2.2 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> purrr </td>
    <td style="text-align:left;"> 0.3.4 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> R6 </td>
    <td style="text-align:left;"> 2.5.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> ratelimitr </td>
    <td style="text-align:left;"> 0.4.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Rcpp </td>
    <td style="text-align:left;"> 1.0.6 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> renv </td>
-   <td style="text-align:left;"> 0.12.5 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
+   <td style="text-align:left;"> 0.13.0 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> rlang </td>
    <td style="text-align:left;"> 0.4.10 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> rmarkdown </td>
-   <td style="text-align:left;"> 2.6 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
+   <td style="text-align:left;"> 2.7 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> robotstxt </td>
    <td style="text-align:left;"> 0.7.13 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> rprojroot </td>
    <td style="text-align:left;"> 2.0.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> rstudioapi </td>
    <td style="text-align:left;"> 0.13 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Rttf2pt1 </td>
    <td style="text-align:left;"> 1.3.8 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> rvest </td>
    <td style="text-align:left;"> 0.3.6 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> sass </td>
+   <td style="text-align:left;"> 0.4.0 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> scales </td>
    <td style="text-align:left;"> 1.1.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> selectr </td>
    <td style="text-align:left;"> 0.4.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> sessioninfo </td>
    <td style="text-align:left;"> 1.1.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> spiderbar </td>
    <td style="text-align:left;"> 0.2.3 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> stringi </td>
    <td style="text-align:left;"> 1.5.3 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> stringr </td>
    <td style="text-align:left;"> 1.4.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> svglite </td>
+   <td style="text-align:left;"> 2.0.0 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> systemfonts </td>
-   <td style="text-align:left;"> 0.3.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 1.0.1 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> tadaathemes </td>
@@ -1336,73 +1376,73 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> tibble </td>
-   <td style="text-align:left;"> 3.0.5 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
+   <td style="text-align:left;"> 3.1.0 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> tidyr </td>
    <td style="text-align:left;"> 1.1.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> tidyselect </td>
    <td style="text-align:left;"> 1.1.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> triebeard </td>
    <td style="text-align:left;"> 0.3.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> urltools </td>
    <td style="text-align:left;"> 1.7.3 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> usethis </td>
-   <td style="text-align:left;"> 2.0.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 2.0.1 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> utf8 </td>
    <td style="text-align:left;"> 1.1.4 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> vctrs </td>
    <td style="text-align:left;"> 0.3.6 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> viridisLite </td>
    <td style="text-align:left;"> 0.3.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> webshot </td>
    <td style="text-align:left;"> 0.5.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> withr </td>
-   <td style="text-align:left;"> 2.3.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.2) </td>
+   <td style="text-align:left;"> 2.4.1 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> xfun </td>
-   <td style="text-align:left;"> 0.20 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.3) </td>
+   <td style="text-align:left;"> 0.21 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> xml2 </td>
    <td style="text-align:left;"> 1.3.2 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> yaml </td>
    <td style="text-align:left;"> 2.2.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.0.0) </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
 </tbody>
 </table>

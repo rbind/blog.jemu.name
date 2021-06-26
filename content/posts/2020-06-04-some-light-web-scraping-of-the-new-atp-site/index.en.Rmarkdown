@@ -1,7 +1,7 @@
 ---
 title: Some Light Web-Scraping of the New ATP Site
 author: jemus42
-date: "2021-02-11" # '2020-06-04'
+date: "2021-06-26"
 slug: some-light-web-scraping-of-the-new-atp-site
 series:
   - R
@@ -33,7 +33,7 @@ if (file.exists("atp_episodes.rds")) {
 ## Introduction
 
 {{< addendum title="Note" >}}
-I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over 6 months because… well, the year's been busy.
+I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over ~~6~~ ~~8~~ 12 months because… well, the year's been busy.
 
 The code for the scrapey bits has since been put into its own [little package](https://github.com/jemus42/poddr) — so if you want to just get some data, you can install that or get the up-to-date data [from my other project's site](https://podcasts.jemu.name/data/).
 {{< /addendum >}}
@@ -364,7 +364,7 @@ ggplot(atp_episodes, aes(x = duration, y = n_links)) +
     y = "Number of Links in Show Notes",
     caption = plot_caption
   ) +
-  theme_tadaa()
+  theme_tadaark()
 ```
 
 Well okay, there's an unsurprising trend there. Maybe we should take a look at `links / minute`, as a metric of how much linkage there is being done.
@@ -385,10 +385,15 @@ atp_episodes %>%
   ggplot(aes(x = month, y = n_links)) +
   geom_boxplot(alpha = .25, fill = "#374453") +
   geom_point(stat = "summary", fun = mean, fill = "lightblue", shape = 21, size = 3) + 
-  theme_tadaa()
+  theme_tadaark()
 ```
 
 ### URL Protocol
+
+I don't know if you've heard the news yet, but HTTPS is kind of a big deal.  
+As a matter of fact, it has become more and more of a big deal over the past few years, and one way to illustrate that is the ratio of HTTP/HTTPS links posted on the web.
+So guess what we're doing with the URL data next.
+
 
 ```{r links-proto}
 atp_episodes_links <- atp_episodes %>%
@@ -402,7 +407,7 @@ atp_episodes_links <- atp_episodes %>%
 atp_episodes_links %>%
   ggplot(aes(x = HTTPS)) +
   geom_bar(alpha = .75, color = "white") + 
-  theme_tadaa()
+  theme_tadaark()
 
 atp_episodes_links %>%
   count(year = lubridate::year(date), HTTPS) %>%
@@ -412,7 +417,7 @@ atp_episodes_links %>%
   geom_col(alpha = .75, color = "white") + 
   scale_x_continuous(breaks = scales::pretty_breaks()) +
   hrbrthemes::scale_y_percent() +
-  theme_tadaa()
+  theme_tadaark()
 
 atp_episodes_links %>%
   count(year = lubridate::year(date), HTTPS, link_type) %>%
@@ -423,7 +428,7 @@ atp_episodes_links %>%
   geom_col(alpha = .75, color = "white") + 
   scale_x_continuous(breaks = scales::pretty_breaks()) +
   hrbrthemes::scale_y_percent() +
-  theme_tadaa()
+  theme_tadaark()
 ```
 
 
