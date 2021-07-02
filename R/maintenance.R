@@ -26,7 +26,7 @@ get_asset_unpkg <- function(package, version, file) {
 
 # littlefoot.js -----
 # https://github.com/goblindegook/littlefoot/releases
-littlefoot_version <- "3.2.5"
+littlefoot_version <- "4.0.0-6"
 
 get_asset_unpkg("littlefoot", littlefoot_version, "dist/littlefoot.js")
 get_asset_unpkg("littlefoot", littlefoot_version, "dist/littlefoot.css")
