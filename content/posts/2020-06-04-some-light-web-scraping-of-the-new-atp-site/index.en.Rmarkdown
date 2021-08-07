@@ -33,12 +33,12 @@ if (file.exists("atp_episodes.rds")) {
 ## Introduction
 
 {{< addendum title="Note" >}}
-I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over ~~6~~ ~~8~~ 12 months because… well, the year's been busy.
+I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over ~~6~~ ~~8~~ ~~12~~ 13 months because… well, the year's been busy.
 
 The code for the scrapey bits has since been put into its own [little package](https://github.com/jemus42/poddr) — so if you want to just get some data, you can install that or get the up-to-date data [from my other project's site](https://podcasts.jemu.name/data/).
 {{< /addendum >}}
 
-```{r pkgs, chunk_fold="Show packages & setup"}
+```{r pkgs, chunk_fold="Packages & setup"}
 # For web-scraping
 library(polite)
 library(rvest)
@@ -61,7 +61,7 @@ plot_caption <- glue::glue("@jemus42 // {Sys.Date()}")
 
 There are two main "tricks" to successful web-scraping (in my admittedly limited experience):
 
-1. Get as close to the information you care about by using / identifying CSS selectors.
+1. Get as close to the information you care about by using / identifying appropriate CSS selectors.
 2. Whittle down text content as needed by trying to not have regular expressions wear you down.
 
 For step 1, I like using [SelectorGadget], but you may be more comfortable using your favorite browser's developer tools, or looking at the site's HTML source, or being *really* good at guessing.  
@@ -70,7 +70,7 @@ For point 2, you'll probably want to spend some time on (and bookmark) [regexr] 
 Then there's **step 0** of web scraping:  
 *Don't be a jerk to the site you're scraping*.  
 In this case I don't think there's too much of a chance of me hammering the site in question too much, as I learned I'm going to need a total of *10* pages.
-So… I don't think I could do too much damage even if tried. However, I will still use the {{< pkg "polite" >}} package because I wanted to try it out anyway, and from what I gather it's explicit purpose is to, well, be *polite* with your scraping while still being compatible with your standard {{< pkg "rvest" >}} workflow.
+So… I don't think I could do too much damage even if I tried. However, I will still use the {{< pkg "polite" >}} package because I wanted to try it out anyway, and from what I gather it's explicit purpose is to, well, be *polite* with your scraping while still being compatible with your standard {{< pkg "rvest" >}} workflow.
 
 Oh, and I totally forgot **step -1** of web scraping:  
 *Make sure you actually have permission*. 
@@ -122,7 +122,7 @@ tibble::tibble(
 
 This is also the first case of regex making things a little neater in the result but harder to grasp along the way. If you've been spared the regex way of life until now, what we did here breaks down to this:
 
-1. Take the episode title, e.g. `"410: The Comfort Is Killing Me"` from the HTML via `html_text()`
+1. Take the episode title, e.g. `"437: The Right Side of the Mouse Pad"` from the HTML via `html_text()`
 2. *Extract* the number by taking the non-zero amount of digits (`\\d+`) from the beginning of the string (`^`)
 3. *Remove* that same number, including a `:` and an extra whitespace (`\\s`) to be left with the episode title.
 
@@ -230,7 +230,7 @@ Now what's left is to get _all_ the episodes, because why not.
 
 ## Getting _All_ the Episodes
 
-Or: This is my first `while`-loop in R since… I think 2014?  
+Or: This is my first `while`-loop in R since… I think 2015?  
 I don't regret *everything* per se, but I think this is actually reasonable.
 
 ```{r scrape-atp, eval=!file.exists("atp_episodes.rds"), chunk_fold="atp_get_episodes()"}

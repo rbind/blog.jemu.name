@@ -32,12 +32,12 @@ editor_options:
 ## Introduction
 
 {{< addendum title="Note" >}}
-I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over ~~6~~ ~~8~~ 12 months because… well, the year's been busy.
+I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over ~~6~~ ~~8~~ ~~12~~ 13 months because… well, the year's been busy.
 
 The code for the scrapey bits has since been put into its own [little package](https://github.com/jemus42/poddr) — so if you want to just get some data, you can install that or get the up-to-date data [from my other project's site](https://podcasts.jemu.name/data/).
 {{< /addendum >}}
 
-<details><summary>Click to expand: Show packages & setup</summary>
+<details><summary>Click to expand: Packages & setup</summary>
 
 ```r 
 # For web-scraping
@@ -64,7 +64,7 @@ plot_caption <- glue::glue("@jemus42 // {Sys.Date()}")
 
 There are two main "tricks" to successful web-scraping (in my admittedly limited experience):
 
-1. Get as close to the information you care about by using / identifying CSS selectors.
+1. Get as close to the information you care about by using / identifying appropriate CSS selectors.
 2. Whittle down text content as needed by trying to not have regular expressions wear you down.
 
 For step 1, I like using [SelectorGadget], but you may be more comfortable using your favorite browser's developer tools, or looking at the site's HTML source, or being *really* good at guessing.  
@@ -73,7 +73,7 @@ For point 2, you'll probably want to spend some time on (and bookmark) [regexr] 
 Then there's **step 0** of web scraping:  
 *Don't be a jerk to the site you're scraping*.  
 In this case I don't think there's too much of a chance of me hammering the site in question too much, as I learned I'm going to need a total of *10* pages.
-So… I don't think I could do too much damage even if tried. However, I will still use the {{< pkg "polite" >}} package because I wanted to try it out anyway, and from what I gather it's explicit purpose is to, well, be *polite* with your scraping while still being compatible with your standard {{< pkg "rvest" >}} workflow.
+So… I don't think I could do too much damage even if I tried. However, I will still use the {{< pkg "polite" >}} package because I wanted to try it out anyway, and from what I gather it's explicit purpose is to, well, be *polite* with your scraping while still being compatible with your standard {{< pkg "rvest" >}} workflow.
 
 Oh, and I totally forgot **step -1** of web scraping:  
 *Make sure you actually have permission*. 
@@ -109,14 +109,14 @@ head(atp_links)
 
 ```
 #> # A tibble: 6 x 2
-#>   text                                  url                                     
-#>   <chr>                                 <chr>                                   
-#> 1 FAA’s TRUST program                   https://www.faa.gov/news/updates/?newsI…
-#> 2 FAA Part 107                          https://www.faa.gov/uas/commercial_oper…
-#> 3 DJI Mini 2                            https://www.dji.com/mini-2              
-#> 4 John’s extension                      https://hypercritical.co/safari-reload-…
-#> 5 Finn Voorhees’ experiment             https://twitter.com/finnvoorhees/status…
-#> 6 Safari on iOS 15 & Monterey automati… https://www.macrumors.com/2021/06/08/sa…
+#>   text                       url                                                
+#>   <chr>                      <chr>                                              
+#> 1 Toshiba e740               http://www.walshcomptech.com/e740.htm              
+#> 2 Microdrive                 https://en.wikipedia.org/wiki/Microdrive           
+#> 3 Volvo XC90                 https://www.volvocars.com/us/v/cars/xc90           
+#> 4 college                    https://vt.edu/                                    
+#> 5 Top of the Stairs          https://www.topofthestairs.com/                    
+#> 6 HTTP Strict Transport Sec… https://en.wikipedia.org/wiki/HTTP_Strict_Transpor…
 ```
 
 Welp, that's pretty straight forward. It's made fairly easy by the fact that all the shownote links are list items (`<li>`), but of course it would be nicer if we could match links to the episode they belong to.  
@@ -137,18 +137,18 @@ tibble::tibble(
 
 ```
 #> # A tibble: 5 x 2
-#>   number episode                       
-#>   <chr>  <chr>                         
-#> 1 436    Eddy Cue Shows Up at Your Door
-#> 2 435    A Strong Number Four          
-#> 3 434    A Squirmy Soup of Rectangles  
-#> 4 433    Before We Leave the Dump      
-#> 5 432    I Shouldn't Need to Wiggle
+#>   number episode                        
+#>   <chr>  <chr>                          
+#> 1 437    The Right Side of the Mouse Pad
+#> 2 436    Eddy Cue Shows Up at Your Door 
+#> 3 435    A Strong Number Four           
+#> 4 434    A Squirmy Soup of Rectangles   
+#> 5 433    Before We Leave the Dump
 ```
 
 This is also the first case of regex making things a little neater in the result but harder to grasp along the way. If you've been spared the regex way of life until now, what we did here breaks down to this:
 
-1. Take the episode title, e.g. `"410: The Comfort Is Killing Me"` from the HTML via `html_text()`
+1. Take the episode title, e.g. `"437: The Right Side of the Mouse Pad"` from the HTML via `html_text()`
 2. *Extract* the number by taking the non-zero amount of digits (`\\d+`) from the beginning of the string (`^`)
 3. *Remove* that same number, including a `:` and an extra whitespace (`\\s`) to be left with the episode title.
 
@@ -257,15 +257,15 @@ glimpse(scraped_page)
 ```
 #> Rows: 5
 #> Columns: 9
-#> $ number   <chr> "436", "435", "434", "433", "432"
-#> $ title    <chr> "Eddy Cue Shows Up at Your Door", "A Strong Number Four", "A …
-#> $ duration <time> 01:54:47, 02:11:10, 03:04:02, 02:07:47, 02:21:58
-#> $ date     <date> 2021-06-24, 2021-06-17, 2021-06-08, 2021-06-03, 2021-05-27
+#> $ number   <chr> "437", "436", "435", "434", "433"
+#> $ title    <chr> "The Right Side of the Mouse Pad", "Eddy Cue Shows Up at Your…
+#> $ duration <time> 01:58:01, 01:54:47, 02:11:10, 03:04:02, 02:07:47
+#> $ date     <date> 2021-07-01, 2021-06-24, 2021-06-17, 2021-06-08, 2021-06-03
 #> $ year     <dbl> 2021, 2021, 2021, 2021, 2021
-#> $ month    <ord> June, June, June, June, May
-#> $ weekday  <ord> Thursday, Thursday, Tuesday, Thursday, Thursday
-#> $ links    <list> [<tbl_df[47 x 3]>, <tbl_df[42 x 3]>, <tbl_df[20 x 3]>, <tbl_d…
-#> $ n_links  <int> 47, 42, 20, 29, 38
+#> $ month    <ord> July, June, June, June, June
+#> $ weekday  <ord> Thursday, Thursday, Thursday, Tuesday, Thursday
+#> $ links    <list> [<tbl_df[28 x 3]>, <tbl_df[47 x 3]>, <tbl_df[42 x 3]>, <tbl_d…
+#> $ n_links  <int> 28, 47, 42, 20, 29
 ```
 
 ```r 
@@ -273,27 +273,27 @@ scraped_page$links[[1]]
 ```
 
 ```
-#> # A tibble: 47 x 3
-#>    link_text                        link_url                           link_type
-#>    <chr>                            <chr>                              <chr>    
-#>  1 FAA’s TRUST program              https://www.faa.gov/news/updates/… Shownotes
-#>  2 FAA Part 107                     https://www.faa.gov/uas/commercia… Shownotes
-#>  3 DJI Mini 2                       https://www.dji.com/mini-2         Shownotes
-#>  4 John’s extension                 https://hypercritical.co/safari-r… Shownotes
-#>  5 Finn Voorhees’ experiment        https://twitter.com/finnvoorhees/… Shownotes
-#>  6 Safari on iOS 15 & Monterey aut… https://www.macrumors.com/2021/06… Shownotes
-#>  7 Rauli Rikama’s observations      https://twitter.com/raulirikama/s… Shownotes
-#>  8 FLoC                             https://en.wikipedia.org/wiki/Fed… Shownotes
-#>  9 Scroll Reverser                  https://pilotmoon.com/scrollrever… Shownotes
-#> 10 Mos                              https://mos.caldis.me/             Shownotes
-#> # … with 37 more rows
+#> # A tibble: 28 x 3
+#>    link_text                link_url                                   link_type
+#>    <chr>                    <chr>                                      <chr>    
+#>  1 Toshiba e740             http://www.walshcomptech.com/e740.htm      Shownotes
+#>  2 Microdrive               https://en.wikipedia.org/wiki/Microdrive   Shownotes
+#>  3 Volvo XC90               https://www.volvocars.com/us/v/cars/xc90   Shownotes
+#>  4 college                  https://vt.edu/                            Shownotes
+#>  5 Top of the Stairs        https://www.topofthestairs.com/            Shownotes
+#>  6 HTTP Strict Transport S… https://en.wikipedia.org/wiki/HTTP_Strict… Shownotes
+#>  7 hstspreload.org          https://hstspreload.org                    Shownotes
+#>  8 Report for hypercritica… https://hstspreload.org/?domain=hypercrit… Shownotes
+#>  9 The Art of the Possible  https://hypercritical.co/2020/06/20/the-a… Shownotes
+#> 10 SwitchGlass              https://hypercritical.co/switchglass/      Shownotes
+#> # … with 18 more rows
 ```
 
 Now what's left is to get _all_ the episodes, because why not.
 
 ## Getting _All_ the Episodes
 
-Or: This is my first `while`-loop in R since… I think 2014?  
+Or: This is my first `while`-loop in R since… I think 2015?  
 I don't regret *everything* per se, but I think this is actually reasonable.
 
 <details><summary>Click to expand: atp_get_episodes()</summary>
@@ -1008,7 +1008,7 @@ sess$platform %>%
   </tr>
   <tr>
    <td style="text-align:left;"> date </td>
-   <td style="text-align:left;"> 2021-06-26 </td>
+   <td style="text-align:left;"> 2021-07-04 </td>
   </tr>
 </tbody>
 </table>
@@ -1029,6 +1029,11 @@ sess$packages %>%
   </tr>
  </thead>
 <tbody>
+  <tr>
+   <td style="text-align:left;"> askpass </td>
+   <td style="text-align:left;"> 1.1 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
   <tr>
    <td style="text-align:left;"> assertthat </td>
    <td style="text-align:left;"> 0.2.1 </td>
@@ -1067,6 +1072,11 @@ sess$packages %>%
   <tr>
    <td style="text-align:left;"> crayon </td>
    <td style="text-align:left;"> 1.4.1 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> credentials </td>
+   <td style="text-align:left;"> 1.3.0 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1240,6 +1250,11 @@ sess$packages %>%
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> openssl </td>
+   <td style="text-align:left;"> 1.4.3 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> pillar </td>
    <td style="text-align:left;"> 1.5.0 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
@@ -1252,16 +1267,6 @@ sess$packages %>%
   <tr>
    <td style="text-align:left;"> polite </td>
    <td style="text-align:left;"> 0.1.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> prettyunits </td>
-   <td style="text-align:left;"> 1.1.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> progress </td>
-   <td style="text-align:left;"> 1.2.2 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1362,6 +1367,11 @@ sess$packages %>%
   <tr>
    <td style="text-align:left;"> svglite </td>
    <td style="text-align:left;"> 2.0.0 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> sys </td>
+   <td style="text-align:left;"> 3.4 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
