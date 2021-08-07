@@ -1,6 +1,5 @@
 [build]
   publish = "public"
-
   HUGO_VERSION = "0.87.0"
   HUGO_ENABLEGITINFO = "true"
 
