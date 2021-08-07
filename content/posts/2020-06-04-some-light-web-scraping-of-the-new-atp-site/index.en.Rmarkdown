@@ -1,7 +1,7 @@
 ---
 title: Some Light Web-Scraping of the New ATP Site
 author: jemus42
-date: "2021-06-26"
+date: "2021-08-10"
 slug: some-light-web-scraping-of-the-new-atp-site
 series:
   - R
@@ -33,7 +33,7 @@ if (file.exists("atp_episodes.rds")) {
 ## Introduction
 
 {{< addendum title="Note" >}}
-I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over ~~6~~ ~~8~~ ~~12~~ 13 months because… well, the year's been busy.
+I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over ~~6~~ ~~8~~ ~~12~~ ~~13 months~~ a long time because… well, the ~~year's~~ time's been busy.
 
 The code for the scrapey bits has since been put into its own [little package](https://github.com/jemus42/poddr) — so if you want to just get some data, you can install that or get the up-to-date data [from my other project's site](https://podcasts.jemu.name/data/).
 {{< /addendum >}}
