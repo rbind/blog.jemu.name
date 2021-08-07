@@ -5,6 +5,14 @@
       {
         "Name": "CRAN",
         "URL": "https://cloud.r-project.org"
+      },
+      {
+        "Name": "jemus42",
+        "URL": "https://jemus42.r-universe.dev"
+      },
+      {
+        "Name": "tadaadata",
+        "URL": "https://tadaadata.r-universe.dev"
       }
     ]
   },
