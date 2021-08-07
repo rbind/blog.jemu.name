@@ -6,7 +6,7 @@
 
 [context.production.environment]
   HUGO_ENV = "production"
-  HUGO_TITLE = "Development Preview - blog.jemu.name"
+  HUGO_TITLE = "blog.jemu.name"
   HUGO_VERSION = "0.87.0"
 [context.branch-deploy.environment]
   HUGO_TITLE = "Branch Preview - blog.jemu.name"
