@@ -1,13 +1,3 @@
-AmesHousing:
-  title: The Ames Iowa Housing Data
-  version: 0.0.4
-  maintainer: Max Kuhn
-  url_git: https://github.com/topepo/AmesHousing
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=AmesHousing
-  version_cran: 0.0.4
-  name: AmesHousing
 askpass:
   title: Safe Password Entry for R, Git, and SSH
   version: '1.1'
@@ -18,26 +8,18 @@ askpass:
   url_cran: https://CRAN.R-project.org/package=askpass
   version_cran: '1.1'
   name: askpass
-attrakttv:
-  title: A Shiny Application for 'trakt.tv' TV Show Data
-  version: 0.1.0
-  maintainer: Lukas Burk
-  url_git: https://github.com/jemus42/attrakttv
+available:
+  title: |-
+    Check if the Title of a Package is Available, Appropriate and
+            Interesting
+  version: 1.0.4
+  maintainer: Jim Hester
+  url_git: https://github.com/ropenscilabs/available
   url_other: ''
   url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: attrakttv
-av:
-  title: Working with Audio and Video in R
-  version: 0.5.1
-  maintainer: Jeroen Ooms
-  url_git: https://github.com/ropensci/av
-  url_other: https://docs.ropensci.org/av/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=av
-  version_cran: 0.5.1
-  name: av
+  url_cran: https://CRAN.R-project.org/package=available
+  version_cran: 1.0.4
+  name: available
 backports:
   title: Reimplementations of Functions Introduced Since R-3.0.0
   version: 1.2.1
@@ -58,47 +40,45 @@ base64enc:
   url_cran: https://CRAN.R-project.org/package=base64enc
   version_cran: 0.1-3
   name: base64enc
-bayesplot:
-  title: Plotting for Bayesian Models
-  version: 1.7.2
-  maintainer: Jonah Gabry
-  url_git: ''
-  url_other: https://mc-stan.org/bayesplot
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=bayesplot
-  version_cran: 1.7.2
-  name: bayesplot
-bayestestR:
-  title: |-
-    Understand and Describe Bayesian Models and Posterior
-            Distributions
-  version: 0.8.0
-  maintainer: Dominique Makowski
-  url_git: ''
-  url_other: https://easystats.github.io/bayestestR/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=bayestestR
-  version_cran: 0.8.0
-  name: bayestestR
-bench:
-  title: High Precision Timing of R Expressions
-  version: 1.1.1
-  maintainer: Jim Hester
-  url_git: https://github.com/r-lib/bench
+base64url:
+  title: Fast and URL-Safe Base64 Encoder and Decoder
+  version: '1.4'
+  maintainer: Michel Lang
+  url_git: https://github.com/mllg/base64url
   url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=bench
-  version_cran: 1.1.1
-  name: bench
+  url_cran: https://CRAN.R-project.org/package=base64url
+  version_cran: '1.4'
+  name: base64url
+batchtools:
+  title: Tools for Computation on Batch Systems
+  version: 0.9.15
+  maintainer: Michel Lang
+  url_git: https://github.com/mllg/batchtools
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=batchtools
+  version_cran: 0.9.15
+  name: batchtools
+BBmisc:
+  title: Miscellaneous Helper Functions for B. Bischl
+  version: '1.11'
+  maintainer: Bernd Bischl
+  url_git: https://github.com/berndbischl/BBmisc
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=BBmisc
+  version_cran: '1.11'
+  name: BBmisc
 BH:
   title: Boost C++ Header Files
-  version: 1.72.0.3
+  version: 1.75.0.0
   maintainer: Dirk Eddelbuettel
   url_git: https://github.com/eddelbuettel/bh
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=BH
-  version_cran: 1.72.0-3
+  version_cran: 1.75.0-0
   name: BH
 bit:
   title: Classes and Methods for Fast Memory-Efficient Boolean Selections
@@ -120,16 +100,16 @@ bit64:
   url_cran: https://CRAN.R-project.org/package=bit64
   version_cran: 4.0.5
   name: bit64
-bitbar:
-  title: Craft macOS Menu Bar Applications with Rscript
-  version: 0.1.0
-  maintainer: Bob Rudis
-  url_git: ''
-  url_other: https://git.rud.is/hrbrmstr/bitbar
+bitops:
+  title: Bitwise Operations
+  version: 1.0.7
+  maintainer: Martin Maechler
+  url_git: https://github.com/mmaechler/R-bitops
+  url_other: ''
   url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: bitbar
+  url_cran: https://CRAN.R-project.org/package=bitops
+  version_cran: 1.0-7
+  name: bitops
 blob:
   title: |-
     A Simple S3 Class for Representing Vectors of Binary Data
@@ -144,97 +124,83 @@ blob:
   name: blob
 blogdown:
   title: Create Blogs and Websites with R Markdown
-  version: '0.21'
+  version: '1.3'
   maintainer: Yihui Xie
   url_git: https://github.com/rstudio/blogdown
-  url_other: ''
+  url_other: https://pkgs.rstudio.com/blogdown
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=blogdown
-  version_cran: '0.21'
+  version_cran: '1.3'
   name: blogdown
 bookdown:
   title: Authoring Books and Technical Documents with R Markdown
-  version: '0.21'
+  version: '0.22'
   maintainer: Yihui Xie
   url_git: https://github.com/rstudio/bookdown
-  url_other: ''
+  url_other: https://pkgs.rstudio.com/bookdown/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=bookdown
-  version_cran: '0.21'
+  version_cran: '0.22'
   name: bookdown
-bootstraplib:
-  title: |-
-    Tools for styling shiny and rmarkdown from R via Bootstrap (3 or
-            4) Sass
-  version: 0.2.1.9000
-  maintainer: Carson Sievert
-  url_git: https://github.com/rstudio/bootstraplib
-  url_other: https://rstudio.github.io/bootstraplib/
-  url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: bootstraplib
 brio:
   title: Basic R Input Output
-  version: 1.1.0
+  version: 1.1.2
   maintainer: Jim Hester
   url_git: https://github.com/r-lib/brio
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=brio
-  version_cran: 1.1.0
+  version_cran: 1.1.2
   name: brio
 broom:
   title: Convert Statistical Objects into Tidy Tibbles
-  version: 0.7.3
-  maintainer: Alex Hayes
+  version: 0.7.8
+  maintainer: Simon Couch
   url_git: https://github.com/tidymodels/broom
   url_other: ''
   url_pkgdown: https://broom.tidymodels.org/
   url_cran: https://CRAN.R-project.org/package=broom
-  version_cran: 0.7.3
+  version_cran: 0.7.8
   name: broom
 bslib:
-  title: |-
-    Tools for styling shiny and rmarkdown from R via Bootstrap (3 or
-            4) Sass
-  version: 0.2.3.9000
+  title: Custom 'Bootstrap' 'Sass' Themes for 'shiny' and 'rmarkdown'
+  version: 0.2.5.1
   maintainer: Carson Sievert
   url_git: https://github.com/rstudio/bslib
   url_other: https://rstudio.github.io/bslib/
   url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
+  url_cran: https://CRAN.R-project.org/package=bslib
+  version_cran: 0.2.5.1
   name: bslib
-calendR:
-  title: Ready to Print Monthly and Yearly Calendars Made with 'ggplot2'
-  version: '1.1'
-  maintainer: José Carlos Soage González
-  url_git: ''
-  url_other: https://r-coder.com/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=calendR
-  version_cran: '1.1'
-  name: calendR
+cachem:
+  title: Cache R Objects with Automatic Pruning
+  version: 1.0.5
+  maintainer: Winston Chang
+  url_git: https://github.com/r-lib/cachem
+  url_other: ''
+  url_pkgdown: https://cachem.r-lib.org/
+  url_cran: https://CRAN.R-project.org/package=cachem
+  version_cran: 1.0.5
+  name: cachem
 callr:
   title: Call R from R
-  version: 3.5.1
+  version: 3.7.0
   maintainer: Gábor Csárdi
   url_git: https://github.com/r-lib/callr#readme
   url_other: ''
-  url_pkgdown: ''
+  url_pkgdown: https://callr.r-lib.org
   url_cran: https://CRAN.R-project.org/package=callr
-  version_cran: 3.5.1
+  version_cran: 3.7.0
   name: callr
 car:
   title: Companion to Applied Regression
-  version: 3.0.10
+  version: 3.0.11
   maintainer: John Fox
   url_git: https://r-forge.r-project.org/projects/car/
   url_other: https://socialsciences.mcmaster.ca/jfox/Books/Companion/index.html
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=car
-  version_cran: 3.0-10
+  version_cran: 3.0-11
   name: car
 carData:
   title: Companion to Applied Regression Data Sets
@@ -248,13 +214,13 @@ carData:
   name: carData
 caret:
   title: Classification and Regression Training
-  version: 6.0.86
+  version: 6.0.88
   maintainer: Max Kuhn
   url_git: https://github.com/topepo/caret/
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=caret
-  version_cran: 6.0-86
+  version_cran: 6.0-88
   name: caret
 cellranger:
   title: Translate Spreadsheet Cell Ranges to Rows and Columns
@@ -278,23 +244,23 @@ checkmate:
   name: checkmate
 class:
   title: Functions for Classification
-  version: 7.3.17
+  version: 7.3.19
   maintainer: Brian Ripley
   url_git: ''
   url_other: http://www.stats.ox.ac.uk/pub/MASS4/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=class
-  version_cran: 7.3-17
+  version_cran: 7.3-19
   name: class
 cli:
   title: Helpers for Developing Command Line Interfaces
-  version: 2.2.0
+  version: 3.0.0
   maintainer: Gábor Csárdi
   url_git: https://github.com/r-lib/cli#readme
   url_other: ''
-  url_pkgdown: ''
+  url_pkgdown: https://cli.r-lib.org
   url_cran: https://CRAN.R-project.org/package=cli
-  version_cran: 2.2.0
+  version_cran: 3.0.0
   name: cli
 cliapp:
   title: Create Rich Command Line Applications
@@ -326,62 +292,68 @@ clisymbols:
   url_cran: https://CRAN.R-project.org/package=clisymbols
   version_cran: 1.2.0
   name: clisymbols
-cloc:
-  title: |-
-    Count Lines of Code, Comments and Whitespace in Source Files and
-            Archives
-  version: 0.3.0
-  maintainer: Bob Rudis
-  url_git: https://gitlab.com/hrbrmstr/cloc
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: cloc
 cluster:
   title: |-
     "Finding Groups in Data": Cluster Analysis Extended Rousseeuw et
             al.
-  version: 2.1.0
+  version: 2.1.2
   maintainer: Martin Maechler
-  url_git: https://svn.r-project.org/R-packages/trunk/cluster
+  url_git: https://svn.r-project.org/R-packages/trunk/cluster/
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=cluster
-  version_cran: 2.1.0
+  version_cran: 2.1.2
   name: cluster
+cmprsk:
+  title: Subdistribution Analysis of Competing Risks
+  version: 2.2.10
+  maintainer: Bob Gray
+  url_git: ''
+  url_other: https://www.R-project.org
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=cmprsk
+  version_cran: 2.2-10
+  name: cmprsk
 codemetar:
   title: Generate 'CodeMeta' Metadata for R Packages
-  version: 0.1.9
+  version: 0.3.1
   maintainer: Carl Boettiger
   url_git: https://github.com/ropensci/codemetar
-  url_other: https://docs.ropensci.org/codemetar
+  url_other: https://docs.ropensci.org/codemetar/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=codemetar
-  version_cran: 0.1.9
+  version_cran: 0.3.1
   name: codemetar
-colorspace:
-  title: A Toolbox for Manipulating and Assessing Colors and Palettes
-  version: 2.0.0
-  maintainer: Achim Zeileis
-  url_git: http://colorspace.R-Forge.R-project.org
-  url_other: http://hclwizard.org/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=colorspace
-  version_cran: 2.0-0
-  name: colorspace
-colourpicker:
-  title: |-
-    A Colour Picker Tool for Shiny and for Selecting Colours in
-            Plots
-  version: 1.1.0
-  maintainer: Dean Attali
-  url_git: https://github.com/daattali/colourpicker
+codetools:
+  title: Code Analysis Tools for R
+  version: 0.2.18
+  maintainer: Luke Tierney
+  url_git: https://gitlab.com/luke-tierney/codetools
   url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=colourpicker
-  version_cran: 1.1.0
-  name: colourpicker
+  url_cran: https://CRAN.R-project.org/package=codetools
+  version_cran: 0.2-18
+  name: codetools
+collections:
+  title: High Performance Container Data Types
+  version: 0.3.5
+  maintainer: Randy Lai
+  url_git: https://github.com/randy3k/collections
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=collections
+  version_cran: 0.3.5
+  name: collections
+colorspace:
+  title: A Toolbox for Manipulating and Assessing Colors and Palettes
+  version: 2.0.2
+  maintainer: Achim Zeileis
+  url_git: https://colorspace.R-Forge.R-project.org/
+  url_other: https://hclwizard.org/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=colorspace
+  version_cran: 2.0-2
+  name: colorspace
 commonmark:
   title: High Performance CommonMark and Github Markdown Rendering in R
   version: '1.7'
@@ -402,16 +374,6 @@ config:
   url_cran: https://CRAN.R-project.org/package=config
   version_cran: 0.3.1
   name: config
-conflicted:
-  title: An Alternative Conflict Resolution Strategy
-  version: 1.0.4
-  maintainer: Hadley Wickham
-  url_git: https://github.com/r-lib/conflicted
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=conflicted
-  version_cran: 1.0.4
-  name: conflicted
 conquer:
   title: Convolution-Type Smoothed Quantile Regression
   version: 1.0.2
@@ -422,25 +384,25 @@ conquer:
   url_cran: https://CRAN.R-project.org/package=conquer
   version_cran: 1.0.2
   name: conquer
-correlation:
-  title: Methods for Correlation Analysis
-  version: 0.5.0
-  maintainer: Dominique Makowski
-  url_git: ''
-  url_other: https://easystats.github.io/correlation/
+coro:
+  title: '''Coroutines'' for R'
+  version: 1.0.1
+  maintainer: Lionel Henry
+  url_git: https://github.com/r-lib/coro
+  url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=correlation
-  version_cran: 0.5.0
-  name: correlation
+  url_cran: https://CRAN.R-project.org/package=coro
+  version_cran: 1.0.1
+  name: coro
 corrplot:
   title: Visualization of a Correlation Matrix
-  version: '0.84'
+  version: '0.90'
   maintainer: Taiyun Wei
   url_git: https://github.com/taiyun/corrplot
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=corrplot
-  version_cran: '0.84'
+  version_cran: '0.90'
   name: corrplot
 covr:
   title: Test Coverage for Packages
@@ -452,57 +414,35 @@ covr:
   url_cran: https://CRAN.R-project.org/package=covr
   version_cran: 3.5.1
   name: covr
-covrpage:
-  title: |-
-    Create a Readme Summary Page for GitHub testthat and covr
-            Outputs
-  version: '0.1'
-  maintainer: Jonathan Sidi
-  url_git: https://github.com/yonicd/covrpage
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: covrpage
 cowplot:
   title: Streamlined Plot Theme and Plot Annotations for 'ggplot2'
-  version: 1.1.0
+  version: 1.1.1
   maintainer: Claus O. Wilke
   url_git: ''
   url_other: https://wilkelab.org/cowplot/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=cowplot
-  version_cran: 1.1.0
+  version_cran: 1.1.1
   name: cowplot
 cpp11:
   title: A C++11 Interface for R's C Interface
-  version: 0.2.4
+  version: 0.3.1
   maintainer: Jim Hester
   url_git: https://github.com/r-lib/cpp11
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=cpp11
-  version_cran: 0.2.4
+  version_cran: 0.3.1
   name: cpp11
-cranlogs:
-  title: Download Logs from the 'RStudio' 'CRAN' Mirror
-  version: 2.1.1
-  maintainer: Gábor Csárdi
-  url_git: https://github.com/r-hub/cranlogs
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=cranlogs
-  version_cran: 2.1.1
-  name: cranlogs
 crayon:
   title: Colored Terminal Output
-  version: 1.3.4
+  version: 1.4.1
   maintainer: Gábor Csárdi
   url_git: https://github.com/r-lib/crayon#readme
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=crayon
-  version_cran: 1.3.4
+  version_cran: 1.4.1
   name: crayon
 credentials:
   title: Tools for Managing SSH and Git Credentials
@@ -516,33 +456,33 @@ credentials:
   name: credentials
 crosstalk:
   title: Inter-Widget Interactivity for HTML Widgets
-  version: 1.1.0.1
-  maintainer: Joe Cheng
+  version: 1.1.1
+  maintainer: Carson Sievert
   url_git: ''
   url_other: https://rstudio.github.io/crosstalk/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=crosstalk
-  version_cran: 1.1.0.1
+  version_cran: 1.1.1
   name: crosstalk
 crul:
   title: HTTP Client
-  version: 1.0.0
+  version: 1.1.0
   maintainer: Scott Chamberlain
   url_git: https://github.com/ropensci/crul
-  url_other: https://docs.ropensci.org/crul
+  url_other: https://docs.ropensci.org/crul/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=crul
-  version_cran: 1.0.0
+  version_cran: 1.1.0
   name: crul
 curl:
   title: A Modern and Flexible Web Client for R
-  version: '4.3'
+  version: 4.3.2
   maintainer: Jeroen Ooms
-  url_git: https://github.com/jeroen/curl#readme
-  url_other: https://curl.haxx.se/libcurl/
+  url_git: https://github.com/jeroen/curl
+  url_other: https://curl.se/libcurl/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=curl
-  version_cran: '4.3'
+  version_cran: 4.3.2
   name: curl
 cyclocomp:
   title: Cyclomatic Complexity of R Code
@@ -556,113 +496,73 @@ cyclocomp:
   name: cyclocomp
 data.table:
   title: Extension of `data.frame`
-  version: 1.13.4
+  version: 1.14.0
   maintainer: Matt Dowle
   url_git: https://github.com/Rdatatable/data.table
-  url_other: https://Rdatatable.gitlab.io/data.table
+  url_other: https://r-datatable.com
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=data.table
-  version_cran: 1.13.4
+  version_cran: 1.14.0
   name: data.table
-datapasta:
-  title: R Tools for Data Copy-Pasta
-  version: 3.1.0
-  maintainer: Miles McBain
-  url_git: https://github.com/milesmcbain/datapasta
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=datapasta
-  version_cran: 3.1.0
-  name: datapasta
 DBI:
   title: R Database Interface
-  version: 1.1.0
+  version: 1.1.1
   maintainer: Kirill Müller
   url_git: https://github.com/r-dbi/DBI
-  url_other: http://r-dbi.github.io/DBI
+  url_other: https://dbi.r-dbi.org
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=DBI
-  version_cran: 1.1.0
+  version_cran: 1.1.1
   name: DBI
 dbplyr:
   title: A 'dplyr' Back End for Databases
-  version: 2.0.0
+  version: 2.1.1
   maintainer: Hadley Wickham
   url_git: https://github.com/tidyverse/dbplyr
   url_other: ''
   url_pkgdown: https://dbplyr.tidyverse.org/
   url_cran: https://CRAN.R-project.org/package=dbplyr
-  version_cran: 2.0.0
+  version_cran: 2.1.1
   name: dbplyr
 desc:
   title: Manipulate DESCRIPTION Files
-  version: 1.2.0
+  version: 1.3.0
   maintainer: Gábor Csárdi
   url_git: https://github.com/r-lib/desc#readme
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=desc
-  version_cran: 1.2.0
+  version_cran: 1.3.0
   name: desc
-DescTools:
-  title: Tools for Descriptive Statistics
-  version: 0.99.39
-  maintainer: Andri Signorell
-  url_git: https://github.com/AndriSignorell/DescTools/
-  url_other: https://andrisignorell.github.io/DescTools/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=DescTools
-  version_cran: 0.99.39
-  name: DescTools
-details:
-  title: Create Details HTML Tag for Markdown and Package Documentation
-  version: 0.2.1
-  maintainer: Jonathan Sidi
-  url_git: https://github.com/yonicd/details
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=details
-  version_cran: 0.2.1
-  name: details
 devtools:
   title: Tools to Make Developing R Packages Easier
-  version: 2.3.2
+  version: 2.4.2
   maintainer: Jim Hester
   url_git: https://github.com/r-lib/devtools
   url_other: ''
   url_pkgdown: https://devtools.r-lib.org/
   url_cran: https://CRAN.R-project.org/package=devtools
-  version_cran: 2.3.2
+  version_cran: 2.4.2
   name: devtools
-dials:
-  title: Tools for Creating Tuning Parameter Values
-  version: 0.0.9
-  maintainer: Max Kuhn
-  url_git: https://github.com/tidymodels/dials
+DiagrammeR:
+  title: Graph/Network Visualization
+  version: 1.0.6.1
+  maintainer: Richard Iannone
+  url_git: https://github.com/rich-iannone/DiagrammeR
   url_other: ''
-  url_pkgdown: https://dials.tidymodels.org
-  url_cran: https://CRAN.R-project.org/package=dials
-  version_cran: 0.0.9
-  name: dials
-DiceDesign:
-  title: Designs of Computer Experiments
-  version: 1.8.1
-  maintainer: Celine Helbert
-  url_git: ''
-  url_other: http://dice.emse.fr/
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=DiceDesign
-  version_cran: 1.8-1
-  name: DiceDesign
+  url_cran: https://CRAN.R-project.org/package=DiagrammeR
+  version_cran: 1.0.6.1
+  name: DiagrammeR
 diffobj:
   title: Diffs for R Objects
-  version: 0.3.2
+  version: 0.3.4
   maintainer: Brodie Gaslam
   url_git: https://github.com/brodieG/diffobj
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=diffobj
-  version_cran: 0.3.2
+  version_cran: 0.3.4
   name: diffobj
 digest:
   title: Create Compact Hash Digests of R Objects
@@ -674,19 +574,9 @@ digest:
   url_cran: https://CRAN.R-project.org/package=digest
   version_cran: 0.6.27
   name: digest
-docopt:
-  title: Command-Line Interface Specification Language
-  version: 0.7.1
-  maintainer: Edwin de Jonge
-  url_git: https://github.com/docopt/docopt.R
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=docopt
-  version_cran: 0.7.1
-  name: docopt
 downlit:
   title: Syntax Highlighting and Automatic Linking
-  version: 0.2.1.9000
+  version: 0.2.1
   maintainer: Hadley Wickham
   url_git: https://github.com/r-lib/downlit
   url_other: ''
@@ -694,96 +584,66 @@ downlit:
   url_cran: https://CRAN.R-project.org/package=downlit
   version_cran: 0.2.1
   name: downlit
+downloader:
+  title: Download Files over HTTP and HTTPS
+  version: '0.4'
+  maintainer: Winston Chang
+  url_git: https://github.com/wch/downloader
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=downloader
+  version_cran: '0.4'
+  name: downloader
 dplyr:
   title: A Grammar of Data Manipulation
-  version: 1.0.2
+  version: 1.0.7
   maintainer: Hadley Wickham
   url_git: https://github.com/tidyverse/dplyr
   url_other: ''
   url_pkgdown: https://dplyr.tidyverse.org
   url_cran: https://CRAN.R-project.org/package=dplyr
-  version_cran: 1.0.2
+  version_cran: 1.0.7
   name: dplyr
-drat:
-  title: '''Drat'' R Archive Template'
-  version: 0.1.8
-  maintainer: Dirk Eddelbuettel
-  url_git: ''
-  url_other: https://dirk.eddelbuettel.com/code/drat.html
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=drat
-  version_cran: 0.1.8
-  name: drat
 DT:
   title: A Wrapper of the JavaScript Library 'DataTables'
-  version: '0.16'
+  version: '0.18'
   maintainer: Yihui Xie
   url_git: https://github.com/rstudio/DT
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=DT
-  version_cran: '0.16'
+  version_cran: '0.18'
   name: DT
-dygraphs:
-  title: Interface to 'Dygraphs' Interactive Time Series Charting Library
-  version: 1.1.1.6
-  maintainer: Petr Shevtsov
-  url_git: https://github.com/rstudio/dygraphs
+dtplyr:
+  title: Data Table Back-End for 'dplyr'
+  version: 1.1.0
+  maintainer: Hadley Wickham
+  url_git: https://github.com/tidyverse/dtplyr
   url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=dygraphs
-  version_cran: 1.1.1.6
-  name: dygraphs
-effectsize:
-  title: Indices of Effect Size and Standardized Parameters
-  version: 0.4.1
-  maintainer: Mattan S. Ben-Shachar
+  url_cran: https://CRAN.R-project.org/package=dtplyr
+  version_cran: 1.1.0
+  name: dtplyr
+eha:
+  title: Event History Analysis
+  version: 2.9.0
+  maintainer: Göran Broström
   url_git: ''
-  url_other: https://easystats.github.io/effectsize/
+  url_other: http://ehar.se/r/eha/
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=effectsize
-  version_cran: 0.4.1
-  name: effectsize
+  url_cran: https://CRAN.R-project.org/package=eha
+  version_cran: 2.9.0
+  name: eha
 ellipsis:
   title: Tools for Working with ...
-  version: 0.3.1
+  version: 0.3.2
   maintainer: Hadley Wickham
   url_git: https://github.com/r-lib/ellipsis
   url_other: ''
   url_pkgdown: https://ellipsis.r-lib.org
   url_cran: https://CRAN.R-project.org/package=ellipsis
-  version_cran: 0.3.1
+  version_cran: 0.3.2
   name: ellipsis
-emmeans:
-  title: Estimated Marginal Means, aka Least-Squares Means
-  version: 1.5.3
-  maintainer: Russell V. Lenth
-  url_git: https://github.com/rvlenth/emmeans
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=emmeans
-  version_cran: 1.5.3
-  name: emmeans
-enc:
-  title: Portable Tools for 'UTF-8' Character Data
-  version: 0.2.2
-  maintainer: Kirill Müller
-  url_git: https://github.com/krlmlr/enc
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=enc
-  version_cran: 0.2.2
-  name: enc
-encryptedRmd:
-  title: Encrypt Html Reports Using 'Libsodium'
-  version: 0.2.1.9000
-  maintainer: Dirk Schumacher
-  url_git: https://github.com/dirkschumacher/encryptedRmd
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=encryptedRmd
-  version_cran: 0.2.1
-  name: encryptedRmd
 evaluate:
   title: |-
     Parsing and Evaluation Tools that Provide More Details than the
@@ -796,16 +656,6 @@ evaluate:
   url_cran: https://CRAN.R-project.org/package=evaluate
   version_cran: '0.14'
   name: evaluate
-expm:
-  title: Matrix Exponential, Log, 'etc'
-  version: 0.999.5
-  maintainer: Martin Maechler
-  url_git: http://R-Forge.R-project.org/projects/expm/
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=expm
-  version_cran: 0.999-5
-  name: expm
 extrafont:
   title: Tools for using fonts
   version: '0.17'
@@ -828,33 +678,33 @@ extrafontdb:
   name: extrafontdb
 fansi:
   title: ANSI Control Sequence Aware String Functions
-  version: 0.4.1
+  version: 0.5.0
   maintainer: Brodie Gaslam
   url_git: https://github.com/brodieG/fansi
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=fansi
-  version_cran: 0.4.1
+  version_cran: 0.5.0
   name: fansi
 farver:
   title: High Performance Colour Space Manipulation
-  version: 2.0.3
+  version: 2.1.0
   maintainer: Thomas Lin Pedersen
   url_git: https://github.com/thomasp85/farver
   url_other: https://farver.data-imaginist.com
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=farver
-  version_cran: 2.0.3
+  version_cran: 2.1.0
   name: farver
 fastmap:
-  title: Fast Implementation of a Key-Value Store
-  version: 1.0.1
+  title: Fast Data Structures
+  version: 1.1.0
   maintainer: Winston Chang
   url_git: https://github.com/r-lib/fastmap
   url_other: https://r-lib.github.io/fastmap/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=fastmap
-  version_cran: 1.0.1
+  version_cran: 1.1.0
   name: fastmap
 filelock:
   title: Portable File Locking
@@ -866,45 +716,15 @@ filelock:
   url_cran: https://CRAN.R-project.org/package=filelock
   version_cran: 1.0.2
   name: filelock
-firasans:
-  title: Fira Sans Condensed + Fira Mono Font Theme Based on hrbrthemes
-  version: 0.1.0
-  maintainer: Bob Rudis
-  url_git: https://github.com/hrbrmstr/firasans
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: firasans
-fledge:
-  title: Wings for Your R Packages
-  version: 0.0.3.9007
-  maintainer: Kirill Müller
-  url_git: https://github.com/krlmlr/fledge
-  url_other: http://krlmlr.github.io/fledge
-  url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: fledge
-foghorn:
-  title: Summarize CRAN Check Results in the Terminal
-  version: 1.3.2
-  maintainer: Francois Michonneau
-  url_git: https://github.com/fmichonneau/foghorn
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=foghorn
-  version_cran: 1.3.2
-  name: foghorn
 forcats:
   title: Tools for Working with Categorical Variables (Factors)
-  version: 0.5.0
+  version: 0.5.1
   maintainer: Hadley Wickham
   url_git: https://github.com/tidyverse/forcats
   url_other: ''
-  url_pkgdown: http://forcats.tidyverse.org
+  url_pkgdown: https://forcats.tidyverse.org
   url_cran: https://CRAN.R-project.org/package=forcats
-  version_cran: 0.5.0
+  version_cran: 0.5.1
   name: forcats
 foreach:
   title: Provides Foreach Looping Construct
@@ -920,24 +740,14 @@ foreign:
   title: |-
     Read Data Stored by 'Minitab', 'S', 'SAS', 'SPSS', 'Stata',
             'Systat', 'Weka', 'dBase', ...
-  version: 0.8.80
+  version: 0.8.81
   maintainer: R Core Team
-  url_git: https://svn.r-project.org/R-packages/trunk/foreign
+  url_git: https://svn.r-project.org/R-packages/trunk/foreign/
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=foreign
   version_cran: 0.8-81
   name: foreign
-formatR:
-  title: Format R Code Automatically
-  version: '1.7'
-  maintainer: Yihui Xie
-  url_git: https://github.com/yihui/formatR
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=formatR
-  version_cran: '1.7'
-  name: formatR
 fs:
   title: Cross-Platform File System Operations Based on 'libuv'
   version: 1.5.0
@@ -950,13 +760,13 @@ fs:
   name: fs
 furrr:
   title: Apply Mapping Functions in Parallel using Futures
-  version: 0.2.1
+  version: 0.2.3
   maintainer: Davis Vaughan
   url_git: https://github.com/DavisVaughan/furrr
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=furrr
-  version_cran: 0.2.1
+  version_cran: 0.2.3
   name: furrr
 future:
   title: Unified Parallel and Distributed Processing in R for Everyone
@@ -970,14 +780,24 @@ future:
   name: future
 future.apply:
   title: Apply Function to Elements in Parallel using Futures
-  version: 1.6.0
+  version: 1.7.0
   maintainer: Henrik Bengtsson
   url_git: https://github.com/HenrikBengtsson/future.apply
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=future.apply
-  version_cran: 1.6.0
+  version_cran: 1.7.0
   name: future.apply
+gargle:
+  title: Utilities for Working with Google APIs
+  version: 1.1.0
+  maintainer: Jennifer Bryan
+  url_git: https://github.com/r-lib/gargle
+  url_other: ''
+  url_pkgdown: https://gargle.r-lib.org
+  url_cran: https://CRAN.R-project.org/package=gargle
+  version_cran: 1.2.0
+  name: gargle
 generics:
   title: |-
     Common S3 Generics not Provided by Base R Methods Related to
@@ -990,26 +810,26 @@ generics:
   url_cran: https://CRAN.R-project.org/package=generics
   version_cran: 0.1.0
   name: generics
+geoR:
+  title: Analysis of Geostatistical Data
+  version: 1.8.1
+  maintainer: Paulo J. Ribeiro Jr
+  url_git: ''
+  url_other: http://www.leg.ufpr.br/geoR
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=geoR
+  version_cran: 1.8-1
+  name: geoR
 gert:
   title: Simple Git Client for R
-  version: 1.0.2
+  version: 1.3.1
   maintainer: Jeroen Ooms
   url_git: https://github.com/r-lib/gert
   url_other: https://docs.ropensci.org/gert/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=gert
-  version_cran: 1.0.2
+  version_cran: 1.3.1
   name: gert
-GGally:
-  title: Extension to 'ggplot2'
-  version: 2.0.0
-  maintainer: Barret Schloerke
-  url_git: https://github.com/ggobi/ggally
-  url_other: https://ggobi.github.io/ggally
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=GGally
-  version_cran: 2.0.0
-  name: GGally
 gganimate:
   title: A Grammar of Animated Graphics
   version: 1.0.7
@@ -1020,88 +840,6 @@ gganimate:
   url_cran: https://CRAN.R-project.org/package=gganimate
   version_cran: 1.0.7
   name: gganimate
-ggdendro:
-  title: Create Dendrograms and Tree Diagrams Using 'ggplot2'
-  version: 0.1.22
-  maintainer: Andrie de Vries
-  url_git: https://github.com/andrie/ggdendro
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=ggdendro
-  version_cran: 0.1.22
-  name: ggdendro
-ggeconodist:
-  title: Create Diminutive Distribution Charts
-  version: 0.1.0
-  maintainer: Bob Rudis
-  url_git: https://gitlab.com/hrbrmstr/ggeconodist
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: ggeconodist
-ggedit:
-  title: Interactive 'ggplot2' Layer and Theme Aesthetic Editor
-  version: 0.3.1
-  maintainer: Jonathan Sidi
-  url_git: https://github.com/yonicd/ggedit
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=ggedit
-  version_cran: 0.3.1
-  name: ggedit
-ggeffects:
-  title: |-
-    Create Tidy Data Frames of Marginal Effects for 'ggplot' from
-            Model Outputs
-  version: 1.0.1
-  maintainer: Daniel Lüdecke
-  url_git: ''
-  url_other: https://strengejacke.github.io/ggeffects/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=ggeffects
-  version_cran: 1.0.1
-  name: ggeffects
-ggexpanse:
-  title: Theme Elements Based On 'The Expanse'
-  version: 0.1.0
-  maintainer: Bob Rudis
-  url_git: https://gitlab.com/hrbrmstr/ggexpanse
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: ggexpanse
-ggforce:
-  title: Accelerating 'ggplot2'
-  version: 0.3.2
-  maintainer: Thomas Lin Pedersen
-  url_git: https://github.com/thomasp85/ggforce
-  url_other: https://ggforce.data-imaginist.com
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=ggforce
-  version_cran: 0.3.2
-  name: ggforce
-ggformula:
-  title: Formula Interface to the Grammar of Graphics
-  version: 0.9.4
-  maintainer: Randall Pruim
-  url_git: https://github.com/ProjectMOSAIC/ggformula
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=ggformula
-  version_cran: 0.9.4
-  name: ggformula
-gggibbous:
-  title: Moon Charts, a Pie Chart Alternative
-  version: 0.1.0
-  maintainer: Michael Bramson
-  url_git: https://github.com/mnbram/gggibbous
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=gggibbous
-  version_cran: 0.1.0
-  name: gggibbous
 ggimage:
   title: Use Image in 'ggplot2'
   version: 0.2.8
@@ -1114,56 +852,68 @@ ggimage:
   name: ggimage
 ggplot2:
   title: Create Elegant Data Visualisations Using the Grammar of Graphics
-  version: 3.3.2
+  version: 3.3.5
   maintainer: Thomas Lin Pedersen
   url_git: https://github.com/tidyverse/ggplot2
   url_other: ''
-  url_pkgdown: http://ggplot2.tidyverse.org
+  url_pkgdown: https://ggplot2.tidyverse.org
   url_cran: https://CRAN.R-project.org/package=ggplot2
-  version_cran: 3.3.2
+  version_cran: 3.3.5
   name: ggplot2
 ggplotify:
   title: Convert Plot to 'grob' or 'ggplot' Object
-  version: 0.0.5
+  version: 0.0.7
   maintainer: Guangchuang Yu
   url_git: https://github.com/GuangchuangYu/ggplotify
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=ggplotify
-  version_cran: 0.0.5
+  version_cran: 0.0.7
   name: ggplotify
+ggpubr:
+  title: '''ggplot2'' Based Publication Ready Plots'
+  version: 0.4.0
+  maintainer: Alboukadel Kassambara
+  url_git: ''
+  url_other: https://rpkgs.datanovia.com/ggpubr/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=ggpubr
+  version_cran: 0.4.0
+  name: ggpubr
 ggrepel:
   title: |-
     Automatically Position Non-Overlapping Text Labels with
             'ggplot2'
-  version: 0.9.0
+  version: 0.9.1
   maintainer: Kamil Slowikowski
   url_git: https://github.com/slowkow/ggrepel
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=ggrepel
-  version_cran: 0.9.0
+  version_cran: 0.9.1
   name: ggrepel
-ggridges:
-  title: Ridgeline Plots in 'ggplot2'
-  version: 0.5.2
-  maintainer: Claus O. Wilke
-  url_git: ''
-  url_other: https://wilkelab.org/ggridges
+ggsci:
+  title: |-
+    Scientific Journal and Sci-Fi Themed Color Palettes for
+            'ggplot2'
+  version: '2.9'
+  maintainer: Nan Xiao
+  url_git: https://github.com/road2stat/ggsci
+  url_other: https://nanx.me/ggsci/
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=ggridges
-  version_cran: 0.5.2
-  name: ggridges
-ggstance:
-  title: Horizontal 'ggplot2' Components
-  version: 0.3.5
-  maintainer: Lionel Henry
-  url_git: https://github.com/lionel-/ggstance
-  url_other: ''
+  url_cran: https://CRAN.R-project.org/package=ggsci
+  version_cran: '2.9'
+  name: ggsci
+ggsignif:
+  title: Significance Brackets for 'ggplot2'
+  version: 0.6.2
+  maintainer: Constantin Ahlmann-Eltze
+  url_git: https://github.com/const-ae/ggsignif
+  url_other: https://const-ae.github.io/ggsignif/
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=ggstance
-  version_cran: 0.3.5
-  name: ggstance
+  url_cran: https://CRAN.R-project.org/package=ggsignif
+  version_cran: 0.6.2
+  name: ggsignif
 ggtext:
   title: Improved Text Rendering Support for 'ggplot2'
   version: 0.1.1
@@ -1174,45 +924,25 @@ ggtext:
   url_cran: https://CRAN.R-project.org/package=ggtext
   version_cran: 0.1.1
   name: ggtext
-ggThemeAssist:
-  title: Add-in to Customize 'ggplot2' Themes
-  version: 0.1.5.9001
-  maintainer: Calli Gross
-  url_git: https://github.com/calligross/ggthemeassist
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=ggThemeAssist
-  version_cran: 0.1.5
-  name: ggThemeAssist
-ggthemes:
-  title: Extra Themes, Scales and Geoms for 'ggplot2'
-  version: 4.2.0
-  maintainer: Jeffrey B. Arnold
-  url_git: http://github.com/jrnold/ggthemes
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=ggthemes
-  version_cran: 4.2.0
-  name: ggthemes
 gh:
   title: '''GitHub'' ''API'''
-  version: 1.2.0
+  version: 1.3.0
   maintainer: Gábor Csárdi
   url_git: https://github.com/r-lib/gh#readme
   url_other: ''
   url_pkgdown: https://gh.r-lib.org/
   url_cran: https://CRAN.R-project.org/package=gh
-  version_cran: 1.2.0
+  version_cran: 1.3.0
   name: gh
 git2r:
   title: Provides Access to Git Repositories
-  version: 0.27.1
+  version: 0.28.0
   maintainer: Stefan Widgren
   url_git: https://github.com/ropensci/git2r
-  url_other: https://docs.ropensci.org/git2r
+  url_other: https://docs.ropensci.org/git2r/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=git2r
-  version_cran: 0.27.1
+  version_cran: 0.28.0
   name: git2r
 gitcreds:
   title: Query 'git' Credentials from 'R'
@@ -1224,18 +954,26 @@ gitcreds:
   url_cran: https://CRAN.R-project.org/package=gitcreds
   version_cran: 0.1.1
   name: gitcreds
-gld:
-  title: |-
-    Estimation and Use of the Generalised (Tukey) Lambda
-            Distribution
-  version: 2.6.2
-  maintainer: Robert King
-  url_git: ''
-  url_other: http://tolstoy.newcastle.edu.au/~rking/publ/rprogs/information.html
+gitignore:
+  title: Create Useful .gitignore Files for your Project
+  version: 0.1.4
+  maintainer: Philippe Massicotte
+  url_git: https://github.com/ropensci/gitignore
+  url_other: https://docs.ropensci.org/gitignore/
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=gld
-  version_cran: 2.6.2
-  name: gld
+  url_cran: https://CRAN.R-project.org/package=gitignore
+  version_cran: 0.1.4
+  name: gitignore
+glmnet:
+  title: Lasso and Elastic-Net Regularized Generalized Linear Models
+  version: 4.1.2
+  maintainer: Trevor Hastie
+  url_git: ''
+  url_other: https://glmnet.stanford.edu
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=glmnet
+  version_cran: 4.1-2
+  name: glmnet
 globals:
   title: Identify Global Objects in R Expressions
   version: 0.14.0
@@ -1256,16 +994,26 @@ glue:
   url_cran: https://CRAN.R-project.org/package=glue
   version_cran: 1.4.2
   name: glue
-goodpractice:
-  title: Advice on R Package Building
-  version: 1.0.2
-  maintainer: Hannah Frick
-  url_git: https://github.com/mangothecat/goodpractice
+googledrive:
+  title: An Interface to Google Drive
+  version: 1.0.1
+  maintainer: Jennifer Bryan
+  url_git: https://github.com/tidyverse/googledrive
+  url_other: ''
+  url_pkgdown: https://googledrive.tidyverse.org
+  url_cran: https://CRAN.R-project.org/package=googledrive
+  version_cran: 1.0.1
+  name: googledrive
+googlesheets4:
+  title: Access Google Sheets using the Sheets API V4
+  version: 0.3.0
+  maintainer: Jennifer Bryan
+  url_git: https://github.com/tidyverse/googlesheets4
   url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=goodpractice
-  version_cran: 1.0.2
-  name: goodpractice
+  url_cran: https://CRAN.R-project.org/package=googlesheets4
+  version_cran: 0.3.0
+  name: googlesheets4
 gower:
   title: Gower's Distance
   version: 0.2.2
@@ -1306,35 +1054,15 @@ gtable:
   url_cran: https://CRAN.R-project.org/package=gtable
   version_cran: 0.3.0
   name: gtable
-gtools:
-  title: Various R Programming Tools
-  version: 3.8.2
-  maintainer: Gregory R. Warnes
-  url_git: https://github.com/r-gregmisc/gtools
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=gtools
-  version_cran: 3.8.2
-  name: gtools
-hardhat:
-  title: Construct Modeling Packages
-  version: 0.1.5
-  maintainer: Davis Vaughan
-  url_git: https://github.com/tidymodels/hardhat
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=hardhat
-  version_cran: 0.1.5
-  name: hardhat
 haven:
   title: Import and Export 'SPSS', 'Stata' and 'SAS' Files
-  version: 2.3.1
+  version: 2.4.1
   maintainer: Hadley Wickham
   url_git: https://github.com/tidyverse/haven
   url_other: ''
-  url_pkgdown: http://haven.tidyverse.org
+  url_pkgdown: https://haven.tidyverse.org
   url_cran: https://CRAN.R-project.org/package=haven
-  version_cran: 2.3.1
+  version_cran: 2.4.1
   name: haven
 here:
   title: A Simpler Way to Find Your Files
@@ -1348,13 +1076,13 @@ here:
   name: here
 hexbin:
   title: Hexagonal Binning Routines
-  version: 1.28.1
+  version: 1.28.2
   maintainer: Edzer Pebesma
-  url_git: http://github.com/edzer/hexbin
+  url_git: https://github.com/edzer/hexbin
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=hexbin
-  version_cran: 1.28.1
+  version_cran: 1.28.2
   name: hexbin
 hexSticker:
   title: Create Hexagon Sticker in R
@@ -1366,55 +1094,35 @@ hexSticker:
   url_cran: https://CRAN.R-project.org/package=hexSticker
   version_cran: 0.4.9
   name: hexSticker
-highcharter:
-  title: A Wrapper for the 'Highcharts' Library
-  version: 0.8.2
-  maintainer: Joshua Kunst
-  url_git: https://github.com/jbkunst/highcharter
-  url_other: http://jkunst.com/highcharter
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=highcharter
-  version_cran: 0.8.2
-  name: highcharter
-highlight:
-  title: Syntax Highlighter
-  version: 0.5.0
-  maintainer: Hadley Wickham
-  url_git: https://github.com/hadley/highlight
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=highlight
-  version_cran: 0.5.0
-  name: highlight
 highr:
   title: Syntax Highlighting for R Source Code
-  version: '0.8'
+  version: '0.9'
   maintainer: Yihui Xie
   url_git: https://github.com/yihui/highr
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=highr
-  version_cran: '0.8'
+  version_cran: '0.9'
   name: highr
 Hmisc:
   title: Harrell Miscellaneous
-  version: 4.4.2
+  version: 4.5.0
   maintainer: Frank E Harrell Jr
   url_git: https://github.com/harrelfe/Hmisc/
   url_other: https://hbiostat.org/R/Hmisc/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=Hmisc
-  version_cran: 4.4-2
+  version_cran: 4.5-0
   name: Hmisc
 hms:
   title: Pretty Time of Day
-  version: 0.5.3
+  version: 1.1.0
   maintainer: Kirill Müller
   url_git: https://github.com/tidyverse/hms
   url_other: ''
   url_pkgdown: https://hms.tidyverse.org/
   url_cran: https://CRAN.R-project.org/package=hms
-  version_cran: 0.5.3
+  version_cran: 1.1.0
   name: hms
 hrbrthemes:
   title: Additional Themes, Theme Components and Utilities for 'ggplot2'
@@ -1428,23 +1136,23 @@ hrbrthemes:
   name: hrbrthemes
 htmlTable:
   title: Advanced Tables for Markdown/HTML
-  version: 2.1.0
+  version: 2.2.1
   maintainer: Max Gordon
   url_git: ''
   url_other: https://gforge.se/packages/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=htmlTable
-  version_cran: 2.1.0
+  version_cran: 2.2.1
   name: htmlTable
 htmltools:
   title: Tools for HTML
-  version: 0.5.0.9003
+  version: 0.5.1.1
   maintainer: Carson Sievert
   url_git: https://github.com/rstudio/htmltools
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=htmltools
-  version_cran: 0.5.0
+  version_cran: 0.5.1.1
   name: htmltools
 htmlwidgets:
   title: HTML Widgets for R
@@ -1466,15 +1174,25 @@ httpcode:
   url_cran: https://CRAN.R-project.org/package=httpcode
   version_cran: 0.3.0
   name: httpcode
+httpgd:
+  title: A 'HTTP' Server Graphics Device
+  version: 1.1.1
+  maintainer: Florian Rupprecht
+  url_git: https://github.com/nx10/httpgd
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=httpgd
+  version_cran: 1.1.1
+  name: httpgd
 httpuv:
   title: HTTP and WebSocket Server Library
-  version: 1.5.4
+  version: 1.6.1
   maintainer: Winston Chang
   url_git: https://github.com/rstudio/httpuv
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=httpuv
-  version_cran: 1.5.4
+  version_cran: 1.6.1
   name: httpuv
 httr:
   title: Tools for Working with URLs and HTTP
@@ -1506,6 +1224,16 @@ hunspell:
   url_cran: https://CRAN.R-project.org/package=hunspell
   version_cran: 3.0.1
   name: hunspell
+ids:
+  title: Generate Random Identifiers
+  version: 1.0.1
+  maintainer: Rich FitzJohn
+  url_git: https://github.com/richfitz/ids
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=ids
+  version_cran: 1.0.1
+  name: ids
 igraph:
   title: Network Analysis and Visualization
   version: 1.2.6
@@ -1516,16 +1244,18 @@ igraph:
   url_cran: https://CRAN.R-project.org/package=igraph
   version_cran: 1.2.6
   name: igraph
-infer:
-  title: Tidy Statistical Inference
-  version: 0.5.3
-  maintainer: Andrew Bray
-  url_git: https://github.com/tidymodels/infer
-  url_other: https://infer.netlify.com/
+influenceR:
+  title: |-
+    Software Tools to Quantify Structural Importance of Nodes in a
+            Network
+  version: 0.1.0
+  maintainer: Khanna Aditya
+  url_git: https://github.com/rcc-uchicago/influenceR
+  url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=infer
-  version_cran: 0.5.3
-  name: infer
+  url_cran: https://CRAN.R-project.org/package=influenceR
+  version_cran: 0.1.0
+  name: influenceR
 ini:
   title: Read and Write '.ini' Files
   version: 0.3.1
@@ -1536,27 +1266,29 @@ ini:
   url_cran: https://CRAN.R-project.org/package=ini
   version_cran: 0.3.1
   name: ini
-insight:
-  title: Easy Access to Model Information for Various Model Objects
-  version: 0.11.1
-  maintainer: Daniel Lüdecke
-  url_git: ''
-  url_other: https://easystats.github.io/insight/
+ipapi:
+  title: |-
+    Geolocate IPv4/6 addresses and/or domain names using
+            ip-api.com's API
+  version: '0.1'
+  maintainer: Bob Rudis
+  url_git: http://github.com/hrbrmstr/ipapi
+  url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=insight
-  version_cran: 0.11.1
-  name: insight
+  url_cran: https://CRAN.R-project.org/package=ipapi
+  version_cran: '0.1'
+  name: ipapi
 isoband:
   title: |-
     Generate Isolines and Isobands from Regularly Spaced Elevation
             Grids
-  version: 0.2.3
+  version: 0.2.4
   maintainer: Claus O. Wilke
   url_git: https://github.com/wilkelab/isoband
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=isoband
-  version_cran: 0.2.3
+  version_cran: 0.2.4
   name: isoband
 iterators:
   title: Provides Iterator Construct
@@ -1580,13 +1312,13 @@ janeaustenr:
   name: janeaustenr
 janitor:
   title: Simple Tools for Examining and Cleaning Dirty Data
-  version: 2.0.1
+  version: 2.1.0
   maintainer: Sam Firke
   url_git: https://github.com/sfirke/janitor
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=janitor
-  version_cran: 2.0.1
+  version_cran: 2.1.0
   name: janitor
 jemisc:
   title: Personal Collection of Stuff and Things
@@ -1595,8 +1327,8 @@ jemisc:
   url_git: https://github.com/jemus42/jemisc
   url_other: ''
   url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
+  url_cran: https://CRAN.R-project.org/package=jemisc
+  version_cran: 0.0.3
   name: jemisc
 jpeg:
   title: Read and write JPEG images
@@ -1620,55 +1352,65 @@ jsonlite:
   name: jsonlite
 kableExtra:
   title: Construct Complex Table with 'kable' and Pipe Syntax
-  version: 1.3.1
+  version: 1.3.4
   maintainer: Hao Zhu
   url_git: https://github.com/haozhu233/kableExtra
   url_other: http://haozhu233.github.io/kableExtra/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=kableExtra
-  version_cran: 1.3.1
+  version_cran: 1.3.4
   name: kableExtra
 keras:
   title: R Interface to 'Keras'
-  version: 2.3.0.0
+  version: 2.4.0
   maintainer: Daniel Falbel
   url_git: ''
   url_other: https://keras.rstudio.com
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=keras
-  version_cran: 2.3.0.0
+  version_cran: 2.4.0
   name: keras
 knitr:
   title: A General-Purpose Package for Dynamic Report Generation in R
-  version: '1.30'
+  version: '1.33'
   maintainer: Yihui Xie
   url_git: ''
   url_other: https://yihui.org/knitr/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=knitr
-  version_cran: '1.30'
+  version_cran: '1.33'
   name: knitr
+languageserver:
+  title: Language Server Protocol
+  version: 0.3.10
+  maintainer: Randy Lai
+  url_git: https://github.com/REditorSupport/languageserver/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=languageserver
+  version_cran: 0.3.10
+  name: languageserver
 later:
   title: |-
     Utilities for Scheduling Functions to Execute Later with Event
             Loops
-  version: 1.1.0.1
-  maintainer: Joe Cheng
+  version: 1.2.0
+  maintainer: Winston Chang
   url_git: https://github.com/r-lib/later
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=later
-  version_cran: 1.1.0.1
+  version_cran: 1.2.0
   name: later
 lattice:
   title: Trellis Graphics for R
-  version: 0.20.41
+  version: 0.20.44
   maintainer: Deepayan Sarkar
   url_git: http://lattice.r-forge.r-project.org/
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=lattice
-  version_cran: 0.20-41
+  version_cran: 0.20-44
   name: lattice
 latticeExtra:
   title: Extra Graphical Utilities Based on Lattice
@@ -1682,25 +1424,25 @@ latticeExtra:
   name: latticeExtra
 lava:
   title: Latent Variable Models
-  version: 1.6.8.1
+  version: 1.6.9
   maintainer: Klaus K. Holst
   url_git: ''
   url_other: https://kkholst.github.io/lava/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=lava
-  version_cran: 1.6.8.1
+  version_cran: 1.6.9
   name: lava
 leaflet:
   title: |-
     Create Interactive Web Maps with the JavaScript 'Leaflet'
             Library
-  version: 2.0.3
+  version: 2.0.4.1
   maintainer: Joe Cheng
   url_git: ''
-  url_other: http://rstudio.github.io/leaflet/
+  url_other: https://rstudio.github.io/leaflet/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=leaflet
-  version_cran: 2.0.3
+  version_cran: 2.0.4.1
   name: leaflet
 leaflet.providers:
   title: Leaflet Providers
@@ -1712,26 +1454,36 @@ leaflet.providers:
   url_cran: https://CRAN.R-project.org/package=leaflet.providers
   version_cran: 1.9.0
   name: leaflet.providers
-lhs:
-  title: Latin Hypercube Samples
-  version: 1.1.1
-  maintainer: Rob Carnell
-  url_git: https://github.com/bertcarnell/lhs
-  url_other: ''
+lgr:
+  title: A Fully Featured Logging Framework
+  version: 0.4.2
+  maintainer: Stefan Fleck
+  url_git: ''
+  url_other: https://s-fleck.github.io/lgr/
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=lhs
-  version_cran: 1.1.1
-  name: lhs
+  url_cran: https://CRAN.R-project.org/package=lgr
+  version_cran: 0.4.2
+  name: lgr
 lifecycle:
   title: Manage the Life Cycle of your Package Functions
-  version: 0.2.0
+  version: 1.0.0
   maintainer: Lionel Henry
   url_git: https://github.com/r-lib/lifecycle
   url_other: ''
   url_pkgdown: https://lifecycle.r-lib.org/
   url_cran: https://CRAN.R-project.org/package=lifecycle
-  version_cran: 0.2.0
+  version_cran: 1.0.0
   name: lifecycle
+lime:
+  title: Local Interpretable Model-Agnostic Explanations
+  version: 0.5.2
+  maintainer: Thomas Lin Pedersen
+  url_git: https://github.com/thomasp85/lime
+  url_other: https://lime.data-imaginist.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=lime
+  version_cran: 0.5.2
+  name: lime
 lintr:
   title: A 'Linter' for R Code
   version: 2.0.1
@@ -1754,45 +1506,53 @@ listenv:
   name: listenv
 lme4:
   title: Linear Mixed-Effects Models using 'Eigen' and S4
-  version: 1.1.26
+  version: 1.1.27.1
   maintainer: Ben Bolker
   url_git: https://github.com/lme4/lme4/
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=lme4
-  version_cran: 1.1-26
+  version_cran: 1.1-27.1
   name: lme4
-loo:
-  title: |-
-    Efficient Leave-One-Out Cross-Validation and WAIC for Bayesian
-            Models
-  version: 2.4.1
-  maintainer: Jonah Gabry
-  url_git: ''
-  url_other: https://mc-stan.org/loo/
+lpSolve:
+  title: Interface to 'Lp_solve' v. 5.5 to Solve Linear/Integer Programs
+  version: 5.6.15
+  maintainer: Gábor Csárdi
+  url_git: https://github.com/gaborcsardi/lpSolve
+  url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=loo
-  version_cran: 2.4.1
-  name: loo
+  url_cran: https://CRAN.R-project.org/package=lpSolve
+  version_cran: 5.6.15
+  name: lpSolve
 lubridate:
   title: Make Dealing with Dates a Little Easier
-  version: 1.7.9.2
+  version: 1.7.10
   maintainer: Vitalie Spinu
   url_git: https://github.com/tidyverse/lubridate
   url_other: ''
   url_pkgdown: https://lubridate.tidyverse.org
   url_cran: https://CRAN.R-project.org/package=lubridate
-  version_cran: 1.7.9.2
+  version_cran: 1.7.10
   name: lubridate
+luz:
+  title: Higher Level 'API' for 'torch'
+  version: 0.1.0
+  maintainer: Daniel Falbel
+  url_git: https://github.com/mlverse/luz
+  url_other: https://mlverse.github.io/luz/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=luz
+  version_cran: 0.1.0
+  name: luz
 magick:
   title: Advanced Graphics and Image-Processing in R
-  version: 2.5.2
+  version: 2.7.2
   maintainer: Jeroen Ooms
   url_git: https://github.com/ropensci/magick
   url_other: https://docs.ropensci.org/magick/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=magick
-  version_cran: 2.5.2
+  version_cran: 2.7.2
   name: magick
 magrittr:
   title: A Forward-Pipe Operator for R
@@ -1806,13 +1566,13 @@ magrittr:
   name: magrittr
 maptools:
   title: Tools for Handling Spatial Objects
-  version: 1.0.2
+  version: 1.1.1
   maintainer: Roger Bivand
   url_git: http://maptools.r-forge.r-project.org/
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=maptools
-  version_cran: 1.0-2
+  version_cran: 1.1-1
   name: maptools
 markdown:
   title: Render Markdown with the C Library 'Sundown'
@@ -1826,75 +1586,85 @@ markdown:
   name: markdown
 MASS:
   title: Support Functions and Datasets for Venables and Ripley's MASS
-  version: 7.3.53
+  version: 7.3.54
   maintainer: Brian Ripley
   url_git: ''
   url_other: http://www.stats.ox.ac.uk/pub/MASS4/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=MASS
-  version_cran: 7.3-53
+  version_cran: 7.3-54
   name: MASS
 Matrix:
   title: Sparse and Dense Matrix Classes and Methods
-  version: 1.2.18
+  version: 1.3.3
   maintainer: Martin Maechler
   url_git: http://Matrix.R-forge.R-project.org/
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=Matrix
-  version_cran: 1.3-0
+  version_cran: 1.3-4
   name: Matrix
 MatrixModels:
-  title: Modelling with Sparse And Dense Matrices
-  version: 0.4.1
+  title: Modelling with Sparse and Dense Matrices
+  version: 0.5.0
   maintainer: Martin Maechler
   url_git: http://Matrix.R-forge.R-project.org/
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=MatrixModels
-  version_cran: 0.4-1
+  version_cran: 0.5-0
   name: MatrixModels
 matrixStats:
   title: |-
     Functions that Apply to Rows and Columns of Matrices (and to
             Vectors)
-  version: 0.57.0
+  version: 0.59.0
   maintainer: Henrik Bengtsson
   url_git: https://github.com/HenrikBengtsson/matrixStats
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=matrixStats
-  version_cran: 0.57.0
+  version_cran: 0.59.0
   name: matrixStats
 memoise:
   title: Memoisation of Functions
-  version: 1.1.0
+  version: 2.0.0
   maintainer: Jim Hester
-  url_git: https://github.com/hadley/memoise
+  url_git: https://github.com/r-lib/memoise
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=memoise
-  version_cran: 1.1.0
+  version_cran: 2.0.0
   name: memoise
-microbenchmark:
-  title: Accurate Timing Functions
-  version: 1.4.7
-  maintainer: Joshua M. Ulrich
-  url_git: https://github.com/joshuaulrich/microbenchmark/
+Metrics:
+  title: Evaluation Metrics for Machine Learning
+  version: 0.1.4
+  maintainer: Michael Frasco
+  url_git: https://github.com/mfrasco/Metrics
   url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=microbenchmark
-  version_cran: 1.4-7
-  name: microbenchmark
+  url_cran: https://CRAN.R-project.org/package=Metrics
+  version_cran: 0.1.4
+  name: Metrics
+mets:
+  title: Analysis of Multivariate Event Times
+  version: 1.2.8.1
+  maintainer: Klaus K. Holst
+  url_git: ''
+  url_other: https://kkholst.github.io/mets/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=mets
+  version_cran: 1.2.8.1
+  name: mets
 mime:
   title: Map Filenames to MIME Types
-  version: '0.9'
+  version: '0.11'
   maintainer: Yihui Xie
   url_git: https://github.com/yihui/mime
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=mime
-  version_cran: '0.9'
+  version_cran: '0.11'
   name: mime
 minqa:
   title: |-
@@ -1908,16 +1678,96 @@ minqa:
   url_cran: https://CRAN.R-project.org/package=minqa
   version_cran: 1.2.4
   name: minqa
-modeldata:
-  title: Data Sets Used Useful for Modeling Packages
-  version: 0.1.0
-  maintainer: Max Kuhn
-  url_git: https://github.com/tidymodels/modeldata
+mlr3:
+  title: Machine Learning in R - Next Generation
+  version: 0.11.0
+  maintainer: Michel Lang
+  url_git: https://github.com/mlr-org/mlr3
+  url_other: https://mlr3.mlr-org.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=mlr3
+  version_cran: 0.11.0
+  name: mlr3
+mlr3book:
+  title: R package to build the mlr3 book via bookdown
+  version: '0.1'
+  maintainer: Michel Lang
+  url_git: https://github.com/mlr-org/mlr3book
   url_other: ''
-  url_pkgdown: https://modeldata.tidymodels.org
-  url_cran: https://CRAN.R-project.org/package=modeldata
-  version_cran: 0.1.0
-  name: modeldata
+  url_pkgdown: ''
+  url_cran: ''
+  version_cran: ''
+  name: mlr3book
+mlr3db:
+  title: Data Base Backend for 'mlr3'
+  version: 0.4.1
+  maintainer: Michel Lang
+  url_git: https://github.com/mlr-org/mlr3db
+  url_other: https:///mlr3db.mlr-org.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=mlr3db
+  version_cran: 0.4.1
+  name: mlr3db
+mlr3learners:
+  title: Recommended Learners for 'mlr3'
+  version: 0.4.5
+  maintainer: Michel Lang
+  url_git: https://github.com/mlr-org/mlr3learners
+  url_other: https://mlr3learners.mlr-org.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=mlr3learners
+  version_cran: 0.4.5
+  name: mlr3learners
+mlr3measures:
+  title: Performance Measures for 'mlr3'
+  version: 0.3.1
+  maintainer: Michel Lang
+  url_git: https://github.com/mlr-org/mlr3measures
+  url_other: https:///mlr3measures.mlr-org.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=mlr3measures
+  version_cran: 0.3.1
+  name: mlr3measures
+mlr3misc:
+  title: Helper Functions for 'mlr3'
+  version: 0.9.2
+  maintainer: Michel Lang
+  url_git: https://github.com/mlr-org/mlr3misc
+  url_other: https://mlr3misc.mlr-org.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=mlr3misc
+  version_cran: 0.9.2
+  name: mlr3misc
+mlr3oml:
+  title: Connector Between 'mlr3' and 'OpenML'
+  version: 0.4.3
+  maintainer: Michel Lang
+  url_git: https://github.com/mlr-org/mlr3oml
+  url_other: https://mlr3oml.mlr-org.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=mlr3oml
+  version_cran: 0.4.3
+  name: mlr3oml
+mlr3pipelines:
+  title: Preprocessing Operators and Pipelines for 'mlr3'
+  version: 0.3.4
+  maintainer: Martin Binder
+  url_git: https://github.com/mlr-org/mlr3pipelines
+  url_other: https://mlr3pipelines.mlr-org.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=mlr3pipelines
+  version_cran: 0.3.4
+  name: mlr3pipelines
+mlr3viz:
+  title: Visualizations for 'mlr3'
+  version: 0.5.4
+  maintainer: Michel Lang
+  url_git: https://github.com/mlr-org/mlr3viz
+  url_other: https://mlr3viz.mlr-org.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=mlr3viz
+  version_cran: 0.5.4
+  name: mlr3viz
 modelr:
   title: Modelling Functions that Work with the Pipe
   version: 0.1.8
@@ -1928,36 +1778,16 @@ modelr:
   url_cran: https://CRAN.R-project.org/package=modelr
   version_cran: 0.1.8
   name: modelr
-mosaic:
-  title: Project MOSAIC Statistics and Mathematics Teaching Utilities
-  version: 1.8.2
-  maintainer: Randall Pruim
-  url_git: https://github.com/ProjectMOSAIC/mosaic
-  url_other: https://projectmosaic.github.io/mosaic/
+multcomp:
+  title: Simultaneous Inference in General Parametric Models
+  version: 1.4.17
+  maintainer: Torsten Hothorn
+  url_git: http://multcomp.R-forge.R-project.org
+  url_other: http://www.crcpress.com/product/isbn/9781584885740
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=mosaic
-  version_cran: 1.8.2
-  name: mosaic
-mosaicCore:
-  title: Common Utilities for Other MOSAIC-Family Packages
-  version: 0.8.0
-  maintainer: Randall Pruim
-  url_git: https://github.com/ProjectMOSAIC/mosaicCore
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=mosaicCore
-  version_cran: 0.8.0
-  name: mosaicCore
-mosaicData:
-  title: Project MOSAIC Data Sets
-  version: 0.20.1
-  maintainer: Randall Pruim
-  url_git: https://github.com/ProjectMOSAIC/mosaicData
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=mosaicData
-  version_cran: 0.20.1
-  name: mosaicData
+  url_cran: https://CRAN.R-project.org/package=multcomp
+  version_cran: 1.4-17
+  name: multcomp
 munsell:
   title: Utilities for Using Munsell Colours
   version: 0.5.0
@@ -1970,33 +1800,43 @@ munsell:
   name: munsell
 mvtnorm:
   title: Multivariate Normal and t Distributions
-  version: 1.1.1
+  version: 1.1.2
   maintainer: Torsten Hothorn
   url_git: http://mvtnorm.R-forge.R-project.org
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=mvtnorm
-  version_cran: 1.1-1
+  version_cran: 1.1-2
   name: mvtnorm
+neuralnet:
+  title: Training of Neural Networks
+  version: 1.44.2
+  maintainer: Marvin N. Wright
+  url_git: https://github.com/bips-hb/neuralnet
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=neuralnet
+  version_cran: 1.44.2
+  name: neuralnet
 nlme:
   title: Linear and Nonlinear Mixed Effects Models
-  version: 3.1.149
+  version: 3.1.152
   maintainer: R-core
   url_git: https://svn.r-project.org/R-packages/trunk/nlme/
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=nlme
-  version_cran: 3.1-151
+  version_cran: 3.1-152
   name: nlme
 nnet:
   title: Feed-Forward Neural Networks and Multinomial Log-Linear Models
-  version: 7.3.14
+  version: 7.3.16
   maintainer: Brian Ripley
   url_git: ''
   url_other: http://www.stats.ox.ac.uk/pub/MASS4/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=nnet
-  version_cran: 7.3-14
+  version_cran: 7.3-16
   name: nnet
 numDeriv:
   title: Accurate Numerical Derivatives
@@ -2008,50 +1848,58 @@ numDeriv:
   url_cran: https://CRAN.R-project.org/package=numDeriv
   version_cran: 2016.8-1.1
   name: numDeriv
+OpenML:
+  title: Open Machine Learning and Open Data Platform
+  version: '1.10'
+  maintainer: Giuseppe Casalicchio
+  url_git: https://github.com/openml/openml-r
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=OpenML
+  version_cran: '1.10'
+  name: OpenML
 openssl:
   title: |-
     Toolkit for Encryption, Signatures and Certificates Based on
             OpenSSL
-  version: 1.4.3
+  version: 1.4.4
   maintainer: Jeroen Ooms
-  url_git: https://github.com/jeroen/openssl#readme
+  url_git: https://github.com/jeroen/openssl
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=openssl
-  version_cran: 1.4.3
+  version_cran: 1.4.4
   name: openssl
 openxlsx:
   title: Read, Write and Edit xlsx Files
-  version: 4.2.3
+  version: 4.2.4
   maintainer: Philipp Schauberger
   url_git: https://github.com/ycphs/openxlsx
   url_other: https://ycphs.github.io/openxlsx/index.html
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=openxlsx
-  version_cran: 4.2.3
+  version_cran: 4.2.4
   name: openxlsx
-packrat:
-  title: |-
-    A Dependency Management System for Projects and their R Package
-            Dependencies
-  version: 0.5.0
-  maintainer: Kevin Ushey
-  url_git: https://github.com/rstudio/packrat/
+pak:
+  title: Another Approach to Package Installation
+  version: 0.1.2.1
+  maintainer: Gábor Csárdi
+  url_git: ''
+  url_other: ''
+  url_pkgdown: https://pak.r-lib.org/
+  url_cran: https://CRAN.R-project.org/package=pak
+  version_cran: 0.1.2.1
+  name: pak
+paletteer:
+  title: Comprehensive Collection of Color Palettes
+  version: 1.3.0
+  maintainer: Emil Hvitfeldt
+  url_git: https://github.com/EmilHvitfeldt/paletteer
   url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=packrat
-  version_cran: 0.5.0
-  name: packrat
-pacman:
-  title: Package Management Tool
-  version: 0.5.1
-  maintainer: Tyler Rinker
-  url_git: https://github.com/trinker/pacman
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=pacman
-  version_cran: 0.5.1
-  name: pacman
+  url_cran: https://CRAN.R-project.org/package=paletteer
+  version_cran: 1.3.0
+  name: paletteer
 palmerpenguins:
   title: Palmer Archipelago (Antarctica) Penguin Data
   version: 0.1.0
@@ -2062,89 +1910,81 @@ palmerpenguins:
   url_cran: https://CRAN.R-project.org/package=palmerpenguins
   version_cran: 0.1.0
   name: palmerpenguins
+pammtools:
+  title: |-
+    Piece-Wise Exponential Additive Mixed Modeling Tools for
+            Survival Analysis
+  version: 0.5.7
+  maintainer: Andreas Bender
+  url_git: ''
+  url_other: https://adibender.github.io/pammtools/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=pammtools
+  version_cran: 0.5.7
+  name: pammtools
+paradox:
+  title: Define and Work with Parameter Spaces for Complex Algorithms
+  version: 0.7.1
+  maintainer: Michel Lang
+  url_git: https://github.com/mlr-org/paradox
+  url_other: https://paradox.mlr-org.com
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=paradox
+  version_cran: 0.7.1
+  name: paradox
 parallelly:
   title: Enhancing the 'parallel' Package
-  version: 1.22.0
+  version: 1.26.1
   maintainer: Henrik Bengtsson
   url_git: https://github.com/HenrikBengtsson/parallelly
-  url_other: ''
+  url_other: https://parallelly.futureverse.org
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=parallelly
-  version_cran: 1.22.0
+  version_cran: 1.26.1
   name: parallelly
-parameters:
-  title: Processing of Model Parameters
-  version: 0.10.1
-  maintainer: Daniel Lüdecke
-  url_git: ''
-  url_other: https://easystats.github.io/parameters/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=parameters
-  version_cran: 0.10.1
-  name: parameters
 parsedate:
   title: |-
     Recognize and Parse Dates in Various Formats, Including All ISO
             8601 Formats
-  version: 1.2.0
+  version: 1.2.1
   maintainer: Gábor Csárdi
   url_git: https://github.com/gaborcsardi/parsedate
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=parsedate
-  version_cran: 1.2.0
+  version_cran: 1.2.1
   name: parsedate
-parsnip:
-  title: A Common API to Modeling and Analysis Functions
-  version: 0.1.4
-  maintainer: Max Kuhn
-  url_git: https://github.com/tidymodels/parsnip
+pbapply:
+  title: Adding Progress Bar to '*apply' Functions
+  version: 1.4.3
+  maintainer: Peter Solymos
+  url_git: https://github.com/psolymos/pbapply
   url_other: ''
-  url_pkgdown: https://parsnip.tidymodels.org
-  url_cran: https://CRAN.R-project.org/package=parsnip
-  version_cran: 0.1.4
-  name: parsnip
-patchwork:
-  title: The Composer of Plots
-  version: 1.1.1
-  maintainer: Thomas Lin Pedersen
-  url_git: https://github.com/thomasp85/patchwork
-  url_other: https://patchwork.data-imaginist.com
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=patchwork
-  version_cran: 1.1.1
-  name: patchwork
+  url_cran: https://CRAN.R-project.org/package=pbapply
+  version_cran: 1.4-3
+  name: pbapply
 pbkrtest:
   title: |-
     Parametric Bootstrap, Kenward-Roger and Satterthwaite Based
             Methods for Test in Mixed Models
-  version: 0.5.0.1
+  version: 0.5.1
   maintainer: Søren Højsgaard
   url_git: ''
   url_other: https://people.math.aau.dk/~sorenh/software/pbkrtest/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=pbkrtest
-  version_cran: 0.5-0.1
+  version_cran: 0.5.1
   name: pbkrtest
-performance:
-  title: Assessment of Regression Models Performance
-  version: 0.6.1
-  maintainer: Daniel Lüdecke
-  url_git: ''
-  url_other: https://easystats.github.io/performance/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=performance
-  version_cran: 0.6.1
-  name: performance
 pillar:
   title: Coloured Formatting for Columns
-  version: 1.4.7
+  version: 1.6.1
   maintainer: Kirill Müller
   url_git: https://github.com/r-lib/pillar
   url_other: ''
-  url_pkgdown: ''
+  url_pkgdown: https://pillar.r-lib.org/
   url_cran: https://CRAN.R-project.org/package=pillar
-  version_cran: 1.4.7
+  version_cran: 1.6.1
   name: pillar
 pingr:
   title: Check if a Remote Computer is Up
@@ -2156,16 +1996,16 @@ pingr:
   url_cran: https://CRAN.R-project.org/package=pingr
   version_cran: 2.0.1
   name: pingr
-pixiedust:
-  title: Tables so Beautifully Fine-Tuned You Will Believe It's Magic
-  version: 0.9.0
-  maintainer: Benjamin Nutter
-  url_git: https://github.com/nutterb/pixiedust
+pins:
+  title: Pin, Discover and Share Resources
+  version: 0.4.5
+  maintainer: Hadley Wickham
+  url_git: https://github.com/rstudio/pins
   url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=pixiedust
-  version_cran: 0.9.0
-  name: pixiedust
+  url_cran: https://CRAN.R-project.org/package=pins
+  version_cran: 0.4.5
+  name: pins
 pkgbuild:
   title: Find Tools Needed to Build R Packages
   version: 1.2.0
@@ -2178,13 +2018,13 @@ pkgbuild:
   name: pkgbuild
 pkgcache:
   title: Cache 'CRAN'-Like Metadata and R Packages
-  version: 1.1.1
+  version: 1.2.2
   maintainer: Gábor Csárdi
   url_git: https://github.com/r-lib/pkgcache#readme
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=pkgcache
-  version_cran: 1.1.1
+  version_cran: 1.2.2
   name: pkgcache
 pkgconfig:
   title: Private Configuration for 'R' Packages
@@ -2208,13 +2048,13 @@ pkgdown:
   name: pkgdown
 pkgload:
   title: Simulate Package Installation and Attach
-  version: 1.1.0
+  version: 1.2.1
   maintainer: Jim Hester
   url_git: https://github.com/r-lib/pkgload
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=pkgload
-  version_cran: 1.1.0
+  version_cran: 1.2.1
   name: pkgload
 pkgsearch:
   title: Search and Query CRAN R Packages
@@ -2226,25 +2066,15 @@ pkgsearch:
   url_cran: https://CRAN.R-project.org/package=pkgsearch
   version_cran: 3.0.3
   name: pkgsearch
-plogr:
-  title: The 'plog' C++ Logging Library
-  version: 0.2.0
-  maintainer: Kirill Müller
-  url_git: https://github.com/krlmlr/plogr#readme
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=plogr
-  version_cran: 0.2.0
-  name: plogr
 plotly:
   title: Create Interactive Web Graphics via 'plotly.js'
-  version: 4.9.2.2
-  maintainer: ORPHANED
+  version: 4.9.4.1
+  maintainer: Carson Sievert
   url_git: https://github.com/ropensci/plotly#readme
   url_other: https://plotly-r.com
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=plotly
-  version_cran: 4.9.2.2
+  version_cran: 4.9.4.1
   name: plotly
 plyr:
   title: Tools for Splitting, Applying and Combining Data
@@ -2266,46 +2096,6 @@ png:
   url_cran: https://CRAN.R-project.org/package=png
   version_cran: 0.1-7
   name: png
-poddr:
-  title: Collect Metadata for Selected Podcasts
-  version: 0.0.1
-  maintainer: Lukas Burk
-  url_git: https://github.com/jemus42/poddr
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: poddr
-polite:
-  title: Be Nice on the Web
-  version: 0.1.1
-  maintainer: Dmytro Perepolkin
-  url_git: https://github.com/dmi3kno/polite
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=polite
-  version_cran: 0.1.1
-  name: polite
-polyclip:
-  title: Polygon Clipping
-  version: 1.10.0
-  maintainer: Adrian Baddeley
-  url_git: https://github.com/baddstats/polyclip
-  url_other: http://www.angusj.com/delphi/clipper.php
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=polyclip
-  version_cran: 1.10-0
-  name: polyclip
-pool:
-  title: Object Pooling
-  version: 0.1.5
-  maintainer: Joe Cheng
-  url_git: https://github.com/rstudio/pool
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=pool
-  version_cran: 0.1.5
-  name: pool
 praise:
   title: Praise Users
   version: 1.0.0
@@ -2336,36 +2126,36 @@ prettyunits:
   url_cran: https://CRAN.R-project.org/package=prettyunits
   version_cran: 1.1.1
   name: prettyunits
+prismatic:
+  title: Color Manipulation Tools
+  version: 1.0.0
+  maintainer: Emil Hvitfeldt
+  url_git: https://github.com/EmilHvitfeldt/prismatic
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=prismatic
+  version_cran: 1.0.0
+  name: prismatic
 pROC:
   title: Display and Analyze ROC Curves
-  version: 1.16.2
+  version: 1.17.0.1
   maintainer: Xavier Robin
   url_git: ''
   url_other: http://expasy.org/tools/pROC/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=pROC
-  version_cran: 1.16.2
+  version_cran: 1.17.0.1
   name: pROC
 processx:
   title: Execute and Control System Processes
-  version: 3.4.5
+  version: 3.5.2
   maintainer: Gábor Csárdi
   url_git: https://github.com/r-lib/processx#readme
   url_other: ''
   url_pkgdown: https://processx.r-lib.org
   url_cran: https://CRAN.R-project.org/package=processx
-  version_cran: 3.4.5
+  version_cran: 3.5.2
   name: processx
-profmem:
-  title: Simple Memory Profiling for R
-  version: 0.6.0
-  maintainer: Henrik Bengtsson
-  url_git: https://github.com/HenrikBengtsson/profmem
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=profmem
-  version_cran: 0.6.0
-  name: profmem
 progress:
   title: Terminal Progress Bars
   version: 1.2.2
@@ -2378,23 +2168,23 @@ progress:
   name: progress
 promises:
   title: Abstractions for Promise-Based Asynchronous Programming
-  version: 1.1.1
+  version: 1.2.0.1
   maintainer: Joe Cheng
   url_git: https://github.com/rstudio/promises
-  url_other: https://rstudio.github.io/promises
+  url_other: https://rstudio.github.io/promises/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=promises
-  version_cran: 1.1.1
+  version_cran: 1.2.0.1
   name: promises
 ps:
   title: List, Query, Manipulate System Processes
-  version: 1.5.0
+  version: 1.6.0
   maintainer: Gábor Csárdi
   url_git: https://github.com/r-lib/ps#readme
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=ps
-  version_cran: 1.5.0
+  version_cran: 1.6.0
   name: ps
 purrr:
   title: Functional Programming Tools
@@ -2406,47 +2196,17 @@ purrr:
   url_cran: https://CRAN.R-project.org/package=purrr
   version_cran: 0.3.4
   name: purrr
-pushoverr:
-  title: Send Push Notifications using Pushover
-  version: 1.0.0
-  maintainer: Brian Connelly
-  url_git: https://github.com/briandconnelly/pushoverr
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=pushoverr
-  version_cran: 1.0.0
-  name: pushoverr
-pwr:
-  title: Basic Functions for Power Analysis
-  version: 1.3.0
-  maintainer: Helios De Rosario
-  url_git: https://github.com/heliosdrm/pwr
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=pwr
-  version_cran: 1.3-0
-  name: pwr
-quantmod:
-  title: Quantitative Financial Modelling Framework
-  version: 0.4.18
-  maintainer: Joshua M. Ulrich
-  url_git: https://github.com/joshuaulrich/quantmod
-  url_other: http://www.quantmod.com
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=quantmod
-  version_cran: 0.4.18
-  name: quantmod
 R.cache:
   title: |-
     Fast and Light-Weight Caching (Memoization) of Objects and
             Results to Speed Up Computations
-  version: 0.14.0
+  version: 0.15.0
   maintainer: Henrik Bengtsson
   url_git: https://github.com/HenrikBengtsson/R.cache
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=R.cache
-  version_cran: 0.14.0
+  version_cran: 0.15.0
   name: R.cache
 R.methodsS3:
   title: S3 Methods Simplified
@@ -2490,14 +2250,34 @@ R6:
   name: R6
 ragg:
   title: Graphic Devices Based on AGG
-  version: 0.4.0
+  version: 1.1.3
   maintainer: Thomas Lin Pedersen
   url_git: https://github.com/r-lib/ragg
   url_other: ''
   url_pkgdown: https://ragg.r-lib.org
   url_cran: https://CRAN.R-project.org/package=ragg
-  version_cran: 0.4.0
+  version_cran: 1.1.3
   name: ragg
+RandomFields:
+  title: Simulation and Analysis of Random Fields
+  version: 3.3.8
+  maintainer: Martin Schlather
+  url_git: ''
+  url_other: http://ms.math.uni-mannheim.de/de/publications/software/randomfields
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=RandomFields
+  version_cran: 3.3.8
+  name: RandomFields
+RandomFieldsUtils:
+  title: Utilities for the Simulation and Analysis of Random Fields
+  version: 0.5.3
+  maintainer: Martin Schlather
+  url_git: ''
+  url_other: http://ms.math.uni-mannheim.de/de/publications/software/randomfieldsutils
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=RandomFieldsUtils
+  version_cran: 0.5.3
+  name: RandomFieldsUtils
 ranger:
   title: A Fast Implementation of Random Forests
   version: 0.12.1
@@ -2512,34 +2292,24 @@ rappdirs:
   title: |-
     Application Directories: Determine Where to Save Data, Caches,
             and Logs
-  version: 0.3.1
+  version: 0.3.3
   maintainer: Hadley Wickham
-  url_git: https://github.com/hadley/rappdirs
+  url_git: https://github.com/r-lib/rappdirs
   url_other: ''
-  url_pkgdown: ''
+  url_pkgdown: https://rappdirs.r-lib.org
   url_cran: https://CRAN.R-project.org/package=rappdirs
-  version_cran: 0.3.1
+  version_cran: 0.3.3
   name: rappdirs
 raster:
   title: Geographic Data Analysis and Modeling
-  version: 3.4.5
+  version: 3.4.13
   maintainer: Robert J. Hijmans
   url_git: ''
   url_other: https://rspatial.org/raster
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=raster
-  version_cran: 3.4-5
+  version_cran: 3.4-13
   name: raster
-ratelimitr:
-  title: Rate Limiting for R
-  version: 0.4.1
-  maintainer: Tarak Shah
-  url_git: https://github.com/tarakc02/ratelimitr
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=ratelimitr
-  version_cran: 0.4.1
-  name: ratelimitr
 rcmdcheck:
   title: Run 'R CMD check' from 'R' and Capture Results
   version: 1.3.3
@@ -2552,25 +2322,25 @@ rcmdcheck:
   name: rcmdcheck
 Rcpp:
   title: Seamless R and C++ Integration
-  version: 1.0.5
+  version: 1.0.6
   maintainer: Dirk Eddelbuettel
   url_git: https://github.com/RcppCore/Rcpp
   url_other: http://www.rcpp.org
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=Rcpp
-  version_cran: 1.0.5
+  version_cran: 1.0.6
   name: Rcpp
 RcppArmadillo:
   title: |-
     'Rcpp' Integration for the 'Armadillo' Templated Linear Algebra
             Library
-  version: 0.10.1.2.0
+  version: 0.10.5.0.0
   maintainer: Dirk Eddelbuettel
-  url_git: ''
-  url_other: http://dirk.eddelbuettel.com/code/rcpp.armadillo.html
+  url_git: https://github.com/RcppCore/RcppArmadillo
+  url_other: https://dirk.eddelbuettel.com/code/rcpp.armadillo.html
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=RcppArmadillo
-  version_cran: 0.10.1.2.0
+  version_cran: 0.10.5.0.0
   name: RcppArmadillo
 RcppEigen:
   title: |-
@@ -2584,16 +2354,6 @@ RcppEigen:
   url_cran: https://CRAN.R-project.org/package=RcppEigen
   version_cran: 0.3.3.9.1
   name: RcppEigen
-RcppParallel:
-  title: Parallel Programming Tools for 'Rcpp'
-  version: 5.0.2
-  maintainer: Kevin Ushey
-  url_git: https://github.com/RcppCore/RcppParallel
-  url_other: http://rcppcore.github.io/RcppParallel
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=RcppParallel
-  version_cran: 5.0.2
-  name: RcppParallel
 RcppTOML:
   title: '''Rcpp'' Bindings to Parser for Tom''s Obvious Markup Language'
   version: 0.1.7
@@ -2626,13 +2386,13 @@ readxl:
   name: readxl
 recipes:
   title: Preprocessing Tools to Create Design Matrices
-  version: 0.1.15
+  version: 0.1.16
   maintainer: Max Kuhn
   url_git: https://github.com/tidymodels/recipes
   url_other: ''
   url_pkgdown: https://recipes.tidymodels.org
   url_cran: https://CRAN.R-project.org/package=recipes
-  version_cran: 0.1.15
+  version_cran: 0.1.16
   name: recipes
 rematch:
   title: Match Regular Expressions with a Nicer 'API'
@@ -2656,7 +2416,7 @@ rematch2:
   name: rematch2
 remedy:
   title: '''RStudio'' Addins to Simplify ''Markdown'' Writing'
-  version: 0.1.1
+  version: 0.1.0
   maintainer: Colin Fay
   url_git: https://github.com/ThinkR-open/remedy
   url_other: ''
@@ -2668,54 +2428,44 @@ remotes:
   title: |-
     R Package Installation from Remote Repositories, Including
             'GitHub'
-  version: 2.2.0
+  version: 2.4.0
   maintainer: Jim Hester
   url_git: https://github.com/r-lib/remotes#readme
   url_other: ''
   url_pkgdown: https://remotes.r-lib.org
   url_cran: https://CRAN.R-project.org/package=remotes
-  version_cran: 2.2.0
+  version_cran: 2.4.0
   name: remotes
 renv:
   title: Project Environments
-  version: 0.12.3
+  version: 0.13.2
   maintainer: Kevin Ushey
   url_git: ''
   url_other: https://rstudio.github.io/renv/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=renv
-  version_cran: 0.12.3
+  version_cran: 0.13.2
   name: renv
 repr:
   title: Serializable Representations
-  version: 1.1.0
+  version: 1.1.3
   maintainer: Philipp Angerer
   url_git: https://github.com/IRkernel/repr/
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=repr
-  version_cran: 1.1.0
+  version_cran: 1.1.3
   name: repr
 reprex:
   title: Prepare Reproducible Example Code via the Clipboard
-  version: 0.3.0
+  version: 2.0.0
   maintainer: Jennifer Bryan
   url_git: https://github.com/tidyverse/reprex#readme
   url_other: ''
   url_pkgdown: https://reprex.tidyverse.org
   url_cran: https://CRAN.R-project.org/package=reprex
-  version_cran: 0.3.0
+  version_cran: 2.0.0
   name: reprex
-reshape:
-  title: Flexibly Reshape Data
-  version: 0.8.8
-  maintainer: Hadley Wickham
-  url_git: ''
-  url_other: http://had.co.nz/reshape
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=reshape
-  version_cran: 0.8.8
-  name: reshape
 reshape2:
   title: 'Flexibly Reshape Data: A Reboot of the Reshape Package'
   version: 1.4.4
@@ -2728,13 +2478,13 @@ reshape2:
   name: reshape2
 reticulate:
   title: Interface to 'Python'
-  version: '1.18'
+  version: '1.20'
   maintainer: Kevin Ushey
   url_git: https://github.com/rstudio/reticulate
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=reticulate
-  version_cran: '1.18'
+  version_cran: '1.20'
   name: reticulate
 rex:
   title: Friendly Regular Expressions
@@ -2746,78 +2496,68 @@ rex:
   url_cran: https://CRAN.R-project.org/package=rex
   version_cran: 1.2.0
   name: rex
-rhub:
-  title: Connect to 'R-hub'
-  version: 1.1.1
-  maintainer: Gábor Csárdi
-  url_git: https://github.com/r-hub/rhub
-  url_other: https://r-hub.github.io/rhub/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=rhub
-  version_cran: 1.1.1
-  name: rhub
 rio:
   title: A Swiss-Army Knife for Data I/O
-  version: 0.5.16
+  version: 0.5.27
   maintainer: Thomas J. Leeper
   url_git: https://github.com/leeper/rio
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=rio
-  version_cran: 0.5.16
+  version_cran: 0.5.27
   name: rio
+riskRegression:
+  title: |-
+    Risk Regression Models and Prediction Scores for Survival
+            Analysis with Competing Risks
+  version: 2020.12.8
+  maintainer: Thomas Alexander Gerds
+  url_git: https://github.com/tagteam/riskRegression
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=riskRegression
+  version_cran: 2020.12.08
+  name: riskRegression
 rlang:
   title: Functions for Base Types and Core R and 'Tidyverse' Features
-  version: 0.4.9
+  version: 0.4.11
   maintainer: Lionel Henry
   url_git: https://github.com/r-lib/rlang
   url_other: ''
   url_pkgdown: https://rlang.r-lib.org
   url_cran: https://CRAN.R-project.org/package=rlang
-  version_cran: 0.4.9
+  version_cran: 0.4.11
   name: rlang
-rlist:
-  title: A Toolbox for Non-Tabular Data Manipulation
-  version: 0.4.6.1
-  maintainer: Kun Ren
-  url_git: https://github.com/renkun-ken/rlist
-  url_other: https://renkun.me/rlist
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=rlist
-  version_cran: 0.4.6.1
-  name: rlist
 rmarkdown:
   title: Dynamic Documents for R
-  version: '2.6'
+  version: '2.9'
   maintainer: Yihui Xie
   url_git: https://github.com/rstudio/rmarkdown
-  url_other: ''
+  url_other: https://pkgs.rstudio.com/rmarkdown/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=rmarkdown
-  version_cran: '2.6'
+  version_cran: '2.9'
   name: rmarkdown
 rmdformats:
   title: HTML Output Formats and Templates for 'rmarkdown' Documents
-  version: 1.0.1
+  version: 1.0.2
   maintainer: Julien Barnier
   url_git: https://github.com/juba/rmdformats
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=rmdformats
-  version_cran: 1.0.0
+  version_cran: 1.0.2
   name: rmdformats
-robotstxt:
-  title: |-
-    A 'robots.txt' Parser and 'Webbot'/'Spider'/'Crawler'
-            Permissions Checker
-  version: 0.7.13
-  maintainer: Peter Meissner
-  url_git: https://github.com/ropensci/robotstxt
-  url_other: https://docs.ropensci.org/robotstxt/
+rms:
+  title: Regression Modeling Strategies
+  version: 6.2.0
+  maintainer: Frank E Harrell Jr
+  url_git: https://github.com/harrelfe/rms
+  url_other: https://hbiostat.org/R/rms/
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=robotstxt
-  version_cran: 0.7.13
-  name: robotstxt
+  url_cran: https://CRAN.R-project.org/package=rms
+  version_cran: 6.2-0
+  name: rms
 roxygen2:
   title: In-Line Documentation for R
   version: 7.1.1
@@ -2828,16 +2568,6 @@ roxygen2:
   url_cran: https://CRAN.R-project.org/package=roxygen2
   version_cran: 7.1.1
   name: roxygen2
-roxygen2md:
-  title: '''Roxygen'' to ''Markdown'''
-  version: 1.0.0
-  maintainer: Kirill Müller
-  url_git: https://github.com/r-lib/roxygen2md
-  url_other: ''
-  url_pkgdown: https://roxygen2md.r-lib.org
-  url_cran: https://CRAN.R-project.org/package=roxygen2md
-  version_cran: 1.0.0
-  name: roxygen2md
 rpart:
   title: Recursive Partitioning and Regression Trees
   version: 4.1.15
@@ -2858,68 +2588,26 @@ rprojroot:
   url_cran: https://CRAN.R-project.org/package=rprojroot
   version_cran: 2.0.2
   name: rprojroot
-rsample:
-  title: General Resampling Infrastructure
-  version: 0.0.8
-  maintainer: Max Kuhn
-  url_git: https://github.com/tidymodels/rsample
-  url_other: ''
-  url_pkgdown: https://rsample.tidymodels.org
-  url_cran: https://CRAN.R-project.org/package=rsample
-  version_cran: 0.0.8
-  name: rsample
-rsconnect:
-  title: |-
-    Deployment Interface for R Markdown Documents and Shiny
-            Applications
-  version: 0.8.16
-  maintainer: Jonathan McPherson
-  url_git: https://github.com/rstudio/rsconnect
+rstatix:
+  title: Pipe-Friendly Framework for Basic Statistical Tests
+  version: 0.7.0
+  maintainer: Alboukadel Kassambara
+  url_git: ''
+  url_other: https://rpkgs.datanovia.com/rstatix/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=rstatix
+  version_cran: 0.7.0
+  name: rstatix
+rsthemes:
+  title: Full Themes for RStudio v1.2+
+  version: 0.2.1.9000
+  maintainer: Garrick Aden-Buie
+  url_git: https://github.com/gadenbuie/rsthemes
   url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=rsconnect
-  version_cran: 0.8.16
-  name: rsconnect
-RSQLite:
-  title: '''SQLite'' Interface for R'
-  version: 2.2.1
-  maintainer: Kirill Müller
-  url_git: https://github.com/r-dbi/RSQLite
-  url_other: https://rsqlite.r-dbi.org
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=RSQLite
-  version_cran: 2.2.1
-  name: RSQLite
-rstan:
-  title: R Interface to Stan
-  version: 2.21.1
-  maintainer: Ben Goodrich
-  url_git: ''
-  url_other: https://mc-stan.org/rstan
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=rstan
-  version_cran: 2.21.2
-  name: rstan
-rstanarm:
-  title: Bayesian Applied Regression Modeling via Stan
-  version: 2.21.1
-  maintainer: Ben Goodrich
-  url_git: ''
-  url_other: https://mc-stan.org/rstanarm/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=rstanarm
-  version_cran: 2.21.1
-  name: rstanarm
-rstantools:
-  title: Tools for Developing R Packages Interfacing with 'Stan'
-  version: 2.1.1
-  maintainer: Jonah Gabry
-  url_git: ''
-  url_other: https://mc-stan.org/rstantools/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=rstantools
-  version_cran: 2.1.1
-  name: rstantools
+  url_cran: https://CRAN.R-project.org/package=rsthemes
+  version_cran: 0.2.1.9000
+  name: rsthemes
 rstudioapi:
   title: Safely Access the RStudio API
   version: '0.13'
@@ -2930,16 +2618,6 @@ rstudioapi:
   url_cran: https://CRAN.R-project.org/package=rstudioapi
   version_cran: '0.13'
   name: rstudioapi
-rsvg:
-  title: Render SVG Images into PDF, PNG, PostScript, or Bitmap Arrays
-  version: '2.1'
-  maintainer: Jeroen Ooms
-  url_git: https://github.com/jeroen/rsvg#readme
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=rsvg
-  version_cran: '2.1'
-  name: rsvg
 Rttf2pt1:
   title: '''ttf2pt1'' Program'
   version: 1.3.8
@@ -2952,33 +2630,43 @@ Rttf2pt1:
   name: Rttf2pt1
 rversions:
   title: Query 'R' Versions, Including 'r-release' and 'r-oldrel'
-  version: 2.0.2
+  version: 2.1.1
   maintainer: Gábor Csárdi
   url_git: https://github.com/r-hub/rversions
-  url_other: https://r-hub.github.io/rversions
+  url_other: https://r-hub.github.io/rversions/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=rversions
-  version_cran: 2.0.2
+  version_cran: 2.1.1
   name: rversions
 rvest:
   title: Easily Harvest (Scrape) Web Pages
-  version: 0.3.6
+  version: 1.0.0
   maintainer: Hadley Wickham
   url_git: https://github.com/tidyverse/rvest
   url_other: ''
-  url_pkgdown: http://rvest.tidyverse.org/
+  url_pkgdown: https://rvest.tidyverse.org/
   url_cran: https://CRAN.R-project.org/package=rvest
-  version_cran: 0.3.6
+  version_cran: 1.0.0
   name: rvest
+sandwich:
+  title: Robust Covariance Matrix Estimators
+  version: 3.0.1
+  maintainer: Achim Zeileis
+  url_git: https://sandwich.R-Forge.R-project.org/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=sandwich
+  version_cran: 3.0-1
+  name: sandwich
 sass:
   title: Syntactically Awesome Style Sheets ('Sass')
-  version: 0.2.0.9005
+  version: 0.4.0
   maintainer: Carson Sievert
   url_git: https://github.com/rstudio/sass
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=sass
-  version_cran: 0.2.0
+  version_cran: 0.4.0.9000
   name: sass
 scales:
   title: Scale Functions for Visualization
@@ -3002,13 +2690,13 @@ selectr:
   name: selectr
 servr:
   title: A Simple HTTP Server to Serve Static Files or Dynamic Documents
-  version: '0.21'
+  version: '0.22'
   maintainer: Yihui Xie
   url_git: https://github.com/yihui/servr
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=servr
-  version_cran: '0.21'
+  version_cran: '0.22'
   name: servr
 sessioninfo:
   title: R Session Information
@@ -3022,148 +2710,24 @@ sessioninfo:
   name: sessioninfo
 shiny:
   title: Web Application Framework for R
-  version: 1.5.0
+  version: 1.6.0
   maintainer: Winston Chang
   url_git: ''
-  url_other: http://shiny.rstudio.com
+  url_other: https://shiny.rstudio.com/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=shiny
-  version_cran: 1.5.0
+  version_cran: 1.6.0
   name: shiny
-shinyBS:
-  title: Twitter Bootstrap Components for Shiny
-  version: '0.61'
-  maintainer: Eric Bailey
-  url_git: ''
-  url_other: https://ebailey78.github.io/shinyBS
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=shinyBS
-  version_cran: '0.61'
-  name: shinyBS
-shinyjs:
-  title: Easily Improve the User Experience of Your Shiny Apps in Seconds
-  version: 2.0.0
-  maintainer: Dean Attali
-  url_git: ''
-  url_other: https://deanattali.com/shinyjs/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=shinyjs
-  version_cran: 2.0.0
-  name: shinyjs
-shinystan:
-  title: |-
-    Interactive Visual and Numerical Diagnostics and Posterior
-            Analysis for Bayesian Models
-  version: 2.5.0
-  maintainer: Jonah Gabry
-  url_git: ''
-  url_other: http://mc-stan.org/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=shinystan
-  version_cran: 2.5.0
-  name: shinystan
-shinythemes:
-  title: Themes for Shiny
-  version: 1.1.2
-  maintainer: Winston Chang
-  url_git: ''
-  url_other: http://rstudio.github.io/shinythemes/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=shinythemes
-  version_cran: 1.1.2
-  name: shinythemes
-shinyWidgets:
-  title: Custom Inputs Widgets for Shiny
-  version: 0.5.4
-  maintainer: Victor Perrier
-  url_git: https://github.com/dreamRs/shinyWidgets
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=shinyWidgets
-  version_cran: 0.5.4
-  name: shinyWidgets
 showtext:
   title: Using Fonts More Easily in R Graphs
-  version: 0.9.1
+  version: 0.9.2
   maintainer: Yixuan Qiu
   url_git: https://github.com/yixuan/showtext
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=showtext
-  version_cran: 0.9-1
+  version_cran: 0.9-2
   name: showtext
-sjlabelled:
-  title: Labelled Data Utility Functions
-  version: 1.1.7
-  maintainer: Daniel Lüdecke
-  url_git: ''
-  url_other: https://strengejacke.github.io/sjlabelled/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=sjlabelled
-  version_cran: 1.1.7
-  name: sjlabelled
-sjmisc:
-  title: Data and Variable Transformation Functions
-  version: 2.8.5
-  maintainer: Daniel Lüdecke
-  url_git: ''
-  url_other: https://strengejacke.github.io/sjmisc
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=sjmisc
-  version_cran: 2.8.5
-  name: sjmisc
-sjPlot:
-  title: Data Visualization for Statistics in Social Science
-  version: 2.8.6
-  maintainer: Daniel Lüdecke
-  url_git: ''
-  url_other: https://strengejacke.github.io/sjPlot/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=sjPlot
-  version_cran: 2.8.6
-  name: sjPlot
-sjstats:
-  title: |-
-    Collection of Convenient Functions for Common Statistical
-            Computations
-  version: 0.18.0
-  maintainer: Daniel Lüdecke
-  url_git: https://github.com/strengejacke/sjstats
-  url_other: https://strengejacke.github.io/sjstats
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=sjstats
-  version_cran: 0.18.0
-  name: sjstats
-skimr:
-  title: Compact and Flexible Summaries of Data
-  version: 2.1.2
-  maintainer: Elin Waring
-  url_git: https://github.com/ropensci/skimr
-  url_other: https://docs.ropensci.org/skimr
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=skimr
-  version_cran: 2.1.2
-  name: skimr
-slackcalls:
-  title: Generics for Slack API
-  version: 0.0.6
-  maintainer: Jonathan Sidi
-  url_git: https://github.com/yonicd/slackcalls
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: slackcalls
-slider:
-  title: Sliding Window Functions
-  version: 0.1.5
-  maintainer: Davis Vaughan
-  url_git: https://github.com/DavisVaughan/slider
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=slider
-  version_cran: 0.1.5
-  name: slider
 snakecase:
   title: Convert Strings into any Case
   version: 0.11.0
@@ -3184,117 +2748,79 @@ SnowballC:
   url_cran: https://CRAN.R-project.org/package=SnowballC
   version_cran: 0.7.0
   name: SnowballC
-sodium:
-  title: A Modern and Easy-to-Use Crypto Library
-  version: '1.1'
-  maintainer: Jeroen Ooms
-  url_git: https://github.com/jeroen/sodium#readme
-  url_other: https://download.libsodium.org/doc/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=sodium
-  version_cran: '1.1'
-  name: sodium
 sp:
   title: Classes and Methods for Spatial Data
-  version: 1.4.4
+  version: 1.4.5
   maintainer: Edzer Pebesma
   url_git: https://github.com/edzer/sp/
   url_other: https://edzer.github.io/sp/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=sp
-  version_cran: 1.4-4
+  version_cran: 1.4-5
   name: sp
 SparseM:
   title: Sparse Linear Algebra
-  version: '1.78'
+  version: '1.81'
   maintainer: Roger Koenker
   url_git: ''
   url_other: http://www.econ.uiuc.edu/~roger/research/sparse/sparse.html
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=SparseM
-  version_cran: '1.78'
+  version_cran: '1.81'
   name: SparseM
 spatial:
   title: Functions for Kriging and Point Pattern Analysis
-  version: 7.3.12
+  version: 7.3.14
   maintainer: Brian Ripley
   url_git: ''
   url_other: http://www.stats.ox.ac.uk/pub/MASS4/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=spatial
-  version_cran: 7.3-12
+  version_cran: 7.3-14
   name: spatial
-speedrunr:
-  title: Access Data from 'speedrun.com'
-  version: 0.2.0.9000
-  maintainer: Lukas Burk
-  url_git: https://github.com/jemus42/speedrunr
-  url_other: ''
+splancs:
+  title: Spatial and Space-Time Point Pattern Analysis
+  version: 2.1.42
+  maintainer: Roger Bivand
+  url_git: ''
+  url_other: https://www.maths.lancs.ac.uk/~rowlings/Splancs/
   url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: speedrunr
-spelling:
-  title: Tools for Spell Checking in R
-  version: '2.2'
-  maintainer: Jeroen Ooms
-  url_git: https://github.com/ropensci/spelling
-  url_other: https://docs.ropensci.org/spelling/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=spelling
-  version_cran: '2.2'
-  name: spelling
-spiderbar:
-  title: Parse and Test Robots Exclusion Protocol Files and Rules
-  version: 0.2.3
-  maintainer: Bob Rudis
-  url_git: https://gitlab.com/hrbrmstr/spiderbar
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=spiderbar
-  version_cran: 0.2.3
-  name: spiderbar
+  url_cran: https://CRAN.R-project.org/package=splancs
+  version_cran: 2.01-42
+  name: splancs
 SQUAREM:
   title: |-
     Squared Extrapolation Methods for Accelerating EM-Like Monotone
             Algorithms
-  version: '2020.5'
+  version: '2021.1'
   maintainer: Ravi Varadhan
   url_git: ''
   url_other: https://coah.jhu.edu/people/Faculty_personal_Pages/Varadhan.html
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=SQUAREM
-  version_cran: '2020.5'
+  version_cran: '2021.1'
   name: SQUAREM
-StanHeaders:
-  title: C++ Header Files for Stan
-  version: 2.21.0.7
-  maintainer: Ben Goodrich
-  url_git: ''
-  url_other: https://mc-stan.org/
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=StanHeaders
-  version_cran: 2.21.0-7
-  name: StanHeaders
-stopwords:
-  title: Multilingual Stopword Lists
-  version: '2.1'
-  maintainer: Kenneth Benoit
-  url_git: https://github.com/quanteda/stopwords
+stringdist:
+  title: |-
+    Approximate String Matching, Fuzzy Text Search, and String
+            Distance Functions
+  version: 0.9.6.3
+  maintainer: Mark van der Loo
+  url_git: https://github.com/markvanderloo/stringdist
   url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=stopwords
-  version_cran: '2.1'
-  name: stopwords
+  url_cran: https://CRAN.R-project.org/package=stringdist
+  version_cran: 0.9.6.3
+  name: stringdist
 stringi:
   title: Character String Processing Facilities
-  version: 1.5.3
+  version: 1.6.2
   maintainer: Marek Gagolewski
   url_git: ''
   url_other: https://stringi.gagolewski.com/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=stringi
-  version_cran: 1.5.3
+  version_cran: 1.6.2
   name: stringi
 stringr:
   title: Simple, Consistent Wrappers for Common String Operations
@@ -3308,45 +2834,43 @@ stringr:
   name: stringr
 styler:
   title: Non-Invasive Pretty Printing of R Code
-  version: 1.3.2
+  version: 1.4.1
   maintainer: Lorenz Walthert
   url_git: https://github.com/r-lib/styler
   url_other: ''
-  url_pkgdown: ''
+  url_pkgdown: https://styler.r-lib.org
   url_cran: https://CRAN.R-project.org/package=styler
-  version_cran: 1.3.2
+  version_cran: 1.4.1
   name: styler
-suncalc:
-  title: |-
-    Compute Sun Position, Sunlight Phases, Moon Position and Lunar
-            Phase
-  version: 0.5.0
-  maintainer: Benoit Thieurmel
-  url_git: https://github.com/datastorm-open/suncalc
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=suncalc
-  version_cran: 0.5.0
-  name: suncalc
 survival:
   title: Survival Analysis
-  version: 3.2.7
+  version: 3.2.11
   maintainer: Terry M Therneau
   url_git: https://github.com/therneau/survival
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=survival
-  version_cran: 3.2-7
+  version_cran: 3.2-11
   name: survival
+survminer:
+  title: Drawing Survival Curves using 'ggplot2'
+  version: 0.4.9
+  maintainer: Alboukadel Kassambara
+  url_git: ''
+  url_other: https://rpkgs.datanovia.com/survminer/index.html
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=survminer
+  version_cran: 0.4.9
+  name: survminer
 svglite:
   title: An 'SVG' Graphics Device
-  version: 1.2.3.2
+  version: 2.0.0
   maintainer: Thomas Lin Pedersen
   url_git: https://github.com/r-lib/svglite
   url_other: ''
-  url_pkgdown: ''
+  url_pkgdown: https://svglite.r-lib.org
   url_cran: https://CRAN.R-project.org/package=svglite
-  version_cran: 1.2.3.2
+  version_cran: 2.0.0
   name: svglite
 sys:
   title: Powerful and Reliable Tools for Running System Commands in R
@@ -3360,218 +2884,148 @@ sys:
   name: sys
 sysfonts:
   title: Loading Fonts into R
-  version: 0.8.2
+  version: 0.8.3
   maintainer: Yixuan Qiu
   url_git: https://github.com/yixuan/sysfonts
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=sysfonts
-  version_cran: 0.8.2
+  version_cran: 0.8.3
   name: sysfonts
 systemfonts:
   title: System Native Font Finding
-  version: 0.3.2
+  version: 1.0.2
   maintainer: Thomas Lin Pedersen
   url_git: https://github.com/r-lib/systemfonts
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=systemfonts
-  version_cran: 0.3.2
+  version_cran: 1.0.2
   name: systemfonts
-tadaathemes:
-  title: Neato 'ggplot2' Themes
-  version: 0.0.1
-  maintainer: Lukas Burk
-  url_git: https://github.com/tadaadata/tadaathemes
-  url_other: https://tadaadata.github.io/tadaathemes
-  url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: tadaathemes
-tadaatoolbox:
-  title: |-
-    Helpers for Data Analysis and Presentation Focused on Undergrad
-            Psychology
-  version: 0.17.0
-  maintainer: Lukas Burk
-  url_git: https://github.com/tadaadata/tadaatoolbox
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=tadaatoolbox
-  version_cran: 0.17.0
-  name: tadaatoolbox
-tauturri:
-  title: Get Data Out of 'Tautulli' (Formerly 'PlexPy')
-  version: 0.3.1
-  maintainer: Lukas Burk
-  url_git: https://github.com/jemus42/tauturri
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=tauturri
-  version_cran: 0.3.0
-  name: tauturri
 tensorflow:
   title: R Interface to 'TensorFlow'
-  version: 2.2.0
-  maintainer: Daniel Falbel
+  version: 2.5.0
+  maintainer: Tomasz Kalinowski
   url_git: https://github.com/rstudio/tensorflow
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=tensorflow
-  version_cran: 2.2.0
+  version_cran: 2.5.0
   name: tensorflow
 testthat:
   title: Unit Testing for R
-  version: 3.0.1
+  version: 3.0.4
   maintainer: Hadley Wickham
   url_git: https://github.com/r-lib/testthat
   url_other: ''
   url_pkgdown: https://testthat.r-lib.org
   url_cran: https://CRAN.R-project.org/package=testthat
-  version_cran: 3.0.1
+  version_cran: 3.0.4
   name: testthat
 textshaping:
   title: |-
     Bindings to the 'HarfBuzz' and 'Fribidi' Libraries for Text
             Shaping
-  version: 0.2.1
+  version: 0.3.5
   maintainer: Thomas Lin Pedersen
   url_git: https://github.com/r-lib/textshaping
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=textshaping
-  version_cran: 0.2.1
+  version_cran: 0.3.5
   name: textshaping
 tfdatasets:
   title: Interface to 'TensorFlow' Datasets
-  version: 2.2.0
+  version: 2.4.0
   maintainer: Daniel Falbel
   url_git: https://github.com/rstudio/tfdatasets
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=tfdatasets
-  version_cran: 2.2.0
+  version_cran: 2.4.0
   name: tfdatasets
-tfestimators:
-  title: Interface to 'TensorFlow' Estimators
-  version: 1.9.1
-  maintainer: Kevin Kuo
-  url_git: https://github.com/rstudio/tfestimators
+tfprobability:
+  title: Interface to 'TensorFlow Probability'
+  version: 0.12.0.0
+  maintainer: Sigrid Keydana
+  url_git: https://github.com/rstudio/tfprobability
   url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=tfestimators
-  version_cran: 1.9.1
-  name: tfestimators
+  url_cran: https://CRAN.R-project.org/package=tfprobability
+  version_cran: 0.12.0.0
+  name: tfprobability
 tfruns:
   title: Training Run Tools for 'TensorFlow'
-  version: '1.4'
-  maintainer: JJ Allaire
+  version: 1.5.0
+  maintainer: Daniel Falbel
   url_git: https://github.com/rstudio/tfruns
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=tfruns
-  version_cran: '1.4'
+  version_cran: 1.5.0
   name: tfruns
-threejs:
-  title: Interactive 3D Scatter Plots, Networks and Globes
-  version: 0.3.3
-  maintainer: B. W. Lewis
-  url_git: ''
-  url_other: https://bwlewis.github.io/rthreejs
+thematic:
+  title: |-
+    Unified and Automatic 'Theming' of 'ggplot2', 'lattice', and
+            'base' R Graphics
+  version: 0.1.2.1
+  maintainer: Carson Sievert
+  url_git: https://github.com/rstudio/thematic#readme
+  url_other: https://rstudio.github.io/thematic/
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=threejs
-  version_cran: 0.3.3
-  name: threejs
+  url_cran: https://CRAN.R-project.org/package=thematic
+  version_cran: 0.1.2.1
+  name: thematic
 tibble:
   title: Simple Data Frames
-  version: 3.0.4
+  version: 3.1.2
   maintainer: Kirill Müller
   url_git: https://github.com/tidyverse/tibble
   url_other: ''
   url_pkgdown: https://tibble.tidyverse.org/
   url_cran: https://CRAN.R-project.org/package=tibble
-  version_cran: 3.0.4
+  version_cran: 3.1.2
   name: tibble
-tidymodels:
-  title: Easily Install and Load the 'Tidymodels' Packages
-  version: 0.1.2
-  maintainer: Max Kuhn
-  url_git: https://github.com/tidymodels/tidymodels
-  url_other: ''
-  url_pkgdown: https://tidymodels.tidymodels.org
-  url_cran: https://CRAN.R-project.org/package=tidymodels
-  version_cran: 0.1.2
-  name: tidymodels
-tidyposterior:
-  title: Bayesian Analysis to Compare Models using Resampling Statistics
-  version: 0.0.3
-  maintainer: Max Kuhn
-  url_git: https://github.com/tidymodels/tidyposterior
-  url_other: ''
-  url_pkgdown: https://tidyposterior.tidymodels.org
-  url_cran: https://CRAN.R-project.org/package=tidyposterior
-  version_cran: 0.0.3
-  name: tidyposterior
-tidypredict:
-  title: Run Predictions Inside the Database
-  version: 0.4.8
-  maintainer: Max Kuhn
-  url_git: https://github.com/tidymodels/tidypredict
-  url_other: ''
-  url_pkgdown: https://tidypredict.tidymodels.org
-  url_cran: https://CRAN.R-project.org/package=tidypredict
-  version_cran: 0.4.8
-  name: tidypredict
 tidyr:
   title: Tidy Messy Data
-  version: 1.1.2
+  version: 1.1.3
   maintainer: Hadley Wickham
   url_git: https://github.com/tidyverse/tidyr
   url_other: ''
   url_pkgdown: https://tidyr.tidyverse.org
   url_cran: https://CRAN.R-project.org/package=tidyr
-  version_cran: 1.1.2
+  version_cran: 1.1.3
   name: tidyr
 tidyselect:
   title: Select from a Set of Strings
-  version: 1.1.0
+  version: 1.1.1
   maintainer: Lionel Henry
   url_git: https://github.com/r-lib/tidyselect
   url_other: ''
   url_pkgdown: https://tidyselect.r-lib.org
   url_cran: https://CRAN.R-project.org/package=tidyselect
-  version_cran: 1.1.0
+  version_cran: 1.1.1
   name: tidyselect
 tidytext:
   title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
-  version: 0.2.6
+  version: 0.3.1
   maintainer: Julia Silge
   url_git: https://github.com/juliasilge/tidytext
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=tidytext
-  version_cran: 0.2.6
+  version_cran: 0.3.1
   name: tidytext
 tidyverse:
   title: Easily Install and Load the 'Tidyverse'
-  version: 1.3.0
+  version: 1.3.1
   maintainer: Hadley Wickham
   url_git: https://github.com/tidyverse/tidyverse
   url_other: ''
-  url_pkgdown: http://tidyverse.tidyverse.org
+  url_pkgdown: https://tidyverse.tidyverse.org
   url_cran: https://CRAN.R-project.org/package=tidyverse
-  version_cran: 1.3.0
+  version_cran: 1.3.1
   name: tidyverse
-tiff:
-  title: Read and write TIFF images
-  version: 0.1.6
-  maintainer: Simon Urbanek
-  url_git: http://www.rforge.net/tiff/
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=tiff
-  version_cran: 0.1-6
-  name: tiff
 timeDate:
   title: Rmetrics - Chronological and Calendar Objects
   version: '3043.102'
@@ -3582,17 +3036,27 @@ timeDate:
   url_cran: https://CRAN.R-project.org/package=timeDate
   version_cran: '3043.102'
   name: timeDate
+timereg:
+  title: Flexible Regression Models for Survival Data
+  version: 2.0.0
+  maintainer: Thomas Scheike
+  url_git: https://github.com/scheike/timereg
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=timereg
+  version_cran: 2.0.0
+  name: timereg
 tinytex:
   title: |-
     Helper Functions to Install and Maintain TeX Live, and Compile
             LaTeX Documents
-  version: '0.28'
+  version: '0.32'
   maintainer: Yihui Xie
   url_git: https://github.com/yihui/tinytex
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=tinytex
-  version_cran: '0.28'
+  version_cran: '0.32'
   name: tinytex
 tokenizers:
   title: Fast, Consistent Tokenization of Natural Language Text
@@ -3604,6 +3068,36 @@ tokenizers:
   url_cran: https://CRAN.R-project.org/package=tokenizers
   version_cran: 0.2.1
   name: tokenizers
+torch:
+  title: Tensors and Neural Networks with 'GPU' Acceleration
+  version: 0.4.0
+  maintainer: Daniel Falbel
+  url_git: https://github.com/mlverse/torch
+  url_other: https://torch.mlverse.org/docs
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=torch
+  version_cran: 0.4.0
+  name: torch
+torchdatasets:
+  title: Ready to Use Extra Datasets for Torch
+  version: 0.0.1
+  maintainer: Daniel Falbel
+  url_git: https://github.com/mlverse/torchdatasets
+  url_other: https://mlverse.github.io/torchdatasets/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=torchdatasets
+  version_cran: 0.0.1
+  name: torchdatasets
+torchvision:
+  title: Models, Datasets and Transformations for Images
+  version: 0.3.0
+  maintainer: Daniel Falbel
+  url_git: https://github.com/mlverse/torchvision
+  url_other: https://torchvision.mlverse.org
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=torchvision
+  version_cran: 0.3.0
+  name: torchvision
 tRakt:
   title: Get Data from 'trakt.tv'
   version: 0.15.0.9000
@@ -3611,8 +3105,8 @@ tRakt:
   url_git: https://github.com/jemus42/tRakt
   url_other: https://jemus42.github.io/tRakt
   url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
+  url_cran: https://CRAN.R-project.org/package=tRakt
+  version_cran: 0.15.0.9000
   name: tRakt
 triebeard:
   title: '''Radix'' Trees in ''Rcpp'''
@@ -3624,58 +3118,36 @@ triebeard:
   url_cran: https://CRAN.R-project.org/package=triebeard
   version_cran: 0.3.0
   name: triebeard
-TTR:
-  title: Technical Trading Rules
-  version: 0.24.2
-  maintainer: Joshua Ulrich
-  url_git: https://github.com/joshuaulrich/TTR
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=TTR
-  version_cran: 0.24.2
-  name: TTR
-tune:
-  title: Tidy Tuning Tools
-  version: 0.1.2
-  maintainer: Max Kuhn
-  url_git: https://github.com/tidymodels/tune
-  url_other: ''
-  url_pkgdown: https://tune.tidymodels.org
-  url_cran: https://CRAN.R-project.org/package=tune
-  version_cran: 0.1.2
-  name: tune
-tvthemes:
-  title: TV Show Themes and Color Palettes for 'ggplot2' Graphics
-  version: 1.1.1
-  maintainer: Ryo Nakagawara
-  url_git: https://github.com/Ryo-N7/tvthemes
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=tvthemes
-  version_cran: 1.1.1
-  name: tvthemes
 tweenr:
   title: Interpolate Data for Smooth Animations
-  version: 1.0.1
+  version: 1.0.2
   maintainer: Thomas Lin Pedersen
   url_git: https://github.com/thomasp85/tweenr
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=tweenr
-  version_cran: 1.0.1
+  version_cran: 1.0.2
   name: tweenr
-ulid:
-  title: |-
-    Generate Universally Unique Lexicographically Sortable
-            Identifiers
-  version: 0.3.0
-  maintainer: Bob Rudis
-  url_git: https://gitlab.com/hrbrmstr/ulid
+tzdb:
+  title: Time Zone Database Information
+  version: 0.1.1
+  maintainer: Davis Vaughan
+  url_git: https://github.com/r-lib/tzdb
   url_other: ''
   url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=ulid
-  version_cran: 0.3.0
-  name: ulid
+  url_cran: https://CRAN.R-project.org/package=tzdb
+  version_cran: 0.1.1
+  name: tzdb
+udapi:
+  title: Urban Dictionary API Client
+  version: 0.1.3
+  maintainer: Oliver Keyes
+  url_git: https://github.com/Ironholds/udapi/
+  url_other: ''
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=udapi
+  version_cran: 0.1.3
+  name: udapi
 urltools:
   title: Vectorised Tools for URL Handling and Parsing
   version: 1.7.3
@@ -3688,23 +3160,23 @@ urltools:
   name: urltools
 usethis:
   title: Automate Package and Project Setup
-  version: 2.0.0
+  version: 2.0.1
   maintainer: Jennifer Bryan
   url_git: https://github.com/r-lib/usethis
   url_other: ''
   url_pkgdown: https://usethis.r-lib.org
   url_cran: https://CRAN.R-project.org/package=usethis
-  version_cran: 2.0.0
+  version_cran: 2.0.1
   name: usethis
 utf8:
   title: Unicode Text Processing
-  version: 1.1.4
-  maintainer: Patrick O. Perry
+  version: 1.2.1
+  maintainer: Kirill Müller
   url_git: https://github.com/patperry/r-utf8
-  url_other: ''
+  url_other: https://ptrckprry.com/r-utf8/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=utf8
-  version_cran: 1.1.4
+  version_cran: 1.2.1
   name: utf8
 uuid:
   title: Tools for Generating and Handling of UUIDs
@@ -3716,96 +3188,76 @@ uuid:
   url_cran: https://CRAN.R-project.org/package=uuid
   version_cran: 0.1-4
   name: uuid
-V8:
-  title: Embedded JavaScript and WebAssembly Engine for R
-  version: 3.4.0
-  maintainer: Jeroen Ooms
-  url_git: https://github.com/jeroen/v8
-  url_other: https://v8.dev
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=V8
-  version_cran: 3.4.0
-  name: V8
-vapoRwave:
-  title: Vaporwave themes and color palettes for ggplot2 graphics
-  version: 0.0.0.9000
-  maintainer: Matthew Oldach
-  url_git: https://github.com/moldach/vapoRwave
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
-  name: vapoRwave
 vctrs:
   title: Vector Helpers
-  version: 0.3.6
+  version: 0.3.8
   maintainer: Lionel Henry
   url_git: ''
   url_other: ''
   url_pkgdown: https://vctrs.r-lib.org/
   url_cran: https://CRAN.R-project.org/package=vctrs
-  version_cran: 0.3.6
+  version_cran: 0.3.8
   name: vctrs
+VGAM:
+  title: Vector Generalized Linear and Additive Models
+  version: 1.1.5
+  maintainer: Thomas Yee
+  url_git: ''
+  url_other: https://www.stat.auckland.ac.nz/~yee/VGAM/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=VGAM
+  version_cran: 1.1-5
+  name: VGAM
 viridis:
-  title: Default Color Maps from 'matplotlib'
-  version: 0.5.1
+  title: Colorblind-Friendly Color Maps for R
+  version: 0.6.1
   maintainer: Simon Garnier
-  url_git: https://github.com/sjmgarnier/viridis
-  url_other: ''
+  url_git: https://github.com/sjmgarnier/viridis/
+  url_other: https://sjmgarnier.github.io/viridis/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=viridis
-  version_cran: 0.5.1
+  version_cran: 0.6.1
   name: viridis
 viridisLite:
-  title: Default Color Maps from 'matplotlib' (Lite Version)
-  version: 0.3.0
+  title: Colorblind-Friendly Color Maps (Lite Version)
+  version: 0.4.0
   maintainer: Simon Garnier
-  url_git: https://github.com/sjmgarnier/viridisLite
-  url_other: ''
+  url_git: https://github.com/sjmgarnier/viridisLite/
+  url_other: https://sjmgarnier.github.io/viridisLite/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=viridisLite
-  version_cran: 0.3.0
+  version_cran: 0.4.0
   name: viridisLite
+visNetwork:
+  title: Network Visualization using 'vis.js' Library
+  version: 2.0.9
+  maintainer: Benoit Thieurmel
+  url_git: ''
+  url_other: http://datastorm-open.github.io/visNetwork/
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=visNetwork
+  version_cran: 2.0.9
+  name: visNetwork
 vroom:
   title: Read and Write Rectangular Text Data Quickly
-  version: 1.3.2
+  version: 1.5.1
   maintainer: Jim Hester
   url_git: https://github.com/r-lib/vroom
   url_other: ''
   url_pkgdown: https://vroom.r-lib.org
   url_cran: https://CRAN.R-project.org/package=vroom
-  version_cran: 1.3.2
+  version_cran: 1.5.1
   name: vroom
-waffle:
-  title: Create Waffle Chart Visualizations
-  version: 1.0.1
-  maintainer: Bob Rudis
-  url_git: https://gitlab.com/hrbrmstr/waffle
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=waffle
-  version_cran: 0.7.0
-  name: waffle
 waldo:
   title: Find Differences Between R Objects
-  version: 0.2.3
+  version: 0.2.5
   maintainer: Hadley Wickham
   url_git: https://github.com/r-lib/waldo
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=waldo
-  version_cran: 0.2.3
+  version_cran: 0.2.5
   name: waldo
-warp:
-  title: Group Dates
-  version: 0.2.0
-  maintainer: Davis Vaughan
-  url_git: https://github.com/DavisVaughan/warp
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=warp
-  version_cran: 0.2.0
-  name: warp
 webshot:
   title: Take Screenshots of Web Pages
   version: 0.5.2
@@ -3840,13 +3292,13 @@ whoami:
   name: whoami
 withr:
   title: Run Code 'With' Temporarily Modified Global State
-  version: 2.3.0
+  version: 2.4.2
   maintainer: Jim Hester
   url_git: https://github.com/r-lib/withr#readme
   url_other: ''
   url_pkgdown: https://withr.r-lib.org
   url_cran: https://CRAN.R-project.org/package=withr
-  version_cran: 2.3.0
+  version_cran: 2.4.2
   name: withr
 wordcloud:
   title: Word Clouds
@@ -3858,65 +3310,55 @@ wordcloud:
   url_cran: https://CRAN.R-project.org/package=wordcloud
   version_cran: '2.6'
   name: wordcloud
-workflows:
-  title: Modeling Workflows
-  version: 0.2.1
-  maintainer: Davis Vaughan
-  url_git: https://github.com/tidymodels/workflows
-  url_other: ''
-  url_pkgdown: https://workflows.tidymodels.org
-  url_cran: https://CRAN.R-project.org/package=workflows
-  version_cran: 0.2.1
-  name: workflows
 xaringan:
   title: Presentation Ninja
-  version: '0.19'
+  version: '0.22'
   maintainer: Yihui Xie
   url_git: https://github.com/yihui/xaringan
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=xaringan
-  version_cran: '0.19'
+  version_cran: '0.22'
   name: xaringan
 xaringanExtra:
   title: Extras And Extensions for Xaringan Slides
-  version: 0.2.4
+  version: 0.5.4
   maintainer: Garrick Aden-Buie
   url_git: https://github.com/gadenbuie/xaringanExtra
   url_other: ''
   url_pkgdown: ''
-  url_cran: ''
-  version_cran: ''
+  url_cran: https://CRAN.R-project.org/package=xaringanExtra
+  version_cran: 0.5.4
   name: xaringanExtra
 xaringanthemer:
   title: Custom 'xaringan' CSS Themes
-  version: 0.3.0
+  version: 0.4.0
   maintainer: Garrick Aden-Buie
   url_git: https://github.com/gadenbuie/xaringanthemer
-  url_other: https://pkg.garrickadenbuie.com/xaringanthemer
+  url_other: https://pkg.garrickadenbuie.com/xaringanthemer/
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=xaringanthemer
-  version_cran: 0.3.0
+  version_cran: 0.4.0
   name: xaringanthemer
 xfun:
-  title: Miscellaneous Functions by 'Yihui Xie'
-  version: '0.19'
+  title: Supporting Functions for Packages Maintained by 'Yihui Xie'
+  version: '0.24'
   maintainer: Yihui Xie
   url_git: https://github.com/yihui/xfun
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=xfun
-  version_cran: '0.19'
+  version_cran: '0.24'
   name: xfun
 XML:
   title: Tools for Parsing and Generating XML Within R and S-Plus
-  version: 3.99.0.5
+  version: 3.99.0.6
   maintainer: CRAN Team
   url_git: ''
   url_other: http://www.omegahat.net/RSXML
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=XML
-  version_cran: 3.99-0.5
+  version_cran: 3.99-0.6
   name: XML
 xml2:
   title: Parse XML
@@ -3930,13 +3372,13 @@ xml2:
   name: xml2
 xmlparsedata:
   title: Parse Data of 'R' Code as an 'XML' Tree
-  version: 1.0.4
+  version: 1.0.5
   maintainer: Gábor Csárdi
   url_git: https://github.com/r-lib/xmlparsedata#readme
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=xmlparsedata
-  version_cran: 1.0.4
+  version_cran: 1.0.5
   name: xmlparsedata
 xopen:
   title: Open System Files, 'URLs', Anything
@@ -3958,16 +3400,6 @@ xtable:
   url_cran: https://CRAN.R-project.org/package=xtable
   version_cran: 1.8-4
   name: xtable
-xts:
-  title: eXtensible Time Series
-  version: 0.12.1
-  maintainer: Joshua M. Ulrich
-  url_git: https://github.com/joshuaulrich/xts
-  url_other: ''
-  url_pkgdown: ''
-  url_cran: https://CRAN.R-project.org/package=xts
-  version_cran: 0.12.1
-  name: xts
 yaml:
   title: Methods to Convert R Data to YAML and Back
   version: 2.2.1
@@ -3978,26 +3410,16 @@ yaml:
   url_cran: https://CRAN.R-project.org/package=yaml
   version_cran: 2.2.1
   name: yaml
-yardstick:
-  title: Tidy Characterizations of Model Performance
-  version: 0.0.7
-  maintainer: Davis Vaughan
-  url_git: https://github.com/tidymodels/yardstick
-  url_other: ''
-  url_pkgdown: https://yardstick.tidymodels.org
-  url_cran: https://CRAN.R-project.org/package=yardstick
-  version_cran: 0.0.7
-  name: yardstick
-ymlthis:
-  title: Write 'YAML' for 'R Markdown', 'bookdown', 'blogdown', and More
+yesno:
+  title: Ask Yes-No Questions
   version: 0.1.2
-  maintainer: Malcolm Barrett
-  url_git: https://github.com/r-lib/ymlthis
+  maintainer: Joe Thorley
+  url_git: https://github.com/poissonconsulting/yesno
   url_other: ''
-  url_pkgdown: https://ymlthis.r-lib.org
-  url_cran: https://CRAN.R-project.org/package=ymlthis
+  url_pkgdown: ''
+  url_cran: https://CRAN.R-project.org/package=yesno
   version_cran: 0.1.2
-  name: ymlthis
+  name: yesno
 zeallot:
   title: Multiple, Unpacking, and Destructuring Assignment
   version: 0.1.0
@@ -4010,23 +3432,23 @@ zeallot:
   name: zeallot
 zip:
   title: Cross-Platform 'zip' Compression
-  version: 2.1.1
+  version: 2.2.0
   maintainer: Gábor Csárdi
   url_git: https://github.com/r-lib/zip#readme
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=zip
-  version_cran: 2.1.1
+  version_cran: 2.2.0
   name: zip
 zoo:
   title: |-
     S3 Infrastructure for Regular and Irregular Time Series (Z's
             Ordered Observations)
-  version: 1.8.8
+  version: 1.8.9
   maintainer: Achim Zeileis
-  url_git: http://zoo.R-Forge.R-project.org/
+  url_git: https://zoo.R-Forge.R-project.org/
   url_other: ''
   url_pkgdown: ''
   url_cran: https://CRAN.R-project.org/package=zoo
-  version_cran: 1.8-8
+  version_cran: 1.8-9
   name: zoo
