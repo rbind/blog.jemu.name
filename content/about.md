@@ -6,7 +6,7 @@ type: page
 I'm Lukas, or jemus[42], or jemsu, or whatever.  
 It depends on when you got to know me. Or where.  
 
-{{< figure src="/images/lukas.jpg" alt="Obligatory coffee selfie" caption="Because a professional portrait would be silly" >}}
+{{< figure src="/images/lukas.jpg" alt="Analogue quasi-portrait" caption="Because a professional portrait would be silly" width="60%">}}
 
 My home on the internet used to be my [Twitter account](https://twitter.com/jemus42), which I abandoned in August '18 (but am still kind of using? It's complicated). There have been a lot of other places, but it appears that Twitter is the only hellhole I can't escape.  
 Send help.
@@ -26,4 +26,4 @@ The blog itself has a [repo on the GitHub rbind organization](https://github.com
 
 ## Tip Jar
 
-{{< figure src="/images/Ko-fi_Icon_RGB_stroke_cut.png" alt="ko-fi page" caption="" width="300px" link="https://ko-fi.com/jemus42">}}
+{{< figure src="/images/Ko-fi_Icon_RGB_stroke_cut.png" alt="ko-fi page" caption="" width="200px" link="https://ko-fi.com/jemus42">}}

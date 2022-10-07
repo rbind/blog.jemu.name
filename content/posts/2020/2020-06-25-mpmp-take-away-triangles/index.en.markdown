@@ -90,8 +90,7 @@ It turns out this is one of the few cases where you need (I think) a `for` loop 
 
 ```r 
 takeway_run <- function(steps = 50, max_num = 100) {
-  # Not sure how to properly pre-allocate a list
-  xls <- map(seq_len(steps), 1)
+  xls <- vector("list", steps)
   
   # 3 random integers between 1 and max_num, with replacement
   xls[[1]] <- sample.int(max_num, size = 3, replace = TRUE)
@@ -111,20 +110,20 @@ takeway_run(10)
 ```
 
 ```
-#> # A tibble: 11 x 3
+#> # A tibble: 11 × 3
 #>     step numbers     sum
 #>    <int> <list>    <int>
-#>  1     1 <int [3]>   142
-#>  2     2 <int [3]>   132
-#>  3     3 <int [3]>   122
-#>  4     4 <int [3]>   112
-#>  5     5 <int [3]>   102
-#>  6     6 <int [3]>    92
-#>  7     7 <int [3]>    82
-#>  8     8 <int [3]>    72
-#>  9     9 <int [3]>    62
-#> 10    10 <int [3]>    52
-#> 11    11 <int [3]>    42
+#>  1     1 <int [3]>   183
+#>  2     2 <int [3]>   134
+#>  3     3 <int [3]>    82
+#>  4     4 <int [3]>    52
+#>  5     5 <int [3]>    30
+#>  6     6 <int [3]>    22
+#>  7     7 <int [3]>    14
+#>  8     8 <int [3]>     8
+#>  9     9 <int [3]>     6
+#> 10    10 <int [3]>     4
+#> 11    11 <int [3]>     2
 ```
 
 Note that the `numbers` column is actually a list column containing a vector with the numbers at that step. I could have pasted them together as a string after I got their sum, but oh well --- I'll do that later.
@@ -153,7 +152,7 @@ runs
 ```
 
 ```
-#> # A tibble: 5,100 x 4
+#> # A tibble: 5,100 × 4
 #>     step numbers     sum run_id
 #>    <int> <list>    <int>  <int>
 #>  1     1 <int [3]>   153      1
@@ -252,97 +251,5 @@ runs %>%
 
 {{<figure src="plots/takeaway-runs-plot-1.png" link="plots/takeaway-runs-plot-1.png">}}
 
-## Conclusion
-
-And finally, here are the winning runs in full --- or rather only the first 10 steps. It turns out 50 steps was more than enough given the size of my starting numbers.
-
-```r 
-runs %>%
-  filter(run_id %in% winning_runs, step <= 10) %>%
-  mutate(numbers = map_chr(numbers, ~paste(.x, collapse = " + "))) %>%
-  unite(col = numbers, numbers, sum, sep = " = ") %>%
-  pivot_wider(
-    id_cols = c(step, numbers),
-    names_from = run_id, names_prefix = "Run ",
-    values_from = numbers
-  ) %>%
-  rename(Step = step) %>%
-  kable() %>%
-  kable_styling()
-```
-<table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:right;"> Step </th>
-   <th style="text-align:left;"> Run 65 </th>
-   <th style="text-align:left;"> Run 70 </th>
-   <th style="text-align:left;"> Run 95 </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> 52 + 17 + 94 = 163 </td>
-   <td style="text-align:left;"> 3 + 66 + 80 = 149 </td>
-   <td style="text-align:left;"> 46 + 53 + 74 = 173 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:left;"> 35 + 42 + 77 = 154 </td>
-   <td style="text-align:left;"> 63 + 77 + 14 = 154 </td>
-   <td style="text-align:left;"> 7 + 28 + 21 = 56 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:left;"> 7 + 42 + 35 = 84 </td>
-   <td style="text-align:left;"> 14 + 49 + 63 = 126 </td>
-   <td style="text-align:left;"> 21 + 14 + 7 = 42 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:left;"> 35 + 28 + 7 = 70 </td>
-   <td style="text-align:left;"> 35 + 49 + 14 = 98 </td>
-   <td style="text-align:left;"> 7 + 14 + 7 = 28 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:left;"> 7 + 28 + 21 = 56 </td>
-   <td style="text-align:left;"> 14 + 21 + 35 = 70 </td>
-   <td style="text-align:left;"> 7 + 0 + 7 = 14 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:left;"> 21 + 14 + 7 = 42 </td>
-   <td style="text-align:left;"> 7 + 21 + 14 = 42 </td>
-   <td style="text-align:left;"> 7 + 0 + 7 = 14 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:left;"> 7 + 14 + 7 = 28 </td>
-   <td style="text-align:left;"> 14 + 7 + 7 = 28 </td>
-   <td style="text-align:left;"> 7 + 0 + 7 = 14 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:left;"> 7 + 0 + 7 = 14 </td>
-   <td style="text-align:left;"> 7 + 7 + 0 = 14 </td>
-   <td style="text-align:left;"> 7 + 0 + 7 = 14 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:left;"> 7 + 0 + 7 = 14 </td>
-   <td style="text-align:left;"> 0 + 7 + 7 = 14 </td>
-   <td style="text-align:left;"> 7 + 0 + 7 = 14 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:left;"> 7 + 0 + 7 = 14 </td>
-   <td style="text-align:left;"> 7 + 7 + 0 = 14 </td>
-   <td style="text-align:left;"> 7 + 0 + 7 = 14 </td>
-  </tr>
-</tbody>
-</table>
-
 And I think that's about it?  
 I'm tempted to try the same approach but with *large* starting numbers and more steps, but I'll play around with that later for procrastinative reasons.  
-

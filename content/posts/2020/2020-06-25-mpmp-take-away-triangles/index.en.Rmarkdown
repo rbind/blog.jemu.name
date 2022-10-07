@@ -91,8 +91,7 @@ It turns out this is one of the few cases where you need (I think) a `for` loop 
 
 ```{r takeaway-run}
 takeway_run <- function(steps = 50, max_num = 100) {
-  # Not sure how to properly pre-allocate a list
-  xls <- map(seq_len(steps), 1)
+  xls <- vector("list", steps)
   
   # 3 random integers between 1 and max_num, with replacement
   xls[[1]] <- sample.int(max_num, size = 3, replace = TRUE)
@@ -199,25 +198,5 @@ runs %>%
     theme(legend.position = "top")
 ```
 
-## Conclusion
-
-And finally, here are the winning runs in full --- or rather only the first 10 steps. It turns out 50 steps was more than enough given the size of my starting numbers.
-
-```{r winning-runs-table}
-runs %>%
-  filter(run_id %in% winning_runs, step <= 10) %>%
-  mutate(numbers = map_chr(numbers, ~paste(.x, collapse = " + "))) %>%
-  unite(col = numbers, numbers, sum, sep = " = ") %>%
-  pivot_wider(
-    id_cols = c(step, numbers),
-    names_from = run_id, names_prefix = "Run ",
-    values_from = numbers
-  ) %>%
-  rename(Step = step) %>%
-  kable() %>%
-  kable_styling()
-```
-
 And I think that's about it?  
 I'm tempted to try the same approach but with *large* starting numbers and more steps, but I'll play around with that later for procrastinative reasons.  
-
