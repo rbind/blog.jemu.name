@@ -36,7 +36,8 @@ If your device can play 4K video, like the Chromecast Ultra, it'll do fine with 
 So here's a list of things you can try and/or do to ensure the least aggravating Plex experience:
 
 1. Avoid transcoding if you can.
-    - Use any native client if possible, this includes the [Plex Media Player for desktops](https://www.plex.tv/media-server-downloads/#plex-app) if you're watching on a laptop
+    - Use any native client if possible, this includes the [Plex Media Player for desktops](https://www.plex.tv/media-server-downloads/#plex-app) if you're watching on a laptop.
+    - The browser client is **not great** for format support. Doesn't matter if you use Chrome or Firefox or whatever. Just avoid the browser player please.
     - Ensure the player is set to play the original quality instead of a converted version
 2. If you need a transcode, time it right
     - Use the sync feature to pre-transcode and download files to any mobile device (iOS/Android) with the Plex app (the app itself is a one time purchase and doesn't require a Plex Pass subscription). You can then use said device for playback, e.g. with a Chromecast if you want it on a big screen.
@@ -48,3 +49,14 @@ So here's a list of things you can try and/or do to ensure the least aggravating
 And then, lastly, there's the sledgehammer method:  
 Come over, give be the largest hard drive you can find, wait a while, and go home. You then set up your own Plex server with your newly filled hard drive and move on with your life.  
 We can still be friend probably.
+
+{{< addendum title="Note from the future" >}}
+As of 2022, this post is still mostly relevant, but a few things have changed.  
+Fore one, I can now personally vouch for the Apple TV 4K as a Plex client - my experience has vastly improved over the Chromecast Ultra.  
+And the CC Ultra was already a lot better than the previous Chromecast.
+
+As for media formats: Most of my library consists of 1080p HEVC files now, so a client that supports HEVC is more or less a must now.
+Transcoding HEVC to AVC in software (my server doesn't support hardware-accelerated transcoding) is quite expensive and I would very much like to avoid it.
+
+The most important piece of advice remains: Don't use the browser player. It's bad for my server, bad for other people who have a worse experience due to the increased server load, and bad for your own experience.
+{{< /addendum >}}
