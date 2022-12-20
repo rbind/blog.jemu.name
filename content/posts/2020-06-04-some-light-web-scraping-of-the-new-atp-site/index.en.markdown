@@ -1,7 +1,7 @@
 ---
 title: Some Light Web-Scraping of the New ATP Site
 author: jemus42
-date: "2021-06-26"
+date: "2021-08-10"
 slug: some-light-web-scraping-of-the-new-atp-site
 series:
   - R
@@ -32,7 +32,7 @@ editor_options:
 ## Introduction
 
 {{< addendum title="Note" >}}
-I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over ~~6~~ ~~8~~ ~~12~~ 13 months because… well, the year's been busy.
+I started writing this post in June 2020, and it has been in "I should get back to that"-limbo for over ~~6~~ ~~8~~ ~~12~~ ~~13 months~~ a long time because… well, the ~~year's~~ time's been busy.
 
 The code for the scrapey bits has since been put into its own [little package](https://github.com/jemus42/poddr) — so if you want to just get some data, you can install that or get the up-to-date data [from my other project's site](https://podcasts.jemu.name/data/).
 {{< /addendum >}}
@@ -108,15 +108,15 @@ head(atp_links)
 ```
 
 ```
-#> # A tibble: 6 x 2
-#>   text                       url                                                
-#>   <chr>                      <chr>                                              
-#> 1 Toshiba e740               http://www.walshcomptech.com/e740.htm              
-#> 2 Microdrive                 https://en.wikipedia.org/wiki/Microdrive           
-#> 3 Volvo XC90                 https://www.volvocars.com/us/v/cars/xc90           
-#> 4 college                    https://vt.edu/                                    
-#> 5 Top of the Stairs          https://www.topofthestairs.com/                    
-#> 6 HTTP Strict Transport Sec… https://en.wikipedia.org/wiki/HTTP_Strict_Transpor…
+#> # A tibble: 6 × 2
+#>   text                        url                                               
+#>   <chr>                       <chr>                                             
+#> 1 Days of the New’s new album https://songwhip.com/daysofthenew/illusion-is-now 
+#> 2 Travis Meeks                https://en.wikipedia.org/wiki/Travis_Meeks        
+#> 3 Days of the New II          https://songwhip.com/daysofthenew/days-of-the-new…
+#> 4 SongShift                   https://apps.apple.com/us/app/songshift/id1097974…
+#> 5 Marc Barrowclift reviewed   https://barrowclift.me/post/third-annual-ios-musi…
+#> 6 WWDC 2018 keynote, 29m25s   https://www.youtube.com/watch?v=UThGcWBIMpU&t=176…
 ```
 
 Welp, that's pretty straight forward. It's made fairly easy by the fact that all the shownote links are list items (`<li>`), but of course it would be nicer if we could match links to the episode they belong to.  
@@ -136,14 +136,14 @@ tibble::tibble(
 ```
 
 ```
-#> # A tibble: 5 x 2
-#>   number episode                        
-#>   <chr>  <chr>                          
-#> 1 437    The Right Side of the Mouse Pad
-#> 2 436    Eddy Cue Shows Up at Your Door 
-#> 3 435    A Strong Number Four           
-#> 4 434    A Squirmy Soup of Rectangles   
-#> 5 433    Before We Leave the Dump
+#> # A tibble: 5 × 2
+#>   number episode                           
+#>   <chr>  <chr>                             
+#> 1 442    Bob’s Barbecue                    
+#> 2 441    Meals at Home                     
+#> 3 440    The Reality of Magnets            
+#> 4 439    Eventually Converge on Correctness
+#> 5 438    Some Amount of Futzing
 ```
 
 This is also the first case of regex making things a little neater in the result but harder to grasp along the way. If you've been spared the regex way of life until now, what we did here breaks down to this:
@@ -257,15 +257,15 @@ glimpse(scraped_page)
 ```
 #> Rows: 5
 #> Columns: 9
-#> $ number   <chr> "437", "436", "435", "434", "433"
-#> $ title    <chr> "The Right Side of the Mouse Pad", "Eddy Cue Shows Up at Your…
-#> $ duration <time> 01:58:01, 01:54:47, 02:11:10, 03:04:02, 02:07:47
-#> $ date     <date> 2021-07-01, 2021-06-24, 2021-06-17, 2021-06-08, 2021-06-03
+#> $ number   <chr> "442", "441", "440", "439", "438"
+#> $ title    <chr> "Bob’s Barbecue", "Meals at Home", "The Reality of Magnets", …
+#> $ duration <time> 01:56:19, 01:49:09, 02:26:47, 01:52:58, 02:22:09
+#> $ date     <date> 2021-08-05, 2021-07-30, 2021-07-20, 2021-07-15, 2021-07-08
 #> $ year     <dbl> 2021, 2021, 2021, 2021, 2021
-#> $ month    <ord> July, June, June, June, June
-#> $ weekday  <ord> Thursday, Thursday, Thursday, Tuesday, Thursday
-#> $ links    <list> [<tbl_df[28 x 3]>, <tbl_df[47 x 3]>, <tbl_df[42 x 3]>, <tbl_d…
-#> $ n_links  <int> 28, 47, 42, 20, 29
+#> $ month    <ord> August, July, July, July, July
+#> $ weekday  <ord> Thursday, Friday, Tuesday, Thursday, Thursday
+#> $ links    <list> [<tbl_df[34 x 3]>], [<tbl_df[19 x 3]>], [<tbl_df[26 x 3]>], […
+#> $ n_links  <int> 34, 19, 26, 18, 38
 ```
 
 ```r 
@@ -273,20 +273,20 @@ scraped_page$links[[1]]
 ```
 
 ```
-#> # A tibble: 28 x 3
-#>    link_text                link_url                                   link_type
-#>    <chr>                    <chr>                                      <chr>    
-#>  1 Toshiba e740             http://www.walshcomptech.com/e740.htm      Shownotes
-#>  2 Microdrive               https://en.wikipedia.org/wiki/Microdrive   Shownotes
-#>  3 Volvo XC90               https://www.volvocars.com/us/v/cars/xc90   Shownotes
-#>  4 college                  https://vt.edu/                            Shownotes
-#>  5 Top of the Stairs        https://www.topofthestairs.com/            Shownotes
-#>  6 HTTP Strict Transport S… https://en.wikipedia.org/wiki/HTTP_Strict… Shownotes
-#>  7 hstspreload.org          https://hstspreload.org                    Shownotes
-#>  8 Report for hypercritica… https://hstspreload.org/?domain=hypercrit… Shownotes
-#>  9 The Art of the Possible  https://hypercritical.co/2020/06/20/the-a… Shownotes
-#> 10 SwitchGlass              https://hypercritical.co/switchglass/      Shownotes
-#> # … with 18 more rows
+#> # A tibble: 34 × 3
+#>    link_text                   link_url                                link_type
+#>    <chr>                       <chr>                                   <chr>    
+#>  1 Days of the New’s new album https://songwhip.com/daysofthenew/illu… Shownotes
+#>  2 Travis Meeks                https://en.wikipedia.org/wiki/Travis_M… Shownotes
+#>  3 Days of the New II          https://songwhip.com/daysofthenew/days… Shownotes
+#>  4 SongShift                   https://apps.apple.com/us/app/songshif… Shownotes
+#>  5 Marc Barrowclift reviewed   https://barrowclift.me/post/third-annu… Shownotes
+#>  6 WWDC 2018 keynote, 29m25s   https://www.youtube.com/watch?v=UThGcW… Shownotes
+#>  7 Benjamin                    https://twitter.com/benjibum16/status/… Shownotes
+#>  8 See also KBase              https://support.apple.com/en-us/HT2073… Shownotes
+#>  9 Henrik                      https://twitter.com/helmers/status/141… Shownotes
+#> 10 PHAdjustmentData            https://developer.apple.com/documentat… Shownotes
+#> # … with 24 more rows
 ```
 
 Now what's left is to get _all_ the episodes, because why not.
@@ -463,7 +463,7 @@ atp_episodes %>%
 ```
 
 ```
-#> # A tibble: 6 x 3
+#> # A tibble: 6 × 3
 #> # Groups:   link_type [2]
 #>   link_url                         link_type     n
 #>   <chr>                            <chr>     <int>
@@ -694,7 +694,7 @@ atp_episodes_links %>%
 ```
 
 ```
-#> # A tibble: 1,881 x 2
+#> # A tibble: 1,881 × 2
 #>    domain                  n
 #>    <chr>               <int>
 #>  1 twitter.com          1099
@@ -730,227 +730,227 @@ atp_episodes_links %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2013 </td>
+   <td style="text-align:right;"> 2013 </td>
    <td style="text-align:left;"> marco.org </td>
    <td style="text-align:right;"> 19 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2013 </td>
    <td style="text-align:left;"> youtube.com </td>
    <td style="text-align:right;"> 16 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2013 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
    <td style="text-align:right;"> 14 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2013 </td>
    <td style="text-align:left;"> twitter.com </td>
    <td style="text-align:right;"> 13 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2013 </td>
    <td style="text-align:left;"> anandtech.com </td>
    <td style="text-align:right;"> 11 </td>
   </tr>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2014 </td>
+   <td style="text-align:right;"> 2014 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
    <td style="text-align:right;"> 140 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2014 </td>
    <td style="text-align:left;"> twitter.com </td>
    <td style="text-align:right;"> 99 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2014 </td>
    <td style="text-align:left;"> 5by5.tv </td>
    <td style="text-align:right;"> 30 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2014 </td>
    <td style="text-align:left;"> arstechnica.com </td>
    <td style="text-align:right;"> 27 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2014 </td>
    <td style="text-align:left;"> youtube.com </td>
    <td style="text-align:right;"> 23 </td>
   </tr>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2015 </td>
+   <td style="text-align:right;"> 2015 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
    <td style="text-align:right;"> 161 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2015 </td>
    <td style="text-align:left;"> twitter.com </td>
    <td style="text-align:right;"> 133 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2015 </td>
    <td style="text-align:left;"> apple.com </td>
    <td style="text-align:right;"> 80 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2015 </td>
    <td style="text-align:left;"> amazon.com </td>
    <td style="text-align:right;"> 55 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2015 </td>
    <td style="text-align:left;"> developer.apple.com </td>
    <td style="text-align:right;"> 38 </td>
   </tr>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2016 </td>
+   <td style="text-align:right;"> 2016 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
    <td style="text-align:right;"> 137 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2016 </td>
    <td style="text-align:left;"> twitter.com </td>
    <td style="text-align:right;"> 90 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2016 </td>
    <td style="text-align:left;"> amazon.com </td>
    <td style="text-align:right;"> 80 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2016 </td>
    <td style="text-align:left;"> apple.com </td>
    <td style="text-align:right;"> 69 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2016 </td>
    <td style="text-align:left;"> jonathanmann.net </td>
    <td style="text-align:right;"> 46 </td>
   </tr>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2017 </td>
+   <td style="text-align:right;"> 2017 </td>
    <td style="text-align:left;"> twitter.com </td>
    <td style="text-align:right;"> 147 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2017 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
    <td style="text-align:right;"> 80 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2017 </td>
    <td style="text-align:left;"> amazon.com </td>
    <td style="text-align:right;"> 50 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2017 </td>
    <td style="text-align:left;"> apple.com </td>
    <td style="text-align:right;"> 43 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2017 </td>
    <td style="text-align:left;"> jonathanmann.net </td>
    <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2018 </td>
+   <td style="text-align:right;"> 2018 </td>
    <td style="text-align:left;"> twitter.com </td>
    <td style="text-align:right;"> 199 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2018 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
    <td style="text-align:right;"> 132 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2018 </td>
    <td style="text-align:left;"> amazon.com </td>
    <td style="text-align:right;"> 46 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2018 </td>
    <td style="text-align:left;"> youtube.com </td>
    <td style="text-align:right;"> 46 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2018 </td>
    <td style="text-align:left;"> apple.com </td>
    <td style="text-align:right;"> 37 </td>
   </tr>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2019 </td>
+   <td style="text-align:right;"> 2019 </td>
    <td style="text-align:left;"> twitter.com </td>
    <td style="text-align:right;"> 171 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2019 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
    <td style="text-align:right;"> 109 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2019 </td>
    <td style="text-align:left;"> apple.com </td>
    <td style="text-align:right;"> 61 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2019 </td>
    <td style="text-align:left;"> amazon.com </td>
    <td style="text-align:right;"> 41 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2019 </td>
    <td style="text-align:left;"> relay.fm </td>
    <td style="text-align:right;"> 38 </td>
   </tr>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2020 </td>
+   <td style="text-align:right;"> 2020 </td>
    <td style="text-align:left;"> twitter.com </td>
    <td style="text-align:right;"> 175 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2020 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
    <td style="text-align:right;"> 168 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2020 </td>
    <td style="text-align:left;"> apple.com </td>
    <td style="text-align:right;"> 67 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2020 </td>
    <td style="text-align:left;"> amazon.com </td>
    <td style="text-align:right;"> 48 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2020 </td>
    <td style="text-align:left;"> youtube.com </td>
    <td style="text-align:right;"> 43 </td>
   </tr>
   <tr>
-   <td style="text-align:right;vertical-align: middle !important;" rowspan="5"> 2021 </td>
+   <td style="text-align:right;"> 2021 </td>
    <td style="text-align:left;"> en.wikipedia.org </td>
    <td style="text-align:right;"> 148 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2021 </td>
    <td style="text-align:left;"> twitter.com </td>
    <td style="text-align:right;"> 72 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2021 </td>
    <td style="text-align:left;"> youtube.com </td>
    <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2021 </td>
    <td style="text-align:left;"> apple.com </td>
    <td style="text-align:right;"> 33 </td>
   </tr>
   <tr>
-   
+   <td style="text-align:right;"> 2021 </td>
    <td style="text-align:left;"> developer.apple.com </td>
    <td style="text-align:right;"> 27 </td>
   </tr>
@@ -976,7 +976,7 @@ sess$platform %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> version </td>
-   <td style="text-align:left;"> R version 4.1.0 Patched (2021-05-29 r80415) </td>
+   <td style="text-align:left;"> R version 4.1.0 Patched (2021-07-20 r80653) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> os </td>
@@ -1008,7 +1008,7 @@ sess$platform %>%
   </tr>
   <tr>
    <td style="text-align:left;"> date </td>
-   <td style="text-align:left;"> 2021-07-04 </td>
+   <td style="text-align:left;"> 2021-08-08 </td>
   </tr>
 </tbody>
 </table>
@@ -1030,23 +1030,18 @@ sess$packages %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> askpass </td>
-   <td style="text-align:left;"> 1.1 </td>
-   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> assertthat </td>
    <td style="text-align:left;"> 0.2.1 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> blogdown </td>
-   <td style="text-align:left;"> 1.1 </td>
+   <td style="text-align:left;"> 1.4 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> bookdown </td>
-   <td style="text-align:left;"> 0.21 </td>
+   <td style="text-align:left;"> 0.22 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1056,17 +1051,17 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> cachem </td>
-   <td style="text-align:left;"> 1.0.4 </td>
+   <td style="text-align:left;"> 1.0.5 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> cli </td>
-   <td style="text-align:left;"> 2.3.1 </td>
+   <td style="text-align:left;"> 3.0.1 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> colorspace </td>
-   <td style="text-align:left;"> 2.0.0 </td>
+   <td style="text-align:left;"> 2.0.2 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1075,13 +1070,8 @@ sess$packages %>%
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> credentials </td>
-   <td style="text-align:left;"> 1.3.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> curl </td>
-   <td style="text-align:left;"> 4.3 </td>
+   <td style="text-align:left;"> 4.3.2 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1096,12 +1086,12 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> dplyr </td>
-   <td style="text-align:left;"> 1.0.4 </td>
+   <td style="text-align:left;"> 1.0.7 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> ellipsis </td>
-   <td style="text-align:left;"> 0.3.1 </td>
+   <td style="text-align:left;"> 0.3.2 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1121,12 +1111,12 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> fansi </td>
-   <td style="text-align:left;"> 0.4.2 </td>
+   <td style="text-align:left;"> 0.5.0 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> farver </td>
-   <td style="text-align:left;"> 2.0.3 </td>
+   <td style="text-align:left;"> 2.1.0 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1151,7 +1141,7 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> ggplot2 </td>
-   <td style="text-align:left;"> 3.3.3 </td>
+   <td style="text-align:left;"> 3.3.5 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1171,12 +1161,12 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> highr </td>
-   <td style="text-align:left;"> 0.8 </td>
+   <td style="text-align:left;"> 0.9 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hms </td>
-   <td style="text-align:left;"> 1.0.0 </td>
+   <td style="text-align:left;"> 1.1.0 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1186,8 +1176,8 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> htmltools </td>
-   <td style="text-align:left;"> 0.5.1.9000 </td>
-   <td style="text-align:left;"> Github (rstudio/htmltools@ac43afe) </td>
+   <td style="text-align:left;"> 0.5.1.1 </td>
+   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> httr </td>
@@ -1211,7 +1201,7 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> knitr </td>
-   <td style="text-align:left;"> 1.31 </td>
+   <td style="text-align:left;"> 1.33 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1241,7 +1231,7 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> mime </td>
-   <td style="text-align:left;"> 0.10 </td>
+   <td style="text-align:left;"> 0.11 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1250,13 +1240,8 @@ sess$packages %>%
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> openssl </td>
-   <td style="text-align:left;"> 1.4.3 </td>
-   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> pillar </td>
-   <td style="text-align:left;"> 1.5.0 </td>
+   <td style="text-align:left;"> 1.6.2 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1286,22 +1271,22 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> Rcpp </td>
-   <td style="text-align:left;"> 1.0.6 </td>
+   <td style="text-align:left;"> 1.0.7 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> renv </td>
-   <td style="text-align:left;"> 0.13.0 </td>
+   <td style="text-align:left;"> 0.14.0 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> rlang </td>
-   <td style="text-align:left;"> 0.4.10 </td>
+   <td style="text-align:left;"> 0.4.11 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> rmarkdown </td>
-   <td style="text-align:left;"> 2.7 </td>
+   <td style="text-align:left;"> 2.10 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1321,18 +1306,18 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> Rttf2pt1 </td>
-   <td style="text-align:left;"> 1.3.8 </td>
+   <td style="text-align:left;"> 1.3.9 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> rvest </td>
-   <td style="text-align:left;"> 0.3.6 </td>
+   <td style="text-align:left;"> 1.0.1 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> sass </td>
-   <td style="text-align:left;"> 0.4.0 </td>
-   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
+   <td style="text-align:left;"> 0.4.0.9000 </td>
+   <td style="text-align:left;"> https://gadenbuie.r-universe.dev (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> scales </td>
@@ -1351,12 +1336,12 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> spiderbar </td>
-   <td style="text-align:left;"> 0.2.3 </td>
+   <td style="text-align:left;"> 0.2.4 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> stringi </td>
-   <td style="text-align:left;"> 1.5.3 </td>
+   <td style="text-align:left;"> 1.7.3 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1370,13 +1355,8 @@ sess$packages %>%
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> sys </td>
-   <td style="text-align:left;"> 3.4 </td>
-   <td style="text-align:left;"> CRAN (R 4.1.0) </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> systemfonts </td>
-   <td style="text-align:left;"> 1.0.1 </td>
+   <td style="text-align:left;"> 1.0.2 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1386,17 +1366,17 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> tibble </td>
-   <td style="text-align:left;"> 3.1.0 </td>
+   <td style="text-align:left;"> 3.1.3 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> tidyr </td>
-   <td style="text-align:left;"> 1.1.2 </td>
+   <td style="text-align:left;"> 1.1.3 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> tidyselect </td>
-   <td style="text-align:left;"> 1.1.0 </td>
+   <td style="text-align:left;"> 1.1.1 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1416,17 +1396,17 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> utf8 </td>
-   <td style="text-align:left;"> 1.1.4 </td>
+   <td style="text-align:left;"> 1.2.2 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> vctrs </td>
-   <td style="text-align:left;"> 0.3.6 </td>
+   <td style="text-align:left;"> 0.3.8 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> viridisLite </td>
-   <td style="text-align:left;"> 0.3.0 </td>
+   <td style="text-align:left;"> 0.4.0 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
@@ -1436,12 +1416,12 @@ sess$packages %>%
   </tr>
   <tr>
    <td style="text-align:left;"> withr </td>
-   <td style="text-align:left;"> 2.4.1 </td>
+   <td style="text-align:left;"> 2.4.2 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> xfun </td>
-   <td style="text-align:left;"> 0.21 </td>
+   <td style="text-align:left;"> 0.25 </td>
    <td style="text-align:left;"> CRAN (R 4.1.0) </td>
   </tr>
   <tr>
