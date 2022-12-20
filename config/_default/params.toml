@@ -70,11 +70,17 @@ favicon_32 = "/favicon-32x32.png"
 #     icon = "fab fa-git-alt"
 #     weight = 2
 #     url = "https://git.tadaa-data.de/lukas"
+# [[social]]
+#     name = "Twitter"
+#     icon = "fab fa-twitter"
+#     weight = 3
+#     url = "https://twitter.com/jemus42/"
 [[social]]
-    name = "Twitter"
-    icon = "fab fa-twitter"
+    name = "Mastodon"
+    icon = "fab fa-mastodon"
     weight = 3
-    url = "https://twitter.com/jemus42/"
+    rel = "me"
+    url = "https://norden.social/@jemsu"
 [[social]]
     name = "Keybase"
     icon = "fab fa-keybase"
