@@ -1,7 +1,7 @@
 # if (file.exists('~/.Rprofile')) sys.source('~/.Rprofile', envir = environment())
 
 # Init renv _after_ user Rprofile to avoid problems. Like renv not working.
-source("renv/activate.R")
+# source("renv/activate.R")
 
 # See
 # https://bookdown.org/yihui/blogdown/more-global-options.html
