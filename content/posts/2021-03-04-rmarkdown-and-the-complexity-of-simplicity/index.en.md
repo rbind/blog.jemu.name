@@ -3,8 +3,6 @@ title: RMarkdown and the Complexity of Simplicity
 author: jemus42
 date: '2021-03-04'
 slug: rmarkdown-and-the-complexity-of-simplicity
-series:
-  - R
 tags:
   - RMarkdown
   - knitr
