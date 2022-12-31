@@ -9,7 +9,10 @@ It depends on when you got to know me. Or where.
 {{< figure src="/images/lukas.jpg" alt="Analogue quasi-portrait" caption="Because a professional portrait would be silly" width="60%">}}
 
 My home on the internet used to be my [Twitter account](https://twitter.com/jemus42), which I abandoned in August '18 (but am still kind of using? It's complicated). There have been a lot of other places, but it appears that Twitter is the only hellhole I can't escape.  
-Send help.
+Send help.  
+As of late 2022 however, I've more or less fully given up (again) on Twitter.  
+Find me on [the elephant site](https://norden.social/@jemsu) or don't.  
+It's okay.
 
 ## This Site
 

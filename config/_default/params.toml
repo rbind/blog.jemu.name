@@ -66,11 +66,6 @@ favicon_32 = "/favicon-32x32.png"
     weight = 1
     url = "https://github.com/jemus42/"
 # [[social]]
-#     name = "Gitea"
-#     icon = "fab fa-git-alt"
-#     weight = 2
-#     url = "https://git.tadaa-data.de/lukas"
-# [[social]]
 #     name = "Twitter"
 #     icon = "fab fa-twitter"
 #     weight = 3
