@@ -1,465 +1,108 @@
 WatchedDate,Title,imdbID,rating10
-2019-12-26,Mission: Impossible - Ghost Protocol,tt1229238,8
-2018-08-17,Thor: Ragnarok,tt3501632,8
-2014-01-02,Snatch,tt0208092,NA
-2017-07-08,Ocean's Eleven,tt0240772,8
-2017-09-08,The Terminator,tt0088247,NA
-2017-03-16,Fight Club,tt0137523,9
-2016-12-23,Life of Brian,tt0079470,9
-2015-09-08,Harry Potter and the Philosopher's Stone,tt0241527,7
-2016-08-28,Shaun of the Dead,tt0365748,9
-2014-12-31,Pan's Labyrinth,tt0457430,9
-2014-10-12,Resident Evil: Apocalypse,tt0318627,NA
-2015-11-08,Pirates of the Caribbean: On Stranger Tides,tt1298650,6
-2018-02-07,Hot Fuzz,tt0425112,8
-2014-09-13,Revolver,tt0365686,NA
-2020-11-21,Stargate: Continuum,tt0929629,6
-2020-11-17,Stargate: The Ark of Truth,tt0942903,8
-2015-06-06,Zombieland,tt1156398,9
-2020-03-14,Contagion,tt1598778,7
-2018-06-06,Tucker and Dale vs. Evil,tt1465522,7
-2015-03-29,Django Unchained,tt1853728,8
-2016-11-10,Iron Man 3,tt1300854,7
-2019-05-08,Resident Evil: Retribution,tt1855325,6
-2019-04-16,Mad Max: Fury Road,tt1392190,8
-2015-06-18,The World's End,tt1213663,8
-2017-02-14,Guardians of the Galaxy,tt2015381,8
-2019-11-18,Edge of Tomorrow,tt1631867,9
-2017-09-25,Pirates of the Caribbean: Dead Men Tell No Tales,tt1790809,6
-2018-07-14,Mission: Impossible - Rogue Nation,tt2381249,7
-2018-03-17,Star Wars: The Last Jedi,tt2527336,8
-2018-09-26,The Purge: Anarchy,tt2975578,6
-2017-12-25,Guardians of the Galaxy Vol. 2,tt3896198,9
-2016-11-04,Deadpool,tt1431045,9
-2019-10-27,Avengers: Infinity War,tt4154756,7
-2019-10-28,Avengers: Endgame,tt4154796,7
-2019-12-16,Captain Marvel,tt4154664,7
-2017-12-27,Spider-Man: Homecoming,tt2250912,8
-2017-12-24,John Wick: Chapter 2,tt4425200,8
-2017-12-23,Rogue One: A Star Wars Story,tt3748528,8
-2017-09-24,The Fate of the Furious,tt4630562,6
-2018-12-27,Mission: Impossible - Fallout,tt4912910,7
-2017-12-26,Kingsman: The Golden Circle,tt4649466,7
-2017-12-24,The Hitman's Bodyguard,tt1959563,7
-2019-03-17,Game Night,tt2704998,9
-2013-09-29,Star Wars,tt0076759,NA
-2013-09-29,Forrest Gump,tt0109830,NA
-2013-09-29,American Beauty,tt0169547,NA
-2014-12-27,The Fifth Element,tt0119116,8
-2015-10-17,Pirates of the Caribbean: The Curse of the Black Pearl,tt0325980,8
-2017-03-12,Magnetic Rose,tt1530535,9
-2016-11-07,The Simpsons Movie,tt0462538,NA
-2015-10-29,Pirates of the Caribbean: Dead Man's Chest,tt0383574,7
-2014-07-19,Twelve Monkeys,tt0114746,9
-2014-04-01,Brazil,tt0088846,NA
-2012-08-01,Memento,tt0209144,9
-2014-09-28,Blade Runner,tt0083658,9
-2013-09-29,Raiders of the Lost Ark,tt0082971,NA
-2017-09-11,Armageddon,tt0120591,NA
-2013-09-29,"Lock, Stock and Two Smoking Barrels",tt0120735,NA
-2013-09-29,Back to the Future,tt0088763,NA
-2017-09-04,Predator,tt0093773,5
-2013-09-29,The Big Lebowski,tt0118715,9
-2013-09-29,The Lord of the Rings: The Fellowship of the Ring,tt0120737,8
-2013-09-29,The Lord of the Rings: The Two Towers,tt0167261,9
-2012-08-01,The Lord of the Rings: The Return of the King,tt0167260,NA
-2015-06-23,Princess Mononoke,tt0119698,7
-2015-05-16,Spirited Away,tt0245429,8
-2013-09-29,Donnie Darko,tt0246578,9
-2016-07-02,Akira,tt0094625,8
-2012-08-01,The Dark Knight,tt0468569,8
-2015-05-08,28 Days Later,tt0289043,7
-2013-05-09,Minority Report,tt0181689,NA
-2013-09-29,A Clockwork Orange,tt0066921,NA
-2015-06-27,Lucky Number Slevin,tt0425210,8
-2013-09-29,Sin City,tt0401792,NA
-2015-04-05,Star Trek: Nemesis,tt0253754,NA
-2013-09-29,The Godfather,tt0068646,NA
-2013-09-29,The Godfather: Part II,tt0071562,8
-2013-06-01,The Silence of the Lambs,tt0102926,NA
-2017-08-27,The Shawshank Redemption,tt0111161,10
-2015-11-06,Pirates of the Caribbean: At World's End,tt0449088,7
-2014-04-20,Once Upon a Time in the West,tt0064116,NA
-2016-08-27,Alien,tt0078748,7
-2017-07-07,Inside Man,tt0454848,7
-2018-06-02,Cube,tt0123755,7
-2018-06-03,Cube 2: Hypercube,tt0285492,6
-2018-06-03,Cube Zero,tt0377713,5
-2016-09-17,Caché,tt0387898,7
-2013-09-29,Psycho,tt0054215,9
-2016-12-26,Die Hard,tt0095016,8
-2017-12-05,Starship Troopers,tt0120201,7
-2020-01-01,The Mummy,tt0120616,6
-2016-11-25,Solaris,tt0069293,7
-2016-05-28,The Terminal,tt0362227,7
-2012-08-01,Full Metal Jacket,tt0093058,9
-2012-08-01,The Matrix,tt0133093,NA
-2017-01-02,Men in Black II,tt0120912,6
-2020-04-19,Trainspotting,tt0117951,7
-2017-10-03,Nosferatu,tt0013442,8
-2017-08-24,Oldboy,tt0364569,9
-2014-08-24,Harry Potter and the Chamber of Secrets,tt0295297,NA
-2014-08-24,Harry Potter and the Prisoner of Azkaban,tt0304141,NA
-2014-08-24,Harry Potter and the Goblet of Fire,tt0330373,NA
-2014-08-24,Harry Potter and the Order of the Phoenix,tt0373889,NA
-2016-10-01,Aliens,tt0090605,8
-2012-08-01,Pulp Fiction,tt0110912,9
-2017-09-04,Contact,tt0118884,6
-2013-09-29,The Shining,tt0081505,NA
-2013-09-29,Monty Python and the Holy Grail,tt0071853,9
-2016-09-13,The Evil Dead,tt0083907,6
-2016-09-20,Evil Dead II,tt0092991,7
-2012-08-21,Harry Potter and the Half-Blood Prince,tt0417741,8
-2013-09-29,GoodFellas,tt0099685,8
-2017-07-10,Gattaca,tt0119177,8
-2016-11-03,Mr. & Mrs. Smith,tt0356910,NA
-2013-09-29,Se7en,tt0114369,9
-2020-12-23,Airplane!,tt0080339,6
-2018-05-20,Jin-Roh: The Wolf Brigade,tt0193253,7
-2019-07-28,Forbidden Planet,tt0049223,6
-2019-03-23,Videodrome,tt0086541,7
-2016-02-26,The X Files,tt0120902,7
-2017-07-11,Total Recall,tt0100802,6
-2020-09-29,The Big Sleep,tt0038355,NA
-2013-09-29,Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb,tt0057012,9
-2018-09-30,Halloween,tt0077651,6
-2018-07-10,Mission: Impossible,tt0117060,8
-2018-07-11,Mission: Impossible II,tt0120755,5
-2018-07-12,Mission: Impossible III,tt0317919,7
-2014-04-01,Mulholland Drive,tt0166924,7
-2018-03-15,The Thing,tt0084787,8
-2017-10-21,Escape from New York,tt0082340,7
-2012-08-01,The Prestige,tt0482571,9
-2020-08-07,Sunshine,tt0448134,8
-2013-07-19,American Psycho,tt0144084,9
-2017-09-03,Dark Star,tt0069945,7
-2013-03-24,The Departed,tt0407887,9
-2018-10-06,Perfume: The Story of a Murderer,tt0396171,NA
-2018-04-06,Hellboy,tt0167190,7
-2019-08-06,Collateral,tt0369339,7
-2015-09-17,Office Space,tt0151804,NA
-2016-12-28,Die Hard: With a Vengeance,tt0112864,8
-2014-10-12,Resident Evil,tt0120804,NA
-2020-01-01,Bill & Ted's Excellent Adventure,tt0096928,6
-2016-11-08,Iron Man,tt0371746,8
-2016-11-06,Captain America: The First Avenger,tt0458339,7
-2014-10-05,Dogma,tt0120655,NA
-2017-06-03,eXistenZ,tt0120907,7
-2016-07-20,Zodiac,tt0443706,8
-2014-04-01,The Butterfly Effect,tt0289879,6
-2013-09-29,Stargate,tt0111282,9
-2019-11-26,Sneakers,tt0105435,NA
-2013-03-29,The Bourne Identity,tt0258463,NA
-2016-07-22,The Game,tt0119174,9
-2020-12-23,Airplane II: The Sequel,tt0083530,5
-2018-09-23,Dark City,tt0118929,8
-2014-08-24,Sleepy Hollow,tt0162661,NA
-2020-09-19,Pitch Black,tt0134847,6
-2020-09-20,The Chronicles of Riddick,tt0296572,5
-2020-04-30,1408,tt0450385,6
-2012-08-21,Mr. Brooks,tt0780571,NA
-2018-09-21,A Scanner Darkly,tt0405296,8
-2013-12-13,The Meaning of Life,tt0085959,NA
-2016-11-26,The Machinist,tt0361862,8
-2018-10-06,Layer Cake,tt0375912,7
-2014-04-30,Howl's Moving Castle,tt0347149,8
-2013-09-29,Into the Wild,tt0758758,NA
-2019-12-31,Murder by Death,tt0074937,7
-2015-03-01,I Am Legend,tt0480249,7
-2016-08-12,The Orphanage,tt0464141,8
-2015-05-10,No Country for Old Men,tt0477348,9
-2016-09-05,Cloverfield,tt1060277,5
-2012-08-21,Equilibrium,tt0238380,8
-2018-08-15,Speed Racer,tt0811080,4
-2015-06-28,Shooter,tt0822854,NA
-2012-08-21,Déjà Vu,tt0453467,7
-2016-10-16,Alien³,tt0103644,7
-2017-09-02,Alien Resurrection,tt0118583,7
-2014-08-24,In Bruges,tt0780536,9
-2017-06-04,They Live,tt0096256,6
-2019-07-19,My Neighbor Totoro,tt0096283,7
-2016-08-25,Anchorman: The Legend of Ron Burgundy,tt0357413,7
-2020-12-22,Top Secret!,tt0088286,7
-2018-04-30,Hellraiser,tt0093177,6
-2017-06-24,Bound,tt0115736,7
-2020-12-06,The Island of Dr. Moreau,tt0116654,4
-2015-02-07,Ghost in the Shell,tt0113568,8
-2017-06-04,The Descent,tt0435625,7
-2018-09-23,The Fly,tt0091064,8
-2013-06-02,Red Dragon,tt0289765,NA
-2016-09-23,Martyrs,tt1029234,7
-2019-12-26,The Ringer,tt0058191,6
-2019-12-28,Again the Ringer,tt0059501,NA
-2015-12-28,Mad Max,tt0079501,6
-2013-06-01,Hannibal,tt0212985,NA
-2016-11-08,Iron Man 2,tt1228705,7
-2016-11-09,Thor,tt0800369,7
-2016-09-16,Perfect Blue,tt0156887,9
-2015-07-18,Castle in the Sky,tt0092067,8
-2019-03-21,Frequency,tt0186151,7
-2017-10-05,WALL·E,tt0910970,8
-2017-06-09,Jumpin' Jack Flash,tt0091306,5
-2018-04-07,Hellboy II: The Golden Army,tt0411477,6
-2012-08-21,Shutter Island,tt1130884,9
-2014-08-24,Appleseed,tt0401233,8
-2020-11-27,Soylent Green,tt0070723,6
-2019-09-24,Ghost in the Shell 2: Innocence,tt0347246,8
-2017-10-01,The Hurt Locker,tt0887912,7
-2014-08-24,Harry Potter and the Deathly Hallows: Part 1,tt0926084,NA
-2014-08-24,Harry Potter and the Deathly Hallows: Part 2,tt1201607,NA
-2019-05-12,The Man from Earth,tt0756683,8
-2019-09-21,Tokyo Godfathers,tt0388473,7
-2017-09-12,Star Trek,tt0796366,8
-2014-11-02,Resident Evil: Degeneration,tt1174954,NA
-2017-08-29,Fast & Furious,tt1013752,6
-2015-11-13,RockNRolla,tt1032755,NA
-2014-07-19,Primer,tt0390384,NA
-2015-11-20,The Girl with the Dragon Tattoo,tt1132620,NA
-2013-10-04,Angel's Egg,tt0208502,7
-2015-07-24,Creepshow,tt0083767,NA
-2013-03-07,Serenity,tt0379786,8
-2013-09-29,Inglourious Basterds,tt0361748,9
-2017-08-24,Moon,tt1182345,7
-2018-05-16,The Room,tt0368226,3
-2020-05-30,Neon Genesis Evangelion: The End of Evangelion,tt0169858,7
-2018-09-01,Bronson,tt1172570,7
-2019-10-26,Pale Cocoon,tt1506448,7
-2017-07-10,The Road,tt0898367,7
-2013-09-09,Scott Pilgrim vs. the World,tt0446029,9
-2015-07-24,The Cabin in the Woods,tt1259521,8
-2015-11-20,The Girl Who Played with Fire,tt1216487,NA
-2016-11-09,The Avengers,tt0848228,8
-2013-09-29,Inception,tt1375666,9
-2014-07-19,Salt,tt0944835,NA
-2013-03-22,The Expendables,tt1320253,7
-2017-10-28,The Old Dark House,tt0023293,6
-2015-11-20,The Girl Who Kicked the Hornet's Nest,tt1343097,NA
-2015-07-25,Dragon Ball Z: Broly – The Legendary Super Saiyan,tt0142242,7
-2017-05-19,Roujin Z,tt0102812,6
-2014-12-27,Casino Royale,tt0381061,8
-2016-11-03,The Social Network,tt1285016,NA
-2020-05-29,Voices of a Distant Star,tt0370754,6
-2019-12-25,The Adjustment Bureau,tt1385826,7
-2015-05-31,5 Centimeters per Second,tt0983213,9
-2019-03-20,Winter's Bone,tt1399683,7
-2015-07-25,Dragon Ball Z: Bio-Broly,tt0142234,NA
-2018-05-16,Birdemic: Shock and Terror,tt1316037,1
-2017-01-22,Men in Black 3,tt1409024,7
-2014-04-01,Black Swan,tt0947798,NA
-2012-08-21,True Grit,tt1403865,7
-2014-12-28,13,tt0798817,7
-2016-08-27,Source Code,tt0945513,8
-2013-12-19,A Good Day to Die Hard,tt1606378,NA
-2015-07-27,Insidious,tt1591095,7
-2016-05-06,Killer Elite,tt1448755,5
-2015-03-13,The Dark Knight Rises,tt1345836,NA
-2014-11-02,The Bourne Legacy,tt1194173,NA
-2014-04-13,Gravity,tt1454468,NA
-2017-06-26,Dredd,tt1343727,6
-2013-09-27,The Hobbit: An Unexpected Journey,tt0903624,8
-2017-09-27,Tinker Tailor Soldier Spy,tt1340800,NA
-2017-03-25,In Time,tt1637688,5
-2014-12-28,Hanna,tt0993842,6
-2017-08-26,Fast Five,tt1596343,7
-2013-12-27,Star Trek Into Darkness,tt1408101,7
-2013-12-29,The Hobbit: The Desolation of Smaug,tt1170358,NA
-2014-01-04,The Lone Ranger,tt1210819,6
-2014-12-25,Snow White and the Huntsman,tt1735898,5
-2017-10-14,Warrior,tt1291584,7
-2019-10-26,Attack the Block,tt1478964,7
-2016-11-26,Looper,tt1276104,8
-2013-09-29,Rise of the Planet of the Apes,tt1318514,NA
-2014-04-18,The Great Gatsby,tt1343092,NA
-2015-10-23,Drive,tt0780504,8
-2014-12-26,The Girl with the Dragon Tattoo,tt1568346,7
-2013-12-22,Elysium,tt1535108,NA
-2017-05-12,Pacific Rim,tt1663662,7
-2013-03-19,Argo,tt1024648,9
-2014-08-24,The Hunger Games,tt1392170,NA
-2016-08-06,Safe,tt1656190,5
-2018-08-13,Oblivion,tt1483013,6
-2016-08-06,Now You See Me,tt1670345,7
-2013-05-31,John Dies at the End,tt1783732,7
-2013-03-29,The Expendables 2,tt1764651,7
-2016-11-10,Thor: The Dark World,tt1981115,6
-2014-08-31,ParaNorman,tt1623288,7
-2017-08-30,Ender's Game,tt1731141,6
-2013-04-20,Silver Linings Playbook,tt1045658,7
-2017-08-28,Fast & Furious 6,tt1905041,7
-2015-05-09,The Perks of Being a Wallflower,tt1659337,8
-2015-12-27,Seven Psychopaths,tt1931533,8
-2020-09-21,Riddick,tt1411250,7
-2018-12-23,Samsara,tt0770802,8
-2014-09-06,Angry Video Game Nerd: The Movie,tt2123146,NA
-2015-01-25,Under the Skin,tt1441395,8
-2016-11-10,Avengers: Age of Ultron,tt2395427,8
-2016-11-06,Captain America: The Winter Soldier,tt1843866,7
-2014-04-24,The Hunger Games: Catching Fire,tt1951264,NA
-2016-08-26,Dead Man Down,tt2101341,6
-2015-02-20,Maleficent,tt1587310,6
-2015-12-21,Ant-Man,tt0478970,8
-2020-07-17,The Hunt,tt2106476,8
-2014-04-05,The Wolf of Wall Street,tt0993846,NA
-2014-02-21,Frozen,tt2294629,6
-2015-11-13,Snowpiercer,tt1706620,9
-2017-09-26,The Secret Life of Walter Mitty,tt0359950,9
-2015-12-26,The Hobbit: The Battle of the Five Armies,tt2310332,6
-2014-10-01,I Know That Voice,tt2113683,9
-2017-09-26,Alien: Covenant,tt2316204,6
-2015-07-26,Dragon Ball Z: Battle of Gods,tt2263944,7
-2015-10-08,The Hunger Games: Mockingjay - Part 1,tt1951265,7
-2016-03-27,The Hunger Games: Mockingjay - Part 2,tt1951266,7
-2014-10-04,Resident Evil: Damnation,tt1753496,7
-2014-04-04,Last Vegas,tt1204975,7
-2015-05-09,The Lego Movie,tt1490017,8
-2015-12-27,Fire with Fire,tt1925431,6
-2016-03-27,Star Wars: The Force Awakens,tt2488496,9
-2020-04-27,Upstream Color,tt2084989,7
-2016-11-20,Prisoners,tt1392214,8
-2019-02-15,Horns,tt1528071,7
-2015-10-12,Inside Out,tt2096673,7
-2012-12-23,Minecraft: The Story of Mojang,tt2087878,NA
-2015-05-05,Her,tt1798709,9
-2014-08-01,August: Osage County,tt1322269,NA
-2019-03-14,The Equalizer,tt0455944,6
-2015-05-09,Interstellar,tt0816692,9
-2016-09-28,Divergent,tt1840309,6
-2014-10-02,Transcendence,tt2209764,NA
-2016-10-14,The Purge,tt2184339,6
-2017-08-28,Furious 7,tt2820852,7
-2014-03-22,American Hustle,tt1800241,NA
-2019-10-20,BloodRayne,tt0383222,3
-2017-03-24,Resident Evil: The Final Chapter,tt2592614,6
-2014-08-18,Veronica Mars,tt2771372,8
-2019-12-30,Star Wars: The Rise of Skywalker,tt2527338,7
-2018-12-30,Enemy,tt2316411,7
-2016-11-03,Star Trek Beyond,tt2660888,7
-2015-12-21,Birdman or (The Unexpected Virtue of Ignorance),tt2562232,9
-2016-09-27,The Maze Runner,tt1790864,7
-2017-07-22,The Man from U.N.C.L.E.,tt1638355,8
-2016-08-05,The Imitation Game,tt2084970,8
-2016-09-04,Predestination,tt2397535,9
-2016-03-25,Spectre,tt2379713,7
-2017-12-03,Kingsman: The Secret Service,tt2802144,7
-2020-08-02,Locke,tt2692904,8
-2015-05-17,Gone Girl,tt2267998,8
-2015-11-13,Minions,tt2293640,7
-2019-10-19,Patema Inverted,tt2981768,8
-2019-05-11,Coherence,tt2866360,8
-2019-10-27,Open Your Mind,tt0904056,NA
-2016-08-27,The Signal,tt2910814,6
-2017-08-20,The Babadook,tt2321549,7
-2018-12-28,Nightcrawler,tt2872718,8
-2016-05-06,John Wick,tt2911666,8
-2015-11-08,What We Do in the Shadows,tt3416742,8
-2017-04-29,The Lobster,tt3464902,9
-2017-10-22,Point Break,tt2058673,6
-2017-03-02,Fantastic Beasts and Where to Find Them,tt3183660,7
-2016-09-30,Insurgent,tt2908446,5
-2016-10-01,Allegiant,tt3410834,5
-2017-05-26,Logan,tt3315342,NA
-2015-07-24,Ex Machina,tt0470752,8
-2018-07-20,Pacific Rim: Uprising,tt2557478,6
-2017-08-09,Zootopia,tt2948356,7
-2017-06-10,It Follows,tt3235888,7
-2016-11-05,Captain America: Civil War,tt3498820,8
-2016-09-06,The Hateful Eight,tt3460252,7
-2018-12-28,Sicario,tt3397884,9
-2018-03-16,Geostorm,tt1981128,4
-2017-03-05,Passengers,tt1355644,7
-2017-04-10,Moana,tt3521164,7
-2019-03-22,The Mummy,tt2345759,6
-2017-01-29,Miss Peregrine's Home for Peculiar Children,tt1935859,7
-2016-11-19,Doctor Strange,tt1211837,8
-2018-05-02,Black Panther,tt1825683,8
-2016-03-27,The Martian,tt3659388,8
-2019-08-07,Shazam!,tt0448115,7
-2016-08-26,Now You See Me 2,tt3110958,8
-2016-09-28,Maze Runner: The Scorch Trials,tt4046784,6
-2017-09-01,Wonder Woman,tt0451279,7
-2016-05-29,Bridge of Spies,tt3682448,7
-2015-12-29,Dragon Ball Z: Resurrection 'F',tt3819668,8
-2017-07-12,Ghost in the Shell,tt1219827,6
-2018-09-27,The Purge: Election Year,tt4094724,5
-2017-04-08,The Big Short,tt1596363,8
-2018-12-29,The Accountant,tt2140479,8
-2016-12-27,Jason Bourne,tt4196776,6
-2016-12-23,Spectral,tt2106651,6
-2019-03-18,Spider-Man: Into the Spider-Verse,tt4633694,9
-2017-04-21,Nerve,tt3531824,6
-2017-02-18,Arrival,tt2543164,9
-2018-07-16,Ready Player One,tt1677720,6
-2016-09-19,Eye in the Sky,tt2057392,8
-2018-12-25,Venom,tt1270797,7
-2018-01-05,Blade Runner 2049,tt1856101,7
-2018-07-29,Maze Runner: The Death Cure,tt4500922,5
-2018-11-10,Tomb Raider,tt1365519,6
-2017-09-19,Baby Driver,tt3890160,8
-2017-11-15,Valerian and the City of a Thousand Planets,tt2239822,6
-2018-03-14,Annihilation,tt2798920,8
-2018-09-16,Solo: A Star Wars Story,tt3778644,6
-2018-05-01,Jumanji: Welcome to the Jungle,tt2283362,7
-2017-10-14,The Dark Tower,tt1648190,5
-2019-03-20,The Empire of Corpses,tt4235644,7
-2018-10-06,Ant-Man and the Wasp,tt5095030,8
-2019-03-19,Swiss Army Man,tt4034354,9
-2017-11-02,Atomic Blonde,tt2406566,7
-2019-04-14,Imperium,tt4781612,8
-2020-09-09,Dunkirk,tt5013056,NA
-2019-03-15,The Equalizer 2,tt3766354,6
-2017-08-26,Hunt for the Wilderpeople,tt4698684,8
-2018-05-21,Deadpool 2,tt5463162,8
-2017-07-22,Okja,tt3967856,8
-2018-09-28,Murder on the Orient Express,tt3402236,7
-2018-11-09,Death Wish,tt1137450,6
-2017-07-11,Life,tt5442430,7
-2020-11-27,You Were Never Really Here,tt5742374,8
-2019-12-25,The Irishman,tt1302006,7
-2017-12-20,It,tt1396484,7
-2019-03-16,Triple Frontier,tt1488606,7
-2019-07-19,Alita: Battle Angel,tt0437086,6
-2020-12-10,The Nightingale,tt4068576,7
-2019-01-22,Bird Box,tt2737304,6
-2017-04-08,Split,tt4972582,7
-2016-09-25,ARQ,tt5640450,7
-2017-07-23,iBoy,tt3171832,7
-2017-09-02,It Comes at Night,tt4695012,8
-2017-05-30,Get Out,tt5052448,8
-2019-03-20,"Three Billboards Outside Ebbing, Missouri",tt5027774,8
-2018-07-07,Rampage,tt2231461,6
-2019-07-30,Spider-Man: Far from Home,tt6320628,8
-2019-03-15,IO,tt3256226,5
-2019-03-16,Extinction,tt3201640,5
-2020-09-01,Mortal Engines,tt1571234,7
-2018-09-27,The First Purge,tt6133466,5
-2019-03-18,Bad Times at the El Royale,tt6628394,7
-2018-07-29,A Quiet Place,tt6644200,6
-2019-08-04,Pokémon Detective Pikachu,tt5884052,6
-2019-03-17,Godzilla: Planet of the Monsters,tt5979874,NA
-2020-03-18,Ad Astra,tt2935510,6
-2019-04-18,Glass,tt6823368,6
-2019-06-08,John Wick: Chapter 3 - Parabellum,tt6146586,8
-2020-03-28,Us,tt6857112,9
-2020-04-12,Guns Akimbo,tt6902676,6
-2020-05-09,Mandy,tt6998518,7
-2020-05-16,Once Upon a Time… in Hollywood,tt7131622,7
-2020-12-25,Invader ZIM: Enter the Florpus,tt6739094,7
-2019-11-28,It Chapter Two,tt7349950,NA
-2019-03-17,Tau,tt4357394,6
-2019-03-14,Polar,tt4139588,5
-2019-03-17,Godzilla: City on the Edge of Battle,tt8015080,NA
-2020-03-03,Upgrade,tt6499752,6
-2020-12-26,Little Monsters,tt7390588,7
-2020-04-25,Doctor Sleep,tt5606664,7
-2019-12-24,6 Underground,tt8106534,NA
-2020-05-29,The Gentlemen,tt8367814,7
-2019-05-30,Mirage,tt6908274,4
-2020-05-07,1917,tt8579674,7
-2019-09-14,The Dead Don't Die,tt8695030,7
-2020-03-03,Knives Out,tt8946378,9
-2020-04-11,Color Out of Space,tt5073642,6
-2019-10-26,El Camino: A Breaking Bad Movie,tt9243946,8
-2020-12-24,Tenet,tt6723592,6
-2020-07-09,The Invisible Man,tt1051906,6
-2020-08-29,Palm Springs,tt9484998,7
-2020-12-25,VFW,tt9894470,6
+2020-12-27,The Midnight Sky,tt10539608,6
+2020-12-27,Death to 2020,tt13567480,7
+2020-12-28,Hereditary,tt7784604,7
+2020-12-31,Knives Out,tt8946378,9
+2021-01-07,Hard Candy,tt0424136,7
+2021-01-10,From Hell,tt0120681,NA
+2021-01-10,The Witch,tt4263482,NA
+2021-01-11,The Fog,tt0080749,NA
+2021-01-19,John Mulaney: Kid Gorgeous at Radio City,tt8271714,NA
+2021-01-23,Promising Young Woman,tt9620292,9
+2021-02-08,Black Bear,tt9601220,8
+2021-02-10,Blazing Saddles,tt0071230,NA
+2021-02-14,Repo Men,tt1053424,NA
+2021-03-04,Spree,tt11394332,NA
+2021-03-05,Face/Off,tt0119094,NA
+2021-03-27,Jennifer's Body,tt1131734,NA
+2021-04-23,Nobody,tt7888964,8
+2021-04-30,Hustlers,tt5503686,7
+2021-05-25,Army of the Dead,tt0993840,7
+2021-06-04,The Shape of Water,tt5580390,8
+2021-06-05,Love and Monsters,tt2222042,7
+2021-06-11,The Old Guard,tt7556122,NA
+2021-06-12,Uncut Gems,tt5727208,8
+2021-06-18,Altered States,tt0080360,NA
+2021-06-22,Triple 9,tt1712261,5
+2021-06-25,Monster Hunter,tt6475714,NA
+2021-06-26,Paprika,tt0851578,8
+2021-06-26,Fast & Furious Presents: Hobbs & Shaw,tt6806448,NA
+2021-06-28,Zombieland: Double Tap,tt1560220,NA
+2021-07-02,THX 1138,tt0066434,7
+2021-07-03,A Quiet Place Part II,tt8332922,6
+2021-07-06,The Tomorrow War,tt9777666,5
+2021-07-13,The Others,tt0230600,8
+2021-07-14,Black Widow,tt3480822,5
+2021-07-23,Hitman's Wife's Bodyguard,tt8385148,6
+2021-07-27,Chappie,tt1823672,6
+2021-07-28,No Sudden Move,tt11525644,6
+2021-07-31,F9,tt5433138,NA
+2021-08-06,Troll Hunter,tt1740707,8
+2021-08-06,The Colony,tt6506264,6
+2021-08-17,The Suicide Squad,tt6334354,6
+2021-08-22,Demonic,tt13392012,6
+2021-08-25,The Witcher: Nightmare of the Wolf,tt11657662,7
+2021-08-26,Awake,tt10418662,4
+2021-08-27,Suicide Squad,tt1386697,5
+2021-08-27,Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn),tt7713068,6
+2021-09-11,Escape Room,tt5886046,7
+2021-09-11,Escape Room: Tournament of Champions,tt9844522,5
+2021-09-12,Fargo,tt0116282,7
+2021-09-18,Godzilla,tt0831387,5
+2021-09-18,The Conjuring,tt1457767,6
+2021-10-05,Dune,tt1160419,9
+2021-10-30,The Dead Zone,tt0085407,6
+2021-10-30,Ready or Not,tt7798634,6
+2021-10-31,The Woman in Black,tt1596365,NA
+2021-10-31,Green Room,tt4062536,7
+2021-11-05,Parasite,tt6751668,8
+2021-11-19,Shang-Chi and the Legend of the Ten Rings,tt9376612,6
+2021-12-03,Last Night in Soho,tt9639470,7
+2021-12-04,Venom: Let There Be Carnage,tt7097896,6
+2021-12-24,No Time to Die,tt2382320,6
+2021-12-25,Red Notice,tt7991608,6
+2021-12-26,Don't Look Up,tt11286314,7
+2021-12-28,Jimmy Carr: His Dark Material,tt16259786,6
+2021-12-30,The Matrix Resurrections,tt10838180,8
+2021-12-30,Bo Burnham: Inside,tt14544192,10
+2022-01-03,Death to 2021,tt16301388,6
+2022-01-04,The Wandering Earth,tt7605074,7
+2022-01-20,Don't Breathe,tt4160708,6
+2022-01-21,Don't Breathe 2,tt6246322,6
+2022-01-29,Scream,tt0117571,7
+2022-01-29,Scream 2,tt0120082,6
+2022-02-01,Free Guy,tt6264654,6
+2022-02-04,House of Gucci,tt11214590,6
+2022-02-11,The Girl with All the Gifts,tt4547056,7
+2022-02-19,A Cure for Wellness,tt4731136,7
+2022-03-12,Pig,tt11003218,9
+2022-03-21,Spider-Man: No Way Home,tt10872600,9
+2022-03-26,Eyes Wide Shut,tt0120663,7
+2022-04-08,Moonfall,tt5834426,3
+2022-04-09,Thoroughbreds,tt5649108,8
+2022-04-15,Finch,tt3420504,7
+2022-04-17,Honey Boy,tt8151874,8
+2022-04-30,The Batman,tt1877830,7
+2022-05-20,Everything Everywhere All at Once,tt6710474,9
+2022-06-11,The Clovehitch Killer,tt6269368,7
+2022-06-19,Let the Right One In,tt1139797,8
+2022-06-21,Doctor Strange in the Multiverse of Madness,tt9419884,6
+2022-06-24,Event Horizon,tt0119081,5
+2022-07-10,Three Identical Strangers,tt7664504,8
+2022-07-10,Dual,tt9005184,8
+2022-07-22,The Black Phone,tt7144666,6
+2022-07-23,The Bob's Burgers Movie,tt7466442,8
+2022-08-17,Resurrection,tt11540726,7
+2022-09-07,Angel Heart,tt0092563,6
+2022-09-16,Thor: Love and Thunder,tt10648342,7
+2022-09-17,Nope,tt10954984,7
+2022-09-18,The Night House,tt9731534,6
+2022-09-24,Top Gun: Maverick,tt1745960,5
+2022-10-08,Ambulance,tt4998632,6
+2022-12-03,Emily the Criminal,tt15255876,7
+2022-12-23,The Guardians of the Galaxy Holiday Special,tt13623136,NA
+2022-12-27,Jurassic Park,tt0107290,NA
+2022-12-28,The Inn on the River,tt0056012,NA
+2022-12-28,Augsburger Puppenkiste - Urmel aus dem Eis,tt0163505,NA
+2022-12-29,The Black Abbot,tt0057476,NA
+2023-01-01,Glass Onion: A Knives Out Mystery,tt11564570,9
