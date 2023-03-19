@@ -23,7 +23,7 @@
 
 /* Slightly compacter tables */
 table th, table td {
-  padding: 1.1rem;
+  padding: 0.8rem;
 }
 
 table caption {
@@ -37,7 +37,8 @@ table th {
 
 /* Centered tables by default */
 table {
+  font-family: $heading-font-family;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1rem;
+  line-height: 1.9rem;
 }
