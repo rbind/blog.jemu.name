@@ -54,22 +54,11 @@ commentoUrl = "https://commento.jemu.name"
 favicon_16 = "/favicon-16x16.png"
 favicon_32 = "/favicon-32x32.png"
 
-# If you want to use fathom(https://usefathom.com) for analytics, add this section
-#[params.fathomAnalytics]
-    # siteID = "ABCDE"
-    # Default value is cdn.usefathom.com, overwrite this if you are self-hosting
-    # serverURL = "analytics.example.com"
-
 [[social]]
     name = "Github"
     icon = "fab fa-github"
     weight = 1
     url = "https://github.com/jemus42/"
-# [[social]]
-#     name = "Twitter"
-#     icon = "fab fa-twitter"
-#     weight = 3
-#     url = "https://twitter.com/jemus42/"
 [[social]]
     name = "Mastodon"
     icon = "fab fa-mastodon"
