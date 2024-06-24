@@ -173,7 +173,7 @@ And it's the "local testing" thing that really makes the difference in workflows
 But external though!  
 
 {{< addendum title="From local testing to deployment" >}}
-Before you deploy your site by pushing to whereever your site is built from (like Netlify), you'll have to comment out that `replace` line in `go.mod` again, because Netlify won't know that local path of yours.
+Before you deploy your site by pushing to wherever your site is built from (like Netlify), you'll have to comment out that `replace` line in `go.mod` again, because Netlify won't know that local path of yours.
 {{< /addendum >}}
 
 I have now deleted my `themes` directory, ran `git submodule deinit` on both submodules, and *it still works* --- even on netlify! So I'm reasonably confident that yes, this modules thing… it might actually not have been that complicated?  
