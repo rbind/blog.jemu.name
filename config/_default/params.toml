@@ -44,7 +44,6 @@ custom_scss = ["scss/jemsu.scss"]
 custom_js = [
     "js/littlefoot.js",
     "js/jemsu.js",
-    "js/matomo.js",
     "https://commento.jemu.name/js/count.js"
     ]
 
@@ -71,7 +70,7 @@ favicon_32 = "/favicon-32x32.png"
     weight = 4
     url = "https://keybase.io/jemus42"
 [[social]]
-    name = "Ko-fi"
+    name = "Ko-Fi"
     icon = "fa fa-coffee"
     weight = 5
     url = "https://ko-fi.com/jemus42"
