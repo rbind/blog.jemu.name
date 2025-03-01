@@ -5,7 +5,7 @@ WatchedDate,Title,imdbID,rating10
 2020-12-31,Knives Out,tt8946378,9
 2021-01-07,Hard Candy,tt0424136,7
 2021-01-10,From Hell,tt0120681,NA
-2021-01-10,The Witch,tt4263482,NA
+2021-01-10,The Witch,tt4263482,7
 2021-01-11,The Fog,tt0080749,NA
 2021-01-19,John Mulaney: Kid Gorgeous at Radio City,tt8271714,NA
 2021-01-23,Promising Young Woman,tt9620292,9
@@ -26,7 +26,7 @@ WatchedDate,Title,imdbID,rating10
 2021-06-22,Triple 9,tt1712261,5
 2021-06-25,Monster Hunter,tt6475714,NA
 2021-06-26,Paprika,tt0851578,8
-2021-06-26,Fast & Furious Presents: Hobbs & Shaw,tt6806448,NA
+2021-06-26,Fast & Furious Presents: Hobbs & Shaw,tt6806448,6
 2021-06-28,Zombieland: Double Tap,tt1560220,NA
 2021-07-02,THX 1138,tt0066434,7
 2021-07-03,A Quiet Place Part II,tt8332922,6
@@ -106,3 +106,106 @@ WatchedDate,Title,imdbID,rating10
 2022-12-28,Augsburger Puppenkiste - Urmel aus dem Eis,tt0163505,NA
 2022-12-29,The Black Abbot,tt0057476,NA
 2023-01-01,Glass Onion: A Knives Out Mystery,tt11564570,9
+2023-01-08,Death on the Nile,tt0077413,NA
+2023-02-03,M3GAN,tt8760708,6
+2023-02-24,Black Panther: Wakanda Forever,tt9114286,7
+2023-03-05,Heat,tt0113277,7
+2023-03-18,Nocturnal Animals,tt4550098,7
+2023-03-31,Triangle,tt1187064,6
+2023-03-31,Prospect,tt7946422,6
+2023-04-01,The Kid Detective,tt8980602,8
+2023-04-02,Victoria,tt4226388,8
+2023-04-07,Raya and the Last Dragon,tt5109280,7
+2023-04-09,Possessor Uncut,tt5918982,7
+2023-04-26,Onward,tt7146812,8
+2023-05-05,Ant-Man and the Wasp: Quantumania,tt10954600,NA
+2023-05-20,The Super Mario Bros. Movie,tt6718170,NA
+2023-05-29,Dungeons & Dragons: Honor Among Thieves,tt2906216,NA
+2023-06-16,Spider-Man: Across the Spider-Verse,tt9362722,8
+2023-07-23,Asteroid City,tt14230388,8
+2023-07-25,Barbie,tt1517268,9
+2023-07-25,Oppenheimer,tt15398776,9
+2023-07-30,Sanctuary,tt15364972,7
+2023-08-06,They Cloned Tyrone,tt9873892,8
+2023-08-16,Sean Lock: Keep It Light,tt7693270,6
+2023-08-19,Guardians of the Galaxy Volume 3,tt6791350,6
+2023-08-26,Elemental,tt15789038,7
+2023-10-13,Mission: Impossible - Dead Reckoning Part One,tt9603212,7
+2023-10-20,Teenage Mutant Ninja Turtles: Mutant Mayhem,tt8589698,8
+2023-10-20,Bottoms,tt17527468,9
+2023-10-21,Triangle of Sadness,tt7322224,9
+2023-10-21,Shiva Baby,tt11317142,8
+2023-10-26,Killers of the Flower Moon,tt5537002,7
+2023-11-04,The Color of Money,tt0090863,6
+2023-11-04,A Haunting in Venice,tt22687790,6
+2023-11-04,Talk to Me,tt10638522,7
+2023-11-05,The Killer,tt1136617,NA
+2023-11-10,Being John Malkovich,tt0120601,8
+2023-11-12,Pride & Prejudice,tt0414387,NA
+2023-11-17,Lars and the Real Girl,tt0805564,6
+2023-11-18,Panic Room,tt0258000,7
+2023-11-19,No Hard Feelings,tt15671028,6
+2023-12-08,Escape from Pretoria,tt5797184,7
+2023-12-09,The Menu,tt9764362,8
+2023-12-17,Aporia,tt8511466,7
+2023-12-24,They Call Me Trinity,tt0067355,NA
+2023-12-25,Trinity Is Still My Name,tt0068154,NA
+2024-01-02,Re-Animator,tt0089885,6
+2024-01-02,Come True,tt7026488,8
+2024-01-03,The Killing of a Sacred Deer,tt5715874,7
+2024-01-07,Swiss Army Man,tt4034354,9
+2024-01-14,Ex Drummer,tt0812243,NA
+2024-01-22,Poor Things,tt14230458,9
+2024-02-11,James Acaster: Cold Lasagne Hate Myself 1999,tt13446472,9
+2024-03-08,Sisters with Transistors,tt6744250,NA
+2024-03-15,Force Majeure,tt2121382,6
+2024-03-17,Wonka,tt6166392,NA
+2024-03-22,The Host,tt0468492,NA
+2024-03-23,Dune: Part Two,tt15239678,NA
+2024-03-24,The Wonderful Story of Henry Sugar,tt16968450,NA
+2024-03-24,Night Swim,tt9682428,NA
+2024-04-01,White Bird,tt11068094,NA
+2024-04-20,The Creator,tt11858890,6
+2024-05-17,Werner - Beinhart!,tt0100912,NA
+2024-05-18,The 39 Steps,tt0026029,NA
+2024-05-19,Demolition Man,tt0106697,NA
+2024-05-25,George Carlin: Life Is Worth Losing,tt0484855,6
+2024-05-26,John Mulaney: Baby J,tt27141610,8
+2024-06-09,Scanners,tt0081455,5
+2024-06-09,Love Lies Bleeding,tt19637052,6
+2024-06-13,Infinity Pool,tt10365998,7
+2024-06-13,Suitable Flesh,tt21397580,4
+2024-06-16,Miami Vice,tt0430357,6
+2024-07-02,Furiosa: A Mad Max Saga,tt12037194,7
+2024-07-15,Hank Green: Pissing Out Cancer,tt32731341,9
+2024-07-22,Sean Lock: Lockipedia Live,tt1805401,NA
+2024-07-26,Twister,tt0117998,6
+2024-07-26,The Raid,tt1899353,7
+2024-08-04,Fast X,tt5433140,5
+2024-08-04,Greg Davies: You Magnificent Beast,tt8259682,8
+2024-08-07,Teaches of Peaches,tt30953834,9
+2024-08-13,When Evil Lurks,tt16300962,7
+2024-09-08,A Quiet Place: Day One,tt13433802,6
+2024-09-08,I Saw the TV Glow,tt15574270,8
+2024-09-14,The Royal Hotel,tt18363072,7
+2024-09-22,(500) Days of Summer,tt1022603,7
+2024-09-28,Emma,tt0116191,NA
+2024-10-13,New Life,tt18973958,6
+2024-10-18,Wolfs,tt14257582,8
+2024-10-19,Léon: The Professional,tt0110413,7
+2024-10-27,Strange Darling,tt22375054,7
+2024-10-31,The Nightmare Before Christmas,tt0107688,NA
+2024-11-08,The Substance,tt17526714,NA
+2024-12-03,Mission: Impossible,tt0117060,8
+2024-12-03,Mission: Impossible II,tt0120755,5
+2024-12-04,Alien: Romulus,tt18412256,8
+2024-12-05,Alien,tt0078748,8
+2024-12-06,Aliens,tt0090605,7
+2024-12-07,Alien³,tt0103644,7
+2024-12-08,Alien Resurrection,tt0118583,7
+2024-12-15,Frailty,tt0264616,NA
+2024-12-22,James Acaster: Hecklers Welcome,tt34581142,NA
+2024-12-26,Kingsman: The Secret Service,tt2802144,7
+2024-12-26,Room 13,tt0058773,NA
+2024-12-27,Kingsman: The Golden Circle,tt4649466,7
+2024-12-28,The King's Man,tt6856242,5

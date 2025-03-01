@@ -33,7 +33,7 @@ library(dplyr)
 rated_movies <- user_ratings(user = "jemus42", type = "movies")
 
 # whittle down for the importer
-rated_movies <- rated_movies %>%
+rated_movies <- rated_movies |>
   select(
     Title = title,
     imdbID = imdb,
@@ -54,16 +54,16 @@ Now just join the two datasets and here we go.
 If you've previously done this, you may want to `filter` to select entries younger than a certain date to avoid duplicates.
 
 ```{r}
-watched_movies %>%
+watched_movies |>
   select(
     WatchedDate = last_watched_at,
     Title = title,
     imdbID = imdb
-  ) %>%
-  mutate(WatchedDate = as.Date(WatchedDate)) %>%
-  left_join(rated_movies, by = c("imdbID", "Title")) %>%
-  arrange(WatchedDate) %>%
-  filter(WatchedDate >= as.Date("2020-12-27")) %>%
+  ) |>
+  mutate(WatchedDate = as.Date(WatchedDate)) |>
+  left_join(rated_movies, by = c("imdbID", "Title")) |>
+  arrange(WatchedDate) |>
+  filter(WatchedDate >= as.Date("2020-12-27")) |>
   readr::write_csv(
     file = "trakt-movies-letterboxd.csv",
     quote_escape = "backslash"
@@ -76,16 +76,16 @@ watched_movies %>%
 ```{r sessioninfo, chunk_fold="Session Info"}
 sess <- sessioninfo::session_info()
 
-sess$platform %>%
-  unclass() %>%
-  tibble::as_tibble() %>%
-  t() %>%
-  knitr::kable() %>%
+sess$platform |>
+  unclass() |>
+  tibble::as_tibble() |>
+  t() |>
+  knitr::kable() |>
   kableExtra::kable_styling()
 
-sess$packages %>%
-  tibble::as_tibble() %>%
-  dplyr::select(package, version = ondiskversion, source) %>%
-  knitr::kable() %>%
+sess$packages |>
+  tibble::as_tibble() |>
+  dplyr::select(package, version = ondiskversion, source) |>
+  knitr::kable() |>
   kableExtra::kable_styling()
 ```
