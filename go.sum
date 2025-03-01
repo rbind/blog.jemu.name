@@ -10,6 +10,8 @@ github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20230318210411-87af2581db45 h1:tu
 github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20230318210411-87af2581db45/go.mod h1:PrEpovXbxofb9xztAfBHvGswrTx9w/z442zdx/bmeuk=
 github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20240715140246-e8e1af99c650 h1:Fz+AWNudq8YlkIkI1dzZS5pB/WnYAhxjwe+Sl22l6Mw=
 github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20240715140246-e8e1af99c650/go.mod h1:PrEpovXbxofb9xztAfBHvGswrTx9w/z442zdx/bmeuk=
+github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20250301175645-2e1270493b57 h1:ddUofF6UM3ofrtd2XGQxI7g+/d4/mv2NzUfbQvb2j1I=
+github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20250301175645-2e1270493b57/go.mod h1:PrEpovXbxofb9xztAfBHvGswrTx9w/z442zdx/bmeuk=
 github.com/jemus42/jemsugo v0.0.0-20200527001558-23a58a7ea1e0 h1:OMIU+TfBlb61Yc+mIIO9yU9JkQS20CBihQlNjZZBBmY=
 github.com/jemus42/jemsugo v0.0.0-20200527001558-23a58a7ea1e0/go.mod h1:HjtOwFIJRB1dCLfmIKr/Hxp/uhLq6yl6iyqF6A4+nW8=
 github.com/luizdepra/hugo-coder v0.0.0-20200525134138-9d1ba9d21d2d h1:JQZm6xFqD53PEtaKcK0Nz7YUYcfydw5wBFmiNB0reXg=
