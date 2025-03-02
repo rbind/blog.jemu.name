@@ -26,7 +26,7 @@ get_asset_unpkg <- function(package, version, file) {
 
 # littlefoot.js -----
 # https://github.com/goblindegook/littlefoot/releases
-littlefoot_version <- "4.0.0-6"
+littlefoot_version <- "4.1.2"
 
 get_asset_unpkg("littlefoot", littlefoot_version, "dist/littlefoot.js")
 get_asset_unpkg("littlefoot", littlefoot_version, "dist/littlefoot.css")
@@ -34,7 +34,9 @@ get_asset_unpkg("littlefoot", littlefoot_version, "dist/littlefoot.css")
 # Make chroma style ----
 
 chroma_gen <- function(style = "monokai") {
-  cmd <- glue::glue("hugo gen chromastyles --style={style} > static/css/syntax-{style}.css")
+  cmd <- glue::glue(
+    "hugo gen chromastyles --style={style} > static/css/syntax-{style}.css"
+  )
   system(cmd)
 }
 
