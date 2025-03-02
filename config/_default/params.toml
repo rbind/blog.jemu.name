@@ -32,7 +32,7 @@ rtl = false
 colorscheme = "auto"
 
 # Series see also post count
-maxSeeAlsoItems = 5
+maxSeeAlsoItems = 3
 
 # Custom CSS
 custom_css = ["css/littlefoot.css"]
@@ -44,9 +44,9 @@ custom_scss = ["scss/jemsu.scss"]
 custom_js = [
     "js/littlefoot.js",
     "js/jemsu.js",
-    "js/matomo.js",
-    "https://commento.jemu.name/js/count.js"
-    ]
+    "https://commento.jemu.name/js/count.js",
+    "https://kit.fontawesome.com/94a13ae8a2.js",
+]
 
 commentoUrl = "https://commento.jemu.name"
 
@@ -55,30 +55,37 @@ favicon_16 = "/favicon-16x16.png"
 favicon_32 = "/favicon-32x32.png"
 
 [[social]]
-    name = "Github"
-    icon = "fab fa-github"
-    weight = 1
-    url = "https://github.com/jemus42/"
+name = "Github"
+icon = "fab fa-github"
+weight = 1
+url = "https://github.com/jemus42/"
 [[social]]
-    name = "Mastodon"
-    icon = "fab fa-mastodon"
-    weight = 3
-    rel = "me"
-    url = "https://norden.social/@jemsu"
+name = "Mastodon"
+icon = "fab fa-mastodon"
+weight = 3
+rel = "me"
+url = "https://norden.social/@jemsu"
+# Needs theme support for new fontawesome or alternative
 [[social]]
-    name = "Keybase"
-    icon = "fab fa-keybase"
-    weight = 4
-    url = "https://keybase.io/jemus42"
+name = "BlueSky"
+icon = "fab fa-bluesky"
+weight = 3
+rel = "me"
+url = "https://bsky.app/profile/jemu.name"
+# [[social]]
+#     name = "Keybase"
+#     icon = "fab fa-keybase"
+#     weight = 4
+#     url = "https://keybase.io/jemus42"
 [[social]]
-    name = "Ko-fi"
-    icon = "fa fa-coffee"
-    weight = 5
-    url = "https://ko-fi.com/jemus42"
+name = "Ko-Fi"
+icon = "fa fa-coffee"
+weight = 5
+url = "https://ko-fi.com/jemus42"
 [[social]]
-    name = "RSS"
-    icon = "fas fa-rss"
-    weight = 10
-    url = "https://blog.jemu.name/index.xml"
-    rel = "alternate"
-    type = "application/rss+xml"
+name = "RSS"
+icon = "fas fa-rss"
+weight = 10
+url = "https://blog.jemu.name/index.xml"
+rel = "alternate"
+type = "application/rss+xml"
