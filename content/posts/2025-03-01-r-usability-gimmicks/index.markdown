@@ -210,7 +210,7 @@ _Sigh_.
 
 [garrick]: https://bsky.app/profile/grrrck.xyz
 [raycast-manager]: https://www.raycast.com/MarkusLanger/vscode-project-manager
-[blusky-reply]: https://bsky.app/profile/elipousson.bsky.social/post/3lj4j4htklk2t
+[bluesky-reply]: https://bsky.app/profile/elipousson.bsky.social/post/3lj4j4htklk2t
 [manager-positron]: https://github.com/coatless/positron-project-manager-for-alfred/
 [manager-vscode]: https://github.com/kopiro/vscode-project-manager-for-alfred
 [project-manager-extension]: https://open-vsx.org/extension/alefragnani/project-manager
