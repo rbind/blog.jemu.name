@@ -20,6 +20,10 @@
             <i class="fas fa-clock"></i>
             {{ i18n "reading_time" .ReadingTime }}
           </span>
+          <span class="comment-count">
+            <i class="fa-solid fa-comments"></i>
+            <comentario-count placeholder="..." error-text="??" zero-text="" prefix="(" suffix=")"></comentario-count>
+          </span>
         </div>
         {{ with .Page.Params.Categories }}{{ partial "taxonomy/categories.html" . }}{{ end }}
         {{ with .Page.Params.Tags }}{{ partial "taxonomy/tags.html" . }}{{ end }}
