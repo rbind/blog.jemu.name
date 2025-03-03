@@ -15,13 +15,11 @@ toc: yes
 math: no
 ---
 
-The other day I [posted on Mastodon about shell script wrappers for common R commands](https://norden.social/@jemsu/114078735407359852).
-
-And I thought I might as well flesh this out a little.
-So for context, I should note that in my everyday computing setup, I have configured my terminal [iTerm2] as a hotkey window, meaning that whichever desktop space I'm on and whatever application is currently in focus, I just have to press <kbd>F2</kbd> to pop down my terminal window.
+The other day I [posted on Mastodon about shell script wrappers for common R commands](https://norden.social/@jemsu/114078735407359852) and I thought I might as well flesh this out a little.  
+So for context, I should note that I have configured my terminal [iTerm2] as a hotkey window, meaning that whichever desktop space I'm on and whatever application is currently in focus, I just have to press <kbd>F2</kbd> to pop down my terminal window.
 That means that "quickly running a shell command" is a very easy and natural part of my computing experience --- and I guess what I'm talking about here is only useful to you if using the terminal feels similarly natural to you.
 
-Secondly, I should note that my bash scripting skills are a hodgepodge of just over a decade of googling around, trial-and-erroring until it works(ish), and more recently, just asking an LLM to fix my shitty scripts.
+Secondly, my bash scripting skills are a hodgepodge of just over a decade of googling around, trial-and-erroring until it works(ish), and more recently, just asking an LLM to fix my shitty scripts.
 Writing neat little wrappers for things is basically my way of practicing and trying out different bits and bops, so feel free to suggest better or more flexible approaches.
 That being said, I should also point out that using `Rscript` and / or {{< pkg "littler" >}} are perfectly fine options to write scripts using plain R, and the more I think about it the more it becomes obvious that taking a bash detour is kind of pointless for these things, but... oh well.  
 Let's get to it.
@@ -63,6 +61,7 @@ result="${result%, })"
 printf "Installing packages: %s\n" "$*"
 Rscript --quiet -e "pak::pak(${result})"
 ```
+
 The only complicated part is parsing positional arguments into a character vector, which ended up needing some freshening up on my bash foo, but otherwise it's fairly straightforward.
 
 The usage is simple:
@@ -81,7 +80,7 @@ I should also probably point out that another way to quickly install a package o
 
 [^rignote]: and [rig] for that matter, but that's a different blog post.
 
-[^hpc]: Let's say that as someone who regularly works with HPC systems runnong on RedHat Enterprise Linux, I have come to _really_ appreciate being able to get binary R packages in some cases where system dependencies would have otherwise made compilation from source a huge pain
+[^hpc]: Let's say that as someone who regularly works with HPC systems running on RedHat Enterprise Linux, I have come to _really_ appreciate being able to get binary R packages in some cases where system dependencies would have otherwise made compilation from source a huge pain
 
 [P3M]: https://packagemanager.posit.co/client/#/
 [rig]: https://github.com/r-lib/rig
