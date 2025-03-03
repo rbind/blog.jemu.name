@@ -12,7 +12,7 @@
 
 /* Turn a dark plot into a light plot (for testing purposes, not really.) */
 @mixin color-inv {
-  figure > a > img {
+  figure>a>img {
     filter: invert(1);
   }
 }
@@ -28,7 +28,6 @@ body.colorscheme-dark {
   @include notebox-dark();
   @include summary-dark();
   @include anchor-dark();
-  @include commento-dark();
   @include scrolltop-dark();
 }
 
@@ -43,7 +42,6 @@ body.colorscheme-auto {
     @include notebox-dark();
     @include summary-dark();
     @include anchor-dark();
-    @include commento-dark();
     @include scrolltop-dark();
   }
 }

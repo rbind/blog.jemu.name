@@ -1,36 +1,8 @@
 // Adjustments to the styles of third party elements
 
-// Commento ///
-@mixin commento-dark {
-  .commento-root .commento-card {
-    background-color: $bg-color-dark;
-  }
-  
-  .commento-root *,
-  .commento-root .commento-card .commento-body p,
-  .commento-root .commento-card .commento-name,
-  .commento-root .commento-markdown-button,
-  .commento-root .commento-anonymous-checkbox-container input[type=checkbox]+label,
-  .commento-root .commento-mod-tools::before,
-  .commento-root .commento-logged-container .commento-logged-in-as .commento-name,
-  .commento-root .commento-footer .commento-logo-container .commento-logo-text,
-  .commento-root .commento-logged-container .commento-profile-button {
-    color: $fg-color-dark;
-  }
-  
-  .commento-root a {
-    color: $link-color-dark;
-  }
-  
-  .commento-root .commento-card .commento-option-remove {
-    background: $link-color-dark;
-  }
-  
-}
-
 // littlefoot.js
 // Override justification and make it readable in dark mode
-div.littlefoot-footnote__wrapper > div > p {
+div.littlefoot-footnote__wrapper>div>p {
   text-align: left;
   color: $fg-color;
 }
