@@ -158,7 +158,7 @@ Oh well. Another blog post then.
 {{< addendum title="Note" >}}
 By the way, can you tell that this is the more recent script, with a `usage()` block and everything?  
 Yeah.  
-Documenting stuff is great, but of course the "meh, it's just for me anyway and there's abrely anything to it anyway"-fairy often bestows is with the gift of not giving a fuck.  
+Documenting stuff is great, but of course the "meh, it's just for me anyway and there's barely anything to it anyway"-fairy often bestows us with the gift of not giving a fuck.  
 Don't be like me.  
 Resist the fairy.
 {{< /addendum >}}
