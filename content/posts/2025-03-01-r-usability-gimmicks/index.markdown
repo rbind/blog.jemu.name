@@ -21,7 +21,7 @@ And I thought I might as well flesh this out a little.
 So for context, I should note that in my everyday computing setup, I have configured my terminal [iTerm2] as a hotkey window, meaning that whichever desktop space I'm on and whatever application is currently in focus, I just have to press <kbd>F2</kbd> to pop down my terminal window.
 That means that "quickly running a shell command" is a very easy and natural part of my computing experience --- and I guess what I'm talking about here is only useful to you if using the terminal feels similarly natural to you.
 
-Secondly, I should not that by bash scripting skills are a hodgepodge of just over a decade of googling around, trial-and-erroring until it works(ish), and more recently, just asking an LLM to fix my shitty scripts.
+Secondly, I should note that my bash scripting skills are a hodgepodge of just over a decade of googling around, trial-and-erroring until it works(ish), and more recently, just asking an LLM to fix my shitty scripts.
 Writing neat little wrappers for things is basically my way of practicing and trying out different bits and bops, so feel free to suggest better or more flexible approaches.
 That being said, I should also point out that using `Rscript` and / or {{< pkg "littler" >}} are perfectly fine options to write scripts using plain R, and the more I think about it the more it becomes obvious that taking a bash detour is kind of pointless for these things, but... oh well.  
 Let's get to it.
