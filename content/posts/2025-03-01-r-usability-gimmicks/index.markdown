@@ -178,12 +178,12 @@ Here's a screenshot of my dock with two projects opened in both RStudio and Posi
 
 {{< figure src="dock-rstudio.png" alt="MacOS dock with 2 adjacent RStudio icons with small text indicating projects names, next to it a single Positron icon" caption="Now imagine this but with 4-5 projects across different virtual desktops and very different contexts and tell me which IDE seems easier to navigate the hell you have brought upon yourself by having a minuscule attention span and and a tendency to work on half a dozen things in rotation" >}}
 
-I mentioned this on BlueSky --- my second favorite Twitter-alternative --- and [was reminded][bluesky-reply] of an [Alfred workflow for Positron][manager-positron] relying on the [project manager extension for VSCode][project-manager-extension], which in turn also works on Positron since they're cousins, and the workflow is based on the very similar [workflwo for VSCode projects][manager-vscode].
+I mentioned this on BlueSky --- my second favorite Twitter-alternative --- and [was reminded][bluesky-reply] of an [Alfred workflow for Positron][manager-positron] relying on the [project manager extension for VSCode][project-manager-extension], which in turn also works on Positron since they're cousins, and the workflow is based on the very similar [workflow for VSCode projects][manager-vscode].
 I also vaguely remember hearing about the combination of Positron + project manager extension + [analogous Raycast extension][raycast-manager] (configured to open Positron rather than VSCode) from [Garrick Aden-Buie][garrick], but I couldn't find the corresponding post given 5 seconds of searching, sorry.
 
 In any case, the principle is quite neat and similar to my previous RStudio-focused Alfred workflow, just that installing the VSCode/Positron extension lets you define a root folder for your projects based on version control mechanisms, for example:
 
-{{< figure src="project-manager.png" alt="Positron settings screen for the project manager extension showing Git base folders" caption="There's few decisions I have questions so often in the past ten as to whether I want it to be `~/repos` or `~/dev` or `~/git` or something else." >}}
+{{< figure src="project-manager.png" alt="Positron settings screen for the project manager extension showing Git base folders" caption="There's few decisions I have questioned so often in the past as whether I want it to be `~/repos` or `~/dev` or `~/git` or something else." >}}
 
 You can also manually add projects to a "favorites" stack, which I actually might end up using primarily.  
 It's nice to be able to find _every_ project on my machine quickly, but most of the time I just want to cycle between the _recently used_ projects rather than surfacing my ancient lore.
@@ -198,7 +198,7 @@ And since Positron projects open what feels like orders of magnitudes faster tha
 A minor thing I did for deduplication purposes as an also occasional VSCode user was to add a switch in the workflow to make it so that holding <kbd>Alt / ⌥</kbd> will open the project in VSCode rather than Positron, which comes in handy here and there --- especially in rare cases where [Positron can't do something I need that VScode can](https://github.com/posit-dev/positron/issues/6221).
 Modifying the Positron-centric workflow seemed easier than also installing the VSCode-centric version of it, so maybe I should also switch the keyword from `tron` to `proj` or something, but that's semantics rather than ergonomics.
 
-{{< figure src="workflow-edit.png" alt="" caption="Raycast is nice and all but Alfred has such _dead simple_ workflow editing, it's really quite neat for simple things" >}}
+{{< figure src="workflow-edit.png" alt="" caption="Raycast is nice and all but Alfred has such dead simple workflow editor, it's really quite neat for simple things like this" >}}
 
 
 However, what this extension _does not_ do is what I actually wanted in the first place: A better way to switch between _opened_ Positron projects.  
