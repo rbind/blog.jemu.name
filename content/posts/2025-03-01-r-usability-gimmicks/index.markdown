@@ -18,7 +18,7 @@ math: no
 The other day I [posted on Mastodon about shell script wrappers for common R commands](https://norden.social/@jemsu/114078735407359852).
 
 And I thought I might as well flesh this out a little.
-So for context, I should not that in my everyday computing setup, I have configured by terminal [iTerm2] as a hotkey window, meaning that whichever desktop space I'm on and whatever application is currently in focus, I just have to press <kbd>F2</kbd> to pop down my terminal window.
+So for context, I should note that in my everyday computing setup, I have configured by terminal [iTerm2] as a hotkey window, meaning that whichever desktop space I'm on and whatever application is currently in focus, I just have to press <kbd>F2</kbd> to pop down my terminal window.
 That means that "quickly running a shell command" is a very easy and natural part of my computing experience --- and I guess what I'm talking about here is only useful to you if using the terminal feels similarly natural to you.
 
 Secondly, I should not that by bash scripting skills are a hodgepodge of just over a decade of googling around, trial-and-erroring until it works(ish), and more recently, just asking an LLM to fix my shitty scripts.
