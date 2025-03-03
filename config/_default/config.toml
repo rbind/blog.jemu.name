@@ -40,10 +40,6 @@ ignoreFiles = [
   "^knitr-hooks\\.",
 ]
 
-#ignoreFiles = [
-#  "\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"
-#  ]
-
 [permalinks]
 posts = "/:year/:month/:slug/"
 
@@ -51,8 +47,6 @@ posts = "/:year/:month/:slug/"
 #category = "categories"
 tag = "tags"
 series = "series"
-#package = "packages" # No theme support yet
-#show = "shows"       # No theme support yet
 
 [markup]
 defaultMarkdownHandler = "goldmark"
@@ -105,11 +99,6 @@ disable = true
 #################################
 ## Theme-specific settings     ##
 #################################
-
-# Added matomo via hardcoded values in matomo.js to avoid more theme layout overrides
-# [Params.matomo]
-#   id = "2"
-#   server = "matomo.jemu.name"
 
 [languages]
 [languages.en]

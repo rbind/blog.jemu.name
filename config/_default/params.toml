@@ -64,14 +64,9 @@ url = "https://norden.social/@jemsu"
 [[social]]
 name = "BlueSky"
 icon = "fab fa-bluesky"
-weight = 3
+weight = 4
 rel = "me"
 url = "https://bsky.app/profile/jemu.name"
-# [[social]]
-#     name = "Keybase"
-#     icon = "fab fa-keybase"
-#     weight = 4
-#     url = "https://keybase.io/jemus42"
 [[social]]
 name = "Ko-Fi"
 icon = "fa fa-coffee"
