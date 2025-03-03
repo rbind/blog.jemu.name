@@ -44,7 +44,6 @@ custom_scss = ["scss/jemsu.scss"]
 custom_js = [
     "js/littlefoot.js",
     "js/jemsu.js",
-    "https://commento.jemu.name/js/count.js",
     "https://kit.fontawesome.com/94a13ae8a2.js",
 ]
 
