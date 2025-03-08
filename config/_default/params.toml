@@ -57,30 +57,30 @@ favicon_32 = "/favicon-32x32.png"
 
 [[social]]
 name = "Github"
-icon = "fab fa-github"
+icon = "fab fa-github fa-2x"
 weight = 1
 url = "https://github.com/jemus42/"
 [[social]]
 name = "Mastodon"
-icon = "fab fa-mastodon"
+icon = "fab fa-mastodon fa-2x"
 weight = 3
 rel = "me"
 url = "https://norden.social/@jemsu"
 # Needs theme support for new fontawesome or alternative
 [[social]]
 name = "BlueSky"
-icon = "fab fa-bluesky"
+icon = "fab fa-bluesky fa-2x"
 weight = 4
 rel = "me"
 url = "https://bsky.app/profile/jemu.name"
 [[social]]
 name = "Ko-Fi"
-icon = "fa fa-coffee"
+icon = "fa fa-coffee fa-2x"
 weight = 5
-url = "https://ko-fi.com/jemus42"
+url = "https://ko-fi.com/jemus42 fa-2x"
 [[social]]
 name = "RSS"
-icon = "fas fa-rss"
+icon = "fas fa-rss fa-2x"
 weight = 10
 url = "https://blog.jemu.name/index.xml"
 rel = "alternate"
