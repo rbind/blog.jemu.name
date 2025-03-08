@@ -1,5 +1,9 @@
 {{- if and (isset .Site.Params "commentourl") (not (eq .Site.Params.commentoUrl "" )) (eq (.Params.disable_comments |
 default false) false) -}}
+{{ if hugo.IsServer }}
+<p>Comments are disabled during local rendering</p>
+{{ else }}
 <script defer src="{{ .Site.Params.commentoUrl }}/comentario.js"></script>
+{{ end }}
 <comentario-comments></comentario-comments>
 {{- end -}}
