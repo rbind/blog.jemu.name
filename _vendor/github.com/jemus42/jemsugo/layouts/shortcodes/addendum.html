@@ -1,4 +1,0 @@
-<div {{ with .Get "type" | default "addendum" }} class="note-box {{ . }}" {{ end }}>
-  <h6>{{.Get "title" | emojify }}</h4>
-  <p>{{.Inner | markdownify }}</p>
-</div>
