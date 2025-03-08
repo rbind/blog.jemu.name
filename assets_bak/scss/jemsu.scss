@@ -3,9 +3,19 @@
 @import "monokai";
 @import "mathjax";
 @import "tables";
+@import "nav-toggle";
+@import "toc";
 @import "thirdparty";
 @import "shortcodes";
+@import "icomoon";
 
+
+/* Turn a dark plot into a light plot (for testing purposes, not really.) */
+@mixin color-inv {
+  figure>a>img {
+    filter: invert(1);
+  }
+}
 
 /* Dark Theme */
 body.colorscheme-dark {
@@ -47,6 +57,7 @@ body.colorscheme-light {
   @include summary-light();
   @include anchor-light();
   @include scrolltop-light();
+  // @include color-inv()
 }
 
 body.colorscheme-auto {
@@ -60,5 +71,6 @@ body.colorscheme-auto {
     @include summary-light();
     @include anchor-light();
     @include scrolltop-light();
+    // @include color-inv();
   }
 }

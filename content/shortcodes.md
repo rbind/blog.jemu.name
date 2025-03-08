@@ -127,10 +127,3 @@ This seems more complicated than just doing a quick search on trakt and copypast
 
 `{{</* videofig mp4="my-file.mp4" loop=true autoplay=true alt="" caption="" */>}}`
 
-## Wikipedia links: `wp`
-
-`{{</* wp tag="Go programming language" title="Go" */>}}`
-
-Hugo is written in {{< wp tag="Go programming language" title="Go" >}}.
-
-## Arbitrary figure-ization: `wrapfigure`

@@ -4,7 +4,8 @@ keywords = "blog,rstats,R,personal"
 info = "Doing things with R, mostly"
 #avatarurl = "images/jemus42.jpg"
 gravatar = "jemus42@quantenbrot.de"
-footercontent = "Bad at blogging since 2009!"
+# footercontent = "Bad at blogging since 2009!"
+fediverseCreator = "https://norden.social/@jemsu"
 
 # For package shortcode (configurability++;)
 # pkg_format = "<i class='fas fa-box'></i> {%s}"
@@ -17,7 +18,7 @@ dateformat = "January 2, 2006"
 hideFooter = false
 hideCredits = false
 hideCopyright = false
-since = 2015
+since = "Bad at blogging since 2015"
 
 # Git Commit in Footer, uncomment the line below to enable it.
 commit = "https://github.com/rbind/blog.jemu.name/tree/"
@@ -29,21 +30,26 @@ rtl = false
 # "auto" (use preference set by browser)
 # "dark" (dark background, light foreground)
 # "light" (light background, dark foreground) (default)
-colorscheme = "auto"
+colorScheme = "auto"
 
 # Series see also post count
 maxSeeAlsoItems = 3
 
-# Custom CSS
-custom_css = ["css/littlefoot.css"]
-
 # Custom SCSS (needs to be placed in /assets/, _not_ /static/)
-custom_scss = ["scss/jemsu.scss"]
+customSCSS = ["scss/jemsu.scss"]
+
+# Custom CSS
+customCSS = ["css/littlefoot.css"]
 
 # Custom JS
-custom_js = ["js/littlefoot.js", "js/jemsu.js"]
+customJS = ["js/littlefoot.js", "js/jemsu.js", "js/math-fix.js"]
 
+# Hosts commentario but still uses commento url
 commentoUrl = "https://commento.jemu.name"
+
+[umami]
+siteID = "59843b11-2dcd-4617-af12-3c125bdd3866"
+scriptURL = "https://umami.jemu.name/script.js"
 
 # Icons
 favicon_16 = "/favicon-16x16.png"

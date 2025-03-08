@@ -6,8 +6,7 @@
 /* Regular text */
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;700&display=swap');
 
-body,
-a {
+body, a {
   // font-family: $text-font-family;
   font-weight: 400;
 }
@@ -70,7 +69,7 @@ code {
   code {
     background-color: $monokai-bg-dark;
   }
-
+  
   a code {
     color: $link-color-dark;
   }
@@ -80,7 +79,7 @@ code {
   code {
     background-color: $monokai-bg-light;
   }
-
+  
   a code {
     color: $link-color;
   }
@@ -102,28 +101,26 @@ code {
 
 // Auto-linked headers
 
-// a>svg.anchor-symbol {
-//   color: transparent;
-//   margin-left: 1rem;
-// }
+a > svg.anchor-symbol {
+  color: transparent;
+  margin-left: 1rem;
+}
 
 
 @mixin anchor-dark {
-  a>svg.anchor-symbol {
-    // fill: $link-color-dark;
-  }
-
-  a>svg.anchor-symbol:hover {
-    // fill: $link-color;
+  a > svg.anchor-symbol {
+    fill: $link-color-dark;
+  } 
+  a > svg.anchor-symbol:hover {
+    fill: $link-color;
   }
 }
 
 @mixin anchor-light {
-  a>svg.anchor-symbol {
+  a > svg.anchor-symbol {
     fill: $link-color;
-  }
-
-  a>svg.anchor-symbol:hover {
+  } 
+  a > svg.anchor-symbol:hover {
     fill: $link-color-dark;
   }
 }
@@ -135,52 +132,37 @@ code {
   opacity: 0;
   -webkit-transition: visibility 0s, opacity 0.5s linear;
   transition: visibility 0s, opacity 0.5s linear;
-  position: fixed;
-  /* Fixed/sticky position */
-  bottom: 20px;
-  /* Place the button at the bottom of the page */
-  right: 30px;
-  /* Place the button 30px from the right */
-  z-index: 1;
-  /* Make sure it does not overlap */
-  border: none;
-  /* Remove borders */
-  outline: none;
-  /* Remove outline */
-  cursor: pointer;
-  /* Add a mouse pointer on hover */
-  padding: 10px;
-  /* Some padding */
-  border-radius: 1rem;
-  /* Rounded corners */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 1; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 10px; /* Some padding */
+  border-radius: 1rem; /* Rounded corners */
   //font-size: 18px; /* Increase font size */
-  font-family: $font-family;
+  font-family: $heading-font-family;
 }
 
-#totop:hover {
-  transition: visibility 0s, opacity 0.5s linear;
-}
+// #totop:hover {
+//   transition: visibility 0s, opacity 0.5s linear;
+// }
 
 @mixin scrolltop-light {
   #totop {
-    background-color: $alt-bg-color;
-    /* Set a background color */
+    background-color: $alt-bg-color; /* Set a background color */
   }
-
   #totop:hover {
-    color: $link-color;
-    /* Add a dark-grey background on hover */
+    color: $link-color; /* Add a dark-grey background on hover */
   }
 }
 
 @mixin scrolltop-dark {
   #totop {
-    background-color: $alt-bg-color-dark;
-    /* Set a background color */
+    background-color: $alt-bg-color-dark; /* Set a background color */
   }
-
   #totop:hover {
-    color: $link-color-dark;
-    /* Add a dark-grey background on hover */
+    color: $link-color-dark; /* Add a dark-grey background on hover */
   }
 }

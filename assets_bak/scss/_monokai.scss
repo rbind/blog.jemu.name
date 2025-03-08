@@ -1,6 +1,3 @@
-$monokai-bg-dark: #1D1D1D !default;
-$monokai-bg-light: #f3f3f3 !default;
-
 @mixin monokai-base {
   /* Other */ .chroma .x {  }
   /* Error */ .chroma .err { color: #960050; background-color: #1e0010 }

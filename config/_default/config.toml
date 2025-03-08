@@ -9,7 +9,9 @@ languageCode = "en-us"
 title = "blog.jemu.name"
 #theme = ["jemsugo", "hugo-coder"]
 metaDataFormat = "yaml"
-#Paginate = 10
+
+[pagination]
+pagerSize = 20
 
 [module]
 [module.hugoVersion]
