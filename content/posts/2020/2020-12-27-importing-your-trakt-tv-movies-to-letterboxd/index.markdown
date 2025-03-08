@@ -10,7 +10,7 @@ tags:
 featured_image: ~
 description: 'A quick overview on how to get your movie watch history and ratings out of trakt.tv and into letterboxd with R'
 externalLink: ''
-series:
+categories:
   - R
 packages: ''
 toc: no

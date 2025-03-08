@@ -15,12 +15,22 @@ pkg_icon_git = "<i class='fab fa-git-alt'></i>"
 
 dateformat = "January 2, 2006"
 
-hideFooter = false
+license = '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA-4.0</a>'
+
+
+
+<<<<<<< HEAD
+since = "Bad at blogging since 2015"
+||||||| a9f5155
+since = 2015
+=======
+
+>>>>>>> develop
+
+# Git Commit in Footer, uncomment the line below to enable it.hideFooter = false
 hideCredits = false
 hideCopyright = false
-since = "Bad at blogging since 2015"
-
-# Git Commit in Footer, uncomment the line below to enable it.
+since = "Bad at blogging 2009"
 commit = "https://github.com/rbind/blog.jemu.name/tree/"
 
 rtl = false
@@ -43,6 +53,9 @@ customCSS = ["css/littlefoot.css"]
 
 # Custom JS
 customJS = ["js/littlefoot.js", "js/jemsu.js", "js/math-fix.js"]
+
+# Custom remote JS files
+customRemoteJS = []
 
 # Hosts commentario but still uses commento url
 commentoUrl = "https://commento.jemu.name"

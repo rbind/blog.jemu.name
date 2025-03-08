@@ -3,7 +3,7 @@ title: All the {hrbrthemes}
 author: jemus42
 date: '2020-05-12'
 slug: all-the-hrbrthemes
-series:
+categories:
   - R
 tags:
   - ggplot2

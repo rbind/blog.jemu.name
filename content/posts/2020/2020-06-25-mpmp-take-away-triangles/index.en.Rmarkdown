@@ -11,7 +11,7 @@ tags:
 featured_image: "plots/takeaway-runs-plot-1.png"
 description: "In which I fiddle around with this weeks Matt Parker's Maths Puzzle"
 externalLink: ''
-series:
+categories:
   - R
 packages: 
   - ggplot2

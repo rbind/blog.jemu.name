@@ -12,7 +12,7 @@ tags:
   - Workflow
   - macOS
 description: "Making a simple Alfred workflow to quickly find and open your RStudio projects in either RStudio or VS Code"
-series:
+categories:
   - Software
 toc: true
 math: true # works, "katex: true" doesnt

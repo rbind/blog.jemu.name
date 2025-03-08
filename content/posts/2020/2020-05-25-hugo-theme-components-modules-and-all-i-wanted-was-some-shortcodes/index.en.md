@@ -3,7 +3,7 @@ title: Hugo Theme Components, Modules, and All I Wanted Was Some Shortcodes
 author: jemus42
 date: '2020-05-25'
 slug: hugo-theme-components-modules
-series:
+categories:
   - Blogging
 tags:
   - Hugo

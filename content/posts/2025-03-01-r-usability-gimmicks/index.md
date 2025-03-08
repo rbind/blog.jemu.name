@@ -8,7 +8,7 @@ categories:
 tags: [cli, macOS]
 featured_image: ~
 description: ''
-series:
+categories:
   - R
 packages: ''
 toc: yes

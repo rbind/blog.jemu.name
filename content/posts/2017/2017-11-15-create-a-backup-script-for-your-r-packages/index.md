@@ -5,7 +5,7 @@ author: jemus42
 date: '2017-11-15'
 slug: create-a-backup-script-for-your-r-packages
 toc: false
-series: 
+categories: 
   - R
 tags:
   - Packages

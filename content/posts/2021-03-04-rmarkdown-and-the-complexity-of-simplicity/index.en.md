@@ -9,23 +9,30 @@ tags:
   - pandoc
 featured_image: ~
 description: ''
-series:
+categories:
   - R
-packages: ''
 toc: yes
 math: no
 draft: yes
 ---
 
+{{< addendum title="Note" >}}
+THe first draft of this post was started waaaay back in 2021.  
+Back when there was still Twitter.  
+Back when [quarto](https://quarto.org/) was not [announced yet](https://posit.co/blog/announcing-quarto-a-new-scientific-and-technical-publishing-system/).
+
+It's been a while, but the general point remains the same.
+{{< /addendum >}}
+
 [RMarkdown](https://rmarkdown.rstudio.com/) is the greatest thing since sliced bread (for the R community at least).
-But it's not really RMarkdown that's great.
+But it's not really just RMarkdown that's great.
 RMarkdown is not a monolith, not a single entity.
 What makes RMarkdown so great is the ability to merge prose and R code to create a reproducible output with evaluated code and prose around said output.  
-Yeah, that's [knitr](https://yihui.org/knitr/)'s magic for you.  
+Yeah, that's {{< pkg "knitr" >}} for you.  
 The other thing that makes RMarkdown so great is the ability to write in one single format, namely Markdown + R code chunks, and create HTML, PDF or Word output from that without having to learn the specific syntax of either.  
 Welp, that's actually the greatness of [pandoc](https://pandoc.org/).  
-In a sense, I don't love RMarkdown --- I love knitr and pandoc.
-RMarkdown as a tool is just the glue that holds in together, and .Rmd as a document format is just the single source from which the cascade of tools is kicked off that makes it all happen.
+In a sense, I don't really love RMarkdown --- I love knitr and pandoc.
+RMarkdown as a tool is just the glue that holds in together, and RMarkdown as a document format is just the single source from which the cascade of tools is kicked off that makes it all happen.
 
 So in the simplest cases, you write your .Rmd file, knit/render it, and you're happy.  
 That's great.  
@@ -43,7 +50,11 @@ For crying out loud, just let me get on with it, will you?
 
 Anyway, the context for this post is [Alison's tweet from the other day](https://twitter.com/apreshill/status/1367240020944441345?s=20) about RMarkdown, and my tongue in cheek reply has sparked some... thoughts. 
 
-{{< figure src="alison-tweet.png" alt="Alison's tweet about how to describe RMarkdown and my reply about how RMarkdown is great unless something goes wrong and you don't know how to debug it" caption="The feels" link="https://twitter.com/Jemus42/status/1367241043146604546" >}}
+{{< figure src="alison-tweet.png" 
+  alt="Alison's tweet about how to describe RMarkdown and my reply about how RMarkdown is great unless something goes wrong and you don't know how to debug it" 
+  caption="The feels" 
+  link="https://twitter.com/Jemus42/status/1367241043146604546" 
+>}}
 
 ## The Promise
 

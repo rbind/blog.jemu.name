@@ -9,7 +9,7 @@ tags:
   - hugo
   - html
 description: 'A long tale of how I migrated to a different hugo theme and revamped my entire blogdown blog using new things I learned and old things I rediscovered.'
-series:
+categories:
   - Blogging
 packages: ''
 math: false

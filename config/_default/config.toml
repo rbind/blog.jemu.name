@@ -46,7 +46,7 @@ ignoreFiles = [
 posts = "/:year/:month/:slug/"
 
 [taxonomies]
-#category = "categories"
+category = "categories"
 tag = "tags"
 series = "series"
 
