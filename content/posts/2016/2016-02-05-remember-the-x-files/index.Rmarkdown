@@ -2,23 +2,14 @@
 title: Remember the X-Files?
 subtitle: ""
 description: ""
-image: "/post/2016-02-05-remember-the-x-files_files/figure-html/xfiles_plots_arcs_waffle-1.png"
+image: "/plots/xfiles_plots_arcs_waffle-1.png"
 author: jemus42
 date: '2016-02-05'
 series:
   - R
-  - TC Shows
 tags:
   - trakt.tv
-shows:
   - X-Files
-packages:
-  - rvest
-  - ggplot2
-  - waffle
-  - tRakt
-  - purrr
-  - dplyr
 draft: true
 editor_options: 
   chunk_output_type: console
@@ -56,7 +47,6 @@ library(broom)
 library(knitr)
 library(magrittr)
 library(tRakt) # remotes::install_github("jemus42/tRakt")
-library(tadaatoolbox) # remotes::install_github("tadaadata/tadaatoolbox")
 library(waffle) # remotes::install_github("hrbrmstr/waffle")
 
 theme_set(
@@ -77,19 +67,32 @@ I realize that going for big and complex chains is not necessarily a good thing 
 I could.
 
 ```{r get-data, eval=!file.exists("xfiles.rds")}
-xfiles <- read_html("https://en.wikipedia.org/wiki/List_of_The_X-Files_episodes") %>%
+xfiles <- read_html(
+  "https://en.wikipedia.org/wiki/List_of_The_X-Files_episodes"
+) %>%
   # str_replace_all('</a>\"<img', "ARC</a><img") %>%
   read_html() %>%
   html_table(fill = TRUE) %>%
   extract(c(2:6, 8:11))
 
 xfiles <- xfiles %>%
-  map_df(~ {
-    set_names(.x, c(
-      "epnum", "episode", "title", "director",
-      "writer", "firstaired", "prod_id", "viewers"
-    ))
-  })
+  map_df(
+    ~ {
+      set_names(
+        .x,
+        c(
+          "epnum",
+          "episode",
+          "title",
+          "director",
+          "writer",
+          "firstaired",
+          "prod_id",
+          "viewers"
+        )
+      )
+    }
+  )
 
 xfiles <- xfiles %>%
   mutate(
@@ -114,7 +117,11 @@ xfiles <- xfiles %>%
       mutate(epnum = 202)
   )
 
-xfiles_trakt <- seasons_season("the-x-files", seasons = 1:9, extended = "full") %>%
+xfiles_trakt <- seasons_season(
+  "the-x-files",
+  seasons = 1:9,
+  extended = "full"
+) %>%
   mutate(episode_abs = seq_along(title))
 
 xfiles <- xfiles %>%
@@ -148,7 +155,8 @@ ggplot(data = xfiles, aes(x = episode, y = viewers)) +
   facet_grid(. ~ season) +
   labs(
     title = "The X-Files US Viewers by Season",
-    x = "Episode", y = "Viewers (Millions)"
+    x = "Episode",
+    y = "Viewers (Millions)"
   )
 ```
 
@@ -160,7 +168,8 @@ ggplot(data = xfiles, aes(x = epnum, y = viewers)) +
   geom_smooth(method = lm, formula = y ~ poly(x, 2), se = F, color = "red") +
   labs(
     title = "The X-Files US Viewers",
-    x = "Episode", y = "Viewers (Millions)"
+    x = "Episode",
+    y = "Viewers (Millions)"
   )
 ```
 
@@ -187,14 +196,16 @@ Let's look at the averages for each season and throw some confidence intervals i
 xfiles %>%
   ggplot(aes(x = season, y = rating)) +
   stat_summary(
-    geom = "errorbar", fun.data = mean_cl_boot, 
+    geom = "errorbar",
+    fun.data = mean_cl_boot,
     size = 2
   ) +
   geom_point(size = 3, color = "red", stat = "summary", fun = mean) +
   scale_color_brewer(palette = "Set1", guide = F) +
   labs(
     title = "Average Viewers per Season with 95% CI",
-    x = "Season", y = "Average Viewers (Millions)"
+    x = "Season",
+    y = "Average Viewers (Millions)"
   )
 ```
 
@@ -205,10 +216,14 @@ It's probably quite telling that season 9 got less viewers than the first season
 Let's start looking at these plot arcs I keep hearing about. First of all, I classified all the episodes according to the Wikipedia episode list in "Mytharc" and "Regular", and now let's see how many of each there are.
 
 ```{r xfiles_plots_arcs_waffle}
-waffle(table(xfiles$plotarc),
-  rows = 10, size = .5,
-  title = "Number of Episodes by Plot Arc", xlab = "1 Square == 1 Episode",
-  legend_pos = "top", colors = RColorBrewer::brewer.pal(3, "Set1")[1:2]
+waffle(
+  table(xfiles$plotarc),
+  rows = 10,
+  size = .5,
+  title = "Number of Episodes by Plot Arc",
+  xlab = "1 Square == 1 Episode",
+  legend_pos = "top",
+  colors = RColorBrewer::brewer.pal(3, "Set1")[1:2]
 )
 ```
 
@@ -223,7 +238,9 @@ ggplot(data = xfiles, aes(x = episode, y = viewers, colour = plotarc)) +
   scale_color_brewer(palette = "Set1") +
   labs(
     title = "The X-Files US Viewers\nBy Season and Plot Arc",
-    x = "Episode", y = "Viewers (Millions)", color = "Plot Arc"
+    x = "Episode",
+    y = "Viewers (Millions)",
+    color = "Plot Arc"
   ) +
   theme(legend.position = "top")
 ```
@@ -240,7 +257,11 @@ xfiles %>%
   geom_errorbar(aes(ymin = lower, ymax = upper), size = 2) +
   geom_point(size = 3, color = "black") +
   scale_color_brewer(palette = "Set1", guide = F) +
-  labs(title = "Average Viewers with 95% CI", x = "Plot Arc", y = "Average Viewers (Millions)")
+  labs(
+    title = "Average Viewers with 95% CI",
+    x = "Plot Arc",
+    y = "Average Viewers (Millions)"
+  )
 ```
 
 Huh, it actually looks like there is a mild increase in viewers for the *mytharc*, but nothing significant (the CIs overlap a lot).
@@ -255,7 +276,9 @@ ggplot(data = xfiles, aes(x = episode, y = rating, colour = plotarc)) +
   scale_color_brewer(palette = "Set1") +
   labs(
     title = "The X-Files Ratings on trakt.tv\nBy Season and Plot Arc",
-    x = "Episode", y = "Rating (0-10)", color = "Plot Arc"
+    x = "Episode",
+    y = "Rating (0-10)",
+    color = "Plot Arc"
   ) +
   theme(legend.position = "top")
 ```
@@ -270,7 +293,9 @@ ggplot(data = xfiles, aes(x = episode, y = votes, colour = plotarc)) +
   scale_color_brewer(palette = "Set1") +
   labs(
     title = "The X-Files Votes on trakt.tv\nBy Season and Plot Arc",
-    x = "Episode", y = "Votes", color = "Plot Arc"
+    x = "Episode",
+    y = "Votes",
+    color = "Plot Arc"
   ) +
   theme(legend.position = "top")
 ```
@@ -286,7 +311,9 @@ ggplot(data = xfiles, aes(x = rating, fill = plotarc)) +
   scale_fill_brewer(palette = "Set1") +
   labs(
     title = "Rating Distribution by Plot Arc",
-    x = "Rating", y = "Density", fill = "Plot Arc"
+    x = "Rating",
+    y = "Density",
+    fill = "Plot Arc"
   ) +
   theme(legend.position = "top")
 ```
@@ -304,16 +331,14 @@ xfiles %>%
   geom_errorbar(aes(ymin = lower, ymax = upper), size = 2) +
   geom_point(size = 3, color = "black") +
   scale_color_brewer(palette = "Set1", guide = F) +
-  labs(title = "Average Rating with 95% CI", x = "Plot Arc", y = "Rating (0-100)")
+  labs(
+    title = "Average Rating with 95% CI",
+    x = "Plot Arc",
+    y = "Rating (0-100)"
+  )
 ```
 
-As you can see, there's quite a nice distinction. Especially the second plot shows an obvious difference which is so big a statistical test for significance would be entirely pointless. But who am I to judge, here's a t-test.
-
-```{r}
-tadaa_t.test(xfiles, rating, plotarc, print = "markdown")
-```
-
-If you're not familiar with t-tests and power analysis: That's ridiculous. The p-value indicates significance by it's own right, and the effect size of $d = 1.421$ tells use the effect is *huge*, with effect sizes greater than 0.8 commonly referred to as large. Also, the power is 1 (rounded value, so *very close to 1*), which basically means that with that data it's theoretically next to impossible no not spot that difference if our data was a sample of a larger "population" of episodes.
+As you can see, there's quite a nice distinction. Especially the second plot shows an obvious difference which is so big a statistical test for significance would be entirely pointless. 
 
 Anyway, let's continue.
 The next thing I'm curious about is if that difference in ratings is seen throughout the series, or possibly limited to some seasons.
@@ -330,7 +355,12 @@ xfiles %>%
   geom_errorbar(aes(ymin = lower, ymax = upper), size = 2) +
   geom_point(size = 3, color = "black") +
   scale_color_brewer(palette = "Set1") +
-  labs(title = "Average Rating with 95% CI", x = "Season", y = "Rating (0-100)", color = "Plot Arc") +
+  labs(
+    title = "Average Rating with 95% CI",
+    x = "Season",
+    y = "Rating (0-100)",
+    color = "Plot Arc"
+  ) +
   theme(legend.position = "top")
 ```
 
@@ -355,6 +385,7 @@ xfiles %>%
   facet_wrap(~plotarc) +
   labs(
     title = "Writers with at Least Two Episode Credits",
-    x = "Writer", y = "Number of Episodes"
+    x = "Writer",
+    y = "Number of Episodes"
   )
 ```

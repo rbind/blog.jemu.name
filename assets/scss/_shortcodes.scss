@@ -1,5 +1,5 @@
 // Addendum shortcode
-article .note-box > h6 {
+article .note-box>h6 {
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding-top: 10px;
@@ -8,7 +8,7 @@ article .note-box > h6 {
   // font-variant: small-caps;
 }
 
-article .note-box > p {
+article .note-box>p {
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 2rem;
@@ -49,9 +49,11 @@ div.note-box {
 div.addendum {
   border-left-color: $link-color;
 }
+
 div.warning {
   border-left-color: #FECE31;
 }
+
 div.problem {
   border-left-color: rgb(222, 25, 25);
 }
@@ -71,7 +73,6 @@ figure.code {
   font-family: $code-font-family;
 }
 
-
 // pkg //
 .rpkg {
   white-space: nowrap;
@@ -83,7 +84,7 @@ figure.code {
 }
 
 .tooltip {
-  font-family: $heading-font-family;
+  font-family: $font-family;
   visibility: hidden;
   width: auto;
   background-color: $alt-bg-color-dark;
