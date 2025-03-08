@@ -1,0 +1,6 @@
+{{ $repospec := (.Get 0) }}
+{{ $reposplit := split $repospec "/" }}
+{{ $org := index $reposplit 0 }}
+{{ $repo := index $reposplit 1 }}
+
+<span class="gh-repo"><a href="https://github.com/{{ $repospec }}" alt="Github repository '{{ $repo }}' from user or orgnization '{{ $org }}'">{{ $repospec }}</a></span>
