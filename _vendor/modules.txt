@@ -1,0 +1,3 @@
+# github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20250302230704-ef9790fd6802
+# github.com/jemus42/jemsugo v0.0.0-20250303012227-6b1cdba6aa9e
+# github.com/luizdepra/hugo-coder v0.0.0-20250228200816-6bc00595434a

@@ -1,0 +1,27 @@
+<!-- 
+  Take arbitrary content and wrap it into the very flexible figure tag.
+  This should make it easier to create flexible content that benefits from caption and attrs
+  without the need to create increasingly complex shortcode to wrap all kinds of things in <figure>.
+  
+  The boilerplate is lifted directly from hugo's built-in figure shortcode 
+-->
+<figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+
+  {{ .Inner }}
+
+    {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
+        <figcaption>
+            {{ with (.Get "title") -}}
+                <h4>{{ . }}</h4>
+            {{- end -}}
+            {{- if or (.Get "caption") (.Get "attr") -}}<p>
+                {{- .Get "caption" | markdownify -}}
+                {{- with .Get "attrlink" }}
+                    <a href="{{ . }}">
+                {{- end -}}
+                {{- .Get "attr" | markdownify -}}
+                {{- if .Get "attrlink" }}</a>{{ end }}</p>
+            {{- end }}
+        </figcaption>
+    {{- end }}
+</figure>
