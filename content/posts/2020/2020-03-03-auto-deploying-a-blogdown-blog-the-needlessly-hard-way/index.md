@@ -6,7 +6,7 @@ author: 'jemus42'
 date: '2020-03-07'
 slug: auto-deploying-a-blogdown-blog-the-needlessly-hard-way
 featured_image: "blogdown-deployment-setup.png"
-series: 
+categories: 
   - Blogging
 tags:
   - Ubuntu

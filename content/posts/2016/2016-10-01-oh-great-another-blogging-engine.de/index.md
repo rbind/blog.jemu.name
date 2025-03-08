@@ -1,6 +1,6 @@
 ---
 author: jemus42
-series:
+categories:
   - Blogging
 tags:
   - Hugo

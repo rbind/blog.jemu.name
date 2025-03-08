@@ -3,7 +3,7 @@ title: Hey Buddy! Doing the Dampe Math
 author: jemus42
 date: '2018-08-02'
 slug: hey-buddy-doing-the-dampe-math
-series:
+categories:
   - Statistics
 tags:
   - Speedrunning

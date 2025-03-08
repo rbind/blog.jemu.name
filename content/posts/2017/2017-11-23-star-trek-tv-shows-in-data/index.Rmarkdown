@@ -4,7 +4,7 @@ subtitle: "Let's just pretend the source data is better, okay?"
 author: jemus42
 date: '2017-11-23'
 slug: star-trek-tv-shows-in-data
-series:
+categories:
   - R
   - TV Shows
 tags:

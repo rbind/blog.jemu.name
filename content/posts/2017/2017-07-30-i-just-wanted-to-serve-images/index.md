@@ -4,7 +4,7 @@ description: "Tweaking knitr to get some richer plot output for your blog. Kind 
 author: jemus42
 date: '2017-07-30'
 slug: i-just-wanted-to-serve-images
-series:
+categories:
   - R
   - Blogging
 tags:

@@ -6,7 +6,7 @@ author: jemus42
 date: '2019-09-14'
 slug: yes-yes-yes-no
 draft: no
-series:
+categories:
   - R
   - TV Shows
 tags:

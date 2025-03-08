@@ -2,7 +2,7 @@
 author: jemus42
 date: 2017-07-18
 slug: blogging-still-sucks-but-now-i-can-tolerate-it
-series:
+categories:
  - Blogging
 tags:
  - hugo
