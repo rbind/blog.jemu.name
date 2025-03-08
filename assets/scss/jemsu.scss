@@ -1,0 +1,65 @@
+@import "variables";
+@import "text";
+@import "monokai";
+@import "mathjax";
+@import "tables";
+// @import "toc";
+@import "thirdparty";
+@import "shortcodes";
+
+
+/* Dark Theme */
+body.colorscheme-dark {
+  @include monokai-base();
+  @include monokai-dark();
+  @include math-dark();
+  @include table-dark();
+  @include inline-code-dark();
+  @include littlefoot-dark();
+  @include notebox-dark();
+  @include summary-dark();
+  @include anchor-dark();
+  @include scrolltop-dark();
+}
+
+body.colorscheme-auto {
+  @media (prefers-color-scheme: dark) {
+    @include monokai-base();
+    @include monokai-dark();
+    @include math-dark();
+    @include table-dark();
+    @include inline-code-dark();
+    @include littlefoot-dark();
+    @include notebox-dark();
+    @include summary-dark();
+    @include anchor-dark();
+    @include scrolltop-dark();
+  }
+}
+
+/* Light theme */
+body.colorscheme-light {
+  @include monokai-base();
+  @include monokai-light();
+  @include inline-code-light();
+  @include math-light();
+  @include littlefoot-light();
+  @include notebox-light();
+  @include summary-light();
+  @include anchor-light();
+  @include scrolltop-light();
+}
+
+body.colorscheme-auto {
+  @media (prefers-color-scheme: light) {
+    @include monokai-base();
+    @include monokai-light();
+    @include inline-code-light();
+    @include math-light();
+    @include littlefoot-light();
+    @include notebox-light();
+    @include summary-light();
+    @include anchor-light();
+    @include scrolltop-light();
+  }
+}

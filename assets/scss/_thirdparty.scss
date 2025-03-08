@@ -1,0 +1,21 @@
+// Adjustments to the styles of third party elements
+
+// littlefoot.js
+// Override justification and make it readable in dark mode
+div.littlefoot-footnote__wrapper>div>p {
+  text-align: left;
+  color: $fg-color;
+}
+
+@mixin littlefoot-dark {
+  .littlefoot-footnote__button {
+    color: $fg-color-dark;
+  }
+}
+
+@mixin littlefoot-light {
+  .littlefoot-footnote__button {
+    // color: $fg-color;
+    color: lighten($fg-color, 10%);
+  }
+}

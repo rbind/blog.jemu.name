@@ -5,29 +5,6 @@ littlefoot.default({
     buttonTemplate: '<button aria-label="Footnote <% number %>" class="littlefoot__button" id="<% reference %>" title="See Footnote <% number %>" /> <% number %> </button>'
 })
 
-// Color theme toggler via zookee1 <3
-function toggleDarkMode() {
-    let bodyClassList = document.body.classList;
-    let userPreferredIsLight = (window.matchMedia('(prefers-color-scheme: light)').matches)
-
-    if (!bodyClassList.contains('colorscheme-dark') &&
-        !bodyClassList.contains('colorscheme-light')) {
-        bodyClassList.remove("colorscheme-auto");
-        if (userPreferredIsLight) {
-            bodyClassList.add("colorscheme-dark");
-        } else {
-            bodyClassList.add("colorscheme-light");
-        }
-    } else {
-        if (bodyClassList.contains('colorscheme-dark')) {
-            bodyClassList.add("colorscheme-light");
-            bodyClassList.remove("colorscheme-dark");
-        } else if (bodyClassList.contains('colorscheme-light')) {
-            bodyClassList.add("colorscheme-dark");
-            bodyClassList.remove("colorscheme-light");
-        }
-    }
-}
 
 // Scroll to top thing: https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 
