@@ -15,10 +15,13 @@ pkg_icon_git = "<i class='fab fa-git-alt'></i>"
 
 dateformat = "January 2, 2006"
 
+license = '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA-4.0</a>'
+
+
 hideFooter = false
 hideCredits = false
 hideCopyright = false
-since = "Bad at blogging since 2015"
+since = "Bad at blogging 2009"
 
 # Git Commit in Footer, uncomment the line below to enable it.
 commit = "https://github.com/rbind/blog.jemu.name/tree/"
@@ -43,6 +46,9 @@ customCSS = ["css/littlefoot.css"]
 
 # Custom JS
 customJS = ["js/littlefoot.js", "js/jemsu.js", "js/math-fix.js"]
+
+# Custom remote JS files
+customRemoteJS = []
 
 # Hosts commentario but still uses commento url
 commentoUrl = "https://commento.jemu.name"
@@ -77,7 +83,7 @@ url = "https://bsky.app/profile/jemu.name"
 name = "Ko-Fi"
 icon = "fa fa-coffee fa-2x"
 weight = 5
-url = "https://ko-fi.com/jemus42 fa-2x"
+url = "https://ko-fi.com/jemus42"
 [[social]]
 name = "RSS"
 icon = "fas fa-rss fa-2x"

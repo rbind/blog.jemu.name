@@ -1,24 +1,28 @@
 <footer class="footer">
   <section class="container">
-    ©
     {{ if (and .Site.Params.since (lt .Site.Params.since now.Year)) }}
+    ·
     {{ .Site.Params.since }} -
     {{ end }}
     {{ now.Year }}
+    ·
     {{ with .Site.Params.author }} {{ . }} {{ end }}
     ·
     {{ if (and .Site.Params.license) }}
-    {{ i18n "licensed_under" }} {{ .Site.Params.license | safeHTML }}
+    {{ .Site.Params.license | safeHTML }}
     ·
     {{ end }}
+    <br />
+    ·
     Befuddledly cobbled together with
     <a href="https://bookdown.org/yihui/blogdown/"><i class="fab fa-r-project"></i></a>,
     <a href="https://github.com/rbind/blog.jemu.name"><i class="fas fa-code-branch"></i></a>,
     <a href="https://gohugo.io/">Hugo</a> &
-    <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>
     {{ if (and .Site.Params.commit .GitInfo) }}
     [<a href="{{ .Site.Params.commit }}/{{ .GitInfo.Hash }}" target="_blank" rel="noopener">{{ .GitInfo.AbbreviatedHash
       }}</a>]
     {{ end }}
+    ·
   </section>
 </footer>
