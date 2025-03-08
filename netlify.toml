@@ -1,6 +1,8 @@
 [build]
 publish = "public"
-GO_VERSION = "1.24.0"
+
+[build.environment]
+GO_VERSION = "1.24.x"
 HUGO_VERSION = "0.145.0"
 HUGO_ENABLEGITINFO = "true"
 
