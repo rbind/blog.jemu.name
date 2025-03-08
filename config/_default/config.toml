@@ -11,7 +11,7 @@ title = "blog.jemu.name"
 metaDataFormat = "yaml"
 
 [pagination]
-pagerSize = 20
+pagerSize = 10
 
 [module]
 [module.hugoVersion]
