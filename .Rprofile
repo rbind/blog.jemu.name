@@ -12,7 +12,7 @@ options(
     blogdown.author = "jemus42",
     blogdown.ext = ".Rmarkdown",
     blogdown.subdir = "posts",
-    blogdown.hugo.version = "0.104.3",
+    blogdown.hugo.version = "0.145.0",
     blogdown.hugo.server = c("-D", "-F", "--navigateToChanged"),
     blogdown.knit.on_save = FALSE,
     blogdown.serve_site.startup = FALSE,

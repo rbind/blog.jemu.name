@@ -1,18 +1,15 @@
 [build]
   publish = "public"
-  HUGO_VERSION = "0.104.3"
+  HUGO_VERSION = "0.145.0"
   HUGO_ENABLEGITINFO = "true"
 
 [context.production.environment]
   command = "hugo --minify"
   HUGO_ENV = "production"
   HUGO_TITLE = "blog.jemu.name"
-  HUGO_VERSION = "0.104.3"
 [context.branch-deploy.environment]
   command = "hugo --minify -D"
   HUGO_TITLE = "Branch Preview - blog.jemu.name"
-  HUGO_VERSION = "0.104.3"
 [context.deploy-preview.environment]
   command = "hugo --minify -D"
   HUGO_TITLE = "Deploy Preview - blog.jemu.name"
-  HUGO_VERSION = "0.104.3"
