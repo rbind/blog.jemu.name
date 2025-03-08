@@ -35,15 +35,15 @@ colorscheme = "auto"
 maxSeeAlsoItems = 3
 
 # Custom CSS
-custom_css = ["css/littlefoot.css"]
+customCSS = ["css/littlefoot.css"]
 
-# Custom SCSS (needs to be placed in /assets/, _not_ /static/)
-custom_scss = ["scss/jemsu.scss"]
+# # Custom SCSS (needs to be placed in /assets/, _not_ /static/)
+#customSCSS = ["scss/jemsu.scss"]
 
-# Custom JS
-custom_js = ["js/littlefoot.js", "js/jemsu.js"]
+# # Custom JS
+customJS = ["js/littlefoot.js", "js/jemsu.js", "js/math-fix.js"]
 
-commentoUrl = "https://commento.jemu.name"
+# commentoUrl = "https://commento.jemu.name"
 
 # Icons
 favicon_16 = "/favicon-16x16.png"
