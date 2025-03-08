@@ -2,12 +2,12 @@
 title: Remember the X-Files?
 subtitle: ""
 description: ""
-image: "/post/2016-02-05-remember-the-x-files_files/figure-html/xfiles_plots_arcs_waffle-1.png"
+image: "plots/xfiles_plots_arcs_waffle-1.png"
 author: jemus42
 date: '2016-02-05'
 series:
   - R
-  - TC Shows
+  - TV Shows
 tags:
   - trakt.tv
 shows:
@@ -166,11 +166,11 @@ tidy(model) %>%
 ```
 
 
-|term            | estimate| std.error| statistic| p.value|
-|:---------------|--------:|---------:|---------:|-------:|
-|(Intercept)     |   15.177|     0.148|   102.419|       0|
-|poly(epnum, 2)1 |   -9.268|     2.116|    -4.381|       0|
-|poly(epnum, 2)2 |  -43.175|     2.107|   -20.495|       0|
+| term            | estimate | std.error | statistic | p.value |
+| :-------------- | -------: | --------: | --------: | ------: |
+| (Intercept)     |   15.177 |     0.148 |   102.419 |       0 |
+| poly(epnum, 2)1 |   -9.268 |     2.116 |    -4.381 |       0 |
+| poly(epnum, 2)2 |  -43.175 |     2.107 |   -20.495 |       0 |
 
 
 ```r 
@@ -179,9 +179,9 @@ glance(model) %>%
 ```
 
 
-| r.squared| adj.r.squared| sigma| statistic| p.value| df|   logLik|     AIC|     BIC| deviance| df.residual|
-|---------:|-------------:|-----:|---------:|-------:|--:|--------:|-------:|-------:|--------:|-----------:|
-|     0.691|         0.688| 2.096|   219.979|       0|  3| -430.246| 868.492| 881.686|  865.149|         197|
+| r.squared | adj.r.squared | sigma | statistic | p.value |   df |   logLik |     AIC |     BIC | deviance | df.residual |
+| --------: | ------------: | ----: | --------: | ------: | ---: | -------: | ------: | ------: | -------: | ----------: |
+|     0.691 |         0.688 | 2.096 |   219.979 |       0 |    3 | -430.246 | 868.492 | 881.686 |  865.149 |         197 |
 
 …And I actually did. Nice.
 These measures indicate that that curve I drew is a pretty decent approximation of the viewership numbers, meaning that in the beginning, there were little, then a peak through season 5, and then a steady decline throughout the end.
@@ -336,9 +336,9 @@ tadaa_t.test(xfiles, rating, plotarc, print = "markdown")
 Table 1: **Two Sample t-test** with alternative hypothesis: `\(\mu_1 \neq \mu_2\)`
 
 
-| Diff | `\(\mu_1\)` Mytharc | `\(\mu_2\)` Regular |  t   |  SE  | df  |  `\(CI_{95\%}\)`  |   p   | Cohen\'s d | Power |
-|:----:|:---------------:|:---------------:|:----:|:----:|:---:|:-------------:|:-----:|:----------:|:-----:|
-| 0.36 |      7.97       |      7.61       | 2.35 | 0.15 | 200 | (0.06 - 0.66) | < .05 |    1.06    | 0.65  |
+| Diff  | `\(\mu_1\)` Mytharc | `\(\mu_2\)` Regular |   t   |  SE   |  df   | `\(CI_{95\%}\)` |   p   | Cohen\'s d | Power |
+| :---: | :-----------------: | :-----------------: | :---: | :---: | :---: | :-------------: | :---: | :--------: | :---: |
+| 0.36  |        7.97         |        7.61         | 2.35  | 0.15  |  200  |  (0.06 - 0.66)  | < .05 |    1.06    | 0.65  |
 
 
 <br>
