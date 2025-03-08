@@ -4,16 +4,13 @@ author: jemus42
 date: ""
 slug: []
 featured_image: 
+series: []
 categories:
   - R
 tags: []
 description: ""
 externalLink: ""
-series:
-  - R
-packages: ""
-toc: false
-math: true # works, "katex: true" doesnt
+math: false
 editor_options: 
   chunk_output_type: console
 ---
