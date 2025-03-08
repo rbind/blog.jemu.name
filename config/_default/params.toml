@@ -5,6 +5,7 @@ info = "Doing things with R, mostly"
 #avatarurl = "images/jemus42.jpg"
 gravatar = "jemus42@quantenbrot.de"
 footercontent = "Bad at blogging since 2009!"
+fediverseCreator = "https://norden.social/@jemsu"
 
 # For package shortcode (configurability++;)
 # pkg_format = "<i class='fas fa-box'></i> {%s}"

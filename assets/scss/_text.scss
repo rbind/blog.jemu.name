@@ -82,7 +82,7 @@ code {
   }
 
   a code {
-    // color: $link-color;
+    color: $link-color;
   }
 }
 
@@ -120,11 +120,11 @@ code {
 
 @mixin anchor-light {
   a>svg.anchor-symbol {
-    // fill: $link-color;
+    fill: $link-color;
   }
 
   a>svg.anchor-symbol:hover {
-    // fill: $link-color-dark;
+    fill: $link-color-dark;
   }
 }
 
@@ -154,12 +154,12 @@ code {
   border-radius: 1rem;
   /* Rounded corners */
   //font-size: 18px; /* Increase font size */
-  // font-family: $font-family;
+  font-family: $font-family;
 }
 
-// #totop:hover {
-//   transition: visibility 0s, opacity 0.5s linear;
-// }
+#totop:hover {
+  transition: visibility 0s, opacity 0.5s linear;
+}
 
 @mixin scrolltop-light {
   #totop {
@@ -168,19 +168,19 @@ code {
   }
 
   #totop:hover {
-    // color: $link-color;
+    color: $link-color;
     /* Add a dark-grey background on hover */
   }
 }
 
 @mixin scrolltop-dark {
   #totop {
-    // background-color: $alt-bg-color-dark;
+    background-color: $alt-bg-color-dark;
     /* Set a background color */
   }
 
   #totop:hover {
-    // color: $link-color-dark;
+    color: $link-color-dark;
     /* Add a dark-grey background on hover */
   }
 }
