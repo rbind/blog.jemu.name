@@ -20,18 +20,18 @@ My personal VPS was probably the oldest part of my infratsructure. I rented it a
 
 I probably forgot a few things here and there, but that probably just shows that this was my one-for-all hosting box.  
 And it also sucked big time. It was a Ubuntu 12.04 LTS machine, a single 32bit CPU core, 1GB of RAM which sometimes could be bumped up to 2GB[^3]. All in all not ideal for pretty much anything that happened after 2012. I vaguely remember that I had to build the shiny server from source because there is no 32bit package, which was *not* a fun thing to do, but alas, I went with it.  
-The machine also cost be 8€ per month[^4]. Nowadays, there are much better options for cheaper prices. 
+The machine also cost me 8€ per month[^4]. Nowadays, there are much better options for cheaper prices. 
 
 I was expecting to move this server to [DigitalOcean](https://www.digitalocean.com/) because they seem to be popular and I've been using that for the *Tadaa, Data* server (see below), but then [@bl1nk](https://twitter.com/bl1nk) recommended [scaleway](https://www.scaleway.com/) to me, and boy did these prices look good.
 
-Welp, now I'm running a Ubuntu 16.04 LTS VPS with 4  64bit (finally) cores and 4GB of RAM. This has the added bonus that I could use more recent tutorials for stuff, because boy am I thankful for DigitalOcean's extensive community documentation and tutorials[^5].
+Welp, now I'm running a Ubuntu 16.04 LTS VPS with 4  64bit (finally) cores and 4GB of RAM. This had the added bonus that I could use more recent tutorials for stuff, because boy am I thankful for DigitalOcean's extensive community documentation and tutorials[^5].
 
 So here's the gist:
 
 ### NGINX, MYSQL, PHP, SSL {#nginx-mysql-php-ssl}
 
 I was very happy to see that most of the basics are apparently covered in the LEMP stack, whatever LEMP stands for, but oh well, I'm only a part-time nerd so I don't have to know everything. Or anything at all. Anyway, [here's the DO tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04) for the basics you need for stuff like wordpress. I prefer nginx over apache for the very intellectually stimulating reason of being used to it and people I trust recommending it.  
-When it comes to SSL, I'm proud to say that every webpage I'm kinda responsible for has SSL certificates thanks to the wonderful LetsEncrypt project, and of course [there's a tutorial for that](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04). Getting this set up was much easier than I remember from a few months back where I had to clone a GitHUb repo and build stuff from source. Having an installable package makes things much more pleasant.  
+When it comes to SSL, I'm proud to say that every webpage I'm kinda responsible for has SSL certificates thanks to the wonderful LetsEncrypt project, and of course [there's a tutorial for that](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04). Getting this set up was much easier than I remember from a few months back where I had to clone a GitHub repo and build stuff from source. Having an installable package makes things much more pleasant.  
 
 When it comes to mysql for my wordpress sites, I realized I could make my life tremendously less difficult by just writing down the required commands I need for datapase creation and basic user management. Now I don't have to google that every time. It's almost like knowing stuff. For the record, it looks like this:
 
