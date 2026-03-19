@@ -47,12 +47,12 @@ So here's a list of things you can try and/or do to ensure the least aggravating
     - A downscaled transcode of a file will have lower quality, but will therefore be smaller and more bandwidth-friendly
 
 And then, lastly, there's the sledgehammer method:  
-Come over, give be the largest hard drive you can find, wait a while, and go home. You then set up your own Plex server with your newly filled hard drive and move on with your life.  
-We can still be friend probably.
+Come over, give me the largest hard drive you can find, wait a while, and go home. You then set up your own Plex server with your newly filled hard drive and move on with your life.  
+We can still be friends probably.
 
 {{< addendum title="Note from the future" >}}
 As of 2022, this post is still mostly relevant, but a few things have changed.  
-Fore one, I can now personally vouch for the Apple TV 4K as a Plex client - my experience has vastly improved over the Chromecast Ultra.  
+For one, I can now personally vouch for the Apple TV 4K as a Plex client - my experience has vastly improved over the Chromecast Ultra.  
 And the CC Ultra was already a lot better than the previous Chromecast.
 
 As for media formats: Most of my library consists of 1080p HEVC files now, so a client that supports HEVC is more or less a must now.

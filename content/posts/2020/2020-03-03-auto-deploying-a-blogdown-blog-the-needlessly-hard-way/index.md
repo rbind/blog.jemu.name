@@ -57,13 +57,13 @@ Okay then – if you're still here, let's walk through the setup process.
 
 ## Prerequisites {#prerequisites}
 
-The thing's you'll need to replicate my setup (or hopefully something better):
+The things you'll need to replicate my setup (or hopefully something better):
 
 1. **A VPS** or some kind of server you're using for building / deployment. If you're still reading this, chances are you've already got that base covered. Mine is hosted by [Scaleway](https://www.scaleway.com/), but other options are available of course [^hosts].  
 2. ...including a **working R installation** on said server. There are presumably many tutorials available for your platform, but on Ubuntu it's particularly easy given [Michael Rutter's PPA](https://launchpad.net/~marutter). Make sure you use the correct version, i.e. the PPAs suffixed with `3.5` for R >= 3.5.  
 3. **[git-auto-deploy](https://github.com/olipo186/Git-Auto-Deploy)** or an alternative way to receive webhooks from the git host of your choice. Better options may be available, but I am comfortable with this one.  
 4. An account on **[GitHub](https://github.com/)**, [GitLab](https://about.gitlab.com/), a self-hosted [gitea](https://gitea.io) or some other place to host your blog repository that can send [webhooks](https://help.github.com/en/github/extending-github/about-webhooks) when you push to it. I'm using GitHub for historical reasons™ [^gitea].  
-5. A functioning **webserver** to serve your site (suprise!). I use [caddy](https://caddyserver.com/) because a friend was bugging me to try it, andI like it. Before that I used [nginx](https://nginx.org/) in the past. Both easily integrate [Let's Encrypt](https://letsencrypt.org/) for SSL/TLS/the HTTP padlock thing. `caddy` also has a [git deploy thing](https://caddyserver.com/v1/docs/http.git) but I've had some issues with that, which is why I stick to `git-auto-deploy`. Using `caddy` would remove one component though, so I might change my mind in the future and give it another go.  
+5. A functioning **webserver** to serve your site (suprise!). I use [caddy](https://caddyserver.com/) because a friend was bugging me to try it, and I like it. Before that I used [nginx](https://nginx.org/) in the past. Both easily integrate [Let's Encrypt](https://letsencrypt.org/) for SSL/TLS/the HTTP padlock thing. `caddy` also has a [git deploy thing](https://caddyserver.com/v1/docs/http.git) but I've had some issues with that, which is why I stick to `git-auto-deploy`. Using `caddy` would remove one component though, so I might change my mind in the future and give it another go.  
 6. **[{renv}](https://rstudio.github.io/renv/)**. It's pretty cool. It also keeps things from breaking unexpectedly, ensures portability and reproducibility, and most importantly: I just wanted to try it in this setting. Familiarize yourself with its usage as you'll be using it with your blog.
 
 Also, if you don't have a {blogdown} blog yet, I'm very confused why you're still reading this, yet encourage you to [set one up](https://bookdown.org/yihui/blogdown/get-started.html) already!
@@ -119,12 +119,12 @@ The relevant section of `/etc/git-auto-deploy.conf.json` should look like this, 
 ]
 ```
 
-Make your to restart the service after adjusting the config file. If you're using `systemd` you'd use `sudo systemctl restart git-auto-deploy`.  
+Make sure to restart the service after adjusting the config file. If you're using `systemd` you'd use `sudo systemctl restart git-auto-deploy`.  
 
 `"path"` should be owned (or at least writable) by `git-auto-deploy`, so if you've cloned the repository there in advance, you'll likely want to `sudo chown -R git-auto-deploy /path/to/repo` it.  
 This is also the path you'd use as the `root` directive in the webserver configuration to actually serve your blog (hopefully with an appended `/public` to only serve the hugo output), so make sure your webserver has `read` permissions. 
 
-The `"deploy"` key is set to execute a script located in my blog's root directory creatively called `build.sh` that is executed after the respository updates. We'll get to that in the next section, but for testing purposes you might just replace that line with `"deploy": "echo Deployment commences!"`.  
+The `"deploy"` key is set to execute a script located in my blog's root directory creatively called `build.sh` that is executed after the repository updates. We'll get to that in the next section, but for testing purposes you might just replace that line with `"deploy": "echo Deployment commences!"`.  
 This way you can keep track of what `git-auto-deploy` is doing using `sudo tail -f /var/log/git-auto-deploy.log`. If you see `Deployment commences!` after a push on your end, then at least it got that far.  
 
 But we haven't set up webhooks, so there's nothing for `git-auto-deploy` to work with yet, meaning it doesn't know when to update your repository.  
@@ -242,7 +242,7 @@ echo "##########################"
 The last step in the build script is pretty self-explanatory: Build the actual blog.  
 Naturally this is going to take a while, but unless I've forgotten an important step to explain or you've overlooked something on your end, this should work *just fine*.
 
-If you want to keep track of the build process, `git-auto-deploy`'s log file will not be of that much use *during* the time the script running, but *afterwards* you'll see the output of all commands in the log file for all your debugging needs.  
+If you want to keep track of the build process, `git-auto-deploy`'s log file will not be of that much use *during* the time the script is running, but *afterwards* you'll see the output of all commands in the log file for all your debugging needs.  
 
 So – that's it. I really hope this is a help to at least *some* people.  
 I should also note that in the process of writing this quasi-tutorial the last couple of days, I also created and solved some other issues that kind of ended up making this whole thing obsolete.  

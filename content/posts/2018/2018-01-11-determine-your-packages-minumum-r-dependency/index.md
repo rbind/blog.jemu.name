@@ -1,5 +1,5 @@
 ---
-title: Determine Your Packages Minumum R Dependency
+title: Determine Your Packages Minimum R Dependency
 author: jemus42
 date: '2018-01-11'
 slug: determine-your-packages-minumum-r-dependency
@@ -65,5 +65,5 @@ The next thing that irks me is that `DescTools` has such a high dependency, and 
 
 Lastly, I was surprised that packages like `broom` or `nortest` don't even explicitly depend on any specific R version, I did not know that's an option. Or if it was an option, I would have assumed it's discouraged.
 
-So maybe my desire do "depend properly" is totally meaningless anyway and I just should let it go.  
+So maybe my desire to "depend properly" is totally meaningless anyway and I just should let it go.  
 So that's what I'll do for now.

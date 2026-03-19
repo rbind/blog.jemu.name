@@ -24,15 +24,15 @@ But enough of that.
 
 ### Hardware
 
-This [fancy little bugger](https://www.cyberport.de/hp-proliant-gen8-microserver---xeon-e3-1220l-v2-2-3ghz-8gb-0gb-4x-8-9cm-3-5-lff-1503-27K_548.html) is now my roomate. It lives in my living room, its name is PPTH, and we're friends.  
-I chose the version with the bumped CPU because I tend have a lot of video transcoding jobs running, hence the upgrade from the previous generation ProLiant in the first place.  
+This [fancy little bugger](https://www.cyberport.de/hp-proliant-gen8-microserver---xeon-e3-1220l-v2-2-3ghz-8gb-0gb-4x-8-9cm-3-5-lff-1503-27K_548.html) is now my roommate. It lives in my living room, its name is PPTH, and we're friends.  
+I chose the version with the bumped CPU because I tend to have a lot of video transcoding jobs running, hence the upgrade from the previous generation ProLiant in the first place.  
 As of now, I'm still using the preinstalled 8GB of RAM, but I assume I need to upgrade them sooner or later because both FreeNAS and ZFS tend to like their RAM, not to mention Plex.
 
 Drive-wise, I went all out and got 4 of [these WD Red 8TB](https://www.cyberport.de/wd-red-wd80efzx-8tb-5400rpm-128mb-3-5zoll-sata600-3404-24D_404.html) drives, because when I upgrade, I like to grade up a lot.
 
 ### Operating System
 
-I'm still pretty happy with [FreeNAS](https://www.freenas.org/), even though it looks like other solutions like NAS4free and unRAID have become quite popular in the past few years, but I never bothered to check them out. You know what they say about running systems and how you're not supposed to touch them. Also, lazyness. Vast amounts of lazyness.  
+I'm still pretty happy with [FreeNAS](https://www.freenas.org/), even though it looks like other solutions like NAS4free and unRAID have become quite popular in the past few years, but I never bothered to check them out. You know what they say about running systems and how you're not supposed to touch them. Also, laziness. Vast amounts of laziness.  
 If you primarily need an OS to handle your storage pool (ZFS), some file shares (CIFS/AFP/NFS), maybe even account management (Active Directory and other things I never used), or some network voodoo, you're probably fine using FreeNAS. 
 
 The [FreeNAS docs](https://doc.freenas.org/9.10/) are usually sufficient for my needs, and the installation on a [small USB drive like this one](https://www.amazon.de/SanDisk-Ultra-Flash-Drive-150MB/dp/B00LLER2CS/) is very handy and keeps your storage disks OS-free. If you don't know how to dump the FreeNAS installer on a thumb drive, [look here](https://doc.freenas.org/9.10/install.html#preparing-the-media). Keep in mind that you will need one drive to hold the installer and *one additional* drive as the target for the installation.   
@@ -68,7 +68,7 @@ When I first started using FreeNAS, I installed a few [plug-ins](https://doc.fre
 So how do you install [Plex](https://plex.tv) in a FreeNAS jail?  
 Well glad you asked, because it's frikkin' easy.
 
-Just [add a new jail](https://doc.freenas.org/9.10/jails.html#adding-jails) (it will be a standard FreeBSD jail by defailt afair), use the GUI to open a shell, and either enable *sshd* to `ssh` from your machine or just use the FreeNAS GUI for maintenance. If you have your shell open, just 
+Just [add a new jail](https://doc.freenas.org/9.10/jails.html#adding-jails) (it will be a standard FreeBSD jail by default AFAIR), use the GUI to open a shell, and either enable *sshd* to `ssh` from your machine or just use the FreeNAS GUI for maintenance. If you have your shell open, just 
 
 ```sh
 pkg install plexmediaserver         # install the package
@@ -98,7 +98,7 @@ Combined with the following entry in my MacBook's `/etc/hosts`:
 
 `192.168.2.230 lounge.ppth couchpotato.ppth plexpy.ppth plex.ppth sonarr.ppth syncthing.ppth`
 
-As you might be able to tell, I'm runnung various services with webinterfaces on the same jail I named *lounge* (i.e. the PPTH doctor's lounge), and with this method each webinterface has it's own domain name specific to my local network. When I want to access the Plex webinterface at port 32400, I can simply point my browser to `plex.ppth` and stuff works. Same thing for Sonarr, CouchPotato, Syncthing, and PlexPy.
+As you might be able to tell, I'm running various services with webinterfaces on the same jail I named *lounge* (i.e. the PPTH doctor's lounge), and with this method each webinterface has its own domain name specific to my local network. When I want to access the Plex webinterface at port 32400, I can simply point my browser to `plex.ppth` and stuff works. Same thing for Sonarr, CouchPotato, Syncthing, and PlexPy.
 
 I should point out that even though I'm also running Syncthing behind a proxy like this, Syncthing itself doesn't seem to like it that much. I've had trouble with GUI settings not being applied when accessed via the proxy'd URL, but maybe that's just a misconfiguration on my part.
 
@@ -122,6 +122,6 @@ I think I'm done now.
 ¯\\\_(ツ)_/¯
 
 
-[^1]: Well, there's also my portable TM drive I plug in ocassionally via USB, my [backblaze](https://link.jemu.name/backblaze) and all that jazz.
-[^2]: A Jail is basically a virtual machine running on the host machine, with it's own IP adress and own packages.
+[^1]: Well, there's also my portable TM drive I plug in occasionally via USB, my [backblaze](https://link.jemu.name/backblaze) and all that jazz.
+[^2]: A Jail is basically a virtual machine running on the host machine, with its own IP address and own packages.
 [^3]: To be fair, if I had known back then what I know now, I probably could have saved the database, but oh well.

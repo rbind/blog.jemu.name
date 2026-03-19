@@ -18,12 +18,12 @@ packages:
 Ever since my blog has been migrated to [blogdown], blogging is kind of fun again.  
 Not only do I slowly feel like I've understood the basics of [Hugo], but now tweaking my blog feels like an extended R project -- which I'm quite fond of.
 
-To recap: My blog is built using [blogdown], which borrows ideas from [bookdown], to prepare things for [Hugo] to built the site, all while [bookdown], (and in turn [blogdown]) harness the power of [RMarkdown], which in turn uses [knitr] for basically all its glory. Also, pandoc.  
+To recap: My blog is built using [blogdown], which borrows ideas from [bookdown], to prepare things for [Hugo] to build the site, all while [bookdown], (and in turn [blogdown]) harness the power of [RMarkdown], which in turn uses [knitr] for basically all its glory. Also, pandoc.  
 
 So… yeah. It's not as bad as it seems, trust me.  
 That might also be what the Ruby people will tell you about Jekyll and the likes, but don't trust them -- they're all wrong and I'm the only one who's right.  
 
-Now that we've established what we all knew beforehand, let's talk about the part where blogdown falls short. Don't get me wrong, [Yihui](https://yihui.name/) did a great job in basically putting together a package that does what I assumed was possible but not knowdledgable enough to pull off myself, however, it's still basically a hack [^1], so it's to be expected that in some parts, Hugo and RMarkdown (and/or knitr) won't be the best of friends.
+Now that we've established what we all knew beforehand, let's talk about the part where blogdown falls short. Don't get me wrong, [Yihui](https://yihui.name/) did a great job in basically putting together a package that does what I assumed was possible but not knowledgeable enough to pull off myself, however, it's still basically a hack [^1], so it's to be expected that in some parts, Hugo and RMarkdown (and/or knitr) won't be the best of friends.
 
 ## Plots for the people
 
@@ -36,7 +36,7 @@ An `<img>` is all we need, right? So where's the problem?
 Well have you heard about [lightbox](https://lokeshdhakar.com/projects/lightbox2/)? There are dozens of JavaScript libraries like this (or rather jQuery plugins, but you get the idea) -- they're nice little additions to any post with multiple images, because they allow you to easily view, zoom and browse multiple images. If you're used to data analysis projects like mine, you'll see your fair share of plot after plot blog posts, so it seemed only natural for me to use something like this for my blog.  
 After a little trial and error with lightbox2, I ended up using [fresco] for some minor usability reasons.  
 
-The way most these plugins seem to work is by either writing custom JavaScript (which I can't be bothered to do), or attach secondary attributes to the image via an encloding `<a href=…>` to trigger the JS code to fire up the box. Now I could have probably used JS to attach these attributes to the plot after the page has loaded, but that seemed clunky and potentially slow, or at least slower than just baking the stuff into the plot output.  
+The way most these plugins seem to work is by either writing custom JavaScript (which I can't be bothered to do), or attach secondary attributes to the image via an enclosing `<a href=…>` to trigger the JS code to fire up the box. Now I could have probably used JS to attach these attributes to the plot after the page has loaded, but that seemed clunky and potentially slow, or at least slower than just baking the stuff into the plot output.  
 
 And that's how I learned about [knitr's hooks](https://yihui.name/knitr/hooks/#output-hooks). You see, to customize the way knitr writes out the `<img>` for the plot, you can't simply set a chunk option or something[^2], you have to substitute the appropriate hook with a function of your own that outputs the HTML you need.  
 So once I figured that out, it was fairly easy to get it to work just fine. My plot output was nicely wrapped in a hyperlink to the plot with the right attributes to make use of fresco.js, and everything was fine and dandy. 

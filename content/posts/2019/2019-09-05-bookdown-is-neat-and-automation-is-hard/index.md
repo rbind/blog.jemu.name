@@ -1,6 +1,6 @@
 ---
 title: Bookdown is Neat and Automation is Hard
-subtitle: "Automating {bookdown} deployment with Travis CI and copius scripting"
+subtitle: "Automating {bookdown} deployment with Travis CI and copious scripting"
 author: jemus42
 date: '2019-09-05'
 slug: bookdown-is-neat-and-automation-is-hard
@@ -28,26 +28,26 @@ But then there's the case where stuff *doesn't* render nicely, and that's where 
 
 So now that I more or less successfully switched our [R-Intro for psychology undergrads](https://r-intro.tadaa-data.de/book/) (German) over from "auto-built on our server mostly" to "auto-built on [Travis CI](https://travis-ci.org/)", I thought it might be a good time to consolidate some of the things I've learned along the way as someone not terribly familiar with travis outside of R-package testing.
 
-If you're not at all familiar with travis (or the concept of CI), then you might want to [brush up on the basics](https://docs.travis-ci.com/user/for-beginners/) before you continue. For everything else, I'm going to assume that you're at least kind of familiar with with git / GitHub (if not, [this is your go-to reference](https://happygitwithr.com/)) and have dabbled in bookdown already.
+If you're not at all familiar with travis (or the concept of CI), then you might want to [brush up on the basics](https://docs.travis-ci.com/user/for-beginners/) before you continue. For everything else, I'm going to assume that you're at least kind of familiar with git / GitHub (if not, [this is your go-to reference](https://happygitwithr.com/)) and have dabbled in bookdown already.
 
 ## But why though?
 
 The first question one might ask is: Why even bother doing the travis-dance when you can just render your bookdown project locally in your bazillion formats? Then either directly upload that somewhere or commit the whole output to version control and let GitHub Pages or netlify pick it up from there. 
 That's certainly a possibility, but it's also prone to some reproducibility issues.  
-For example, to render our R-Intro, we were relying (directly or indirectly) on R packages with specific system dependencies – on Ubuntu systems, they needed to be installed via `apt`. Wile I was starting up the project on macOS, I wasn't aware of these dependencies because, well, it worked for me. On my machine. Locally.  
+For example, to render our R-Intro, we were relying (directly or indirectly) on R packages with specific system dependencies – on Ubuntu systems, they needed to be installed via `apt`. While I was starting up the project on macOS, I wasn't aware of these dependencies because, well, it worked for me. On my machine. Locally.  
 That might be all fine and dandy and good enough, but as soon as you're collaborating with other people, presumably on different operating systems, the dependency hell starts to inch closer and you're beginning to feel the pain of the "it works because I did some stuff here, dunno"-workflow.  
 
-Building your project via services like travis has the neat effect of forcing you to think about what is required to make you project reproducible – that principlie applies to R-packages the same as it does to things we don't usually think about having "dependencies" in this sense: Books, for example. 
+Building your project via services like travis has the neat effect of forcing you to think about what is required to make your project reproducible – that principle applies to R-packages the same as it does to things we don't usually think about having "dependencies" in this sense: Books, for example. 
 The idea is: If you can make it work on travis, you can probably make it work on other people's machines, too.
 
-Besides that, building stuff on travis (and deploying from there) also means that you don't run the risk of making some small changes to your book and then forget to render/upload, or making a change and not realizing that it introcuded an issue that breaks your book.  
+Besides that, building stuff on travis (and deploying from there) also means that you don't run the risk of making some small changes to your book and then forget to render/upload, or making a change and not realizing that it introduced an issue that breaks your book.  
 
-The workflow `make changes -> git commit -> git push to GitHub -> travis -> deploy target` ensures that you don't have to worry about anything past the point where you modify the content of your book. Well, at least as long as all the other bits of the pipeline are set up approrpiately.
+The workflow `make changes -> git commit -> git push to GitHub -> travis -> deploy target` ensures that you don't have to worry about anything past the point where you modify the content of your book. Well, at least as long as all the other bits of the pipeline are set up appropriately.
 
 ## Build & deploy to GitHub Pages
 
 Probably the easiest solution as you only need a GitHub account and token.  
-The GH pages deplyoment is documented [here](https://docs.travis-ci.com/user/deployment/pages/), and you'll at least need to get a personal access token from GitHub (in R, you can let `usethis::browse_github_token()` take you where you need to go) and add it to your project on travis as an environment variable (perferrably named `GITHUB_PAT`), and make sure it is available to all branches and won't display in the build log.
+The GH pages deployment is documented [here](https://docs.travis-ci.com/user/deployment/pages/), and you'll at least need to get a personal access token from GitHub (in R, you can let `usethis::browse_github_token()` take you where you need to go) and add it to your project on travis as an environment variable (preferably named `GITHUB_PAT`), and make sure it is available to all branches and won't display in the build log.
 
 {{< figure src="https://dump.jemu.name/2019-09-uv5tqwkabimfnik.png" caption="Kind of what it should look like on travis" >}}
 
@@ -108,7 +108,7 @@ deploy:
   target_branch: gh-pages
 ```
 
-The steps are executen in order of appearance. As there's only 3, and they're named `before_script`, `script` and `deploy`, they're probably pretty self-explanatory.  
+The steps are executed in order of appearance. As there's only 3, and they're named `before_script`, `script` and `deploy`, they're probably pretty self-explanatory.  
 You might stumble over this part though:
 
 ```yaml
@@ -168,7 +168,7 @@ Anyway, what I did here was, as the comments suggest:
 2. Create a `.fonts` directory where, well, fonts go. Use `mkdir -p` to only create it if it doesn't exist already without throwing an error – we also cache that folder.
 3. Manually download fonts as `.zip` files and extract them to `$HOME/.fonts/` – checking if the zip already exists in the cache.
 4. Do stuff with `texlive-fontconfig.conf` – I don't know man. It ended up (probably) solving the issue that XeLaTeX didn't find "`TeX Gyre Pagella`" because the font name contained spaces. I think. Honestly at this point I'm too tired of this to do more testing.
-5. `fc-cache -fv` makes the new fonts in `.fonts` available to the system. `fc-list` is only there for debugging purposes so the lst of currently available fonts gets printed in the travis build log.
+5. `fc-cache -fv` makes the new fonts in `.fonts` available to the system. `fc-list` is only there for debugging purposes so the list of currently available fonts gets printed in the travis build log.
 
 And... it works. Neat.  
 This makes `TeX Gyre Pagella` and `TeX Gyre Heros` available to XeLaTeX, and adds [Fira](https://mozilla.github.io/Fira/) fonts for both XeLaTeX (where I use `Fira Mono` as a `monofont`) and ggplot2 plots, where I use `Fira Sans` via the aforementioned theme/package.  
@@ -177,7 +177,7 @@ Honestly, this should have been a script called `make-ze-font-stuff-be-good.sh` 
 I think.  
 I might change my mind later [^mind].
 
-[^mind]: **2020-03-11**: I did. My most recent overhaul of a similiar setup calls a script to download [the Adobe Source Pro fonts](https://fonts.adobe.com/fonts/source-sans) because it was starting to get _really_ messy.
+[^mind]: **2020-03-11**: I did. My most recent overhaul of a similar setup calls a script to download [the Adobe Source Pro fonts](https://fonts.adobe.com/fonts/source-sans) because it was starting to get _really_ messy.
 
 Regarding the Fira fonts, I should mention that I had to install the `firasans` package manually from GitHub as it's not on CRAN, and for some reason the `Remotes:` field in `DESCRIPTION` wasn't enough to convince travis to install it for me:
 

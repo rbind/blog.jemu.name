@@ -39,7 +39,7 @@ library(hrbrthemes)
 library(patchwork)
 ```
 
-To use these these themes, you'll have to make sure you have the corresponding fonts installed. You can import them like so:
+To use these themes, you'll have to make sure you have the corresponding fonts installed. You can import them like so:
 
 ```{r font-import, eval = FALSE}
 import_public_sans()
@@ -106,7 +106,7 @@ I'll also be using the `ipsum` and `ft` color palettes provided by {hrbrthemes},
 
 ## The `ipsum` themes
 
-Light themes with neat fonts and relatively minute axis labels and text, as well as large margins. Call me a phillistine, but I tend to bump up the text size and reduce the strip margins a little because otherwise I can't see anything in certain scenarios, but I if you give the plots enough space, they *do* look really neat.
+Light themes with neat fonts and relatively minute axis labels and text, as well as large margins. Call me a philistine, but I tend to bump up the text size and reduce the strip margins a little because otherwise I can't see anything in certain scenarios, but I if you give the plots enough space, they *do* look really neat.
 
 ### `theme_ipsum` <small>(Arial Narrow)</small>
 
@@ -200,7 +200,7 @@ Dark themes are all the rage, and to quote a friend of mine (who still refuses t
 
 Both themes include calls to `ggplot2::update_geom_defaults` to change the default colors (as the function name suggests), which is something to keep in mind if you're using multiple themes in the same R session and don't manually set any colors as I am doing here via `scale_color_*`.
 
-### `theme_modern_rc` <small>(Robot Condensed)</small> (dark)
+### `theme_modern_rc` <small>(Roboto Condensed)</small> (dark)
 
 ```{r theme_modern_rc}
 p7 <- p_facets + 
@@ -210,7 +210,7 @@ p7 <- p_facets +
 p7
 ```
 
-### `theme_ft_rc` <small>(Robot Condensed)</small> (dark)
+### `theme_ft_rc` <small>(Roboto Condensed)</small> (dark)
 
 ```{r theme_ft_rc}
 p8 <- p_facets + 

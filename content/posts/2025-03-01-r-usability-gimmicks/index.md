@@ -30,13 +30,13 @@ Let's get to it.
 
 I often find myself wanting to "just quickly" install or upgrade a package or two, and usually I don't want to block the R session I have in front of me and kind of need for a project. I used to regularly plop down my terminal (<kbd>F2</kbd>), type `R` and then `install.packages("foo")` or for a GitHub package `remotes::install_github("foo/bar")` and move on. {{< pkg "pak" >}} has simplified this workflow in the sense that `pak::pak()` just does everything:
 
-- Calling `pak::pak()` without arguments install development dependencies in an R package project
-- It install packages from CRAN
-- It install packages from GitHub and other sources
+- Calling `pak::pak()` without arguments installs development dependencies in an R package project
+- It installs packages from CRAN
+- It installs packages from GitHub and other sources
 - It does so using automatic system dependency installation on Linux
-- I think it uses [P3M] if appropriate by default if I rememebr correctly? Meaning it gets you Linux binaries for various distributions if available[^hpc]
+- I think it uses [P3M] if appropriate by default if I remember correctly? Meaning it gets you Linux binaries for various distributions if available[^hpc]
 
-Long story short, in my day to day work, few recent additions to the R ecosystem have been as much of a bonus for me than {{< pkg "pak" >}} [^rignote], so I thought I'd make it a tiny bit quicker to access from a command line:
+Long story short, in my day to day work, few recent additions to the R ecosystem have been as much of a bonus for me as {{< pkg "pak" >}} [^rignote], so I thought I'd make it a tiny bit quicker to access from a command line:
 
 
 ```sh
@@ -76,7 +76,7 @@ pak r-lib/cli
 
 And that's it.
 
-I should also probably point out that another way to quickly install a package or two from wherever context I am in is [this R workflow][patrick-alfred] for [Alfred] by Patrick. I'll come back to Alfred later, but I also ended up adapting that workflow to use {{< pkg "pak" >}} under hood, so I can install either CRAN or GitHub packages using the same `r package install` keyword, so there's that.
+I should also probably point out that another way to quickly install a package or two from wherever context I am in is [this R workflow][patrick-alfred] for [Alfred] by Patrick. I'll come back to Alfred later, but I also ended up adapting that workflow to use {{< pkg "pak" >}} under the hood, so I can install either CRAN or GitHub packages using the same `r package install` keyword, so there's that.
 
 [^rignote]: and [rig] for that matter, but that's a different blog post.
 
@@ -170,13 +170,13 @@ I've used [ULauncher] on Ubuntu a few years ago but I have since given up on try
 [^linuxtip]: If you know about tools similar to Alfred and Raycast for Linux or Windows, maybe drop them in the comments
 
 I have previously talked about [using Alfred to quickly open RStudio projects][alfred_post], and I still use it as my primary app launcher, snippet tool, search extension, and for its workflows.
-[Raycast] is also cool I guess, and all the young'uns have been switching to it lately, but I haven't quite bothered to make the jump even if I do see it has some nice features and its extension scene seems to be quite a bit more vibrant than Alfreds, but that mightjust be my impression.
+[Raycast] is also cool I guess, and all the young'uns have been switching to it lately, but I haven't quite bothered to make the jump even if I do see it has some nice features and its extension scene seems to be quite a bit more vibrant than Alfred's, but that might just be my impression.
 
 So long story short: I recently started using [Positron] as my primary R IDE after never really finding VSCode's extension-driven R support to be quite to my liking [^vscodenote].
 One of the minor things that I tripped over however was how Positron behaves when you have multiple instances running (as in: Multiple projects open in different windows, likely across different virtual desktops).  
 Here's a screenshot of my dock with two projects opened in both RStudio and Positron:
 
-{{< figure src="dock-rstudio.png" alt="MacOS dock with 2 adjacent RStudio icons with small text indicating projects names, next to it a single Positron icon" caption="Now imagine this but with 4-5 projects across different virtual desktops and very different contexts and tell me which IDE seems easier to navigate the hell you have brought upon yourself by having a minuscule attention span and and a tendency to work on half a dozen things in rotation" >}}
+{{< figure src="dock-rstudio.png" alt="MacOS dock with 2 adjacent RStudio icons with small text indicating projects names, next to it a single Positron icon" caption="Now imagine this but with 4-5 projects across different virtual desktops and very different contexts and tell me which IDE seems easier to navigate the hell you have brought upon yourself by having a minuscule attention span and a tendency to work on half a dozen things in rotation" >}}
 
 I mentioned this on BlueSky --- my second favorite Twitter-alternative --- and [was reminded][bluesky-reply] of an [Alfred workflow for Positron][manager-positron] relying on the [project manager extension for VSCode][project-manager-extension], which in turn also works on Positron since they're cousins, and the workflow is based on the very similar [workflow for VSCode projects][manager-vscode].
 I also vaguely remember hearing about the combination of Positron + project manager extension + [analogous Raycast extension][raycast-manager] (configured to open Positron rather than VSCode) from [Garrick Aden-Buie][garrick], but I couldn't find the corresponding post given 5 seconds of searching, sorry.
@@ -198,11 +198,11 @@ And since Positron projects open what feels like orders of magnitudes faster tha
 A minor thing I did for deduplication purposes as an also occasional VSCode user was to add a switch in the workflow to make it so that holding <kbd>Alt / ⌥</kbd> will open the project in VSCode rather than Positron, which comes in handy here and there --- especially in rare cases where [Positron can't do something I need that VScode can](https://github.com/posit-dev/positron/issues/6221).
 Modifying the Positron-centric workflow seemed easier than also installing the VSCode-centric version of it, so maybe I should also switch the keyword from `tron` to `proj` or something, but that's semantics rather than ergonomics.
 
-{{< figure src="workflow-edit.png" alt="" caption="Raycast is nice and all but Alfred has such dead simple workflow editor, it's really quite neat for simple things like this" >}}
+{{< figure src="workflow-edit.png" alt="" caption="Raycast is nice and all but Alfred has such a dead simple workflow editor, it's really quite neat for simple things like this" >}}
 
 
 However, what this extension _does not_ do is what I actually wanted in the first place: A better way to switch between _opened_ Positron projects.  
-Guess I'll just have to get used to using Raycasts pretty good <kbd>Alt / ⌥ + Tab</kbd> like a normal person.  
+Guess I'll just have to get used to using Raycast's pretty good <kbd>Alt / ⌥ + Tab</kbd> like a normal person.  
 _Sigh_.
 
 <small>I should also point out that my old workflow had a feature where using a modifier key made it so that the git remote was opened in the browser, which also comes in handy quite often. I'll hopefully be able to hack that into this workflow as well though.</small>

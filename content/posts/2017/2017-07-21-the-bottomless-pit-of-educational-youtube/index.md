@@ -12,7 +12,7 @@ Youtube is great.
 Not only is it a great source of entertainment, it's also a great way to drown out the ever growing numbness accompanying the vague, yet menacing vo[i](https://www.welcometonightvale.com/)d slowly encompassing everything that is and ever will be.  
 Also, it can be extraordinarily educational if you stumble upon the right channels.
 
-I want to give you some recommendations on where to start your dive into the endless pit of stuff to watch, but as I prepare a mental list, I realize that I have *no* idea how to group or organize that list. And that's why I'll just start somehwere and see how it goes, so there's that. 
+I want to give you some recommendations on where to start your dive into the endless pit of stuff to watch, but as I prepare a mental list, I realize that I have *no* idea how to group or organize that list. And that's why I'll just start somewhere and see how it goes, so there's that. 
 
 ## The Bradyverse
 
@@ -22,7 +22,7 @@ Not all of his channels are equally active though, and some seem to be on hiatus
 
 ### [Numberphile][numberphile]
 
-The first math channel I discovered. Brady talks to mathematicians of all kinds of fields about all kinds of topics, usually in corporation with the University of Nottingham if memory serves me right, which is also the basis for other channels in this list. I could list dozens of videos I still rewatch if they happen to pop up in the *related videos* section, but you'd do well by just browsing the channel page and click on something that seems interesting, or at least familiar to you. From [prime numbers](https://www.youtube.com/playlist?list=PL0D0BD149128BB06F)[^2] to [π](https://www.youtube.com/playlist?list=PL4870492ACBDC2E7C) to topology and then suddenly weird things [to do with paperclips](https://www.youtube.com/watch?v=wGkvyN6s9cY), I wouldn't know where to start listing the reasons why I love this channel, but needless to say, I love it.  
+The first math channel I discovered. Brady talks to mathematicians of all kinds of fields about all kinds of topics, usually in cooperation with the University of Nottingham if memory serves me right, which is also the basis for other channels in this list. I could list dozens of videos I still rewatch if they happen to pop up in the *related videos* section, but you'd do well by just browsing the channel page and click on something that seems interesting, or at least familiar to you. From [prime numbers](https://www.youtube.com/playlist?list=PL0D0BD149128BB06F)[^2] to [π](https://www.youtube.com/playlist?list=PL4870492ACBDC2E7C) to topology and then suddenly weird things [to do with paperclips](https://www.youtube.com/watch?v=wGkvyN6s9cY), I wouldn't know where to start listing the reasons why I love this channel, but needless to say, I love it.  
 
 Oh, and there's Cliff Stoll, presumably known by most Numberphile viewers as *this absolutely magnificient guy with the [Klein Bottles](https://www.youtube.com/watch?v=-k3mVnRlQLU)[^klein]* who makes you learn about topology[^3] by [talking about eating pizza](https://www.youtube.com/watch?v=gi-TBlh44gY).  
 Watch the [videos about/with him](https://www.youtube.com/playlist?list=PLt5AfwLFPxWJeBhzCJ_JXdaIXi_YJl7Bh), he's a treasure of a human being.
@@ -43,7 +43,7 @@ Channels I know of but don't frequently watch, even though they're also great:
 
 - [DeepSkyVideos][deepsky]: Astronomy! Everybody thinks it's cool, some people actually know stuff about it, and this channel is where the two groups can intersect.
 - [Objectivity][objectivity]: Treasured historical artifacts with interesting histories and/or great importance to science. It's really neat to see things like original manuscripts by famous mathematicians in real life(ish).
-- [PeriodicVideos][periodic]: A lovely chemistry professor talks about pretty every element. I'm not big into chemistry, but it's still pretty cool.
+- [PeriodicVideos][periodic]: A lovely chemistry professor talks about pretty much every element. I'm not big into chemistry, but it's still pretty cool.
 
 ## More Math Channels
 
@@ -66,7 +66,7 @@ I'm not done watching all of his videos, but I recently watched through his [Ess
 ### [CGPGrey][grey]
 
 Grey appears with Brady on [Hello Internet](https://www.hellointernet.fm/)[^6], but it's a little known fact that he also has this really small-time Youtube channel few people know about.  
-In my mind, Grey is the archetypical *"person explains and discusses interesting topic using animations"*-Youtuber, and while his upload frequency is excrutatingly low, every single one of his videos is pretty much a guaranteed hit in some way or another.  
+In my mind, Grey is the archetypical *"person explains and discusses interesting topic using animations"*-Youtuber, and while his upload frequency is excruciatingly low, every single one of his videos is pretty much a guaranteed hit in some way or another.  
 He's not specialized to a single discipline like the aforementioned math channels, but rather talks about a variety of topics. I personally enjoyed his videos on [voting is done suboptimally in many places](https://www.youtube.com/watch?v=s7tWHJfhiyo). There's a lot about politics, geography and history, but he also likes talking about the [future of humanity in the face of automization](https://www.youtube.com/watch?v=7Pq-S557XQU) or [psychological phenomena](https://www.youtube.com/watch?v=O2hO4_UEe-4).   
 I could go in more detail, but his videos are short enough for you to just binge through them in an afternoon or alternatively appropriate timespan in the context of your biorhythm.  
 So just do that.
@@ -78,9 +78,9 @@ The channel has been around for quite a while, and it's probably safe to conside
 
 ### [Kurzgesagt -- In a Nutshell][nutshell]
 
-Imagine if CPGGrey had a bigger budget for animations and a bit more people to work with. In a way, that's where Kurzgesagt comes from. Really high quality videos about all kinds of things.
+Imagine if CGPGrey had a bigger budget for animations and a bit more people to work with. In a way, that's where Kurzgesagt comes from. Really high quality videos about all kinds of things.
 They tend to cover big picture questions, like [the origin of humanity](https://www.youtube.com/watch?v=dGiQaabX3_o), the [refugee crisis](https://www.youtube.com/watch?v=RvOnXh3NN9w) or [genetic engineering](https://www.youtube.com/watch?v=jAhjPd4uNFY).  
-Also, when I first saw that last video featuring [CRISPR](https://en.wikipedia.org/wiki/CRISPR), I wasn't sure if that was a sci-fi scenario they wanted to talk about to spark an interesting discussion or if that was actually real. Absolutely fascinating stuff, both the actualy technology and their video about it.  
+Also, when I first saw that last video featuring [CRISPR](https://en.wikipedia.org/wiki/CRISPR), I wasn't sure if that was a sci-fi scenario they wanted to talk about to spark an interesting discussion or if that was actually real. Absolutely fascinating stuff, both the actual technology and their video about it.  
 Honestly can't recommend that channel enough to everyone, everywhere.
 
 ## The Greens
@@ -98,7 +98,7 @@ If that's too general for you, there are also the spin-offs [SciShow Space][scis
 
 ## Things, and how they are, and why that's interesting
 
-I don't even know where to start, so here's bulleted list of stuff:
+I don't even know where to start, so here's a bulleted list of stuff:
 
 - [WendoverProductions][wendover]: Seemingly about almost everything, and all of it is great.
 - [RealEngineering][realeng]: Why are airplane windows round? Fascinating animated videos showing why things are designed the way they are
@@ -119,7 +119,7 @@ Naturally, there's the elephant in the room of educational Youtubers, and they s
 - [NativLang][nativlang]: About language. If you have a linguistic soft spot, this is your channel.
 - [This Exists][thisexists]: There's so much stuff, and some of it is unexpected and fascinating. From musical subgenres like [vaporwave](https://www.youtube.com/watch?v=-WNrjWSJwf8)[^vapor] to sub-cultures dedicated to, well, being [weird on SoundCloud](https://www.youtube.com/watch?v=1tUao6vAsjE)
 
-There's a lot more to say about all of these channels, but I just wanted to make a quick list… which now has taken be a couple of days to write up and collect all the links for.  
+There's a lot more to say about all of these channels, but I just wanted to make a quick list… which now has taken me a couple of days to write up and collect all the links for.  
 By now you should have a decent enough primer to go exploring for yourself. Don't hesitate to click on related channels coming up in collaborations or something, that's basically how I collected this list over the years.
 
 <!--Footnotes-->

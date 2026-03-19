@@ -15,7 +15,7 @@ tags:
 
 ---
 
-Having a media center and appropriate infrastructure in your own home is a nice thing. Besides questions about hardware specifications, there's also the the matter of software to use.  
+Having a media center and appropriate infrastructure in your own home is a nice thing. Besides questions about hardware specifications, there's also the matter of software to use.  
 Personally, I'm a reasonably satisfied FreeNAS user, so my base of operation is a collection of FreeBSD jails (Think virtual machines, if I understand it correctly).
 
 But what to do once you got your NAS set up and running, ready to serve all the media you have presumably acquired on a strictly legal basis over the course of multiple years?  
@@ -32,7 +32,7 @@ They're kind of the same(ish) thing. But not really. Well, let's start with Plex
 The idea is the following: You have a shitton of media lying around and want to organize and view it comfortably. You then install a media server (Plex Media Server, Emby Media Server) on the machine that has access to the data. You set up your libraries by telling the server where (file path) your media (media type) is located, i.e. the library "Movies" is set up to `/mnt/media/movies` or something like that. This also applies to tv shows, music, and for Emby, even eBooks and games, but don't ask me what Emby is supposed to do with games, I haven't tried that. 
 
 When your server is running, you can use their browser-based interfaces either locally or through their respective web-endpoints (both Plex and Emby have shortcuts to their webapps on their websites when you're logged in). From that, you can manage, organize and view your media. The device you're watching on doesn't have to support the codec, container or whatever of the source media, the media server is a good friend and transcodes your media for you if necessary, according to your settings. You can also adjust the streaming quality if your connection is embarrassingly German.   
-In case you have a dedicated media center machine lying around, you'll probably want to install their Home Theater Apps. These are native applications that can be controlled with a remote, and have some nifty settings available like optical audio out and what have you. I don't want to go into too that too far because I don't want the audiohpiles making fun of me.
+In case you have a dedicated media center machine lying around, you'll probably want to install their Home Theater Apps. These are native applications that can be controlled with a remote, and have some nifty settings available like optical audio out and what have you. I don't want to go into that too far because I don't want the audiophiles making fun of me.
 
 At this point I should point out that [Emby doesn't have such an app for OS X](https://emby.media/downloads/emby-theater/), so I never used their media center and can only speak for [Plex's Home Theater app](https://plex.tv/downloads#plex-pht), which I like a lot. It's also controllable from their Android app, pretty similar to how chromecast playing works.  
 
@@ -45,7 +45,7 @@ The previous sentence is pretty much the TL;DR of this whole blogpost, by the wa
 
 ## My setup
 
-I'm running the current stable release of [FreeNAS](https://freenas.org) on this [HP MicroServer](https://n40l.wikia.com/wiki/HP_MicroServer_N40L_Wiki). I have installed Plex and Emby in FreeBSD jails, so they're caged from the main OS. Also, I'm running a ZFS storage pool where all my media is located, which is mounted in the respective jails. Note that I don't use the plugins provided by FreeNAS anymore, because they were causing more trouble than benefit. I set up "regular" jails through the FreeNAS webinterface, `ssh`'d into at, and set stuff up that way. 
+I'm running the current stable release of [FreeNAS](https://freenas.org) on this [HP MicroServer](https://n40l.wikia.com/wiki/HP_MicroServer_N40L_Wiki). I have installed Plex and Emby in FreeBSD jails, so they're caged from the main OS. Also, I'm running a ZFS storage pool where all my media is located, which is mounted in the respective jails. Note that I don't use the plugins provided by FreeNAS anymore, because they were causing more trouble than benefit. I set up "regular" jails through the FreeNAS webinterface, `ssh`'d into it, and set stuff up that way. 
 
 To view stuff, I open the Plex app on my phone, choose the item, click the chromecast button, my tv chimes to life, and stuff plays. Then the trakt.tv plugin scrobbles peacefully, and trakt remembers my watched progress for me, which is also synced with Plex. And Emby.  
 Emby, meanwhile, monitors a folder on my drive where… things are incoming. It then autosorts them in their respective folders, where the auto-updating Plex library picks it up.

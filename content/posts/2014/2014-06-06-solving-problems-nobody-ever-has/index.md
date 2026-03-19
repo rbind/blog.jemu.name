@@ -65,7 +65,7 @@ sg1.cols     <- sapply(sg1.cols.num, function(s){
                       })
 ```
 
-Another fine example for the handyness of the `*apply`function family in R, no `for`was shed that day.
+Another fine example for the handiness of the `*apply`function family in R, no `for`was shed that day.
 
 ## Going the extra mile
 
@@ -129,7 +129,7 @@ As I pointed out before, the *SG1* season posters on trakt are inconsistent, so 
 ![](https://stuff.wurstmannberg.de/tRakt/GoT_seasons_ratings_boxplots.png)
 
 Well… Good enough.  
-I can still adjust how much actually gets added in the makeshift brightness™ adjustion step, but oh well.  
+I can still adjust how much actually gets added in the makeshift brightness™ adjustment step, but oh well.  
 At least it's automated now.  
 
 Of course, the trakt stuff requires the functions of [that thing I did last time](https://github.com/jemus42/tRakt).

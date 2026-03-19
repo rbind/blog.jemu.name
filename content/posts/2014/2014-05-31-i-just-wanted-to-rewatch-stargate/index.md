@@ -25,7 +25,7 @@ Over the past few months, I've grown more and more comfortable using R, spawning
 
 So, where do we start. I suggest you start by getting your API key, which you can see [here, if you're logged in](https://trakt.tv/api-docs/authentication).  
 I suggest you put that in a .gitignore'd text file if you intend to publish anything you did, or at least you should know that I did, for it shall make the next stuff more understandable.  
-You can read you key from a, for example, JSON file and store it as an `option`, which seems to be the preferred way to store API keys or passwords, since R options don't linger around in your workspace. Or something. To be honest, I have no idea. I've seen it done this way on other projects and thought it was neat. There. I said it. Can we move on now? Okay.
+You can read your key from a, for example, JSON file and store it as an `option`, which seems to be the preferred way to store API keys or passwords, since R options don't linger around in your workspace. Or something. To be honest, I have no idea. I've seen it done this way on other projects and thought it was neat. There. I said it. Can we move on now? Okay.
 
 Soo… Now we can start by getting a show overview
 I started by creating an empty `object`called `trakt`, which will serve as our collective `thing with the trakt API functions and stuff in it and such ` <small>(patent pending)</small> . 
@@ -177,7 +177,7 @@ SG1$episodes        <- trakt$getEpisodeData(query = SG1$info$tvdb_id, show.episo
 The second function, `initializeEpisodes`, sounds funky, but really ~~isn't~~ is.  
 The idea is to use the `SG1$seasons`object to get a template for the episodes dataset, y'know, one row for every episode with episode number, season, and episode ID in the common sXXeYY format (which requires the `pad`function above). 
 The next part is the biggie: Getting the info for each and every episode of the show, which requires a lot of API calls (At least for shows like *SG-1* with >200 episodes). You could probably be smarter about the way the calls are made, like for example making use of the `*apply`family of functions to get rid of the legacy-looking `for`loop (Because if there's one thing I learned about R, it's that for loops are boring and slow and smell funky, and vectorization and `lapply`-like functions are totally fine & dandy & such).  
-Also, you probably don't need to inititalize the episode dataset like I did, but I did. And now it's there.
+Also, you probably don't need to initialize the episode dataset like I did, but I did. And now it's there.
 
 And now, we're pretty much good to go. What you got now is a `data.frame`in `SG1$episodes`that contains all the episode data: Episode number, ID, season, title, rating, url, how many votes it got and whatnot. Even the `overview`field is included, because *#YOLOSWAG* or whatever. 
 You also have the season data in `SG1$seasons`, which is kind of boring. Let's throw some more data at that.
@@ -194,7 +194,7 @@ SG1$seasons$season  <- factor(SG1$seasons$season,
 
 ```
 
-So, through the power that is [plyr](https://plyr.had.co.nz/), we used `SG1$episodes`to append extra columns to `SG$seasons`, namely `avg.rating.season`(average episode rating of that season), `rating.sd`(standard deviation accompanying that average), `top.rating.episode`(the highest episode rating of that season), and `lowest.rating.epiusode`(you guessed it).  
+So, through the power that is [plyr](https://plyr.had.co.nz/), we used `SG1$episodes`to append extra columns to `SG$seasons`, namely `avg.rating.season`(average episode rating of that season), `rating.sd`(standard deviation accompanying that average), `top.rating.episode`(the highest episode rating of that season), and `lowest.rating.episode`(you guessed it).  
 Wheee.
 
 So, now back to my original plan: Cherry-picking episodes to watch.  
@@ -233,7 +233,7 @@ Well if that isn't nifty.
 
 
 ### Step 2: Polishizzle
-I wrote the basic outline of this blogpost before I actually started thinking about what/how I wanted to put in it, and it turned out I just documented my finished™ functions, which already include most of the polishizzlage (like making factors out of stuff and constructing list objects form the get go instead of fusterclucking everything up), sooo… There's not much to add here, unless some expansions:
+I wrote the basic outline of this blogpost before I actually started thinking about what/how I wanted to put in it, and it turned out I just documented my finished™ functions, which already include most of the polishizzlage (like making factors out of stuff and constructing list objects from the get go instead of fusterclucking everything up), sooo… There's not much to add here, unless some expansions:
 
 ```r
 SG1$episodes$series <- SG1$summary$title # Show title (i.e. "Stargate SG-1")
@@ -342,7 +342,7 @@ names(house)
 
 You can use these new datasets pretty much interchangeably with the SG1 set, so you can plug them in any existing plotting code, adjust the labels and whatever else comes to mind, and you're good to go.
 
-The next step would be to put that stuff in a [shiny](https://shiny.rstudio.com/) app, but before I can do that I need to figure out how to make the plots web-friendly (i.e. labeling dots), the interactivity side of that should be sufficiently covered by shiny itself, and maby [ggvis](https://github.com/rstudio/ggvis/), but Idunno, I kind of have other stuff to do these days.  
+The next step would be to put that stuff in a [shiny](https://shiny.rstudio.com/) app, but before I can do that I need to figure out how to make the plots web-friendly (i.e. labeling dots), the interactivity side of that should be sufficiently covered by shiny itself, and maybe [ggvis](https://github.com/rstudio/ggvis/), but Idunno, I kind of have other stuff to do these days.  
 Not that this has ever stopped me from procrastinating, but oh well, you know the drill. 
 
 ## Conclusion
