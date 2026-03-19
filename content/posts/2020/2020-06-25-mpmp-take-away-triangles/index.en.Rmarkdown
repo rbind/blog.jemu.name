@@ -3,7 +3,6 @@ title: 'MPMP: Take-Away Triangles'
 author: jemus42
 date: '2020-06-25'
 slug: mpmp-take-away-triangles
-categories: []
 tags:
   - MPMP
   - maths
