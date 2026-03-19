@@ -80,7 +80,7 @@ url = "https://bsky.app/profile/jemu.name"
 name = "Ko-Fi"
 icon = "fa fa-coffee fa-2x"
 weight = 5
-url = "https://ko-fi.com/jemus42 fa-2x"
+url = "https://ko-fi.com/jemus42"
 [[social]]
 name = "RSS"
 icon = "fas fa-rss fa-2x"
