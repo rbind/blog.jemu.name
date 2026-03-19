@@ -51,8 +51,8 @@ Yes, I've seen the rebooted JJ Abrams movies, and yes they kind of helped to mak
 Shows I know little about.
 Shows I have not seen.
 Basically, I'm the perfect person to talk about these shows due to my lack of emotional investment, knowledge and *oh wait I have no business talking about them*.
-So, with *Discovery* having made it's first impression, I thought it would be nice to put it into context a little, with all the other Star Trek stuff we had in the past.
-As someone who's not *that* familiar with the franchise, I was a little surprised by the length of the *wilderness* years between the original series and the second live-action installment, as well as the relatively larg gap between the latest series and the new *Dicscovery*. I also didn't realize how big the overlap between *Deep Space Nine*, *Voyager* and *The Next Generation* was, I always assumed they were more sequential.
+So, with *Discovery* having made its first impression, I thought it would be nice to put it into context a little, with all the other Star Trek stuff we had in the past.
+As someone who's not *that* familiar with the franchise, I was a little surprised by the length of the *wilderness* years between the original series and the second live-action installment, as well as the relatively large gap between the latest series and the new *Discovery*. I also didn't realize how big the overlap between *Deep Space Nine*, *Voyager* and *The Next Generation* was, I always assumed they were more sequential.
 Anyway, I did my usual "pull data from <trakt.tv> and look at it"-thing, and here it goes.
 
 ## Preparation
@@ -85,7 +85,7 @@ plot_caption <- paste0("@jemus42 @ ", Sys.Date())
 ```
 
 Next up, we'll gather the data. Since these shows have ridiculously long titles in a world of single-word-shows, we'll keep track of both titles and commonly used abbreviations.
-Please note that the data collection step is a little clunky, code-wise, but oh well, it get's the job done.
+Please note that the data collection step is a little clunky, code-wise, but oh well, it gets the job done.
 
 ```{r getting-data-setup}
 # Assemble tibble of names
@@ -294,7 +294,7 @@ ggplot(
   theme(legend.position = "none")
 ```
 
-We can see *TNG* with a lot of variation compared to the relatively consistent *Enterprise*. Also, there are quite a few outliers in *TNG*, so apaprently there are some *really good* episodes, and a few *really bad* episodes (relatively speaking).
+We can see *TNG* with a lot of variation compared to the relatively consistent *Enterprise*. Also, there are quite a few outliers in *TNG*, so apparently there are some *really good* episodes, and a few *really bad* episodes (relatively speaking).
 We'll be looking at the outliers a little later.
 
 Next up I'd like to look at the ratings of individual seasons of each shows, where we'll be using boxplots again, but this time per season.
@@ -415,7 +415,7 @@ In a by-show plot of distributions, we can now use the width of the distribution
 
 ## The First Seasons
 
-If I remember correctly, [Jason Snell mentioned](https://www.theincomparable.com/teevee/discovery/) that the first season of any Star Trek tended to be *not that great*, which is why you should probably not jump to conclusions regarding *Discovery's* quality just by the first few episodes. So I plotted all the first seasons in one handy graph, where I rescaled the x-axis to a relative number of *percentage of episodes of first seaosn*, which allows a better comparison. Note that at the time of this writing the first season of *Discovery* is not yet concluded, but we already saw the silly named *Fall Finale*™ and know the season will consist of 15 episodes, so I adjusted appropriately.
+If I remember correctly, [Jason Snell mentioned](https://www.theincomparable.com/teevee/discovery/) that the first season of any Star Trek tended to be *not that great*, which is why you should probably not jump to conclusions regarding *Discovery's* quality just by the first few episodes. So I plotted all the first seasons in one handy graph, where I rescaled the x-axis to a relative number of *percentage of episodes of first season*, which allows a better comparison. Note that at the time of this writing the first season of *Discovery* is not yet concluded, but we already saw the silly named *Fall Finale*™ and know the season will consist of 15 episodes, so I adjusted appropriately.
 
 ```{r firsteasons_scatterlines, hugoopts=list(caption="First-season episode ratings. The x-axis is computed by dividing the episode number by the total number of episodes in each season")}
 startrek %>%
@@ -471,12 +471,12 @@ startrek %>%
   theme(legend.position = "none")
 ```
 
-I guess it's fair to say that *Discovery* is doing pretty well *so far*, but it should also be noted that most of the ratings of previous shows were presumably made during rewatches, since trakt hasn't been around that long. So either *DSC* is doing pretty good or it's impossible to actually make a statement about the first-season-hypothesis based on the data, so I opt for the interpration that makes it interesting.
+I guess it's fair to say that *Discovery* is doing pretty well *so far*, but it should also be noted that most of the ratings of previous shows were presumably made during rewatches, since trakt hasn't been around that long. So either *DSC* is doing pretty good or it's impossible to actually make a statement about the first-season-hypothesis based on the data, so I opt for the interpretation that makes it interesting.
 
 ## The Best and the Worst Episodes
 
 Ah yes, the thing with the outliers.
-In the following plot, I've labelled each episode with regards to whether or not is in an *outlier*, which I have defined in this case to be any value that deviates more than two IQR from the median. What an IQR range is a thing that you either know or are googleing now, and well let's face it, it's not important. Anyway, I labelled the outliers with their episode ID (e.g. *s02e03*) and the episode title.
+In the following plot, I've labelled each episode with regards to whether or not is in an *outlier*, which I have defined in this case to be any value that deviates more than two IQR from the median. What an IQR range is a thing that you either know or are googling now, and well let's face it, it's not important. Anyway, I labelled the outliers with their episode ID (e.g. *s02e03*) and the episode title.
 
 ```{r outliers, hugoopts=list(caption="Positive and negative outliers of each show. Outliers are defined in this case as deviating more than two IQR from the median.")}
 startrek %>%
@@ -528,7 +528,7 @@ If this results in a significant result, which it probably will, it indicates th
 tadaa_aov(rating ~ show_abr, data = startrek, print = "markdown")
 ```
 
-Welp, I don't have to look at the pariwise comparisons to tell you that *TAS* is the odd one out because it's obviously rated consistently lower than the others.
+Welp, I don't have to look at the pairwise comparisons to tell you that *TAS* is the odd one out because it's obviously rated consistently lower than the others.
 To make it more interesting, we'll look at the remaining shows if we kick out *TAS*:
 
 ```{r}
@@ -553,7 +553,7 @@ startrek %>%
 
 These errorbars indicate which pairwise comparison (e.g. "mean rating of *ENT* minus mean rating of *DS9*" in the first row) results in a significant difference from 0, assuming that if the shows have the same mean rating, the difference would be 0. The direction of the difference is determined by the labels to the left, as mentioned, so we can say that *TOS* is "significantly worse" than *Voyager*, at least according to mean episode ratings and variation.
 
-The lasr thing I'd like to take a look at is the possible difference between the total show rating on trakt and the mean episode rating of each show. Since you have the option to give each show an over-all rating without rating each episode, I'm assuming that the nostalgia factor is strong in that regard and many people might give *TNG* a nostalgia-inflated rating compared to people who rewatched each episode and rated them as they judge them *today*(ish).
+The last thing I'd like to take a look at is the possible difference between the total show rating on trakt and the mean episode rating of each show. Since you have the option to give each show an over-all rating without rating each episode, I'm assuming that the nostalgia factor is strong in that regard and many people might give *TNG* a nostalgia-inflated rating compared to people who rewatched each episode and rated them as they judge them *today*(ish).
 Long story short, here's the over-all show ratings, sorted by rating:
 
 ```{r show_overall, fig.cap="Over-all show rating on trakt.tv"}
@@ -632,8 +632,8 @@ stshows %>%
 ```
 
 Neat. These little tie-fighters (wrong franchise, I know) represent the mean episode rating with its confidence interval. What we can learn from that plot is how *TNG* has a high show rating, but individual episodes tend to be rated lower on average when compared to the over-all show rating.
-Interestingly, it's the other way around fpr *TAS*, where the average episode rating is higher than the show rating, so apparently people who *remember* it liked it better than the people who *watched* it? Not quite sure, but I'm certain you can figure out a way to rationalize this effect, I'm out ¯\\\_(ツ)_/¯
+Interestingly, it's the other way around for *TAS*, where the average episode rating is higher than the show rating, so apparently people who *remember* it liked it better than the people who *watched* it? Not quite sure, but I'm certain you can figure out a way to rationalize this effect, I'm out ¯\\\_(ツ)_/¯
 
-On the other hand, *Discovery* is very consistent with its mean episiode rating CI enclosing the current show rating over all.
+On the other hand, *Discovery* is very consistent with its mean episode rating CI enclosing the current show rating over all.
 That's neat.
 If you disagree, don't email me.

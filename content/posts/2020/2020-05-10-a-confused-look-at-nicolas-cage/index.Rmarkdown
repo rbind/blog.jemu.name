@@ -73,7 +73,7 @@ cage_movies <- cage_credits$cast %>%
   )
 ```
 
-The returned objects is a `list` of two `tibble`s, named `cast` and `crew`. I'm only interested in the `cast` bit, and I'll filter out items where the character description indictaes Cage's role was uncredited, it's a voice role or he's playing himself [^himself]. I'll also exclude movies shorter than 80 minutes and those with less than 10 votes on trakt.tv, because I have to draw the line *somewhere*.
+The returned objects is a `list` of two `tibble`s, named `cast` and `crew`. I'm only interested in the `cast` bit, and I'll filter out items where the character description indicates Cage's role was uncredited, it's a voice role or he's playing himself [^himself]. I'll also exclude movies shorter than 80 minutes and those with less than 10 votes on trakt.tv, because I have to draw the line *somewhere*.
 
 [^himself]: to which extent one might argue he's always kind of playing himself is a different story
 
@@ -163,7 +163,7 @@ cage_movies %>%
   }
 ```
 
-And yes, I spent *hours* tweaking the {ggrepel} settings here, and at some point I gave up and called it good enough. I thought also mention that this plot highlights some of the weaknesses with the trakt.tv data – when it comes to ratings, especially for older items, it really shows that trakt.tv hasn't been around for nearly as long as IMDb, and doesn't even come close in terms of actively-rating-stuff user base. While I'm still sad about that, it doesn't really matter that much for this little thing, but I thought I'd have to mention it.  
+And yes, I spent *hours* tweaking the {ggrepel} settings here, and at some point I gave up and called it good enough. I thought I'd also mention that this plot highlights some of the weaknesses with the trakt.tv data – when it comes to ratings, especially for older items, it really shows that trakt.tv hasn't been around for nearly as long as IMDb, and doesn't even come close in terms of actively-rating-stuff user base. While I'm still sad about that, it doesn't really matter that much for this little thing, but I thought I'd have to mention it.  
 
 Anyway, let's take a look at the movies that have over 5000 votes, as a more or less arbitrary threshold for popularity:
 
@@ -204,6 +204,6 @@ cage_movies %>%
   theme_trakt()
 ```
 
-It's a little *too* busy with the labels I think, but if you click on the plot to zoom it out, I think it at least does it's job well enough.
+It's a little *too* busy with the labels I think, but if you click on the plot to zoom it out, I think it at least does its job well enough.
 
 Anyway, I think that's about it for now, there's a lot more that could be done with this little dataset, but I just wanted to play around with some stuff.

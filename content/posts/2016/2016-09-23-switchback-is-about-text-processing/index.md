@@ -19,7 +19,7 @@ I will be using [AZlyrics](https://www.azlyrics.com/lyrics/celldweller/switchbac
 > (Switch back)  
 > (Switch back)
 
-Right at the beginning, our fictitious protagonist (from here on out referred to in the singular *they* [^3]) is obviously in a deep state of regret, presumably about a recent life choice which they would prefer to reverse. Only four lines in, we also glimpse a slight preference for repitition. While we are not yet certain if this is going to be a recurring theme, we will keep this in mind in case it pops up again.  
+Right at the beginning, our fictitious protagonist (from here on out referred to in the singular *they* [^3]) is obviously in a deep state of regret, presumably about a recent life choice which they would prefer to reverse. Only four lines in, we also glimpse a slight preference for repetition. While we are not yet certain if this is going to be a recurring theme, we will keep this in mind in case it pops up again.  
 
 > I've made a choice that I regret  
 > Now, what I see is what I get
@@ -35,15 +35,15 @@ We can infer that the protagonist is not happy about this newfangled WYSIWYG par
 > (Switch back)  
 > (Switch back)  
 
-Once again our protagonist mourns their inability to revert his decision, allowing us to make the assumption that their choice might have been made for them, presumably against their own desires. This could refer to a higher power of sorts, maybe their direct superior or their thesis supervisor expecting his submission in a specific format. Since we already established a high probability of this situation referring to the protagonist's choice in text processing software, we can infer that their supervisor only accepts submissions in Micrsoft Word format, while the protagonist would have preferred writing their thesis in LaTeX so they can submit a properly formatted and portable PDF document.
+Once again our protagonist mourns their inability to revert his decision, allowing us to make the assumption that their choice might have been made for them, presumably against their own desires. This could refer to a higher power of sorts, maybe their direct superior or their thesis supervisor expecting his submission in a specific format. Since we already established a high probability of this situation referring to the protagonist's choice in text processing software, we can infer that their supervisor only accepts submissions in Microsoft Word format, while the protagonist would have preferred writing their thesis in LaTeX so they can submit a properly formatted and portable PDF document.
 
 > Wait, how can it be too  
 > Late? 'Cause I don't want to  
 > Play with such a price to  
 > Pay
 
-The next paragraph gives us a little more information about the protagonist's motivation regarding this unappreciated change. Apparently there is a significant financial component, adding up to his established personal preference. It seems highly likely the protagonist does not have the required financial means at their disposal to acquire a legitimate copy of the MS Office software package. This might also lead our protagonist to having to resort to piracy to acquire the software they need, which naturally leads to a downard spiral of criminal deeds to gruesome to even think about in this more light-hearted analysis.  
-Another interesting observation we can make in this paragraph is the choice of words regarding the interaction with WYSIWYG software, which the protagonist referes to as "playing" – a word we usually associate with games. It seems likely that the protagonist is consciously belittleing the concept of WYSIWYG, comparing it to a child's plaything, while grown up and professional users of text processing obviously prefer the vastly superior LaTeX.
+The next paragraph gives us a little more information about the protagonist's motivation regarding this unappreciated change. Apparently there is a significant financial component, adding up to his established personal preference. It seems highly likely the protagonist does not have the required financial means at their disposal to acquire a legitimate copy of the MS Office software package. This might also lead our protagonist to having to resort to piracy to acquire the software they need, which naturally leads to a downward spiral of criminal deeds too gruesome to even think about in this more light-hearted analysis.  
+Another interesting observation we can make in this paragraph is the choice of words regarding the interaction with WYSIWYG software, which the protagonist refers to as "playing" – a word we usually associate with games. It seems likely that the protagonist is consciously belittling the concept of WYSIWYG, comparing it to a child's plaything, while grown up and professional users of text processing obviously prefer the vastly superior LaTeX.
 
 > It's too late to look back (too)  
 > (Late to) Ain't  
@@ -67,7 +67,7 @@ Now we get the first glimpse of the protagonist coming to terms with his new sit
 > Play with such a price to  
 > Pay  
 
-Remember when we were wondering whether or not repitition would be a recurring theme? Well, it looks like we're there. I wonder if this is a conscious choice of the author the let us in on the internal feeling of the protagonist, quite possibly foreshadowing a downward spiral of despair in the face of such tragedy in their life.
+Remember when we were wondering whether or not repetition would be a recurring theme? Well, it looks like we're there. I wonder if this is a conscious choice of the author the let us in on the internal feeling of the protagonist, quite possibly foreshadowing a downward spiral of despair in the face of such tragedy in their life.
 
 > Chained to what I can't  
 > Reclaim, I'll never be the  
@@ -76,9 +76,9 @@ Remember when we were wondering whether or not repitition would be a recurring t
 > (And there's no)  
 > (Way to)
 
-While still in the process of repition, we now realize the protagonist is deeply affected by this circumstance forced upon them. "*I'll never be the same*" clearly refers to the protagonists feeling of internal integrity, a quality they seem to feel is corroded by this unholy preference of prorietary software over the playground of idealistic freedom in the form of open source software.  
+While still in the process of repetition, we now realize the protagonist is deeply affected by this circumstance forced upon them. "*I'll never be the same*" clearly refers to the protagonists feeling of internal integrity, a quality they seem to feel is corroded by this unholy preference of proprietary software over the playground of idealistic freedom in the form of open source software.  
 
-After another round of repeated lines slowly gnawing at our sould, we are presented with this section:
+After another round of repeated lines slowly gnawing at our souls, we are presented with this section:
 
 > (And everybody) And  
 > Everybody foolin' with their rick rack, and  
@@ -94,7 +94,7 @@ It appears our protagonist now has fully lost his sense of self, while also warm
 Interestingly we also learn the identity of the protagonist, which seems to be either *Klayton* or *Celldweller*. We are not sure which of those identities belongs to the protagonist, but it seems likely that the intense stress of the recent endeavors has led to our protagonist developing a case of [dissociative identity disorder](https://en.wikipedia.org/wiki/Dissociative_identity_disorder) leading to the development of multiple identities inside the same physical body.  
 Another explanation would be that *Celldweller* is not actually an identity, but rather a title. It could quite literally refer to the protagonist as a cell dweller, a dweller of cells. The cell in this context is likely to consist of a presumed cage of proprietary software which the protagonist desires to escape, but is unable to.  
 
-The remainder of the lyrics consists only of repition of previously made statements, confirming our suspicions once and for all. It seems the protagonist has fallen victim to their mental degradation, leaving us with an empty feeling of uneasyness.  
+The remainder of the lyrics consists only of repetition of previously made statements, confirming our suspicions once and for all. It seems the protagonist has fallen victim to their mental degradation, leaving us with an empty feeling of uneasiness.  
 While there is nothing we can do to aid the protagonist, we could at least try to raise awareness for the cause of his untimely descent into madness and spread the word about the glory of open source text processing software.
 
 

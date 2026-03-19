@@ -63,7 +63,7 @@ theme_set(
 ```
 
 And here is the heart of that whole project. Probably my biggest and most complex `%>%`-chain to date.
-I realize that going for big and complex chains is not necessarily a good thing because of readibility and understandability, but at some point I just wanted to know if I could actually do all the data retrieval *and cleanup* in one chain.
+I realize that going for big and complex chains is not necessarily a good thing because of readability and understandability, but at some point I just wanted to know if I could actually do all the data retrieval *and cleanup* in one chain.
 I could.
 
 ```{r get-data, eval=!file.exists("xfiles.rds")}
@@ -141,11 +141,11 @@ After that there's only a bunch of modifications to make the output usable, like
 The rest is basically your average data munging, until the last line, where I used my [trakt.tv package](https://github.com/jemus42/tRakt) to collect all the X-Files episode with ratings and some other data from [trakt.tv](https://trakt.tv), merge that with the original dataset to produce the show dataset with the most metadata I ever had.
 That's nice.
 
-So, on to the actualy analysis.
+So, on to the actual analysis.
 
 ### So I heard you like plots
 
-Before I start the plottage, here are some numbers: The original run of the serious spanned 9 seasons, 202 episodes (depending on how you count certain two parters, I counted them as two episodes) and just over 3 *billion* views.
+Before I start the plottage, here are some numbers: The original run of the series spanned 9 seasons, 202 episodes (depending on how you count certain two parters, I counted them as two episodes) and just over 3 *billion* views.
 
 That's a lot of views. Let's plot them over the seasons.
 
@@ -369,10 +369,10 @@ Here we have the mean rating with a 95% CI for each season, and who would have g
 ### Conclusion
 
 So, take this to mean whatever you want, but let's just say that if you were to rewatch *X-Files* to get in the mood for the new miniseries, there's a chance you'll be fine if you select your sample from the mytharc episodes.
-Or maybe not, as Siracusa argued in that Incomparable episodes.
+Or maybe not, as Siracusa argued in that Incomparable episode.
 Anyways, I just wanted to make some plots.
 
-So to end this, let's take a quick look at the writers who brought us this show (filtered for at leats 2 episode credits):
+So to end this, let's take a quick look at the writers who brought us this show (filtered for at least 2 episode credits):
 
 ```{r xfiles_plot_writers}
 xfiles %>%

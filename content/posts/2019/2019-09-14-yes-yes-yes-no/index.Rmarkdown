@@ -32,7 +32,7 @@ editor_options:
 source(here::here("R/post-setup.R"))
 ```
 
-There are some shows that are/were really popular, everyone is excited about them, and then they go down the drain in a both abrupt and spectactular kind of way. Some take their time over a whole season, others have you hoping (and quite possibly in denial) until the end, and then they just kick you in the ol' hope organ.  
+There are some shows that are/were really popular, everyone is excited about them, and then they go down the drain in a both abrupt and spectacular kind of way. Some take their time over a whole season, others have you hoping (and quite possibly in denial) until the end, and then they just kick you in the ol' hope organ.  
 
 I was wondering (for no particular recent-eventsy kind of reason at all, I swear) if some of the shows I recall being considered "bad enders" have something in common, or more interestingly, end badly, differently. 
 
@@ -221,7 +221,7 @@ ggplot(episodes, aes(x = episode_rel, y = rating_c, fill = is_last_season)) +
   )
 ```
 
-Welp, not for _all_, but for most shows in the mix we're seeing quite a noticable dip at the end there.
+Welp, not for _all_, but for most shows in the mix we're seeing quite a noticeable dip at the end there.
 
 ```{r last-seasons-comparison-boxplot, hugoopts=list(caption="Last Seasons: A Boxplot"), fig.width=11}
 ggplot(episodes, aes(x = is_last_season, y = rating_c, 
@@ -244,14 +244,14 @@ ggplot(episodes, aes(x = is_last_season, y = rating_c,
   )
 ```
 
-This is probably the most useful plot so far. Not only can we distinguis between the final season's ratings and the remainder of the show, but we can also see if the finale itself was rated particularly differently.
+This is probably the most useful plot so far. Not only can we distinguish between the final season's ratings and the remainder of the show, but we can also see if the finale itself was rated particularly differently.
 
 
 ## Conclusion
 
-I think it's fair to say that "bad endings" and "controversial endings" are different categories. While BSG and Lost both have endings that left many people unsatisfied, they're still not noticably lower rated then the remainder of the show – on the contrary even, they're above average.  
+I think it's fair to say that "bad endings" and "controversial endings" are different categories. While BSG and Lost both have endings that left many people unsatisfied, they're still not noticeably lower rated than the remainder of the show – on the contrary even, they're above average.  
 
-Then there's the case of the bad last season. While Scrubs didn't have a band ending per-se, it's just that the whole last season was just too big of a departure from what people liked about the show before, namely, well, the cast for one thing.
+Then there's the case of the bad last season. While Scrubs didn't have a bad ending per-se, it's just that the whole last season was just too big of a departure from what people liked about the show before, namely, well, the cast for one thing.
 
 And then there's the "well this is just bullshit" endings. Here we find Dexter, How I Met Your Mother, and of course, Game of Thrones.  
 These endings are special – they're not "bad because I didn't like it"-bad, they're "bad because it doesn't make any sense in the context of the hours and hours of previous material".
