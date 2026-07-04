@@ -8,8 +8,6 @@ categories:
 tags: [cli, macOS]
 featured_image: ~
 description: ''
-categories:
-  - R
 packages: ''
 toc: yes
 math: no

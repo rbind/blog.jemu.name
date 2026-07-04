@@ -3,8 +3,7 @@ title: Importing your Trakt.tv Movies to Letterboxd
 author: jemus42
 date: '2020-12-27'
 slug: importing-your-trakt-tv-movies-to-letterboxd
-categories: []
-tags: 
+tags:
   - trakt.tv
   - letterboxd
 featured_image: ~
