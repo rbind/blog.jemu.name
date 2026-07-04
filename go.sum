@@ -2,10 +2,14 @@ github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20250301175645-2e1270493b57 h1:dd
 github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20250301175645-2e1270493b57/go.mod h1:PrEpovXbxofb9xztAfBHvGswrTx9w/z442zdx/bmeuk=
 github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20250302230704-ef9790fd6802 h1:kWV1rBbgKNAK8Abf2rq4XqCvQF+oR0xdo/buf/xWpYk=
 github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20250302230704-ef9790fd6802/go.mod h1:PrEpovXbxofb9xztAfBHvGswrTx9w/z442zdx/bmeuk=
+github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20260704160005-68c6578a0118 h1:z72RrMnNDNOg7/m/3pUwO1eYdmprrM2Ve5muPDmZdr8=
+github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20260704160005-68c6578a0118/go.mod h1:PrEpovXbxofb9xztAfBHvGswrTx9w/z442zdx/bmeuk=
 github.com/jemus42/jemsugo v0.0.0-20200527001558-23a58a7ea1e0 h1:OMIU+TfBlb61Yc+mIIO9yU9JkQS20CBihQlNjZZBBmY=
 github.com/jemus42/jemsugo v0.0.0-20200527001558-23a58a7ea1e0/go.mod h1:HjtOwFIJRB1dCLfmIKr/Hxp/uhLq6yl6iyqF6A4+nW8=
 github.com/jemus42/jemsugo v0.0.0-20250303012227-6b1cdba6aa9e h1:8U0bgbmakWsUF/zYeeV+5Xtk+9KGPPmdiOeVxhjAaFs=
 github.com/jemus42/jemsugo v0.0.0-20250303012227-6b1cdba6aa9e/go.mod h1:HjtOwFIJRB1dCLfmIKr/Hxp/uhLq6yl6iyqF6A4+nW8=
+github.com/jemus42/jemsugo v0.0.0-20260704155903-a76b31c93359 h1:pPfSyGQcRmZtKYOnbCqV1LUEGhsXBfYUlwgvU+ZwYZE=
+github.com/jemus42/jemsugo v0.0.0-20260704155903-a76b31c93359/go.mod h1:HjtOwFIJRB1dCLfmIKr/Hxp/uhLq6yl6iyqF6A4+nW8=
 github.com/luizdepra/hugo-coder v0.0.0-20200525134138-9d1ba9d21d2d h1:JQZm6xFqD53PEtaKcK0Nz7YUYcfydw5wBFmiNB0reXg=
 github.com/luizdepra/hugo-coder v0.0.0-20200525134138-9d1ba9d21d2d/go.mod h1:6nu/OxeF5LLM5MBhpzTM40kZi80qCHPm2IXxHI0H+KA=
 github.com/luizdepra/hugo-coder v0.0.0-20250228200816-6bc00595434a h1:yeyX4eAKfC3vWDsIgS78KIN1iKPmHotZGeZmNonQUI8=

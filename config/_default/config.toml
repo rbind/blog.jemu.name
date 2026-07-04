@@ -5,7 +5,7 @@
 baseURL = "/"
 DefaultContentLanguage = "en"
 relativeURLs = false
-languageCode = "en-us"
+locale = "en-us"
 title = "blog.jemu.name"
 #theme = ["jemsugo", "hugo-coder"]
 metaDataFormat = "yaml"
@@ -104,7 +104,7 @@ disable = true
 
 [languages]
 [languages.en]
-languagename = "English"
+label = "English"
 
 [languages.en.menu]
 

@@ -3,7 +3,7 @@
 /*   If I get this working right, I'll document it properly, I swear
 */}}
 
-{{ $pkg := index .Site.Data.packages (.Get 0) }}
+{{ $pkg := index hugo.Data.packages (.Get 0) }}
 {{ $url := $pkg.url_pkgdown | default $pkg.url_git | default $pkg.url_other }}
 
 <span class="rpkg">

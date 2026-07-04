@@ -6,7 +6,7 @@ go 1.14
 //replace github.com/jemus42/jemsugo => /Users/Lukas/repos/github/jemus42/jemsugo
 
 require (
-	github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20250302230704-ef9790fd6802 // indirect
-	github.com/jemus42/jemsugo v0.0.0-20250303012227-6b1cdba6aa9e // indirect
+	github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20260704160005-68c6578a0118 // indirect
+	github.com/jemus42/jemsugo v0.0.0-20260704155903-a76b31c93359 // indirect
 	github.com/luizdepra/hugo-coder v0.0.0-20250228200816-6bc00595434a // indirect
 )
