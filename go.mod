@@ -7,6 +7,6 @@ go 1.14
 
 require (
 	github.com/jemus42/hugo-rstats-pkg-meta v0.0.0-20260704160005-68c6578a0118 // indirect
-	github.com/jemus42/jemsugo v0.0.0-20260704155903-a76b31c93359 // indirect
+	github.com/jemus42/jemsugo v0.0.0-20260704163146-9395f9382427 // indirect
 	github.com/luizdepra/hugo-coder v0.0.0-20260223225257-b476d77738fd // indirect
 )
