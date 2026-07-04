@@ -1,9 +1,3 @@
-# if (file.exists('~/.Rprofile')) sys.source('~/.Rprofile', envir = environment())
-
-# Init renv _after_ user Rprofile to avoid problems. Like renv not working.
-# source("renv/activate.R")
-
-# See
 # https://bookdown.org/yihui/blogdown/more-global-options.html
 # https://bookdown.org/yihui/blogdown/global-options.html
 
@@ -25,9 +19,6 @@ options(
     blogdown.warn.future = TRUE,
     blogdown.draft.output = FALSE
 )
-
-# Unset client secret so tRakt won't try authorization
-Sys.setenv("trakt_client_secret" = "")
 
 rprofile <- Sys.getenv("R_PROFILE_USER", "~/.Rprofile")
 

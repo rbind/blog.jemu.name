@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+# Create a new blog post as a Hugo page bundle via blogdown::new_post().
+#
+# Produces:  content/posts/YYYY-MM-DD-slug/index.{md,Rmarkdown}
+#
+# Usage:
+#   ./newpost "My Post Title"          # plain .md (default)
+#   ./newpost --rmd "My Post Title"    # .Rmarkdown (knitr setup chunk + Session Info)
+#   ./newpost -h | --help
+#
+# Notes:
+#   - The slug and date prefix are derived from the title automatically.
+#   - --rmd is what makes blogdown use archetypes/posts-rmarkdown.md; the plain
+#     default uses archetypes/posts.md. (blogdown never picks the -rmarkdown
+#     archetype on its own, so this flag is the whole point of the wrapper.)
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage: newpost [--rmd] "Post Title"
+
+Creates a new post as a Hugo page bundle under content/posts/:
+  content/posts/YYYY-MM-DD-slug/index.{md,Rmarkdown}
+
+Options:
+  --rmd, --rmarkdown   Scaffold an .Rmarkdown post (knitr setup chunk +
+                       Session Info block) instead of the default plain .md.
+  -h, --help           Show this help.
+
+Examples:
+  ./newpost "Thoughts on Something"
+  ./newpost --rmd "Analyzing My Trakt Data"
+
+The title can be given quoted or unquoted:
+  ./newpost --rmd Analyzing My Trakt Data
+EOF
+}
+
+ext=".md"
+kind="posts"
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --rmd|--rmarkdown)
+      ext=".Rmarkdown"; kind="posts-rmarkdown"; shift ;;
+    -h|--help)
+      usage; exit 0 ;;
+    --)
+      shift; break ;;
+    -*)
+      echo "Error: unknown option '$1'" >&2; echo >&2; usage >&2; exit 1 ;;
+    *)
+      break ;;
+  esac
+done
+
+if [[ $# -lt 1 || -z "${1:-}" ]]; then
+  echo "Error: a post title is required." >&2
+  echo >&2
+  usage >&2
+  exit 1
+fi
+
+# Everything remaining is the title (allows unquoted multi-word titles).
+title="$*"
+
+# Run from the repo root so blogdown resolves content/ and .Rprofile correctly,
+# regardless of the caller's working directory.
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$repo_root"
+
+Rscript -e '
+  args  <- commandArgs(trailingOnly = TRUE)
+  title <- args[[1]]
+  ext   <- args[[2]]
+  kind  <- args[[3]]
+
+  if (!requireNamespace("blogdown", quietly = TRUE)) {
+    stop("The blogdown package is not installed. Run install.packages(\"blogdown\").",
+         call. = FALSE)
+  }
+
+  # Belt-and-suspenders: these also come from .Rprofile, but set them here so the
+  # wrapper produces a page bundle even if .Rprofile is not loaded.
+  options(blogdown.new_bundle = TRUE, blogdown.subdir = "posts")
+
+  path <- blogdown::new_post(title, ext = ext, kind = kind, open = FALSE)
+  cat(sprintf("\nCreated %s post: %s\n", ext, path))
+' "$title" "$ext" "$kind"
