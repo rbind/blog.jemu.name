@@ -15,3 +15,8 @@ post:
 
 post-rmd:
 	./newpost --rmd "$(title)"
+
+# Provision a fresh yolobox/Linux box: blogdown + pinned extended Hugo.
+# Run once per new sandbox (see R/setup-sandbox.R). Idempotent.
+sandbox-setup:
+	Rscript R/setup-sandbox.R
