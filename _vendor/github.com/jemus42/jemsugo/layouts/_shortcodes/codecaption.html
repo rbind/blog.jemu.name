@@ -1,0 +1,13 @@
+<!-- Based on the shortcode by Parsia Hakimian https://github.com/parsiya/Hugo-Shortcodes -->
+<!-- codecaption short code - basically this is normal highlighted code with caption on the bottom.
+     see readme for usage -->
+
+<figure class="code">
+  <div class="codewrapper">
+    <!-- {{ .Inner | markdownify }} -->
+    {{ highlight (trim .Inner "\n\r") (.Get "lang") "linenos=true" }}
+  </div>
+  <figcaption>
+    <p>{{ .Get "caption" | markdownify }}</p>
+  </figcaption>
+</figure>
