@@ -1,0 +1,163 @@
+---
+title: Binge-Ratio
+author: Lukas
+date: '2025-08-12'
+slug: binge-ratio
+categories: []
+tags: []
+draft: yes
+---
+
+
+```{r setup, include=FALSE}
+source(here::here("R/post-setup.R"))
+
+knitr::opts_chunk$set(
+  fig.width = 10,
+  fig.height = 10 / 1.618
+)
+
+library(tRakt)
+library(dplyr)
+library(ggplot2)
+```
+
+## Watched Movies
+
+```{r}
+watched_movies <- user_watched(user = "jemus42", type = "movies")
+
+watched_movies |>
+  arrange(desc(last_watched_at)) |>
+  head()
+```
+
+
+```{r}
+watched_movies |>
+  count(plays)
+```
+
+```{r}
+watched_movies |>
+  arrange(desc(plays))
+```
+
+## Watched Shows
+
+
+```{r}
+watched_shows <- user_watched(user = "jemus42", type = "shows")
+
+watched_shows |>
+  arrange(desc(last_watched_at)) |>
+  head()
+```
+
+```{r}
+watched_shows |>
+  ggplot(aes(x = last_watched_at)) +
+  geom_histogram(alpha = .5, color = "white") +
+  scale_x_datetime(date_breaks = "2 years", date_labels = "%Y") +
+  theme_minimal(base_size = 14) +
+  labs(
+    title = "'Last Watched' Dates for Shows",
+    x = "Date",
+    y = "Count"
+  )
+```
+
+## History
+
+
+```{r}
+history_shows <- user_history(user = "jemus42", type = "shows", limit = 1e6)
+
+nrow(history_shows)
+
+history_shows |>
+  mutate(year = lubridate::year(watched_at)) |>
+  count(year)
+```
+
+
+```{r}
+history_shows |>
+  count(title, sort = TRUE) |>
+  head()
+```
+
+```{r}
+history_shows |>
+  filter(title == "Taskmaster") |>
+  count(episode_title, name = "episode_watch_count") |>
+  count(episode_watch_count)
+```
+
+So only 32 episodes I've seen once, and almost 150 I've seen at least twice.
+
+
+```{r}
+single_viewed <- history_shows |>
+  filter(title == "Taskmaster") |>
+  count(episode_title, name = "episode_watch_count") |>
+  filter(episode_watch_count == 1)
+
+history_shows |>
+  filter(title == "Taskmaster") |>
+  inner_join(single_viewed, by = "episode_title") |>
+  select(year, episode_season, episode_episode, episode_title) |>
+  arrange(episode_season, episode_episode)
+```
+
+Weird, I'm pretty sure I rewatched the New Year's Treat episodes just recently so I've definitely seen them twice.
+Welp, data integrity is hard.
+
+
+
+```{r}
+history_shows |>
+  ggplot(aes(x = watched_at)) +
+  geom_histogram(alpha = .5, color = "white") +
+  scale_x_datetime(date_breaks = "2 years", date_labels = "%Y") +
+  theme_minimal(base_size = 14) +
+  labs(
+    title = "'Watched' Dates for Shows",
+    x = "Date",
+    y = "Count"
+  )
+```
+
+```{r}
+history_shows |>
+  filter(lubridate::year(watched_at) >= 2014) |>
+  ggplot(aes(x = watched_at)) +
+  geom_histogram(alpha = .5, color = "white") +
+  scale_x_datetime(date_breaks = "2 years", date_labels = "%Y") +
+  theme_minimal(base_size = 14) +
+  labs(
+    title = "'Watched' Dates for Shows",
+    x = "Date",
+    y = "Count"
+  )
+```
+
+
+```{r}
+history_shows$action |> table()
+```
+
+
+```{r}
+history_shows |>
+  filter(action %in% c("checkin", "scrobble")) |>
+  ggplot(aes(x = watched_at)) +
+  geom_histogram(alpha = .5, color = "white") +
+  scale_x_datetime(date_breaks = "2 years", date_labels = "%Y") +
+  theme_minimal(base_size = 14) +
+  labs(
+    title = "'Watched' Dates for Shows",
+    x = "Date",
+    y = "Count"
+  )
+```
