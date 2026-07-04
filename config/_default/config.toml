@@ -26,7 +26,9 @@ path = "github.com/luizdepra/hugo-coder"
 # Enable features
 enableEmoji = true
 enableGitInfo = true
-enableRobotsTXT = true
+# robots.txt is served from static/robots.txt (the hugo-coder theme sets
+# [outputs].home = [html, rss], which overrides enableRobotsTXT, so the
+# generated output format never fires — a static file is the reliable route).
 
 # Rmarkdown special handling
 ignoreFiles = [
