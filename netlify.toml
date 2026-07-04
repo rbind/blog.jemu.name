@@ -6,18 +6,23 @@ GO_VERSION = "1.24.x"
 HUGO_VERSION = "0.163.3"
 HUGO_ENABLEGITINFO = "true"
 
-[context.production.environment]
+# NOTE: `command` must be a direct key of each [context.*] table. Nesting it
+# under [context.*.environment] turns it into an (ignored) env var named
+# "command", so Netlify falls back to the UI build command in EVERY context —
+# which previously leaked drafts (`-D`) onto production.
+
+[context.production]
 command = "hugo --minify"
-# HUGO_VERSION = "0.145.0"
+[context.production.environment]
 HUGO_ENV = "production"
 HUGO_TITLE = "blog.jemu.name"
 
-[context.branch-deploy.environment]
+[context.branch-deploy]
 command = "hugo --minify -D"
-# HUGO_VERSION = "0.145.0"
+[context.branch-deploy.environment]
 HUGO_TITLE = "Branch Preview - blog.jemu.name"
 
-[context.deploy-preview.environment]
+[context.deploy-preview]
 command = "hugo --minify -D"
-# HUGO_VERSION = "0.145.0"
+[context.deploy-preview.environment]
 HUGO_TITLE = "Deploy Preview - blog.jemu.name"
